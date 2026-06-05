@@ -125,7 +125,9 @@ memodelkan interkoneksi materi secara eksplisit. \textcite{ji_survey_2022} mende
 KG sebagai struktur data grafis yang merepresentasikan entitas dunia nyata dan
 relasi semantiknya dalam format \textit{triple} (\textit{head, relation, tail}),
 yang tidak hanya menyimpan fakta tetapi juga mendukung penalaran formal atas
-data tersebut. \textcite{kim_study_2023} mengajukan pendekatan KG untuk
+data tersebut. Sebagai ilustrasi, satu fakta materi sains dapat dinyatakan
+sebagai \textit{triple} (Fotosintesis, MENGHASILKAN, Glukosa).
+\textcite{kim_study_2023} mengajukan pendekatan KG untuk
 memvisualisasikan \textit{flow of knowledge} dan \textit{thinking style} yang
 esensial bagi siswa guna membangun inferensi logis antar-konsep. Urgensi
 penerapan ini diperkuat oleh \textcite{abu-salih_systematic_2024}, yang melalui tinjauan
@@ -267,7 +269,7 @@ Penelitian ini menghasilkan dua kontribusi yang dapat dilanjutkan oleh peneliti
 berikutnya. Pertama, \textit{pipeline} LLM-KGC yang didokumentasikan dalam
 skripsi ini---mencakup skema ontologi OWL beserta strategi
 \textit{prompt engineering}-nya---dapat diadaptasi untuk domain kurikulum lain
-atau jenjang pendidikan yang berbeda. Kedua, KG kurikulum sains Fase~F berbahasa Indonesia
+atau jenjang pendidikan yang berbeda. Kedua, KG kurikulum sains Fase~F Kelas XII berbahasa Indonesia
 yang dihasilkan merupakan sumber daya terbuka pertama dari jenisnya, dan dapat
 menjadi \textit{ground truth} awal untuk penelitian pembelajaran mesin di bidang
 pendidikan nasional.
@@ -312,13 +314,12 @@ Berikut adalah batasan-batasan yang ditetapkan untuk penelitian ini.
         memanfaatkan ANN \textit{vector index} HNSW dengan model
         \textit{embedding} \texttt{gemini-embedding-001}. Metrik topologi (ADC,
         \textit{Graph Density}, \textit{Modularity}) dihitung melalui kueri
-        Cypher---tanpa pustaka \textit{Graph Data Science} (GDS)---agar
-        kompatibel dengan tier Aura Free.
+        Cypher.
 
   \item \textbf{Cakupan Validasi:} Validasi pakar dilakukan oleh enam
         \textit{reviewer} (dua per mata pelajaran) dengan latar belakang ilmu
         murni atau pendidikan sains yang linier. Setiap \textit{triple} dinilai
-        pada skala empat poin melalui aplikasi web KG Review App. Kesepakatan
+        ke dalam empat kategori penilaian melalui aplikasi web KG Review App. Kesepakatan
         diukur menggunakan Gwet's AC1. Ketidaksepakatan pada validasi
         intra-mapel diselesaikan oleh \textit{LLM-as-a-judge} berbasis
         Gemini~3.1 Pro Preview; ketidaksepakatan pada relasi lintas-disiplin
