@@ -147,7 +147,7 @@ Vokabulari relasi semantik antarkonsep dibagi menjadi dua kelompok
 dengan peran berbeda dalam \textit{pipeline}:
 
 \begin{enumerate}
-  \item \textbf{Relasi dalam-buku (\textit{within-book}):} delapan tipe
+  \item \textbf{Relasi dalam-buku (\textit{within-book}):} lima belas tipe
         yang ditegakkan oleh \textit{prompt} LLM saat ekstraksi per-bab,
         menangkap struktur konseptual lokal dalam satu mata pelajaran
         (Tabel~\ref{tab:relasi-dalam-buku}).
@@ -197,6 +197,27 @@ dengan peran berbeda dalam \textit{pipeline}:
     & asimetris \\
   \texttt{MENGATUR}
     & A mengatur atau mengontrol perilaku B (regulasi)
+    & asimetris \\
+  \texttt{TERDIRI\_DARI}
+    & A terdiri dari/tersusun atas B (komposisi/agregasi)
+    & asimetris, hierarkis \\
+  \texttt{BEREAKSI\_DENGAN}
+    & A bereaksi dengan B (reaksi kimia)
+    & simetris \\
+  \texttt{MENGHASILKAN}
+    & A menghasilkan B (produk atau keluaran proses)
+    & asimetris \\
+  \texttt{TERLETAK\_DI}
+    & A terletak di/berada pada B (lokasi atau struktur)
+    & asimetris \\
+  \texttt{DIFORMULASIKAN\_SEBAGAI}
+    & A diformulasikan sebagai B (representasi matematis/rumus)
+    & asimetris \\
+  \texttt{DIKATALISIS\_OLEH}
+    & A dikatalisis oleh B (katalisis enzimatik/kimiawi)
+    & asimetris \\
+  \texttt{MEMILIKI\_SIFAT}
+    & A memiliki sifat atau atribut B
     & asimetris \\
 \end{longtable}
 
