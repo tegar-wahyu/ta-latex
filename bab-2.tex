@@ -16,7 +16,7 @@
 Bab ini menyajikan landasan konseptual penelitian, mencakup: konsep
 dasar \textit{Knowledge Graph} (KG) dan ontologi pendidikan; mekanisme
 \textit{Knowledge Graph Completion} (KGC) berbasis \textit{embedding}
-maupun LLM; peran LLM sebagai penilai (\textit{LLM-as-a-Judge}); metrik
+maupun LLM; peran LLM sebagai penilai (\textit{LLM-as-a-judge}); metrik
 evaluasi KG yang digunakan; konteks interkoneksi kurikulum sains; serta
 tinjauan penelitian terkait guna memperjelas posisi dan kontribusi
 penelitian ini.
@@ -150,7 +150,7 @@ mereformulasikan KGC sebagai tugas \textit{question answering}: dengan
 memperlakukan triple sebagai urutan teks, model diminta menjawab pertanyaan
 seperti ``apa yang berhubungan dengan entitas X melalui relasi R?''
 berdasarkan pemahaman konteks bahasa. Reformulasi inilah yang membuka jalan
-bagi integrasi \textit{Large Language Models} (LLM) ke dalam pipeline KGC,
+bagi integrasi \textit{Large Language Models} (LLM) ke dalam \textit{pipeline} KGC,
 yang menjadi inti kontribusi teknis penelitian ini.
 
 Kapasitas semantik tersebut menghadirkan tantangan komputasional
@@ -187,36 +187,38 @@ Perkembangan \textit{Large Language Models} (LLM) telah mendorong
 pergeseran paradigma dalam ekosistem kecerdasan buatan, khususnya dalam
 hubungannya dengan teknologi KG. \textcite{pan_unifying_2024} memetakan sinergi
 antara LLM dan KG ke dalam tiga kerangka konseptual utama:
-\textit{KG-enhanced LLMs} (KG digunakan untuk meningkatkan akurasi dan
-faktualitas LLM), \textit{LLM-augmented KGs} (LLM dimanfaatkan untuk
+\textit{KG-enhanced LLMs} (KG digunakan sebagai sumber fakta terstruktur
+untuk meningkatkan akurasi dan faktualitas LLM---yakni kesesuaian keluaran
+model dengan fakta yang benar sehingga menekan \textit{hallucination}),
+\textit{LLM-augmented KGs} (LLM dimanfaatkan untuk
 menyelesaikan tugas-tugas konstruksi dan penalaran KG), serta
 \textit{Synergized LLMs + KGs} (keduanya beroperasi secara resiprokal
 dan setara). Penelitian ini secara spesifik beroperasi dalam kerangka
-\textit{LLM-augmented KGs}, di mana kapasitas generalisasi semantik LLM
+\textit{LLM-augmented KGs}: kapasitas generalisasi semantik LLM
 dimanfaatkan untuk menyempurnakan proses konstruksi graf dan KGC,
 khususnya dalam menangkap relasi interdisipliner yang tidak tersurat
 secara eksplisit dalam kurikulum.
 
 Sinergi ini secara fundamental mengubah arsitektur kerja KGC
-tradisional. \textcite{bian_llm-empowered_2025} mencatat bahwa proses ekstraksi dan konstruksi
-KG kini telah bergeser dari pendekatan statistik-simbolik yang
+tradisional. \textcite{bian_llm-empowered_2025} mencatat bahwa proses ekstraksi dan
+konstruksi KG kini bergeser dari pendekatan statistik-simbolik yang
 deterministik dan kaku menuju kerangka berbasis model bahasa generatif
-yang jauh lebih adaptif dan \textit{context-sensitive}. Pendekatan
-deterministik umumnya bergantung pada aturan eksplisit yang ditetapkan
-manusia, seperti pencocokan pola sintaksis (\textit{regular expression}),
-\textit{rule-based dependency parsing}, atau template relasi yang telah
-didefinisikan sebelumnya. Sebagai contoh, untuk mengekstraksi relasi
-prasyaratDari dari teks materi sains, sistem berbasis aturan harus
-dibekali pola eksplisit seperti ``untuk memahami X, siswa perlu
-menguasai Y''; akibatnya, ketika struktur kalimat berubah menjadi ``Y
-merupakan fondasi bagi X'', relasi tersebut dapat gagal terdeteksi.
+yang lebih adaptif dan \textit{context-sensitive}. Pendekatan deterministik
+bertumpu pada aturan eksplisit buatan manusia, seperti pencocokan pola
+sintaksis (\textit{regular expression}), \textit{rule-based dependency
+parsing}, atau template relasi yang telah ditetapkan. Aturan semacam itu
+rapuh terhadap variasi bahasa: untuk mengekstraksi relasi prasyaratDari,
+misalnya, sistem harus dibekali pola eksplisit seperti ``untuk memahami X,
+siswa perlu menguasai Y'', sehingga ketika gagasan yang sama diungkapkan
+sebagai ``Y merupakan fondasi bagi X'' relasi tersebut gagal terdeteksi.
 Kekakuan inilah yang membuat pendekatan deterministik sulit menangkap
-relasi implisit dan variasi ekspresi bahasa alami dalam teks pendidikan.
+relasi implisit dan variasi ekspresi bahasa alami yang justru lazim dalam
+teks pendidikan.
 
 Keterbatasan serupa tidak hanya berlaku pada metode berbasis aturan,
 tetapi juga pada metode \textit{embedding} konvensional yang pengambilan
 keputusannya hanya bergantung pada pola koneksi yang telah ada dalam
-graf (lihat Subbab~\ref{subsec:kgc}). Pergeseran menuju
+graf (sebagaimana telah diuraikan sebelumnya). Pergeseran menuju
 penggunaan LLM mendefinisikan ulang mekanisme penalaran dalam KGC,
 karena LLM mampu memanfaatkan pengetahuan internal yang diperoleh dari
 pelatihan pada korpus teks berskala masif untuk mengevaluasi kelayakan
@@ -224,7 +226,7 @@ semantik suatu fakta baru, termasuk pada entitas \textit{long-tail} yang
 memiliki sedikit koneksi dalam graf \parencite{yao_exploring_2025, wei_kicgpt_2023}.
 
 Salah satu implementasi paling representatif dari paradigma ini adalah
-kerangka kerja KICGPT \parencite{wei_kicgpt_2023}, yang memadukan pipeline KGC
+kerangka kerja KICGPT \parencite{wei_kicgpt_2023}, yang memadukan \textit{pipeline} KGC
 dengan kemampuan penalaran LLM melalui strategi \textit{In-Context
 Learning} (ICL). Inti dari strategi ini adalah mekanisme yang disebut
 \textit{Knowledge Prompt}: struktur ontologi KG, termasuk entitas,
@@ -239,16 +241,15 @@ bergantung pada infrastruktur pelatihan model berskala industri.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.85\textwidth]{images/media/image15.png}
-  \caption{Ilustrasi Kerangka KICGPT \parencite{wei_kicgpt_2023}}
+  \caption{Ilustrasi Kerangka KICGPT (diadaptasi dari \textcite{wei_kicgpt_2023})}
   \label{fig:kicgpt}
 \end{figure}
 
 Untuk merangkum pergeseran paradigma yang telah diuraikan,
 Tabel~\ref{tab:kgc-comparison} menyajikan perbandingan konseptual antara
 metode KGC konvensional berbasis \textit{embedding} dengan pendekatan
-mutakhir yang dibantu LLM, mencakup dimensi arsitektur, kemampuan
-penanganan \textit{long-tail entities}, kebutuhan data, serta
-fleksibilitas adaptasi terhadap domain baru.
+mutakhir yang dibantu LLM, mencakup dimensi sumber data, konteks
+penalaran, skalabilitas, serta penanganan \textit{long-tail entities}.
 
 \begin{longtable}{@{}p{0.18\linewidth}p{0.38\linewidth}p{0.38\linewidth}@{}}
   \caption{Perbandingan Metode KGC Tradisional dan LLM-Assisted}
@@ -269,25 +270,24 @@ fleksibilitas adaptasi terhadap domain baru.
   \endfoot
   \bottomrule
   \endlastfoot
-  Data Source
+  Sumber Data
     & Terstruktur (RDF/SQL/Simbolik)
     & Tidak Terstruktur (Buku Teks, Modul, Silabus) \\
-  Context
+  Konteks
     & Terbatas pada jarak struktur graf matematis murni
     & Memahami semantik bahasa alami dan konteks teks lintas dokumen \\
-  Scalability
+  Skalabilitas
     & Membutuhkan intervensi pakar secara masif
-    & Ekstraksi otomatis dan generatif dengan verifikasi
-      (\textit{In-Context Learning}) \\
-  Long-tail Handling
+    & Ekstraksi otomatis dan generatif dengan verifikasi (ICL) \\
+  Penanganan \textit{Long-tail}
     & Performa turun drastis pada data minim koneksi
-    & Sangat \textit{robust} memanfaatkan \textit{pre-trained knowledge}
+    & Lebih \textit{robust} dengan memanfaatkan \textit{pre-trained knowledge}
       LLM \\
 \end{longtable}
 
-\subsection{Large Language Model sebagai Penilai (LLM-as-a-Judge)}
+\subsection{Large Language Model sebagai Penilai (LLM-as-a-judge)}
 
-Dalam pipeline KGC berbasis LLM, validasi oleh pakar manusia
+Dalam \textit{pipeline} KGC berbasis LLM, validasi oleh pakar manusia
 (\textit{expert-driven evaluation}) merupakan \textit{gold standard}
 untuk memastikan kebenaran faktual berkat kedalaman pemahaman
 kontekstualnya. Meski demikian, dalam proses anotasi data, tahapan
@@ -295,7 +295,7 @@ validasi ini sering kali memunculkan perbedaan pendapat
 (\textit{disagreement}) di antara para pakar akibat tingkat
 subjektivitas masing-masing penilai \parencite{gu_survey_nodate, zheng_judging_2023}. Untuk mengatasi ketidaksepakatan tersebut tanpa mengorbankan
 skalabilitas dan menekan biaya operasional, pemanfaatan LLM dapat
-diimplementasikan melalui pendekatan LLM-as-a-Judge. Dalam skenario ini,
+diimplementasikan melalui pendekatan \textit{LLM-as-a-judge}. Dalam skenario ini,
 alih-alih difungsikan sebagai penilai utama yang menggantikan peran
 manusia, LLM diposisikan secara spesifik sebagai moderator yang objektif
 untuk menyelesaikan konflik penilaian antarpakar \parencite{gu_survey_nodate}.
@@ -303,16 +303,16 @@ untuk menyelesaikan konflik penilaian antarpakar \parencite{gu_survey_nodate}.
 Meskipun terbukti efektif sebagai penengah, literatur menunjukkan bahwa
 LLM memiliki kerentanan terhadap bias kognitif saat dihadapkan pada dua
 argumen yang berseberangan. Model sering kali terpengaruh oleh
-\textit{concreteness bias}, di mana LLM cenderung memihak pada respons
+\textit{concreteness bias}, yaitu kecenderungan memihak pada respons
 yang menyajikan detail spesifik atau dikemas dengan gaya bahasa yang
 meyakinkan, sekalipun argumen tersebut secara faktual keliru
 \parencite{gu_survey_nodate, zheng_judging_2023}.
 
-Untuk menjamin reliabilitas keputusan dan menekan tingkat halusinasi
+Untuk menjamin reliabilitas keputusan dan menekan tingkat \textit{hallucination}
 saat model melakukan arbitrase, proses penengahan oleh LLM menuntut
 adanya mekanisme penjangkaran (\textit{grounding}) yang kuat. Sejalan
 dengan rekomendasi \textcite{gu_survey_nodate} dan prinsip evaluasi presisi
-faktual dari \textcite{min_factscore_2023}, penerapan LLM-as-a-Judge harus
+faktual dari \textcite{min_factscore_2023}, penerapan \textit{LLM-as-a-judge} harus
 diiringi dengan injeksi konteks berupa bukti eksternal
 (\textit{textbook evidence}). Melalui integrasi referensi buku teks
 kurikulum, landasan keputusan tidak lagi bergantung pada asumsi
@@ -326,13 +326,17 @@ kebenaran fakta keilmuan yang disediakan.
 Evaluasi kualitas Knowledge Graph (KG) merupakan aspek krusial dalam
 mengukur keberhasilan sistem ekstraksi dan penyelesaian graf yang
 dibangun. \textcite{xue_knowledge_2022} menegaskan bahwa evaluasi kualitas tidak
-hanya bergantung pada karakteristik bawaan data (seperti akurasi,
-konsistensi, dan kelengkapan intrinsik), tetapi juga krusial untuk
+hanya bergantung pada karakteristik bawaan data---yakni akurasi
+(kebenaran fakta yang direpresentasikan), konsistensi (ketiadaan
+kontradiksi logis antar-triple maupun pelanggaran batasan ontologi), dan
+kelengkapan intrinsik (sejauh mana graf memuat seluruh fakta dan relasi
+yang seharusnya ada)---tetapi juga krusial untuk
 memastikan kredibilitas graf tersebut saat diimplementasikan pada
 aplikasi turunannya. Untuk mencapai evaluasi yang komprehensif, metrik
 evaluasi KG dalam penelitian ini dikategorikan menjadi tiga kelompok
-utama: metrik topologi graf, metrik ekstraksi, dan metrik hubungan
-antar-entitas.
+utama: metrik topologi graf dan metrik ekstraksi---yang mengacu pada metrik kualitas 
+struktural \parencite{seo_structural_2022}---serta metrik hubungan antar-entitas yang 
+dikembangkan dalam penelitian ini.
 
 \subsection{Metrik Topologi Graf}
 \label{subsec:metrik-topologi}
@@ -425,7 +429,7 @@ terbentuk dalam sebuah graf dibandingkan dengan koneksi maksimum yang
 secara teoritis mungkin ada. Nilai $D$ berkisar antara 0 hingga 1; nilai
 mendekati 1 menandakan graf yang sangat padat (\textit{dense}), sementara
 nilai mendekati 0 menandakan graf yang jarang (\textit{sparse}). Dalam
-konteks KG, \textit{density} digunakan untuk membandingkan tingkat
+konteks penelitian ini, \textit{density} digunakan untuk membandingkan tingkat
 keterkaitan antar-konsep sebelum dan sesudah penambahan relasi lintas
 buku (\textit{cross-book links}). Untuk graf berarah, formula yang
 digunakan adalah:
@@ -486,7 +490,7 @@ turunan dari entitas $k$ yang terhubung melalui relasi hierarkis
 \texttt{:HAS\_CONCEPT}.
 
 Metrik ini merujuk pada prinsip \textit{Class Instantiation} yang
-dikemukakan oleh \textcite{seo_structural_2022}, di mana setiap kelas yang
+dikemukakan oleh \textcite{seo_structural_2022}; menurut prinsip ini, setiap kelas yang
 didefinisikan dalam ontologi harus dimanfaatkan secara aktif untuk
 menampung data. Dalam konteks kurikulum sains, nilai ESR yang rendah
 menjamin bahwa setiap topik besar telah berhasil dipecah menjadi
@@ -517,7 +521,7 @@ ontologi, dan $T_{\text{total}}$ adalah jumlah keseluruhan relasi yang
 ada di dalam KG.
 
 Nilai TRR yang tinggi menunjukkan bahwa setiap relasi dalam KG
-menggunakan tipe relasi spesifik dari ontologi---bukan label generik. Hal
+menggunakan tipe relasi spesifik dari ontologi, bukan label generik. Hal
 ini membedakan KG yang bersifat \textit{assertional} (sekadar menyatakan
 bahwa dua entitas berhubungan) dari KG yang bersifat \textit{explanatory}
 (yang mampu menjelaskan jenis hubungan yang ada). Misalnya, relasi
@@ -529,9 +533,9 @@ semantik tambahan.
 \label{subsec:validasi-manusia}
 
 Selain mengandalkan metrik kuantitatif, proses evaluasi KG mutlak
-membutuhkan validasi kualitatif oleh pakar terkait. Hal ini krusial
+membutuhkan validasi kualitatif oleh pakar terkait. Hal ini penting
 mengingat proses KGC dalam penelitian ini dibantu oleh LLM yang rentan
-terhadap halusinasi informasi, seperti mengekstrak entitas yang salah
+terhadap \textit{hallucination} informasi, seperti mengekstrak entitas yang salah
 atau memetakan relasi lintas disiplin yang tidak relevan secara
 pedagogis. Dalam evaluasi klasifikasi tradisional, prediksi sistem
 dinilai secara biner---hanya ada benar (1,0) atau salah (0,0), yang
@@ -586,8 +590,8 @@ sebagai berikut:
         \]
 
   \item \textbf{Fuzzy Recall:} mengukur sejauh mana sistem berhasil
-        menangkap seluruh relasi penting yang diwajibkan dalam kurikulum,
-        di mana penyebut merepresentasikan kardinalitas total dari
+        menangkap seluruh relasi penting yang diwajibkan dalam kurikulum.
+        Penyebut merepresentasikan kardinalitas total dari
         himpunan referensi pakar, termasuk relasi yang gagal diekstraksi
         (Hilang).
         \[
@@ -629,10 +633,10 @@ pakar cenderung tidak seimbang (\textit{imbalanced}), yaitu ketika satu
 kategori (misalnya label ``Benar'') muncul jauh lebih dominan
 dibandingkan kategori lainnya. Pada kondisi distribusi yang miring
 (\textit{skewed}) seperti ini, metrik konvensional seperti Cohen's Kappa
-kurang cocok karena rentan terhadap Kappa Paradox---fenomena ketika Kappa
+kurang cocok karena rentan terhadap Kappa Paradox, yaitu fenomena ketika Kappa
 cenderung meremehkan tingkat kesepakatan pada skenario yang sangat tidak
 seimbang, sehingga menghasilkan skor rendah meskipun kesepakatan aktual
-antarpakar sangat tinggi \parencite{gwet_handbook_2014}.
+antarpakar sangat tinggi \parencite{gwet_handbook_2014, james_counting_2026}.
 
 Gwet's AC1 mengatasi kelemahan ini dengan estimasi peluang kesepakatan
 yang lebih \textit{robust}:
@@ -675,14 +679,16 @@ merupakan masalah representasi pengetahuan: relasi-relasi
 interdisipliner yang ada dalam sains tidak pernah dikodifikasi secara
 eksplisit dalam dokumen kurikulum. Sebagai respons pedagogis, pendekatan
 pemetaan \textit{Disciplinary Core Ideas} (DCI) dan
-\textit{Interdisciplinary Core Ideas} (ICI) telah terbukti menjanjikan.
+\textit{Interdisciplinary Core Ideas} (ICI) telah terbukti menjanjikan:
 \textcite{semilarski_expanding_2022} membuktikan bahwa pemetaan visual konsep inti
 lintas disiplin sains secara signifikan meningkatkan efikasi diri
-(\textit{self-efficacy}) siswa. Di sisi lain, studi yang sama juga
+(\textit{self-efficacy}) siswa---yaitu keyakinan siswa atas kemampuannya
+sendiri dalam memahami sains. Di sisi lain, studi yang sama juga
 mengidentifikasi hambatan penting: guru dan siswa mengalami kesulitan
-ketika harus memetakan irisan konsep-konsep abstrak, terutama antara
-Fisika dan Kimia, secara manual---mengindikasikan bahwa pendekatan ini
-memerlukan dukungan komputasional agar dapat berjalan secara efisien.
+ketika harus memetakan irisan konsep-konsep abstrak secara manual,
+terutama antara Fisika dan Kimia. Hambatan ini mengindikasikan bahwa
+pendekatan tersebut memerlukan dukungan komputasional agar dapat berjalan
+secara efisien.
 
 Kebutuhan akan otomatisasi inilah yang menjadi justifikasi metodologis
 inti penelitian ini. Acuan serupa telah diletakkan oleh
@@ -706,7 +712,7 @@ umum, dan (3) pemetaan interkoneksi kurikulum secara komputasional.
 
 Pada kluster pertama, \textcite{zhang_learning_2023} mengembangkan KG silabus
 berbasis relasi prasyarat untuk mendukung \textit{adaptive learning
-path}. Studi tersebut menunjukkan bahwa relasi prasyarat dan successor
+path}. Studi tersebut menunjukkan bahwa relasi prasyarat dan \textit{successor}
 yang dikodifikasi secara eksplisit secara signifikan meningkatkan
 efektivitas rekomendasi urutan belajar. Perbedaan utama dengan penelitian
 ini adalah cakupan domain: \citeauthor{zhang_learning_2023} bekerja pada satu mata pelajaran
@@ -715,24 +721,23 @@ lintas tiga disiplin ilmu (Fisika, Kimia, Biologi) dalam satu kurikulum
 nasional yang sama.
 
 Pada kluster kedua, \textcite{wei_kicgpt_2023} mengajukan kerangka KICGPT yang
-membuktikan efektivitas ICL berbasis Knowledge Prompt untuk KGC pada
+membuktikan efektivitas ICL berbasis \textit{Knowledge Prompt} untuk KGC pada
 dataset umum (FB15k-237 dan WN18RR). Kontribusi teknis \citeauthor{wei_kicgpt_2023}
-menjadi fondasi pipeline klasifikasi relasi lintas-disiplin dalam
+menjadi fondasi \textit{pipeline} klasifikasi relasi lintas-disiplin dalam
 penelitian ini. Perbedaan kritis terletak pada konteks: dataset
 \textit{benchmark} \citeauthor{wei_kicgpt_2023} bersifat bahasa Inggris dengan entitas
 berupa fakta umum, sedangkan penelitian ini beroperasi pada bahasa
 Indonesia dengan entitas berupa konsep kurikulum sains SMA yang
 terstruktur secara pedagogis.
 
-Pada kluster ketiga, \textcite{said_mapping_2024} memetakan kata kunci silabus
-sains dan matematika terhadap SDGs menggunakan ekstraksi komputasional.
-Pendekatan ini membuktikan kelayakan otomatisasi pemetaan kurikulum,
-namun terbatas pada analisis kata kunci tanpa membangun struktur graf
-relasional. \textcite{semilarski_expanding_2022} membuktikan nilai pedagogis
-pemetaan DCI/ICI secara manual, namun skalabilitasnya terbatas tanpa
-otomatisasi. Penelitian ini mengisi kekosongan dengan menggabungkan
-otomatisasi berbasis LLM dan struktur graf relasional dalam satu
-pipeline yang terintegrasi, khusus untuk konteks kurikulum Indonesia.
+Pada kluster ketiga, \textcite{said_mapping_2024} membuktikan kelayakan
+otomatisasi pemetaan kurikulum, tetapi pendekatannya terbatas pada analisis
+kata kunci tanpa membangun struktur graf relasional. Sementara itu,
+\textcite{semilarski_expanding_2022} menunjukkan nilai pedagogis pemetaan
+DCI/ICI, tetapi skalabilitasnya terbatas karena dilakukan secara manual.
+Penelitian ini mengisi kekosongan tersebut dengan menggabungkan otomatisasi
+berbasis LLM dan struktur graf relasional dalam satu \textit{pipeline} yang
+terintegrasi, khusus untuk konteks kurikulum Indonesia.
 
 Secara keseluruhan, belum ditemukan penelitian terdahulu yang secara
 bersamaan: (a) menggunakan buku teks resmi kurikulum Indonesia sebagai
@@ -740,8 +745,8 @@ korpus, (b) membangun KG lintas tiga disiplin IPA dengan ontologi
 berbasis OWL, (c) menerapkan LLM-Assisted KGC dengan strategi
 \textit{few-shot}, \textit{schema-constrained prompting} untuk ekstraksi
 entitas maupun klasifikasi relasi lintas-disiplin, serta (d)
-memvalidasi hasilnya menggunakan pipeline LLM-as-a-judge berbasis Gemini
-dengan metrik Fuzzy Precision and Recall. Kombinasi keempat elemen
+memvalidasi hasilnya menggunakan \textit{pipeline LLM-as-a-judge} berbasis Gemini
+dengan metrik \textit{Fuzzy Precision and Recall}. Kombinasi keempat elemen
 inilah yang menjadi kontribusi orisinal penelitian ini.
 
 \ifSubfilesClassLoaded{\printbibliography[title={Daftar Pustaka}]}{}
