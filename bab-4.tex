@@ -247,51 +247,53 @@ Tahap ini membuat \textit{knowledge graph} ke Neo4j dengan strategi
 tiga-\textit{pass} agar konsisten secara referensial dan idempoten.
 
 \begin{enumerate}
-  \item \textbf{Pass 1 --- Node ingestion.}
+  \item \textbf{Pass 1 --- Instansiasi node.}
   \begin{itemize}
-    \item Membuat node Grade, Chapter, Subtopic, Concept, via MERGE (idempotent upsert).
-    \item Properti node di-\textit{set} melalui ON CREATE dan ON MATCH agar eksekusi
-      ulang aman.
-    \item Kunci unik (name, grade) pada Concept membuat konsep yang dirujuk dari
-      teks berbeda dipetakan ke node yang sama (\textit{shared node}).
+    \item Node \texttt{Grade}, \texttt{Chapter}, \texttt{Subtopic}, dan
+      \texttt{Concept} dibuat melalui operasi \texttt{MERGE}
+      (\textit{idempotent upsert}).
+    \item Properti node ditetapkan melalui klausa \texttt{ON CREATE} dan
+      \texttt{ON MATCH}.
+    \item Kunci \texttt{MERGE} gabungan (\texttt{name}, \texttt{grade}) menegakkan
+      sifat \textit{shared node} pada \texttt{Concept} sebagaimana didefinisikan
+      pada Subbab~\ref{subsec:skema-ontologi}.
   \end{itemize}
 
-  \item \textbf{Backbone hierarki.}
+  \item \textbf{Tulang punggung hierarki.} Relasi struktural
+  \texttt{HAS\_CHAPTER}, \texttt{HAS\_SUBTOPIC}, \texttt{HAS\_CONCEPT}, dan
+  \texttt{NEXT\_CHAPTER} ditarik dari struktur daftar isi (bukan dari LLM)
+  untuk menjamin keterurutan hierarki bab.
 
-  Relasi struktural HAS\_CHAPTER, HAS\_SUBTOPIC, HAS\_CONCEPT, dan NEXT\_CHAPTER
-  ditarik dari struktur TOC (bukan dari LLM) untuk memastikan keterurutan
-  struktur hierarki bab.
-
-  \item \textbf{Pass 2 --- Intra-book relations.}
+  \item \textbf{Pass 2 --- Relasi dalam-buku.}
   \begin{itemize}
-    \item Relasi semantik antar-Concept ditanam dengan \textit{branching} dua-tier:
-    \begin{itemize}
-      \item Jika target berada di himpunan Concept buku saat ini, buat edge
-        (Concept)-[r]->(Concept).
-      \item Jika tidak, buat edge (Concept)-[r]->(ConceptTarget) sebagai
-        \textit{placeholder}.
-    \end{itemize}
-    \item Pemisahan label Concept vs.\ ConceptTarget memudahkan audit konsep yang
-      disebut LLM tetapi tidak ter-\textit{anchor} di sumber tekstual.
-    \item Tipe relasi dinormalisasi via \_safe\_rel: \texttt{[\^{}A-Z0-9\_]} diganti
-      \texttt{\_} agar sesuai sintaksis \textit{Cypher relationship type}.
+    \item Relasi semantik antar-\texttt{Concept} ditanam dengan strategi
+      dua-tingkat: apabila konsep target sudah berada dalam himpunan
+      \texttt{Concept} buku yang sedang diproses, sistem membuat \textit{edge}
+      langsung antar-\texttt{Concept}; jika belum, target direpresentasikan
+      sebagai node \texttt{ConceptTarget} yang berperan sebagai
+      \textit{placeholder}.
+    \item Pemisahan label \texttt{Concept} dan \texttt{ConceptTarget}
+      (Subbab~\ref{subsec:skema-ontologi}) memudahkan audit terhadap konsep yang
+      belum ter-\textit{anchor} pada sumber tekstual.
+    \item Tipe relasi dinormalisasi (karakter non-alfanumerik diganti garis
+      bawah) agar sesuai dengan sintaksis \textit{relationship type} Cypher.
   \end{itemize}
 
-  \item \textbf{Pass 3 --- Cross-book relations.}
+  \item \textbf{Pass 3 --- Relasi lintas-buku.}
   \begin{itemize}
-    \item \textit{Edge} lintas-buku diberi prefix
-      \texttt{LINTAS\_BUKU\_<RELATION\_TYPE>} (contoh: \texttt{LINTAS\_BUKU\_APLIKASI\_DARI}).
-    \item \textit{Guard}: target\_book $\neq$ source\_book dan target\_book harus ada di
-      data\_to\_ingest.
-    \item Jika Concept target belum ada di \textit{scope} grade tujuan, dibuat node
-      Concept baru (\textit{lazy materialization}).
+    \item \textit{Edge} lintas-buku diberi prefiks \texttt{LINTAS\_BUKU\_}
+      diikuti tipe relasinya (mis.\ \texttt{LINTAS\_BUKU\_APLIKASI\_DARI}).
+    \item Penjagaan integritas diterapkan: buku target harus berbeda dari buku
+      sumber dan termuat dalam korpus yang diproses.
+    \item Apabila konsep target belum ada pada \textit{scope} mata pelajaran
+      tujuan, node \texttt{Concept} baru dibuat secara \textit{lazy}
+      (\textit{lazy materialization}).
   \end{itemize}
 
-  \item \textbf{Idempotency property.}
-
-  Seluruh \textit{pass} memakai MERGE, sehingga re-run \textit{notebook} tidak menggandakan
-  node/edge. Hal ini penting untuk eksperimen iteratif dan \textit{boost} ADC pada
-  tahap evaluasi.
+  \item \textbf{Sifat idempoten.} Seluruh \textit{pass} menggunakan
+  \texttt{MERGE} sehingga eksekusi ulang \textit{notebook} tidak menggandakan
+  node maupun \textit{edge}. Properti ini penting agar eksperimen dapat
+  dijalankan secara iteratif tanpa mengotori graf yang telah terbentuk.
 \end{enumerate}
 
 % ============================================================
