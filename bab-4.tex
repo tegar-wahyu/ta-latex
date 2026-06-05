@@ -659,7 +659,7 @@ F1-Score, dan uji kesepakatan Gwet's AC1 yang merujuk pada Subbab~\ref{subsec:va
   >{\centering\arraybackslash}p{0.09\linewidth}
   >{\centering\arraybackslash}p{0.09\linewidth}@{}}
 \caption{Hasil validasi Fase 1 (intra-mapel) per penilai dan konsensus final.
-  Kolom ``Final'' adalah konsensus setelah resolusi ketidaksepakatan via LLM-as-a-judge.
+  Kolom ``Final'' adalah konsensus setelah resolusi ketidaksepakatan via \textit{LLM-as-a-judge}.
   Jumlah ``Ditinjau'' pada baris Final lebih kecil daripada baris penilai karena
   \textit{triple} yang pada konsensus akhir dinilai gagal-ekstraksi/invalid
   (label ``Salah'') dikeluarkan dari basis penghitungan presisi.}
@@ -777,8 +777,8 @@ model LLM, dan mengidentifikasi faktor-faktor yang memengaruhi akurasi
 ekstraksi.
 
 Pengaruh parameter \textit{retrieval} terhadap jumlah relasi lintas-buku yang
-ditemukan dievaluasi pada empat konfigurasi berpasangan (Tabel~\ref{tab:param-sweep}),
-di mana ambang kemiripan (\textit{threshold}) dinaikkan seiring penurunan jumlah
+ditemukan dievaluasi pada empat konfigurasi berpasangan (Tabel~\ref{tab:param-sweep});
+ambang kemiripan (\textit{threshold}) dinaikkan seiring penurunan jumlah
 tetangga per node (top-$k$). Semakin ketat konfigurasi, semakin sedikit pasangan
 kandidat yang lolos: dari 125 relasi pada konfigurasi paling permisif (0{,}70
 / top-$k$ = 20) menyusut menjadi hanya 14 relasi pada konfigurasi paling ketat
@@ -890,7 +890,7 @@ sangat andal dalam \textit{menemukan} keterkaitan lintas-buku yang nyata
 (99{,}1\%) dan dalam \textit{melabeli} tipenya (98{,}3\%), tetapi salah
 menentukan arah pada hampir satu dari empat relasi. Kesalahan arah ini
 bersifat sistematis: 26 dari 28 relasi terbalik berasal dari pasangan
-Biologi\,$\leftrightarrow$\,Kimia, di mana LLM cenderung menempatkan konsep
+Biologi\,$\leftrightarrow$\,Kimia: LLM cenderung menempatkan konsep
 Biologi sebagai sumber, padahal arah yang benar umumnya
 Kimia$\to$Biologi --- konsep kimia berperan sebagai prasyarat/fondasi
 yang \textit{diperdalam} atau \textit{dibutuhkan} oleh proses biologis.
@@ -979,7 +979,7 @@ menyebutkan jenis konstantanya. Umpan balik umum dari penilai ini menekankan:
 definisi nya perlu dicek dan dirapihkan kembali.''
 
 \textbf{Under-extraction formula dan rumus.} Expert-fisika-4 mengusulkan 15
-\textit{missing triples}, di mana 10 di antaranya (67\%) merupakan formula/rumus
+\textit{missing triples}; 10 di antaranya (67\%) merupakan formula/rumus
 yang tidak berhasil diekstrak oleh LLM. Ini menunjukkan bahwa LLM cenderung
 mengekstrak konsep deskriptif namun melewatkan relasi kuantitatif berbasis
 persamaan matematika. Contoh: rumus efisiensi transformator ($\eta$), nilai
