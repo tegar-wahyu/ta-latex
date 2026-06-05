@@ -109,6 +109,7 @@
 \usepackage[
   backend     = biber,
   style       = authoryear,
+  language    = english,
   maxcitenames = 2,
   mincitenames = 1,
   maxbibnames = 99,
@@ -120,6 +121,11 @@
 ]{biblatex}
 \addbibresource{references.bib}
 \renewcommand*{\finalnamedelim}{\addspace dan\addspace}
+% Belt-and-suspenders: define the strings explicitly in case language detection
+% still overrides the option above.
+\DefineBibliographyStrings{english}{%
+  andothers = {et\addabbrvspace al\adddot},%
+}
 
 % ============================================================
 \begin{document}
