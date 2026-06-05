@@ -58,7 +58,7 @@ mencerminkan kerumitan konten kurikulum secara komputasional.
 
 Representasi pengetahuan berbasis KG tidak akan memberikan manfaat
 pedagogis yang optimal tanpa kerangka semantik yang mengatur struktur
-dan batas maknanya. Kehadiran ontologi pendidikan menjadi esensial
+dan batas maknanya. Kehadiran ontologi pendidikan menjadi penting
 karena berfungsi sebagai skema formal yang mendefinisikan jenis entitas
 (kelas), jenis relasi (properti), serta aturan keterhubungan dalam suatu
 domain. Dalam kerangka KG, ontologi berperan sebagai
@@ -92,11 +92,12 @@ dipertanggungjawabkan dalam konteks kurikulum sains SMA.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.9\textwidth]{images/media/image19.png}
-  \caption{Spektrum Formalitas Ontologi}
+  \caption{Spektrum Formalitas Ontologi (diadaptasi dari \textcite{uschold_ontologies_2004})}
   \label{fig:spektrum-ontologi}
 \end{figure}
 
-Mengacu pada spektrum tersebut (Gambar~\ref{fig:spektrum-ontologi}),
+Mengacu pada spektrum formalitas ontologi yang dikemukakan
+\textcite{uschold_ontologies_2004} (Gambar~\ref{fig:spektrum-ontologi}),
 penelitian ini mengadopsi pendekatan ontologi informal yang berfokus
 pada pemodelan hierarki taksonomi konseptual. Pendekatan ini dipilih
 karena relevansinya dengan realitas pedagogis saat ini. Berbeda dengan
@@ -105,23 +106,23 @@ ontologi formal, bidang pendidikan secara historis ditandai oleh
 ekosistem yang sangat beragam, sehingga belum memiliki ontologi maupun
 skema formal yang diterima secara universal. Pendekatan informal yang
 fleksibel namun tetap terstruktur secara hierarkis merupakan solusi yang
-lebih pragmatis dan sesuai dengan karakteristik domain ini.
+lebih pragmatis dan sesuai dengan karakteristik domain ini. Secara konkret,
+ontologi yang dirancang dalam penelitian ini berbentuk hierarki taksonomi
+konsep, dari mata pelajaran, bab, dan subbab hingga konsep, yang dilengkapi
+vokabulari relasi semantik intra- maupun lintas-disiplin; rancangan lengkapnya,
+meliputi definisi kelas, relasi objek, dan properti data, dijabarkan pada
+Subbab~\ref{subsec:skema-ontologi}.
 
 \subsection{Knowledge Graph Completion}
 \label{subsec:kgc}
 
-Meskipun menawarkan representasi pengetahuan yang lengkap dan
-terstruktur, implementasi KG di dunia nyata memiliki keterbatasan
-fundamental yaitu sifatnya yang secara inheren tidak lengkap
-(\textit{incomplete}). Proses ekstraksi pengetahuan, baik yang dilakukan
-secara manual maupun otomatis, hampir selalu gagal menangkap seluruh
-fakta yang terkandung dalam sumber teks, sehingga memunculkan fenomena
-\textit{missing links} atau relasi yang tidak terpetakan dalam graf.
-Untuk mengatasi kekosongan informasi tersebut, dikembangkanlah mekanisme
-\textit{Knowledge Graph Completion} (KGC), yakni tugas komputasional
-yang bertujuan menginferensi dan memprediksi entitas atau relasi yang
-hilang sehingga triple pengetahuan menjadi utuh dan konsisten secara
-semantik.
+Setiap KG memiliki keterbatasan inheren berupa sifatnya yang tidak pernah
+benar-benar lengkap (\textit{incompleteness}); sebagian relasi yang valid
+selalu luput terpetakan ketika graf dibangun. \textit{Knowledge Graph
+Completion} (KGC) merupakan tugas komputasional yang mengatasi keterbatasan
+ini, yakni menginferensi dan memprediksi entitas atau relasi yang hilang
+(\textit{missing links}) agar triple pengetahuan menjadi lebih utuh dan
+konsisten secara semantik.
 
 Metode-metode berbasis \textit{embedding} seperti TransE
 \parencite{bordes_translating_2013} dan RotatE \parencite{sun_rotate_2019} memodelkan relasi sebagai operasi
@@ -130,38 +131,27 @@ graf yang padat, seluruh metode dalam keluarga ini mengalami kendala
 yang sama: kedekatan antarentitas dikalkulasikan semata-mata berdasarkan
 struktur topologi graf, tanpa mempertimbangkan informasi tekstual atau
 kontekstual yang melingkupinya \parencite{ji_survey_2022}. Keterbatasan ini
-menjadi sangat menonjol pada \textit{long-tail entities}, yakni entitas
-atau sub-topik dengan tingkat kemunculan yang rendah serta konektivitas
-relasional yang minim. \textcite{wei_kicgpt_2023} membuktikan secara empiris
+menjadi sangat menonjol pada \textit{long-tail entities} (entitas dengan
+konektivitas relasional minim). \textcite{wei_kicgpt_2023} membuktikan secara empiris
 bahwa metode \textit{embedding} berbasis triple mengalami degradasi
 performa yang signifikan dalam skenario ini karena representasi vektor
 entitas yang jarang terhubung tidak cukup terlatih untuk menghasilkan
 inferensi yang valid.
 
-Persoalan \textit{long-tail entities} ini memiliki relevansi langsung
-terhadap domain pendidikan sains. Distribusi topik dalam kurikulum sains
-SMA bersifat asimetris: konsep-konsep lintas disiplin yang menghubungkan
-Fisika, Kimia, dan Biologi---misalnya relasi antara termodinamika dengan
-metabolisme sel, atau antara ikatan kimia dengan sifat mekanik
-material---cenderung jarang tersebut secara eksplisit dalam satu sumber
-teks tunggal, sehingga secara struktural masuk ke dalam kategori
-\textit{long-tail} dalam graf pengetahuan. Metode \textit{embedding}
-konvensional karenanya kurang mampu menemukan dan melengkapi
-relasi-relasi interdisipliner yang justru paling bernilai secara
-pedagogis.
+Persoalan ini berdampak langsung pada domain pendidikan sains: relasi
+lintas-disiplin antara Fisika, Kimia, dan Biologi jarang tersurat dalam
+satu sumber teks sehingga secara struktural tergolong \textit{long-tail},
+dan karenanya paling sulit ditemukan oleh metode \textit{embedding}
+konvensional \parencite{wei_kicgpt_2023}.
 
-Untuk mengatasi keterbatasan tersebut, paradigma KGC modern telah
-bergeser menuju pendekatan berbasis pemahaman bahasa alami.
-\textcite{yao_exploring_2025} meletakkan landasan teknis yang berpengaruh dengan memperlakukan
-triple KG bukan sebagai struktur matematis, melainkan sebagai urutan
-teks (\textit{text sequences}). Dengan reformulasi ini, tugas KGC yang
-semula berupa perhitungan jarak spasial ditransformasi menjadi tugas
-\textit{question answering} berbasis pemahaman semantik---model diminta
-menjawab pertanyaan seperti ``apa yang berhubungan dengan entitas X
-melalui relasi R?'' dengan mengandalkan pemahaman konteks bahasa secara
-luas. Pendekatan ini membuka jalan bagi integrasi \textit{Large Language
-Models} (LLM) ke dalam pipeline KGC, yang menjadi inti kontribusi teknis
-penelitian ini.
+Untuk mengatasi keterbatasan tersebut, paradigma KGC modern bergeser menuju pendekatan berbasis
+bahasa alami. Alih-alih menghitung jarak spasial, \textcite{yao_exploring_2025}
+mereformulasikan KGC sebagai tugas \textit{question answering}: dengan
+memperlakukan triple sebagai urutan teks, model diminta menjawab pertanyaan
+seperti ``apa yang berhubungan dengan entitas X melalui relasi R?''
+berdasarkan pemahaman konteks bahasa. Reformulasi inilah yang membuka jalan
+bagi integrasi \textit{Large Language Models} (LLM) ke dalam pipeline KGC,
+yang menjadi inti kontribusi teknis penelitian ini.
 
 Kapasitas semantik tersebut menghadirkan tantangan komputasional
 tersendiri: penerapan LLM secara langsung untuk mengevaluasi seluruh
