@@ -182,76 +182,61 @@ Fokusnya adalah konsistensi struktur, validasi terminologi, dan
 pembatasan konsep pada materi pokok.
 
 \begin{enumerate}
-  \item \textbf{Text chunking.}
+  \item \textbf{Pemotongan teks (\textit{chunking}).}
 
   Teks dipecah menggunakan SentenceSplitter (LlamaIndex) dengan parameter
   sesuai Subbab~\ref{subsec:parameter-sistem}.
 
-  \item \textbf{Per-chapter aggregation.}
+  \item \textbf{Agregasi per-bab.}
 
-  \textit{Chunk} yang ter-\textit{assign} ke bab yang sama digabung menjadi
-  chapter\_text. LLM diberi konteks bab secara utuh, bukan potongan parsial per
-  \textit{chunk}.
+  \textit{Chunk} yang dipetakan ke bab yang sama digabungkan menjadi satu teks
+  bab utuh, sehingga LLM memperoleh konteks bab secara penuh alih-alih potongan
+  parsial per \textit{chunk}.
 
-  \item \textbf{Triplet extraction.}
+  \item \textbf{Ekstraksi triple.}
 
   Model: Gemini 2.5 Flash Lite via Google GenAI SDK. \textit{Prompt} bersifat
-  \textit{few-shot} dan \textit{schema-constrained}. \textit{Prompt} menyertakan: nama bab dan
-  prev/next chapter, daftar subchapter dari TOC, glosarium sebagai
-  \textit{validation set}, materi pokok sebagai \textit{curriculum constraint}, konsep
-  dari buku lain sebagai \textit{cross-book context}, serta beberapa contoh
-  \textit{triple} sebagai demonstrasi (\textit{few-shot}).
+  \textit{few-shot} dan \textit{schema-constrained}. \textit{Prompt} menyertakan nama bab 
+  beserta bab sebelum dan sesudahnya, daftar subbab dari daftar isi, glosarium sebagai 
+  \textit{validation set}, materi pokok sebagai \textit{curriculum constraint}, konsep dari 
+  buku lain sebagai \textit{cross-book context}, serta beberapa contoh \textit{triple} sebagai
+  demonstrasi (\textit{few-shot}).
 
   \item \textbf{Struktur \textit{prompt}.}
 
   \textit{Prompt} didefinisikan \textit{inline} di dalam \textit{notebook} dan dibagi menjadi delapan blok:
-  instruksi bahasa (output wajib Bahasa Indonesia, kecuali istilah ilmiah tanpa
-  padanan resmi); deklarasi hierarki graf (Kelas $\to$ Bab $\to$ Subchapter $\to$
-  Konsep); filter konten (abaikan daftar isi, soal latihan, glosarium, rangkuman,
-  dan elemen administratif); serta aturan ekstraksi konsep (8 aturan), termasuk
-  batas 3--5 konsep per subchapter, deskripsi 1--2 kalimat ilmiah, dan validasi
-  materi pokok Buku Guru.
+  instruksi bahasa (keluaran wajib berbahasa Indonesia, kecuali istilah ilmiah
+  tanpa padanan resmi); deklarasi hierarki graf (Kelas $\to$ Bab $\to$ Subbab
+  $\to$ Konsep); filter konten (abaikan daftar isi, soal latihan, glosarium,
+  rangkuman, dan elemen administratif); serta aturan ekstraksi konsep (delapan
+  aturan), termasuk batas 3--5 konsep per subbab, deskripsi 1--2 kalimat ilmiah,
+  dan validasi materi pokok Buku Guru.
 
-  \item \textbf{Daftar tipe relasi dalam buku.}
+  \item \textbf{Vokabulari relasi.}
 
-  \textit{Prompt} mendefinisikan 15 tipe relasi intra-buku sesuai ontologi (Subbab~\ref{subsec:skema-ontologi}):
-  MENDEFINISIKAN, MENYEBABKAN, MEMUNGKINKAN, MENGATUR, BAGIAN\_DARI,
-  TERDIRI\_DARI, BERGANTUNG\_PADA, BERINTERAKSI\_DENGAN, BEREAKSI\_DENGAN,
-  MENGHASILKAN, MEMPENGARUHI, TERLETAK\_DI, DIFORMULASIKAN\_SEBAGAI,
-  DIKATALISIS\_OLEH, dan MEMILIKI\_SIFAT.
-  Instruksi \textit{cross-chapter reasoning} menghasilkan relasi PRASYARAT atau
-  MEMPERSIAPKAN dengan concept\_links antar-bab.
-  Skema \textit{strict} JSON \textit{output}: chapter\_summary,
-  subtopics[*].concepts[*], dan chapter\_relations[].
-  \textit{Prompt} bersifat \textit{few-shot} (menyertakan contoh \textit{triple}
-  sebagai demonstrasi) serta mengandalkan struktur instruksi dan penegakan skema
-  untuk konsistensi \textit{output}.
+  \textit{Prompt} membatasi ekstraksi relasi antar-konsep pada 15 tipe relasi
+  intra-buku sesuai \textit{controlled vocabulary} ontologi
+  (Subbab~\ref{subsec:skema-ontologi}); instruksi \textit{cross-chapter
+  reasoning} secara terpisah menghasilkan relasi pedagogis antar-bab
+  (PRASYARAT atau MEMPERSIAPKAN).
 
-  \item \textbf{Structured output parsing.}
+  \item \textbf{Penguraian keluaran terstruktur.}
 
-  Respons di-\textit{strip} dari \textit{fence markdown} (\texttt{json/}) lalu
-  di-\textit{decode} via json.loads. Skema target: chapter\_summary;
-  subtopics[*].concepts[*] dengan \textit{field}: name, description,
-  glossary\_validated, materi\_pokok\_ref, cross\_book\_links[], relations[].
+  Respons LLM dibersihkan dari penanda \textit{markdown} lalu diuraikan dari
+  format JSON menjadi objek terstruktur yang memuat ringkasan bab serta daftar
+  konsep per subbab---lengkap dengan deskripsi, status validasi glosarium,
+  rujukan materi pokok, tautan lintas-buku, dan relasi antar-konsep.
 
-  \item \textbf{Post-processing validation.}
-
-  \item \textbf{Cross-book link filtering.}
-
-  \textit{Link} ditolak jika target\_book == current\_book atau target\_book tidak
-  ada di daftar buku yang dimuat, sehingga mencegah \textit{self-loop} dan
-  referensi \textit{dangling}.
-
-  \item \textbf{Heuristic fallback (\texttt{infer\_cross\_links}).}
-
-  Jika LLM mengembalikan \textit{array} kosong, dijalankan \textit{matching} token-overlap
-  gaya Jaccard. Token yang dipakai: panjang $\geq 4$ dan non-\textit{stopword}.
-  Pasangan dibentuk dari (concept\_name, description) vs.\ kandidat buku lain.
-  Kriteria: $|\text{overlap}| \geq 2$, di-\textit{rank} menurun, ambil top-$k$ ($k = 2$).
-
-  \item \textbf{Relation sanitization.}
-
-  \textit{Triple} dengan type atau target kosong dibuang.
+  \item \textbf{Validasi pascaproses.} Sebelum dikonstruksi ke graf, keluaran
+  LLM melewati tiga penyaringan. \emph{Pertama}, penyaringan tautan lintas-buku:
+  tautan ditolak apabila buku target sama dengan buku sumber atau buku target
+  tidak termuat dalam korpus, sehingga mencegah \textit{self-loop} dan referensi
+  \textit{dangling}. \emph{Kedua}, \textit{fallback} heuristik
+  (\texttt{infer\_cross\_links}): bila LLM mengembalikan keluaran kosong, sistem
+  menjalankan pencocokan tumpang-tindih token bergaya Jaccard, memakai token
+  sepanjang minimal empat karakter dan non-\textit{stopword}, lalu mengambil dua
+  pasangan konsep antarbuku dengan tumpang-tindih tertinggi. \emph{Ketiga},
+  sanitasi relasi: \textit{triple} dengan tipe atau target kosong dibuang.
 \end{enumerate}
 
 % ============================================================
