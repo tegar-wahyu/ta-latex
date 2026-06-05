@@ -212,10 +212,11 @@ pembatasan konsep pada materi pokok.
   \item \textbf{Triplet extraction.}
 
   Model: Gemini 2.5 Flash Lite via Google GenAI SDK. \textit{Prompt} bersifat
-  \textit{zero-shot} dan \textit{schema-constrained}. \textit{Prompt} menyertakan: nama bab dan
+  \textit{few-shot} dan \textit{schema-constrained}. \textit{Prompt} menyertakan: nama bab dan
   prev/next chapter, daftar subchapter dari TOC, glosarium sebagai
-  \textit{validation set}, materi pokok sebagai \textit{curriculum constraint}, dan konsep
-  dari buku lain sebagai \textit{cross-book context}.
+  \textit{validation set}, materi pokok sebagai \textit{curriculum constraint}, konsep
+  dari buku lain sebagai \textit{cross-book context}, serta beberapa contoh
+  \textit{triple} sebagai demonstrasi (\textit{few-shot}).
 
   \item \textbf{Struktur \textit{prompt}.}
 
@@ -238,8 +239,9 @@ pembatasan konsep pada materi pokok.
   MEMPERSIAPKAN dengan concept\_links antar-bab.
   Skema \textit{strict} JSON \textit{output}: chapter\_summary,
   subtopics[*].concepts[*], dan chapter\_relations[].
-  \textit{Prompt} bersifat \textit{zero-shot} (tanpa contoh) dan mengandalkan
-  struktur instruksi serta penegakan skema untuk konsistensi \textit{output}.
+  \textit{Prompt} bersifat \textit{few-shot} (menyertakan contoh \textit{triple}
+  sebagai demonstrasi) serta mengandalkan struktur instruksi dan penegakan skema
+  untuk konsistensi \textit{output}.
 
   \item \textbf{Structured output parsing.}
 
@@ -423,7 +425,7 @@ dan (4) \textit{relation classification} via LLM.
 
   \item \textbf{Relation classification via LLM.}
 
-  Tiap pasangan yang lolos \textit{pruning} diklasifikasikan oleh LLM (Gemini 2.5 Flash)
+  Tiap pasangan yang lolos \textit{pruning} diklasifikasikan oleh LLM (Gemini 2.5 Flash Lite)
   melalui \textit{prompt few-shot} yang memuat: (1) deskripsi dan konteks kedua konsep
   (nama, deskripsi, mata pelajaran), (2) konteks graf (KONTEKS GRAF) berupa
   bab/chapter asal, hingga 5 \textit{existing out-edges}, dan \textit{shared neighbors}, serta

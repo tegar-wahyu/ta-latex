@@ -433,14 +433,16 @@ Tabel~\ref{tab:parameter}.
   \endfoot
   \bottomrule
   \endlastfoot
-  Model LLM Ekstraksi \& Klasifikasi
-    & Model bahasa besar untuk ekstraksi konsep/relasi dan klasifikasi
-      relasi lintas-disiplin (KGC)
-    & {\scriptsize \texttt{gemini-2.5-flash-lite} (ekstraksi);
-      \texttt{gemini-2.5-flash} (klasifikasi); akses Mei 2026} \\
+  Model LLM Ekstraksi \& Completion
+    & Model bahasa besar untuk ekstraksi konsep/relasi dan
+      penyempurnaan graf (KGC) lintas-disiplin
+    & {\scriptsize \texttt{gemini-2.5-flash-lite} (akses Mei 2026)} \\
+  Model LLM-as-a-Judge
+    & Model penengah ketidaksepakatan pakar pada \textit{pipeline} validasi
+    & {\scriptsize \texttt{gemini-3.1-pro-preview} (akses Mei 2026)} \\
   Strategi \textit{Prompt Engineering}
     & Variasi instruksi sistem untuk ekstraksi
-    & \textit{Schema-constrained zero-shot} + \textit{context injection}
+    & \textit{Schema-constrained few-shot} + \textit{context injection}
       + \textit{strict output constraints} \\
   Model \textit{Embedding}
     & Model representasi vektor untuk perhitungan similaritas
