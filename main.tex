@@ -75,6 +75,7 @@
 
 % ── Graphics ─────────────────────────────────────────────────
 \usepackage{graphicx}
+\usepackage{adjustbox}   % scale oversized diagrams to fit width AND page height
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \makeatother
@@ -106,26 +107,29 @@
 
 % ── Bibliography (biblatex, author-year) ─────────────────────
 %  Two-author connector rendered as "dan"; 3+ authors as "et al."
+\usepackage{csquotes}   % recommended companion for babel + biblatex
 \usepackage[
   backend     = biber,
   style       = authoryear,
-  language    = english,
   maxcitenames = 2,
   mincitenames = 1,
   maxbibnames = 99,
+  uniquename  = init,    % avoids the giveninits/uniquename=full conflict warning
   giveninits  = true,
   dashed      = false,
   doi         = false,
   isbn        = false,
   url         = false
 ]{biblatex}
+% biblatex ships no Indonesian localization (.lbx); the 'language=english'
+% option alone does NOT override babel, so map the document language to
+% english.lbx. This resolves every "string untranslated" / "fallback
+% definition for \mkbibdate*" warning at once (et al., in, pages, volume,
+% edition, month names, ordinals).
+\DeclareLanguageMapping{indonesian}{english}
+\DeclareLanguageMapping{bahasai}{english}
 \addbibresource{references.bib}
-\renewcommand*{\finalnamedelim}{\addspace dan\addspace}
-% Belt-and-suspenders: define the strings explicitly in case language detection
-% still overrides the option above.
-\DefineBibliographyStrings{english}{%
-  andothers = {et\addabbrvspace al\adddot},%
-}
+\renewcommand*{\finalnamedelim}{\addspace dan\addspace}  % two authors -> "dan"
 
 % ============================================================
 \begin{document}
