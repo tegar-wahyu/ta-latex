@@ -129,8 +129,8 @@ sistem, serta prosedur evaluasi terhadap hasil yang dihasilkan.
 Penelitian ini menggunakan pendekatan \textit{Design Science Research}
 (DSR) yang difokuskan pada pengembangan purwarupa sistem KGC berbasis
 LLM. DSR dipilih karena penelitian ini secara spesifik bertujuan
-menghasilkan artefak inovatif---representasi pengetahuan kurikulum yang
-bersifat lintas-disiplin---sebagai respons terhadap permasalahan
+menghasilkan artefak inovatif, representasi pengetahuan kurikulum yang
+bersifat lintas-disiplin, sebagai respons terhadap permasalahan
 fragmentasi pembelajaran sains pada jenjang SMA.
 
 Menurut \textcite{hevner_design_2004}, DSR adalah paradigma pemecahan masalah
@@ -140,10 +140,10 @@ model, metode, dan instansiasi. Artefak yang dikembangkan dalam
 penelitian ini meliputi:
 
 \begin{enumerate}
-  \item \textbf{Instansiasi (Purwarupa Sistem):} \textit{Dashboard}
-        interaktif berbasis Neo4j untuk menyimpan, menelusuri, dan
-        memvisualisasikan \textit{Knowledge Graph} kurikulum sains secara
-        terintegrasi.
+  \item \textbf{Instansiasi (Purwarupa Sistem):} \textit{Knowledge Graph}
+        kurikulum sains yang terinstansiasi pada basis data Neo4j beserta
+        visualisasinya, sebagai purwarupa struktur data yang dapat ditelusuri
+        dan diakses secara komputasional.
   \item \textbf{Metode (Algoritma dan \textit{Pipeline}):} Algoritma
         ekstraksi pengetahuan terstruktur menggunakan LLM dengan
         \textit{output} berbasis ontologi, serta \textit{pipeline} KG
@@ -275,7 +275,8 @@ namun tidak ditemukan sistem.
 
 Pengumpulan data validasi dilakukan melalui aplikasi web KG Review App
 yang dikembangkan khusus untuk penelitian ini (arsitektur teknis dibahas
-pada Subbab~\ref{sec:instrumen-evaluasi}). Data penilaian akhir dari para pakar menjadi
+pada Subbab~\ref{sec:instrumen-evaluasi}). Data penilaian akhir, yakni label
+konsensus setelah resolusi ketidaksepakatan, menjadi
 \textit{ground truth} untuk menghitung Fuzzy Precision, Recall, dan
 F1-Score, serta menguji tingkat kesepakatan antarpenilai menggunakan
 Gwet's AC1.
@@ -386,10 +387,7 @@ Gambar~\ref{fig:pipeline}.
 \subsection{Skema Ontologi Knowledge Graph}
 \label{subsec:skema-ontologi}
 
-Mengacu pada definisi \textcite{studer_knowledge_1998} yang memperluas gagasan
-\textcite{gruber_translation_1993}, ontologi dipahami sebagai spesifikasi formal dan eksplisit
-atas sebuah konseptualisasi bersama terhadap suatu domain. Ontologi
-dalam penelitian ini diposisikan sebagai model konseptual yang bersifat
+Ontologi dalam penelitian ini diposisikan sebagai model konseptual yang bersifat
 \textit{deskriptif}, bukan \textit{preskriptif}: ontologi
 merepresentasikan konsep-konsep sains beserta keterkaitan semantiknya
 sebagaimana tersaji dalam buku teks Kurikulum Merdeka, tanpa
@@ -483,35 +481,34 @@ metrik validasi pakar pada Subbab~\ref{subsec:validasi-manusia}.
   \bottomrule
   \endlastfoot
   Jumlah Konsep Terekstrak
-    & Total konsep yang berhasil diekstrak per dokumen
+    & Volume konsep hasil ekstraksi per dokumen
     & Jumlah node \\
   Jumlah Relasi Terprediksi
-    & Total relasi implisit yang ditemukan melalui KGC
+    & Volume relasi lintas-buku hasil KGC
     & Jumlah edge \\
   \textit{Average Degree Centrality} (ADC)
-    & Rata-rata derajat koneksi per node dalam graf
+    & Tingkat keterhubungan rata-rata; dibandingkan pre- dan post-KGC
     & Rata-rata derajat ($\geq 0$) \\
   \textit{Graph Density}
-    & Kepadatan koneksi relatif terhadap nilai teoritis maksimum
+    & Kepadatan relasi graf; dibandingkan pre- dan post-KGC
     & Nilai 0--1 \\
   \textit{Modularity}
-    & Ukuran keterpisahan komunitas dalam graf
+    & Keterpisahan komunitas antarmapel; dibandingkan pre- dan post-KGC
     & Nilai $-0{,}5$ hingga $1$ \\
   \textit{Description Completeness} (DC)
-    & Proporsi entitas yang memiliki deskripsi tidak kosong
+    & Kelengkapan deskripsi entitas
     & Nilai 0--1 \\
   \textit{Empty SubKonsep Rate} (ESR)
-    & Proporsi entitas induk tanpa entitas turunan (dekomposisi gagal)
+    & Proporsi entitas induk tanpa turunan
     & Nilai 0--1 \\
   \textit{Typed Relation Ratio} (TRR)
-    & Rasio relasi bertipe spesifik terhadap seluruh relasi dalam KG
+    & Proporsi relasi bertipe spesifik dari kosakata ontologi
     & Nilai 0--1 \\
   \textit{Fuzzy Precision}
-    & Akurasi tertimbang relasi yang diekstrak
-      \parencite{harju_evaluating_2023}
+    & Akurasi relasi berbasis skor kebenaran parsial (validasi pakar)
     & Nilai 0--1 \\
   \textit{Fuzzy Recall}
-    & Cakupan tertimbang relasi esensial yang berhasil ditemukan
+    & Cakupan relasi esensial berbasis skor kebenaran parsial (validasi pakar)
     & Nilai 0--1 \\
   F1-Score
     & Rata-rata harmonik \textit{Precision} dan \textit{Recall}
@@ -589,29 +586,11 @@ teknis utama yang digunakan sepanjang penelitian ini.
 \section{Teknik Pengumpulan Data}
 % ============================================================
 
-\subsection{Jenis Data}
-
-Penelitian ini menggunakan dua jenis data yang saling melengkapi: (1)
-data primer berupa dokumen kurikulum sebagai sumber ekstraksi
-pengetahuan (Subbab~\ref{subsec:data-primer}), dan (2) data validasi
-berupa penilaian pakar terhadap \textit{triple} relasi yang dihasilkan
-sistem (Subbab~\ref{subsec:data-validasi}). Data primer dimanfaatkan
-pada Tahap~1--4, sedangkan data validasi digunakan pada kedua fase
-evaluasi untuk mengukur akurasi dan kelengkapan relasi yang diprediksi.
-
-\subsection{Data Primer Kurikulum}
-
-Sumber dan cakupan data primer telah dijabarkan pada
-Subbab~\ref{subsec:data-primer}. Data ini berupa berkas PDF dari
-repositori \url{https://buku.kemdikbud.go.id} untuk mata pelajaran
-Fisika, Kimia, dan Biologi Kelas~XII Fase~F.
-
-\subsection{Data Validasi Pakar}
-
-Prosedur dan instrumen pengumpulan data validasi telah dijelaskan pada
-Subbab~\ref{subsec:data-validasi}. Setiap \textit{triple} mendapatkan
-penilaian dari dua pakar independen per mata pelajaran (total enam
-\textit{reviewer}).
+Penelitian ini menggunakan dua jenis data yang telah diuraikan pada
+Subbab~\ref{subsec:data-primer} dan~\ref{subsec:data-validasi}: data primer
+kurikulum (dimanfaatkan pada Tahap~1--4) dan data validasi pakar (digunakan
+pada kedua fase evaluasi). Karena sumber dan cakupan kedua jenis data tersebut
+telah dibahas, bagian ini berfokus pada teknik pengumpulan data validasi pakar.
 
 \subsection{Cara Pengumpulan Data}
 
@@ -638,7 +617,7 @@ Google Forms. Alur pengumpulan data adalah sebagai berikut.
 \end{enumerate}
 
 % ============================================================
-\section{Pengolahan Data}
+\section{Pengolahan Data}\label{sec:pengolahan-data}
 % ============================================================
 
 Setelah seluruh \textit{reviewer} menyelesaikan penilaian, data rating
@@ -681,18 +660,12 @@ dari sisi kuantitatif objektif maupun validitas pedagogis.
 
 \subsection{Analisis Struktural}
 
-Analisis struktural mengukur perubahan karakteristik topologi
-\textit{Knowledge Graph} secara kuantitatif, khususnya untuk mengevaluasi
-dampak proses KGC terhadap kualitas interkoneksi antarkonsep. Metrik
-yang dihitung pada kondisi pre-KGC dan post-KGC meliputi ADC,
-\textit{Graph Density}, \textit{Modularity}, TRR, dan DC, sebagaimana
-telah didefinisikan pada Subbab~\ref{subsec:metrik-topologi},
-\ref{subsec:metrik-ekstraksi}, dan~\ref{subsec:metrik-hubungan}. Seluruh nilai
-diperoleh melalui kueri Cypher pada Neo4j Aura, sehingga bersifat
-deterministik dan dapat direproduksi.
-
-Hasil perbandingan pre-KGC dan post-KGC disajikan dalam bentuk tabel
-berpasangan per mata pelajaran. Peningkatan ADC dan \textit{Density}
+Analisis struktural menafsirkan perubahan karakteristik topologi
+\textit{Knowledge Graph} untuk mengevaluasi dampak proses KGC terhadap
+kualitas interkoneksi antarkonsep. Berdasarkan metrik struktural yang
+dihitung pada tahap pengolahan data (Subbab~\ref{sec:pengolahan-data}),
+hasil perbandingan kondisi pre-KGC dan post-KGC disajikan dalam bentuk
+tabel berpasangan per mata pelajaran. Peningkatan ADC dan \textit{Density}
 setelah KGC diinterpretasikan sebagai indikator bahwa relasi implisit
 yang diprediksi LLM berhasil memperkaya kepadatan jaringan pengetahuan.
 Sebaliknya, penurunan \textit{Modularity} yang terlalu drastis dapat
@@ -702,12 +675,12 @@ lanjut melalui validasi pakar.
 
 \subsection{Analisis Validasi Pakar}
 
-Analisis ini mengukur akurasi dan kelengkapan relasi yang dihasilkan KG.
-Tingkat kesepakatan awal antarpakar diukur menggunakan Gwet's AC1,
-kemudian kinerja sistem dievaluasi terhadap \textit{ground truth}
-konsensus menggunakan Fuzzy Precision, Recall, dan F1-Score
-\parencite{harju_evaluating_2023}, berdasarkan pemetaan nilai keanggotaan pada
-Subbab~\ref{subsec:validasi-manusia}.
+Analisis ini menafsirkan akurasi dan kelengkapan relasi yang dihasilkan KG
+dari metrik validasi pakar yang dihitung pada Subbab~\ref{sec:pengolahan-data}.
+Nilai Gwet's AC1 dibaca sebagai keandalan kesepakatan antarpakar, sedangkan
+Fuzzy Precision, Recall, dan F1-Score \parencite{harju_evaluating_2023}
+ditafsirkan sebagai kinerja sistem terhadap \textit{ground truth} konsensus
+(Subbab~\ref{subsec:validasi-manusia}).
 
 \subsection{Analisis Komparatif}
 
