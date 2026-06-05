@@ -1,8 +1,10 @@
 % ============================================================
 %  BAB 1 – PENDAHULUAN
+%  Compile standalone:  pdflatex bab-1.tex
+%  Compile as part of thesis: pdflatex main.tex
 % ============================================================
-\documentclass[12pt, a4paper]{report}
-
+\documentclass[main]{subfiles}
+\usepackage{hyphenat}
 \usepackage{iftex} % Detects the compiler
 
 % ── Encoding, Language & Fonts ───────────────────────────────
@@ -90,6 +92,15 @@
 % ── Hyperlinks (optional – comment out if submitting PDF/A) ──
 \usepackage[hidelinks]{hyperref}
 
+% ── Bibliography (only used for standalone compilation) ──────
+\usepackage[
+  backend = biber, style = authoryear,
+  maxcitenames = 2, mincitenames = 1, maxbibnames = 99,
+  giveninits = true, dashed = false, doi = false, isbn = false, url = false
+]{biblatex}
+\addbibresource{references.bib}
+\renewcommand*{\finalnamedelim}{\addspace dan\addspace}
+
 % ============================================================
 \begin{document}
 
@@ -108,7 +119,7 @@ disiplin sebagai prioritas utama pendidikan nasional. Namun, pada jenjang SMA
 khususnya Fase~F, rumpun Ilmu Pengetahuan Alam (IPA) tetap terstruktur menjadi
 tiga mata pelajaran terpisah secara administratif: Fisika, Kimia, dan Biologi.
 Pemisahan ini berisiko menimbulkan fenomena \textit{siloed learning}
-(Harvey \& Tree, 2025), kondisi di mana batas-batas disipliner yang kaku
+\parencite{harvey_silos_2025}, kondisi di mana batas-batas disipliner yang kaku
 menghalangi peserta didik untuk mengonstruksi koneksi konseptual
 antarmatapelajaran. Akibatnya, siswa kesulitan memahami keterkaitan yang secara
 ontologis menghubungkan ketiga disiplin ilmu tersebut, sementara guru menghadapi
@@ -116,14 +127,14 @@ keterbatasan referensi kurikulum lintas-disiplin yang tersedia secara terstruktu
 
 Sebagai solusi atas fragmentasi struktur kurikulum ini, pendekatan berbasis
 \textit{Knowledge Graph} (KG) menawarkan paradigma representasi yang mampu
-memodelkan interkoneksi materi secara eksplisit. Ji dkk. (2022) mendefinisikan
+memodelkan interkoneksi materi secara eksplisit. \textcite{ji_survey_2022} mendefinisikan
 KG sebagai struktur data grafis yang merepresentasikan entitas dunia nyata dan
 relasi semantiknya dalam format \textit{triple} (\textit{head, relation, tail}),
 yang tidak hanya menyimpan fakta tetapi juga mendukung penalaran formal atas
 data tersebut. Kim dan Shakya (2023) mengajukan pendekatan KG untuk
 memvisualisasikan \textit{flow of knowledge} dan \textit{thinking style} yang
 esensial bagi siswa guna membangun inferensi logis antar-konsep. Urgensi
-penerapan ini diperkuat oleh Abu-Salih dan Alotaibi (2024), yang melalui tinjauan
+penerapan ini diperkuat oleh \textcite{abu-salih_systematic_2024}, yang melalui tinjauan
 sistematisnya menyimpulkan bahwa KG berperan vital dalam desain kurikulum dan
 pemetaan konsep, khususnya untuk memvisualisasikan struktur pengetahuan yang
 kompleks dan merancang jalur pembelajaran yang adaptif.
@@ -131,41 +142,41 @@ kompleks dan merancang jalur pembelajaran yang adaptif.
 Meskipun menjanjikan, KG memiliki keterbatasan fundamental: sifatnya yang
 secara inheren tidak lengkap. Banyak hubungan antar-konsep yang valid tidak
 tertangkap ketika graf dibangun, baik melalui anotasi manual maupun ekstraksi
-otomatis (Ji dkk., 2022). Dalam konteks kurikulum sains, relasi lintas-disiplin
+otomatis \parencite{ji_survey_2022}. Dalam konteks kurikulum sains, relasi lintas-disiplin
 yang paling bernilai pedagogis justru seringkali bersifat implisit---tidak tersurat
 dalam teks satu buku tunggal. Untuk mengatasi hal ini, tugas
 \textit{Knowledge Graph Completion} (KGC) diterapkan untuk memprediksi
-\textit{triple} yang hilang. Namun, metode KGC konvensional berbasis
+\textit{triple} yang hilang. Akan tetapi, metode KGC konvensional berbasis
 \textit{embedding} struktural terbukti tidak efektif dalam skenario kurikulum
-karena distribusi konsep yang tidak merata. Wei dkk. (2023) menegaskan bahwa
+karena distribusi konsep yang tidak merata. \textcite{wei_kicgpt_2023} menegaskan bahwa
 metode berbasis \textit{triple} mengalami penurunan performa drastis saat
 berhadapan dengan \textit{long-tail entities}---entitas yang memiliki sedikit
 koneksi dalam graf sehingga pola struktural yang tersedia tidak cukup untuk
 menghasilkan representasi vektor yang akurat.
 
 Kemunculan \textit{Large Language Models} (LLM) membuka solusi yang menjanjikan
-atas keterbatasan tersebut. Pan dkk. (2024) mengklasifikasikan pendekatan
+atas keterbatasan tersebut. \textcite{pan_unifying_2024} mengklasifikasikan pendekatan
 LLM-augmented KGs melalui dua peran utama: sebagai \textit{encoder} yang
 menghasilkan representasi vektor lebih kaya makna dibanding \textit{embedding}
 struktural semata, serta sebagai \textit{generator} yang langsung memprediksi
-\textit{triple} baru berdasarkan konteks. Yao dkk. (2023) mendemonstrasikan
+\textit{triple} baru berdasarkan konteks. \textcite{yao_exploring_2025} mendemonstrasikan
 bahwa dengan memperlakukan \textit{triple} pengetahuan sebagai sekuens teks,
 LLM mampu memprediksi relasi semantik dengan akurasi melampaui metode
 konvensional. Secara khusus untuk mengatasi kelangkaan informasi pada entitas
-\textit{long-tail}, Wei dkk. (2023) membuktikan bahwa \textit{prompt few-shot}
+\textit{long-tail}, \textcite{wei_kicgpt_2023} membuktikan bahwa \textit{prompt few-shot}
 pada tahap KGC---yaitu menyertakan beberapa contoh \textit{triple} valid sebagai
 panduan di dalam \textit{prompt} klasifikasi---memungkinkan LLM menginferensikan
 relasi yang tidak mampu ditangkap oleh metode berbasis \textit{embedding}.
 
 Pemanfaatan LLM dalam KGC tetap memerlukan validasi pakar
 (\textit{human-in-the-loop}) untuk meminimalisir risiko \textit{AI hallucination}.
-Namun, evaluasi pakar secara manual kerap menimbulkan ketidaksepakatan
+Meski demikian, evaluasi pakar secara manual kerap menimbulkan ketidaksepakatan
 antar-evaluator yang subjektif dan sulit diterapkan pada skala besar
-(Gu dkk., 2024). Penelitian ini mengatasi masalah ini dengan mengadopsi
+\parencite{gu_survey_nodate}. Penelitian ini mengatasi masalah ini dengan mengadopsi
 pendekatan \textit{LLM-as-a-judge}: model Gemini~3.1 Pro Preview berperan sebagai
 penengah yang berlandaskan konteks buku teks sumber untuk menyelesaikan konflik
 penilaian antarpakar, sehingga validitas keilmuan KG yang dihasilkan dapat
-dipertanggungjawabkan (Gu dkk., 2024).
+dipertanggungjawabkan \parencite{gu_survey_nodate}.
 
 Meskipun pendekatan \textit{LLM-Assisted Knowledge Graph Completion} telah
 terbukti efektif pada domain umum, belum ada studi yang secara spesifik
@@ -248,10 +259,10 @@ Secara spesifik, penelitian ini bertujuan untuk:
           \item \textbf{Validasi Pakar:} memverifikasi akurasi ontologis dan
                 relevansi pedagogis relasi yang diprediksi LLM melalui enam
                 \textit{reviewer} domain (dua per mata pelajaran), dengan metrik
-                \textit{Fuzzy Precision and Recall} (Harju \& Mesaros, 2023),
+                \textit{Fuzzy Precision and Recall} \parencite{harju_evaluating_2023},
                 pengujian kesepakatan Gwet's AC1, dan penengahan ketidaksepakatan
                 menggunakan \textit{pipeline LLM-as-a-judge} berbasis
-                Gemini~3.1 Pro Preview (Gu dkk., 2024).
+                Gemini~3.1 Pro Preview \parencite{gu_survey_nodate}.
         \end{enumerate}
 \end{enumerate}
 
@@ -329,5 +340,7 @@ Berikut adalah batasan-batasan yang ditetapkan untuk penelitian ini.
         adaptif, antarmuka pengguna berbasis web (\textit{full-stack
         application}), atau integrasi ke dalam platform LMS.
 \end{enumerate}
+
+\ifSubfilesClassLoaded{\printbibliography[title={Daftar Pustaka}]}{}
 
 \end{document}

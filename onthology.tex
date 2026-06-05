@@ -1,128 +1,289 @@
-\documentclass[11pt, a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage{geometry}
-\geometry{margin=1in}
-\usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, fit, backgrounds}
-\usepackage{booktabs}
-\usepackage{tabularx}
-\usepackage{caption}
-\usepackage{xcolor}
-
-\renewcommand{\familydefault}{\sfdefault}
-
-\title{\textbf{Ontologi Knowledge Graph Kurikulum Sains}\\ \Large(Schema Specification)}
-\author{}
-\date{}
-
+% ============================================================
+%  Subfile: Skema Ontologi (figur + tabel kelas/relasi/properti)
+%  Included by bab-3.tex via \subfile{onthology}
+% ============================================================
+\documentclass[main]{subfiles}
 \begin{document}
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+  node distance=2cm and 2.5cm,
+  % Node Styles
+  class/.style={circle, draw=blue!80!black, fill=blue!10, thick, 
+    minimum size=2.6cm, align=center, font=\bfseries\scriptsize},
+  target/.style={circle, draw=blue!80!black, fill=blue!5, dashed, thick, 
+    minimum size=2.6cm, align=center, font=\bfseries\scriptsize},
+  prop/.style={rectangle, draw=green!60!black, fill=green!10, thick, 
+    minimum height=0.5cm, font=\tiny},
+  dtype/.style={rectangle, draw=orange!80!black, fill=orange!10, thick, 
+    minimum height=0.5cm, font=\tiny},
+  % Edge Styles
+  edge/.style={->, >={Stealth[length=2.5mm]}, thick, draw=black!70, font=\scriptsize},
+  rel/.style={->, >={Stealth[length=2.5mm]}, thick, draw=blue!70!black},
+  cross/.style={->, >={Stealth[length=2.5mm]}, thick, dashed, draw=purple!80!black}
+]
 
-\maketitle
+  % --- 1. HIERARKI KELAS UTAMA (Backbone) ---
+  \node[class] (concept) {Concept};
+  \node[class, below right=1.8cm and 2cm of concept] (subtopic) {Subtopic};
+  \node[class, below right=1.8cm and 2cm of subtopic] (chapter) {Chapter};
+  \node[class, below right=1.8cm and 2cm of chapter] (grade) {Grade/\\Subject};
 
-\section*{1. Visualisasi Struktur Ontologi}
+  \node[target, above left=2cm and 3cm of concept] (target) {ConceptTarget\\(Placeholder)};
 
-Diagram di bawah ini memvisualisasikan hierarki kelas struktural (Grade $\rightarrow$ Chapter $\rightarrow$ Subtopic $\rightarrow$ Concept) beserta relasi objek (Object Properties) yang mengikatnya.
+  % Relasi Hierarki
+  \draw[edge] (grade) -- node[below right] {HAS\_CHAPTER} (chapter);
+  \draw[edge] (chapter) -- node[below right] {HAS\_SUBTOPIC} (subtopic);
+  \draw[edge] (subtopic) -- node[below right] {HAS\_CONCEPT} (concept);
 
-\begin{figure}[h!]
-    \centering
-    \begin{tikzpicture}[
-        node distance=2cm and 4cm,
-        class/.style={rectangle, draw=blue!80!black, fill=blue!5, thick, minimum width=3.5cm, minimum height=1.2cm, rounded corners, align=center, font=\bfseries},
-        edge/.style={->, >={Stealth[length=3mm]}, thick, draw=black!70, font=\scriptsize},
-        loope/.style={->, >={Stealth[length=3mm]}, thick, draw=green!70!black, font=\scriptsize},
-        cross/.style={->, >={Stealth[length=3mm]}, thick, dashed, draw=purple!80!black, font=\scriptsize}
-    ]
+  % --- 2. RELASI PADA CHAPTER ---
+  % Loop dipindah ke atas agar tidak menabrak summary
+  \draw[edge, draw=orange!90!black] (chapter) edge[loop above, looseness=4.5]
+    node[above, align=center, fill=white, inner sep=1pt, font=\tiny] 
+      {NEXT\_CHAPTER \\ PRASYARAT \\ MEMPERSIAPKAN} (chapter);
 
-    % Classes
-    \node[class] (grade) {Grade};
-    \node[class, below=of grade] (chapter) {Chapter};
-    \node[class, below=of chapter] (subtopic) {Subtopic};
-    \node[class, below=of subtopic] (concept) {Concept};
-    \node[class, right=3cm of concept, fill=gray!10, draw=gray!80] (target) {ConceptTarget\\(Placeholder)};
+  % Summary dipindah ke kiri bawah
+  \node[prop, below left=0.5cm and 1cm of chapter] (summ) {summary};
+  \node[dtype, left=0.3cm of summ] (d_str2) {string};
+  \draw[edge] (chapter) -- (summ); \draw[edge] (summ) -- (d_str2);
 
-    % Structural Edges
-    \draw[edge] (grade) -- node[right, xshift=2mm] {HAS\_CHAPTER} (chapter);
-    \draw[edge] (chapter) -- node[right, xshift=2mm] {HAS\_SUBTOPIC} (subtopic);
-    \draw[edge] (subtopic) -- node[right, xshift=2mm] {HAS\_CONCEPT} (concept);
 
-    % Sequential & Pedagogical Edges (Chapter level)
-    \path[edge, draw=orange!90!black] (chapter) edge[loop left, out=150, in=210, looseness=4] node[left, align=center] {NEXT\_CHAPTER \\ PRASYARAT \\ MEMPERSIAPKAN} (chapter);
+  % --- 3. DATA PROPERTIES PADA CONCEPT ---
+  \node[prop, right=1.5cm of concept] (glos) {glossary\_validated};
+  \node[dtype, right=0.3cm of glos] (d_bool) {boolean};
+  \draw[edge] (concept) -- (glos); \draw[edge] (glos) -- (d_bool);
 
-    % Semantic Intra-book (Concept level)
-    \path[loope] (concept) edge[loop left, out=150, in=210, looseness=4] node[left, align=right] {BAGIAN\_DARI \\ MENYEBABKAN \\ BERGANTUNG\_PADA \\ MENDEFINISIKAN \\ MEMPENGARUHI \\ BERINTERAKSI\_DENGAN \\ MEMUNGKINKAN \\ MENGATUR} (concept);
+  \node[prop, above right=0.8cm and 1cm of concept] (desc) {description};
+  \node[dtype, right=0.3cm of desc] (d_str1) {string};
+  \draw[edge] (concept) -- (desc); \draw[edge] (desc) -- (d_str1);
 
-    % Semantic Cross-book (Concept level)
-    \path[cross] (concept) edge[loop right, out=30, in=-30, looseness=4.5] node[right, align=left] {\textit{LINTAS\_BUKU\_...} \\ SAMA\_DENGAN \\ APLIKASI\_DARI \\ PRASYARAT\_UNTUK \\ MEMPERDALAM \\ BERKAITAN\_DENGAN} (concept);
 
-    \end{tikzpicture}
-    \caption{Topologi Ontologi: Relasi Struktural, Sekuensial, dan Semantik.}
-    \label{fig:ontology}
+  % --- 4. RELASI SEMANTIK (WITHIN-BOOK) ---
+  % Digambar 3 panah melengkung sebagai representasi, dilabeli di tengah
+  \draw[rel] (concept) to[out=160, in=-20] (target);
+  \draw[rel] (concept) to[out=140, in=-40] (target);
+  \draw[rel] (concept) to[out=120, in=-60] (target);
+  
+  % Label diletakkan persis di tengah antara Concept dan Target dengan background putih
+  \node[font=\tiny, align=center, fill=white, inner sep=3pt, draw=blue!30, rounded corners] 
+    at ($ (concept)!0.5!(target) $) {
+    \textbf{15 Relasi Semantik (\textit{Within-Book}):} \\
+    MENDEFINISIKAN, MENYEBABKAN, MEMUNGKINKAN, \\
+    MENGATUR, BAGIAN\_DARI, TERDIRI\_DARI, \\
+    BERGANTUNG\_PADA, BERINTERAKSI\_DENGAN, \dots \\
+    \textit{(Daftar lengkap merujuk pada Tabel)}
+  };
+
+
+  % --- 5. RELASI LINTAS-BUKU (CROSS-BOOK) ---
+  % Loop diletakkan di sebelah kiri agak ke bawah agar terbebas dari garis lain
+  \draw[cross] (concept) edge[loop left, out=200, in=250, looseness=6]
+    node[below left, fill=white, inner sep=2pt, font=\tiny, align=left, draw=purple!30, rounded corners] {
+      \textbf{Relasi Lintas-Buku:} \\
+      LINTAS\_BUKU\_SAMA\_DENGAN \\
+      LINTAS\_BUKU\_APLIKASI\_DARI \\
+      LINTAS\_BUKU\_PRASYARAT\_UNTUK \\
+      LINTAS\_BUKU\_MEMPERDALAM \\
+      LINTAS\_BUKU\_BERKAITAN\_DENGAN
+    } (concept);
+
+\end{tikzpicture}
+  \caption{Topologi Ontologi: Relasi Struktural, Pedagogis, dan Semantik.}
+  \label{fig:ontologi}
 \end{figure}
 
-\newpage
-\section*{2. Spesifikasi Kelas dan Properti}
+\subsubsection*{Definisi Kelas}
 
-\subsection*{2.1 Definisi Kelas (Classes)}
-\begin{table}[h!]
-    \centering
-    \renewcommand{\arraystretch}{1.3}
-    \begin{tabularx}{\textwidth}{@{}l X@{}}
-        \toprule
-        \textbf{Kelas} & \textbf{Deskripsi} \\
-        \midrule
-        \texttt{Grade} & Tingkat kelas pada Kurikulum Merdeka (mis. Kelas XI atau XII). Akar hierarki. \\
-        \texttt{Chapter} & Bab dalam buku teks, bersumber dari Daftar Isi. Memiliki ringkasan akademik. \\
-        \texttt{Subtopic} & Subbab di bawah Chapter. Mengelompokkan Concept dalam satu unit. \\
-        \texttt{Concept} & Konsep ilmiah yang diekstrak dari teks. Bersifat \textit{shared} lintas dokumen. \\
-        \texttt{ConceptTarget} & \textit{Forward reference}: konsep target yang eksis sementara sebelum diekstrak penuh. \\
-        \bottomrule
-    \end{tabularx}
+Ontologi terdiri dari lima kelas sebagaimana dirangkum pada
+Tabel~\ref{tab:kelas-ontologi}.
+
+\begin{table}[htbp]
+  \centering
+  \renewcommand{\arraystretch}{1.3}
+  \caption{Definisi Kelas Ontologi}
+  \label{tab:kelas-ontologi}
+  \begin{tabularx}{\textwidth}{@{}lX@{}}
+    \toprule
+    \textbf{Kelas} & \textbf{Deskripsi} \\
+    \midrule
+    \texttt{Grade/Subject}
+      & Tingkat kelas dan mata pelajaran pada Kurikulum Merdeka
+        (mis.\ Kelas~XII Fisika). Akar hierarki. \\
+    \texttt{Chapter}
+      & Bab dalam buku teks, bersumber dari Daftar Isi.
+        Memiliki ringkasan akademik (\texttt{summary}). \\
+    \texttt{Subtopic}
+      & Subbab di bawah \texttt{Chapter}.
+        Mengelompokkan \texttt{Concept} dalam satu unit tematik. \\
+    \texttt{Concept}
+      & Konsep ilmiah yang diekstrak dari teks.
+        Bersifat \textit{shared} lintas-dokumen melalui
+        \texttt{MERGE} berdasarkan nama. \\
+    \texttt{ConceptTarget}
+      & \textit{Forward reference}: konsep target yang ada sementara
+        sebelum diekstrak penuh; dipromosi menjadi \texttt{Concept}
+        pada iterasi berikutnya. \\
+    \bottomrule
+  \end{tabularx}
 \end{table}
 
-\subsection*{2.2 Relasi Objek (Object Properties)}
-\begin{table}[h!]
-    \centering
-    \renewcommand{\arraystretch}{1.2}
-    \begin{tabularx}{\textwidth}{@{}l l l X@{}}
-        \toprule
-        \textbf{Properti} & \textbf{Domain} & \textbf{Range} & \textbf{Kategori / Deskripsi} \\
-        \midrule
-        \texttt{HAS\_CHAPTER} & \texttt{Grade} & \texttt{Chapter} & Struktural Hierarki \\
-        \texttt{HAS\_SUBTOPIC} & \texttt{Chapter} & \texttt{Subtopic} & Struktural Hierarki \\
-        \texttt{HAS\_CONCEPT} & \texttt{Subtopic} & \texttt{Concept} & Struktural Hierarki \\
-        \midrule
-        \texttt{NEXT\_CHAPTER} & \texttt{Chapter} & \texttt{Chapter} & Pedagogis: Urutan baca buku \\
-        \texttt{PRASYARAT} & \texttt{Chapter} & \texttt{Chapter} & Pedagogis: Prasyarat antar bab \\
-        \texttt{MEMPERSIAPKAN} & \texttt{Chapter} & \texttt{Chapter} & Pedagogis: Kebalikan PRASYARAT \\
-        \midrule
-        \texttt{(8 Relasi Internal)} & \texttt{Concept} & \texttt{Concept} & Semantik Dalam-Buku (mis. \texttt{BAGIAN\_DARI}, \texttt{MENYEBABKAN}, \texttt{BERINTERAKSI\_DENGAN}) \\
-        \midrule
-        \texttt{LINTAS\_BUKU\_*} & \texttt{Concept} & \texttt{Concept} & Semantik Lintas-Buku (5 tipe relasi lintas disiplin sains) \\
-        \bottomrule
-    \end{tabularx}
-\end{table}
+\subsubsection*{Relasi Objek (Object Properties)}
 
-\subsection*{2.3 Properti Data (Data Properties)}
-\begin{table}[h!]
-    \centering
-    \renewcommand{\arraystretch}{1.3}
-    \begin{tabularx}{\textwidth}{@{}l l l X@{}}
-        \toprule
-        \textbf{Properti} & \textbf{Tipe Data} & \textbf{Domain Target} & \textbf{Deskripsi} \\
-        \midrule
-        \texttt{name} & \texttt{string} & \textit{Semua Kelas} & Nama tampilan node. \\
-        \texttt{grade} & \texttt{string} & \textit{Semua Kelas} & Atribut tingkat kelas (disalin untuk filtering cepat). \\
-        \texttt{type} & \texttt{string} & \texttt{Grade} & Tipe Grade (mis. SMA, SMP). \\
-        \texttt{summary} & \texttt{string} & \texttt{Chapter} & Ringkasan akademik 2-3 kalimat. \\
-        \texttt{chapter} & \texttt{string} & \texttt{Subtopic} & Nama Chapter induk (denormalisasi). \\
-        \texttt{description} & \texttt{string} & \texttt{Concept} & Deskripsi tekstual (sumber utama \textit{embedding}). \\
-        \texttt{glossary\_validated} & \texttt{boolean} & \texttt{Concept} & Status validasi terhadap glosarium buku teks. \\
-        \texttt{materi\_pokok\_ref} & \texttt{string} & \texttt{Concept} & Referensi ke dokumen Capaian Pembelajaran (CP). \\
-        \midrule
-        \texttt{relation\_desc} & \texttt{string} & \textit{Edge} & Penjelasan 1 kalimat rasionalisasi eksistensi relasi. \\
-        \texttt{relation\_type} & \texttt{string} & \textit{Edge} & Sub-tipe asli dari prediksi LLM untuk keperluan audit. \\
-        \bottomrule
-    \end{tabularx}
-\end{table}
+Hierarki struktural mengikuti rantai:
 
+\begin{center}
+  \texttt{Grade/Subject} $\rightarrow$ \texttt{Chapter}
+  $\rightarrow$ \texttt{Subtopic} $\rightarrow$ \texttt{Concept}
+\end{center}
+
+\noindent dihubungkan oleh relasi \texttt{HAS\_CHAPTER},
+\texttt{HAS\_SUBTOPIC}, dan \texttt{HAS\_CONCEPT}. Pada tingkat
+\texttt{Chapter}, terdapat tiga relasi pedagogis tambahan:
+\texttt{NEXT\_CHAPTER} (urutan baca), \texttt{PRASYARAT}
+(ketergantungan pembelajaran), dan \texttt{MEMPERSIAPKAN} (kebalikan
+logis dari \texttt{PRASYARAT}).
+
+Vokabulari relasi semantik antarkonsep dibagi menjadi dua kelompok
+dengan peran berbeda dalam \textit{pipeline}:
+
+\begin{enumerate}
+  \item \textbf{Relasi dalam-buku (\textit{within-book}):} delapan tipe
+        yang ditegakkan oleh \textit{prompt} LLM saat ekstraksi per-bab,
+        menangkap struktur konseptual lokal dalam satu mata pelajaran
+        (Tabel~\ref{tab:relasi-dalam-buku}).
+  \item \textbf{Relasi lintas-buku (\texttt{LINTAS\_BUKU\_*}):} lima
+        tipe yang dihasilkan pada tahap \textit{completion}
+        lintas-disiplin, menangkap interkoneksi semantik antarmata
+        pelajaran yang tidak tersurat dalam satu buku
+        (Tabel~\ref{tab:relasi-lintas-buku}).
+\end{enumerate}
+
+\begin{longtable}{@{}p{0.32\linewidth}p{0.45\linewidth}p{0.16\linewidth}@{}}
+  \caption{Vokabulari Relasi Dalam-Buku
+    (\texttt{Concept} $\leftrightarrow$ \texttt{Concept})}
+  \label{tab:relasi-dalam-buku}\\
+  \toprule
+  \textbf{Tipe Relasi} & \textbf{Semantik} & \textbf{Sifat} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Tipe Relasi} & \textbf{Semantik} & \textbf{Sifat} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  \bottomrule
+  \endlastfoot
+  \texttt{BAGIAN\_DARI}
+    & A merupakan bagian dari B (komposisi/hierarki)
+    & asimetris, hierarkis \\
+  \texttt{MENYEBABKAN}
+    & A menyebabkan B (kausasi)
+    & asimetris \\
+  \texttt{BERGANTUNG\_PADA}
+    & A bergantung pada B (dependensi fungsional)
+    & asimetris \\
+  \texttt{MENDEFINISIKAN}
+    & A mendefinisikan B (definisional)
+    & asimetris \\
+  \texttt{MEMPENGARUHI}
+    & A mempengaruhi B (pengaruh umum)
+    & asimetris \\
+  \texttt{BERINTERAKSI\_DENGAN}
+    & A dan B berinteraksi resiprokal
+    & simetris \\
+  \texttt{MEMUNGKINKAN}
+    & A memungkinkan B terjadi/berfungsi (\textit{enablement})
+    & asimetris \\
+  \texttt{MENGATUR}
+    & A mengatur atau mengontrol perilaku B (regulasi)
+    & asimetris \\
+\end{longtable}
+
+\begin{longtable}{@{}p{0.38\linewidth}p{0.42\linewidth}p{0.13\linewidth}@{}}
+  \caption{Vokabulari Relasi Lintas-Buku (Lintas-Disiplin)}
+  \label{tab:relasi-lintas-buku}\\
+  \toprule
+  \textbf{Tipe Relasi} & \textbf{Semantik} & \textbf{Sifat} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Tipe Relasi} & \textbf{Semantik} & \textbf{Sifat} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  \bottomrule
+  \endlastfoot
+  \texttt{LINTAS\_BUKU\_SAMA\_DENGAN}
+    & Konsep di buku berbeda merujuk pada entitas yang sama
+    & simetris \\
+  \texttt{LINTAS\_BUKU\_APLIKASI\_DARI}
+    & Konsep A adalah penerapan konsep B di disiplin lain
+    & asimetris \\
+  \texttt{LINTAS\_BUKU\_PRASYARAT\_UNTUK}
+    & Konsep A merupakan prasyarat pemahaman konsep B di mapel lain
+    & asimetris, hierarkis \\
+  \texttt{LINTAS\_BUKU\_MEMPERDALAM}
+    & Konsep A memperdalam atau memperluas pemahaman konsep B
+    & asimetris \\
+  \texttt{LINTAS\_BUKU\_BERKAITAN\_DENGAN}
+    & Berkaitan secara umum (\textit{fallback})
+    & simetris \\
+\end{longtable}
+
+\subsubsection*{Properti Data (Data Properties)}
+
+Setiap node dan edge dalam KG menyimpan properti data yang digunakan
+untuk ekstraksi, validasi terminologi, dan komputasi
+\textit{embedding}. Tabel~\ref{tab:data-properties} merangkum seluruh
+properti beserta domain dan fungsinya.
+
+\begin{table}[htbp]
+  \centering
+  \renewcommand{\arraystretch}{1.3}
+  \caption{Properti Data Ontologi}
+  \label{tab:data-properties}
+  \begin{tabularx}{\textwidth}{@{}lll X@{}}
+    \toprule
+    \textbf{Properti} & \textbf{Tipe} & \textbf{Domain} & \textbf{Fungsi} \\
+    \midrule
+    \texttt{name}
+      & \texttt{string} & Semua kelas
+      & Nama tampilan node; kunci \texttt{MERGE} pada \texttt{Concept}. \\
+    \texttt{grade}
+      & \texttt{string} & Semua kelas
+      & Atribut tingkat kelas, disalin untuk \textit{filtering} cepat. \\
+    \texttt{type}
+      & \texttt{string} & \texttt{Grade/Subject}
+      & Tipe jenjang (mis.\ SMA, SMP). \\
+    \texttt{summary}
+      & \texttt{string} & \texttt{Chapter}
+      & Ringkasan akademik 2--3 kalimat per bab. \\
+    \texttt{chapter}
+      & \texttt{string} & \texttt{Subtopic}
+      & Nama \texttt{Chapter} induk (denormalisasi untuk kueri cepat). \\
+    \texttt{description}
+      & \texttt{string} & \texttt{Concept}
+      & Deskripsi tekstual konsep; sumber utama \textit{embedding}
+        untuk tahap KGC. \\
+    \texttt{glossary\_validated}
+      & \texttt{boolean} & \texttt{Concept}
+      & Status validasi nama konsep terhadap glosarium buku teks. \\
+    \texttt{materi\_pokok\_ref}
+      & \texttt{string} & \texttt{Concept}
+      & Referensi ke Capaian Pembelajaran (CP) Kemendikbudristek
+        sebagai \textit{curriculum constraint}. \\
+    \midrule
+    \texttt{relation\_desc}
+      & \texttt{string} & \textit{Edge}
+      & Rasionalisasi satu kalimat (Bahasa Indonesia) atas eksistensi
+        relasi; dihasilkan LLM dan disimpan bersama setiap edge. \\
+    \texttt{relation\_type}
+      & \texttt{string} & \textit{Edge}
+      & Sub-tipe asli dari prediksi LLM untuk keperluan audit dan
+        reprodusibilitas. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
 \end{document}
