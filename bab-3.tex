@@ -1,0 +1,735 @@
+% ============================================================
+%  BAB 3 – METODOLOGI PENELITIAN
+%  Compile standalone:  pdflatex bab-3.tex
+%  Compile as part of thesis: pdflatex main.tex
+% ============================================================
+\documentclass[main]{subfiles}
+\usepackage{hyphenat}
+\usepackage{iftex}
+
+% ── Encoding, Language & Fonts ───────────────────────────────
+\ifXeTeX
+    \usepackage{polyglossia}
+    \setmainlanguage{bahasai}
+    \usepackage{fontspec}
+    \setmainfont{TeX Gyre Termes}
+    \setsansfont{TeX Gyre Heros}
+    \setmonofont[Scale=0.88]{TeX Gyre Cursor}
+\else
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage[indonesian]{babel}
+    \usepackage{mathptmx}
+    \usepackage{helvet}
+    \usepackage{courier}
+\fi
+
+% ── Page geometry (A4, UI thesis margins) ────────────────────
+\usepackage[
+  a4paper,
+  top    = 2.54cm,
+  bottom = 2.54cm,
+  left   = 3.17cm,
+  right  = 2.54cm
+]{geometry}
+
+% ── Line spacing & paragraph ─────────────────────────────────
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+
+% ── Microtype & justification ────────────────────────────────
+\usepackage{microtype}
+\sloppy
+
+% ── Headings ─────────────────────────────────────────────────
+\usepackage{titlesec}
+
+\titleformat{\chapter}[block]
+  {\centering\sffamily\bfseries\large}{}
+  {0pt}{\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{0pt}{1.5em}
+
+\titleformat{\section}
+  {\sffamily\bfseries\normalsize}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.6em}
+
+\titleformat{\subsection}
+  {\sffamily\bfseries\normalsize}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{1em}{0.5em}
+
+\titleformat{\subsubsection}
+  {\sffamily\bfseries\normalsize}{\thesubsubsection}{1em}{}
+\titlespacing*{\subsubsection}{0pt}{0.8em}{0.4em}
+
+% ── Tables ───────────────────────────────────────────────────
+\usepackage{longtable, booktabs, array, multirow}
+\usepackage{calc}
+
+% ── Math ─────────────────────────────────────────────────────
+\usepackage{amsmath, amssymb}
+
+% ── Graphics ─────────────────────────────────────────────────
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,keepaspectratio}
+
+% ── TikZ (ontology diagram) ──────────────────────────────────
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, fit, backgrounds}
+
+% ── Extended tables ──────────────────────────────────────────
+\usepackage{tabularx}
+
+% ── Lists ────────────────────────────────────────────────────
+\usepackage{enumitem}
+\setlist[enumerate,1]{
+  label      = \arabic*.,
+  leftmargin = 1.27cm,
+  itemsep    = 4pt,
+  parsep     = 0pt,
+  topsep     = 4pt
+}
+\setlist[enumerate,2]{
+  label      = \alph*.,
+  leftmargin = 1.27cm,
+  itemsep    = 3pt,
+  parsep     = 0pt,
+  topsep     = 2pt
+}
+
+% ── Hyperlinks ───────────────────────────────────────────────
+\usepackage[hidelinks]{hyperref}
+
+% Bibliography setup is inherited from main.tex (biblatex + references.bib)
+% when this file is compiled standalone via the subfiles class.
+
+% ============================================================
+\begin{document}
+
+% When standalone: set counter so \chapter{} renders as "BAB 3".
+% When in main.tex: main.tex sets the counter before \subfile{bab-3}.
+\ifSubfilesClassLoaded{}{\setcounter{chapter}{2}}
+
+\chapter{Metodologi Penelitian}
+
+Bab ini menjabarkan kerangka kerja yang digunakan untuk membangun dan
+menguji sistem \textit{Knowledge Graph Completion} (KGC) berbasis
+\textit{Large Language Model} (LLM), mencakup desain penelitian, sumber
+dan pengumpulan data, kerangka konsep dan skema ontologi, parameter
+sistem, serta prosedur evaluasi terhadap hasil yang dihasilkan.
+
+% ============================================================
+\section{Desain Penelitian}
+% ============================================================
+
+Penelitian ini menggunakan pendekatan \textit{Design Science Research}
+(DSR) yang difokuskan pada pengembangan purwarupa sistem KGC berbasis
+LLM. DSR dipilih karena penelitian ini secara spesifik bertujuan
+menghasilkan artefak inovatif---representasi pengetahuan kurikulum yang
+bersifat lintas-disiplin---sebagai respons terhadap permasalahan
+fragmentasi pembelajaran sains pada jenjang SMA.
+
+Menurut \textcite{hevner_design_2004}, DSR adalah paradigma pemecahan masalah
+yang berupaya meningkatkan kapabilitas manusia dan organisasi dengan
+menciptakan artefak baru, direpresentasikan dalam bentuk konstruk,
+model, metode, dan instansiasi. Artefak yang dikembangkan dalam
+penelitian ini meliputi:
+
+\begin{enumerate}
+  \item \textbf{Instansiasi (Purwarupa Sistem):} \textit{Dashboard}
+        interaktif berbasis Neo4j untuk menyimpan, menelusuri, dan
+        memvisualisasikan \textit{Knowledge Graph} kurikulum sains secara
+        terintegrasi.
+  \item \textbf{Metode (Algoritma dan \textit{Pipeline}):} Algoritma
+        ekstraksi pengetahuan terstruktur menggunakan LLM dengan
+        \textit{output} berbasis ontologi, serta \textit{pipeline} KG
+        \textit{Construction} dan \textit{Completion} yang diuraikan pada
+        Subbab~\ref{subsec:kerangka-konsep}.
+\end{enumerate}
+
+Secara metodologis, penelitian ini dikategorikan sebagai penelitian
+terapan (\textit{applied research}) sebagaimana dirangkum pada
+Tabel~\ref{tab:karakteristik}.
+
+\begin{longtable}{@{}ll@{}}
+  \caption{Karakteristik Metodologi Penelitian}
+  \label{tab:karakteristik}\\
+  \toprule
+  \textbf{Karakteristik} & \textbf{Deskripsi} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Karakteristik} & \textbf{Deskripsi} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  \bottomrule
+  \endlastfoot
+  Jenis Penelitian & Terapan (\textit{Applied Research}) \\
+  Pendekatan       & \textit{Design Science Research} (DSR) \\
+  Metode           & Eksperimental dengan validasi kualitatif pakar \\
+  Output           & Artefak sistem (Metode KGC dan Purwarupa Visualisasi) \\
+  Paradigma        & Pragmatisme (berfokus pada utilitas dan pemecahan masalah) \\
+\end{longtable}
+
+Adopsi DSR dalam penelitian ini mengikuti kerangka kerja
+\textcite{peffers_design_2007}, yang meliputi enam tahapan berikut.
+
+\begin{enumerate}
+  \item \textbf{Identifikasi Masalah:} Fragmentasi kurikulum sains
+        lintas-disiplin (Fisika, Kimia, Biologi) menyebabkan siswa
+        kesulitan melihat keterhubungan konsep.
+  \item \textbf{Definisi Tujuan:} Mengembangkan sistem yang dapat
+        menemukan relasi implisit antarkonsep lintas mata pelajaran.
+  \item \textbf{Desain dan Pengembangan:} Membangun \textit{pipeline}
+        ekstraksi--konstruksi--penyempurnaan \textit{knowledge graph}.
+  \item \textbf{Demonstrasi:} Menerapkan artefak pada buku teks resmi
+        Kemendikbudristek Fisika, Kimia, dan Biologi Kelas~XII.
+  \item \textbf{Evaluasi:} Pengukuran metrik struktural (ADC,
+        \textit{Modularity}), metrik ekstraksi, dan validasi pakar.
+  \item \textbf{Komunikasi:} Dokumentasi dalam bentuk skripsi dan
+        publikasi ilmiah.
+\end{enumerate}
+
+% ============================================================
+\section{Lokasi dan Waktu Penelitian}
+% ============================================================
+
+\subsection{Lokasi Penelitian}
+
+Penelitian ini dilaksanakan secara daring tanpa melibatkan studi
+lapangan. Seluruh proses ekstraksi, konstruksi graf, dan pengumpulan
+data validasi dilakukan melalui platform digital.
+
+\subsection{Waktu Penelitian}
+
+Penelitian berlangsung selama enam bulan, dari Januari hingga Juni 2026.
+Rincian tahapan disajikan pada Tabel~\ref{tab:waktu}.
+
+\begin{longtable}{@{}lll@{}}
+  \caption{Rincian Waktu Penelitian}
+  \label{tab:waktu}\\
+  \toprule
+  \textbf{Fase} & \textbf{Kegiatan} & \textbf{Periode} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Fase} & \textbf{Kegiatan} & \textbf{Periode} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  \bottomrule
+  \endlastfoot
+  1 & Studi literatur dan desain sistem
+    & Januari -- Februari 2026 \\
+  2 & Implementasi \textit{pipeline} ekstraksi
+    & Februari -- Maret 2026 \\
+  3 & Konstruksi \textit{Knowledge Graph}
+    & \multirow{2}{*}{Maret -- April 2026} \\
+  4 & Evaluasi dan validasi pakar \#1 & \\
+  5 & \textit{Knowledge Graph Completion}
+    & April 2026 \\
+  6 & Evaluasi dan validasi pakar \#2
+    & Mei 2026 \\
+  7 & Analisis hasil dan penulisan
+    & Mei -- Juni 2026 \\
+\end{longtable}
+
+% ============================================================
+\section{Sumber Data dan Korpus Penelitian}
+% ============================================================
+
+Penelitian ini tidak menggunakan populasi manusia sebagai objek
+eksperimen utama, melainkan dua jenis data yang saling melengkapi: data
+tekstual sebagai korpus ekstraksi dan data penilaian pakar sebagai dasar
+evaluasi model.
+
+\subsection{Data Primer (Korpus Ekstraksi)}\label{subsec:data-primer}
+
+Data primer yang digunakan dibatasi pada materi sains tingkat SMA
+Fase~F (Kelas~XII). Pemilihan dokumen dilakukan secara
+\textit{purposive sampling} berdasarkan relevansinya dengan Kurikulum
+Merdeka. Korpus penelitian terdiri dari tiga buku teks siswa
+(\textit{e-book}) terbitan Kemendikbudristek untuk mata pelajaran Fisika,
+Kimia, dan Biologi Fase~F, yang diperoleh dari repositori resmi
+\url{https://buku.kemdikbud.go.id}. Pembatasan pada buku teks resmi
+memastikan bahwa entitas materi dan relasi dasar yang diekstrak sistem
+benar-benar mencerminkan standar materi yang diajarkan secara nasional.
+
+\subsection{Data Validasi Pakar}\label{subsec:data-validasi}
+
+Data validasi diperoleh melalui penilaian kualitatif oleh panel pakar
+terhadap \textit{triple} relasi---khususnya interkoneksi
+lintas-disiplin---yang dihasilkan sistem KGC. Setiap \textit{triple}
+dinilai menggunakan skala empat poin yang telah didefinisikan pada
+Subbab~\ref{subsec:validasi-manusia}, yaitu Benar (1,0), Sebagian Benar (0,5), Kurang Konteks
+(0,25), dan Salah (0,0). Selain memberikan penilaian, pakar dapat
+menambahkan komentar dan \textit{missing triples} yang dianggap esensial
+namun tidak ditemukan sistem.
+
+Pengumpulan data validasi dilakukan melalui aplikasi web KG Review App
+yang dikembangkan khusus untuk penelitian ini (arsitektur teknis dibahas
+pada Subbab~\ref{sec:instrumen-evaluasi}). Data penilaian akhir dari para pakar menjadi
+\textit{ground truth} untuk menghitung Fuzzy Precision, Recall, dan
+F1-Score, serta menguji tingkat kesepakatan antarpenilai menggunakan
+Gwet's AC1.
+
+% ============================================================
+\section{Subjek Evaluasi dan Panel Pakar}
+% ============================================================
+
+Evaluasi performa sistem menggunakan pendekatan \textit{human
+evaluation}. Subjek penelitian adalah panel pakar domain yang bertugas
+sebagai \textit{reviewer} untuk memvalidasi akurasi ontologis dan
+relevansi pedagogis relasi lintas-disiplin yang dihasilkan sistem.
+
+Penelitian ini melibatkan enam \textit{reviewer} yang mewakili mata
+pelajaran Fisika, Kimia, dan Biologi (dua \textit{reviewer} per mata
+pelajaran). Jumlah dan kriteria pakar ditetapkan secara
+\textit{purposive sampling} berdasarkan tiga pertimbangan metodologis
+berikut.
+
+\begin{enumerate}
+  \item \textbf{Pengukuran Reliabilitas Multi-Rater:} Skema evaluasi
+        interkoneksi lintas-disiplin mengharuskan satu \textit{triple}
+        divalidasi oleh dua pakar independen, yang memungkinkan
+        perhitungan \textit{inter-rater agreement} menggunakan Gwet's
+        AC1.
+
+  \item \textbf{Beban Kognitif Penilaian:} Jumlah \textit{triple}
+        relasi per mata pelajaran yang dihasilkan sistem melebihi 100
+        item. Jumlah pakar dibatasi agar tidak menurunkan ketelitian
+        akibat beban kognitif yang berlebihan selama proses anotasi.
+
+  \item \textbf{Keketatan Kualifikasi:} \textit{Reviewer} harus
+        merupakan mahasiswa aktif atau lulusan dengan latar belakang
+        jurusan ilmu murni atau pendidikan yang linier (Biologi, Kimia,
+        atau Fisika). Penggunaan mahasiswa dengan keahlian domain yang
+        linier mengikuti preseden studi anotasi KG pendidikan yang
+        mengutamakan kedalaman keilmuan spesifik dibanding pengalaman
+        praktis umum \parencite{wei_kicgpt_2023}. Ketentuan ini secara alami
+        membatasi ketersediaan populasi yang memenuhi kualifikasi.
+\end{enumerate}
+
+% ============================================================
+\section{Kerangka Konsep}\label{subsec:kerangka-konsep}
+% ============================================================
+
+Kerangka konsep penelitian ini menggambarkan \textit{pipeline}
+pemrosesan data dari dokumen kurikulum hingga \textit{Knowledge Graph
+Completion}. Sistem dibangun dengan arsitektur empat tahap yang saling
+terintegrasi untuk mengekstraksi, membangun, dan menyempurnakan jaringan
+pengetahuan sains, serta dua fase evaluasi untuk memastikan validitasnya.
+
+\subsection{Diagram Alur Penelitian}
+
+\textit{Pipeline} penelitian terbagi ke dalam empat tahap eksekusi dan
+dua fase evaluasi sebagaimana diilustrasikan pada
+Gambar~\ref{fig:pipeline}.
+
+\subfile{pipeline-kgc}
+
+\noindent\textbf{Tahap-Tahap Eksekusi:}
+
+\begin{enumerate}
+  \item \textbf{Tahap 1 --- Pemrosesan Dokumen (\textit{Ingestion}):}
+        Mengubah buku teks PDF menjadi format terstruktur, meliputi
+        segmentasi hierarki bab, ekstraksi terminologi glosarium, dan
+        pemotongan teks (\textit{sentence chunking}).
+
+  \item \textbf{Tahap 2 --- Ekstraksi Pengetahuan (\textit{LLM
+        Extraction}):} Menggunakan LLM terpandu
+        (\textit{schema-constrained}) untuk mengekstrak entitas konsep
+        dan memetakan relasi dalam-buku, divalidasi dengan terminologi
+        glosarium.
+
+  \item \textbf{Tahap 3 --- Konstruksi Graf (\textit{Graph
+        Construction}):} Menginstansiasi hierarki struktural dan relasi
+        semantik dalam-buku ke dalam basis data \textit{Knowledge Graph}
+        (Neo4j).
+
+  \item \textbf{Tahap 4 --- Penyempurnaan Graf (\textit{Graph
+        Completion}):} Membangun vektor semantik (\textit{concept
+        embedding}) dari konsep yang ada, mencari kemiripan lintas-buku
+        menggunakan ANN, dan menggunakan LLM sebagai pengklasifikasi
+        untuk memprediksi relasi antardisiplin.
+\end{enumerate}
+
+\noindent\textbf{Fase-Fase Evaluasi:}
+
+\begin{enumerate}
+  \item \textbf{Fase Evaluasi 1 --- Validasi Intra-Mapel \&
+        \textit{LLM-as-a-Judge}:} Diterapkan setelah Tahap~3. Kerangka
+        kerja \textit{LLM-as-a-judge} (Gambar~\ref{fig:llm-judge})
+        digunakan untuk mengevaluasi kumpulan \textit{triple} dalam satu
+        mata pelajaran. Jika dua pakar tidak sepakat, AI Judge dipanggil
+        sebagai penengah berbasis konteks buku teks sumber. Jika pakar
+        mengidentifikasi \textit{triple} yang terlewat, LLM mengevaluasi
+        kelayakan usulan penambahan sebelum diintegrasikan ke dalam KG.
+
+  \item \textbf{Fase Evaluasi 2 --- Validasi Inter-Mapel \& Diskusi
+        Pakar:} Diterapkan setelah Tahap~4. Memverifikasi \textit{edge}
+        lintas-disiplin baru yang dihasilkan proses KGC. Mengingat
+        sifat relasi yang implisit, konflik tidak diselesaikan oleh AI,
+        melainkan melalui diskusi panel yang melibatkan seluruh pakar
+        untuk mencapai konsensus keilmuan.
+\end{enumerate}
+
+\subfile{llm-judge}
+
+\subsection{Skema Ontologi Knowledge Graph}
+\label{subsec:skema-ontologi}
+
+Mengacu pada definisi \textcite{studer_knowledge_1998} yang memperluas gagasan
+\textcite{gruber_translation_1993}, ontologi dipahami sebagai spesifikasi formal dan eksplisit
+atas sebuah konseptualisasi bersama terhadap suatu domain. Ontologi
+dalam penelitian ini diposisikan sebagai model konseptual yang bersifat
+\textit{deskriptif}, bukan \textit{preskriptif}: ontologi
+merepresentasikan konsep-konsep sains beserta keterkaitan semantiknya
+sebagaimana tersaji dalam buku teks Kurikulum Merdeka, tanpa
+merekomendasikan urutan maupun jalur belajar tertentu. Relasi berarah
+seperti \texttt{PRASYARAT\_UNTUK} karenanya dimaknai sebagai
+ketergantungan konseptual yang terkandung dalam materi---bukan sebagai
+anjuran kronologis bagi siswa.
+
+Skema \textit{knowledge graph} diformalkan sebagai ontologi OWL untuk
+memastikan konsistensi struktur dan vokabulari relasi antarstahap
+\textit{pipeline} (ekstraksi, konstruksi, dan \textit{completion}).
+Topologi keseluruhan---mencakup relasi struktural, pedagogis, dan
+semantik---diilustrasikan pada Gambar~\ref{fig:ontologi}.
+
+\subfile{onthology}
+
+% ============================================================
+\section{Parameter Sistem dan Definisi Operasional}
+% ============================================================
+
+\subsection{Parameter Sistem}
+\label{subsec:parameter-sistem}
+
+Parameter penelitian ini adalah variabel-variabel \textit{pipeline} yang
+dapat dimodifikasi peneliti dan memengaruhi karakteristik \textit{knowledge
+graph} yang dihasilkan. Variabel-variabel tersebut dirangkum pada
+Tabel~\ref{tab:parameter}.
+
+\begin{longtable}{@{}p{0.30\linewidth}p{0.35\linewidth}p{0.27\linewidth}@{}}
+  \caption{Parameter Sistem \textit{Pipeline}}
+  \label{tab:parameter}\\
+  \toprule
+  \textbf{Parameter} & \textbf{Deskripsi} & \textbf{Nilai/Level} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Parameter} & \textbf{Deskripsi} & \textbf{Nilai/Level} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  \bottomrule
+  \endlastfoot
+  Model LLM Ekstraksi \& Klasifikasi
+    & Model bahasa besar untuk ekstraksi konsep/relasi dan klasifikasi
+      relasi lintas-disiplin (KGC)
+    & \texttt{gemini-2.5-flash-lite} (ekstraksi);
+      \texttt{gemini-2.5-flash} (klasifikasi); akses Mei 2026 \\
+  Strategi \textit{Prompt Engineering}
+    & Variasi instruksi sistem untuk ekstraksi
+    & \textit{Schema-constrained zero-shot} + \textit{context injection}
+      + \textit{strict output constraints} \\
+  Model \textit{Embedding}
+    & Model representasi vektor untuk perhitungan similaritas
+    & \texttt{text-embedding-004} (Gemini Embedding) \\
+  Threshold Similaritas
+    & Ambang batas \textit{cosine similarity} untuk KGC
+    & Intra-buku: 0,80; Lintas-buku: 0,70 \\
+  Parameter \textit{Chunking}
+    & Pemotongan dokumen sebelum ekstraksi agar konteks stabil
+    & \texttt{chunk\_size} = 800, \texttt{chunk\_overlap} = 200 \\
+  Sumber Data
+    & Domain materi yang diproses \textit{pipeline}
+    & Biologi, Fisika, Kimia Kelas~XII \\
+\end{longtable}
+
+\subsection{Metrik Evaluasi}\label{subsec:metrik-evaluasi}
+
+Metrik evaluasi dalam penelitian ini mencakup dimensi topologi graf dan
+dimensi validasi pakar, sebagaimana dirangkum pada
+Tabel~\ref{tab:metrik}. Definisi operasional lengkap setiap metrik
+struktural telah dijabarkan pada Subbab~\ref{subsec:metrik-topologi}
+dan~\ref{subsec:metrik-ekstraksi}; definisi
+metrik validasi pakar pada Subbab~\ref{subsec:validasi-manusia}.
+
+\begin{longtable}{@{}p{0.35\linewidth}p{0.37\linewidth}p{0.20\linewidth}@{}}
+  \caption{Metrik Evaluasi Penelitian}
+  \label{tab:metrik}\\
+  \toprule
+  \textbf{Variabel} & \textbf{Deskripsi} & \textbf{Satuan} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Variabel} & \textbf{Deskripsi} & \textbf{Satuan} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  \bottomrule
+  \endlastfoot
+  Jumlah Konsep Terekstrak
+    & Total konsep yang berhasil diekstrak per dokumen
+    & Jumlah node \\
+  Jumlah Relasi Terprediksi
+    & Total relasi implisit yang ditemukan melalui KGC
+    & Jumlah edge \\
+  \textit{Average Degree Centrality} (ADC)
+    & Rata-rata derajat koneksi per node dalam graf
+    & Rata-rata derajat ($\geq 0$) \\
+  \textit{Graph Density}
+    & Kepadatan koneksi relatif terhadap nilai teoritis maksimum
+    & Nilai 0--1 \\
+  \textit{Modularity}
+    & Ukuran keterpisahan komunitas dalam graf
+    & Nilai $-0{,}5$ hingga $1$ \\
+  \textit{Description Completeness} (DC)
+    & Proporsi entitas yang memiliki deskripsi tidak kosong
+    & Nilai 0--1 \\
+  \textit{Empty SubKonsep Rate} (ESR)
+    & Proporsi entitas induk tanpa entitas turunan (dekomposisi gagal)
+    & Nilai 0--1 \\
+  \textit{Typed Relation Ratio} (TRR)
+    & Rasio relasi bertipe spesifik terhadap seluruh relasi dalam KG
+    & Nilai 0--1 \\
+  \textit{Fuzzy Precision}
+    & Akurasi tertimbang relasi yang diekstrak
+      \parencite{harju_evaluating_2023}
+    & Nilai 0--1 \\
+  \textit{Fuzzy Recall}
+    & Cakupan tertimbang relasi esensial yang berhasil ditemukan
+    & Nilai 0--1 \\
+  F1-Score
+    & Rata-rata harmonik \textit{Precision} dan \textit{Recall}
+    & Nilai 0--1 \\
+  Gwet's AC1
+    & Kesepakatan antarpenilai yang dikoreksi terhadap kebetulan
+    & Nilai $-1$ hingga $1$ \\
+\end{longtable}
+
+\subsection{Definisi Operasional}\label{subsec:definisi-operasional}
+
+Tabel~\ref{tab:definisi} merangkum definisi operasional istilah-istilah
+teknis utama yang digunakan sepanjang penelitian ini.
+
+\begin{longtable}{@{}p{0.28\linewidth}p{0.65\linewidth}@{}}
+  \caption{Definisi Operasional Istilah Penelitian}
+  \label{tab:definisi}\\
+  \toprule
+  \textbf{Istilah} & \textbf{Definisi Operasional} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Istilah} & \textbf{Definisi Operasional} \\
+  \midrule
+  \endhead
+  \midrule
+  \endfoot
+  \bottomrule
+  \endlastfoot
+  \textit{Knowledge Graph}
+    & Struktur data graf dalam Neo4j yang terdiri dari node berlabel
+      \texttt{Grade/Subject}, \texttt{Chapter}, \texttt{Subtopic},
+      \texttt{Concept}, dan \texttt{ConceptTarget}, serta \textit{edge}
+      berupa relasi struktural (\texttt{HAS\_CHAPTER},
+      \texttt{HAS\_CONCEPT}, dll.) maupun relasi semantik
+      dalam-buku dan lintas-buku. \\
+  Konsep (\texttt{Concept})
+    & Entitas pengetahuan Fisika/Kimia/Biologi yang memiliki atribut
+      \texttt{name} dan \texttt{description}. \\
+  \texttt{ConceptTarget}
+    & Node sementara yang menampung \textit{forward reference}---konsep
+      yang disebut sebagai target relasi namun belum diekstrak secara
+      lengkap; dipromosi menjadi \texttt{Concept} pada iterasi
+      berikutnya. \\
+  Relasi Struktural
+    & Hubungan hierarkis dalam graf: \texttt{Grade/Subject} $\to$
+      \texttt{Chapter} $\to$ \texttt{Subtopic} $\to$
+      \texttt{Concept}. \\
+  Relasi Implisit
+    & Hubungan antarkonsep yang tidak tersurat dalam teks satu buku,
+      diinferensikan melalui kemiripan semantik dan klasifikasi LLM. \\
+  KGC (\textit{Knowledge Graph Completion})
+    & Proses prediksi \textit{triple} (head, relation, tail) yang
+      hilang menggunakan \textit{embedding similarity} dan klasifikasi
+      LLM untuk menghasilkan relasi lintas-buku. \\
+  \textit{Embedding}
+    & Representasi vektor numerik dari deskripsi konsep yang dihasilkan
+      model \textit{embedding} (\texttt{text-embedding-004}, dimensi:
+      3072). \\
+  \textit{Cosine Similarity}
+    & Ukuran kemiripan antara dua vektor \textit{embedding}, dihitung
+      sebagai \textit{dot product} dibagi hasil kali norma kedua vektor.\\
+  ANN (\textit{Approximate Nearest Neighbor})
+    & Algoritma pencarian tetangga terdekat berbasis HNSW pada Neo4j
+      \textit{Vector Index} untuk mempercepat identifikasi kandidat
+      relasi lintas-dokumen tanpa perbandingan brute-force
+      $O(n^2)$. \\
+  \textit{In-Context Learning} (ICL)
+    & Strategi pemanfaatan LLM dengan menyertakan demonstrasi struktur
+      ontologi di dalam instruksi \textit{prompt} tanpa memerlukan
+      \textit{fine-tuning}. \\
+\end{longtable}
+
+% ============================================================
+\section{Teknik Pengumpulan Data}
+% ============================================================
+
+\subsection{Jenis Data}
+
+Penelitian ini menggunakan dua jenis data yang saling melengkapi: (1)
+data primer berupa dokumen kurikulum sebagai sumber ekstraksi
+pengetahuan (Subbab~\ref{subsec:data-primer}), dan (2) data validasi
+berupa penilaian pakar terhadap \textit{triple} relasi yang dihasilkan
+sistem (Subbab~\ref{subsec:data-validasi}). Data primer dimanfaatkan
+pada Tahap~1--4, sedangkan data validasi digunakan pada kedua fase
+evaluasi untuk mengukur akurasi dan kelengkapan relasi yang diprediksi.
+
+\subsection{Data Primer Kurikulum}
+
+Sumber dan cakupan data primer telah dijabarkan pada
+Subbab~\ref{subsec:data-primer}. Data ini berupa berkas PDF dari
+repositori \url{https://buku.kemdikbud.go.id} untuk mata pelajaran
+Fisika, Kimia, dan Biologi Kelas~XII Fase~F.
+
+\subsection{Data Validasi Pakar}
+
+Prosedur dan instrumen pengumpulan data validasi telah dijelaskan pada
+Subbab~\ref{subsec:data-validasi}. Setiap \textit{triple} mendapatkan
+penilaian dari dua pakar independen per mata pelajaran (total enam
+\textit{reviewer}).
+
+\subsection{Cara Pengumpulan Data}
+
+Pengumpulan data validasi dilakukan melalui aplikasi web KG Review App
+yang dikembangkan menggunakan Next.js, dipilih karena kemampuannya
+menangani navigasi kuesioner berskala besar (lebih dari 100
+\textit{triple} per mata pelajaran) yang tidak dapat diakomodasi oleh
+Google Forms. Alur pengumpulan data adalah sebagai berikut.
+
+\begin{enumerate}
+  \item Peneliti mengunggah hasil \textit{knowledge graph} dalam format
+        JSON ke panel admin aplikasi.
+  \item Peneliti mempublikasikan mata pelajaran sehingga dapat diakses
+        \textit{reviewer}.
+  \item \textit{Reviewer} menerima kredensial \textit{login} dari
+        peneliti.
+  \item \textit{Reviewer} masuk ke aplikasi, memilih mata pelajaran yang
+        ditugaskan, dan menilai setiap \textit{triple} menggunakan skala
+        empat poin (Subbab~\ref{subsec:validasi-manusia}).
+  \item \textit{Reviewer} dapat menambahkan \textit{missing triples} dan
+        memberikan komentar per relasi.
+  \item Setelah seluruh \textit{triple} dinilai, \textit{reviewer}
+        mengonfirmasi penyelesaian \textit{review}.
+\end{enumerate}
+
+% ============================================================
+\section{Pengolahan Data}
+% ============================================================
+
+Setelah seluruh \textit{reviewer} menyelesaikan penilaian, data rating
+diolah melalui tahapan berikut.
+
+\begin{enumerate}
+  \item \textbf{Ekspor dan Agregasi:} Data penilaian diekspor dari Redis
+        dalam format JSON per mata pelajaran. Setiap \textit{triple}
+        memiliki dua rating yang diagregasi menjadi satu label konsensus
+        berdasarkan kerangka evaluasi \textit{hybrid}.
+
+  \item \textbf{Penetapan \textit{Ground Truth}:} Jika dua
+        \textit{reviewer} sepakat, label konsensus digunakan langsung.
+        Jika tidak sepakat, AI Judge (LLM berbasis konteks buku teks)
+        menentukan label akhir---kecuali pada Fase~2, yang
+        menggunakan diskusi panel pakar secara keseluruhan.
+
+  \item \textbf{Perhitungan Metrik Pakar:} Fuzzy Precision, Recall, dan
+        F1-Score dihitung per bab per mata pelajaran menggunakan
+        formulasi pada Subbab~\ref{subsec:validasi-manusia}, dengan label konsensus sebagai
+        \textit{ground truth}.
+
+  \item \textbf{Perhitungan Kesepakatan:} Gwet's AC1 dihitung untuk
+        mengukur konsistensi \textit{inter-rater} sebelum konsolidasi,
+        menggunakan label mentah dari masing-masing \textit{reviewer}.
+
+  \item \textbf{Kalkulasi Metrik Struktural:} Metrik topologi graf
+        (ADC, \textit{Density}, \textit{Modularity}, TRR, DC) dihitung
+        melalui kueri Cypher deterministik di Neo4j Aura pada kondisi
+        pre-KGC dan post-KGC.
+\end{enumerate}
+
+% ============================================================
+\section{Analisis Data}
+% ============================================================
+
+Analisis data dilakukan melalui tiga pendekatan yang saling melengkapi,
+dirancang untuk menjawab rumusan masalah penelitian secara komprehensif
+dari sisi kuantitatif objektif maupun validitas pedagogis.
+
+\subsection{Analisis Struktural}
+
+Analisis struktural mengukur perubahan karakteristik topologi
+\textit{Knowledge Graph} secara kuantitatif, khususnya untuk mengevaluasi
+dampak proses KGC terhadap kualitas interkoneksi antarkonsep. Metrik
+yang dihitung pada kondisi pre-KGC dan post-KGC meliputi ADC,
+\textit{Graph Density}, \textit{Modularity}, TRR, dan DC, sebagaimana
+telah didefinisikan pada Subbab~\ref{subsec:metrik-topologi},
+\ref{subsec:metrik-ekstraksi}, dan~\ref{subsec:metrik-hubungan}. Seluruh nilai
+diperoleh melalui kueri Cypher pada Neo4j Aura, sehingga bersifat
+deterministik dan dapat direproduksi.
+
+Hasil perbandingan pre-KGC dan post-KGC disajikan dalam bentuk tabel
+berpasangan per mata pelajaran. Peningkatan ADC dan \textit{Density}
+setelah KGC diinterpretasikan sebagai indikator bahwa relasi implisit
+yang diprediksi LLM berhasil memperkaya kepadatan jaringan pengetahuan.
+Sebaliknya, penurunan \textit{Modularity} yang terlalu drastis dapat
+mengindikasikan bahwa batas komunitas antarbab menjadi kabur akibat
+relasi lintas-disiplin yang berlebihan, sehingga perlu dikaji lebih
+lanjut melalui validasi pakar.
+
+\subsection{Analisis Validasi Pakar}
+
+Analisis ini mengukur akurasi dan kelengkapan relasi yang dihasilkan KG.
+Tingkat kesepakatan awal antarpakar diukur menggunakan Gwet's AC1,
+kemudian kinerja sistem dievaluasi terhadap \textit{ground truth}
+konsensus menggunakan Fuzzy Precision, Recall, dan F1-Score
+\parencite{harju_evaluating_2023}, berdasarkan pemetaan nilai keanggotaan pada
+Subbab~\ref{subsec:validasi-manusia}.
+
+\subsection{Analisis Komparatif}
+
+Analisis komparatif membandingkan kualitas \textit{Knowledge Graph} di
+antara ketiga mata pelajaran untuk mengidentifikasi perbedaan
+karakteristik struktur pengetahuan antardisiplin sains dalam konteks
+Kurikulum Merdeka.
+
+Perbandingan dilakukan pada dua dimensi. Pertama, dimensi struktural
+membandingkan nilai metrik graf (ADC, \textit{Density},
+\textit{Modularity}, TRR) antarmata pelajaran pada kondisi post-KGC.
+Kedua, dimensi validasi membandingkan nilai Precision, Recall, dan F1
+antarmata pelajaran untuk mengidentifikasi disiplin mana yang paling
+diuntungkan oleh pendekatan LLM-Assisted KGC.
+
+Triangulasi antara metrik struktural dan hasil validasi pakar dilakukan
+untuk menguji koherensi keduanya: apabila mata pelajaran dengan ADC
+tinggi juga memperoleh nilai Precision tinggi dari \textit{reviewer},
+maka ini memperkuat argumen bahwa kepadatan koneksi yang dihasilkan
+sistem memang mencerminkan interkoneksi yang valid secara pedagogis,
+bukan sekadar artefak komputasional. Hasil analisis disajikan dalam
+tabel ringkasan tiga kolom (Fisika, Kimia, Biologi) yang memuat seluruh
+metrik secara berdampingan.
+
+\ifSubfilesClassLoaded{\printbibliography[title={Daftar Pustaka}]}{}
+
+\end{document}
