@@ -125,67 +125,51 @@ relasi lintas-buku yang ditemukan (Subbab~\ref{sec:hasil-evaluasi}).
 % ============================================================
 
 Tahap ini mengubah \textit{e-book} PDF menjadi struktur data yang siap
-diproses LLM. Output utama adalah teks per bab, metadata halaman, daftar
-subbab, glosarium, dan materi pokok.
+diproses oleh LLM. Keluaran utama berupa teks per bab, metadata halaman,
+daftar subbab, glosarium, dan materi pokok.
 
 \begin{enumerate}
-  \item \textbf{Ekstraksi teks PDF.}
-  \begin{itemize}
-    \item PDF dimuat memakai SimpleDirectoryReader (LlamaIndex) dengan \textit{backend}
-      PyMuPDF.
-    \item Tiap halaman menjadi objek Document yang menyimpan page\_label.
-  \end{itemize}
+  \item \textbf{Ekstraksi teks PDF.} PDF dimuat menggunakan
+        \texttt{SimpleDirectoryReader} (LlamaIndex) dengan \textit{backend}
+        PyMuPDF, sehingga setiap halaman menjadi satu objek \texttt{Document}
+        yang menyimpan \texttt{page\_label}.
 
-  \item \textbf{Deteksi halaman TOC (daftar isi).}
+  \item \textbf{Deteksi halaman TOC (daftar isi).} Halaman diklasifikasikan
+        sebagai TOC menggunakan heuristik dua-sinyal yang mencegah
+        \textit{false positive} pada halaman konten biasa; detail
+        implementasi disajikan di Lampiran A.
 
-  Halaman diklasifikasikan sebagai TOC menggunakan heuristik dua-sinyal yang
-  mencegah \textit{false positive} pada halaman konten biasa; detail implementasi
-  disajikan di Lampiran A.
+  \item \textbf{Parsing struktur Bab dan Subbab.} Pola Bab diekstrak dengan
+        \textit{regex} yang menangkap format judul--\textit{leader dots}--nomor
+        halaman (Contoh: ``Bab 4 Inovasi Bioteknologi..... 191''), sedangkan
+        subbab diidentifikasi sebagai entri bertanda huruf besar (A., B., dst.)
+        pada rentang TOC antara dua Bab berurutan. Hasil \textit{parsing}
+        disusun sebagai daftar bab yang masing-masing memuat nama, halaman
+        awal, dan daftar subbab.
 
-  \item \textbf{Parsing struktur Bab dan Subbab.}
-  \begin{itemize}
-    \item Pola Bab diekstrak dengan \textit{regex} yang menangkap format judul --
-      \textit{leader dots} -- nomor halaman. Contoh: ``Bab 4 Inovasi Bioteknologi..... 191''.
-    \item Subbab dicari sebagai entri bertanda huruf besar (A., B., dst.) di
-      rentang TOC antara dua Bab berurutan.
-    \item Hasil \textit{parsing} disusun menjadi daftar \texttt{[\{name, page\_start, subchapters[]\}]}.
-  \end{itemize}
+  \item \textbf{Klasifikasi halaman TOC vs.\ konten.} Halaman yang terindikasi
+        TOC pada deteksi awal digunakan untuk menyusun teks TOC gabungan,
+        sementara halaman konten tidak disertakan agar \textit{parsing} bab dan
+        subbab tetap stabil.
 
-  \item \textbf{Klasifikasi halaman TOC vs.\ konten.}
-  \begin{itemize}
-    \item Setelah deteksi awal, halaman yang terindikasi TOC digunakan untuk
-      menyusun teks TOC gabungan.
-    \item Halaman konten tidak dimasukkan agar \textit{parsing} bab dan subbab stabil.
-  \end{itemize}
+  \item \textbf{Ekstraksi glosarium.} Glosarium dicari pada 30 halaman terakhir
+        menggunakan penanda \textit{state} \texttt{in\_glossary} yang diaktifkan
+        oleh token ``glosarium'' dan dimatikan oleh terminator seperti
+        ``indeks'' atau ``daftar pustaka''. Pasangan istilah--definisi yang
+        ditemukan diuraikan menjadi \textit{lookup table}, yang kemudian dipakai
+        sebagai validasi terminologi pada Tahap~2.
 
-  \item \textbf{Ekstraksi glosarium.}
-  \begin{itemize}
-    \item Pencarian glosarium dilakukan pada 30 halaman terakhir dengan
-      \textit{state} in\_glossary.
-    \item \textit{State} diaktifkan oleh token ``glosarium'' dan dimatikan oleh
-      terminator seperti ``indeks'' atau ``daftar pustaka''.
-    \item Pasangan istilah dan definisi di-\textit{parse} menjadi \textit{lookup table}.
-    \item \textit{Lookup} ini dipakai sebagai validasi terminologi pada Tahap 2.
-  \end{itemize}
+  \item \textbf{Penugasan bab ke \textit{chunk}.} Setiap \textit{chunk}
+        dihubungkan ke bab berdasarkan interval halaman
+        (\texttt{page\_start <= page < next\_page}), dengan \texttt{page\_label}
+        dikonversi ke integer termasuk angka Romawi. Penugasan ini
+        berkompleksitas $O(N \cdot C)$ untuk $N$ \textit{chunk} dan $C$ bab.
 
-  \item \textbf{Penugasan bab ke \textit{chunk}.}
-  \begin{itemize}
-    \item Setiap \textit{chunk} dihubungkan ke bab berdasarkan interval halaman:
-      \texttt{page\_start <= page < next\_page}.
-    \item page\_label dikonversi ke integer (termasuk angka Romawi).
-    \item Kompleksitas $O(N \cdot C)$ untuk $N$ \textit{chunk} dan $C$ bab, dapat
-      diturunkan ke $O(N \log C)$ dengan \textit{binary search} jika skala membesar.
-  \end{itemize}
-
-  \item \textbf{Ekstraksi materi pokok (Buku Guru).}
-  \begin{itemize}
-    \item Untuk tiap bab, sistem mencari \textit{region} teks yang sesuai judul
-      bab di Buku Guru.
-    \item Dalam \textit{region} tersebut, sistem mencari penanda ``Materi Pokok'' dan
-      mengekstrak item di sekitarnya.
-    \item Hasil materi pokok digunakan sebagai \textit{constraint} kurikulum pada
-      Tahap 2 agar konsep yang diekstrak tetap sesuai kompetensi.
-  \end{itemize}
+  \item \textbf{Ekstraksi materi pokok (Buku Guru).} Untuk tiap bab, sistem
+        mencari \textit{region} teks yang sesuai judul bab di Buku Guru, lalu
+        mengekstrak item di sekitar penanda ``Materi Pokok''. Hasilnya
+        digunakan sebagai \textit{constraint} kurikulum pada Tahap~2 agar konsep
+        yang diekstrak tetap sesuai kompetensi.
 \end{enumerate}
 
 % ============================================================
