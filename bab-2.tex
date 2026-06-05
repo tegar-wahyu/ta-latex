@@ -28,20 +28,25 @@ penelitian ini.
 \subsection{Knowledge Graph (KG) dan Ontologi Pendidikan}
 \label{subsec:kg-ontologi}
 
-\textit{Knowledge Graph} (KG) merupakan standar pemodelan representasi
-pengetahuan yang banyak digunakan saat ini. \textcite{hogan_knowledge_2022}
-mendefinisikan KG sebagai graf data yang dirancang untuk menghimpun dan
-merepresentasikan pengetahuan dunia nyata, dengan simpul (\textit{nodes})
-sebagai representasi entitas dan sisi (\textit{edges}) sebagai
-representasi relasi semantik antarentitas. Informasi dalam KG
+Sebagaimana diperkenalkan pada Bab~1, \textit{Knowledge Graph} (KG) merupakan
+paradigma representasi pengetahuan yang kini banyak digunakan. Secara formal,
+\textcite{hogan_knowledge_2022} mendefinisikan KG sebagai graf data yang
+dirancang untuk menghimpun dan merepresentasikan pengetahuan dunia nyata, dengan
+simpul (\textit{nodes}) sebagai representasi entitas dan sisi (\textit{edges})
+sebagai representasi relasi semantik antarentitas. Informasi dalam KG
 diformalkan dalam bentuk triple (\textit{head, relation, tail}) sehingga
-hubungan antarinformasi dapat diproses dan ditelusuri secara
-komputasional oleh mesin. Sebagai ilustrasi, materi sains SMA dapat
-direpresentasikan melalui triple seperti (Fotosintesis, menghasilkan,
-Glukosa), (Hukum Ohm, menghubungkan, Tegangan), dan (Reaksi Redoks,
-terdiri dari, Oksidasi), di mana setiap triple menyatakan satu fakta
-atomik yang secara kolektif membentuk struktur KG untuk menelusuri
-keterkaitan lintas konsep.
+hubungan antarinformasi dapat diproses dan ditelusuri secara komputasional oleh
+mesin.
+
+Pemaknaan relasi pada KG dapat dipertajam dengan menggunakan tipe relasi
+spesifik alih-alih label generik. Sebagai ilustrasi pada domain sains SMA,
+sebuah KG dapat merepresentasikan keterkaitan intra-disiplin melalui triple
+seperti (Fotosintesis, \texttt{MENGHASILKAN}, Glukosa), sekaligus menjembatani
+keterkaitan lintas-disiplin yang sering bersifat implisit, misalnya
+(Potensial Elektrode, \texttt{APLIKASI\_DARI}, Potensial Listrik) yang menautkan
+Kimia dengan Fisika, serta (DNA, \texttt{PRASYARAT\_UNTUK}, Gen) yang menautkan
+Kimia dengan Biologi. Setiap triple menyatakan satu fakta atomik yang secara
+kolektif membentuk struktur KG untuk menelusuri keterkaitan lintas konsep.
 
 Dalam konteks pendidikan, \textcite{abu-salih_systematic_2024} dalam tinjauan
 sistematisnya menegaskan bahwa KG saat ini mendominasi inovasi teknologi
