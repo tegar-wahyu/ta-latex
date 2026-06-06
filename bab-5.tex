@@ -160,7 +160,7 @@ terhubung oleh relasi lintas-buku.
 \textbf{Metrik Struktural} & \textbf{Pre-KGC} & \textbf{Post-KGC} \\
 \midrule
 \endhead
-ADC (seluruh node)                & 2{,}4123 & 2{,}6970 \\
+ADC (seluruh \textit{node})                & 2{,}4123 & 2{,}6970 \\
 ADC (Konsep-ke-Konsep)            & 0{,}7384 & 1{,}4651 \\
 \textit{Graph Density} (antar-konsep) & 0{,}00108 & 0{,}00214 \\
 \textit{Modularity}               & 0{,}8106 & 0{,}3732 \\
@@ -170,12 +170,12 @@ ADC (Konsep-ke-Konsep)            & 0{,}7384 & 1{,}4651 \\
 \begin{enumerate}
   \item \textbf{Evaluasi \textit{Average Degree Centrality} (ADC) dan Kepadatan.}
 
-  Berdasarkan Tabel~\ref{tab:struktural}, ADC seluruh node meningkat dari 2{,}41
+  Berdasarkan Tabel~\ref{tab:struktural}, ADC seluruh \textit{node} meningkat dari 2{,}41
   (pre-KGC) menjadi 2{,}70 (post-KGC), kenaikan sebesar 11{,}8\%. Namun
   peningkatan yang lebih signifikan terjadi pada ADC Konsep-ke-Konsep, yang hampir
   berlipat ganda dari 0{,}74 menjadi 1{,}47 (+98{,}4\%). Peningkatan ini
   mencerminkan bahwa \textit{pipeline} KGC berhasil menambahkan 125 relasi
-  lintas-buku baru yang secara langsung menghubungkan node Concept antar-mapel,
+  lintas-buku baru yang secara langsung menghubungkan \textit{node} \texttt{Concept} antar-mapel,
   meningkatkan kepadatan interkoneksi semantik yang sebelumnya tidak ada.
   \textit{Graph Density} antar-konsep, yakni kepadatan relasi pada subgraf
   \texttt{Concept} (lihat Subbab~\ref{subsec:metrik-topologi}), juga meningkat
@@ -212,12 +212,12 @@ ADC (Konsep-ke-Konsep)            & 0{,}7384 & 1{,}4651 \\
   \textit{Typed Relation Ratio} (TRR) sebagaimana didefinisikan pada
   Subbab~\ref{subsec:metrik-ekstraksi} dan~\ref{subsec:metrik-hubungan}.
   Sistem mencatatkan nilai DC sebesar 93{,}07\% --- identik pada
-  fase pre-KGC maupun post-KGC karena DC mengukur kualitas deskripsi node yang
+  fase pre-KGC maupun post-KGC karena DC mengukur kualitas deskripsi \textit{node} yang
   tidak berubah akibat penambahan \textit{edge} KGC. Metrik ESR tercatat 0\%
   (0,00) pada kedua fase --- jauh di bawah ambang maksimal 10\% --- yang
   menandakan bahwa seluruh entitas induk (\texttt{:Subtopic}) berhasil
   didekomposisi menjadi setidaknya satu konsep turunan, sehingga tidak ada
-  ``node buntu'' dalam graf. Nilai TRR meningkat dari
+  ``\textit{node} buntu'' dalam graf. Nilai TRR meningkat dari
   69{,}69\% (pre-KGC) menjadi 74{,}86\% (post-KGC), mencerminkan bahwa KGC
   menambahkan \textit{edge} bertipe semantik spesifik sehingga proporsi relasi
   bertype meningkat relatif terhadap total \textit{edge} dalam graf.
@@ -364,7 +364,7 @@ ekstraksi.
 Pengaruh parameter \textit{retrieval} terhadap jumlah relasi lintas-buku yang
 ditemukan dievaluasi pada empat konfigurasi berpasangan (Tabel~\ref{tab:param-sweep});
 ambang kemiripan (\textit{threshold}) dinaikkan seiring penurunan jumlah
-tetangga per node (top-$k$). Semakin ketat konfigurasi, semakin sedikit pasangan
+tetangga per \textit{node} (top-$k$). Semakin ketat konfigurasi, semakin sedikit pasangan
 kandidat yang lolos: dari 125 relasi pada konfigurasi paling permisif (0{,}70
 / top-$k$ = 20) menyusut menjadi hanya 14 relasi pada konfigurasi paling ketat
 (0{,}85 / top-$k$ = 5). Analisis kualitas per konfigurasi disajikan pada
@@ -416,13 +416,13 @@ kuantitas relasi tetapi \textbf{tidak} memperbaiki ketepatan arah relasi.
 
 Pada konfigurasi final (threshold = 0{,}70; top-$k$ = 20; \textit{scope}
 lintas-mapel), \textit{pipeline} menemukan 125 relasi lintas-buku. Distribusi
-tipe relasi (Gambar~\ref{fig:relasi-distribusi}) didominasi PRASYARAT\_UNTUK (57 \textit{edge}, 45{,}6\%), diikuti
-MEMPERDALAM (31 \textit{edge}, 24{,}8\%), BERKAITAN\_DENGAN (21 \textit{edge}, 16{,}8\%),
-APLIKASI\_DARI (15 \textit{edge}, 12{,}0\%), dan SAMA\_DENGAN (1 \textit{edge}, 0{,}8\%).
-Dominasi PRASYARAT\_UNTUK mengindikasikan bahwa jembatan lintas-disiplin
+tipe relasi (Gambar~\ref{fig:relasi-distribusi}) didominasi \texttt{PRASYARAT\_UNTUK} (57 \textit{edge}, 45{,}6\%), diikuti
+\texttt{MEMPERDALAM} (31 \textit{edge}, 24{,}8\%), BERKAITAN\_DENGAN (21 \textit{edge}, 16{,}8\%),
+\texttt{APLIKASI\_DARI} (15 \textit{edge}, 12{,}0\%), dan SAMA\_DENGAN (1 \textit{edge}, 0{,}8\%).
+Dominasi \texttt{PRASYARAT\_UNTUK} mengindikasikan bahwa jembatan lintas-disiplin
 pada kurikulum sains kelas XII lebih banyak bersifat prasyarat pengetahuan
 daripada aplikasi atau analogi. Dari 125 relasi, 8 \textit{edge} memiliki \textit{confidence}
-$< 0{,}5$ (seluruhnya BERKAITAN\_DENGAN) dikeluarkan dari survei validasi
+$< 0{,}5$ (seluruhnya \texttt{BERKAITAN\_DENGAN}) dikeluarkan dari survei validasi
 utama, menyisakan 117 relasi yang dinilai pakar.
 
 \begin{figure}[htbp]
@@ -438,20 +438,20 @@ keyakinan tinggi LLM terhadap relasi tersebut. Contoh relasi dengan
 
 \begin{itemize}
   \item DNA (Asam 2-Deoksiribonukleat) [Kimia] $\to$ Gen [Biologi]:
-    PRASYARAT\_UNTUK (conf = 1{,}0). Pemahaman struktur kimia DNA merupakan
+    \texttt{PRASYARAT\_UNTUK} (conf = 1{,}0). Pemahaman struktur kimia DNA merupakan
     fondasi untuk memahami fungsi gen secara biologis.
   \item Potensial Elektrode [Kimia] $\to$ Potensial Listrik [Fisika]:
-    APLIKASI\_DARI (conf = 1{,}0). Konsep potensial elektrode dalam
+    \texttt{APLIKASI\_DARI} (conf = 1{,}0). Konsep potensial elektrode dalam
     elektrokimia merupakan aplikasi langsung dari konsep potensial listrik
     dalam fisika.
-  \item Enzim [Biologi] $\to$ Protein [Kimia]: APLIKASI\_DARI (conf = 1{,}0).
+  \item Enzim [Biologi] $\to$ Protein [Kimia]: \texttt{APLIKASI\_DARI} (conf = 1{,}0).
     Enzim merupakan manifestasi fungsional dari protein dalam konteks biologis.
   \item Fosforilasi Oksidatif [Biologi] $\to$ Oksidasi [Kimia]:
-    PRASYARAT\_UNTUK (conf = 1{,}0). Pemahaman reaksi oksidasi secara kimia
+    \texttt{PRASYARAT\_UNTUK} (conf = 1{,}0). Pemahaman reaksi oksidasi secara kimia
     diperlukan sebelum mempelajari fosforilasi oksidatif dalam metabolisme.
 \end{itemize}
 
-Satu-satunya relasi bertipe SAMA\_DENGAN yang ditemukan adalah DNA (Asam
+Satu-satunya relasi bertipe \texttt{SAMA\_DENGAN} yang ditemukan adalah DNA (Asam
 2-Deoksiribonukleat) [Kimia] $\leftrightarrow$ DNA (Deoxyribonucleic Acid)
 [Biologi] dengan \textit{confidence} 1{,}0. Temuan ini mengonfirmasi bahwa
 \textit{pipeline} mampu mendeteksi entitas identik yang diajarkan di dua disiplin
@@ -480,9 +480,9 @@ Biologi\,$\leftrightarrow$\,Kimia: LLM cenderung menempatkan konsep
 Biologi sebagai sumber, padahal arah yang benar umumnya
 Kimia$\to$Biologi --- konsep kimia berperan sebagai prasyarat/fondasi
 yang \textit{diperdalam} atau \textit{dibutuhkan} oleh proses biologis.
-Tipe MEMPERDALAM paling rentan (ketepatan arah 60\%: 18 Benar, 12
-Terbalik), disusul APLIKASI\_DARI (73\%) dan PRASYARAT\_UNTUK (79\%),
-sementara tipe simetris BERKAITAN\_DENGAN dan SAMA\_DENGAN mencapai
+Tipe \texttt{MEMPERDALAM} paling rentan (ketepatan arah 60\%: 18 Benar, 12
+Terbalik), disusul \texttt{APLIKASI\_DARI} (73\%) dan PRASYARAT\_UNTUK (79\%),
+sementara tipe simetris \texttt{BERKAITAN\_DENGAN} dan \texttt{SAMA\_DENGAN} mencapai
 100\% karena arah tidak relevan secara semantik.
 
 Validitas relasi telah mendekati titik jenuh bahkan pada ambang permisif
@@ -520,27 +520,27 @@ klasifikasi atau kanonikalisasi arah pasca-proses, bukan penyetelan
 % ──────────────────────────────────────────
 
 Sebanyak 9 \textit{edge} memiliki \textit{confidence} $< 0{,}7$---seluruhnya
-bertipe BERKAITAN\_DENGAN, dengan 8 di antaranya bahkan $< 0{,}5$---yang
+bertipe \texttt{BERKAITAN\_DENGAN}, dengan 8 di antaranya bahkan $< 0{,}5$---yang
 mengindikasikan potensi \textit{false positive}. Beberapa contoh relasi
 berkeyakinan rendah hingga sedang ($\leq 0{,}7$) yang patut dicermati:
 
 \begin{itemize}
   \item Gerbang Logika Dasar [Fisika] $\leftrightarrow$ Notasi Sel Standar [Kimia]:
-    BERKAITAN\_DENGAN (conf = 0{,}2). Relasi ini merupakan contoh \textit{false
+    \texttt{BERKAITAN\_DENGAN} (conf = 0{,}2). Relasi ini merupakan contoh \textit{false
     positive} --- kemiripan \textit{embedding} terjadi akibat kedua konsep sama-sama
     melibatkan notasi simbolik, namun tidak ada hubungan kurikuler bermakna.
   \item Klasifikasi Semikonduktor [Fisika] $\leftrightarrow$ Polimer Anorganik [Kimia]:
-    BERKAITAN\_DENGAN (conf = 0{,}6). Kemiripan kemungkinan didorong oleh kesamaan
+    \texttt{BERKAITAN\_DENGAN} (conf = 0{,}6). Kemiripan kemungkinan didorong oleh kesamaan
     konteks material/bahan, namun hubungan substantifnya lemah.
   \item Efek Fotolistrik [Fisika] $\to$ Fotosintesis [Biologi]:
-    MEMPERDALAM (conf = 0{,}7). Keduanya melibatkan interaksi foton dengan
+    \texttt{MEMPERDALAM} (conf = 0{,}7). Keduanya melibatkan interaksi foton dengan
     materi, tetapi mekanisme dan konteksnya berbeda jauh.
 \end{itemize}
 
-Temuan ini mengonfirmasi peran penting label \textit{fallback} BERKAITAN\_DENGAN
+Temuan ini mengonfirmasi peran penting label \textit{fallback} \texttt{BERKAITAN\_DENGAN}
 sebagai penanda relasi yang lemah atau ambigu. Tipe ini memiliki keyakinan jauh
 lebih rendah daripada tipe lain. Rata-rata \textit{confidence} 0{,}50 untuk 21
-\textit{edge} BERKAITAN\_DENGAN yang dibandingkan dengan 0{,}85--0{,}94 pada tipe relasi
+\textit{edge} \texttt{BERKAITAN\_DENGAN} yang dibandingkan dengan 0{,}85--0{,}94 pada tipe relasi
 spesifik menunjukkan bahwa LLM memilih label ini ketika tidak yakin terhadap
 arah atau tipe relasi yang lebih spesifik.
 
@@ -602,7 +602,7 @@ per domain.
     \draw[line width=0.6pt, draw=black!45] (bio) -- (fis) node[wlab]{5 (4\%)};
   \end{tikzpicture}
   \caption{\textit{Inter-domain bridge graph}: jumlah relasi lintas-buku antar
-    pasangan mata pelajaran (117 relasi disurvei; tebal sisi $\propto$ jumlah).}
+    pasangan mata pelajaran (117 relasi disurvei; tebal \textit{edge} $\propto$ jumlah).}
   \label{fig:bridge-graph}
 \end{figure}
 
