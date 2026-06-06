@@ -452,6 +452,14 @@ $c$, sedangkan $k_c^{\text{out}}$ dan $k_c^{\text{in}}$ adalah total
 $c$. Kedua bentuk rumus menghasilkan nilai yang identik; perbedaannya
 hanya pada cara penjumlahan.
 
+Dalam penelitian ini, partisi komunitas $c$ ditetapkan secara tetap
+berdasarkan mata pelajaran (Fisika, Kimia, dan Biologi), bukan
+hasil deteksi komunitas otomatis (Contoh: algoritma \textit{Louvain}).
+Penetapan partisi yang tetap ini penting karena nilai $Q$ pre-KGC dan
+post-KGC dihitung atas partisi yang persis sama, sehingga perubahan $Q$
+murni mencerminkan bertambahnya \textit{edge} lintas-mata-pelajaran akibat
+proses KGC, bukan artefak dari komunitas yang berbeda di tiap fase.
+
 \subsubsection{Graph Density}
 
 \textbf{Graph Density ($D$)} mengukur seberapa banyak koneksi yang
