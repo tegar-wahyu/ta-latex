@@ -148,20 +148,28 @@ Tabel~\ref{tab:skema-redis} mendokumentasikan pola kunci utama yang dipakai
 untuk menyimpan status peninjauan.
 
 \begin{table}[htbp]
-  \centering
+  \centering\small
   \caption{Skema kunci Redis pada KG Review App}
   \label{tab:skema-redis}
-  \begin{tabularx}{\linewidth}{@{}l l X@{}}
+  \begin{tabularx}{\linewidth}{@{}p{0.45\linewidth} l X@{}}
     \toprule
     \textbf{Pola Kunci} & \textbf{Tipe} & \textbf{Isi} \\
     \midrule
-    % TODO: sesuaikan dengan skema kunci aktual pada implementasi.
-    \texttt{review:\{id\}}        & Hash & Metadata sesi peninjauan. \\
-    \texttt{triple:\{id\}}        & Hash & \textit{Triple} yang ditinjau beserta status. \\
-    \texttt{decision:\{id\}}      & Hash & Keputusan pakar (benar/salah/ragu) dan stempel waktu. \\
+    \texttt{kg:courses}
+      & String & Daftar mapel (graf KG) yang tersedia untuk ditinjau. \\
+    \texttt{kg:completion-survey:\{userId\}}
+      & String & Respons survei \textit{completion} lintas-buku (Fase~2) per pengguna. \\
+    \texttt{kg:progress:\{userId\}:\{courseId\}}
+      & String & Rekaman \textit{progress} penilaian (Fase~1) per pengguna per mapel. \\
     \bottomrule
   \end{tabularx}
 \end{table}
+
+\noindent \texttt{userId} merepresentasikan akun/peran penilai, misalnya
+\texttt{admin}, \texttt{expert-biologi-1}, atau \texttt{dummy-user-1}, sedangkan
+\texttt{courseId} merupakan slug mata pelajaran beserta stempel waktu, misalnya
+\texttt{biologi-kelas-xii-1775626587840}. Nilai pada setiap kunci disimpan
+sebagai payload JSON.
 
 % ------------------------------------------------------------------
 \section{Tangkapan Layar Antarmuka}
