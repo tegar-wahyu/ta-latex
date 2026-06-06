@@ -54,35 +54,35 @@
     \end{scope}
 
     % ==== FASE 2 — CABANG KIRI ====
-    \node[db, below left=1.5cm and 0.8cm of ReadExperts] (ContextDB)
+    \node[db, below left=2.8cm and 2cm of ReadExperts] (ContextDB)
       {Pengambilan Konteks\\Buku Teks};
     \node[process, below=0.8cm of ContextDB] (CompareExist)
       {Komparasi Opini Pakar\\(Inter-annotator Agreement)};
     \node[condition, below=0.8cm of CompareExist] (IsAgreeExist)
       {Terdapat konsensus\\pakar?};
-    \node[process, text width=3cm, below=1.4cm of IsAgreeExist, xshift=-2.1cm]
+    \node[process, text width=3.3cm, below=1.4cm of IsAgreeExist, xshift=-2.6cm]
       (AcceptExist)
       {Penerimaan Keputusan\\Konsensus};
-    \node[process, text width=3cm, below=1.4cm of IsAgreeExist, xshift=2.1cm]
+    \node[process, text width=3.3cm, below=1.4cm of IsAgreeExist, xshift=2.6cm]
       (ArbitrateExist)
       {Arbitrase LLM-as-a-Judge\\(Textbook Grounding)};
 
     % ==== FASE 2 — CABANG KANAN ====
-    \node[process, below right=1.5cm and 0.8cm of ReadExperts]
+    \node[process, below right=2.8cm and 2cm of ReadExperts]
       (CollectNew)
       {Ekstraksi Usulan\\Triple Baru\\(Missing Triples)};
     \node[condition] (IsAgreeNew) at (IsAgreeExist -| CollectNew)
       {Kedua pakar\\menambahkan triple?};
-    \node[process, text width=3cm, below=1.4cm of IsAgreeNew, xshift=-2.1cm]
+    \node[process, text width=3.3cm, below=1.4cm of IsAgreeNew, xshift=-2.6cm]
       (ArbitrateNew)
       {Arbitrase Validitas\\Usulan oleh LLM};
-    \node[process, text width=3cm, below=1.4cm of IsAgreeNew, xshift=2.1cm]
+    \node[process, text width=3.3cm, below=1.4cm of IsAgreeNew, xshift=2.6cm]
       (AcceptNew)
       {Integrasi Triple Baru\\secara Konsensus};
 
     % ==== FASE 2 — KONVERGENSI ====
     \node[db] (Checkpoint)
-      at ($(ArbitrateExist)!0.5!(ArbitrateNew) - (0,2cm)$)
+      at ($(ArbitrateExist)!0.5!(ArbitrateNew) - (0,2.6cm)$)
       {Penyimpanan Status\\Arbitrase\\(State Checkpointing)};
     \node[process, below=1.2cm of Checkpoint] (Combine)
       {Agregasi Keputusan Akhir};
