@@ -134,6 +134,18 @@
 % ============================================================
 \begin{document}
 
+% ── HALAMAN DEPAN (front matter, angka Romawi) ───────────────
+\pagenumbering{roman}
+\subfile{front-matter}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\clearpage
+
+% ── ISI (angka Arab) ─────────────────────────────────────────
+\pagenumbering{arabic}
+
 % ── BAB 1 ────────────────────────────────────────────────────
 \setcounter{chapter}{0}
 \subfile{bab-1}
