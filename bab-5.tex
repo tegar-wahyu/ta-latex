@@ -228,9 +228,10 @@ ADC                & 0{,}7384 & 1{,}4651 \\
 Performa sistem dalam mengekstrak dan memprediksi relasi dinilai langsung oleh
 panel enam pakar menggunakan instrumen KG Review App. Sesuai desain studi dua
 fase, hasil penilaian dipisahkan menjadi validasi intra-mapel (Fase 1) dan
-inter-mapel (Fase 2). Data dianalisis menggunakan metrik \textit{Precision},
-\textit{Recall}, dan F1-Score, serta uji kesepakatan Gwet's AC1, sebagaimana
-didefinisikan pada Subbab~\ref{subsec:validasi-manusia}.
+inter-mapel (Fase 2). Data dianalisis menggunakan metrik \textit{Fuzzy
+Precision} dan \textit{Recall} \parencite{harju_evaluating_2023}, F1-Score,
+serta uji kesepakatan Gwet's AC1, sebagaimana didefinisikan pada
+Subbab~\ref{subsec:validasi-manusia}.
 
 {\setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}
@@ -339,7 +340,7 @@ Fase 2 (panel diskusi) & 0{,}991 & — & — & — \\
 
   Sesuai dengan pilihan metodologi yang ditetapkan pada Bab 3 (dan latar belakang
   teoritis Gwet's AC1 pada Subbab~\ref{subsec:validasi-manusia}), uji kesepakatan antarpakar menggunakan
-  Gwet's AC1. Hasil pada Tabel~\ref{tab:ac1} menunjukkan variasi tingkat kesepakatan
+  Gwet's AC1 \parencite{gwet_handbook_2014}. Hasil pada Tabel~\ref{tab:ac1} menunjukkan variasi tingkat kesepakatan
   yang signifikan antar mata pelajaran. Biologi mencatatkan AC1 tertinggi dan
   tergolong sangat baik (0{,}931), mengindikasikan kesepakatan yang hampir
   sempurna antara kedua pakar. Hal ini konsisten dengan sifat konten Biologi
@@ -553,7 +554,8 @@ pada \textit{pipeline} ekstraksi LLM.
 \subsubsection{Kesalahan faktual agen biologis.} Pada Kimia, \textit{triple} mengenai produksi
 etanol menyatakan ``bakteri memfermentasi karbohidrat'' padahal seharusnya
 ``ragi (\textit{Saccharomyces cerevisiae})''. Kesalahan ini termasuk dalam kategori
-\textit{hallucination} faktual sebagaimana diidentifikasi pada Subbab~\ref{subsec:kg-ontologi}.
+\textit{hallucination} faktual \parencite{min_factscore_2023}, sebagaimana
+diidentifikasi pada Subbab~\ref{subsec:kg-ontologi}.
 
 \subsubsection{Pencampuran konsep teknis.} \textit{Triple} mengenai pemurnian tembaga menyatakan
 bahwa \textit{electroplating} digunakan untuk pemurnian tembaga, padahal proses yang
@@ -609,7 +611,8 @@ Distribusi jembatan lintas-disiplin sangat tidak merata. Pasangan
 Biologi--Kimia mendominasi (91 relasi, 78\%), diikuti Fisika--Kimia (21
 relasi, 18\%), sedangkan Biologi--Fisika nyaris tidak terhubung (5
 relasi, 4\%). Pola ini menempatkan Kimia sebagai poros (\textit{hub}) yang
-menjembatani kedua disiplin lain. Temuan ini konsisten secara pedagogis:
+menjembatani kedua disiplin lain. Temuan ini konsisten secara pedagogis
+\parencite{harvey_silos_2025, abdel-radi_interdisciplinary_2025}:
 tumpang-tindih molekuler dan biokimiawi (DNA, protein, enzim, reaksi
 redoks) membuat Biologi dan Kimia berbagi banyak konsep dasar, sementara
 keterkaitan Fisika sebagian besar terbatas pada elektrokimia (arus dan
