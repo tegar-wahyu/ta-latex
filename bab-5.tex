@@ -485,35 +485,54 @@ Terbalik), disusul \texttt{APLIKASI\_DARI} (73\%) dan PRASYARAT\_UNTUK (79\%),
 sementara tipe simetris \texttt{BERKAITAN\_DENGAN} dan \texttt{SAMA\_DENGAN} mencapai
 100\% karena arah tidak relevan secara semantik.
 
-Validitas relasi telah mendekati titik jenuh bahkan pada ambang permisif
-0{,}70. Dengan demikian pengetatan parameter (lihat
-Gambar~\ref{fig:param-sweep}) terutama menukar \textit{recall} (jumlah
-relasi yang ditemukan) dengan \textit{noise}, bukan meningkatkan presisi
-keberadaan relasi. Konfigurasi 0{,}75 dan 0{,}80 belum divalidasi pakar,
-sehingga klaim tentang kualitas di seluruh rentang parameter belum dapat
-ditegaskan. Kesalahan arah bukan persoalan ambang --- relasi terbalik
+Karena konfigurasi yang lebih ketat merupakan himpunan bagian dari
+konfigurasi paling permisif (Gambar~\ref{fig:nested-sweep}), \textit{edge}
+yang lolos pada $\tau$=0{,}75; 0{,}80; dan 0{,}85 sudah ikut
+divalidasi pakar pada survei Fase~2. Hasil agregat per
+konfigurasi disajikan pada Tabel~\ref{tab:validasi-sweep}.
+Validitas dan ketepatan tipe mencapai 100\% pada keempat subset,
+mengonfirmasi bahwa pengetatan ambang memang menyaring sisa
+\textit{noise} validitas pada $\tau$=0{,}70. Namun, ketepatan arah relasi
+tetap berada di rentang 71--86\% lintas-konfigurasi tanpa
+kecenderungan monotonik terhadap pengetatan parameter, menegaskan
+bahwa kesalahan arah bukan persoalan ambang --- relasi terbalik
 tetap merupakan pasangan berkemiripan tinggi yang valid secara semantik
 --- sehingga penanganannya memerlukan perbaikan pada \textit{prompt}
 klasifikasi atau kanonikalisasi arah pasca-proses, bukan penyetelan
 \textit{threshold}.
 
+{\setlength{\tabcolsep}{4pt}
 \begin{longtable}{@{}
   >{\raggedright\arraybackslash}p{0.20\linewidth}
-  >{\raggedright\arraybackslash}p{0.16\linewidth}
-  >{\raggedright\arraybackslash}p{0.16\linewidth}
-  >{\raggedright\arraybackslash}p{0.20\linewidth}
-  >{\raggedright\arraybackslash}p{0.20\linewidth}@{}}
-\caption{Hasil validasi pakar atas relasi lintas-buku per konfigurasi parameter.}
+  >{\centering\arraybackslash}p{0.10\linewidth}
+  >{\centering\arraybackslash}p{0.07\linewidth}
+  >{\centering\arraybackslash}p{0.16\linewidth}
+  >{\centering\arraybackslash}p{0.16\linewidth}
+  >{\centering\arraybackslash}p{0.16\linewidth}@{}}
+\caption{Hasil validasi pakar atas relasi lintas-buku per konfigurasi parameter.
+  Kolom $n$ menyatakan jumlah \textit{edge} yang lolos rekualifikasi atas
+  \textit{embedding} mutakhir; rinciannya dijelaskan pada catatan kaki di bawah.}
 \label{tab:validasi-sweep}\\
 \toprule
-\textbf{Konfigurasi} & \textbf{Edge dihasilkan} & \textbf{Validitas} & \textbf{Ketepatan tipe} & \textbf{Ketepatan arah} \\
+\textbf{Konfigurasi ($\tau$ / $k$)} & \textbf{Edge dihasilkan} & \textbf{$n$} & \textbf{Validitas} & \textbf{Ketepatan tipe} & \textbf{Ketepatan arah} \\
 \midrule
 \endhead
-0{,}70 / $k$=20 (disurvei, $n$=117) & 125 & 99{,}1\% & 98{,}3\% & 75{,}9\% \\
-0{,}75 / $k$=15 (belum divalidasi) & 72  & ---  & ---  & ---  \\
-0{,}80 / $k$=10 (belum divalidasi) & 42  & ---  & ---  & ---  \\
+0{,}70 / $k$=20 (paling permisif) & 125 & 101 & 100{,}0\% (101/101) & 100{,}0\% (101/101) & 75{,}2\% (76/101) \\
+0{,}75 / $k$=15                   & 72  & 72  & 100{,}0\% (72/72)   & 100{,}0\% (72/72)   & 75{,}0\% (54/72)  \\
+0{,}80 / $k$=10                   & 42  & 42  & 100{,}0\% (42/42)   & 100{,}0\% (42/42)   & 71{,}4\% (30/42)  \\
+0{,}85 / $k$=5 (paling ketat)     & 14  & 14  & 100{,}0\% (14/14)   & 100{,}0\% (14/14)   & 85{,}7\% (12/14)  \\
 \bottomrule
 \end{longtable}
+}
+
+\noindent\textit{Catatan.} Survei Fase~2 menilai 117 \textit{edge} hasil
+konfigurasi 0{,}70/$k$=20 produksi. Rekualifikasi atas \textit{embedding}
+mutakhir hanya mereproduksi 101 dari 117 \textit{edge} tersebut pada
+ambang $\tau\!\ge\!0{,}70 \wedge \text{rank}\!\le\!20$ (16 \textit{edge}
+tidak lagi lolos akibat \textit{drift} skor kemiripan); kolom $n$ pada
+Tabel~\ref{tab:validasi-sweep} mengacu pada subset yang tereplikasi ini.
+Angka agregat $n=117$ pada Subbab~\ref{subsec:validasi-pakar} tetap
+sahih sebagai laporan validasi produksi.
 
 % ──────────────────────────────────────────
 \subsection{Analisis Relasi Berpotensi False Positive}\label{subsubsec:false-positive}
