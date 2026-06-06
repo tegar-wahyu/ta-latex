@@ -145,9 +145,8 @@ terhubung oleh relasi lintas-buku.
   {\small (a) Pra-KGC}\\[0.8em]
   \includegraphics[width=0.82\linewidth]{figures/kg/post-kgc.png}\\[0.2em]
   {\small (b) Pasca-KGC}
-  \caption{Perbandingan topologi \textit{knowledge graph} sebelum (a) dan
-    sesudah (b) proses KGC. Penambahan relasi lintas-buku menjembatani
-    ketiga komunitas mata pelajaran yang semula terpisah.}
+  \caption{Perbandingan topologi \textit{knowledge graph} (a) sebelum dan
+    (b) sesudah KGC; relasi lintas-buku menjembatani ketiga komunitas mapel.}
   \label{fig:kg-topologi}
 \end{figure}
 
@@ -246,15 +245,11 @@ didefinisikan pada Subbab~\ref{subsec:validasi-manusia}.
   >{\centering\arraybackslash}p{0.065\linewidth}
   >{\centering\arraybackslash}p{0.07\linewidth}
   >{\centering\arraybackslash}p{0.07\linewidth}@{}}
-\caption{Hasil validasi Fase 1 (intra-mapel) per penilai dan konsensus final.
-  Baris ``Final'' merupakan label konsensus setelah resolusi ketidaksepakatan
-  via \textit{LLM-as-a-judge}. Presisi (P) dihitung sebagai \textit{Fuzzy
-  Precision} dengan bobot Benar $=1{,}0$, Parsial (Sebagian Benar) $=0{,}5$,
-  Kurang Konteks (KK) $=0{,}25$, dan Salah $=0$; seluruh \textit{triple} yang
-  ditinjau tetap masuk ke dalam penyebut presisi. 
-  Selisih jumlah ``Ditinjau'' antara baris Final dan baris penilai
-  berasal dari sejumlah kecil \textit{triple} yang dikonsolidasikan dan
-  dikeluarkan dari himpunan evaluasi saat penentuan konsensus.}
+\caption{Hasil validasi Fase~1 (intra-mapel) per penilai dan konsensus final.
+  P/R = \textit{Fuzzy Precision}/\textit{Recall} (bobot pada
+  Subbab~\ref{subsec:validasi-manusia}); semua \textit{triple} yang ditinjau,
+  termasuk berlabel Salah, masuk ke penyebut presisi. Jumlah pada baris Final
+  lebih kecil karena sebagian \textit{triple} dikonsolidasikan saat konsensus.}
 \label{tab:validasi-mapel}\\
 \toprule
 \textbf{Mapel} & \textbf{Penilai} & \textbf{Ditinjau} & \textbf{Benar} & \textbf{Parsial} & \textbf{KK} & \textbf{Salah} & \textbf{P} & \textbf{R} \\
@@ -304,7 +299,7 @@ Kimia   & 166 & 0{,}651 & 0{,}112 & \textbf{0{,}607} & Moderat \\
   >{\centering\arraybackslash}p{0.18\linewidth}
   >{\centering\arraybackslash}p{0.18\linewidth}
   >{\centering\arraybackslash}p{0.18\linewidth}@{}}
-\caption{Ringkasan metrik per fase evaluasi. Fase 2: kolom Precision melaporkan validitas relasi (116/117); Recall dan F1 tidak dapat dihitung (tidak ada data \textit{missing triples}); AC1 tidak berlaku (panel diskusi tunggal).}
+\caption{Ringkasan metrik per fase evaluasi. Untuk Fase~2, Precision $=$ validitas relasi, sedangkan Recall, F1, dan AC1 tidak berlaku (lihat Subbab~\ref{subsec:metrik-fase2}).}
 \label{tab:validasi-metrik}\\
 \toprule
 \textbf{Fase} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Gwet's AC1} \\
@@ -402,9 +397,8 @@ Subbab~\ref{subsubsec:kualitas}.
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\maxwidth]{images/media/image4.png}
-  \caption{Struktur bersarang (\textit{nested}) hasil \textit{parameter sweep} relasi
-    lintas-buku. Setiap konfigurasi yang lebih ketat merupakan himpunan bagian
-    (\textit{subset}) dari konfigurasi yang lebih permisif.}
+  \caption{Struktur bersarang (\textit{nested}) hasil \textit{parameter sweep}
+    relasi lintas-buku antar-konfigurasi.}
   \label{fig:nested-sweep}
 \end{figure}
 
@@ -607,9 +601,8 @@ per domain.
     \draw[line width=2pt,   draw=black!45] (kim) -- (fis) node[wlab]{21 (18\%)};
     \draw[line width=0.6pt, draw=black!45] (bio) -- (fis) node[wlab]{5 (4\%)};
   \end{tikzpicture}
-  \caption{\textit{Inter-domain bridge graph}. Setiap simpul adalah satu mata pelajaran;
-    ketebalan dan label sisi menyatakan jumlah relasi lintas-buku yang ditemukan
-    antar pasangan disiplin (dari 117 relasi yang disurvei pada konfigurasi final).}
+  \caption{\textit{Inter-domain bridge graph}: jumlah relasi lintas-buku antar
+    pasangan mata pelajaran (117 relasi disurvei; tebal sisi $\propto$ jumlah).}
   \label{fig:bridge-graph}
 \end{figure}
 
