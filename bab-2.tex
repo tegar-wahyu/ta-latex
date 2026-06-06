@@ -382,26 +382,20 @@ menggunakan tiga indikator utama.
 
 \subsubsection{Average Degree Centrality (ADC)}
 
-\textbf{Average Degree Centrality (ADC)} digunakan untuk mengukur
-rata-rata jumlah koneksi yang dimiliki oleh setiap \textit{node}
-(\textit{node}) dalam graf:
+\textbf{Average Degree Centrality (ADC)} mengukur rata-rata jumlah koneksi
+yang dimiliki setiap \textit{node} dalam graf:
 
 \[
   ADC = \frac{1}{|V|} \sum_{v \in V} \deg(v)
 \]
 
-\noindent dengan $|V|$ adalah jumlah \textit{node} dalam graf dan $\deg(v)$
-adalah jumlah relasi yang terhubung langsung ke \textit{node} $v$.
-
-Dalam penelitian ini, ADC dihitung dalam dua bentuk. ADC \textbf{graf
-keseluruhan} menghitung seluruh \textit{node} dan relasi dalam basis data graf,
-termasuk \textit{node} struktural seperti kelas, bab, subbab, konsep, serta
-target konsep. ADC \textbf{antar-konsep} hanya melibatkan \textit{node} konsep
-dan relasi langsung antar-konsep, merepresentasikan tingkat
-keterhubungan konseptual antarmateri sains tanpa dipengaruhi oleh \textit{node}
-struktural. ADC antar-konsep digunakan sebagai metrik utama untuk
-membandingkan graf sebelum dan sesudah proses KGC, karena lebih langsung
-mencerminkan perubahan interkoneksi materi Fisika, Kimia, dan Biologi.
+\noindent dengan $|V|$ adalah jumlah \textit{node} dan $\deg(v)$ jumlah relasi
+yang terhubung langsung ke \textit{node} $v$. Dalam penelitian ini, ADC dihitung
+pada \textbf{subgraf konsep} (hanya melibatkan \textit{node} \texttt{Concept}
+dan relasi langsung antar-konsep) agar mencerminkan tingkat keterhubungan
+konseptual antarmateri sains tanpa dipengaruhi \textit{node} struktural (kelas,
+bab, subbab). Metrik ini menjadi indikator utama perubahan interkoneksi materi
+Fisika, Kimia, dan Biologi sebelum dan sesudah KGC.
 
 \subsubsection{Modularity}
 

@@ -160,9 +160,8 @@ terhubung oleh relasi lintas-buku.
 \textbf{Metrik Struktural} & \textbf{Pre-KGC} & \textbf{Post-KGC} \\
 \midrule
 \endhead
-ADC (seluruh \textit{node})                & 2{,}4123 & 2{,}6970 \\
-ADC (Konsep-ke-Konsep)            & 0{,}7384 & 1{,}4651 \\
-\textit{Graph Density} (antar-konsep) & 0{,}00108 & 0{,}00214 \\
+ADC                & 0{,}7384 & 1{,}4651 \\
+\textit{Graph Density} & 0{,}00108 & 0{,}00214 \\
 \textit{Modularity}               & 0{,}8106 & 0{,}3732 \\
 \bottomrule
 \end{longtable}
@@ -170,13 +169,12 @@ ADC (Konsep-ke-Konsep)            & 0{,}7384 & 1{,}4651 \\
 \begin{enumerate}
   \item \textbf{Evaluasi \textit{Average Degree Centrality} (ADC) dan Kepadatan.}
 
-  Berdasarkan Tabel~\ref{tab:struktural}, ADC seluruh \textit{node} meningkat dari 2{,}41
-  (pre-KGC) menjadi 2{,}70 (post-KGC), kenaikan sebesar 11{,}8\%. Namun
-  peningkatan yang lebih signifikan terjadi pada ADC Konsep-ke-Konsep, yang hampir
-  berlipat ganda dari 0{,}74 menjadi 1{,}47 (+98{,}4\%). Peningkatan ini
-  mencerminkan bahwa \textit{pipeline} KGC berhasil menambahkan 125 relasi
-  lintas-buku baru yang secara langsung menghubungkan \textit{node} \texttt{Concept} antar-mapel,
-  meningkatkan kepadatan interkoneksi semantik yang sebelumnya tidak ada.
+  Berdasarkan Tabel~\ref{tab:struktural}, ADC antar-konsep hampir berlipat ganda
+  dari 0{,}74 (pre-KGC) menjadi 1{,}47 (post-KGC), naik 98{,}4\%. Peningkatan
+  tajam ini mencerminkan bahwa \textit{pipeline} KGC berhasil menambahkan 125
+  relasi lintas-buku baru yang secara langsung menghubungkan \textit{node}
+  \texttt{Concept} antar-mapel, meningkatkan kepadatan interkoneksi semantik
+  yang sebelumnya tidak ada.
   \textit{Graph Density} antar-konsep, yakni kepadatan relasi pada subgraf
   \texttt{Concept} (lihat Subbab~\ref{subsec:metrik-topologi}), juga meningkat
   secara proporsional dari 0{,}00108 menjadi 0{,}00214 (hampir dua kali lipat),
