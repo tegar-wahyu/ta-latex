@@ -4,9 +4,9 @@
 % ============================================================
 \documentclass[main]{subfiles}
 \begin{document}
-\begin{sidewaysfigure}
+\begin{figure}[p]
   \centering
-  \adjustbox{max width=\textheight, max totalheight=\textwidth, center}{%
+  \adjustbox{width=\linewidth, totalheight=0.9\textheight, keepaspectratio, center}{%
   \begin{tikzpicture}[
     node distance=1.2cm and 1.5cm,
     font=\small,
@@ -149,5 +149,5 @@
   }
   \caption{\textit{Pipeline} LLM-as-a-Judge}
   \label{fig:llm-judge}
-\end{sidewaysfigure}
+\end{figure}
 \end{document}
