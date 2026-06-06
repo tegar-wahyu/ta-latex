@@ -137,7 +137,12 @@
 
 % ── Bibliography (biblatex, author-year) ─────────────────────
 %  Two-author connector rendered as "dan"; 3+ authors as "et al."
-\usepackage{csquotes}   % recommended companion for babel + biblatex
+% csquotes has no quote style for Indonesian/bahasai; loaded bare it emits a
+% placeholder ("?") around every biblatex title via \mkbibquote. Force the
+% English style so titles get proper “ ” quotes. (\DeclareLanguageMapping above
+% only remaps biblatex localization strings, NOT csquotes — different package.)
+\usepackage[autostyle=false]{csquotes}   % recommended companion for babel + biblatex
+\setquotestyle{english}
 \usepackage[
   backend     = biber,
   style       = authoryear,
