@@ -50,7 +50,7 @@
 
     \begin{scope}[on background layer]
       \node[stagebox, fit=(Start)(Terminate)(ReadExperts),
-        label={[slabel]above:Fase 1: Inisialisasi Data}] (Fase1) {};
+        label={[slabel]above:Langkah 1: Inisialisasi Data}] (Fase1) {};
     \end{scope}
 
     % ==== FASE 2 — CABANG KIRI ====
@@ -60,10 +60,10 @@
       {Komparasi Opini Pakar\\(Inter-annotator Agreement)};
     \node[condition, below=0.8cm of CompareExist] (IsAgreeExist)
       {Terdapat konsensus\\pakar?};
-    \node[process, below left=1cm and -1.5cm of IsAgreeExist]
+    \node[process, text width=3cm, below=1.4cm of IsAgreeExist, xshift=-2.1cm]
       (AcceptExist)
       {Penerimaan Keputusan\\Konsensus};
-    \node[process, below right=1cm and -1.8cm of IsAgreeExist]
+    \node[process, text width=3cm, below=1.4cm of IsAgreeExist, xshift=2.1cm]
       (ArbitrateExist)
       {Arbitrase LLM-as-a-Judge\\(Textbook Grounding)};
 
@@ -73,10 +73,10 @@
       {Ekstraksi Usulan\\Triple Baru\\(Missing Triples)};
     \node[condition] (IsAgreeNew) at (IsAgreeExist -| CollectNew)
       {Kedua pakar\\menambahkan triple?};
-    \node[process, below left=1cm and -1.8cm of IsAgreeNew]
+    \node[process, text width=3cm, below=1.4cm of IsAgreeNew, xshift=-2.1cm]
       (ArbitrateNew)
       {Arbitrase Validitas\\Usulan oleh LLM};
-    \node[process, below right=1cm and -1.5cm of IsAgreeNew]
+    \node[process, text width=3cm, below=1.4cm of IsAgreeNew, xshift=2.1cm]
       (AcceptNew)
       {Integrasi Triple Baru\\secara Konsensus};
 
@@ -90,7 +90,7 @@
     \begin{scope}[on background layer]
       \node[stagebox,
         fit=(ContextDB)(CollectNew)(AcceptExist)(AcceptNew)(Combine),
-        label={[slabel]above:Fase 2: Evaluasi \& Arbitrase AI}]
+        label={[slabel]above:Langkah 2: Evaluasi \& Arbitrase AI}]
         (Fase2) {};
     \end{scope}
 
@@ -103,7 +103,7 @@
 
     \begin{scope}[on background layer]
       \node[stagebox, fit=(GoldStandard)(Done),
-        label={[slabel]above:Fase 3: Agregasi \& Penyelesaian}]
+        label={[slabel]above:Langkah 3: Agregasi \& Penyelesaian}]
         (Fase3) {};
     \end{scope}
 
