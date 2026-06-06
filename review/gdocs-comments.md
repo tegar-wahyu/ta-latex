@@ -1,0 +1,526 @@
+# Komentar Google Doc → Checklist Overleaf
+
+Total **146** komentar: **108 terbuka**, 38 selesai.
+
+> 27 komentar yang teksnya cocok dengan `.tex` saat ini sudah ditanam sebagai `\todo[inline]{}` (lihat margin PDF Overleaf + `\listoftodos`). Entri di bawah = arsip lengkap; yang belum tertanam menunggu teksnya dipindah ke LaTeX.
+
+> Tiap entri: anchor → komentar → balasan. ✓ = sudah inline.
+
+
+## Terbuka (108)
+
+- [ ] **1.** _Soros_ (2026-06-03)
+    - **Pada:** “Studer et al. (1998)”
+    - **Komentar:** Studer et al. (1998) â€” "formal, explicit specification of a shared conceptualization" https://iaoa.org/isc2012/docs/Guarino2009_What_is_an_Ontology.pdf
+- [ ] **2.** _Soros_ (2026-06-03)
+    - **Pada:** “Gruber (1993)”
+    - **Komentar:** Gruber (1993) â€” "explicit specification of a conceptualization" (the origin) https://tomgruber.org/writing/ontolingua-kaj-1993.pdf
+- [ ] **3.** _Tegar Wahyu_ (2026-06-03)
+    - **Pada:** “LINTAS_BUKU_SAMA_DENGAN: A dan B merujuk pada entitas semantik yang sama lintas buku (simetris). LINTAS_BUKU_APLIKASI_DARI: A adalah aplika…”
+    - **Komentar:** udah ada di bab 3
+- [ ] ✓ **4.** _Tegar Wahyu_ (2026-06-03)
+    - **Pada:** “MENDEFINISIKAN, MENYEBABKAN, MEMUNGKINKAN, MENGATUR, BAGIAN_DARI, TERDIRI_DARI, BERGANTUNG_PADA, BERINTERAKSI_DENGAN, BEREAKSI_DENGAN, MENG…”
+    - **Komentar:** udah ada di bab 3
+- [ ] ✓ **5.** _Soros_ (2026-06-02)
+    - **Pada:** “Bab ini memaparkan hasil penerapan kerangka kerja Knowledge Graph Completion berbasis Large Language Model yang telah dirancang pada bab se…”
+    - **Komentar:** TODO: Refine prologue
+- [ ] **6.** _Soros_ (2026-06-02)
+    - **Pada:** “Kurang Konteks (0.25): Representasi derajat keanggotaan yang lebih lemah. Informasi teknis ada, namun ketiadaan konteks membatasi fungsiona…”
+    - **Komentar:** Collapsible to Sebagian benar (0.5)
+- [ ] **7.** _Soros_ (2026-06-02)
+    - **Pada:** “Benar (1.0): Representasi keanggotaan penuh (full membership), di mana relasi 100% akurat secara keilmuan. Sebagian Benar (0.5): Representa…”
+    - **Komentar:** TODO: revisit https://arxiv.org/pdf/2309.13938
+- [ ] **8.** _Soros_ (2026-06-02)
+    - **Pada:** “0,75 / k15 (kanonik â€” menunggu sweep)”
+    - **Komentar:** TODO
+- [ ] **9.** _Soros_ (2026-06-02)
+    - **Pada:** “Prerequisite Chain Length Prerequisite Chain Length mengukur panjang rantai prasyarat maksimum dalam graf, yang menunjukkan kedalaman keter…”
+    - **Komentar:** revisit to check if this needs to drop or no
+- [ ] **10.** _Tegar Wahyu_ (2026-05-27)
+    - **Pada:** “Klasifikasi halaman TOC vs konten. Setelah deteksi awal, halaman yang terindikasi TOC digunakan untuk menyusun teks TOC gabungan. Halaman k…”
+    - **Komentar:** kyknya bisa diperjelas
+- [ ] **11.** _Fadrian Yhoga Pratama_ (2026-05-27)
+    - **Pada:** “memvisualisasikan interkoneksi antarmateri sains, sehingga mendukung pengembangan pendekatan pembelajaran lintas disiplin.”
+    - **Komentar:** holistik dan meaningful learning
+- [ ] **12.** _Fadrian Yhoga Pratama_ (2026-05-27)
+    - **Pada:** “generator”
+    - **Komentar:** generator
+- [ ] **13.** _Fadrian Yhoga Pratama_ (2026-05-27)
+    - **Pada:** “encoder”
+    - **Komentar:** encoder
+- [ ] **14.** _Soros_ (2026-05-27)
+    - **Pada:** “(tanpa anchor)”
+    - **Komentar:** Placeholder, visualisation of from first attempt
+- [ ] **15.** _Soros_ (2026-05-27)
+    - **Pada:** “(tanpa anchor)”
+    - **Komentar:** Placeholder, visualisation of from first attempt
+- [ ] **16.** _Soros_ (2026-05-27)
+    - **Pada:** “(tanpa anchor)”
+    - **Komentar:** Placeholder, visualisation of embedding graph from first attempt
+- [ ] **17.** _Tegar Wahyu_ (2026-05-27)
+    - **Pada:** “(1) concept embedding, (2) candidate retrieval via ANN, (3) candidate pruning, dan (4) relation classification via LLM.”
+    - **Komentar:** penjelsannya masukin ke bab 2
+- [ ] **18.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “-0,5”
+    - **Komentar:** perbaiki tulisan angkanya...
+- [ ] **19.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “V”
+    - **Komentar:** simbol ditulis dengan italic. Cek semua!
+      - ↳ _Fadrian Yhoga Pratama_: âœ…
+- [ ] **20.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “entitas”
+    - **Komentar:** sumber?
+- [ ] ✓ **21.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “kelengkapan”
+    - **Komentar:** kelengkapan intrinsik maksudnya apa?
+- [ ] ✓ **22.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “konsistensi”
+    - **Komentar:** konsistensi disini maksudnya apa?
+- [ ] **23.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Sangat”
+    - **Komentar:** hiperbola! hindari hiperbola pada tulisan ilmiah!
+- [ ] **24.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “memadukan pipeline KGC dengan kemampuan penalaran LLM melalui strategi In-Context Learning (ICL).”
+    - **Komentar:** penjelasan KICGPT dengan diagram akan membuat lebih jelas
+- [ ] ✓ **25.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “pendekatan statistik-simbolik yang deterministik dan kaku menuju kerangka berbasis model bahasa generatif yang jauh lebih adaptif dan conte…”
+    - **Komentar:** jelaskan dan beri contoh pendekatan yg deterministik dan kaku!
+      - ↳ _Fadrian Yhoga Pratama_: âœ…
+- [ ] ✓ **26.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “faktualitas”
+    - **Komentar:** what is the meaning of faktualitas here?
+- [ ] **27.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “di mana”
+    - **Komentar:** idem
+- [ ] **28.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Oleh karena itu, arsitektur KGC modern sering kali memanfaatkan teknologi basis data vektor atau algoritma Approximate Nearest Neighbor (AN…”
+    - **Komentar:** argumen untuk memunculkan ANN tidak clear! tidak ada transisi yang smooth dengan penjelasan sebelumnya! penjelasan yang runut dan sistematis adalah bukti kalau kamu paham!
+- [ ] **29.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “akan”
+    - **Komentar:** buang kata 'akan' kalau kamu memang sudah menguraikan pada bagian selanjutnya!
+      - ↳ _Fadrian Yhoga Pratama_: âœ…
+- [ ] **30.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “ini”
+    - **Komentar:** setelah penjelasan ini... ontologi yang kamu bangun seperti apa? belum ada penjelasannya!
+- [ ] **31.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Gambar 2.1 Spektrum formalitas ontologi”
+    - **Komentar:** tiba-tiba muncul gambar ini, tanpa dibahas. setiap gambar, tabel, harus dibahas di paragraf tertentu.
+- [ ] **32.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “esensial”
+    - **Komentar:** disini kamu perlu jelaskan ontologi itu apa. apa hubungannya dengan KG.
+      - ↳ _Fadrian Yhoga Pratama_: âœ…
+- [ ] **33.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “ontologi”
+    - **Komentar:** idem
+- [ ] **34.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Knowledge Graph (KG) atau graf pengetahuan telah menjadi standar fundamental dalam memodelkan representasi pengetahuan yang kompleks di era…”
+    - **Komentar:** deskripsi semacam ini harusnya muncul di bab 1. dan kamu perlu memberi contoh triple yang kamu buat sendiri, dengan domain yang sesuai pembahasan (mateir sains sma)
+      - ↳ _Fadrian Yhoga Pratama_: âœ…
+- [ ] **35.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “kebaruan (novelty)”
+    - **Komentar:** tidak perlu menjanjikan novelty! itu untuk S3
+      - ↳ _Fadrian Yhoga Pratama_: âœ…
+- [ ] ✓ **36.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Knowledge Graph (KG)”
+    - **Komentar:** kalau sudah pernah bikin singkatan KG nggak perlu ditulis berulang kali Knowldege Graph (KG)
+- [ ] ✓ **37.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Penelitian”
+    - **Komentar:** isi dari ruang lingkup juga perlu to the point. jangan mengulang yg sudah ditulis sebelumnya.
+      - ↳ _Fadrian Yhoga Pratama_: âœ…
+- [ ] **38.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “kelangkaan data (data sparsity)”
+    - **Komentar:** mengapa tema ini disebut sebagai kelangkaan data? data materi sma melimpah!
+- [ ] **39.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “sistem rekomendasi pembelajaran cerdas”
+    - **Komentar:** tiba2x muncul ini, tidak ada pembahasan apa2x sebelumnya. halu :-)
+      - ↳ _Fadrian Yhoga Pratama_: âœ…
+- [ ] ✓ **40.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Manfaat Penelitian”
+    - **Komentar:** isi dari subbab 1.4 tampak fully AI generated ya? agak bertele-tele, tidak to the point dan banyak mengulang hal-hal yang sudah disampaikan pada subbab sebelumnya. Tolong diperingkas dan tulis dengan bahasa sendiri!
+- [ ] **41.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Mengevaluasi Kualitas dan Akurasi Interkoneksi Graph Mengukur kinerja Knowledge Graph yang dihasilkan melalui dua pendekatan: Evaluasi Stru…”
+    - **Komentar:** ini satu nomor. perbaiki penulisan huruf kapital.
+      - ↳ _Siti Aminah_: apa itu akurasi pedagogis?Â kata terakhir kurang titik.
+      - ↳ _Fadrian Yhoga Pratama_: âœ…
+- [ ] ✓ **42.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Mengembangkan”
+    - **Komentar:** tujuan khusus no 2 dan 3 apa bedanya?
+      - ↳ _Fadrian Yhoga Pratama_: âœ…
+- [ ] **43.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “M”
+    - **Komentar:** tidak perlu kapital!
+- [ ] **44.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Mengonstruksi Knowledge Graph Awal dari Dokumen Teks Tidak Terstruktur Membangun ontologi dan Knowledge Graph d”
+    - **Komentar:** ini koq 2 kalimat. buat 1 saja: Membangun knowledge graph .... dan mengapa muncul ontologi disini?
+      - ↳ _Fadrian Yhoga Pratama_: âœ…
+- [ ] **45.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “memfasilitasi pembelajaran lintas disiplin yang lebih bermakna (meaningful learning).”
+    - **Komentar:** ini juga berat sekali! menuntut pembuktian proses pembelajaran lintas disiplin yang lebih bermaka dalam penelitian ini. are you sure?
+      - ↳ _Fadrian Yhoga Pratama_: âœ…
+- [ ] **46.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “secara holistik,”
+    - **Komentar:** terlalu berat istilah holistik ini. konsekuensinya harus mendefinisikan apa itu holistik dan nanti membuktikan bahwa KG hasil penelitian itu holistik. buang saja!
+      - ↳ _Fadrian Yhoga Pratama_: âœ…
+- [ ] **47.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “long-tail”
+    - **Komentar:** idem
+- [ ] **48.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “embedding”
+    - **Komentar:** kata-kata yang perlu italic tolong dicek semua
+- [ ] **49.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Meskipun”
+    - **Komentar:** paragraf baru
+- [ ] **50.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Lebih dari itu, untuk mengatasi kelangkaan informasi pada entitas long-tail, Wei et al. (2023) membuktikan bahwa integrasi LLM melalui stra…”
+    - **Komentar:** ini seperti bahasa terjemahan. paraphrase dengan bahasa kamu!
+      - ↳ _Siti Aminah_: selain itu, definisikan apa itu ICL
+- [ ] **51.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “encoder maupun generator”
+    - **Komentar:** tiba-tiba muncul encoder dan generator. jelaskan! Kalau kamu bisa menulis dengan runut, tandanya paham dengan baik!
+- [ ] **52.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “informasi struktural”
+    - **Komentar:** apa yang dimaksud informasi struktural?
+- [ ] **53.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “mengalami penurunan performa yang drastis saat berhadapan dengan long-tail entitie”
+    - **Komentar:** ini juga perlu dijelaskan lebih lanjut.
+- [ ] **54.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “amun, metode KGC konvensional yang berbasis embedding struktural terbukti tidak efektif dalam skenario ini”
+    - **Komentar:** jelaskan apa itu embedding struktural. dan adakah embedding yang lain? jelaskan dengan bahasa kamu.
+      - ↳ _Fadrian Yhoga Pratama_: âœ…
+- [ ] **55.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “tripel”
+    - **Komentar:** istilah tripel pertama muncul disini dan tidak dijelaskan lebih dulu. selain itu, apakah kata "tripel" dalam bhs Indonesia formal memang ada?
+      - ↳ _Fadrian Yhoga Pratama_: âœ…
+- [ ] **56.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “di mana”
+    - **Komentar:** hindari kata dimana dalam posisi seperti kata penghubung where dlm Bhs Inggris. Dimana dalam Bhs Indonesia adalah kata tanya tempat.
+      - ↳ _Fadrian Yhoga Pratama_: âœ…
+- [ ] ✓ **57.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Desain Kurikulum dan Pemetaan Konsep”
+    - **Komentar:** mengapa huruf depan tiap kata kapital?
+- [ ] **58.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “reasoning”
+    - **Komentar:** italic. periksa ulang semua kata perlu ditulis italic
+- [ ] **59.** _Soros_ (2026-05-25)
+    - **Pada:** “4.2.3.1”
+    - **Komentar:** nomor masih ngasal
+- [ ] **60.** _Soros_ (2026-05-25)
+    - **Pada:** “4.2.3.1 Kualitas Relasi Lintas-Buku yang Ditemukan”
+    - **Komentar:** integrate this subchapter with KGC triple rating results from expert validation step
+- [ ] **61.** _Soros_ (2026-05-25)
+    - **Pada:** “Parameter sweep: pengaruh threshold dan top-k terhadap jumlah relasi lintas-buku yang ditemukan.”
+    - **Komentar:** relocate image to other fitting subchapter later
+- [ ] **62.** _Soros_ (2026-05-25)
+    - **Pada:** “(tanpa anchor)”
+    - **Komentar:** â–Ž Gambar 4.x Proyeksi UMAP 2D dari 363 embedding konsep (d=3072, Gemini Embedding 001). Titik merah menunjukkan query â–Ž concept "DNA (Deoxyribonucleic Acid)" dari Biologi yang menemukan pasangan lintas-buku "DNA (Asam 2-Deoksiribonukleat)" â–Ž (sim=0.84) dan "Nukleotida" (sim=0.77) dari Kimia melalui pencarian ANN dengan threshold 0.75.
+- [ ] **63.** _Soros_ (2026-05-25)
+    - **Pada:** “(threshold = 0.80 untuk pencarian intra-buku; threshold = 0.75 untuk pencarian lintas-buku).”
+    - **Komentar:** Kita lintas buku doang
+- [ ] **64.** _Soros_ (2026-05-25)
+    - **Pada:** “(tanpa anchor)”
+    - **Komentar:** https://neo4j.com/developer/genai-ecosystem/vector-search/
+- [ ] **65.** _Tegar Wahyu_ (2026-05-22)
+    - **Pada:** “4.1.4 Graph Completion (Vector Index ANN &amp; LLM Classifier)”
+    - **Komentar:** fiksasi
+- [ ] **66.** _Soros Febriano_ (2026-05-21)
+    - **Pada:** “RETURN sum( (actualEdges / toFloat(m)) - (sumKOut * sumKIn / toFloat(m^2)) ) AS directedModularity”
+    - **Komentar:** render inside code block
+- [ ] **67.** _Soros Febriano_ (2026-05-21)
+    - **Pada:** “CALL (community) { MATCH (a)-[r]-&gt;(b) WHERE labels(a)[0] = community AND labels(b)[0] = community RETURN count(r) AS actualEdges }”
+    - **Komentar:** render inside code block
+- [ ] **68.** _Soros Febriano_ (2026-05-21)
+    - **Pada:** “WITH m, community, sum(kOut) AS sumKOut, sum(kIn) AS sumKIn”
+    - **Komentar:** render inside code block
+- [ ] **69.** _Soros Febriano_ (2026-05-21)
+    - **Pada:** “MATCH (n) WITH m, n, count { (n)--&gt;() } AS kOut, count { ()--&gt;(n) } AS kIn, labels(n)[0] AS community”
+    - **Komentar:** render inside code block
+- [ ] **70.** _Soros Febriano_ (2026-05-21)
+    - **Pada:** “MATCH ()-[r]-&gt;() WITH count(r) AS m”
+    - **Komentar:** render inside comment block
+- [ ] **71.** _Soros Febriano_ (2026-05-21)
+    - **Pada:** “Bab ini menyajikan studi literatur yang menjadi landasan konseptual bagi penelitian yang dilakukan. Landasan teori membahas berbagai konsep…”
+    - **Komentar:** Teks introduksi tiap Bab yang tidak hanya menjelaskan isi dari Bab
+- [ ] **72.** _Soros Febriano_ (2026-05-20)
+    - **Pada:** “Daftar Pustaka (Temp)”
+    - **Komentar:** Needs reference for:Â - Context engineering,Â - in-context learning,Â - LLM parameters (batch, top-k, temperature) - and other AI-related terms
+- [ ] **73.** _Soros Febriano_ (2026-05-20)
+    - **Pada:** “(tanpa anchor)”
+    - **Komentar:** Linked to excel, jadi datanya masih bisa berubah
+- [ ] **74.** _Soros Febriano_ (2026-05-20)
+    - **Pada:** “(tanpa anchor)”
+    - **Komentar:** Linked to excel, jadi datanya masih bisa berubah
+- [ ] **75.** _Soros_ (2026-05-15)
+    - **Pada:** “Struktur prompt. Prompt didefinisikan secara inline pada notebook TA_KG.ipynb (sel prompt_template) dan disusun ke dalam delapan blok teks:…”
+    - **Komentar:** @fadrian.yhoga@ui.ac.id verify prompt used
+- [ ] **76.** _Tegar Wahyu_ (2026-05-15)
+    - **Pada:** “Pengolahan Data (aggregation layer).”
+    - **Komentar:** rumus f1, precision, & recall udah ada di metrik
+- [ ] ✓ **77.** _Tegar Wahyu_ (2026-05-15)
+    - **Pada:** “Inter-rater Reliability.”
+    - **Komentar:** choen kappa masukin metrik
+- [ ] **78.** _Tegar Wahyu_ (2026-05-15)
+    - **Pada:** “Tahap 5 â€” Evaluation”
+    - **Komentar:** pindah cypher ke lampiran
+      - ↳ _Tegar Wahyu_: hapus rumus
+- [ ] **79.** _Soros_ (2026-05-15)
+    - **Pada:** “gaya Jaccard pada token bermakna (panjang â‰¥ 4, di luar stopword) antara (concept_name, description) dan kandidat dari buku lain. Pasangan…”
+    - **Komentar:** Explain
+- [ ] **80.** _Soros_ (2026-05-11)
+    - **Pada:** “â€””
+    - **Komentar:** Beware of em-dashes
+- [ ] **81.** _Soros_ (2026-05-11)
+    - **Pada:** “0,713”
+    - **Komentar:** Recheck numbers carefully
+- [ ] **82.** _Soros_ (2026-05-11)
+    - **Pada:** “Pembahasan Kualitatif Hasil kuantitatif pada &#167;4.1 menunjukkan presisi rata-rata 0,910 dan recall 0,713 untuk dataset Kimia. Namun, ang…”
+    - **Komentar:** Straight from Opus
+- [ ] **83.** _Tegar Wahyu_ (2026-05-08)
+    - **Pada:** “(tanpa anchor)”
+    - **Komentar:** https://excalidraw.com/#room=1226cda1a9a3895710ff,_Whv6jLBD6SA6O8bvjBlPA
+- [ ] **84.** _Soros_ (2026-05-06)
+    - **Pada:** “Hasil Validasi Pakar â€” Fase 1 Cakupan Pengumpulan Data Fase 1 Pengumpulan data validasi Fase 1 dilakukan pada periode 19â€“30 April 2026 …”
+    - **Komentar:** draf struktur hasil fase 1
+- [ ] **85.** _Soros_ (2026-05-04)
+    - **Pada:** “Tipe Relasi Semantik Sifat BAGIAN_DARI A merupakan bagian dari B (komposisi/hierarki) asimetris, hierarkis MENYEBABKAN A menyebabkan B (kau…”
+    - **Komentar:** RECHECK too
+- [ ] **86.** _Soros_ (2026-05-04)
+    - **Pada:** “Gambar 3.3 Skema Ontologi Knowledge Graph (dirender dari spesifikasi OWL/Turtle menggunakan WebVOWL)”
+    - **Komentar:** Need to make image numbering dynamic
+- [ ] **87.** _Soros_ (2026-05-04)
+    - **Pada:** “Skema knowledge graph yang digunakan dalam penelitian ini diformalkan sebagai ontologi OWL untuk memastikan konsistensi struktur dan vokabu…”
+    - **Komentar:** RECHECK
+- [ ] **88.** _Fadrian Yhoga Pratama 2206819395_ (2026-04-30)
+    - **Pada:** “. Ketiga, kriteria keahlian reviewer (guru SMA aktif pada mata pelajaran sains dengan pengalaman mengajar Kurikulum Merdeka Fase F) bersifa…”
+    - **Komentar:** tambahin anak kuliah dengan jurusan terkait dari top 3 univesitas (UI, ITB, UGM) (done) nanti hapus, ini buat fallback dulu
+- [ ] **89.** _Soros_ (2026-04-30)
+    - **Pada:** “Cohen&#39;s Kappa (Îº)”
+    - **Komentar:** Search paper
+- [ ] **90.** _Soros_ (2026-04-21)
+    - **Pada:** “chunk_size = 800, chunk_overlap = 200”
+    - **Komentar:** @All revisit parameter levels
+- [ ] **91.** _Fadrian Yhoga Pratama 2206819395_ (2026-04-21)
+    - **Pada:** “Model Embedding Model representasi vektor untuk perhitungan similaritas Gemini Embedding, text-embedding-3-small, multilingual-e5-small”
+    - **Komentar:** ini strategi siapa?
+      - ↳ _Soros_: awalnya rencananya gini sih
+- [ ] **92.** _Soros_ (2026-04-14)
+    - **Pada:** “1. Ontology Spectrum / Ontology Types Your thesis mentions ontologi berkali-kali as &quot;fondasi wajib&quot; but never actually explains w…”
+    - **Komentar:** Added, but need more elaboration
+- [ ] **93.** _Soros_ (2026-04-14)
+    - **Pada:** “2. Knowledge Graph vs Ontology â€” Distinction You use both terms but never formally distinguish them. Your thesis needs a paragraph that e…”
+    - **Komentar:** Iya nih lupa
+- [ ] **94.** _Soros_ (2026-04-12)
+    - **Pada:** “(tanpa anchor)”
+    - **Komentar:** https://www.researchgate.net/figure/The-spectrum-of-ontology-kinds_fig1_239443286
+      - ↳ _Soros_: Need better diagram, possibly representingÂ this: 1. Upper/top-level ontologies (very abstract) 2. Domain ontologies (Our case â€” science curriculum) 3. Application ontologies (task-specific)
+- [ ] ✓ **95.** _Soros_ (2026-04-12)
+    - **Pada:** “Analisis Data”
+    - **Komentar:** Cek
+- [ ] ✓ **96.** _Soros_ (2026-04-11)
+    - **Pada:** “Cara Pengumpulan Data”
+    - **Komentar:** cek
+- [ ] ✓ **97.** _Soros_ (2026-04-11)
+    - **Pada:** “Data Validasi Pakar”
+    - **Komentar:** Data B
+- [ ] ✓ **98.** _Soros_ (2026-04-11)
+    - **Pada:** “Data Primer Kurikulum”
+    - **Komentar:** Data A
+- [ ] **99.** _Soros_ (2026-04-01)
+    - **Pada:** “Q: how to determine the perfect similarity threshold, give me credible sources for me to write on my paper”
+    - **Komentar:** Need opinion @All
+- [ ] **100.** _Tegar Wahyu_ (2026-03-24)
+    - **Pada:** “Oleh karena itu, arsitektur KGC modern sering kali memanfaatkan teknologi basis data vektor atau algoritma Approximate Nearest Neighbor (AN…”
+    - **Komentar:** on hold
+      - ↳ _Tegar Wahyu_: https://medium.com/neo4j/building-a-similarity-graph-with-neo4js-approximate-nearest-neighbors-algorithm-1398583b280b
+      - ↳ _Soros_: https://dl.acm.org/doi/abs/10.1145/1963405.1963487
+      - ↳ _Soros_: https://neo4j.com/docs/graph-data-science/current/algorithms/knn/
+- [ ] **101.** _Soros_ (2026-03-24)
+    - **Pada:** “Target minimal: (70%).”
+    - **Komentar:** Butuh alasan buat angka ini kayaknya
+- [ ] ✓ **102.** _Soros_ (2026-03-19)
+    - **Pada:** “Metrik Struktural”
+    - **Komentar:** https://www.semantic-web-journal.net/system/files/swj3366.pdf
+- [ ] **103.** _Soros_ (2026-03-10)
+    - **Pada:** “Mihindukulasooriya, N., Tiwari, S., Enguix, C.F., Lata, K. (2023). Text2KGBench: A Benchmark for Ontology-Driven Knowledge Graph Generation…”
+    - **Komentar:** Gua
+- [ ] **104.** _Soros_ (2026-03-10)
+    - **Pada:** “Tabel 3.3 Definisi Operasional Istilah Penelitian Istilah Definisi Operasional Knowledge Graph Struktur data graf dalam Neo4j yang terdiri …”
+    - **Komentar:** *Tolong sesuaikan dengan ontologi baru yang final
+- [ ] ✓ **105.** _Soros Febriano 2206083445_ (2026-02-17)
+    - **Pada:** “siloed learning”
+    - **Komentar:** https://www.tieonline.com/article/3699/de-siloing-education
+- [ ] ✓ **106.** _Soros Febriano 2206083445_ (2026-02-17)
+    - **Pada:** “meaningful learning”
+    - **Komentar:** https://www.colegioeuropeodemadrid.com/en/blog/meaningful-learning-its-characteristics-and-benefits/
+- [ ] **107.** _Tegar Wahyu_ (2026-02-17)
+    - **Pada:** “Permendikbudristek Nomor 12 Tahun 2024 https://peraturan.go.id/files/permendikbudristek-no-12-tahun-2024.pdf”
+    - **Komentar:** benerin lagi nanti
+- [ ] **108.** _Soros Febriano 2206083445_ (2026-02-17)
+    - **Pada:** “Implementasi Kurikulum Merdeka di tingkat Sekolah Menengah Atas (SMA) menekankan pada pemahaman sains yang holistik dan interdisipliner. Na…”
+    - **Komentar:** [NEED REVIEW] - revisit all chapters done
+      - ↳ _Tegar Wahyu_: kan abstrak di akhir yak
+
+## Selesai (38)
+
+- [ ] **1.** _Tegar Wahyu_ (2026-06-02)
+    - **Pada:** “(tanpa anchor)”
+    - **Komentar:** tambahin paragraf penjelas singkat
+      - ↳ _Tegar Wahyu_: 
+- [ ] **2.** _Soros_ (2026-05-30)
+    - **Pada:** “seluruh konsep”
+    - **Komentar:** FIX: You can't claim "seluruh" â€” you never observed the full ideal set
+      - ↳ _Tegar Wahyu_: 
+- [ ] **3.** _Soros_ (2026-05-30)
+    - **Pada:** “Recall (Sensitivitas) Recall mengukur sejauh mana sistem berhasil menangkap seluruh konsep atau relasi penting yang diwajibkan dalam kuriku…”
+    - **Komentar:** The written Recall formula is mathematically broken (yields >1)
+      - ↳ _Tegar Wahyu_: add Konsep Sebagian Benar in denominator?
+      - ↳ _Soros_: Iya kurang Konsep Sebagian Benar
+      - ↳ _Soros_: Itu angka 0,5 juga gak jelas
+      - ↳ _Tegar Wahyu_: 
+- [ ] **4.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Di mana:”
+    - **Komentar:** jangan dimana dong.... bisa diganti "dengan"
+      - ↳ _Fadrian Yhoga Pratama_: âœ…
+      - ↳ _Tegar Wahyu_: 
+- [ ] **5.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Dengan reformulasi ini, tugas KGC yang semula berupa perhitungan jarak spasial ditransformasi menjadi tugas question answering berbasis pem…”
+    - **Komentar:** kaliamt panjang sekali!
+      - ↳ _Tegar Wahyu_: 
+- [ ] **6.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Hal ini berarti metode embedding konvensional kurang mampu menemukan dan melengkapi relasi-relasi interdisipliner yang justru paling bernil…”
+    - **Komentar:** sumber?
+      - ↳ _Tegar Wahyu_: 
+- [ ] **7.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Distribusi topik dalam kurikulum sains SMA bersifat asimetris, dimana konsep-konsep lintas disiplin yang menghubungkan fisika, kimia, dan b…”
+    - **Komentar:** panjang sekali kalimatnya!
+      - ↳ _Tegar Wahyu_: 
+- [ ] **8.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Keterbatasan pendekatan ini menjadi semakin menonjol ketika dihadapkan pada long-tail entities, yakni entitas atau sub-topik dengan tingkat…”
+    - **Komentar:** istilah long tail entities sudah dipakai berkali kali tapi ada penjelasan disini. penjelasannya harusnya ketika pertama kali dipakai.
+      - ↳ _Tegar Wahyu_: 
+- [ ] **9.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “Pada fase awal perkembangannya, KGC didominasi oleh metode berbasis embedding, representasi matematis entitas dan relasi dalam ruang vektor…”
+    - **Komentar:** sumber?
+      - ↳ _Tegar Wahyu_: 
+- [ ] **10.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “di mana”
+    - **Komentar:** idem tadi ya.
+      - ↳ _Siti Aminah_: 
+- [ ] ✓ **11.** _Siti Aminah_ (2026-05-26)
+    - **Pada:** “menjanjikan”
+    - **Komentar:** bahasa iklan nih, bukan bahasa ilmiah. dan jelaskan solusi apa yang dimaksud disini
+      - ↳ _Siti Aminah_: 
+- [ ] **12.** _Tegar Wahyu_ (2026-05-22)
+    - **Pada:** “dievaluasi menggunakan Fleiss&#39; Kappa karena relasi lintas disiplin (misal Fisika ke Biologi) divalidasi silang oleh gabungan lebih dari…”
+    - **Komentar:** yes/no
+      - ↳ _Fadrian Yhoga Pratama_: yes, tapi nanti siapin argumen buat kenapa pake metode beda kita harus
+      - ↳ _Tegar Wahyu_: ya itu karena triple kgc divalidasi > 2 pakar. kyk bio --> fis divalidasi sama 2 pakar bio + dua pakar fis jadi 4 pakar
+      - ↳ _Tegar Wahyu_: 
+- [ ] **13.** _Tegar Wahyu_ (2026-05-21)
+    - **Pada:** “Density”
+    - **Komentar:** checkpoint
+      - ↳ _Tegar Wahyu_: 
+- [ ] ✓ **14.** _Tegar Wahyu_ (2026-05-15)
+    - **Pada:** “Teknik Pengumpulan Data”
+    - **Komentar:** pindahin ke detail tahapan
+      - ↳ _Tegar Wahyu_: 
+- [ ] ✓ **15.** _Tegar Wahyu_ (2026-05-15)
+    - **Pada:** “Pengolahan Data”
+    - **Komentar:** udah ada di metrik
+      - ↳ _Tegar Wahyu_: 
+- [ ] ✓ **16.** _Tegar Wahyu_ (2026-05-15)
+    - **Pada:** “Alur pengumpulan data adalah sebagai berikut:”
+    - **Komentar:** alur masukin detail tahap
+      - ↳ _Tegar Wahyu_: 
+- [ ] ✓ **17.** _Tegar Wahyu_ (2026-05-15)
+    - **Pada:** “Jenis Data”
+    - **Komentar:** pindah ke 3.3
+      - ↳ _Tegar Wahyu_: 
+- [ ] **18.** _Tegar Wahyu_ (2026-05-15)
+    - **Pada:** “Data primer diperoleh dari repositori buku teks elektronik Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi (Kemendikbudristek) yan…”
+    - **Komentar:** delete
+      - ↳ _Tegar Wahyu_: 
+- [ ] **19.** _Tegar Wahyu_ (2026-04-30)
+    - **Pada:** “dua tahap yang menggabungkan retriever berbasis vektor (embedding similarity) dan re-ranker berbasis LLM.”
+    - **Komentar:** verify
+      - ↳ _Tegar Wahyu_: 
+- [ ] **20.** _Tegar Wahyu_ (2026-04-30)
+    - **Pada:** “(cont. Kappa untuk uji reliabilitas)”
+    - **Komentar:** adjust sesuai jumlah pakar
+      - ↳ _Tegar Wahyu_: 
+- [ ] ✓ **21.** _Tegar Wahyu_ (2026-04-30)
+    - **Pada:** “Empty SubKonsep Rate”
+    - **Komentar:** kasih penjelasan rumus @soros21febriano@gmail.com
+      - ↳ _Tegar Wahyu_: 
+- [ ] **22.** _Soros_ (2026-04-22)
+    - **Pada:** “Sampel Dokumen”
+    - **Komentar:** *renamed from Sampel
+      - ↳ _Tegar Wahyu_: 
+- [ ] **23.** _Soros_ (2026-04-22)
+    - **Pada:** “Populasi Dokumen”
+    - **Komentar:** * renamed form Populasi
+      - ↳ _Tegar Wahyu_: 
+- [ ] **24.** _Soros_ (2026-04-17)
+    - **Pada:** “Tahap 1 â€” Ingestion Tahap ini bertanggung jawab untuk mengekstrak konten dari file PDF buku teks. Proses meliputi: Ekstraksi teks menggun…”
+    - **Komentar:** needs: 1. Pipeline Graph 2. Source 3. Better formatting
+      - ↳ _Fadrian Yhoga Pratama_: 
+- [ ] **25.** _Soros_ (2026-04-12)
+    - **Pada:** “(tanpa anchor)”
+    - **Komentar:** Masih butuh penyempurnaan: https://excalidraw.com/#json=e_16YPOJi9SwiLZHBYSjz,2i__OQVR7bLKaR5bn7r2Ug
+      - ↳ _Fadrian Yhoga Pratama 2206819395_: download yang terbaru, ubah model
+      - ↳ _Tegar Wahyu_: 
+- [ ] **26.** _Soros_ (2026-04-11)
+    - **Pada:** “Data rating dari setiap reviewer diolah untuk menghasilkan dua metrik evaluasi per bab per mata pelajaran: - Precision = (Benar + Sebagian …”
+    - **Komentar:** refine
+      - ↳ _Tegar Wahyu_: 
+- [ ] **27.** _Soros_ (2026-03-24)
+    - **Pada:** “Target minimal untuk metrik ini adalah (90%).”
+    - **Komentar:** Butuh alasan buat angka ini kayaknya
+      - ↳ _Tegar Wahyu_: kasih penjelasan rumusnya @soros21febriano@gmail.com
+      - ↳ _Tegar Wahyu_: 
+- [ ] **28.** _Tegar Wahyu_ (2026-03-24)
+    - **Pada:** “(Cont. Spektrum Ontologi yang Kita Gunakan?)”
+    - **Komentar:** note
+      - ↳ _Soros_: 
+- [ ] ✓ **29.** _Soros_ (2026-03-22)
+    - **Pada:** “Validasi Manusia (Human Evaluation)”
+    - **Komentar:** Kurang metrik: 5-point Likert scale
+      - ↳ _Tegar Wahyu_: 
+- [ ] **30.** _Soros_ (2026-03-19)
+    - **Pada:** “O(n^2),”
+    - **Komentar:** format
+      - ↳ _Tegar Wahyu_: 
+- [ ] **31.** _Soros_ (2026-03-17)
+    - **Pada:** “Average Degree Centrality (ADC) Average Degree Centrality mengukur rata-rata jumlah koneksi (derajat) per node dalam graf. Semakin tinggi n…”
+    - **Komentar:** Render and verify
+      - ↳ _Tegar Wahyu_: 
+- [ ] **32.** _Soros_ (2026-03-17)
+    - **Pada:** “Metrik Evaluasi Knowledge Graph Evaluasi kualitas Knowledge Graph (KG) merupakan aspek krusial dalam mengukur keberhasilan sistem ekstraksi…”
+    - **Komentar:** Butuh Sumber
+      - ↳ _Tegar Wahyu_: 
+- [ ] **33.** _Soros_ (2026-03-10)
+    - **Pada:** “Lokasi dan Waktu Penelitian Penelitian ini dilaksanakan secara online tanpa melibatkan studi lapangan. Data primer diperoleh dari repositor…”
+    - **Komentar:** *Need Refinement
+      - ↳ _Tegar Wahyu_: 
+- [ ] **34.** _Soros_ (2026-03-10)
+    - **Pada:** “Penelitian ini menggunakan pendekatan Design Science Research (DSR) dengan fokus pada pengembangan purwarupa sistem Knowledge Graph Complet…”
+    - **Komentar:** *Need verification
+      - ↳ _Soros_: Cek Design Science Research (DSR) apaan:Â https://www.researchgate.net/publication/345430098_Introduction_to_Design_Science_Research
+      - ↳ _Tegar Wahyu_: 
+- [ ] **35.** _Soros Febriano 2206083445_ (2026-02-24)
+    - **Pada:** “Kurikulum Merdeka dan Pembelajaran Sains Terintegrasi”
+    - **Komentar:** Tolong review subbabnya ya
+      - ↳ _Tegar Wahyu_: 
+- [ ] ✓ **36.** _Tegar Wahyu_ (2026-02-17)
+    - **Pada:** “Masalah Fragmentasi Kurikulum: Bagaimana memetakan interkoneksi semantik antar-materi sains (Fisika, Kimia, Biologi) pada Fase F Kurikulum …”
+    - **Komentar:** review setelah update
+      - ↳ _Tegar Wahyu_: 
+- [ ] **37.** _Soros Febriano 2206083445_ (2026-02-17)
+    - **Pada:** “Luaran Sistem: Luaran penelitian berupa purwarupa (prototype) struktur data Knowledge Graph dan visualisasinya. Pengembangan antarmuka peng…”
+    - **Komentar:** help review
+      - ↳ _Fadrian Yhoga Pratama 2206819395_: kalau dari timeline notion kita buat full stack app nya ros di bulan terakhir
+      - ↳ _Tegar Wahyu_: 
+- [ ] **38.** _Soros Febriano 2206083445_ (2026-02-17)
+    - **Pada:** “Fase F (Kelas XI dan XII SMA)”
+    - **Komentar:** tolong review
+      - ↳ _Fadrian Yhoga Pratama 2206819395_: bener ros, fase E (kelas X) itu masih digabung di IPA
+      - ↳ _Soros Febriano 2206083445_: 
