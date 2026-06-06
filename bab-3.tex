@@ -278,8 +278,8 @@ yang dikembangkan khusus untuk penelitian ini (arsitektur teknis dibahas
 pada Subbab~\ref{sec:instrumen-evaluasi}). Data penilaian akhir, yakni label
 konsensus setelah resolusi ketidaksepakatan, menjadi
 \textit{ground truth} untuk menghitung Fuzzy Precision, Recall, dan
-F1-Score, serta menguji tingkat kesepakatan antarpenilai menggunakan
-Gwet's AC1.
+F1-Score, serta menguji tingkat kesepakatan antarpenilai pada Fase~1
+menggunakan Gwet's AC1.
 
 % ============================================================
 \section{Subjek Evaluasi dan Panel Pakar}
@@ -297,11 +297,12 @@ pelajaran). Jumlah dan kriteria pakar ditetapkan secara
 berikut.
 
 \begin{enumerate}
-  \item \textbf{Pengukuran Reliabilitas Multi-Rater:} Skema evaluasi
-        interkoneksi lintas-disiplin mengharuskan satu \textit{triple}
-        divalidasi oleh dua pakar independen, yang memungkinkan
-        perhitungan \textit{inter-rater agreement} menggunakan Gwet's
-        AC1.
+  \item \textbf{Pengukuran Reliabilitas Multi-Rater:} Pada Fase~1, skema
+        evaluasi mengharuskan satu \textit{triple} dalam-buku divalidasi
+        oleh dua pakar independen, yang memungkinkan perhitungan
+        \textit{inter-rater agreement} menggunakan Gwet's AC1. Adapun
+        \textit{edge} lintas-mapel pada Fase~2 dinilai bersama melalui
+        diskusi panel.
 
   \item \textbf{Beban Kognitif Penilaian:} Jumlah \textit{triple}
         relasi per mata pelajaran yang dihasilkan sistem melebihi 100
@@ -592,7 +593,7 @@ kurikulum (dimanfaatkan pada Tahap~1--4) dan data validasi pakar (digunakan
 pada kedua fase evaluasi). Karena sumber dan cakupan kedua jenis data tersebut
 telah dibahas, bagian ini berfokus pada teknik pengumpulan data validasi pakar.
 
-\subsection{Cara Pengumpulan Data}
+\subsection{Cara Pengumpulan Data}\label{subsec:cara-pengumpulan}
 
 Pengumpulan data validasi dilakukan melalui aplikasi web KG Review App
 yang dikembangkan menggunakan Next.js, dipilih karena kemampuannya
@@ -625,9 +626,12 @@ diolah melalui tahapan berikut.
 
 \begin{enumerate}
   \item \textbf{Ekspor dan Agregasi:} Data penilaian diekspor dari Redis
-        dalam format JSON per mata pelajaran. Setiap \textit{triple}
-        memiliki dua rating yang diagregasi menjadi satu label konsensus
-        berdasarkan kerangka evaluasi \textit{hybrid}.
+        dalam format JSON per mata pelajaran. Pada Fase~1, setiap
+        \textit{triple} dalam-buku memiliki dua rating independen yang
+        diagregasi menjadi satu label konsensus berdasarkan kerangka
+        evaluasi \textit{hybrid}. Pada Fase~2, setiap \textit{edge}
+        \textit{completion} lintas-mapel dinilai melalui diskusi panel
+        sehingga langsung menghasilkan satu label konsensus tunggal.
 
   \item \textbf{Penetapan \textit{Ground Truth}:} Jika dua
         \textit{reviewer} sepakat, label konsensus digunakan langsung.
@@ -640,9 +644,13 @@ diolah melalui tahapan berikut.
         formulasi pada Subbab~\ref{subsec:validasi-manusia}, dengan label konsensus sebagai
         \textit{ground truth}.
 
-  \item \textbf{Perhitungan Kesepakatan:} Gwet's AC1 dihitung untuk
-        mengukur konsistensi \textit{inter-rater} sebelum konsolidasi,
-        menggunakan label mentah dari masing-masing \textit{reviewer}.
+  \item \textbf{Perhitungan Kesepakatan:} Gwet's AC1 dihitung khusus pada
+        Fase~1, mengukur konsistensi \textit{inter-rater} sebelum
+        konsolidasi menggunakan label mentah dari masing-masing
+        \textit{reviewer}. \textit{Edge} \textit{completion} pada Fase~2
+        dinilai melalui diskusi panel sehingga hanya menghasilkan satu
+        label konsensus dan tidak masuk dalam perhitungan
+        \textit{inter-rater agreement}.
 
   \item \textbf{Kalkulasi Metrik Struktural:} Metrik topologi graf
         (ADC, \textit{Density}, \textit{Modularity}, TRR, DC) dihitung
@@ -677,8 +685,8 @@ lanjut melalui validasi pakar.
 
 Analisis ini menafsirkan akurasi dan kelengkapan relasi yang dihasilkan KG
 dari metrik validasi pakar yang dihitung pada Subbab~\ref{sec:pengolahan-data}.
-Nilai Gwet's AC1 dibaca sebagai keandalan kesepakatan antarpakar, sedangkan
-Fuzzy Precision, Recall, dan F1-Score \parencite{harju_evaluating_2023}
+Nilai Gwet's AC1 dibaca sebagai keandalan kesepakatan antarpakar pada Fase~1,
+sedangkan Fuzzy Precision, Recall, dan F1-Score \parencite{harju_evaluating_2023}
 ditafsirkan sebagai kinerja sistem terhadap \textit{ground truth} konsensus
 (Subbab~\ref{subsec:validasi-manusia}).
 

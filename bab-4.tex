@@ -433,20 +433,19 @@ berbasis \textit{Cypher} dan aplikasi web KG Review App untuk validasi pakar.
   \textit{Graph Data Science} (GDS), sehingga hasil perhitungannya dapat langsung
   diintegrasikan ke dalam \textit{dashboard} visualisasi.
 
-  \item \textbf{Arsitektur KG Review App (Next.js dan Redis).}
+  \item \textbf{Arsitektur KG Review App.}
 
-  Untuk memfasilitasi evaluasi intrinsik oleh pakar (\textit{human evaluation}),
-  dikembangkan sebuah aplikasi web kustom bernama KG Review App. Dari sisi
-  \textit{frontend}, aplikasi ini dibangun menggunakan kerangka kerja Next.js berbasis
-  React yang mendukung \textit{server-side rendering}. Pada sisi \textit{backend}, \textit{route
-  handler} Next.js dikonfigurasi untuk berkomunikasi secara asinkron dengan
-  Redis yang bertindak sebagai \textit{primary key-value store}.
-
-  Redis dipilih karena latensinya yang sangat rendah, menjadikannya ideal untuk
-  menangani \textit{payload} berukuran kecil seperti \textit{rating} per-triple dan
-  fitur \textit{auto-save}; setiap aksi penilaian pakar memicu \textit{debounced
-  auto-save} otomatis sehingga sesi dapat dilanjutkan tanpa arsitektur relasional
-  yang kompleks. Skema kunci dan diagram arsitektur lengkap disajikan di Lampiran B.
+  Untuk memfasilitasi validasi oleh pakar (\textit{human evaluation}),
+  dikembangkan aplikasi web kustom bernama KG Review App, sebuah aplikasi
+  berbasis Next.js dengan penyimpanan Redis. Dua fitur instrumen yang menjamin
+  kualitas pengumpulan data ditekankan di sini. \emph{Pertama}, \textit{auto-save}
+  otomatis pada setiap aksi penilaian sehingga sesi panjang (lebih dari 100
+  \textit{triple} per mata pelajaran) dapat dilanjutkan tanpa kehilangan data.
+  \emph{Kedua}, penyajian \textit{triple} secara \textit{score-blind} dan
+  acak (skor kepercayaan model disembunyikan dan urutan diacak) agar penilaian
+  pakar tidak ter-\textit{anchor} pada keyakinan model. Rincian \textit{tech stack},
+  skema kunci Redis, dan diagram arsitektur lengkap disajikan di
+  Lampiran B; tampilan antarmukanya ditunjukkan pada Gambar~\ref{fig:admin-dashboard}.
 
   \begin{figure}[htbp]
     \centering
@@ -457,34 +456,23 @@ berbasis \textit{Cypher} dan aplikasi web KG Review App untuk validasi pakar.
 
   \item \textbf{Role-Based Access Control (RBAC).}
 
-  Untuk menjaga integritas proses validasi, arsitektur aplikasi menerapkan
-  kontrol akses berbasis peran (RBAC) dengan dua peran utama:
-  \begin{enumerate}
-    \item Admin: memiliki hak akses manajerial untuk mengunggah berkas JSON
-      hasil ekstraksi (Tahap 3 dan 4) ke dalam sistem per mata pelajaran,
-      mengatur status publikasi graf, serta melihat panel metrik (tinjauan
-      respons) dari para pakar dalam mode \textit{read-only}.
-    \item Expert (Reviewer): memiliki hak akses \textit{read-write} operasional untuk
-      memberikan \textit{rating} pada setiap triple relasi yang disajikan, serta
-      memberikan masukan jika ada triple esensial yang hilang (\textit{missing
-      triples}) melalui form penambahan.
-  \end{enumerate}
+  Untuk menjaga integritas proses validasi, aplikasi menerapkan kontrol akses
+  berbasis peran dengan dua peran utama: \textbf{Admin}, yang memegang hak
+  \textit{management} (mengunggah graf, mengatur publikasi, serta meninjau metrik respons
+  pakar secara \textit{read-only}); dan \textbf{Expert} (\textit{reviewer}), yang
+  memegang hak \textit{read-write} untuk menilai relasi dan mengusulkan
+  \textit{missing triples}. Prosedur penilaian per peran telah dirinci pada
+  Subbab~\ref{subsec:cara-pengumpulan}.
 
   \item \textbf{Desain Skema Validasi Dua Fase.}
 
-  Mengingat kompleksitas ontologi kurikulum sains, antarmuka evaluasi untuk
-  Expert dirancang menggunakan skema studi dua fase guna menurunkan beban
-  kognitif (\textit{cognitive load}) penilai:
-  \begin{enumerate}
-    \item \textbf{Fase 1 (Validasi Intra-Mapel):} pakar mengevaluasi kualitas
-      hierarki dan relasi semantik secara spesifik di dalam lingkup satu
-      mata pelajaran (misalnya Fisika saja).
-    \item \textbf{Fase 2 (Interkoneksi Antar-Mapel):} pakar secara khusus
-      mengevaluasi validitas relasi implisit lintas-disiplin sains
-      (berlabel \texttt{LINTAS\_BUKU\_*}) yang diprediksi oleh LLM pada tahap
-      \textit{completion}. Pemisahan fase ini memungkinkan analisis data yang lebih
-      terisolasi dan akurat.
-  \end{enumerate}
+  Antarmuka evaluasi untuk Expert mengikuti dua fase validasi yang telah
+  didefinisikan pada Subbab~\ref{subsec:kerangka-konsep} (Fase~1 intra-mapel dan
+  Fase~2 antar-mapel). Pemisahan ini diterapkan pada tingkat antarmuka untuk
+  menurunkan beban kognitif (\textit{cognitive load}) penilai: pakar menilai
+  relasi dalam satu mata pelajaran terlebih dahulu sebelum mengevaluasi relasi
+  lintas-disiplin, sehingga setiap fase dapat dianalisis secara lebih terisolasi
+  dan akurat.
 \end{enumerate}
 
 % ============================================================
@@ -828,8 +816,8 @@ pada tiga aspek terpisah: (1) \textit{validitas} --- apakah konsep A dan B
 benar-benar berkaitan (Ya/Tidak); (2) \textit{ketepatan tipe} --- apakah
 label relasi yang diusulkan tepat (Benar/Salah); dan (3) \textit{ketepatan
 arah} --- apakah arah relasi A$\to$B sudah benar (Benar/Terbalik/NA untuk
-relasi simetris). Penyajian bersifat \textit{score-blind} dan acak agar
-pakar tidak ter-\textit{anchor} pada skor kepercayaan model.
+relasi simetris). Penyajian dilakukan secara \textit{score-blind} dan acak
+sesuai desain instrumen (Subbab~\ref{sec:instrumen-evaluasi}).
 
 Validasi dilakukan melalui diskusi panel atas seluruh 117 relasi kandidat
 pada konfigurasi final ($\tau$=0{,}70, $k$=20). Hasil per-aspek menunjukkan
