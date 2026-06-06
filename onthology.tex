@@ -90,6 +90,14 @@
       LINTAS\_BUKU\_BERKAITAN\_DENGAN
     };
 
+  % Klamp bounding box ke konten (target di kiri-atas, grade di
+  % kanan-bawah) agar titik kontrol loop tidak menggelembungkan kotak.
+  \pgfresetboundingbox
+  \useasboundingbox
+    ([xshift=-3mm,yshift=-3mm]target.west |- grade.south)
+    rectangle
+    ([xshift=3mm,yshift=3mm]grade.east |- target.north);
+
 \end{tikzpicture}%
   }
   \caption{Topologi Ontologi: Relasi Struktural, Pedagogis, dan Semantik.}
