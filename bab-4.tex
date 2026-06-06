@@ -342,15 +342,21 @@ dan (4) \textit{relation classification} via LLM.
 
   Untuk tiap \textit{query} \textit{node} $q$, dijalankan pencarian ANN pada Neo4j Vector Index
   yang mengembalikan top-$k$ \textit{node} terdekat berdasarkan \textit{cosine similarity}
-  (didefinisikan pada Subbab~\ref{subsec:kgc}). Sebaran nilai \textit{cosine
-  similarity} antar pasangan konsep pada indeks ditunjukkan pada
-  Gambar~\ref{fig:cosine-scatter}.
+  (didefinisikan pada Subbab~\ref{subsec:kgc}). Proyeksi 2D
+  (UMAP) atas seluruh konsep antar mapel ditunjukkan pada
+  Gambar~\ref{fig:concept-umap}: konsep diwarnai berdasarkan mata
+  pelajaran sehingga pengelompokan intra-mapel tampak jelas, sementara
+  pasangan lintas-buku yang lolos ambang $\tau$ ditandai sebagai \textit{edge}
+  ANN.
 
   \begin{figure}[htbp]
     \centering
     \includegraphics[width=\maxwidth]{images/media/image5.png}
-    \caption{Sebaran \textit{cosine similarity} antar pasangan konsep pada indeks vektor.}
-    \label{fig:cosine-scatter}
+    \caption{Proyeksi 2D (UMAP) sebaran konsep antar mapel pada indeks
+      vektor; titik diwarnai per mata pelajaran, \textit{edge} ANN ditampilkan
+      untuk pasangan lintas-buku dengan \textit{cosine similarity} $\geq \tau$
+      ($\tau = 0{,}70$).}
+    \label{fig:concept-umap}
   \end{figure}
 
   Hanya pasangan dengan $\text{sim} \geq \tau$ (dengan $\tau = 0{,}70$ untuk
