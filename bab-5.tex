@@ -674,6 +674,74 @@ lebih rendah daripada tipe lain. Rata-rata \textit{confidence} 0{,}50 untuk 21
 spesifik menunjukkan bahwa LLM memilih label ini ketika tidak yakin terhadap
 arah atau tipe relasi yang lebih spesifik.
 
+Perlu dicatat bahwa asumsi $\hat{y}_i = 1{,}0$ (``keyakinan penuh
+model'') pada Subbab~\ref{subsec:validasi-manusia} merupakan
+penyederhanaan aljabar khusus untuk rumus \textit{Fuzzy Precision}
+\parencite{harju_evaluating_2023}, di mana skor keanggotaan LLM
+diabaikan sehingga irisan \textit{fuzzy} mengikuti penilaian pakar.
+Di sini sebaliknya, variansi \textit{confidence} aktual yang
+dikeluarkan LLM dianalisis sebagai sinyal pemisah relasi
+\textit{fallback} dari relasi spesifik --- konsisten dengan
+peran \textit{confidence} sebagai heuristik penyaring (lihat
+Tabel~\ref{tab:definisi} dan Lampiran~\ref{lamp:prompt-completion}),
+bukan probabilitas terkalibrasi.
+
+Untuk menguji apakah \textit{confidence} LLM merupakan sinyal yang
+dapat diandalkan, dilakukan analisis kalibrasi \textit{post hoc}
+dengan mem-\textit{bucket} 117 \textit{edge} tersurvei berdasarkan
+nilai \textit{confidence} dan menghitung tingkat persetujuan pakar
+per \textit{bucket}. Hasilnya disajikan pada
+Tabel~\ref{tab:conf-kalibrasi}.
+
+\begin{longtable}{@{}
+  >{\raggedright\arraybackslash}p{0.18\linewidth}
+  >{\centering\arraybackslash}p{0.07\linewidth}
+  >{\centering\arraybackslash}p{0.20\linewidth}
+  >{\centering\arraybackslash}p{0.22\linewidth}
+  >{\centering\arraybackslash}p{0.25\linewidth}@{}}
+\caption{Kalibrasi \textit{post hoc} \textit{confidence} LLM terhadap
+  penilaian pakar (Fase~2, $n = 117$). Penyebut \textit{ketepatan arah}
+  mengecualikan satu \textit{edge} ber-status NA (LB085).}
+\label{tab:conf-kalibrasi}\\
+\toprule
+\textbf{Bucket \textit{conf}} & \textbf{$n$} & \textbf{Validitas} & \textbf{Ketepatan tipe} & \textbf{Ketepatan arah} \\
+\midrule
+\endhead
+$< 0{,}5$        &  0 & --- & --- & --- \\
+$[0{,}5;\;0{,}7)$ &  1 & 1/1 = 100\% & 1/1 = 100\% & 1/1 = 100\% \\
+$[0{,}7;\;0{,}85)$ & 27 & 26/27 = 96{,}3\% & 27/27 = 100\% & 20/26 = 76{,}9\% \\
+$[0{,}85;\;1{,}0)$ & 69 & 69/69 = 100\% & 67/69 = 97{,}1\% & 52/69 = 75{,}4\% \\
+$= 1{,}0$        & 20 & 20/20 = 100\% & 20/20 = 100\% & 15/20 = 75{,}0\% \\
+\bottomrule
+\end{longtable}
+
+Pola kalibrasi pada Tabel~\ref{tab:conf-kalibrasi} memberikan tiga
+implikasi metodologis. \textbf{Pertama}, \textit{confidence}
+memiliki sinyal yang cukup baik untuk \textit{keberadaan} relasi:
+validitas pakar mencapai 100\% pada seluruh \textit{bucket}
+$\geq 0{,}85$ dan tetap di atas 96\% pada \textit{bucket}
+$[0{,}7;\;0{,}85)$, sehingga ambang gerbang produksi
+(\textsc{berkaitan\_dengan} $\geq 0{,}85$; tipe lain $\geq 0{,}70$;
+lihat Lampiran~\ref{lamp:prompt-completion}) terbukti efektif
+menyaring \textit{false positive}. \textbf{Kedua}, sinyal terhadap
+\textit{ketepatan tipe} hanya marginal: kenaikan dari 97{,}1\%
+pada \textit{bucket} $[0{,}85;\;1{,}0)$ ke 100\% pada
+\textit{bucket} $\text{conf}=1{,}0$ kecil dan terjadi pada $n$ kecil.
+\textbf{Ketiga}, dan terpenting, \textit{confidence} \textbf{tidak}
+memberikan sinyal terhadap \textit{ketepatan arah}: ketepatan
+arah stagnan pada 75--77\% di seluruh \textit{bucket}
+\textit{confidence} ($n > 1$), termasuk pada \textit{bucket}
+$\text{conf} = 1{,}0$ yang masih meleset arah pada 5 dari 20
+\textit{edge}. Temuan ini secara empiris memperkuat argumen pada
+Subbab~\ref{subsubsec:kualitas} bahwa kesalahan arah bukan
+persoalan ambang \textit{confidence} --- LLM dapat sepenuhnya yakin
+sambil tetap salah arah, sehingga penanganannya memerlukan
+perbaikan pada \textit{prompt} klasifikasi atau kanonikalisasi arah
+pasca-proses, bukan penyetelan \textit{threshold}. Pola ini juga
+sejalan dengan literatur yang menunjukkan keterbatasan kalibrasi
+\textit{self-reported confidence} pada model bahasa
+\parencite{kadavath_language_2022}.
+
 % ──────────────────────────────────────────
 \subsection{Analisis Pola Kesalahan Ekstraksi (Error Analysis)}\label{subsubsec:error-analysis}
 % ──────────────────────────────────────────
