@@ -102,6 +102,34 @@
   topsep     = 2pt
 }
 
+% ── Code listings (prompt templates & Cypher) ───────────────
+\usepackage{listings}
+\lstdefinestyle{promptbox}{
+  basicstyle      = \ttfamily\scriptsize,
+  breaklines      = true,
+  breakatwhitespace = false,
+  columns         = fullflexible,
+  keepspaces      = true,
+  showstringspaces = false,
+  frame           = single,
+  framesep        = 5pt,
+  xleftmargin     = 10pt,
+  xrightmargin    = 2pt,
+  aboveskip       = 8pt,
+  belowskip       = 8pt,
+}
+\lstdefinestyle{cypherbox}{
+  style        = promptbox,
+  morecomment  = [l]{//},
+  morecomment  = [s]{/*}{*/},
+  keywordstyle = \bfseries,
+  morekeywords = {MATCH,OPTIONAL,MERGE,CREATE,CONSTRAINT,FOR,REQUIRE,IS,UNIQUE,
+                  WHERE,WITH,RETURN,SET,UNWIND,CALL,YIELD,DETACH,DELETE,AS,AND,
+                  OR,NOT,IN,CASE,WHEN,THEN,ELSE,END,STARTS,CONTAINS,ORDER,BY,
+                  LIMIT,DISTINCT,coalesce,count,sum,avg,collect,toFloat,length,
+                  nodes,type,trim,labels,relationshipTypes},
+}
+
 % ── Hyperlinks ───────────────────────────────────────────────
 \usepackage[hidelinks]{hyperref}
 
@@ -174,5 +202,9 @@
 \subfile{lampiran-a}
 \subfile{lampiran-b}
 \subfile{lampiran-c}
+\subfile{lampiran-d}
+\subfile{lampiran-e}
+\subfile{lampiran-f}
+\subfile{lampiran-g}
 
 \end{document}

@@ -212,7 +212,9 @@ pembatasan konsep pada materi pokok.
   $\to$ Konsep); filter konten (abaikan daftar isi, soal latihan, glosarium,
   rangkuman, dan elemen administratif); serta aturan ekstraksi konsep (delapan
   aturan), termasuk batas 3--5 konsep per subbab, deskripsi 1--2 kalimat ilmiah,
-  dan validasi materi pokok Buku Guru.
+  dan validasi materi pokok Buku Guru. Templat \textit{prompt} ekstraksi
+  selengkapnya (delapan blok dan empat blok dinamisnya) disajikan pada
+  Lampiran~\ref{lamp:prompt-ekstraksi}.
 
   \item \textbf{Vokabulari relasi.}
 
@@ -295,7 +297,9 @@ tiga-\textit{pass} agar konsisten secara referensial dan idempoten.
   \item \textbf{Sifat idempoten.} Seluruh \textit{pass} menggunakan
   \texttt{MERGE} sehingga eksekusi ulang \textit{notebook} tidak menggandakan
   \textit{node} maupun \textit{edge}. Properti ini penting agar eksperimen dapat
-  dijalankan secara iteratif tanpa mengotori graf yang telah terbentuk.
+  dijalankan secara iteratif tanpa mengotori graf yang telah terbentuk. Kueri
+  Cypher untuk ketiga \textit{pass} konstruksi beserta \textit{constraint}
+  keunikannya disajikan pada Lampiran~\ref{lamp:cypher-konstruksi}.
 \end{enumerate}
 
 % ============================================================
@@ -394,7 +398,10 @@ dan (4) \textit{relation classification} via LLM.
   Klasifikasi dilengkapi skor \textit{confidence} dalam rentang $[0, 1]$. Hasil
   klasifikasi di-\textit{cache} dengan kunci yang tidak bergantung pada urutan
   pasangan dan menyertakan \textit{sidik jari} (\textit{hash}) konteks graf,
-  sehingga perubahan graf otomatis memicu klasifikasi ulang.
+  sehingga perubahan graf otomatis memicu klasifikasi ulang. Templat
+  \textit{system prompt} dan \textit{user prompt} klasifikasi relasi lintas-buku
+  beserta skema respons JSON-nya diberikan pada
+  Lampiran~\ref{lamp:prompt-completion}.
 
 
   \item \textbf{Edge writeback.}
