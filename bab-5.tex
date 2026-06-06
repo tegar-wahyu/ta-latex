@@ -224,12 +224,12 @@ ADC (Konsep-ke-Konsep)            & 0{,}7384 & 1{,}4651 \\
 \section{Hasil Validasi Pakar}\label{subsec:validasi-pakar}
 % ────────────────────────────────────────────────────────────
 
-Evaluasi performa sistem dalam mengekstrak dan memprediksi relasi
-dievaluasi langsung oleh panel pakar (sebanyak 6 \textit{reviewer}) menggunakan
-instrumen KG Review App. Berdasarkan desain studi dua fase, hasil
-evaluasi dipisahkan menjadi evaluasi intra-mapel (Fase 1) dan inter-mapel
-(Fase 2). Data dianalisis menggunakan metrik \textit{Precision}, \textit{Recall},
-F1-Score, dan uji kesepakatan Gwet's AC1 yang merujuk pada Subbab~\ref{subsec:validasi-manusia}.
+Performa sistem dalam mengekstrak dan memprediksi relasi dinilai langsung oleh
+panel enam pakar menggunakan instrumen KG Review App. Sesuai desain studi dua
+fase, hasil penilaian dipisahkan menjadi validasi intra-mapel (Fase 1) dan
+inter-mapel (Fase 2). Data dianalisis menggunakan metrik \textit{Precision},
+\textit{Recall}, dan F1-Score, serta uji kesepakatan Gwet's AC1, sebagaimana
+didefinisikan pada Subbab~\ref{subsec:validasi-manusia}.
 
 {\setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}
@@ -316,19 +316,19 @@ Fase 2 (panel diskusi) & 0{,}991 & — & — & — \\
 
   Secara agregat pada Fase 1, \textit{precision} konsensus final mencapai 93{,}6\%
   dan \textit{recall} 91{,}7\%, menghasilkan F1-Score sebesar 92{,}6\%
-  (Tabel~\ref{tab:validasi-mapel}). Nilai ini menunjukkan kemampuan dasar LLM
-  dalam mengekstrak relasi intra-mapel yang sangat baik. Biologi mencatatkan F1
-  tertinggi (0{,}973), diikuti Fisika (0{,}937), dan Kimia (0{,}866).
+  (Tabel~\ref{tab:validasi-mapel}). Nilai ini menunjukkan bahwa
+  kemampuan LLM dalam mengekstraksi relasi intra-mapel tergolong baik. Biologi
+  mencatatkan F1 tertinggi (0{,}973), diikuti Fisika (0{,}937), dan Kimia (0{,}866).
 
-  Terdapat selisih \textit{precision} vs.\ \textit{recall} sebesar 1{,}9 poin persentase
-  pada level keseluruhan. Selisih ini membesar pada Fisika (gap P--R sebesar 3{,}1\%)
-  akibat 10 \textit{missing triples} yang tersisa pada konsensus final, dan
-  pada Kimia Expert 2 (gap 10{,}9\%) akibat 29 \textit{missing triples} yang dilaporkan, 
-  menandakan bahwa sistem masih luput mengekstrak sejumlah relasi kuantitatif dan 
-  terminologi proses yang esensial. Diskrepansi tinggi antara Expert 1 dan Expert 2 
-  Fisika (P: 0{,}997 vs.\ 0{,}870; R: 0{,}938 vs.\ 0{,}881) 
-  mencerminkan perbedaan standar penilaian antar penilai--- suatu temuan yang dikonfirmasi 
-  oleh nilai AC1 Fisika yang moderat (0{,}754).
+  Pada level keseluruhan, \textit{precision} melampaui \textit{recall} sebesar
+  1{,}9 poin. Selisih ini melebar pada konsensus final Fisika (3{,}1 poin) dan
+  terutama pada penilaian Expert 2 Kimia (10{,}9 poin). Penyebab utamanya adalah
+  \textit{missing triples} (10 relasi pada konsensus final Fisika dan 29 relasi
+  yang dilaporkan Expert 2 Kimia) yang menandakan sistem masih luput
+  mengekstrak sebagian relasi kuantitatif dan terminologi proses yang esensial.
+  Perbedaan standar antar penilai juga tampak jelas pada Fisika (Expert 1 vs.\
+  Expert 2: P 0{,}997 vs.\ 0{,}870; R 0{,}938 vs.\ 0{,}881), dan dikonfirmasi
+  oleh nilai AC1 Fisika yang tergolong moderat (0{,}754).
 
   Pada Fase 2 (inter-mapel), validasi panel diskusi atas 117 relasi lintas-buku
   menghasilkan \textit{precision} (validitas) 99{,}1\% (116/117 relasi dikonfirmasi
@@ -342,11 +342,9 @@ Fase 2 (panel diskusi) & 0{,}991 & — & — & — \\
 
   Sesuai dengan pilihan metodologi yang ditetapkan pada Bab 3 (dan latar belakang
   teoritis Gwet's AC1 pada Subbab~\ref{subsec:validasi-manusia}), uji kesepakatan antar-pakar menggunakan
-  Gwet's AC1 --- bukan Cohen's $\kappa$ --- karena AC1 lebih robust terhadap
-  paradoks kappa (\textit{kappa paradox}) pada distribusi penilaian yang tidak
-  seimbang. Hasil pada Tabel~\ref{tab:ac1} menunjukkan variasi tingkat kesepakatan
+  Gwet's AC1. Hasil pada Tabel~\ref{tab:ac1} menunjukkan variasi tingkat kesepakatan
   yang signifikan antar mata pelajaran. Biologi mencatatkan AC1 tertinggi (0{,}931),
-  mengindikasikan kesepakatan yang hampir sempurna antara kedua penilai ---
+  mengindikasikan kesepakatan yang hampir sempurna antara kedua penilai. Hal ini
   konsisten dengan sifat konten Biologi yang lebih deskriptif dan definitif. Fisika
   memperoleh AC1 substansial (0{,}754), sedangkan Kimia mencatatkan AC1 moderat
   (0{,}607). Nilai AC1 Kimia yang paling rendah selaras dengan pola kesalahan pada
