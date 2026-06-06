@@ -388,20 +388,36 @@ Gambar~\ref{fig:pipeline}.
 \subsection{Skema Ontologi Knowledge Graph}
 \label{subsec:skema-ontologi}
 
-Ontologi dalam penelitian ini diposisikan sebagai model konseptual yang bersifat
-\textit{deskriptif}, bukan \textit{preskriptif}: ontologi
-merepresentasikan konsep-konsep sains beserta keterkaitan semantiknya
-sebagaimana tersaji dalam buku teks Kurikulum Merdeka, tanpa
-merekomendasikan urutan maupun jalur belajar tertentu. Relasi berarah
-seperti \texttt{PRASYARAT\_UNTUK} karenanya dimaknai sebagai
-ketergantungan konseptual yang terkandung dalam materi---bukan sebagai
-anjuran kronologis bagi siswa.
+Ontologi dalam penelitian ini diposisikan menggunakan dua tier
+representasi yang dibedakan secara metodologis. \textbf{Tier
+ekstraksi} menghasilkan model konseptual \textit{deskriptif} atas isi
+buku teks Kurikulum Merdeka---konsep, sub-bab, bab, beserta
+keterkaitan semantik antar-konsep dalam satu buku---sejalan dengan
+tradisi \textit{domain module} pada generasi otomatis dari buku teks
+elektronik. \textbf{Tier completion} menghasilkan kandidat
+keterkaitan lintas-buku (\texttt{LINTAS\_BUKU\_*}) sebagai inferensi
+pedagogis dangkal di atas Tier ekstraksi: sistem mengusulkan jembatan
+antar-disiplin yang dapat dipertimbangkan, tetapi tidak menetapkannya
+sebagai jalur belajar.
+
+Predikat ``dangkal'' bersifat operasional. Sistem hanya menginferensi
+keterkaitan \textit{single-hop} antar dua konsep di buku berbeda;
+sistem tidak menyusun urutan multi-langkah lintas-disiplin, tidak
+memodelkan tingkat kognitif Bloom, tidak mengintegrasikan keadaan
+pembelajar (\textit{learner state}), dan tidak menghasilkan jalur
+belajar terkomposisi. Dengan demikian, relasi berarah seperti
+\texttt{PRASYARAT\_UNTUK} pada Tier ekstraksi dimaknai sebagai
+ketergantungan konseptual yang terdokumentasikan dalam materi sumber
+(keputusan editorial penyusun buku), sedangkan relasi pada Tier
+completion dimaknai sebagai sugesti per-pasangan yang dapat
+dipertimbangkan secara lokal---bukan anjuran kronologis bagi siswa.
 
 Skema \textit{knowledge graph} diformalkan sebagai ontologi OWL untuk
-memastikan konsistensi struktur dan vokabulari relasi antarstahap
+memastikan konsistensi struktur dan vokabulari relasi antartahap
 \textit{pipeline} (ekstraksi, konstruksi, dan \textit{completion}).
-Topologi keseluruhan---mencakup relasi struktural, pedagogis, dan
-semantik---diilustrasikan pada Gambar~\ref{fig:ontologi}.
+Topologi keseluruhan---mencakup relasi struktural, sekuensial
+editorial, dan semantik (Tier ekstraksi) beserta inferensi lintas-buku
+(Tier completion)---diilustrasikan pada Gambar~\ref{fig:ontologi}.
 
 \subfile{onthology}
 

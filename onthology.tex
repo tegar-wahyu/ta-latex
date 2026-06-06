@@ -98,7 +98,9 @@
 
 \end{tikzpicture}%
   }
-  \caption{Topologi Ontologi: Relasi Struktural, Pedagogis, dan Semantik.}
+  \caption{Topologi Ontologi: Relasi Struktural, Sekuensial Editorial,
+    dan Semantik (Tier Ekstraksi) Beserta Inferensi Lintas-Buku
+    (Tier Completion).}
   \label{fig:ontologi}
 \end{figure}
 
@@ -130,9 +132,13 @@ Tabel~\ref{tab:kelas-ontologi}.
         Bersifat \textit{shared} lintas-dokumen melalui
         \texttt{MERGE} berdasarkan nama. \\
     \texttt{ConceptTarget}
-      & \textit{Forward reference}: konsep target yang ada sementara
-        sebelum diekstrak penuh; dipromosi menjadi \texttt{Concept}
-        pada iterasi berikutnya. \\
+      & Konsep yang disebutkan sebagai target relasi dalam ekstraksi
+        per-bab tetapi tidak terdapat dalam himpunan konsep
+        terekstrak resmi pada bab tersebut. Direpresentasikan sebagai
+        kelas terpisah agar struktur relasi tetap terjaga tanpa
+        mencampurkan \textit{stub} tak-terdeskripsikan ke dalam
+        populasi \texttt{Concept} formal. Tidak diembed dan tidak
+        dijaring oleh tahap \textit{completion} lintas-buku. \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -148,10 +154,16 @@ Hierarki struktural mengikuti rantai:
 
 \noindent dihubungkan oleh relasi \texttt{HAS\_CHAPTER},
 \texttt{HAS\_SUBTOPIC}, dan \texttt{HAS\_CONCEPT}. Pada tingkat
-\texttt{Chapter}, terdapat tiga relasi pedagogis tambahan:
-\texttt{NEXT\_CHAPTER} (urutan baca), \texttt{PRASYARAT}
-(ketergantungan pembelajaran), dan \texttt{MEMPERSIAPKAN} (kebalikan
-logis dari \texttt{PRASYARAT}).
+\texttt{Chapter} terdapat tiga relasi tambahan yang merekam
+organisasi materi sebagaimana disusun dalam buku teks:
+\texttt{NEXT\_CHAPTER} (urutan penyajian antar-bab),
+\texttt{PRASYARAT} (ketergantungan konseptual antar-bab yang
+terdokumentasikan dalam teks sumber, baik melalui rujukan langsung
+maupun urutan penyajian materi), dan \texttt{MEMPERSIAPKAN} (relasi
+inversi dari \texttt{PRASYARAT}). Ketiga relasi ini mengkodekan
+keputusan editorial penyusun buku---yakni bagaimana materi disajikan
+dalam sumber---dan bukan urutan pembelajaran yang dipreskripsikan
+bagi siswa.
 
 Vokabulari relasi semantik antarkonsep dibagi menjadi dua kelompok
 dengan peran berbeda dalam \textit{pipeline}:
@@ -231,6 +243,11 @@ dengan peran berbeda dalam \textit{pipeline}:
     & asimetris \\
 \end{longtable}
 
+\noindent\textit{Catatan.} Relasi berarah dalam-buku menyatakan
+ketergantungan atau keterkaitan konseptual sebagaimana tersaji dalam
+materi sumber, bukan urutan pembelajaran yang dipreskripsikan bagi
+siswa.
+
 \begin{longtable}{@{}p{0.38\linewidth}p{0.42\linewidth}p{0.13\linewidth}@{}}
   \caption{Vokabulari Relasi Lintas-Buku (Lintas-Disiplin)}
   \label{tab:relasi-lintas-buku}\\
@@ -262,6 +279,12 @@ dengan peran berbeda dalam \textit{pipeline}:
     & Berkaitan secara umum (\textit{fallback})
     & simetris \\
 \end{longtable}
+
+\noindent\textit{Catatan.} Relasi \texttt{LINTAS\_BUKU\_*} merupakan
+kandidat keterkaitan pedagogis \textit{single-hop} yang diusulkan
+oleh tier \textit{completion} sebagai inferensi dangkal di atas Tier
+ekstraksi. Setiap edge dinilai per-pasangan; sistem tidak
+mengkomposisi edge-edge ini menjadi jalur belajar.
 
 \subsubsection*{Properti Data (Data Properties)}
 
