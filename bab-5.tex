@@ -232,7 +232,12 @@ ADC                & 0{,}7384 & 1{,}4651 \\
 Performa sistem dalam mengekstrak dan memprediksi relasi dinilai langsung oleh
 panel enam pakar menggunakan instrumen KG Review App. Sesuai desain studi dua
 fase, hasil penilaian dipisahkan menjadi validasi intra-mapel (Fase 1) dan
-inter-mapel (Fase 2). Data dianalisis menggunakan metrik \textit{Fuzzy
+inter-mapel (Fase 2). Pada Fase~1, setiap mata pelajaran dinilai oleh dua
+pakar independen yang dilabeli ``Expert~1'' dan ``Expert~2'' pada
+Tabel~\ref{tab:validasi-mapel}; label ini bersifat lokal per mata
+pelajaran, sehingga ``Expert~1 Biologi'' bukan orang yang sama dengan
+``Expert~1 Fisika'' maupun ``Expert~1 Kimia''---total enam pakar berbeda
+terlibat. Data dianalisis menggunakan metrik \textit{Fuzzy
 Precision} dan \textit{Recall} \parencite{harju_evaluating_2023}, F1-Score,
 serta uji kesepakatan Gwet's AC1, sebagaimana didefinisikan pada
 Subbab~\ref{subsec:validasi-manusia}.
@@ -547,22 +552,31 @@ himpunan bagian dari subset 117 yang sama, sehingga
 \subsection{Analisis Relasi Berpotensi False Positive}\label{subsubsec:false-positive}
 % ──────────────────────────────────────────
 
-Sebanyak 9 \textit{edge} memiliki \textit{confidence} $< 0{,}7$---seluruhnya
-bertipe \texttt{BERKAITAN\_DENGAN}, dengan 8 di antaranya bahkan $< 0{,}5$---yang
-mengindikasikan potensi \textit{false positive}. Beberapa contoh relasi
-berkeyakinan rendah hingga sedang ($\leq 0{,}7$) yang patut dicermati:
+Sebanyak 9 \textit{edge} memiliki \textit{confidence} LLM $< 0{,}7$,
+seluruhnya bertipe \texttt{BERKAITAN\_DENGAN}; 8 di antaranya bahkan
+$< 0{,}5$ dan telah dikecualikan dari survei utama
+(Subbab~\ref{subsec:kualitatif}), sehingga hanya 1 \textit{edge} dengan
+$0{,}5\!\le\!\text{conf}\!<\!0{,}7$ yang masuk ke validasi pakar. Daftar
+berikut menampilkan beberapa contoh berkeyakinan rendah hingga sedang
+($\leq 0{,}7$) yang patut dicermati, mencakup baik \textit{edge} yang
+dikecualikan maupun yang divalidasi pakar, serta satu \textit{edge}
+\texttt{MEMPERDALAM} pada batas $\text{conf}\!=\!0{,}7$ sebagai pembanding:
 
 \begin{itemize}
   \item Gerbang Logika Dasar [Fisika] $\leftrightarrow$ Notasi Sel Standar [Kimia]:
-    \texttt{BERKAITAN\_DENGAN} (conf = 0{,}2). Relasi ini merupakan contoh \textit{false
-    positive} --- kemiripan \textit{embedding} terjadi akibat kedua konsep sama-sama
-    melibatkan notasi simbolik, namun tidak ada hubungan kurikuler bermakna.
+    \texttt{BERKAITAN\_DENGAN} (conf = 0{,}2; \textbf{dikecualikan dari survei}).
+    Relasi ini merupakan contoh \textit{false positive} --- kemiripan
+    \textit{embedding} terjadi akibat kedua konsep sama-sama melibatkan
+    notasi simbolik, namun tidak ada hubungan kurikuler bermakna.
   \item Klasifikasi Semikonduktor [Fisika] $\leftrightarrow$ Polimer Anorganik [Kimia]:
-    \texttt{BERKAITAN\_DENGAN} (conf = 0{,}6). Kemiripan kemungkinan didorong oleh kesamaan
-    konteks material/bahan, namun hubungan substantifnya lemah.
+    \texttt{BERKAITAN\_DENGAN} (conf = 0{,}6; \textbf{divalidasi pakar}).
+    Kemiripan kemungkinan didorong oleh kesamaan konteks material/bahan,
+    namun hubungan substantifnya lemah.
   \item Efek Fotolistrik [Fisika] $\to$ Fotosintesis [Biologi]:
-    \texttt{MEMPERDALAM} (conf = 0{,}7). Keduanya melibatkan interaksi foton dengan
-    materi, tetapi mekanisme dan konteksnya berbeda jauh.
+    \texttt{MEMPERDALAM} (conf = 0{,}7; \textbf{divalidasi pakar}; di luar 9
+    \textit{edge} \texttt{BERKAITAN\_DENGAN} di atas, ditampilkan sebagai
+    pembanding tipe non-\textit{fallback}). Keduanya melibatkan interaksi
+    foton dengan materi, tetapi mekanisme dan konteksnya berbeda jauh.
 \end{itemize}
 
 Temuan ini mengonfirmasi peran penting label \textit{fallback} \texttt{BERKAITAN\_DENGAN}
