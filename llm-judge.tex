@@ -65,7 +65,7 @@
       {Penerimaan Keputusan\\Konsensus};
     \node[process, text width=3.3cm, below=1.4cm of IsAgreeExist, xshift=2.6cm]
       (ArbitrateExist)
-      {Arbitrase LLM-as-a-Judge\\(Textbook Grounding)};
+      {Ajudikasi LLM-as-a-Judge\\(Textbook Grounding)};
 
     % ==== FASE 2 — CABANG KANAN ====
     \node[process, below right=2.8cm and 2cm of ReadExperts]
@@ -75,7 +75,7 @@
       {Kedua pakar\\menambahkan triple?};
     \node[process, text width=3.3cm, below=1.4cm of IsAgreeNew, xshift=-2.6cm]
       (ArbitrateNew)
-      {Arbitrase Validitas\\Usulan oleh LLM};
+      {Ajudikasi Validitas\\Usulan oleh LLM};
     \node[process, text width=3.3cm, below=1.4cm of IsAgreeNew, xshift=2.6cm]
       (AcceptNew)
       {Integrasi Triple Baru\\secara Konsensus};
@@ -83,14 +83,14 @@
     % ==== FASE 2 — KONVERGENSI ====
     \node[db] (Checkpoint)
       at ($(ArbitrateExist)!0.5!(ArbitrateNew) - (0,2.6cm)$)
-      {Penyimpanan Status\\Arbitrase\\(State Checkpointing)};
+      {Penyimpanan Status\\Ajudikasi\\(State Checkpointing)};
     \node[process, below=1.2cm of Checkpoint] (Combine)
       {Agregasi Keputusan Akhir};
 
     \begin{scope}[on background layer]
       \node[stagebox,
         fit=(ContextDB)(CollectNew)(AcceptExist)(AcceptNew)(Combine),
-        label={[slabel]above:Langkah 2: Evaluasi \& Arbitrase AI}]
+        label={[slabel]above:Langkah 2: Evaluasi \& Ajudikasi AI}]
         (Fase2) {};
     \end{scope}
 
