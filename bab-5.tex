@@ -231,41 +231,46 @@ evaluasi dipisahkan menjadi evaluasi intra-mapel (Fase 1) dan inter-mapel
 (Fase 2). Data dianalisis menggunakan metrik \textit{Precision}, \textit{Recall},
 F1-Score, dan uji kesepakatan Gwet's AC1 yang merujuk pada Subbab~\ref{subsec:validasi-manusia}.
 
-{\setlength{\tabcolsep}{4pt}
+{\setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}
-  >{\raggedright\arraybackslash}p{0.16\linewidth}
   >{\raggedright\arraybackslash}p{0.13\linewidth}
-  >{\centering\arraybackslash}p{0.11\linewidth}
-  >{\centering\arraybackslash}p{0.09\linewidth}
-  >{\centering\arraybackslash}p{0.09\linewidth}
-  >{\centering\arraybackslash}p{0.09\linewidth}
-  >{\centering\arraybackslash}p{0.09\linewidth}
-  >{\centering\arraybackslash}p{0.09\linewidth}@{}}
+  >{\raggedright\arraybackslash}p{0.12\linewidth}
+  >{\centering\arraybackslash}p{0.085\linewidth}
+  >{\centering\arraybackslash}p{0.075\linewidth}
+  >{\centering\arraybackslash}p{0.075\linewidth}
+  >{\centering\arraybackslash}p{0.055\linewidth}
+  >{\centering\arraybackslash}p{0.065\linewidth}
+  >{\centering\arraybackslash}p{0.07\linewidth}
+  >{\centering\arraybackslash}p{0.07\linewidth}@{}}
 \caption{Hasil validasi Fase 1 (intra-mapel) per penilai dan konsensus final.
-  Kolom ``Final'' adalah konsensus setelah resolusi ketidaksepakatan via \textit{LLM-as-a-judge}.
-  Jumlah ``Ditinjau'' pada baris Final lebih kecil daripada baris penilai karena
-  \textit{triple} yang pada konsensus akhir dinilai gagal-ekstraksi/invalid
-  (label ``Salah'') dikeluarkan dari basis penghitungan presisi.}
+  Baris ``Final'' merupakan label konsensus setelah resolusi ketidaksepakatan
+  via \textit{LLM-as-a-judge}. Presisi (P) dihitung sebagai \textit{Fuzzy
+  Precision} dengan bobot Benar $=1{,}0$, Parsial (Sebagian Benar) $=0{,}5$,
+  Kurang Konteks (KK) $=0{,}25$, dan Salah $=0$; seluruh \textit{triple} yang
+  ditinjau tetap masuk ke dalam penyebut presisi. 
+  Selisih jumlah ``Ditinjau'' antara baris Final dan baris penilai
+  berasal dari sejumlah kecil \textit{triple} yang dikonsolidasikan dan
+  dikeluarkan dari himpunan evaluasi saat penentuan konsensus.}
 \label{tab:validasi-mapel}\\
 \toprule
-\textbf{Mapel} & \textbf{Penilai} & \textbf{Ditinjau} & \textbf{Benar} & \textbf{Parsial} & \textbf{Salah} & \textbf{P} & \textbf{R} \\
+\textbf{Mapel} & \textbf{Penilai} & \textbf{Ditinjau} & \textbf{Benar} & \textbf{Parsial} & \textbf{KK} & \textbf{Salah} & \textbf{P} & \textbf{R} \\
 \midrule
 \endhead
-Biologi  & Expert 1      & 151 & 140 & 6  & 2  & 0{,}952 & 0{,}965 \\
-         & Expert 2      & 151 & 143 & 6  & 0  & 0{,}970 & 0{,}970 \\
-         & \textit{Final}& 151 & 144 & 4  & 1  & \textbf{0{,}970} & \textbf{0{,}977} \\
+Biologi  & Expert 1      & 151 & 140 & 6  & 3  & 2  & 0{,}952 & 0{,}965 \\
+         & Expert 2      & 151 & 143 & 6  & 2  & 0  & 0{,}970 & 0{,}970 \\
+         & \textit{Final}& 151 & 144 & 4  & 2  & 1  & \textbf{0{,}970} & \textbf{0{,}977} \\
 \midrule
-Fisika   & Expert 1      & 240 & 239 & 0  & 0  & 0{,}997 & 0{,}938 \\
-         & Expert 2      & 240 & 186 & 40 & 3  & 0{,}870 & 0{,}881 \\
-         & \textit{Final}& 235 & 215 & 18 & 2  & \textbf{0{,}953} & \textbf{0{,}922} \\
+Fisika   & Expert 1      & 240 & 239 & 0  & 1  & 0  & 0{,}997 & 0{,}938 \\
+         & Expert 2      & 240 & 186 & 40 & 11 & 3  & 0{,}870 & 0{,}881 \\
+         & \textit{Final}& 235 & 215 & 18 & 0  & 2  & \textbf{0{,}953} & \textbf{0{,}922} \\
 \midrule
-Kimia    & Expert 1      & 166 & 132 & 7  & 25 & 0{,}819 & 0{,}965 \\
-         & Expert 2      & 166 & 136 & 6  & 5  & 0{,}866 & 0{,}757 \\
-         & \textit{Final}& 158 & 135 & 6  & 15 & \textbf{0{,}877} & \textbf{0{,}855} \\
+Kimia    & Expert 1      & 166 & 132 & 7  & 2  & 25 & 0{,}819 & 0{,}965 \\
+         & Expert 2      & 166 & 136 & 6  & 19 & 5  & 0{,}866 & 0{,}757 \\
+         & \textit{Final}& 158 & 135 & 6  & 2  & 15 & \textbf{0{,}877} & \textbf{0{,}855} \\
 \midrule
-Keseluruhan & Expert 1   & 557 & 511 & 13 & 27 & 0{,}932 & 0{,}952 \\
-            & Expert 2   & 557 & 465 & 52 & 8  & 0{,}896 & 0{,}863 \\
-            & \textit{Final} & 544 & 494 & 28 & 18 & \textbf{0{,}936} & \textbf{0{,}917} \\
+Keseluruhan & Expert 1   & 557 & 511 & 13 & 6  & 27 & 0{,}932 & 0{,}952 \\
+            & Expert 2   & 557 & 465 & 52 & 32 & 8  & 0{,}896 & 0{,}863 \\
+            & \textit{Final} & 544 & 494 & 28 & 4 & 18 & \textbf{0{,}936} & \textbf{0{,}917} \\
 \bottomrule
 \end{longtable}
 }
@@ -317,13 +322,13 @@ Fase 2 (panel diskusi) & 0{,}991 & — & — & — \\
 
   Terdapat selisih \textit{precision} vs.\ \textit{recall} sebesar 1{,}9 poin persentase
   pada level keseluruhan. Selisih ini membesar pada Fisika (gap P--R sebesar 3{,}1\%)
-  akibat 10 \textit{missing triples} yang diidentifikasi Expert 1 namun tidak
-  tercakup dalam konsensus final, dan pada Kimia Expert 2 (gap 10{,}9\%) akibat
-  29 \textit{missing triples} yang dilaporkan, menandakan bahwa sistem masih luput
-  mengekstrak sejumlah relasi kuantitatif dan terminologi proses yang esensial.
-  Diskrepansi tinggi antara Expert 1 dan Expert 2 Fisika (P: 0{,}997 vs.\ 0{,}870;
-  R: 0{,}938 vs.\ 0{,}881) mencerminkan perbedaan standar penilaian antar penilai
-  --- suatu temuan yang dikonfirmasi oleh nilai AC1 Fisika yang moderat (0{,}754).
+  akibat 10 \textit{missing triples} yang tersisa pada konsensus final, dan
+  pada Kimia Expert 2 (gap 10{,}9\%) akibat 29 \textit{missing triples} yang dilaporkan, 
+  menandakan bahwa sistem masih luput mengekstrak sejumlah relasi kuantitatif dan 
+  terminologi proses yang esensial. Diskrepansi tinggi antara Expert 1 dan Expert 2 
+  Fisika (P: 0{,}997 vs.\ 0{,}870; R: 0{,}938 vs.\ 0{,}881) 
+  mencerminkan perbedaan standar penilaian antar penilai--- suatu temuan yang dikonfirmasi 
+  oleh nilai AC1 Fisika yang moderat (0{,}754).
 
   Pada Fase 2 (inter-mapel), validasi panel diskusi atas 117 relasi lintas-buku
   menghasilkan \textit{precision} (validitas) 99{,}1\% (116/117 relasi dikonfirmasi
@@ -365,8 +370,8 @@ ambang kemiripan (\textit{threshold}) dinaikkan seiring penurunan jumlah
 tetangga per node (top-$k$). Semakin ketat konfigurasi, semakin sedikit pasangan
 kandidat yang lolos: dari 125 relasi pada konfigurasi paling permisif (0{,}70
 / top-$k$ = 20) menyusut menjadi hanya 14 relasi pada konfigurasi paling ketat
-(0{,}85 / top-$k$ = 5). Analisis kualitas per konfigurasi disajikan pada Subbab
-4.6.3.1.
+(0{,}85 / top-$k$ = 5). Analisis kualitas per konfigurasi disajikan pada
+Subbab~\ref{subsubsec:kualitas}.
 
 \begin{figure}[htbp]
   \centering
@@ -472,7 +477,9 @@ Validasi dilakukan melalui diskusi panel atas seluruh 117 relasi kandidat
 pada konfigurasi final ($\tau$=0{,}70, $k$=20). Hasil per-aspek menunjukkan
 \textbf{validitas 99{,}1\%} (116/117), \textbf{ketepatan tipe 98{,}3\%}
 (115/117; dua relasi salah tipe: LB008 dan LB074), namun \textbf{ketepatan
-arah 75{,}9\%} (88/116; 28 terbalik, 1 NA untuk relasi simetris LB085).
+arah 75{,}9\%} (88/116; 28 \textit{edge} terbalik dan 1 \textit{edge} dinilai
+NA, yakni LB085 yang arahnya tidak dapat ditentukan panel karena keterbatasan
+konteks).
 
 Temuan utama validasi ini adalah bahwa \textbf{arah relasi merupakan
 sumber kesalahan dominan}, bukan keberadaan atau tipe relasi. Sistem
@@ -523,8 +530,10 @@ klasifikasi atau kanonikalisasi arah pasca-proses, bukan penyetelan
 \subsection{Analisis Relasi Berpotensi False Positive}\label{subsubsec:false-positive}
 % ──────────────────────────────────────────
 
-Sebanyak 9 \textit{edge} memiliki \textit{confidence} $< 0{,}7$ (8 di antaranya $< 0{,}5$),
-yang mengindikasikan potensi \textit{false positive}:
+Sebanyak 9 \textit{edge} memiliki \textit{confidence} $< 0{,}7$ (8 di antaranya
+$< 0{,}5$, seluruhnya bertipe BERKAITAN\_DENGAN), yang mengindikasikan potensi
+\textit{false positive}. Beberapa contoh relasi berkeyakinan rendah hingga
+sedang ($\leq 0{,}7$) yang patut dicermati:
 
 \begin{itemize}
   \item Gerbang Logika Dasar [Fisika] $\leftrightarrow$ Notasi Sel Standar [Kimia]:
@@ -532,10 +541,10 @@ yang mengindikasikan potensi \textit{false positive}:
     positive} --- kemiripan \textit{embedding} terjadi akibat kedua konsep sama-sama
     melibatkan notasi simbolik, namun tidak ada hubungan kurikuler bermakna.
   \item Klasifikasi Semikonduktor [Fisika] $\leftrightarrow$ Polimer Anorganik [Kimia]:
-    BERKAITAN\_DENGAN (conf = 0{,}4). Kemiripan kemungkinan didorong oleh kesamaan
+    BERKAITAN\_DENGAN (conf = 0{,}6). Kemiripan kemungkinan didorong oleh kesamaan
     konteks material/bahan, namun hubungan substantifnya lemah.
   \item Efek Fotolistrik [Fisika] $\leftrightarrow$ Fotosintesis [Biologi]:
-    BERKAITAN\_DENGAN (conf = 0{,}7). Keduanya melibatkan interaksi foton dengan
+    MEMPERDALAM (conf = 0{,}7). Keduanya melibatkan interaksi foton dengan
     materi, tetapi mekanisme dan konteksnya sangat berbeda.
 \end{itemize}
 
@@ -562,13 +571,13 @@ bahwa \textit{electroplating} digunakan untuk pemurnian tembaga, padahal proses 
 benar adalah \textit{elektrorefining}. Kedua konsep memang melibatkan elektrolisis,
 namun tujuan dan mekanismenya berbeda.
 
-\textbf{Definisi yang terlalu luas.} Expert-fisika-6 mencatat sejumlah definisi yang
+\textbf{Definisi yang terlalu luas.} Expert 2 (Fisika) mencatat sejumlah definisi yang
 menimbulkan bias, misalnya definisi konstanta Coulomb yang ``terlalu luas'' tanpa
 menyebutkan jenis konstantanya. Umpan balik umum dari penilai ini menekankan:
 ``Penjelasannya dipastikan jangan ada bias\ldots Lebih ke penulisan, notasi, dan
 definisi nya perlu dicek dan dirapihkan kembali.''
 
-\textbf{Under-extraction formula dan rumus.} Expert-fisika-4 mengusulkan 15
+\textbf{Under-extraction formula dan rumus.} Expert 1 (Fisika) mengusulkan 15
 \textit{missing triples}; 10 di antaranya (67\%) merupakan formula/rumus
 yang tidak berhasil diekstrak oleh LLM. Ini menunjukkan bahwa LLM cenderung
 mengekstrak konsep deskriptif namun melewatkan relasi kuantitatif berbasis
@@ -580,7 +589,7 @@ efektif arus AC ($I_\text{ef}$), panjang gelombang minimum sinar-X
 \subsection{Analisis Koreksi dan Kategori Feedback}\label{subsubsec:feedback}
 % ──────────────────────────────────────────
 
-Dari 222 komentar yang diberikan Expert-fisika-4, analisis tematik
+Dari 222 komentar yang diberikan Expert 1 (Fisika), analisis tematik
 menunjukkan distribusi:
 
 \begin{itemize}
@@ -596,7 +605,7 @@ Pola ini mengindikasikan bahwa kekuatan utama LLM terletak pada
 ekstraksi struktur konseptual (87\% komentar bernilai konfirmasi atau
 netral), namun kelemahan terletak pada presisi notasi dan formulasi
 matematis. Perlu dicatat bahwa angka 87\% dihitung dari proporsi komentar
-konfirmasi/klarifikasi terhadap total 222 komentar Expert-fisika-4, bukan
+konfirmasi/klarifikasi terhadap total 222 komentar Expert 1 (Fisika), bukan
 dari jumlah triple yang dinilai; denominator kedua ukuran tersebut berbeda.
 
 % ──────────────────────────────────────────
