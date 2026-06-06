@@ -168,6 +168,16 @@ memungkinkan pencarian kandidat relasi dengan kedekatan semantik
 tertinggi secara jauh lebih efisien sebelum dievaluasi lebih lanjut oleh
 LLM.
 
+Kedekatan semantik antarvektor tersebut lazim diukur dengan \textit{cosine
+similarity}, yaitu kosinus sudut antara dua vektor $\mathbf{a}$ dan $\mathbf{b}$:
+\[
+  \text{sim}(\mathbf{a}, \mathbf{b})
+  = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{a}\|\,\|\mathbf{b}\|}.
+\]
+Nilainya berada pada rentang $[-1, 1]$; semakin tinggi nilainya, semakin dekat
+arah (dan dengan demikian makna) kedua vektor, sehingga untuk \textit{embedding}
+teks nilainya umumnya berada pada rentang $[0, 1]$.
+
 Salah satu implementasi ANN yang banyak digunakan pada basis data vektor
 modern adalah algoritma \textit{Hierarchical Navigable Small World} (HNSW)
 \parencite{malkov_efficient_2020}. HNSW membangun struktur graf berlapis

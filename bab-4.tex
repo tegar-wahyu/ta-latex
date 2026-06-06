@@ -300,8 +300,8 @@ tiga-\textit{pass} agar konsisten secara referensial dan idempoten.
 \section{Graph Completion (Vector Index ANN \& LLM Classifier)}\label{sec:graph-completion}
 % ============================================================
 
-Tahap ini menemukan relasi implisit yang tidak ditangkap LLM pada Tahap
-2, mengikuti paradigma \textit{embedding} + \textit{retrieval} + \textit{LLM-as-classifier}.
+Tahap ini menemukan relasi implisit lintas-disiplin yang tidak ditangkap LLM
+pada Tahap 2, mengikuti paradigma \textit{embedding} + \textit{retrieval} + \textit{LLM-as-classifier}.
 Prosesnya terdiri dari empat sub-tahap: (1) \textit{concept embedding},
 (2) \textit{candidate retrieval} via ANN, (3) \textit{candidate pruning},
 dan (4) \textit{relation classification} via LLM.
@@ -309,8 +309,8 @@ dan (4) \textit{relation classification} via LLM.
 \begin{enumerate}
   \item \textbf{Concept embedding.}
 
-  Field description di tiap Concept di-\textit{encode} menjadi vektor padat
-  (\textit{dense vector}):
+  Atribut \texttt{description} pada tiap \texttt{Concept} di-\textit{encode}
+  menjadi vektor padat (\textit{dense vector}):
   \[
     \mathbf{e}_c \in \mathbb{R}^{d}, \quad d = 3072
   \]
@@ -318,41 +318,35 @@ dan (4) \textit{relation classification} via LLM.
   Representasi vektor ini memetakan semantik teks ke ruang Euclidean berdimensi
   tinggi sehingga konsep yang secara makna berkaitan akan memiliki vektor yang
   berdekatan. Vektor yang dihasilkan disimpan sebagai properti node (embedding) di
-  Neo4j dan diindeks menggunakan Neo4j Vector Index.
+  Neo4j dan diindeks menggunakan Neo4j Vector Index. Perlu ditegaskan bahwa
+  \textit{embedding} ini bersifat semantik (diturunkan dari deskripsi tekstual
+  konsep) sehingga berbeda dari \textit{embedding} struktural berbasis topologi
+  graf yang keterbatasannya dibahas pada Subbab~\ref{subsec:kgc}. Selain itu,
+  \textit{embedding} di sini hanya berperan sebagai penyaring kandidat, sedangkan
+  keputusan akhir relasi tetap ditentukan oleh LLM.
 
-  Pengindeksan memanfaatkan algoritma HNSW (lihat Subbab~\ref{subsec:kgc}). Pada
-  implementasi ini parameter HNSW tidak dikonfigurasi secara eksplisit pada
-  \texttt{CREATE VECTOR INDEX}, sehingga Neo4j menerapkan nilai \textit{default}:
-  $M = 16$, $\text{ef\_construction} = 100$, dengan \textit{vector quantization}
-  aktif untuk mengoptimalkan penggunaan memori.
+  Pengindeksan memanfaatkan algoritma HNSW (lihat Subbab~\ref{subsec:kgc}), yang
+  struktur graf berlapisnya diilustrasikan pada Gambar~\ref{fig:hnsw}. Parameter
+  HNSW tidak dikonfigurasi secara eksplisit pada \texttt{CREATE VECTOR INDEX},
+  sehingga Neo4j menerapkan nilai \textit{default} ($M = 16$,
+  \texttt{ef\_construction} $= 100$) dengan \textit{vector quantization} aktif
+  untuk mengoptimalkan penggunaan memori.
 
   \begin{figure}[htbp]
     \centering
     \includegraphics[width=\maxwidth]{images/media/image23.png}
-    \caption{Ilustrasi struktur graf berlapis HNSW pada Neo4j Vector Index.}
+    \caption{Ilustrasi struktur graf berlapis HNSW pada Neo4j Vector Index 
+    (diadaptasi dari \textcite{malkov_efficient_2020}).}
     \label{fig:hnsw}
   \end{figure}
 
   \item \textbf{Candidate retrieval via ANN (Approximate Nearest Neighbor).}
 
   Untuk tiap \textit{query} node $q$, dijalankan pencarian ANN pada Neo4j Vector Index
-  yang mengembalikan top-$k$ node terdekat berdasarkan \textit{cosine similarity}.
-  \textit{Cosine similarity} antara dua vektor $\mathbf{a}$ dan $\mathbf{b}$ berdimensi $d$
-  didefinisikan sebagai:
-  \[
-    \text{sim}(\mathbf{a}, \mathbf{b})
-    = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{a}\| \times \|\mathbf{b}\|}
-    = \frac{\displaystyle\sum_{i=1}^{d} a_i \, b_i}
-           {\sqrt{\displaystyle\sum_{i=1}^{d} a_i^2}
-            \;\times\;
-            \sqrt{\displaystyle\sum_{i=1}^{d} b_i^2}}
-  \]
-
-  Nilai $\text{sim}(\mathbf{a}, \mathbf{b}) \in [-1,\, 1]$; nilai 1 menandakan
-  vektor identik secara arah, 0 menandakan ortogonal (tidak berkaitan), dan $-1$
-  menandakan berlawanan arah. Pada konteks \textit{embedding} teks, nilai \textit{cosine
-  similarity} umumnya berada dalam rentang $[0, 1]$ karena semua komponen vektor
-  cenderung non-negatif.
+  yang mengembalikan top-$k$ node terdekat berdasarkan \textit{cosine similarity}
+  (didefinisikan pada Subbab~\ref{subsec:kgc}). Sebaran nilai \textit{cosine
+  similarity} antar pasangan konsep pada indeks ditunjukkan pada
+  Gambar~\ref{fig:cosine-scatter}.
 
   \begin{figure}[htbp]
     \centering
@@ -361,34 +355,32 @@ dan (4) \textit{relation classification} via LLM.
     \label{fig:cosine-scatter}
   \end{figure}
 
-  Hanya pasangan dengan $\text{sim} \geq \tau$ yang lolos ke tahap berikutnya
-  ($\tau = 0{,}80$ untuk pencarian intra-buku; $\tau = 0{,}70$ untuk pencarian
-  lintas-buku):
+  Hanya pasangan dengan $\text{sim} \geq \tau$ (dengan $\tau = 0{,}70$ untuk
+  pencarian lintas-buku) yang lolos ke tahap berikutnya:
   \[
     \text{candidates}(q)
     = \bigl\{\, c \in \mathcal{C} \;\big|\; \text{sim}(\mathbf{e}_q,\, \mathbf{e}_c) \geq \tau \,\bigr\}
   \]
-  Pemakaian indeks vektor HNSW menurunkan kompleksitas total dari $O(n^2)$ pada
-  perbandingan \textit{pairwise} eksak menjadi $O(n \log n)$ untuk $n$ konsep,
-  sehingga pencarian relasi lintas-dokumen tetap \textit{tractable} pada skala
-  ratusan hingga ribuan konsep.
+  Berkat indeks HNSW (Subbab~\ref{subsec:kgc}), pencarian kandidat menghindari
+  perbandingan \textit{pairwise} $O(n^2)$ sehingga tetap \textit{tractable} pada
+  skala ratusan hingga ribuan konsep.
 
   \item \textbf{Candidate pruning.}
 
   Pasangan kandidat yang lolos ANN disaring melalui empat filter sebelum
   diklasifikasi LLM:
   \begin{enumerate}[label=\roman*.]
-    \item Self-pair exclusion: parameter exclude\_name pada \textit{query} ANN
-      mencegah node menjadi kandidat dirinya sendiri.
-    \item Deduplication: pasangan dinormalisasi sebagai \textit{tuple} terurut
-      sorted([A, B]) sehingga (A, B) dan (B, A) dianggap identik dan
-      hanya diproses sekali.
-    \item Cross-grade filter (khusus lintas-buku): pasangan dengan grade
-      (mata pelajaran) yang sama dibuang, karena relasi \textit{within-subject}
-      sudah ditangani pada Tahap 2. Filter ini memastikan tahap
-      \textit{completion} hanya menemukan jembatan antar-disiplin ilmu.
-    \item Existing typed edge filter: pasangan yang sudah memiliki \textit{edge}
-      bertipe selain SIMILAR\_TO dibuang agar tidak terjadi duplikasi relasi.
+    \item \textit{Eksklusi self-pair}: kueri ANN mencegah sebuah node
+      menjadi kandidat bagi dirinya sendiri.
+    \item \textit{Deduplikasi}: setiap pasangan dinormalisasi menjadi urutan
+      tetap sehingga $(A,B)$ dan $(B,A)$ diperlakukan identik dan hanya diproses
+      sekali.
+    \item \textit{Penyaringan lintas-mapel}: pasangan dari mata pelajaran yang
+      sama dibuang karena relasi dalam-mapel telah ditangani pada Tahap~2,
+      sehingga tahap \textit{completion} hanya mencari jembatan antardisiplin.
+    \item \textit{Penyaringan relasi tertipe}: pasangan yang sudah memiliki
+      \textit{edge} bertipe (selain \texttt{SIMILAR\_TO}) dibuang untuk mencegah
+      duplikasi relasi.
   \end{enumerate}
   Tahap \textit{pruning} ini secara signifikan menekan jumlah pasangan yang
   diumpankan ke LLM, sehingga mengurangi biaya inferensi dan menjaga
@@ -396,37 +388,20 @@ dan (4) \textit{relation classification} via LLM.
 
   \item \textbf{Relation classification via LLM.}
 
-  Tiap pasangan yang lolos \textit{pruning} diklasifikasikan oleh LLM (Gemini 2.5 Flash Lite)
-  melalui \textit{prompt few-shot} yang memuat: (1) deskripsi dan konteks kedua konsep
-  (nama, deskripsi, mata pelajaran), (2) konteks graf (KONTEKS GRAF) berupa
-  bab/chapter asal, hingga 5 \textit{existing out-edges}, dan \textit{shared neighbors}, serta
-  (3) definisi ketat tiap label target. Untuk klasifikasi lintas-buku, LLM memilih
-  salah satu dari lima label semantik:
-  \begin{enumerate}[label=\roman*.]
-    \item LINTAS\_BUKU\_SAMA\_DENGAN: A dan B merujuk pada entitas semantik yang
-      sama lintas buku (simetris).
-    \item LINTAS\_BUKU\_APLIKASI\_DARI: A adalah aplikasi/manifestasi konsep B di
-      disiplin berbeda (asimetris).
-    \item LINTAS\_BUKU\_PRASYARAT\_UNTUK: A pada satu mapel menjadi prasyarat untuk
-      B di mapel lain (asimetris).
-    \item LINTAS\_BUKU\_MEMPERDALAM: A memperdalam/memperluas pemahaman B di buku
-      lain (asimetris).
-    \item LINTAS\_BUKU\_BERKAITAN\_DENGAN: A dan B berkaitan secara umum lintas buku
-      tanpa struktur ketat (simetris, \textit{fallback}).
-    \item none: kemiripan semantik hanya superfisial; tidak ada relasi kurikuler
-      bermakna.
-  \end{enumerate}
+  Tiap pasangan yang lolos \textit{pruning} diklasifikasikan oleh LLM
+  (Gemini 2.5 Flash Lite) melalui \textit{prompt few-shot} yang memuat: (1)
+  deskripsi dan konteks kedua konsep (nama, deskripsi, mata pelajaran); (2)
+  konteks graf berupa bab asal, hingga lima \textit{edge} keluar yang sudah ada,
+  serta tetangga bersama (\textit{shared neighbors}); dan (3) definisi ketat tiap
+  label target. Untuk klasifikasi lintas-buku, LLM memilih salah satu dari lima
+  label semantik \texttt{LINTAS\_BUKU\_*} yang didefinisikan pada
+  Subbab~\ref{subsec:skema-ontologi}, atau label \texttt{none} apabila kemiripan
+  semantik hanya superfisial sehingga tidak ada relasi kurikuler bermakna.
   Klasifikasi dilengkapi skor \textit{confidence} dalam rentang $[0, 1]$. Hasil
-  klasifikasi di-\textit{cache} menggunakan kunci \textit{order-invariant} dengan
-  \textit{fingerprint} konteks graf (hash MD5 dari \textit{neighborhood}), sehingga re-run
-  setelah perubahan graf memicu re-klasifikasi otomatis.
+  klasifikasi di-\textit{cache} dengan kunci yang tidak bergantung pada urutan
+  pasangan dan menyertakan \textit{sidik jari} (\textit{hash}) konteks graf,
+  sehingga perubahan graf otomatis memicu klasifikasi ulang.
 
-  \begin{figure}[htbp]
-    \centering
-    \includegraphics[width=\maxwidth]{images/media/image22.png}
-    \caption{Distribusi tipe relasi hasil klasifikasi LLM beserta contoh triple per tipe.}
-    \label{fig:relasi-distribusi}
-  \end{figure}
 
   \item \textbf{Edge writeback.}
 
@@ -803,7 +778,7 @@ kuantitas relasi tetapi \textbf{tidak} memperbaiki ketepatan arah relasi.
 
 Pada konfigurasi final (threshold = 0{,}70; top-$k$ = 20; \textit{scope}
 lintas-mapel), \textit{pipeline} menemukan 125 relasi lintas-buku. Distribusi
-tipe relasi didominasi PRASYARAT\_UNTUK (57 \textit{edge}, 45{,}6\%), diikuti
+tipe relasi (Gambar~\ref{fig:relasi-distribusi}) didominasi PRASYARAT\_UNTUK (57 \textit{edge}, 45{,}6\%), diikuti
 MEMPERDALAM (31 \textit{edge}, 24{,}8\%), BERKAITAN\_DENGAN (21 \textit{edge}, 16{,}8\%),
 APLIKASI\_DARI (15 \textit{edge}, 12{,}0\%), dan SAMA\_DENGAN (1 \textit{edge}, 0{,}8\%).
 Dominasi PRASYARAT\_UNTUK mengindikasikan bahwa jembatan lintas-disiplin
@@ -811,6 +786,13 @@ pada kurikulum sains kelas XII lebih banyak bersifat prasyarat pengetahuan
 daripada aplikasi atau analogi. Dari 125 relasi, 8 \textit{edge} berkonfidens
 $< 0{,}5$ (seluruhnya BERKAITAN\_DENGAN) dikeluarkan dari survei validasi
 utama, menyisakan 117 relasi yang dinilai pakar.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\maxwidth]{images/media/image22.png}
+  \caption{Distribusi tipe relasi lintas-buku hasil klasifikasi LLM beserta contoh triple per tipe.}
+  \label{fig:relasi-distribusi}
+\end{figure}
 
 Dari 125 \textit{edge}, 20 (16\%) memiliki skor \textit{confidence} = 1{,}0, menunjukkan
 keyakinan tinggi LLM terhadap relasi tersebut. Contoh relasi dengan
