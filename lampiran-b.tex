@@ -105,7 +105,7 @@ Fase~2).
 Tabel~\ref{tab:tech-stack} merangkum komponen perangkat lunak yang
 menyusun aplikasi beserta perannya.
 
-\begin{table}[h]
+\begin{table}[htbp]
   \centering
   \caption{\textit{Tech stack} KG Review App}
   \label{tab:tech-stack}
@@ -131,7 +131,7 @@ menyusun aplikasi beserta perannya.
 Gambar~\ref{fig:arsitektur-review-app} menggambarkan alur data dari graf hasil
 sistem menuju antarmuka peninjauan dan kembali sebagai rekam keputusan pakar.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
   \centering
   % TODO: ganti placeholder dengan diagram arsitektur final.
   % \includegraphics[width=\linewidth]{figures/arsitektur-review-app.png}
@@ -147,7 +147,7 @@ sistem menuju antarmuka peninjauan dan kembali sebagai rekam keputusan pakar.
 Tabel~\ref{tab:skema-redis} mendokumentasikan pola kunci utama yang dipakai
 untuk menyimpan status peninjauan.
 
-\begin{table}[h]
+\begin{table}[htbp]
   \centering
   \caption{Skema kunci Redis pada KG Review App}
   \label{tab:skema-redis}
@@ -179,14 +179,14 @@ Skor keyakinan (\textit{confidence score}) sistem hanya melekat pada \textit{edg
 memiliki skor ini. Pada kedua fase, skor tersebut tidak ditampilkan kepada pakar
 (\textit{score-blind}) agar penilaian tidak terbias oleh keyakinan sistem.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{figures/phase1-interface.png}
   \caption{Antarmuka Fase~1: peninjauan \textit{triple} dalam-buku oleh pakar.}
   \label{fig:review-app-phase1}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{figures/phase2-interface.png}
   \caption{Antarmuka Fase~2: evaluasi diskusi \textit{edge} \textit{completion}

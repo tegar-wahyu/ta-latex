@@ -30,20 +30,24 @@
 \usepackage{array}
 \usepackage[hidelinks]{hyperref}
 
+\begin{document}
+
+% Macros didefinisikan di dalam body agar tersedia baik saat kompilasi
+% standalone maupun saat di-\subfile dari main.tex (preamble subfile diabaikan
+% oleh main).
 \newcommand{\juduluppercase}{LLM-Assisted Knowledge Graph Completion untuk
 Pemetaan Interkoneksi Materi Sains (Fisika, Kimia, Biologi) pada Kurikulum
 Merdeka Tingkat SMA}
-
 % Blok label : nilai (untuk halaman pernyataan/pengesahan)
 \newcommand{\frow}[2]{\noindent\begin{tabular}{@{}p{3.2cm}@{ : }p{\dimexpr\linewidth-3.8cm}@{}}#1 & #2\end{tabular}\par}
-
-\begin{document}
 
 \ifSubfilesClassLoaded{\pagenumbering{roman}}{}
 
 % ===================== SAMPUL =====================
-\begin{titlepage}
-  \centering
+% Halaman manual (bukan env titlepage) agar tidak me-reset counter halaman ke 1
+% --- mencegah warning hyperref "destination name{page.i} duplicate".
+\thispagestyle{empty}
+\begin{center}
   \onehalfspacing
   {\large\bfseries UNIVERSITAS INDONESIA}\\[1.5cm]
 
@@ -65,11 +69,12 @@ Merdeka Tingkat SMA}
   PROGRAM STUDI ILMU KOMPUTER\\
   DEPOK\\
   JUNI 2026}
-\end{titlepage}
+\end{center}
+\clearpage
 
 % ===================== HALAMAN JUDUL =====================
-\begin{titlepage}
-  \centering
+\thispagestyle{empty}
+\begin{center}
   \onehalfspacing
   {\large\bfseries UNIVERSITAS INDONESIA}\\[1.2cm]
 
@@ -91,10 +96,10 @@ Merdeka Tingkat SMA}
   PROGRAM STUDI ILMU KOMPUTER\\
   DEPOK\\
   JUNI 2026}
-\end{titlepage}
+\end{center}
+\clearpage
 
 % ===================== PERNYATAAN ORISINALITAS =====================
-\clearpage
 \begin{center}\bfseries HALAMAN PERNYATAAN ORISINALITAS\end{center}
 \vspace{1cm}
 \onehalfspacing
@@ -156,6 +161,7 @@ Universitas Indonesia.
 
 % ===================== KATA PENGANTAR =====================
 \clearpage
+\addcontentsline{toc}{chapter}{KATA PENGANTAR}
 \begin{center}\bfseries KATA PENGANTAR\end{center}
 \vspace{0.8cm}
 \onehalfspacing
@@ -242,6 +248,7 @@ Tegar Wahyu Khisbulloh
 
 % ===================== ABSTRAK (ID) =====================
 \clearpage
+\addcontentsline{toc}{chapter}{ABSTRAK}
 \begin{center}\bfseries ABSTRAK\end{center}
 \vspace{0.6cm}
 \onehalfspacing
@@ -263,6 +270,7 @@ Kurikulum Merdeka, Pendidikan Sains, Graph Completion, Pemetaan Kurikulum.
 
 % ===================== ABSTRACT (EN) =====================
 \clearpage
+\addcontentsline{toc}{chapter}{ABSTRACT}
 \begin{center}\bfseries ABSTRACT\end{center}
 \vspace{0.6cm}
 \onehalfspacing
