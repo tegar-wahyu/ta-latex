@@ -393,8 +393,8 @@ representasi yang dibedakan secara metodologis. \textbf{Tier
 ekstraksi} menghasilkan model konseptual \textit{deskriptif} atas isi
 buku teks Kurikulum Merdeka---konsep, sub-bab, bab, beserta
 keterkaitan semantik antar-konsep dalam satu buku---sejalan dengan
-tradisi \textit{domain module} pada generasi otomatis dari buku teks
-elektronik. \textbf{Tier completion} menghasilkan kandidat
+tradisi \textit{domain module} dalam konstruksi otomatis \textit{knowledge
+graph} dari buku teks elektronik. \textbf{Tier completion} menghasilkan kandidat
 keterkaitan lintas-buku (\texttt{LINTAS\_BUKU\_*}) sebagai inferensi
 pedagogis dangkal di atas Tier ekstraksi: sistem mengusulkan jembatan
 antar-disiplin yang dapat dipertimbangkan, tetapi tidak menetapkannya
@@ -415,9 +415,10 @@ dipertimbangkan secara lokal---bukan anjuran kronologis bagi siswa.
 Skema \textit{knowledge graph} diformalkan sebagai ontologi OWL untuk
 memastikan konsistensi struktur dan vokabulari relasi antartahap
 \textit{pipeline} (ekstraksi, konstruksi, dan \textit{completion}).
-Topologi keseluruhan---mencakup relasi struktural, sekuensial
-editorial, dan semantik (Tier ekstraksi) beserta inferensi lintas-buku
-(Tier completion)---diilustrasikan pada Gambar~\ref{fig:ontologi}.
+Topologi keseluruhan---mencakup relasi struktural, relasi keterurutan
+penyajian materi dalam buku (\textit{NEXT\_CHAPTER}), dan relasi semantik
+(Tier ekstraksi) beserta inferensi lintas-buku (Tier completion)---diilustrasikan
+pada Gambar~\ref{fig:ontologi}.
 
 \subfile{onthology}
 
