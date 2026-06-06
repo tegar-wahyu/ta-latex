@@ -123,19 +123,21 @@ validasi kualitatif oleh pakar domain, pembahasan mendalam terkait
 \section{Hasil Analisis Struktural Graf}\label{subsec:struktural}
 % ────────────────────────────────────────────────────────────
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=\maxwidth]{images/media/image21.png}
-  \caption{Visualisasi topologi keseluruhan \textit{knowledge graph} hasil konstruksi.}
-  \label{fig:kg-topologi}
-\end{figure}
-
 Analisis struktural bertujuan untuk mengevaluasi kualitas interkoneksi
 jaringan pengetahuan secara matematis, khususnya untuk melihat
 perbandingan struktur graf sebelum \textit{Knowledge Graph Completion} (pre-KGC)
 dan sesudahnya (post-KGC). Seluruh perhitungan pada bagian ini
 dieksekusi melalui kueri \textit{Cypher} di Neo4j dengan berpedoman pada
 formulasi metrik topologi yang telah dijelaskan pada Subbab~\ref{subsec:metrik-topologi}.
+Gambaran topologi keseluruhan graf hasil konstruksi ditunjukkan pada
+Gambar~\ref{fig:kg-topologi}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\maxwidth]{images/media/image21.png}
+  \caption{Visualisasi topologi keseluruhan \textit{knowledge graph} hasil konstruksi.}
+  \label{fig:kg-topologi}
+\end{figure}
 
 \begin{longtable}{@{}
   >{\raggedright\arraybackslash}p{0.38\linewidth}
@@ -149,7 +151,7 @@ formulasi metrik topologi yang telah dijelaskan pada Subbab~\ref{subsec:metrik-t
 \endhead
 ADC (seluruh node)                & 2{,}4123 & 2{,}6970 \\
 ADC (Konsep-ke-Konsep)            & 0{,}7384 & 1{,}4651 \\
-\textit{Graph Density}            & 0{,}00108 & 0{,}00214 \\
+\textit{Graph Density} (antar-konsep) & 0{,}00108 & 0{,}00214 \\
 \textit{Modularity}               & 0{,}8106 & 0{,}3732 \\
 \bottomrule
 \end{longtable}
@@ -158,21 +160,27 @@ ADC (Konsep-ke-Konsep)            & 0{,}7384 & 1{,}4651 \\
   \item \textbf{Evaluasi \textit{Average Degree Centrality} (ADC) dan Kepadatan.}
 
   Berdasarkan Tabel~\ref{tab:struktural}, ADC seluruh node meningkat dari 2{,}41
-  (pre-KGC) menjadi 2{,}70 (post-KGC), suatu kenaikan sebesar 11{,}8\%. Namun
+  (pre-KGC) menjadi 2{,}70 (post-KGC), kenaikan sebesar 11{,}8\%. Namun
   peningkatan yang lebih signifikan terjadi pada ADC Konsep-ke-Konsep, yang hampir
-  berlipat ganda dari 0{,}74 menjadi 1{,}47 (+98{,}7\%). Peningkatan ini
+  berlipat ganda dari 0{,}74 menjadi 1{,}47 (+98{,}4\%). Peningkatan ini
   mencerminkan bahwa \textit{pipeline} KGC berhasil menambahkan 125 relasi
   lintas-buku baru yang secara langsung menghubungkan node Concept antar-mapel,
   meningkatkan kepadatan interkoneksi semantik yang sebelumnya tidak ada.
-  \textit{Graph Density} juga meningkat secara proporsional dari 0{,}00108 menjadi
-  0{,}00214 (hampir dua kali lipat), konsisten dengan penambahan \textit{edge}
-  lintas-buku tersebut. Nilai densitas yang masih sangat rendah pada kedua fase
-  merupakan karakteristik umum \textit{knowledge graph} berukuran sedang-besar,
-  karena hanya sebagian kecil dari seluruh kemungkinan pasangan konsep yang
-  memiliki relasi bermakna \parencite{hogan_knowledge_2022}.
+  \textit{Graph Density} antar-konsep, yakni kepadatan relasi pada subgraf
+  \texttt{Concept} (lihat Subbab~\ref{subsec:metrik-topologi}), juga meningkat
+  secara proporsional dari 0{,}00108 menjadi 0{,}00214 (hampir dua kali lipat),
+  konsisten dengan penambahan \textit{edge} lintas-buku tersebut. Nilai densitas
+  yang masih sangat rendah pada kedua fase merupakan karakteristik umum
+  \textit{knowledge graph} berukuran sedang-besar, karena hanya sebagian kecil
+  dari seluruh kemungkinan pasangan konsep yang memiliki relasi bermakna
+  \parencite{hogan_knowledge_2022}.
 
   \item \textbf{Evaluasi \textit{Modularity}.}
 
+  \textit{Modularity} di sini dihitung atas partisi komunitas \textbf{tetap}
+  berdasarkan mata pelajaran (Fisika, Kimia, Biologi), sesuai dengan
+  formulasi pada Subbab~\ref{subsec:metrik-topologi}. Dengan demikian, perubahan
+  nilai $Q$ murni mencerminkan bertambahnya \textit{edge} lintas-mapel.
   Analisis struktur komunitas menggunakan metrik \textit{Modularity} pada fase
   pre-KGC mencatatkan nilai 0{,}811, yang mengindikasikan struktur komunitas yang
   sangat kuat --- ketiga komunitas mapel (Fisika, Kimia, Biologi) hampir sepenuhnya

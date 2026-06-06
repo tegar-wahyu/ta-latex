@@ -469,19 +469,23 @@ mendekati 1 menandakan graf yang sangat padat (\textit{dense}), sementara
 nilai mendekati 0 menandakan graf yang jarang (\textit{sparse}). Dalam
 konteks penelitian ini, \textit{density} digunakan untuk membandingkan tingkat
 keterkaitan antar-konsep sebelum dan sesudah penambahan relasi lintas
-buku (\textit{cross-book links}). Untuk graf berarah, formula yang
-digunakan adalah:
+buku (\textit{cross-book links}). Sejalan dengan ADC antar-konsep yang
+menjadi metrik utama, \textit{density} dihitung pada \textbf{subgraf konsep},
+yakni hanya melibatkan node \texttt{Concept} dan relasi langsung
+antar-konsep, agar mencerminkan kepadatan interkoneksi materi sains tanpa
+dipengaruhi oleh node struktural (kelas, bab, subbab). Untuk graf berarah,
+formula yang digunakan adalah:
 
 \[
-  D = \frac{|E|}{|V|(|V|-1)}
+  D = \frac{|E_C|}{|V_C|(|V_C|-1)}
 \]
 
-\noindent dengan $|E|$ adalah jumlah total \textit{edge} yang terbentuk
-dalam KG, dan $|V|$ adalah jumlah total node. Penyebut
-$|V|(|V|-1)$ merepresentasikan jumlah maksimum \textit{edge} berarah
-yang mungkin ada, dari asumsi bahwa setiap pasangan node $(i, j)$ dengan
-$i \neq j$ dapat memiliki tepat satu \textit{edge} berarah tanpa
-\textit{self-loop}.
+\noindent dengan $|E_C|$ adalah jumlah relasi langsung antar-node
+\texttt{Concept}, dan $|V_C|$ adalah jumlah node \texttt{Concept}. Penyebut
+$|V_C|(|V_C|-1)$ merepresentasikan jumlah maksimum \textit{edge} berarah
+yang mungkin ada antar-konsep, dari asumsi bahwa setiap pasangan node
+$(i, j)$ dengan $i \neq j$ dapat memiliki tepat satu \textit{edge} berarah
+tanpa \textit{self-loop}.
 
 \subsection{Metrik Ekstraksi}
 \label{subsec:metrik-ekstraksi}
