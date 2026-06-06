@@ -450,42 +450,47 @@ Subbab~\ref{subsubsec:kualitas}.
 \begin{figure}[htbp]
   \centering
   \begin{tikzpicture}[
-    layer/.style = {draw=white, line width=1pt, rounded corners=6pt,
-                    align=center, inner sep=8pt},
-    title/.style = {font=\small\bfseries, text=black},
-    titlew/.style = {font=\small\bfseries, text=white},
-    contoh/.style = {font=\scriptsize\itshape, text=black!85},
-    contohw/.style = {font=\scriptsize\itshape, text=white},
+    layer/.style  = {draw=white, line width=1pt, rounded corners=6pt},
+    title/.style  = {font=\small\bfseries, text=black, align=center},
+    titlew/.style = {font=\small\bfseries, text=white, align=center},
+    contoh/.style = {font=\scriptsize\itshape, text=black!85, align=center},
+    contohw/.style= {font=\scriptsize\itshape, text=white, align=center},
   ]
+    % Boxes cascade downward (north-anchored, horizontally centered): each
+    % inner config starts below its parent's top band, so every title +
+    % "Contoh" example stays in its own visible band and never overlaps.
     % Outer (τ=0,70) — palest blue
-    \node[layer, fill=blue!12, minimum width=10.6cm, minimum height=6.6cm] (b70) {};
-    \node[title, anchor=north] at ([yshift=-7pt]b70.north)
+    \node[layer, fill=blue!12, anchor=north, minimum width=13cm,
+          minimum height=10.4cm] (b70) at (0,0) {};
+    \node[title, anchor=north] at ([yshift=-6pt]b70.north)
       {0{,}70 / $k$=20 \textemdash{} 117 relasi};
+    \node[contoh, anchor=north, text width=12cm] at ([yshift=-26pt]b70.north)
+      {Contoh: Arus Listrik $\to$ \texttt{APLIKASI\_DARI} $\to$ Elektroforesis};
 
     % Mid-1 (τ=0,75)
-    \node[layer, fill=blue!28, minimum width=8.2cm, minimum height=4.9cm] (b75) {};
-    \node[title, anchor=north] at ([yshift=-7pt]b75.north)
+    \node[layer, fill=blue!28, anchor=north, minimum width=10.5cm,
+          minimum height=8.2cm] (b75) at (0,-1.7) {};
+    \node[title, anchor=north] at ([yshift=-6pt]b75.north)
       {0{,}75 / $k$=15 \textemdash{} 72 relasi};
+    \node[contoh, anchor=north, text width=9.5cm] at ([yshift=-26pt]b75.north)
+      {Contoh: Defleksi Gerak Muatan $\to$ \texttt{PRASYARAT\_UNTUK} $\to$ Elektroforesis};
 
     % Mid-2 (τ=0,80)
-    \node[layer, fill=blue!55, minimum width=5.8cm, minimum height=3.2cm] (b80) {};
-    \node[titlew, anchor=north] at ([yshift=-7pt]b80.north)
+    \node[layer, fill=blue!55, anchor=north, minimum width=8cm,
+          minimum height=6cm] (b80) at (0,-3.4) {};
+    \node[titlew, anchor=north] at ([yshift=-6pt]b80.north)
       {0{,}80 / $k$=10 \textemdash{} 42 relasi};
+    \node[contohw, anchor=north, text width=7cm] at ([yshift=-26pt]b80.north)
+      {Contoh: Potensial Elektrode $\to$ \texttt{APLIKASI\_DARI} $\to$ Potensial Listrik};
 
     % Inner (τ=0,85) — darkest
-    \node[layer, fill=blue!80, minimum width=3.6cm, minimum height=1.5cm] (b85) {};
-    \node[titlew, anchor=center] at (b85)
+    \node[layer, fill=blue!80, anchor=north, minimum width=5.5cm,
+          minimum height=3.8cm] (b85) at (0,-5.1) {};
+    \node[titlew, anchor=north] at ([yshift=-6pt]b85.north)
       {0{,}85 / $k$=5 \textemdash{} 14 relasi};
+    \node[contohw, anchor=north, text width=4.6cm] at ([yshift=-26pt]b85.north)
+      {Contoh: DNA $\leftrightarrow$ \texttt{SAMA\_DENGAN} $\leftrightarrow$ DNA};
   \end{tikzpicture}
-
-  \vspace{0.6em}
-  {\footnotesize\itshape\raggedright
-    Contoh relasi representatif per konfigurasi:\par}
-  {\footnotesize\raggedright
-    0{,}70/$k$=20: Arus Listrik $\to$ \texttt{APLIKASI\_DARI} $\to$ Elektroforesis;\quad
-    0{,}75/$k$=15: Defleksi Gerak Muatan $\to$ \texttt{PRASYARAT\_UNTUK} $\to$ Elektroforesis;\quad
-    0{,}80/$k$=10: Potensial Elektrode $\to$ \texttt{APLIKASI\_DARI} $\to$ Potensial Listrik;\quad
-    0{,}85/$k$=5: DNA $\leftrightarrow$ \texttt{SAMA\_DENGAN} $\leftrightarrow$ DNA.\par}
 
   \caption{Struktur bersarang (\textit{nested}) hasil \textit{parameter sweep}
     relasi lintas-buku antar-konfigurasi.}
