@@ -550,55 +550,34 @@ arah atau tipe relasi yang lebih spesifik.
 \subsection{Analisis Pola Kesalahan Ekstraksi (Error Analysis)}\label{subsubsec:error-analysis}
 % ──────────────────────────────────────────
 
-Analisis \textit{feedback} pakar mengungkapkan beberapa pola kesalahan sistematis
-pada \textit{pipeline} ekstraksi LLM:
+Analisis \textit{feedback} pakar mengungkapkan empat pola kesalahan sistematis
+pada \textit{pipeline} ekstraksi LLM.
 
-\textbf{Kesalahan faktual agen biologis.} Pada Kimia, \textit{triple} mengenai produksi
+\subsubsection{Kesalahan faktual agen biologis.} Pada Kimia, \textit{triple} mengenai produksi
 etanol menyatakan ``bakteri memfermentasi karbohidrat'' padahal seharusnya
 ``ragi (\textit{Saccharomyces cerevisiae})''. Kesalahan ini termasuk dalam kategori
 \textit{hallucination} faktual sebagaimana diidentifikasi pada Subbab~\ref{subsec:kg-ontologi}.
 
-\textbf{Pencampuran konsep teknis.} \textit{Triple} mengenai pemurnian tembaga menyatakan
+\subsubsection{Pencampuran konsep teknis.} \textit{Triple} mengenai pemurnian tembaga menyatakan
 bahwa \textit{electroplating} digunakan untuk pemurnian tembaga, padahal proses yang
 benar adalah \textit{elektrorefining}. Kedua konsep memang melibatkan elektrolisis,
 namun tujuan dan mekanismenya berbeda.
 
-\textbf{Definisi yang terlalu luas.} Expert 2 (Fisika) mencatat sejumlah definisi yang
+\subsubsection{Definisi yang terlalu luas.} Expert 2 (Fisika) mencatat sejumlah definisi yang
 menimbulkan bias, misalnya definisi konstanta Coulomb yang ``terlalu luas'' tanpa
 menyebutkan jenis konstantanya. Umpan balik umum dari penilai ini menekankan:
 ``Penjelasannya dipastikan jangan ada bias\ldots Lebih ke penulisan, notasi, dan
 definisi nya perlu dicek dan dirapihkan kembali.''
 
-\textbf{Under-extraction formula dan rumus.} Expert 1 (Fisika) mengusulkan 15
-\textit{missing triples}; 10 di antaranya (67\%) merupakan formula/rumus
+\subsubsection{\textit{Under-extraction} rumus matematis.} Expert 1 (Fisika) mengusulkan
+15 \textit{missing triples}; 10 di antaranya (67\%) merupakan rumus matematis
 yang tidak berhasil diekstrak oleh LLM. Ini menunjukkan bahwa LLM cenderung
 mengekstrak konsep deskriptif namun melewatkan relasi kuantitatif berbasis
 persamaan matematika. Contoh: rumus efisiensi transformator ($\eta$), nilai
 efektif arus AC ($I_\text{ef}$), panjang gelombang minimum sinar-X
-($\lambda_\text{min}$), dan rumus peluruhan radioaktif ($N_t$).
-
-% ──────────────────────────────────────────
-\subsection{Analisis Koreksi dan Kategori Feedback}\label{subsubsec:feedback}
-% ──────────────────────────────────────────
-
-Dari 222 komentar yang diberikan Expert 1 (Fisika), analisis tematik
-menunjukkan distribusi:
-
-\begin{itemize}
-  \item Penjelasan/konfirmasi rumus: 78 komentar (35\%) --- mayoritas bersifat
-    validasi bahwa rumus sudah benar.
-  \item Klarifikasi definisi: 52 komentar (23\%) --- penajaman definisi konsep.
-  \item Koreksi notasi: 45 komentar (20\%) --- perbaikan penulisan simbol dan satuan.
-  \item Peringatan bias: 28 komentar (13\%) --- potensi \textit{misleading} pada pembaca.
-  \item Penambahan konteks: 19 komentar (9\%) --- konteks tambahan yang perlu disertakan.
-\end{itemize}
-
-Pola ini mengindikasikan bahwa kekuatan utama LLM terletak pada
-ekstraksi struktur konseptual (87\% komentar bernilai konfirmasi atau
-netral), namun kelemahan terletak pada presisi notasi dan formulasi
-matematis. Perlu dicatat bahwa angka 87\% dihitung dari proporsi komentar
-konfirmasi/klarifikasi terhadap total 222 komentar Expert 1 (Fisika), bukan
-dari jumlah triple yang dinilai; denominator kedua ukuran tersebut berbeda.
+($\lambda_\text{min}$), dan rumus peluruhan radioaktif ($N_t$). Secara umum,
+sebagian besar komentar Expert 1 (Fisika) bersifat konfirmasi bahwa keluaran
+sistem sudah benar, sedangkan koreksi terfokus pada notasi dan rumus.
 
 % ──────────────────────────────────────────
 \subsection{Dampak KGC terhadap Kualitas Graf}\label{subsubsec:dampak-kgc}
@@ -661,7 +640,7 @@ Kimia   & $\sim$0{,}82--0{,}92 & kesalahan terbanyak pada terminologi proses \\
 \end{longtable}
 
 Perbedaan ini selaras dengan analisis kesalahan pada Subbab~\ref{subsubsec:error-analysis}:
-kelemahan utama pada Fisika adalah \textbf{under-extraction rumus} (67\%
+kelemahan utama pada Fisika adalah \textbf{\textit{under-extraction} rumus} (67\%
 \textit{missing triples} Fisika berupa formula), sedangkan Kimia rentan pada
 \textbf{pencampuran konsep teknis}. Biologi---yang materinya lebih
 bersifat deskriptif---paling sesuai dengan kekuatan LLM dalam mengekstrak
