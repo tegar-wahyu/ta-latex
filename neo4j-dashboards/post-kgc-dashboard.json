@@ -1,0 +1,374 @@
+{
+  "version": 2,
+  "title": "New dashboard",
+  "description": "",
+  "pages": [
+    {
+      "id": "0",
+      "version": 1,
+      "title": "Topologi",
+      "widgets": [
+        {
+          "version": 1,
+          "title": "Graph Density",
+          "w": 4,
+          "h": 4,
+          "x": 4,
+          "y": 0,
+          "meta": {
+            "latestCypherQueries": [
+              {
+                "query": "MATCH (n:Concept)\n  WITH count(n) AS total_nodes\n\n  MATCH (n:Concept)-[r]->(m:Concept)\n  WITH total_nodes, count(r) AS total_edges\n\n  RETURN total_nodes, total_edges,\n      toFloat(total_edges) / (total_nodes * (total_nodes - 1)) AS graph_density",
+                "origin": "user"
+              },
+              {
+                "query": "MATCH (v)\nWITH count(v) AS total_nodes\nMATCH ()-[e]->()\nWITH total_nodes, count(e) AS total_edges\nRETURN\n    total_nodes,\n    total_edges,\n    CASE\n        WHEN total_nodes > 1\n        THEN toFloat(total_edges) / (total_nodes * (total_nodes - 1))\n        ELSE 0\n    END AS graph_density",
+                "origin": "user"
+              },
+              {
+                "query": "/* 1. Calculate total edges (m) */\nMATCH ()-[r]->()\nWITH count(r) AS m\nWHERE m > 0\n\n/* 2. Calculate the 'Expected' part of the formula (sum of degrees squared) */\nMATCH (n)\nWHERE n.community IS NOT NULL\nWITH m, n.community AS comm, sum(COUNT { (n)--() }) AS communityDegreeSum\nWITH m, sum((communityDegreeSum * communityDegreeSum) / (4.0 * m * m)) AS expectedValue\n\n/* 3. Calculate the 'Actual' part (edges inside communities) */\nMATCH (n1)-[r]->(n2)\nWHERE n1.community = n2.community\nWITH m, expectedValue, count(r) AS actualEdges\n\n/* 4. Final Calculation */\nRETURN (1.0 * actualEdges / m) - expectedValue AS modularity_score",
+                "origin": "user"
+              },
+              {
+                "query": "CALL gds.louvain.stats('myGraph')\nYIELD modularity\nRETURN modularity",
+                "origin": "user"
+              }
+            ]
+          },
+          "settings": {
+            "type": "table",
+            "query": "  MATCH (n:Concept)\n  WITH count(n) AS total_nodes\n  \n  MATCH (n:Concept)-[r]->(m:Concept)\n  WITH total_nodes, count(r) AS total_edges\n  \n  RETURN total_nodes, total_edges,\n      toFloat(total_edges) / (total_nodes * (total_nodes - 1)) AS graph_density",
+            "databaseName": "772674a6",
+            "actions": [],
+            "version": 1,
+            "richRenderCells": false,
+            "enableRecordsDownload": true
+          }
+        },
+        {
+          "version": 1,
+          "title": "Concept Average Degree Centrality",
+          "w": 4,
+          "h": 4,
+          "x": 0,
+          "y": 0,
+          "meta": {
+            "latestCypherQueries": [
+              {
+                "query": "MATCH (m:Concept)\nWITH m, COUNT { (m)--(:Concept) } AS degree\nRETURN avg(degree) AS average_concept_degree",
+                "origin": "user"
+              }
+            ]
+          },
+          "settings": {
+            "type": "singleValue",
+            "query": "MATCH (m:Concept)\nWITH m, COUNT { (m)--(:Concept) } AS degree\nRETURN avg(degree) AS average_concept_degree",
+            "databaseName": "772674a6",
+            "version": 1,
+            "fontSize": null,
+            "textColor": null,
+            "align": 4
+          }
+        },
+        {
+          "version": 1,
+          "title": "Modularity",
+          "w": 4,
+          "h": 4,
+          "x": 8,
+          "y": 0,
+          "meta": {
+            "latestCypherQueries": [
+              {
+                "query": "// Step 1: total directed edges between chapter-mapped concepts\n  MATCH (c1:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(n:Concept)-[r]->(m:Concept)\n  MATCH (c2:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(m)\n  WITH count(r) AS total_m\n\n  // Step 2: k_out and e_cc per source community\n  MATCH (c1:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(n:Concept)-[r]->(m:Concept)\n  MATCH (c2:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(m)\n  WITH total_m, c1.name AS comm,\n       count(r) AS k_out,\n       sum(CASE WHEN c1.name = c2.name THEN 1 ELSE 0 END) AS e_cc\n  WITH total_m, collect({comm: comm, k_out: k_out, e_cc: e_cc}) AS out_stats\n\n  // Step 3: k_in per target community\n  MATCH (c2:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(m:Concept)\n  MATCH (n:Concept)-[r]->(m)\n  MATCH (c1:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(n)\n  WITH total_m, out_stats, c2.name AS comm, count(r) AS k_in\n  WITH total_m, out_stats, collect({comm: comm, k_in: k_in}) AS in_stats\n\n  // Step 4: join by community, compute Q\n  UNWIND out_stats AS os\n  WITH total_m, os, in_stats\n  WITH total_m, os.e_cc AS e_cc, os.k_out AS k_out,\n       coalesce([x IN in_stats WHERE x.comm = os.comm | x.k_in][0], 0) AS k_in\n  RETURN sum(\n    (1.0 * e_cc / total_m) - (1.0 * k_out * k_in / (total_m * total_m))\n  ) AS globalModularity",
+                "origin": "user"
+              }
+            ]
+          },
+          "settings": {
+            "type": "singleValue",
+            "query": " // Step 1: total directed edges between chapter-mapped concepts\n  MATCH (c1:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(n:Concept)-[r]->(m:Concept)\n  MATCH (c2:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(m)\n  WITH count(r) AS total_m\n\n  // Step 2: k_out and e_cc per source community\n  MATCH (c1:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(n:Concept)-[r]->(m:Concept)\n  MATCH (c2:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(m)\n  WITH total_m, c1.name AS comm,\n       count(r) AS k_out,\n       sum(CASE WHEN c1.name = c2.name THEN 1 ELSE 0 END) AS e_cc\n  WITH total_m, collect({comm: comm, k_out: k_out, e_cc: e_cc}) AS out_stats\n\n  // Step 3: k_in per target community\n  MATCH (c2:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(m:Concept)\n  MATCH (n:Concept)-[r]->(m)\n  MATCH (c1:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(n)\n  WITH total_m, out_stats, c2.name AS comm, count(r) AS k_in\n  WITH total_m, out_stats, collect({comm: comm, k_in: k_in}) AS in_stats\n\n  // Step 4: join by community, compute Q\n  UNWIND out_stats AS os\n  WITH total_m, os, in_stats\n  WITH total_m, os.e_cc AS e_cc, os.k_out AS k_out,\n       coalesce([x IN in_stats WHERE x.comm = os.comm | x.k_in][0], 0) AS k_in\n  RETURN sum(\n    (1.0 * e_cc / total_m) - (1.0 * k_out * k_in / (total_m * total_m))\n  ) AS globalModularity",
+            "databaseName": "772674a6",
+            "version": 1,
+            "fontSize": null,
+            "textColor": null,
+            "align": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "version": 1,
+      "title": "Ekstraksi",
+      "widgets": [
+        {
+          "version": 1,
+          "title": "ESR",
+          "w": 4,
+          "h": 4,
+          "x": 4,
+          "y": 0,
+          "meta": {
+            "latestCypherQueries": [
+              {
+                "query": "MATCH (s:Subtopic)\nOPTIONAL MATCH (s)-[:HAS_CONCEPT]->(c:Concept)\nWITH s, count(c) AS concept_count\nWITH count(s) AS total_subtopics,\n     sum(CASE WHEN concept_count = 0 THEN 1 ELSE 0 END) AS empty_subtopics\nRETURN total_subtopics,\n       empty_subtopics,\n       toFloat(empty_subtopics) / total_subtopics AS empty_subkonsep_rate",
+                "origin": "user"
+              },
+              {
+                "query": "// 1. Ambil semua Subtopic\nMATCH (s:Subtopic)\n\n// 2. Hitung total dan hitung yang kosong dalam satu langkah\nWITH count(s) AS total_subtopics,\n     sum(CASE WHEN NOT (s)-[:HAS_CONCEPT]->(:Concept) THEN 1 ELSE 0 END) AS count_empty\n\n// 3. Kalkulasi rasio ESR\nRETURN count_empty,\n       total_subtopics,\n       CASE\n         WHEN total_subtopics = 0 THEN 0.0\n         ELSE 1.0 * count_empty / total_subtopics\n       END AS empty_subkonsep_rate",
+                "origin": "user"
+              },
+              {
+                "query": "// 1. Hitung total entitas Subtopic sebagai K (|K|)\nMATCH (s:Subtopic)\nWITH count(s) AS totalK\n\n// 2. Hitung Subtopic yang tidak memiliki relasi HAS_CONCEPT ke Concept\n// Gunakan WITH untuk membawa variabel totalK ke tahap berikutnya\nMATCH (k:Subtopic)\nWHERE NOT (k)-[:HAS_CONCEPT]->(:Concept)\nWITH totalK, count(k) AS emptySubKonsep\n\n// 3. Kalkulasi rasio ESR\nRETURN emptySubKonsep AS count_empty,\n       totalK AS total_subtopics,\n       CASE\n         WHEN totalK = 0 THEN 0\n         ELSE 1.0 * emptySubKonsep / totalK\n       END AS empty_subkonsep_rate",
+                "origin": "user"
+              },
+              {
+                "query": "// 1. Hitung total entitas Subtopic sebagai K (|K|)\nMATCH (s:Subtopic)\nWITH count(s) AS totalK\n\n// 2. Hitung Subtopic yang tidak memiliki relasi HAS_CONCEPT ke Concept\nMATCH (k:Subtopic)\nWHERE NOT (k)-[:HAS_CONCEPT]->(:Concept)\nWITH totalK, count(k) AS emptySubKonsep\n\n// 3. Kalkulasi rasio ESR\nRETURN emptySubKonsep AS count_empty,\n       totalK AS total_subtopics,\n       CASE\n         WHEN totalK = 0 THEN 0\n         ELSE 1.0 * emptySubKonsep / totalK\n       END AS empty_subkonsep_rate",
+                "origin": "user"
+              },
+              {
+                "query": "CALL db.labels()",
+                "origin": "user"
+              }
+            ]
+          },
+          "settings": {
+            "type": "table",
+            "query": "MATCH (s:Subtopic)\nOPTIONAL MATCH (s)-[:HAS_CONCEPT]->(c:Concept)\nWITH s, count(c) AS concept_count\nWITH count(s) AS total_subtopics,\n     sum(CASE WHEN concept_count = 0 THEN 1 ELSE 0 END) AS empty_subtopics\nRETURN total_subtopics,\n       empty_subtopics,\n       toFloat(empty_subtopics) / total_subtopics AS empty_subkonsep_rate",
+            "databaseName": "772674a6",
+            "actions": [],
+            "version": 1,
+            "richRenderCells": false,
+            "enableRecordsDownload": true
+          }
+        },
+        {
+          "version": 1,
+          "title": "Description Completeness",
+          "w": 4,
+          "h": 4,
+          "x": 0,
+          "y": 0,
+          "meta": {
+            "latestCypherQueries": [
+              {
+                "query": "MATCH (n)\nWHERE n:Concept OR n:Chapter\nWITH n,\n     CASE\n       WHEN n:Concept THEN n.description\n       WHEN n:Chapter THEN n.summary\n     END AS desc\nWITH count(n) AS total_entities,\n     sum(CASE WHEN desc IS NOT NULL AND trim(desc) <> \"\" THEN 1 ELSE 0 END) AS entities_with_description\nRETURN total_entities,\n       entities_with_description,\n       toFloat(entities_with_description) / total_entities AS description_completeness",
+                "origin": "user"
+              },
+              {
+                "query": "MATCH (n)\nWHERE n:Concept OR n:Chapter\nWITH n,\n     CASE\n       WHEN n:Concept THEN n.description\n       WHEN n:Chapter THEN n.summary\n     END AS desc\nRETURN count(n) AS total_entities,\n       count {\n         WITH desc\n         WHERE desc IS NOT NULL AND trim(desc) <> \"\"\n       } AS entities_with_description,\n       toFloat(count {\n         WITH desc\n         WHERE desc IS NOT NULL AND trim(desc) <> \"\"\n       }) / count(n) AS description_completeness",
+                "origin": "user"
+              },
+              {
+                "query": "// 1. Hitung total entitas (|E|)\nMATCH (n)\nWITH count(n) AS totalEntities\n\n// 2. Hitung entitas dengan deskripsi tidak kosong\nMATCH (e)\nWHERE e.description IS NOT NULL AND trim(e.description) <> \"\"\nWITH totalEntities, count(e) AS entitiesWithDesc\n\n// 3. Hitung persentase DC\nRETURN entitiesWithDesc AS countWithDescription,\n       totalEntities AS totalEntities,\n       1.0 * entitiesWithDesc / totalEntities AS description_completeness",
+                "origin": "user"
+              },
+              {
+                "query": "// 1. Ambil semua node (atau filter berdasarkan label, misal :Materi)\nMATCH (n)\n// 2. Hitung total entitas dan entitas yang memiliki deskripsi\nWITH count(n) AS totalEntities,\n     sum(CASE WHEN n.description IS NOT NULL AND n.description <> \"\" THEN 1 ELSE 0 END) AS entitiesWithDescription\n// 3. Hitung rasio DC\nRETURN totalEntities AS total_E,\n       entitiesWithDescription AS entities_with_desc,\n       1.0 * entitiesWithDescription / totalEntities AS description_completeness",
+                "origin": "user"
+              }
+            ]
+          },
+          "settings": {
+            "type": "table",
+            "query": "MATCH (n)\nWHERE n:Concept OR n:Chapter\nWITH n,\n     CASE\n       WHEN n:Concept THEN n.description\n       WHEN n:Chapter THEN n.summary\n     END AS desc\nWITH count(n) AS total_entities,\n     sum(CASE WHEN desc IS NOT NULL AND trim(desc) <> \"\" THEN 1 ELSE 0 END) AS entities_with_description\nRETURN total_entities,\n       entities_with_description,\n       toFloat(entities_with_description) / total_entities AS description_completeness",
+            "databaseName": "772674a6",
+            "actions": [],
+            "version": 1,
+            "richRenderCells": false,
+            "enableRecordsDownload": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "version": 1,
+      "title": "Hubungan",
+      "widgets": [
+        {
+          "version": 1,
+          "title": "PCL",
+          "w": 4,
+          "h": 4,
+          "x": 4,
+          "y": 0,
+          "meta": {
+            "latestCypherQueries": [
+              {
+                "query": "MATCH p = (start:Chapter)-[:PRASYARAT*1..10]->(end:Chapter)\nWHERE NOT (end)-[:PRASYARAT]->()\nRETURN length(p) AS prerequisite_chain_length,\n       [n IN nodes(p) | n.name] AS chain\nORDER BY prerequisite_chain_length DESC\nLIMIT 1",
+                "origin": "user"
+              },
+              {
+                "query": "MATCH ()-[r]->()\nWHERE type(r) CONTAINS \"PRASYARAT\"\n   OR type(r) CONTAINS \"BERGANTUNG\"\nRETURN type(r) AS relation_type, count(*) AS count\nORDER BY count DESC",
+                "origin": "user"
+              },
+              {
+                "query": "MATCH p = (start:Concept)-[:PRASYARAT_UNTUK|BERGANTUNG_PADA*1..10]->(end:Concept)\nWHERE NOT (end)-[:PRASYARAT_UNTUK|BERGANTUNG_PADA]->()\nRETURN length(p) AS prerequisite_chain_length,\n       [n IN nodes(p) | n.name] AS chain\nORDER BY prerequisite_chain_length DESC\nLIMIT 1",
+                "origin": "user"
+              }
+            ]
+          },
+          "settings": {
+            "type": "table",
+            "query": "MATCH p = (start:Chapter)-[:PRASYARAT*1..10]->(end:Chapter)\nWHERE NOT (end)-[:PRASYARAT]->()\nRETURN length(p) AS prerequisite_chain_length,\n       [n IN nodes(p) | n.name] AS chain\nORDER BY prerequisite_chain_length DESC\nLIMIT 1",
+            "databaseName": "772674a6",
+            "actions": [],
+            "version": 1,
+            "richRenderCells": false
+          }
+        },
+        {
+          "version": 1,
+          "title": "TRR",
+          "w": 4,
+          "h": 4,
+          "x": 0,
+          "y": 0,
+          "meta": {
+            "latestCypherQueries": [
+              {
+                "query": "WITH [\n  \"MENDEFINISIKAN\",\n  \"MENYEBABKAN\",\n  \"MEMUNGKINKAN\",\n  \"MENGATUR\",\n  \"BAGIAN_DARI\",\n  \"TERDIRI_DARI\",\n  \"BERGANTUNG_PADA\",\n  \"BERINTERAKSI_DENGAN\",\n  \"BEREAKSI_DENGAN\",\n  \"MENGHASILKAN\",\n  \"MEMPENGARUHI\",\n  \"TERLETAK_DI\",\n  \"DIFORMULASIKAN_SEBAGAI\",\n  \"DIKATALISIS_OLEH\",\n  \"MEMILIKI_SIFAT\",\n  \"LINTAS_BUKU_SAMA_DENGAN\",\n  \"LINTAS_BUKU_APLIKASI_DARI\",\n  \"LINTAS_BUKU_PRASYARAT_UNTUK\",\n  \"LINTAS_BUKU_MEMPERDALAM\",\n  \"LINTAS_BUKU_BERKAITAN_DENGAN\"\n] AS typed_vocab\nMATCH ()-[r]->()\nWHERE NOT type(r) IN [\"HAS_CHAPTER\", \"HAS_SUBTOPIC\", \"HAS_CONCEPT\", \"NEXT_CHAPTER\"]\nWITH typed_vocab,\n     count(r) AS total_semantic_relations,\n     sum(CASE WHEN type(r) IN typed_vocab THEN 1 ELSE 0 END) AS typed_relations\nRETURN total_semantic_relations,\n       typed_relations,\n       CASE\n         WHEN total_semantic_relations = 0 THEN null\n         ELSE toFloat(typed_relations) / total_semantic_relations\n       END AS typed_relation_ratio",
+                "origin": "user"
+              },
+              {
+                "query": "WITH [\n  \"MENDEFINISIKAN\",\n  \"MENYEBABKAN\",\n  \"MEMUNGKINKAN\",\n  \"MENGATUR\",\n  \"BAGIAN_DARI\",\n  \"TERDIRI_DARI\",\n  \"BERGANTUNG_PADA\",\n  \"BERINTERAKSI_DENGAN\",\n  \"BEREAKSI_DENGAN\",\n  \"MENGHASILKAN\",\n  \"MEMPENGARUHI\",\n  \"TERLETAK_DI\",\n  \"DIFORMULASIKAN_SEBAGAI\",\n  \"DIKATALISIS_OLEH\",\n  \"MEMILIKI_SIFAT\",\n  \"LINTAS_BUKU_SAMA_DENGAN\"\n  \"LINTAS_BUKU_APLIKASI_DARI\",\n  \"LINTAS_BUKU_PRASYARAT_UNTUK\",\n  \"LINTAS_BUKU_MEMPERDALAM\",\n  \"LINTAS_BUKU_BERKAITAN_DENGAN\"\n] AS typed_vocab\nMATCH ()-[r]->()\nWHERE NOT type(r) IN [\"HAS_CHAPTER\", \"HAS_SUBTOPIC\", \"HAS_CONCEPT\", \"NEXT_CHAPTER\"]\nWITH typed_vocab,\n     count(r) AS total_semantic_relations,\n     sum(CASE WHEN type(r) IN typed_vocab THEN 1 ELSE 0 END) AS typed_relations\nRETURN total_semantic_relations,\n       typed_relations,\n       CASE\n         WHEN total_semantic_relations = 0 THEN null\n         ELSE toFloat(typed_relations) / total_semantic_relations\n       END AS typed_relation_ratio",
+                "origin": "user"
+              },
+              {
+                "query": "WITH [\n  \"MENDEFINISIKAN\",\n  \"MENYEBABKAN\",\n  \"MEMUNGKINKAN\",\n  \"MENGATUR\",\n  \"BAGIAN_DARI\",\n  \"TERDIRI_DARI\",\n  \"BERGANTUNG_PADA\",\n  \"BERINTERAKSI_DENGAN\",\n  \"BEREAKSI_DENGAN\",\n  \"MENGHASILKAN\",\n  \"MEMPENGARUHI\",\n  \"TERLETAK_DI\",\n  \"DIFORMULASIKAN_SEBAGAI\",\n  \"DIKATALISIS_OLEH\",\n  \"MEMILIKI_SIFAT\",\n  \"LINTAS_BUKU_*\"\n] AS typed_vocab\nMATCH ()-[r]->()\nWHERE NOT type(r) IN [\"HAS_CHAPTER\", \"HAS_SUBTOPIC\", \"HAS_CONCEPT\", \"NEXT_CHAPTER\"]\nWITH typed_vocab,\n     count(r) AS total_semantic_relations,\n     sum(CASE WHEN type(r) IN typed_vocab THEN 1 ELSE 0 END) AS typed_relations\nRETURN total_semantic_relations,\n       typed_relations,\n       CASE\n         WHEN total_semantic_relations = 0 THEN null\n         ELSE toFloat(typed_relations) / total_semantic_relations\n       END AS typed_relation_ratio",
+                "origin": "user"
+              },
+              {
+                "query": "WITH [\n  \"MENDEFINISIKAN\",\n  \"MENYEBABKAN\",\n  \"MEMUNGKINKAN\",\n  \"MENGATUR\",\n  \"BAGIAN_DARI\",\n  \"TERDIRI_DARI\",\n  \"BERGANTUNG_PADA\",\n  \"BERINTERAKSI_DENGAN\",\n  \"BEREAKSI_DENGAN\",\n  \"MENGHASILKAN\",\n  \"MEMPENGARUHI\",\n  \"TERLETAK_DI\",\n  \"DIFORMULASIKAN_SEBAGAI\",\n  \"DIKATALISIS_OLEH\",\n  \"MEMILIKI_SIFAT\",\n  \"PRASYARAT_UNTUK\",\n  \"MEMPERDALAM\",\n  \"BERKAITAN_DENGAN\"\n] AS typed_vocab\nMATCH ()-[r]->()\nWHERE NOT type(r) IN [\"HAS_CHAPTER\", \"HAS_SUBTOPIC\", \"HAS_CONCEPT\", \"NEXT_CHAPTER\"]\nWITH typed_vocab,\n     count(r) AS total_semantic_relations,\n     sum(CASE WHEN type(r) IN typed_vocab THEN 1 ELSE 0 END) AS typed_relations\nRETURN total_semantic_relations,\n       typed_relations,\n       CASE\n         WHEN total_semantic_relations = 0 THEN null\n         ELSE toFloat(typed_relations) / total_semantic_relations\n       END AS typed_relation_ratio",
+                "origin": "user"
+              },
+              {
+                "query": "WITH [\n  \"MENDEFINISIKAN\",\n  \"MENYEBABKAN\",\n  \"MEMUNGKINKAN\",\n  \"MENGATUR\",\n  \"BAGIAN_DARI\",\n  \"TERDIRI_DARI\",\n  \"BERGANTUNG_PADA\",\n  \"BERINTERAKSI_DENGAN\",\n  \"BEREAKSI_DENGAN\",\n  \"MENGHASILKAN\",\n  \"MEMPENGARUHI\",\n  \"TERLETAK_DI\",\n  \"DIFORMULASIKAN_SEBAGAI\",\n  \"DIKATALISIS_OLEH\",\n  \"MEMILIKI_SIFAT\",\n  \"PRASYARAT_UNTUK\",\n  \"MEMPERDALAM\"\n] AS typed_vocab\nMATCH ()-[r]->()\nWHERE NOT type(r) IN [\"HAS_CHAPTER\", \"HAS_SUBTOPIC\", \"HAS_CONCEPT\", \"NEXT_CHAPTER\"]\nWITH typed_vocab,\n     count(r) AS total_semantic_relations,\n     sum(CASE WHEN type(r) IN typed_vocab THEN 1 ELSE 0 END) AS typed_relations\nRETURN total_semantic_relations,\n       typed_relations,\n       CASE\n         WHEN total_semantic_relations = 0 THEN null\n         ELSE toFloat(typed_relations) / total_semantic_relations\n       END AS typed_relation_ratio",
+                "origin": "user"
+              }
+            ]
+          },
+          "settings": {
+            "type": "table",
+            "query": "WITH [\n  \"MENDEFINISIKAN\",\n  \"MENYEBABKAN\",\n  \"MEMUNGKINKAN\",\n  \"MENGATUR\",\n  \"BAGIAN_DARI\",\n  \"TERDIRI_DARI\",\n  \"BERGANTUNG_PADA\",\n  \"BERINTERAKSI_DENGAN\",\n  \"BEREAKSI_DENGAN\",\n  \"MENGHASILKAN\",\n  \"MEMPENGARUHI\",\n  \"TERLETAK_DI\",\n  \"DIFORMULASIKAN_SEBAGAI\",\n  \"DIKATALISIS_OLEH\",\n  \"MEMILIKI_SIFAT\",\n  \"LINTAS_BUKU_SAMA_DENGAN\",\n  \"LINTAS_BUKU_APLIKASI_DARI\",\n  \"LINTAS_BUKU_PRASYARAT_UNTUK\",\n  \"LINTAS_BUKU_MEMPERDALAM\",\n  \"LINTAS_BUKU_BERKAITAN_DENGAN\"\n] AS typed_vocab\nMATCH ()-[r]->()\nWHERE NOT type(r) IN [\"HAS_CHAPTER\", \"HAS_SUBTOPIC\", \"HAS_CONCEPT\", \"NEXT_CHAPTER\"]\nWITH typed_vocab,\n     count(r) AS total_semantic_relations,\n     sum(CASE WHEN type(r) IN typed_vocab THEN 1 ELSE 0 END) AS typed_relations\nRETURN total_semantic_relations,\n       typed_relations,\n       CASE\n         WHEN total_semantic_relations = 0 THEN null\n         ELSE toFloat(typed_relations) / total_semantic_relations\n       END AS typed_relation_ratio",
+            "databaseName": "772674a6",
+            "actions": [],
+            "version": 1,
+            "richRenderCells": false,
+            "enableRecordsDownload": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "version": 1,
+      "title": "KG",
+      "widgets": [
+        {
+          "version": 1,
+          "title": "Kimia",
+          "w": 4,
+          "h": 4,
+          "x": 0,
+          "y": 0,
+          "meta": {
+            "latestCypherQueries": [
+              {
+                "query": "MATCH (n)\nWHERE n.grade = \"Kimia Kelas XII\" OR n.name = \"Kimia Kelas XII\"\nOPTIONAL MATCH (n)-[r]->(m)\nWHERE (m.grade = \"Kimia Kelas XII\" OR m.name = \"Kimia Kelas XII\")\nRETURN n, r, m",
+                "origin": "user"
+              }
+            ]
+          },
+          "settings": {
+            "type": "graph",
+            "query": "MATCH (n)\nWHERE n.grade = \"Kimia Kelas XII\" OR n.name = \"Kimia Kelas XII\"\nOPTIONAL MATCH (n)-[r]->(m)\nWHERE (m.grade = \"Kimia Kelas XII\" OR m.name = \"Kimia Kelas XII\")\nRETURN n, r, m",
+            "databaseName": "772674a6",
+            "version": 2,
+            "layout": {
+              "type": "d3Force"
+            }
+          }
+        },
+        {
+          "version": 1,
+          "title": "Fisika",
+          "w": 4,
+          "h": 4,
+          "x": 4,
+          "y": 0,
+          "meta": {
+            "latestCypherQueries": [
+              {
+                "query": "MATCH (n)\nWHERE n.grade = \"Fisika Kelas XII\" OR n.name = \"Fisika Kelas XII\"\nOPTIONAL MATCH (n)-[r]->(m)\nWHERE (m.grade = \"Fisika Kelas XII\" OR m.name = \"Fisika Kelas XII\")\nRETURN n, r, m",
+                "origin": "user"
+              }
+            ]
+          },
+          "settings": {
+            "type": "graph",
+            "query": "MATCH (n)\nWHERE n.grade = \"Fisika Kelas XII\" OR n.name = \"Fisika Kelas XII\"\nOPTIONAL MATCH (n)-[r]->(m)\nWHERE (m.grade = \"Fisika Kelas XII\" OR m.name = \"Fisika Kelas XII\")\nRETURN n, r, m",
+            "databaseName": "772674a6",
+            "version": 2,
+            "layout": {
+              "type": "d3Force"
+            }
+          }
+        },
+        {
+          "version": 1,
+          "title": "ALL",
+          "w": 4,
+          "h": 4,
+          "x": 0,
+          "y": 4,
+          "meta": {
+            "latestCypherQueries": [
+              {
+                "query": "MATCH (n)\nOPTIONAL MATCH p=(n)-[]-()\nRETURN n, p",
+                "origin": "user"
+              }
+            ]
+          },
+          "settings": {
+            "type": "graph",
+            "query": "MATCH (n)\nOPTIONAL MATCH p=(n)-[]-()\nRETURN n, p",
+            "databaseName": "772674a6",
+            "version": 2,
+            "layout": {
+              "type": "d3Force"
+            }
+          }
+        },
+        {
+          "version": 1,
+          "title": "Biologi",
+          "w": 4,
+          "h": 4,
+          "x": 8,
+          "y": 0,
+          "meta": {
+            "latestCypherQueries": [
+              {
+                "query": "MATCH (n)\nWHERE n.grade = \"Biologi Kelas XII\" OR n.name = \"Biologi Kelas XII\"\nOPTIONAL MATCH (n)-[r]->(m)\nWHERE (m.grade = \"Biologi Kelas XII\" OR m.name = \"Biologi Kelas XII\")\nRETURN n, r, m",
+                "origin": "user"
+              }
+            ]
+          },
+          "settings": {
+            "type": "graph",
+            "query": "MATCH (n)\nWHERE n.grade = \"Biologi Kelas XII\" OR n.name = \"Biologi Kelas XII\"\nOPTIONAL MATCH (n)-[r]->(m)\nWHERE (m.grade = \"Biologi Kelas XII\" OR m.name = \"Biologi Kelas XII\")\nRETURN n, r, m",
+            "databaseName": "772674a6",
+            "version": 2,
+            "layout": {
+              "type": "d3Force"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "params": []
+}
