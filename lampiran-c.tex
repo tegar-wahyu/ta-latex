@@ -1,0 +1,107 @@
+% ============================================================
+%  LAMPIRAN C – VISUALISASI KNOWLEDGE GRAPH PER MATA PELAJARAN
+%  Compile standalone:  pdflatex lampiran-c.tex
+%  Compile as part of thesis: pdflatex main.tex
+% ============================================================
+\documentclass[main]{subfiles}
+\usepackage{hyphenat}
+\usepackage{iftex}
+
+% ── Encoding, Language & Fonts ───────────────────────────────
+\ifXeTeX
+    \usepackage{polyglossia}
+    \setmainlanguage{bahasai}
+    \usepackage{fontspec}
+    \setmainfont{TeX Gyre Termes}
+    \setsansfont{TeX Gyre Heros}
+    \setmonofont[Scale=0.88]{TeX Gyre Cursor}
+\else
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage[indonesian]{babel}
+    \usepackage{mathptmx}
+    \usepackage{helvet}
+    \usepackage{courier}
+\fi
+
+% ── Page geometry (A4, UI thesis margins) ────────────────────
+\usepackage[
+  a4paper,
+  top    = 2.54cm,
+  bottom = 2.54cm,
+  left   = 3.17cm,
+  right  = 2.54cm
+]{geometry}
+
+% ── Line spacing & paragraph ─────────────────────────────────
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+
+% ── Microtype & justification ────────────────────────────────
+\usepackage{microtype}
+\sloppy
+
+% ── Headings ─────────────────────────────────────────────────
+\usepackage{titlesec}
+
+\titleformat{\chapter}[block]
+  {\centering\sffamily\bfseries\large}{}
+  {0pt}{\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{0pt}{1.5em}
+
+\titleformat{\section}
+  {\sffamily\bfseries\normalsize}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.6em}
+
+% ── Graphics ─────────────────────────────────────────────────
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\makeatother
+\setkeys{Gin}{width=\maxwidth,keepaspectratio}
+
+% ── Hyperlinks ───────────────────────────────────────────────
+\usepackage[hidelinks]{hyperref}
+
+% ============================================================
+\begin{document}
+
+% When standalone: switch to appendix lettering and set counter so
+% \chapter{} renders as "LAMPIRAN C". When compiled inside main.tex,
+% main.tex issues \appendix and advances the counter before \subfile.
+\ifSubfilesClassLoaded{}{\appendix\setcounter{chapter}{2}}
+
+\chapter{Visualisasi Knowledge Graph per Mata Pelajaran}
+\label{lamp:kg-per-mapel}
+
+Lampiran ini menyajikan visualisasi topologi \textit{knowledge graph}
+hasil konstruksi untuk masing-masing mata pelajaran (Fisika, Kimia, dan
+Biologi) pada kondisi sebelum proses \textit{Knowledge Graph Completion}
+(intra-mapel). Visualisasi ini melengkapi analisis struktural pada
+Subbab~\ref{subsec:struktural} dengan memperlihatkan struktur internal
+tiap disiplin secara terpisah.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{figures/kg/fisika.png}
+  \caption{Topologi \textit{knowledge graph} mata pelajaran Fisika.}
+  \label{fig:kg-fisika}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{figures/kg/kimia.png}
+  \caption{Topologi \textit{knowledge graph} mata pelajaran Kimia.}
+  \label{fig:kg-kimia}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\linewidth]{figures/kg/biologi.png}
+  \caption{Topologi \textit{knowledge graph} mata pelajaran Biologi.}
+  \label{fig:kg-biologi}
+\end{figure}
+
+\end{document}
