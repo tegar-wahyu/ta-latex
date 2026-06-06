@@ -1,0 +1,192 @@
+% ============================================================
+%  LAMPIRAN G - DAFTAR MISSING TRIPLES
+%  Compile standalone:  pdflatex lampiran-g.tex
+%  Compile as part of thesis: pdflatex main.tex
+% ============================================================
+\documentclass[main]{subfiles}
+\usepackage{hyphenat}
+\usepackage{iftex}
+
+\ifXeTeX
+    \usepackage{polyglossia}
+    \setmainlanguage{bahasai}
+    \usepackage{fontspec}
+    \setmainfont{TeX Gyre Termes}
+    \setsansfont{TeX Gyre Heros}
+    \setmonofont[Scale=0.88]{TeX Gyre Cursor}
+\else
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage[indonesian]{babel}
+    \usepackage{mathptmx}
+    \usepackage{helvet}
+    \usepackage{courier}
+\fi
+
+\usepackage[
+  a4paper, top=2.54cm, bottom=2.54cm, left=3.17cm, right=2.54cm
+]{geometry}
+
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+
+\usepackage{microtype}
+\sloppy
+
+\usepackage{titlesec}
+\titleformat{\chapter}[block]
+  {\centering\sffamily\bfseries\large}{}
+  {0pt}{\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{0pt}{1.5em}
+\titleformat{\section}
+  {\sffamily\bfseries\normalsize}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.6em}
+\titleformat{\subsection}
+  {\sffamily\bfseries\normalsize}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{1em}{0.5em}
+
+\usepackage{longtable, booktabs, array, multirow}
+\usepackage{calc}
+\usepackage{tabularx}
+\usepackage{enumitem}
+
+\usepackage[hidelinks]{hyperref}
+
+\begin{document}
+\ifSubfilesClassLoaded{}{\appendix\setcounter{chapter}{6}}
+
+\chapter{Daftar \textit{Missing Triples}}
+\label{lamp:missing-triples}
+
+Lampiran ini memuat \textit{triple} yang ditandai pakar sebagai terlewat
+(\textit{missing}) saat validasi Fase~1 --- yakni relasi yang dianggap esensial
+secara kurikuler namun tidak ada pada KG hasil ekstraksi (Bab~3,
+Subbab~\ref{subsec:metrik-ekstraksi}). Karena usulan ini hanya diajukan oleh
+salah satu dari dua pakar per mata pelajaran, tiap usulan diadjudikasi oleh
+\textit{LLM-as-a-judge} (Lampiran~\ref{lamp:prompt-judge}) menjadi
+\textbf{Diterima} (label \texttt{missing}, dimasukkan sebagai fakta yang
+terlewat) atau \textbf{Ditolak} (label \texttt{abaikan}). Rekapitulasi diberikan
+pada Tabel~\ref{tab:mt-rekap}.
+
+\begin{table}[h]
+  \centering
+  \caption{Rekapitulasi missing triples per mata pelajaran.}
+  \label{tab:mt-rekap}
+  \footnotesize
+  \begin{tabularx}{\linewidth}{@{}X r r r@{}}
+    \toprule
+    \textbf{Mata Pelajaran} & \textbf{Diusulkan} & \textbf{Diterima} & \textbf{Ditolak} \\
+    \midrule
+    Fisika & 15 & 10 & 5 \\
+    Kimia & 29 & 19 & 10 \\
+    Biologi & 0 & 0 & 0 \\
+    \midrule
+    \textbf{Total} & \textbf{44} & \textbf{29} & \textbf{15} \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\noindent Pada Fase~1, kedua pakar Biologi tidak mengusulkan \textit{missing
+triple}. Daftar lengkap per mata pelajaran diberikan berikut ini; kolom
+\textbf{Alasan / Deskripsi} memuat penalaran \textit{judge} (untuk usulan yang
+diterima, teks ini berupa deskripsi relasi yang siap dipakai).
+
+\section{Fisika}
+\label{lamp:mt-fisika}
+
+\renewcommand{\arraystretch}{1.2}
+\scriptsize
+\begin{longtable}{@{}p{0.14\linewidth} p{0.36\linewidth} p{0.12\linewidth} p{0.30\linewidth}@{}}
+\caption{Missing triples Fisika yang diusulkan pakar dan putusan adjudikasi.}
+\label{tab:mt-fisika}\\
+\toprule
+\textbf{Bab} & \textbf{Triple (Subjek -- relasi $\rightarrow$ Target)} & \textbf{Putusan} & \textbf{Alasan / Deskripsi} \\
+\midrule
+\endfirsthead
+\multicolumn{4}{@{}l}{\small\textit{Lanjutan Tabel~\ref{tab:mt-fisika}}}\\
+\toprule
+\textbf{Bab} & \textbf{Triple (Subjek -- relasi $\rightarrow$ Target)} & \textbf{Putusan} & \textbf{Alasan / Deskripsi} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r@{}}{\small\textit{bersambung ke halaman berikutnya}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+LISTRIK STATIS & Muatan Kapasitor Keping Sejajar dan Hubungan Medan dan Potensial Listrik Pelat Paralel \textit{(dibutuhkan formulasikan)} $\rightarrow$ Rumus Muatan Tersimpan Kapasitor dan Rumus Beda Potensial Pelat Paralel & \textbf{Diterima} & Muatan listrik (Q) yang tersimpan di dalam kapasitor keping sejajar berbanding lurus dengan nilai kapasitansi (C) dan beda potensial atau tegangan (V), dirumuskan sebagai Q = C $\times$ V. Sementara itu, beda potensial (V) antara dua pelat paralel yang sejajar dengan jarak d di dalam medan listrik homogen (E) diformulasikan dengan rumus V = E $\times$ d. \\
+LISTRIK ARUS SEARAH & Alat Ukur Listrik \textit{(mendefinisikan)} $\rightarrow$ Fungsi Amperemeter dan Voltmeter & \textbf{Diterima} & Alat ukur listrik seperti amperemeter digunakan untuk mengukur kuat arus listrik dan harus dipasang secara seri dalam rangkaian, sedangkan voltmeter digunakan untuk mengukur beda potensial atau tegangan dan harus dipasang secara paralel. \\
+KEMAGNETAN & Rumus Efisiensi Transformator \textit{(diformulasikan sbg)} $\rightarrow$ Persamaan Efisiensi Trafo & \textbf{Diterima} & Efisiensi transformator diformulasikan sebagai perbandingan antara daya keluaran pada kumparan sekunder dengan daya masukan pada kumparan primer yang umumnya dinyatakan dalam bentuk persentase. \\
+ARUS BOLAK-BALIK & Hubungan Nilai Efektif dan Maksimum AC \textit{(Diformulasikan sbg)} $\rightarrow$ Rumus Arus dan Tegangan Efektif & \textbf{Diterima} & Hubungan nilai efektif dan maksimum pada arus dan tegangan bolak-balik diformulasikan dengan membagi nilai maksimumnya dengan akar dua, yang dirumuskan sebagai Ief = Imaks / $\surd$2 dan Vef = Vmaks / $\surd$2. \\
+ARUS BOLAK-BALIK & Frekuensi Resonansi RLC \textit{(Diformulasikan sbg)} $\rightarrow$ Rumus Frekuensi Resonansi & \textbf{Diterima} & Frekuensi resonansi (fr) pada rangkaian RLC ditentukan oleh nilai induktansi (L) dan kapasitansi (C), yang secara matematis dirumuskan sebagai fr = 1 / (2$\pi$$\surd$(LC)). \\
+GELOMBANG ELEKTROMAGNETIK & Pemanfaatan Sinar Inframerah \textit{(BAGIAN\_DARI)} $\rightarrow$ Spektrum Elektromagnetik & Ditolak & Subjek 'pemanfaatan sinar inframerah' tidak tepat memiliki relasi 'bagian\_dari' dengan 'spektrum elektromagnetik'. Yang merupakan bagian dari spektrum elektromagnetik adalah 'sinar inframerah' itu sendiri, bukan pemanfaatannya. Oleh karena itu, usulan ini harus diabaikan. \\
+GELOMBANG ELEKTROMAGNETIK & Pemanfaatan Sinar Inframerah \textit{(MEMUNGKINKAN)} $\rightarrow$ Teknologi Remote Control dan Terapi Medis & Ditolak & Konteks buku teks hanya menyebutkan pemanfaatan sinar inframerah untuk remote control dan termometer inframerah (alat pendeteksi suhu). Pemanfaatan inframerah untuk terapi medis fisik atau melancarkan sirkulasi darah sama sekali tidak disebutkan dalam teks yang relevan, sehingga informasi tersebut berada di luar cakupan materi pada buku. \\
+PENGANTAR & Gerbang Logika Dasar \textit{(TERDIRI\_DARI)} $\rightarrow$ Gerbang XOR & Ditolak & Konteks buku teks yang diberikan tidak menyebutkan gerbang XOR (Exclusive OR) sebagai bagian dari gerbang logika dasar. Konteks hanya membahas gerbang NOT, AND, dan NAND. Oleh karena itu, usulan ini diabaikan karena tidak memiliki dukungan dari teks referensi. \\
+RELATIVITAS & Relativitas Klasik Newton \textit{(MENGGUNAKAN)} $\rightarrow$ Transformasi Galileo & Ditolak & Konsep 'transformasi galileo' tidak disebutkan secara eksplisit dalam teks konteks buku referensi yang diberikan, sehingga tidak dapat divalidasi sebagai materi yang wajib diajarkan berdasarkan teks tersebut. \\
+RELATIVITAS & Dilatasi Waktu Relativistik \textit{(DIFORMULASIKAN\_SEBAGAI)} $\rightarrow$ Rumus Dilatasi Waktu & \textbf{Diterima} & Dilatasi waktu relativistik diformulasikan sebagai rumus dilatasi waktu, di mana selang waktu yang diamati oleh pengamat yang bergerak relatif terhadap suatu kejadian akan terukur lebih lama dibandingkan selang waktu yang diamati oleh pengamat yang diam, dengan persamaan matematika delta t = delta t0 / akar(1 - (v\textasciicircum{}2/c\textasciicircum{}2)) atau delta t = gamma . delta t0. \\
+RELATIVITAS & Penjumlahan Kecepatan Relativistik \textit{(DIFORMULASIKAN\_SEBAGAI)} $\rightarrow$ Rumus Kecepatan Relativistik Einstein & \textbf{Diterima} & Penjumlahan kecepatan relativistik diformulasikan melalui persamaan kecepatan relativistik Einstein, yaitu v = (v1 + v2) / (1 + (v1$\cdot$v2/c\textsuperscript{2})), yang digunakan untuk menghitung resultan kecepatan benda dengan kelajuan mendekati kecepatan cahaya agar hasilnya tidak melebihi batas kecepatan cahaya. \\
+GEJALA KUANTUM & Pembangkitan Sinar-X \textit{(DIFORMULASIKAN\_SEBAGAI)} $\rightarrow$ Rumus Panjang Gelombang Minimum Sinar-X & Ditolak & Teks konteks hanya membahas efek Compton yang melibatkan hamburan sinar-X oleh elektron serta menyinggung efek fotolistrik dan dualitas gelombang partikel. Teks tidak membahas proses pembangkitan sinar-X maupun rumus panjang gelombang minimum sinar-X. Oleh karena itu, usulan ini tidak didukung oleh teks konteks. \\
+GEJALA KUANTUM & Gejala Kuantum \textit{(MEMBUKTIKAN)} $\rightarrow$ Dualisme Gelombang-Partikel & \textbf{Diterima} & Berbagai fenomena gejala kuantum, seperti efek fotolistrik dan efek Compton, secara empiris membuktikan bahwa gelombang elektromagnetik atau cahaya memiliki sifat dualisme gelombang-partikel, yaitu dapat berperilaku sebagai gelombang maupun sebagai partikel (foton) yang membawa diskrit energi. \\
+FISIKA INTI DAN RADIOAKTIVITAS & Peluruhan Radioaktif \textit{(DIFORMULASIKAN\_SEBAGAI)} $\rightarrow$ Rumus Sisa Massa Peluruhan & \textbf{Diterima} & Peluruhan radioaktif diformulasikan untuk menghitung jumlah inti atau sisa massa zat yang belum meluruh pada waktu tertentu (t) menggunakan rumus Nt = N0 . (1/2)\textasciicircum{}(t / t1/2), di mana N0 adalah jumlah inti mula-mula dan t1/2 adalah waktu paruh zat radioaktif tersebut. \\
+FISIKA INTI DAN RADIOAKTIVITAS & Defek Massa \textit{(DIFORMULASIKAN\_SEBAGAI)} $\rightarrow$ Rumus Perhitungan Defek Massa & \textbf{Diterima} & Nilai defek massa dihitung dari selisih jumlah massa total proton dan neutron penyusun dengan massa inti atom yang terbentuk, sesuai dengan penjelasan bahwa terdapat perbedaan massa yang hilang dan dikonversi menjadi energi ikat. \\
+\end{longtable}
+\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+\section{Kimia}
+\label{lamp:mt-kimia}
+
+\renewcommand{\arraystretch}{1.2}
+\scriptsize
+\begin{longtable}{@{}p{0.14\linewidth} p{0.36\linewidth} p{0.12\linewidth} p{0.30\linewidth}@{}}
+\caption{Missing triples Kimia yang diusulkan pakar dan putusan adjudikasi.}
+\label{tab:mt-kimia}\\
+\toprule
+\textbf{Bab} & \textbf{Triple (Subjek -- relasi $\rightarrow$ Target)} & \textbf{Putusan} & \textbf{Alasan / Deskripsi} \\
+\midrule
+\endfirsthead
+\multicolumn{4}{@{}l}{\small\textit{Lanjutan Tabel~\ref{tab:mt-kimia}}}\\
+\toprule
+\textbf{Bab} & \textbf{Triple (Subjek -- relasi $\rightarrow$ Target)} & \textbf{Putusan} & \textbf{Alasan / Deskripsi} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r@{}}{\small\textit{bersambung ke halaman berikutnya}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+LARUTAN DAN KOLOID & Aktivitas Ion \textit{(Dipengaruhi oleh)} $\rightarrow$ Kekuatan Ionik & Ditolak & Konsep mengenai 'aktivitas ion' dan 'kekuatan ionik' tidak dibahas dalam teks yang diberikan. Teks tersebut hanya menjelaskan tentang kekuatan asam dan basa serta faktor-faktor yang mempengaruhinya (seperti kekuatan ikatan dan polaritas). Oleh karena itu, usulan relasi ini diabaikan karena tidak didukung oleh konteks. \\
+LARUTAN DAN KOLOID & Kesetimbangan Larutan \textit{(Mengikuti)} $\rightarrow$ Prinsip Le Chatelier & \textbf{Diterima} & Kesetimbangan larutan mengikuti prinsip Le Chatelier, di mana penambahan ion senama atau perubahan konsentrasi akan menggeser arah kesetimbangan dan mempengaruhi kelarutan suatu senyawa ionik. \\
+LARUTAN DAN KOLOID & Sifat Koligatif \textit{(Dipengaruhi Oleh)} $\rightarrow$ Faktor Van't Hoff & \textbf{Diterima} & Sifat koligatif larutan, terutama untuk zat terlarut elektrolit, dipengaruhi oleh faktor Van't Hoff yang merupakan faktor pengali terhadap jumlah zat terlarut dalam suatu larutan. \\
+LARUTAN DAN KOLOID & Elektrolit \textit{(Meningkatkan)} $\rightarrow$ Jumlah Partikel Larutan & \textbf{Diterima} & Elektrolit di dalam larutan akan terionisasi menjadi ion-ion penyusunnya, sehingga keberadaan zat elektrolit dapat meningkatkan jumlah partikel di dalam larutan dibandingkan dengan zat nonelektrolit pada konsentrasi yang sama. \\
+LARUTAN DAN KOLOID & Elektrolit lemah \textit{(Memiliki)} $\rightarrow$ Derajat Disosiasi & \textbf{Diterima} & Larutan elektrolit lemah memiliki derajat disosiasi tertentu (lebih besar dari 0 dan kurang dari 1) karena zat terlarutnya hanya terurai sebagian menjadi ion-ion di dalam pelarut. \\
+LARUTAN DAN KOLOID & Hamburan Cahaya Koloid \textit{(Disebut)} $\rightarrow$ Efek Tyndall & \textbf{Diterima} & Penghamburan berkas sinar atau cahaya oleh partikel-partikel koloid disebut sebagai efek Tyndall, yang terjadi karena ukuran molekul koloid cukup besar. \\
+ELEKTROKIMIA & Sel Elektrokimia \textit{(Terdiri dari)} $\rightarrow$ Reaksi Setengah Sel & Ditolak & Hubungan 'terdiri dari' kurang tepat karena sel elektrokimia secara fisik terdiri dari komponen seperti elektrode dan elektrolit. Reaksi setengah sel (oksidasi dan reduksi) adalah proses yang terjadi di dalam sel tersebut, bukan komponen fisik yang menyusun alatnya. \\
+ELEKTROKIMIA & Sel Elektrokimia \textit{(Terdapat)} $\rightarrow$ Katoda dan Anoda & \textbf{Diterima} & Sel elektrokimia memiliki elektroda yang terdiri atas katoda dan anoda. \\
+ELEKTROKIMIA & Jembatan Garam \textit{(Menjaga)} $\rightarrow$ Kenetralan Muatan & \textbf{Diterima} & Jembatan garam memiliki peran penting dalam sel elektrokimia untuk menjaga keseimbangan atau kenetralan muatan dalam larutan dengan menyuplai ion-ion yang dibutuhkan guna menetralkan penumpukan muatan. \\
+ELEKTROKIMIA & GGL Sel \textit{(Menentukan)} $\rightarrow$ Spontanitas Reaksi & \textbf{Diterima} & Nilai gaya gerak listrik (GGL) sel atau potensial sel digunakan untuk menentukan spontanitas suatu reaksi redoks dalam sel Volta. Suatu reaksi redoks dapat berlangsung secara spontan jika nilai GGL selnya bernilai positif, sehingga konsep ini merupakan bagian penting dari kurikulum elektrokimia. \\
+ELEKTROKIMIA & Reaksi Spontan \textit{(Memiliki)} $\rightarrow$ Esel Positif & \textbf{Diterima} & Reaksi elektrokimia diprediksi dapat berlangsung secara spontan apabila memiliki nilai potensial sel (Esel) yang berharga positif. \\
+ELEKTROKIMIA & Esel \textit{(Berhubungan dengan)} $\rightarrow$ Delta G & \textbf{Diterima} & Nilai potensial sel (esel) berhubungan dengan perubahan energi bebas Gibbs (delta g) untuk menentukan kespontanan suatu reaksi elektrokimia, di mana reaksi spontan memiliki esel positif dan delta g negatif. \\
+ELEKTROKIMIA & Persamaan Nernst \textit{(Menghubungkan)} $\rightarrow$ Potential dan Konsentrasi & Ditolak & Konsep 'persamaan nernst' tidak disebutkan secara eksplisit dalam teks konteks yang diberikan. Oleh karena itu, relasi ini tidak dapat divalidasi berdasarkan bukti dari teks. \\
+ELEKTROKIMIA & Elektrolisis \textit{(Mengikuti)} $\rightarrow$ Hukum Faraday & \textbf{Diterima} & Elektrolisis mengikuti Hukum Faraday yang menjelaskan hubungan kuantitatif antara jumlah muatan listrik yang mengalir dalam sel dengan jumlah zat yang bereaksi atau dihasilkan pada elektrode. \\
+ELEKTROKIMIA & Deret Elektrokimia \textit{(Menunjukkan)} $\rightarrow$ Kecenderungan reduksi & \textbf{Diterima} & Deret elektrokimia menunjukkan kecenderungan reduksi suatu unsur, di mana nilai potensial elektrode standar mengindikasikan seberapa mudah suatu zat mengalami reduksi atau oksidasi. \\
+MAKROMOLEKUL ORGANIK & Polimer \textit{(Tersusun dari)} $\rightarrow$ Monomer & \textbf{Diterima} & Polimer merupakan molekul berukuran besar yang tersusun dari penggabungan banyak molekul-molekul kecil yang disebut monomer. \\
+MAKROMOLEKUL ORGANIK & Termoplastik \textit{(Dapat)} $\rightarrow$ Dilelehkan Ulang & \textbf{Diterima} & Polimer termoplastik memiliki sifat dapat dilelehkan ulang saat dipanaskan dan dapat dibentuk kembali karena memiliki gaya antarmolekul yang lemah. \\
+MAKROMOLEKUL ORGANIK & Termoset \textit{(Memiliki)} $\rightarrow$ Ikatan silang permanen & \textbf{Diterima} & Termoset merupakan jenis polimer yang memiliki ikatan silang permanen antar rantai polimernya, yang menyebabkannya bersifat keras, kaku, dan tidak dapat dilelehkan kembali seperti contohnya pada bakelit. \\
+MAKROMOLEKUL ORGANIK & Ikatan silang \textit{(Meningkatkan)} $\rightarrow$ Kekakuan Polimer & \textbf{Diterima} & Ikatan silang pada struktur polimer berkontribusi dalam meningkatkan kekerasan dan kekakuan polimer tersebut, seperti contohnya pada bakelit. \\
+MAKROMOLEKUL ORGANIK & Vulkanisasi \textit{(Membentuk)} $\rightarrow$ Ikatan silang & Ditolak & Konteks yang diberikan tidak membahas tentang proses vulkanisasi maupun perannya dalam membentuk ikatan silang pada polimer. Oleh karena itu, usulan ini tidak dapat diverifikasi dari teks dan harus diabaikan. \\
+MAKROMOLEKUL ORGANIK & Elastomer \textit{(Memiliki)} $\rightarrow$ Elastisitas tinggi & Ditolak & Konteks yang diberikan tidak menyebutkan tentang 'elastomer' maupun sifat 'elastisitas tinggi'. Konteks hanya membahas polimer seperti polietilena, polimer termoplastik, dan struktur rantai polimer (lurus, bercabang, berikatan silang). Oleh karena itu, informasi ini tidak didukung oleh teks. \\
+MAKROMOLEKUL ORGANIK & Derajat polimerisasi \textit{(menentukan)} $\rightarrow$ massa molekul polimer & \textbf{Diterima} & Derajat polimerisasi menentukan besarnya massa molekul suatu polimer. \\
+GUGUS FUNGSI DALAM SENYAWA KARBON & Isomer \textit{(Memengaruhi)} $\rightarrow$ Sifat Senyawa & \textbf{Diterima} & Isomer, yaitu perbedaan cara mengatur atom-atom dalam molekul, memengaruhi sifat senyawa, khususnya kereaktifan senyawa tersebut dalam suatu reaksi kimia. \\
+GUGUS FUNGSI DALAM SENYAWA KARBON & Gugus Fungsi \textit{(Terdapat)} $\rightarrow$ Klasifikasi & Ditolak & Konteks menyebutkan 'Macam-Macam Gugus Fungsi' berdasarkan atom yang dikandungnya (oksigen, nitrogen, dsb.), namun relasi 'gugus fungsi terdapat klasifikasi' terlalu rancu dan tidak tepat secara semantik untuk dijadikan bagian dari Knowledge Graph. \\
+GUGUS FUNGSI DALAM SENYAWA KARBON & Oksidasi dan Reduksi Organik \textit{(Menghasilkan)} $\rightarrow$ Senyawa yang sesuai & Ditolak & Target 'senyawa yang sesuai' terlalu umum dan tidak memberikan informasi kimia yang spesifik atau bermakna untuk graf pengetahuan. Reaksi oksidasi dan reduksi organik menghasilkan produk spesifik (seperti aldehida, keton, atau asam karboksilat) bergantung pada jenis reaktannya, sehingga pernyataan ini kurang tepat untuk dijadikan entitas. \\
+GUGUS FUNGSI DALAM SENYAWA KARBON & Resonansi \textit{(Menstabilkan)} $\rightarrow$ Molekul & Ditolak & Konsep resonansi yang menstabilkan molekul tidak dibahas dalam teks yang diberikan, yang lebih berfokus pada titik didih, gaya antarmolekul, dan perbedaan sifat gugus fungsi. \\
+GUGUS FUNGSI DALAM SENYAWA KARBON & Efek Induktif \textit{(Memengaruhi)} $\rightarrow$ Kereaktifan & Ditolak & Teks pada konteks yang diberikan tidak menyebutkan mengenai efek induktif. Teks hanya menyebutkan bahwa gugus fungsi memengaruhi kereaktifan senyawa organik dalam reaksi. Oleh karena itu, usulan ini tidak didukung oleh teks. \\
+GUGUS FUNGSI DALAM SENYAWA KARBON & Gugus Fungsi \textit{(memengaruhi)} $\rightarrow$ kepolaran & \textbf{Diterima} & Gugus fungsi pada senyawa organik yang mengandung atom-atom elektronegatif memengaruhi perubahan kepolaran pada atom karbon yang mengikat atom elektronegatif tersebut. \\
+GUGUS FUNGSI DALAM SENYAWA KARBON & Kepolaran \textit{(menentukan)} $\rightarrow$ titik didih & Ditolak & Konteks yang diberikan pada halaman 110 tidak menyebutkan konsep 'kepolaran' secara eksplisit. Teks dan peta konsep hanya menjelaskan bahwa 'gugus fungsi' yang menentukan sifat fisika senyawa organik, misalnya titik didih. Oleh karena itu, usulan relasi ini tidak didukung oleh teks konteks. \\
+\end{longtable}
+\normalsize
+\renewcommand{\arraystretch}{1.0}
+
+\end{document}
