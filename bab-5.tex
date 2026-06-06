@@ -423,7 +423,7 @@ MEMPERDALAM (31 \textit{edge}, 24{,}8\%), BERKAITAN\_DENGAN (21 \textit{edge}, 1
 APLIKASI\_DARI (15 \textit{edge}, 12{,}0\%), dan SAMA\_DENGAN (1 \textit{edge}, 0{,}8\%).
 Dominasi PRASYARAT\_UNTUK mengindikasikan bahwa jembatan lintas-disiplin
 pada kurikulum sains kelas XII lebih banyak bersifat prasyarat pengetahuan
-daripada aplikasi atau analogi. Dari 125 relasi, 8 \textit{edge} berkonfidens
+daripada aplikasi atau analogi. Dari 125 relasi, 8 \textit{edge} memiliki \textit{confidence}
 $< 0{,}5$ (seluruhnya BERKAITAN\_DENGAN) dikeluarkan dari survei validasi
 utama, menyisakan 117 relasi yang dinilai pakar.
 
@@ -459,20 +459,13 @@ Satu-satunya relasi bertipe SAMA\_DENGAN yang ditemukan adalah DNA (Asam
 \textit{pipeline} mampu mendeteksi entitas identik yang diajarkan di dua disiplin
 berbeda dengan terminologi yang sedikit berbeda.
 
-\textbf{Validasi Pakar atas Relasi Lintas-Buku}
+\subsubsection{Validasi Pakar atas Relasi Lintas-Buku}
 
-Untuk menilai kualitas relasi lintas-buku secara langsung, himpunan
-relasi hasil \textit{Graph Completion} divalidasi oleh pakar melalui instrumen
-survei lintas-buku (Fase 2). Setiap relasi A --[\textsc{tipe}]$\to$ B dinilai
-pada tiga aspek terpisah: (1) \textit{validitas} --- apakah konsep A dan B
-benar-benar berkaitan (Ya/Tidak); (2) \textit{ketepatan tipe} --- apakah
-label relasi yang diusulkan tepat (Benar/Salah); dan (3) \textit{ketepatan
-arah} --- apakah arah relasi A$\to$B sudah benar (Benar/Terbalik/NA untuk
-relasi simetris). Penyajian dilakukan secara \textit{score-blind} dan acak
-sesuai desain instrumen (Subbab~\ref{sec:instrumen-evaluasi}).
-
-Validasi dilakukan melalui diskusi panel atas seluruh 117 relasi kandidat
-pada konfigurasi final ($\tau$=0{,}70, $k$=20). Hasil per-aspek menunjukkan
+Seluruh 117 relasi kandidat pada konfigurasi final ($\tau$=0{,}70, $k$=20)
+divalidasi pakar melalui instrumen survei Fase~2 yang menilai validitas,
+ketepatan tipe, dan ketepatan arah tiap relasi secara \textit{score-blind}
+melalui diskusi panel; instrumen dan perlakuan metriknya didefinisikan pada
+Subbab~\ref{subsec:metrik-fase2}. Hasil per-aspek menunjukkan
 \textbf{validitas 99{,}1\%} (116/117), \textbf{ketepatan tipe 98{,}3\%}
 (115/117; dua relasi salah tipe: LB008 dan LB074), namun \textbf{ketepatan
 arah 75{,}9\%} (88/116; 28 \textit{edge} terbalik dan 1 \textit{edge} dinilai
@@ -515,7 +508,7 @@ klasifikasi atau kanonikalisasi arah pasca-proses, bukan penyetelan
 \caption{Hasil validasi pakar atas relasi lintas-buku per konfigurasi parameter.}
 \label{tab:validasi-sweep}\\
 \toprule
-\textbf{Konfigurasi} & \textbf{Jumlah edge} & \textbf{Validitas} & \textbf{Ketepatan tipe} & \textbf{Ketepatan arah} \\
+\textbf{Konfigurasi} & \textbf{Edge dihasilkan} & \textbf{Validitas} & \textbf{Ketepatan tipe} & \textbf{Ketepatan arah} \\
 \midrule
 \endhead
 0{,}70 / $k$=20 (disurvei, $n$=117) & 125 & 99{,}1\% & 98{,}3\% & 75{,}9\% \\
@@ -528,10 +521,10 @@ klasifikasi atau kanonikalisasi arah pasca-proses, bukan penyetelan
 \subsection{Analisis Relasi Berpotensi False Positive}\label{subsubsec:false-positive}
 % ──────────────────────────────────────────
 
-Sebanyak 9 \textit{edge} memiliki \textit{confidence} $< 0{,}7$ (8 di antaranya
-$< 0{,}5$, seluruhnya bertipe BERKAITAN\_DENGAN), yang mengindikasikan potensi
-\textit{false positive}. Beberapa contoh relasi berkeyakinan rendah hingga
-sedang ($\leq 0{,}7$) yang patut dicermati:
+Sebanyak 9 \textit{edge} memiliki \textit{confidence} $< 0{,}7$---seluruhnya
+bertipe BERKAITAN\_DENGAN, dengan 8 di antaranya bahkan $< 0{,}5$---yang
+mengindikasikan potensi \textit{false positive}. Beberapa contoh relasi
+berkeyakinan rendah hingga sedang ($\leq 0{,}7$) yang patut dicermati:
 
 \begin{itemize}
   \item Gerbang Logika Dasar [Fisika] $\leftrightarrow$ Notasi Sel Standar [Kimia]:
@@ -541,16 +534,17 @@ sedang ($\leq 0{,}7$) yang patut dicermati:
   \item Klasifikasi Semikonduktor [Fisika] $\leftrightarrow$ Polimer Anorganik [Kimia]:
     BERKAITAN\_DENGAN (conf = 0{,}6). Kemiripan kemungkinan didorong oleh kesamaan
     konteks material/bahan, namun hubungan substantifnya lemah.
-  \item Efek Fotolistrik [Fisika] $\leftrightarrow$ Fotosintesis [Biologi]:
+  \item Efek Fotolistrik [Fisika] $\to$ Fotosintesis [Biologi]:
     MEMPERDALAM (conf = 0{,}7). Keduanya melibatkan interaksi foton dengan
-    materi, tetapi mekanisme dan konteksnya sangat berbeda.
+    materi, tetapi mekanisme dan konteksnya berbeda jauh.
 \end{itemize}
 
 Temuan ini mengonfirmasi peran penting label \textit{fallback} BERKAITAN\_DENGAN
-sebagai penanda relasi yang lemah atau ambigu. Dari 21 \textit{edge} bertipe
-BERKAITAN\_DENGAN, mayoritas memiliki \textit{confidence} lebih rendah dibandingkan
-tipe lainnya, menunjukkan bahwa LLM menggunakan label ini ketika tidak yakin
-terhadap arah atau tipe relasi yang lebih spesifik.
+sebagai penanda relasi yang lemah atau ambigu. Tipe ini memiliki keyakinan jauh
+lebih rendah daripada tipe lain. Rata-rata \textit{confidence} 0{,}50 untuk 21
+\textit{edge} BERKAITAN\_DENGAN yang dibandingkan dengan 0{,}85--0{,}94 pada tipe relasi
+spesifik menunjukkan bahwa LLM memilih label ini ketika tidak yakin terhadap
+arah atau tipe relasi yang lebih spesifik.
 
 % ──────────────────────────────────────────
 \subsection{Analisis Pola Kesalahan Ekstraksi (Error Analysis)}\label{subsubsec:error-analysis}
