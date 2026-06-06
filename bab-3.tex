@@ -265,8 +265,8 @@ benar-benar mencerminkan standar materi yang diajarkan secara nasional.
 \subsection{Data Validasi Pakar}\label{subsec:data-validasi}
 
 Data validasi diperoleh melalui penilaian kualitatif oleh panel pakar
-terhadap \textit{triple} relasi---khususnya interkoneksi
-lintas-disiplin---yang dihasilkan sistem KGC. Setiap \textit{triple}
+terhadap \textit{triple} relasi (khususnya interkoneksi
+lintas-disiplin) yang dihasilkan sistem KGC. Setiap \textit{triple}
 dinilai menggunakan empat kategori penilaian yang telah didefinisikan pada
 Subbab~\ref{subsec:validasi-manusia}, yaitu Benar (1,0), Sebagian Benar (0,5), Kurang Konteks
 (0,25), dan Salah (0,0). Selain memberikan penilaian, pakar dapat
@@ -340,24 +340,24 @@ Gambar~\ref{fig:pipeline}.
 \noindent\textbf{Tahap-Tahap Eksekusi:}
 
 \begin{enumerate}
-  \item \textbf{Tahap 1 --- Pemrosesan Dokumen (\textit{Ingestion}):}
+  \item \textbf{Tahap 1: Pemrosesan Dokumen (\textit{Ingestion}).}
         Mengubah buku teks PDF menjadi format terstruktur, meliputi
         segmentasi hierarki bab, ekstraksi terminologi glosarium, dan
         pemotongan teks (\textit{sentence chunking}).
 
-  \item \textbf{Tahap 2 --- Ekstraksi Pengetahuan (\textit{LLM
-        Extraction}):} Menggunakan LLM terpandu
+  \item \textbf{Tahap 2: Ekstraksi Pengetahuan (\textit{LLM
+        Extraction}).} Menggunakan LLM terpandu
         (\textit{schema-constrained}) untuk mengekstrak entitas konsep
         dan memetakan relasi dalam-buku, divalidasi dengan terminologi
         glosarium.
 
-  \item \textbf{Tahap 3 --- Konstruksi Graf (\textit{Graph
-        Construction}):} Menginstansiasi hierarki struktural dan relasi
+  \item \textbf{Tahap 3: Konstruksi Graf (\textit{Graph
+        Construction}).} Menginstansiasi hierarki struktural dan relasi
         semantik dalam-buku ke dalam basis data \textit{Knowledge Graph}
         (Neo4j).
 
-  \item \textbf{Tahap 4 --- Penyempurnaan Graf (\textit{Graph
-        Completion}):} Membangun vektor semantik (\textit{concept
+  \item \textbf{Tahap 4: Penyempurnaan Graf (\textit{Graph
+        Completion}).} Membangun vektor semantik (\textit{concept
         embedding}) dari konsep yang ada, mencari kemiripan lintas-buku
         menggunakan ANN, dan menggunakan LLM sebagai pengklasifikasi
         untuk memprediksi relasi antardisiplin.
@@ -366,8 +366,8 @@ Gambar~\ref{fig:pipeline}.
 \noindent\textbf{Fase-Fase Evaluasi:}
 
 \begin{enumerate}
-  \item \textbf{Fase Evaluasi 1 --- Validasi Intra-Mapel \&
-        \textit{LLM-as-a-judge}:} Diterapkan setelah Tahap~3. Kerangka
+  \item \textbf{Fase Evaluasi 1: Validasi Intra-Mapel \&
+        \textit{LLM-as-a-judge}.} Diterapkan setelah Tahap~3. Kerangka
         kerja \textit{LLM-as-a-judge} (Gambar~\ref{fig:llm-judge})
         digunakan untuk mengevaluasi kumpulan \textit{triple} dalam satu
         mata pelajaran. Jika dua pakar tidak sepakat, AI Judge dipanggil
@@ -375,8 +375,8 @@ Gambar~\ref{fig:pipeline}.
         mengidentifikasi \textit{triple} yang terlewat, LLM mengevaluasi
         kelayakan usulan penambahan sebelum diintegrasikan ke dalam KG.
 
-  \item \textbf{Fase Evaluasi 2 --- Validasi Inter-Mapel \& Diskusi
-        Pakar:} Diterapkan setelah Tahap~4. Memverifikasi \textit{edge}
+  \item \textbf{Fase Evaluasi 2: Validasi Inter-Mapel \& Diskusi
+        Pakar.} Diterapkan setelah Tahap~4. Memverifikasi \textit{edge}
         lintas-disiplin baru yang dihasilkan proses KGC. Mengingat
         sifat relasi yang implisit, konflik tidak diselesaikan oleh AI,
         melainkan melalui diskusi panel yang melibatkan seluruh pakar
@@ -391,8 +391,8 @@ Gambar~\ref{fig:pipeline}.
 Ontologi dalam penelitian ini diposisikan menggunakan dua tier
 representasi yang dibedakan secara metodologis. \textbf{Tier
 ekstraksi} menghasilkan model konseptual \textit{deskriptif} atas isi
-buku teks Kurikulum Merdeka---konsep, sub-bab, bab, beserta
-keterkaitan semantik antar-konsep dalam satu buku---sejalan dengan
+buku teks Kurikulum Merdeka (konsep, sub-bab, bab, beserta
+keterkaitan semantik antar-konsep dalam satu buku), sejalan dengan
 tradisi \textit{domain module} dalam konstruksi otomatis \textit{knowledge
 graph} dari buku teks elektronik. \textbf{Tier completion} menghasilkan kandidat
 keterkaitan lintas-buku (\texttt{LINTAS\_BUKU\_*}) sebagai inferensi
@@ -409,15 +409,15 @@ Dengan demikian, relasi berarah seperti
 ketergantungan konseptual yang terdokumentasikan dalam materi sumber
 (keputusan editorial penyusun buku), sedangkan relasi pada Tier
 completion dimaknai sebagai sugesti per-pasangan yang dapat
-dipertimbangkan secara lokal---bukan anjuran kronologis bagi siswa.
+dipertimbangkan secara lokal, bukan anjuran kronologis bagi siswa.
 
 Skema \textit{knowledge graph} diformalkan sebagai ontologi OWL untuk
 memastikan konsistensi struktur dan vokabulari relasi antartahap
 \textit{pipeline} (ekstraksi, konstruksi, dan \textit{completion}).
-Topologi keseluruhan---mencakup relasi struktural, relasi keterurutan
+Topologi keseluruhan mencakup relasi struktural, relasi keterurutan
 penyajian materi dalam buku (\textit{NEXT\_CHAPTER}), dan relasi semantik
-(Tier ekstraksi) beserta inferensi lintas-buku (Tier completion)---diilustrasikan
-pada Gambar~\ref{fig:ontologi}.
+pada Tier ekstraksi, serta inferensi lintas-buku pada Tier completion.
+Keseluruhan topologi ini diilustrasikan pada Gambar~\ref{fig:ontologi}.
 
 \subfile{onthology}
 
@@ -545,10 +545,10 @@ menggunakan instrumen dan perlakuan metrik yang berbeda, karena objek dan
 prosedur penilaiannya tidak sama.
 
 \textbf{Instrumen.} Pada Fase~2, setiap relasi lintas-mapel $A \to B$ dinilai
-panel pakar pada tiga aspek terpisah: (1) \textit{validitas}---apakah konsep
-$A$ dan $B$ benar-benar berkaitan (Ya/Tidak); (2) \textit{ketepatan tipe}---
+panel pakar pada tiga aspek terpisah: (1) \textit{validitas}, yaitu apakah konsep
+$A$ dan $B$ benar-benar berkaitan (Ya/Tidak); (2) \textit{ketepatan tipe}, yaitu
 apakah label relasi yang diusulkan tepat (Benar/Salah); dan (3)
-\textit{ketepatan arah}---apakah arah $A \to B$ sudah benar
+\textit{ketepatan arah}, yaitu apakah arah $A \to B$ sudah benar
 (Benar/Terbalik/NA untuk relasi simetris). Relasi disajikan secara acak dan
 \textit{score-blind}. Berbeda dengan Fase~1 yang melibatkan dua penilai
 independen per \textit{triple}, Fase~2 menghasilkan satu jawaban konsensus per
@@ -605,7 +605,7 @@ teknis utama yang digunakan sepanjang penelitian ini.
     & Entitas pengetahuan Fisika/Kimia/Biologi yang memiliki atribut
       \texttt{name} dan \texttt{description}. \\
   \texttt{ConceptTarget}
-    & Node sementara yang menampung \textit{forward reference}---konsep
+    & Node sementara yang menampung \textit{forward reference}, yaitu konsep
       yang disebut sebagai target relasi namun belum diekstrak secara
       lengkap; dipromosi menjadi \texttt{Concept} pada iterasi
       berikutnya. \\
@@ -691,7 +691,7 @@ diolah melalui tahapan berikut.
   \item \textbf{Penetapan \textit{Ground Truth}:} Jika dua
         \textit{reviewer} sepakat, label konsensus digunakan langsung.
         Jika tidak sepakat, AI Judge (LLM berbasis konteks buku teks)
-        menentukan label akhir---kecuali pada Fase~2, yang
+        menentukan label akhir, kecuali pada Fase~2 yang
         menggunakan diskusi panel pakar secara keseluruhan.
 
   \item \textbf{Perhitungan Metrik Pakar:} Fuzzy Precision, Recall, dan
