@@ -71,6 +71,10 @@
 \makeatother
 \setkeys{Gin}{width=\maxwidth,keepaspectratio}
 
+% ── TikZ (architecture flow diagram) ─────────────────────────
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, calc}
+
 % ── Lists ────────────────────────────────────────────────────
 \usepackage{enumitem}
 
@@ -133,10 +137,41 @@ sistem menuju antarmuka peninjauan dan kembali sebagai rekam keputusan pakar.
 
 \begin{figure}[htbp]
   \centering
-  % TODO: ganti placeholder dengan diagram arsitektur final.
-  % \includegraphics[width=\linewidth]{figures/arsitektur-review-app.png}
-  \framebox[0.9\linewidth][c]{\rule{0pt}{5cm}\textit{[Placeholder diagram arsitektur]}}
-  \caption{Diagram arsitektur KG Review App}
+  \resizebox{\linewidth}{!}{%
+  \begin{tikzpicture}[
+    >={Stealth[round]},
+    box/.style = {draw, rounded corners=3pt, align=center, font=\small,
+                  inner sep=5pt, text width=2.4cm, minimum height=1.1cm},
+    flow/.style = {->, thick, draw=black!70},
+  ]
+    % Lajur utama (kiri ke kanan)
+    \node[box] (A) at (0,0)  {Graf hasil sistem};
+    \node[box] (B) at (3.2,0) {Data \textit{course} / \textit{payload} KG};
+    \node[box] (C) at (6.4,0) {Ekstraksi \textit{triple}};
+    \node[box] (D) at (9.6,0) {Antarmuka peninjauan pakar};
+
+    % Percabangan penilaian
+    \node[box] (E) at (13,1.6)  {Penilaian \textit{triple}};
+    \node[box] (F) at (13,-1.6) {Komentar dan \textit{triple} tambahan};
+
+    % Penggabungan kembali
+    \node[box] (G) at (16.4,0) {Rekam keputusan pakar};
+    \node[box] (H) at (19.6,0) {Penyimpanan \textit{progress review}};
+    \node[box] (I) at (22.8,0) {Admin melihat hasil \textit{review}};
+
+    \draw[flow] (A) -- (B);
+    \draw[flow] (B) -- (C);
+    \draw[flow] (C) -- (D);
+    \draw[flow] (D.east) -- (E.west);
+    \draw[flow] (D.east) -- (F.west);
+    \draw[flow] (E.east) -- (G.west);
+    \draw[flow] (F.east) -- (G.west);
+    \draw[flow] (G) -- (H);
+    \draw[flow] (H) -- (I);
+  \end{tikzpicture}%
+  }
+  \caption{Diagram alur data KG Review App: dari graf hasil sistem hingga
+    rekam keputusan pakar dan peninjauan oleh admin.}
   \label{fig:arsitektur-review-app}
 \end{figure}
 
