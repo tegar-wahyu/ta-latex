@@ -172,8 +172,16 @@ Kedekatan semantik antarvektor tersebut lazim diukur dengan \textit{cosine
 similarity}, yaitu kosinus sudut antara dua vektor $\mathbf{a}$ dan $\mathbf{b}$:
 \[
   \text{sim}(\mathbf{a}, \mathbf{b})
-  = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{a}\|\,\|\mathbf{b}\|}.
+  = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{a}\|\,\|\mathbf{b}\|}
+  = \frac{\sum_{i=1}^{d} a_i b_i}
+         {\sqrt{\sum_{i=1}^{d} a_i^{2}}\;\sqrt{\sum_{i=1}^{d} b_i^{2}}}.
 \]
+Pembilang $\mathbf{a} \cdot \mathbf{b} = \sum_{i=1}^{d} a_i b_i$ adalah hasil
+kali titik (\textit{dot product}) kedua vektor, sedangkan penyebut merupakan
+hasil kali \textit{Euclidean norm} ($L_2$) masing-masing vektor; di sini $d$ menyatakan
+dimensi \textit{embedding}, serta $a_i$ dan $b_i$ adalah komponen ke-$i$ dari
+$\mathbf{a}$ dan $\mathbf{b}$. Pembagian dengan kedua norma menormalkan panjang
+vektor sehingga ukuran ini hanya bergantung pada arah, bukan magnitudo.
 Nilainya berada pada rentang $[-1, 1]$; semakin tinggi nilainya, semakin dekat
 arah (dan dengan demikian makna) kedua vektor, sehingga untuk \textit{embedding}
 teks nilainya umumnya berada pada rentang $[0, 1]$.
