@@ -636,6 +636,53 @@ Konfigurasi yang lebih ketat ($\tau\!\ge\!0{,}75$) merupakan
 himpunan bagian dari subset 117 yang sama, sehingga
 \textbf{Edge dihasilkan} = $n$ pada baris kedua dan seterusnya.
 
+\subsubsection{Pemilihan Konfigurasi Produksi}\label{subsubsec:konfigurasi-final}
+
+Berdasarkan Tabel~\ref{tab:validasi-sweep}, \textbf{konfigurasi produksi
+yang dipilih untuk \textit{Knowledge Graph} final adalah
+$\tau = 0{,}70$ dengan top-$k = 20$}, menghasilkan 125 relasi lintas-buku
+(117 di antaranya divalidasi pakar) dengan validitas 99{,}1\%, ketepatan
+tipe 98{,}3\%, dan ketepatan arah 75{,}9\%. Pilihan ini dapat dijustifikasi
+melalui tiga pertimbangan yang ditopang oleh data validasi:
+
+\begin{enumerate}
+  \item \textbf{Tujuan KGC adalah memaksimalkan cakupan jembatan
+    lintas-disiplin}, bukan memaksimalkan presisi relasi. Pengetatan
+    \textit{threshold} dari 0{,}70 ke 0{,}75 menaikkan validitas hanya
+    0{,}9 poin (99{,}1\% $\to$ 100\%) dan ketepatan tipe 1{,}7 poin
+    (98{,}3\% $\to$ 100\%), tetapi sekaligus menghilangkan 45
+    \textit{edge} (35\% jembatan lintas-disiplin) yang sebagian besar
+    juga valid menurut pakar. Tradeoff ini tidak menguntungkan dalam
+    konteks penelitian yang menargetkan keterhubungan antar-mapel
+    sebagai luaran utama.
+
+  \item \textbf{\textit{Noise} sisa pada $\tau=0{,}70$ bersifat terbatas
+    dan dapat di-\textit{filter} pasca-survei.} Total 3 \textit{edge}
+    bermasalah pada konfigurasi paling permisif --- LB005
+    (\textit{relasi valid?} = \textit{Tidak}), serta LB008 dan LB074
+    (tipe relasi salah) --- teridentifikasi melalui validasi pakar Fase~2
+    dan dapat dihapus secara terarah dari graf produksi tanpa
+    mempengaruhi 114 \textit{edge} lainnya.
+
+  \item \textbf{Pengetatan \textit{threshold} tidak menyelesaikan sumber
+    kesalahan dominan.} Sebagaimana ditunjukkan oleh
+    Tabel~\ref{tab:validasi-sweep} dan, lebih kuantitatif, oleh
+    Tabel~\ref{tab:conf-kalibrasi} pada Subbab~\ref{subsubsec:false-positive},
+    ketepatan arah tetap stagnan pada rentang 71--86\% lintas-konfigurasi
+    tanpa kecenderungan monotonik. Dengan demikian \textit{tradeoff}
+    cakupan-versus-presisi-arah menjadi negatif: stricter configurations
+    kehilangan cakupan tanpa imbal balik perbaikan arah yang merupakan
+    sumber kesalahan dominan.
+\end{enumerate}
+
+Konfigurasi alternatif ($\tau = 0{,}75 / k=15$ dengan 72 relasi;
+$\tau = 0{,}80 / k=10$ dengan 42 relasi; $\tau = 0{,}85 / k=5$ dengan
+14 relasi) tetap relevan sebagai \textit{view} alternatif atas graf
+yang sama: peneliti turunan yang memprioritaskan presisi atas cakupan
+dapat menyaring graf produksi menggunakan ambang \textit{cosine}
+yang lebih ketat tanpa perlu menjalankan ulang \textit{pipeline}
+ekstraksi.
+
 % ──────────────────────────────────────────
 \subsection{Analisis Relasi Berpotensi False Positive}\label{subsubsec:false-positive}
 % ──────────────────────────────────────────
