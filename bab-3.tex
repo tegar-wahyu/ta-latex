@@ -536,6 +536,45 @@ metrik validasi pakar pada Subbab~\ref{subsec:validasi-manusia}.
     & Nilai $-1$ hingga $1$ \\
 \end{longtable}
 
+\subsection{Instrumen dan Metrik Evaluasi Fase 2}\label{subsec:metrik-fase2}
+
+Metrik \textit{Fuzzy Precision}, \textit{Recall}, F1-Score, dan Gwet's AC1 pada
+Tabel~\ref{tab:metrik} berlaku untuk evaluasi Fase~1 (intra-mapel), yang menilai
+setiap \textit{triple} dalam-buku pada skala empat kategori
+(Subbab~\ref{subsec:validasi-manusia}). Evaluasi Fase~2 (inter-mapel)
+menggunakan instrumen dan perlakuan metrik yang berbeda, karena objek dan
+prosedur penilaiannya tidak sama.
+
+\textbf{Instrumen.} Pada Fase~2, setiap relasi lintas-mapel $A \to B$ dinilai
+panel pakar pada tiga aspek terpisah: (1) \textit{validitas}---apakah konsep
+$A$ dan $B$ benar-benar berkaitan (Ya/Tidak); (2) \textit{ketepatan tipe}---
+apakah label relasi yang diusulkan tepat (Benar/Salah); dan (3)
+\textit{ketepatan arah}---apakah arah $A \to B$ sudah benar
+(Benar/Terbalik/NA untuk relasi simetris). Relasi disajikan secara acak dan
+\textit{score-blind}. Berbeda dengan Fase~1 yang melibatkan dua penilai
+independen per \textit{triple}, Fase~2 menghasilkan satu jawaban konsensus per
+relasi melalui diskusi panel.
+
+\textbf{Metrik.} Dari ketiga aspek tersebut diturunkan tiga proporsi:
+\textit{precision} (validitas) sebagai proporsi relasi yang dinilai valid,
+serta \textit{ketepatan tipe} dan \textit{ketepatan arah} sebagai proporsi
+relasi dengan tipe dan arah yang benar. Tiga hal membedakan perlakuan metrik
+Fase~2 dari Fase~1:
+
+\begin{itemize}
+  \item \textbf{Tidak ada skala parsial.} Penilaian Fase~2 bersifat
+        kategorikal per aspek, sehingga metrik berbasis himpunan \textit{fuzzy}
+        tidak digunakan.
+  \item \textbf{\textit{Recall} dan F1 tidak dihitung.} Tidak tersedia himpunan
+        rujukan menyeluruh atas seluruh relasi lintas-mapel yang
+        \emph{seharusnya} ada (sebagai penyebut \textit{recall}); himpunan yang
+        dievaluasi adalah seluruh kandidat yang dihasilkan sistem, bukan sampel
+        dari populasi relasi benar yang telah diketahui.
+  \item \textbf{Gwet's AC1 tidak berlaku.} Karena setiap relasi hanya memiliki
+        satu label konsensus panel (bukan dua penilaian independen), kesepakatan
+        antarpenilai tidak dapat dihitung untuk Fase~2.
+\end{itemize}
+
 \subsection{Definisi Operasional}\label{subsec:definisi-operasional}
 
 Tabel~\ref{tab:definisi} merangkum definisi operasional istilah-istilah
