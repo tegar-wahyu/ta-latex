@@ -200,7 +200,16 @@ per-\textit{query} dari $O(n)$ pada \textit{brute-force} menjadi
 $O(\log n)$ rata-rata,
 menjadikan HNSW pilihan utama untuk pencarian kemiripan semantik pada
 graf pengetahuan berskala besar tanpa mengorbankan akurasi secara
-signifikan.
+signifikan. Ilustrasi struktur graf berlapis HNSW tersebut ditunjukkan pada
+Gambar~\ref{fig:hnsw}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\maxwidth]{images/media/image23.png}
+  \caption{Ilustrasi struktur graf berlapis HNSW
+  (diadaptasi dari \textcite{malkov_efficient_2020}).}
+  \label{fig:hnsw}
+\end{figure}
 
 \subsection{Large Language Models (LLM) dan Sinergi LLM-KG}
 
