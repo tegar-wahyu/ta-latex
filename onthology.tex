@@ -77,16 +77,18 @@
 
 
   % --- 5. RELASI LINTAS-BUKU (CROSS-BOOK) ---
-  % Loop diletakkan di sebelah kiri agak ke bawah agar terbebas dari garis lain
-  \draw[cross] (concept) edge[loop left, out=200, in=250, looseness=6]
-    node[below left, fill=white, inner sep=2pt, font=\tiny, align=left, draw=purple!30, rounded corners] {
+  % Loop kecil standar; label diletakkan sebagai node independen agar
+  % bounding box tidak meledak akibat geometri loop.
+  \draw[cross] (concept) edge[loop left, looseness=5] (concept);
+  \node[below left=0.4cm and 0.2cm of concept, fill=white, inner sep=2pt,
+        font=\tiny, align=left, draw=purple!30, rounded corners] {
       \textbf{Relasi Lintas-Buku:} \\
       LINTAS\_BUKU\_SAMA\_DENGAN \\
       LINTAS\_BUKU\_APLIKASI\_DARI \\
       LINTAS\_BUKU\_PRASYARAT\_UNTUK \\
       LINTAS\_BUKU\_MEMPERDALAM \\
       LINTAS\_BUKU\_BERKAITAN\_DENGAN
-    } (concept);
+    };
 
 \end{tikzpicture}%
   }
