@@ -78,9 +78,11 @@
 \makeatother
 \setkeys{Gin}{width=\maxwidth,keepaspectratio}
 
-% ── TikZ (native bridge graph) ───────────────────────────────
+% ── TikZ + pgfplots (native bridge graph, sweep & relation charts) ──
 \usepackage{tikz}
-\usetikzlibrary{calc, positioning}
+\usetikzlibrary{calc, positioning, fit, backgrounds}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 
 % ── Lists ────────────────────────────────────────────────────
 \usepackage{enumitem}
@@ -384,7 +386,46 @@ Subbab~\ref{subsubsec:kualitas}.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\maxwidth]{images/media/image3.png}
+  \begin{tikzpicture}
+    \begin{axis}[
+      ybar,
+      bar width=4pt,
+      width=\linewidth, height=7cm,
+      symbolic x coords={A,B,C,D},
+      xtick=data,
+      xticklabels={
+        {$\tau$=0{,}70 \\ $k$=20},
+        {$\tau$=0{,}75 \\ $k$=15},
+        {$\tau$=0{,}80 \\ $k$=10},
+        {$\tau$=0{,}85 \\ $k$=5}
+      },
+      x tick label style={align=center, font=\scriptsize},
+      ticklabel style={font=\scriptsize},
+      enlarge x limits=0.18,
+      ymin=0, ymax=140,
+      ylabel={Jumlah \textit{edge}},
+      ylabel style={font=\small},
+      legend pos=north east,
+      legend style={font=\scriptsize, fill=white, fill opacity=0.85, draw opacity=1, text opacity=1},
+      legend cell align=left,
+      legend columns=2,
+    ]
+      \addplot[fill=blue!60,   draw=blue!80]   coordinates {(A,57) (B,36) (C,18) (D,6)}; \addlegendentry{PRASYARAT\_UNTUK}
+      \addplot[fill=green!55,  draw=green!75]  coordinates {(A,31) (B,20) (C,12) (D,4)}; \addlegendentry{MEMPERDALAM}
+      \addplot[fill=purple!55, draw=purple!75] coordinates {(A,21) (B,5)  (C,2)  (D,0)}; \addlegendentry{BERKAITAN\_DENGAN}
+      \addplot[fill=orange!75, draw=orange!90] coordinates {(A,15) (B,10) (C,9)  (D,3)}; \addlegendentry{APLIKASI\_DARI}
+      \addplot[fill=red!55,    draw=red!75]    coordinates {(A,1)  (B,1)  (C,1)  (D,1)}; \addlegendentry{SAMA\_DENGAN}
+
+      % Overlaid total line
+      \addplot[
+        mark=*, dashed, black, thick,
+        mark options={fill=black, scale=0.9},
+        nodes near coords,
+        nodes near coords style={font=\scriptsize\bfseries, anchor=south, yshift=2pt},
+      ] coordinates {(A,125) (B,72) (C,42) (D,14)};
+      \addlegendentry{Total}
+    \end{axis}
+  \end{tikzpicture}
   \caption{\textit{Parameter sweep}: pengaruh \textit{threshold} dan top-$k$ terhadap
     jumlah relasi lintas-buku yang ditemukan.}
   \label{fig:param-sweep}
@@ -408,7 +449,42 @@ Subbab~\ref{subsubsec:kualitas}.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\maxwidth]{images/media/image4.png}
+  \begin{tikzpicture}[
+    layer/.style = {draw=white, line width=1pt, rounded corners=6pt,
+                    align=center, inner sep=8pt},
+    title/.style = {font=\small\bfseries, text=black},
+    titlew/.style = {font=\small\bfseries, text=white},
+    contoh/.style = {font=\scriptsize\itshape, text=black!85},
+    contohw/.style = {font=\scriptsize\itshape, text=white},
+  ]
+    % Outer (τ=0,70) — palest blue
+    \node[layer, fill=blue!12, minimum width=11.2cm, minimum height=7.6cm] (b70) {};
+    \node[title, anchor=north] at ([yshift=-6pt]b70.north)
+      {0{,}70 / $k$=20 \textemdash{} 117 relasi};
+    \node[contoh, anchor=north] at ([yshift=-22pt]b70.north)
+      {Contoh: Arus Listrik $\to$[\textsc{aplikasi\_dari}]$\to$ Elektroforesis};
+
+    % Mid-1 (τ=0,75)
+    \node[layer, fill=blue!28, minimum width=8.6cm, minimum height=5.4cm] (b75) {};
+    \node[title, anchor=north] at ([yshift=-6pt]b75.north)
+      {0{,}75 / $k$=15 \textemdash{} 72 relasi};
+    \node[contoh, anchor=north] at ([yshift=-22pt]b75.north)
+      {Contoh: Defleksi Gerak Muatan $\to$[\textsc{prasyarat\_untuk}]$\to$ Elektroforesis};
+
+    % Mid-2 (τ=0,80)
+    \node[layer, fill=blue!55, minimum width=6.2cm, minimum height=3.4cm] (b80) {};
+    \node[titlew, anchor=north] at ([yshift=-6pt]b80.north)
+      {0{,}80 / $k$=10 \textemdash{} 42 relasi};
+    \node[contohw, anchor=north, text width=5.8cm] at ([yshift=-22pt]b80.north)
+      {Contoh: Potensial Elektrode $\to$[\textsc{aplikasi\_dari}]$\to$ Potensial Listrik};
+
+    % Inner (τ=0,85) — darkest
+    \node[layer, fill=blue!80, minimum width=3.8cm, minimum height=1.6cm] (b85) {};
+    \node[titlew, anchor=north] at ([yshift=-4pt]b85.north)
+      {0{,}85 / $k$=5 \textemdash{} 14 relasi};
+    \node[contohw, anchor=north, text width=3.4cm] at ([yshift=-18pt]b85.north)
+      {Contoh: DNA $\leftrightarrow$[\textsc{sama\_dengan}]$\leftrightarrow$ DNA};
+  \end{tikzpicture}
   \caption{Struktur bersarang (\textit{nested}) hasil \textit{parameter sweep}
     relasi lintas-buku antar-konfigurasi.}
   \label{fig:nested-sweep}
@@ -439,7 +515,51 @@ utama, menyisakan 117 relasi yang dinilai pakar.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\maxwidth]{images/media/image22.png}
+  \begin{minipage}[c]{0.50\linewidth}
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+        xbar,
+        width=\linewidth,
+        height=5.2cm,
+        symbolic y coords={SAMA, BERKAITAN, APLIKASI, MEMPERDALAM, PRASYARAT},
+        ytick=data,
+        nodes near coords,
+        nodes near coords style={font=\scriptsize, /pgf/number format/precision=0, /pgf/number format/fixed},
+        every node near coord/.append style={anchor=west, xshift=2pt},
+        xmin=0, xmax=70,
+        bar width=10pt,
+        xlabel={Jumlah \textit{edge}},
+        xlabel style={font=\scriptsize},
+        ticklabel style={font=\scriptsize},
+        title={\small Distribusi tipe (total 125)},
+        enlarge y limits=0.18,
+      ]
+      \addplot[fill=blue!45, draw=blue!70] coordinates {
+        (1,SAMA)
+        (21,BERKAITAN)
+        (15,APLIKASI)
+        (31,MEMPERDALAM)
+        (57,PRASYARAT)
+      };
+      \end{axis}
+    \end{tikzpicture}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.46\linewidth}
+    \centering\scriptsize
+    \renewcommand{\arraystretch}{1.25}
+    \begin{tabular}{@{}p{1.95cm}@{\,}p{1.55cm}@{\,}p{1.65cm}@{\,}c@{}}
+      \toprule
+      \textbf{Tipe} & \textbf{Sumber} & \textbf{Target} & \textbf{Conf.} \\
+      \midrule
+      PRASYARAT\_UNTUK   & DNA (Kim)            & Gen (Bio)            & 1{,}0 \\
+      MEMPERDALAM        & DNA (Kim)            & Materi Genetik (Bio) & 0{,}9 \\
+      APLIKASI\_DARI     & DNA (Bio)            & Nukleotida (Kim)     & 0{,}9 \\
+      BERKAITAN\_DENGAN  & Fotoelektron (Fis)   & Pot. Elektrode (Kim) & 0{,}7 \\
+      SAMA\_DENGAN       & DNA (Kim)            & DNA (Bio)            & 1{,}0 \\
+      \bottomrule
+    \end{tabular}
+  \end{minipage}
   \caption{Distribusi tipe relasi lintas-buku hasil klasifikasi LLM beserta contoh triple per tipe.}
   \label{fig:relasi-distribusi}
 \end{figure}
