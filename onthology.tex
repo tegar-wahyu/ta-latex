@@ -98,9 +98,7 @@
 
 \end{tikzpicture}%
   }
-  \caption{Topologi Ontologi: Relasi Struktural, Keterurutan Penyajian
-    (\texttt{NEXT\_CHAPTER}), dan Semantik (Tier Ekstraksi) Beserta
-    Inferensi Lintas-Buku (Tier Completion).}
+  \caption{Topologi Ontologi: Relasi Struktural, Pedagogis, dan Semantik.}
   \label{fig:ontologi}
 \end{figure}
 
@@ -132,14 +130,9 @@ Tabel~\ref{tab:kelas-ontologi}.
         Bersifat \textit{shared} lintas-dokumen melalui
         \texttt{MERGE} berdasarkan nama. \\
     \texttt{ConceptTarget}
-      & Konsep yang disebutkan sebagai target relasi dalam ekstraksi
-        per-bab tetapi tidak terdapat dalam himpunan konsep
-        terekstrak resmi pada bab tersebut. Direpresentasikan sebagai
-        kelas terpisah agar struktur relasi tetap terjaga tanpa
-        mencampurkan \textit{stub} (yakni node konsep rintisan tanpa
-        deskripsi) ke dalam populasi \texttt{Concept} formal. Tidak
-        di-\textit{embed} (tidak dihitung representasi vektornya) dan tidak
-        dijaring oleh tahap \textit{completion} lintas-buku. \\
+      & \textit{Forward reference}: konsep target yang ada sementara
+        sebelum diekstrak penuh; dipromosi menjadi \texttt{Concept}
+        pada iterasi berikutnya. \\
     \bottomrule
   \end{tabularx}
 \end{table}
@@ -155,16 +148,10 @@ Hierarki struktural mengikuti rantai:
 
 \noindent dihubungkan oleh relasi \texttt{HAS\_CHAPTER},
 \texttt{HAS\_SUBTOPIC}, dan \texttt{HAS\_CONCEPT}. Pada tingkat
-\texttt{Chapter} terdapat tiga relasi tambahan yang merekam
-organisasi materi sebagaimana disusun dalam buku teks:
-\texttt{NEXT\_CHAPTER} (urutan penyajian antar-bab),
-\texttt{PRASYARAT} (ketergantungan konseptual antar-bab yang
-terdokumentasikan dalam teks sumber, baik melalui rujukan langsung
-maupun urutan penyajian materi), dan \texttt{MEMPERSIAPKAN} (relasi
-inversi dari \texttt{PRASYARAT}). Ketiga relasi ini mengkodekan
-keputusan editorial penyusun buku (yakni bagaimana materi disajikan
-dalam sumber), bukan urutan pembelajaran yang dipreskripsikan
-bagi siswa.
+\texttt{Chapter}, terdapat tiga relasi pedagogis tambahan:
+\texttt{NEXT\_CHAPTER} (urutan baca), \texttt{PRASYARAT}
+(ketergantungan pembelajaran), dan \texttt{MEMPERSIAPKAN} (kebalikan
+logis dari \texttt{PRASYARAT}).
 
 Vokabulari relasi semantik antarkonsep dibagi menjadi dua kelompok
 dengan peran berbeda dalam \textit{pipeline}:

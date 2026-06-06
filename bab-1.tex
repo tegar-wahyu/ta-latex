@@ -139,14 +139,14 @@ Meskipun menjanjikan, KG memiliki keterbatasan fundamental, yaitu sifatnya yang
 secara inheren tidak lengkap. Banyak hubungan antar-konsep yang valid tidak
 tertangkap ketika graf dibangun, baik melalui anotasi manual maupun ekstraksi
 otomatis \parencite{ji_survey_2022}. Dalam konteks kurikulum sains, relasi lintas-disiplin
-yang paling bernilai pedagogis justru seringkali bersifat implisit, yaitu tidak
-tersurat dalam teks satu buku tunggal. Untuk mengatasi hal ini,
+yang paling bernilai pedagogis justru seringkali bersifat implisit---tidak tersurat
+dalam teks satu buku tunggal. Untuk mengatasi hal ini,
 \textit{Knowledge Graph Completion} (KGC) diterapkan untuk memprediksi
 \textit{triple} yang hilang. Akan tetapi, metode KGC konvensional berbasis
 \textit{embedding} struktural terbukti tidak efektif dalam skenario kurikulum
 karena distribusi konsep yang tidak merata. \textcite{wei_kicgpt_2023} menegaskan bahwa
 metode berbasis \textit{triple} mengalami penurunan performa drastis saat
-berhadapan dengan \textit{long-tail entities}, yaitu entitas yang memiliki sedikit
+berhadapan dengan \textit{long-tail entities}---entitas yang memiliki sedikit
 koneksi dalam graf sehingga pola struktural yang tersedia tidak cukup untuk
 menghasilkan representasi vektor yang akurat.
 
@@ -160,9 +160,9 @@ bahwa dengan memperlakukan \textit{triple} pengetahuan sebagai sekuens teks,
 LLM mampu memprediksi relasi semantik dengan akurasi yang lebih baik dari metode
 konvensional. Secara khusus untuk mengatasi kelangkaan informasi pada entitas
 \textit{long-tail}, \textcite{wei_kicgpt_2023} membuktikan bahwa strategi
-\textit{In-Context Learning} (ICL), yakni \textit{prompt few-shot} pada tahap KGC
+\textit{In-Context Learning} (ICL)---yakni \textit{prompt few-shot} pada tahap KGC
 yang menyertakan beberapa contoh \textit{triple} valid sebagai panduan di dalam
-\textit{prompt} klasifikasi, memungkinkan LLM menginferensikan
+\textit{prompt} klasifikasi---memungkinkan LLM menginferensikan
 relasi yang tidak mampu ditangkap oleh metode berbasis \textit{embedding}.
 
 Pemanfaatan LLM dalam KGC tetap memerlukan validasi pakar
@@ -237,7 +237,7 @@ Secara spesifik, penelitian ini bertujuan untuk:
 
   \item Mengimplementasikan mekanisme LLM-Assisted \textit{Knowledge Graph
         Completion} untuk memprediksi dan
-        melengkapi \textit{missing links} lintas-disiplin, yaitu relasi implisit
+        melengkapi \textit{missing links} lintas-disiplin---relasi implisit
         antar-entitas sains yang tidak tertangkap oleh ekstraksi berbasis aturan.
 
   \item Mengevaluasi kualitas \textit{knowledge graph} yang dihasilkan melalui
@@ -267,8 +267,8 @@ Secara spesifik, penelitian ini bertujuan untuk:
 
 Penelitian ini menghasilkan dua kontribusi yang dapat dilanjutkan oleh peneliti
 berikutnya. Pertama, \textit{pipeline} LLM-KGC yang didokumentasikan dalam
-skripsi ini, yang mencakup skema ontologi OWL beserta strategi
-\textit{prompt engineering}-nya, dapat diadaptasi untuk domain kurikulum lain
+skripsi ini---mencakup skema ontologi OWL beserta strategi
+\textit{prompt engineering}-nya---dapat diadaptasi untuk domain kurikulum lain
 atau jenjang pendidikan yang berbeda. Kedua, KG kurikulum sains Fase~F Kelas XII berbahasa Indonesia
 yang dihasilkan merupakan sumber daya terbuka pertama dari jenisnya, dan dapat
 menjadi \textit{ground truth} awal untuk penelitian pembelajaran mesin di bidang
@@ -277,7 +277,7 @@ pendidikan nasional.
 \subsection{Bagi Pendidik dan Pengembang Kurikulum}
 
 Visualisasi KG yang dihasilkan menyediakan representasi eksplisit dari jembatan
-konseptual lintas-disiplin yang selama ini bersifat implisit, misalnya
+konseptual lintas-disiplin yang selama ini bersifat implisit---misalnya
 ketergantungan konsep Potensial Elektrode di Kimia terhadap Potensial Listrik di
 Fisika, atau peran Reaksi Oksidasi sebagai prasyarat pemahaman Fosforilasi
 Oksidatif di Biologi. Representasi ini dapat digunakan sebagai referensi ketika
@@ -286,7 +286,6 @@ lintas mata pelajaran, tanpa harus membangun pemetaan tersebut secara manual.
 
 % ============================================================
 \section{Ruang Lingkup Penelitian}
-\label{sec:ruang-lingkup}
 % ============================================================
 
 Berikut adalah batasan-batasan yang ditetapkan untuk penelitian ini.
@@ -331,14 +330,6 @@ Berikut adalah batasan-batasan yang ditetapkan untuk penelitian ini.
         Penelitian ini tidak mencakup pengembangan sistem rekomendasi pembelajaran
         adaptif, aplikasi pembelajaran berbasis web bagi \textit{end-user}
         (siswa/guru), atau integrasi ke dalam platform LMS.
-
-  \item \textbf{Batasan Inferensi Pedagogis:} Sistem hanya menginferensi
-        keterkaitan \textit{single-hop} (relasi langsung satu sambungan
-        antara dua konsep, tanpa rantai konsep perantara); sistem tidak
-        menyusun jalur belajar multi-langkah lintas-disiplin, tidak
-        memodelkan tingkat kognitif (taksonomi Bloom) maupun keadaan
-        pembelajar (\textit{learner state}), dan tidak menghasilkan jalur
-        belajar terkomposisi.
 \end{enumerate}
 
 \ifSubfilesClassLoaded{\printbibliography[title={Daftar Pustaka}]}{}
