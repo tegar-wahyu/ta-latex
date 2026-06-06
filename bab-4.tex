@@ -220,7 +220,7 @@ pembatasan konsep pada materi pokok.
   intra-buku sesuai \textit{controlled vocabulary} ontologi
   (Subbab~\ref{subsec:skema-ontologi}); instruksi \textit{cross-chapter
   reasoning} secara terpisah menghasilkan relasi pedagogis antar-bab
-  (PRASYARAT atau MEMPERSIAPKAN).
+  (\texttt{PRASYARAT} atau \texttt{MEMPERSIAPKAN}).
 
   \item \textbf{Penguraian keluaran terstruktur.}
 
@@ -249,15 +249,15 @@ Tahap ini membuat \textit{knowledge graph} ke Neo4j dengan strategi
 tiga-\textit{pass} agar konsisten secara referensial dan idempoten.
 
 \begin{enumerate}
-  \item \textbf{Pass 1 --- Instansiasi node.}
+  \item \textbf{Pass 1 --- Instansiasi \textit{node}.}
   \begin{itemize}
     \item Node \texttt{Grade}, \texttt{Chapter}, \texttt{Subtopic}, dan
       \texttt{Concept} dibuat melalui operasi \texttt{MERGE}
       (\textit{idempotent upsert}).
-    \item Properti node ditetapkan melalui klausa \texttt{ON CREATE} dan
+    \item Properti \textit{node} ditetapkan melalui klausa \texttt{ON CREATE} dan
       \texttt{ON MATCH}.
     \item Kunci \texttt{MERGE} gabungan (\texttt{name}, \texttt{grade}) menegakkan
-      sifat \textit{shared node} pada \texttt{Concept} sebagaimana didefinisikan
+      sifat \textit{shared \textit{node}} pada \texttt{Concept} sebagaimana didefinisikan
       pada Subbab~\ref{subsec:skema-ontologi}.
   \end{itemize}
 
@@ -272,7 +272,7 @@ tiga-\textit{pass} agar konsisten secara referensial dan idempoten.
       dua-tingkat: apabila konsep target sudah berada dalam himpunan
       \texttt{Concept} buku yang sedang diproses, sistem membuat \textit{edge}
       langsung antar-\texttt{Concept}; jika belum, target direpresentasikan
-      sebagai node \texttt{ConceptTarget} yang berperan sebagai
+      sebagai \textit{node} \texttt{ConceptTarget} yang berperan sebagai
       \textit{placeholder}.
     \item Pemisahan label \texttt{Concept} dan \texttt{ConceptTarget}
       (Subbab~\ref{subsec:skema-ontologi}) memudahkan audit terhadap konsep yang
@@ -288,13 +288,13 @@ tiga-\textit{pass} agar konsisten secara referensial dan idempoten.
     \item Penjagaan integritas diterapkan: buku target harus berbeda dari buku
       sumber dan termuat dalam korpus yang diproses.
     \item Apabila konsep target belum ada pada \textit{scope} mata pelajaran
-      tujuan, node \texttt{Concept} baru dibuat secara \textit{lazy}
+      tujuan, \textit{node} \texttt{Concept} baru dibuat secara \textit{lazy}
       (\textit{lazy materialization}).
   \end{itemize}
 
   \item \textbf{Sifat idempoten.} Seluruh \textit{pass} menggunakan
   \texttt{MERGE} sehingga eksekusi ulang \textit{notebook} tidak menggandakan
-  node maupun \textit{edge}. Properti ini penting agar eksperimen dapat
+  \textit{node} maupun \textit{edge}. Properti ini penting agar eksperimen dapat
   dijalankan secara iteratif tanpa mengotori graf yang telah terbentuk.
 \end{enumerate}
 
@@ -309,7 +309,7 @@ Prosesnya terdiri dari empat sub-tahap: (1) \textit{concept embedding},
 dan (4) \textit{relation classification} via LLM.
 
 \begin{enumerate}
-  \item \textbf{Concept embedding.}
+  \item \textbf{\texttt{Concept} embedding.}
 
   Atribut \texttt{description} pada tiap \texttt{Concept} di-\textit{encode}
   menjadi vektor padat (\textit{dense vector}):
@@ -319,7 +319,7 @@ dan (4) \textit{relation classification} via LLM.
   menggunakan model \textit{embedding} \texttt{gemini-embedding-001} melalui Google GenAI SDK.
   Representasi vektor ini memetakan semantik teks ke ruang Euclidean berdimensi
   tinggi sehingga konsep yang secara makna berkaitan akan memiliki vektor yang
-  berdekatan. Vektor yang dihasilkan disimpan sebagai properti node (embedding) di
+  berdekatan. Vektor yang dihasilkan disimpan sebagai properti \textit{node} (embedding) di
   Neo4j dan diindeks menggunakan Neo4j Vector Index. Perlu ditegaskan bahwa
   \textit{embedding} ini bersifat semantik (diturunkan dari deskripsi tekstual
   konsep) sehingga berbeda dari \textit{embedding} struktural berbasis topologi
@@ -336,8 +336,8 @@ dan (4) \textit{relation classification} via LLM.
 
   \item \textbf{Candidate retrieval via ANN (Approximate Nearest Neighbor).}
 
-  Untuk tiap \textit{query} node $q$, dijalankan pencarian ANN pada Neo4j Vector Index
-  yang mengembalikan top-$k$ node terdekat berdasarkan \textit{cosine similarity}
+  Untuk tiap \textit{query} \textit{node} $q$, dijalankan pencarian ANN pada Neo4j Vector Index
+  yang mengembalikan top-$k$ \textit{node} terdekat berdasarkan \textit{cosine similarity}
   (didefinisikan pada Subbab~\ref{subsec:kgc}). Sebaran nilai \textit{cosine
   similarity} antar pasangan konsep pada indeks ditunjukkan pada
   Gambar~\ref{fig:cosine-scatter}.
@@ -364,7 +364,7 @@ dan (4) \textit{relation classification} via LLM.
   Pasangan kandidat yang lolos ANN disaring melalui empat filter sebelum
   diklasifikasi LLM:
   \begin{enumerate}[label=\roman*.]
-    \item \textit{Eksklusi self-pair}: kueri ANN mencegah sebuah node
+    \item \textit{Eksklusi self-pair}: kueri ANN mencegah sebuah \textit{node}
       menjadi kandidat bagi dirinya sendiri.
     \item \textit{Deduplikasi}: setiap pasangan dinormalisasi menjadi urutan
       tetap sehingga $(A,B)$ dan $(B,A)$ diperlakukan identik dan hanya diproses
@@ -453,7 +453,7 @@ berbasis \textit{Cypher} dan aplikasi web KG Review App untuk validasi pakar.
   Untuk menjaga integritas proses validasi, aplikasi menerapkan kontrol akses
   berbasis peran dengan dua peran utama: \textbf{Admin}, yang memegang hak
   \textit{management} (mengunggah graf, mengatur publikasi, serta meninjau metrik respons
-  pakar secara \textit{read-only}); dan \textbf{Expert} (\textit{reviewer}), yang
+  pakar secara \textit{read-only}); dan \textbf{Expert} (\textit{pakar}), yang
   memegang hak \textit{read-write} untuk menilai relasi dan mengusulkan
   \textit{missing triples}. Prosedur penilaian per peran telah dirinci pada
   Subbab~\ref{subsec:cara-pengumpulan}.
@@ -463,7 +463,7 @@ berbasis \textit{Cypher} dan aplikasi web KG Review App untuk validasi pakar.
   Antarmuka evaluasi untuk Expert mengikuti dua fase validasi yang telah
   didefinisikan pada Subbab~\ref{subsec:kerangka-konsep} (Fase~1 intra-mapel dan
   Fase~2 antar-mapel). Pemisahan ini diterapkan pada tingkat antarmuka untuk
-  menurunkan beban kognitif (\textit{cognitive load}) penilai: pakar menilai
+  menurunkan beban kognitif (\textit{cognitive load}) pakar: pakar menilai
   relasi dalam satu mata pelajaran terlebih dahulu sebelum mengevaluasi relasi
   lintas-disiplin, sehingga setiap fase dapat dianalisis secara lebih terisolasi
   dan akurat.

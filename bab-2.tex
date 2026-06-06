@@ -32,7 +32,7 @@ Sebagaimana diperkenalkan pada Bab~1, \textit{Knowledge Graph} (KG) merupakan
 paradigma representasi pengetahuan yang kini banyak digunakan. Secara formal,
 \textcite{hogan_knowledge_2022} mendefinisikan KG sebagai graf data yang
 dirancang untuk menghimpun dan merepresentasikan pengetahuan dunia nyata, dengan
-simpul (\textit{nodes}) sebagai representasi entitas dan sisi (\textit{edges})
+\textit{node} (simpul) sebagai representasi entitas dan \textit{edge} (sisi)
 sebagai representasi relasi semantik antarentitas. Informasi dalam KG
 diformalkan dalam bentuk triple (\textit{head, relation, tail}) sehingga
 hubungan antarinformasi dapat diproses dan ditelusuri secara komputasional oleh
@@ -78,7 +78,7 @@ sebagai entitas spesifik yang dihubungkan melalui relasi ketergantungan
 seperti \textit{predecessor} sebagai pengetahuan prasyarat dan
 \textit{successor} sebagai pengetahuan lanjutan, sehingga tanpa
 struktur ontologis semacam ini, graf yang dihasilkan hanya akan menjadi
-kumpulan node dan edge tanpa makna pedagogis yang dapat diandalkan.
+kumpulan \textit{node} dan \textit{edge} tanpa makna pedagogis yang dapat diandalkan.
 
 Urgensi ontologi ini diperkuat oleh \textcite{guo_ontology-enhanced_2025} yang menegaskan
 bahwa sistem ekstraksi pengetahuan berbasis kecerdasan buatan (AI) yang
@@ -190,12 +190,12 @@ Salah satu implementasi ANN yang banyak digunakan pada basis data vektor
 modern adalah algoritma \textit{Hierarchical Navigable Small World} (HNSW)
 \parencite{malkov_efficient_2020}. HNSW membangun struktur graf berlapis
 (\textit{multi-layer navigable graph}) di mana lapisan teratas berisi sedikit
-node dengan koneksi jarak jauh (\textit{long-range links}) dan lapisan
-terbawah berisi seluruh node dengan koneksi lokal. Pencarian dilakukan
+\textit{node} dengan koneksi jarak jauh (\textit{long-range links}) dan lapisan
+terbawah berisi seluruh \textit{node} dengan koneksi lokal. Pencarian dilakukan
 secara \textit{greedy} dari lapisan teratas ke bawah: pada tiap lapisan,
 algoritma bergerak ke tetangga yang paling dekat dengan \textit{query}
 hingga tidak ada perbaikan, lalu turun ke lapisan berikutnya dengan lebih
-banyak node. Pendekatan berlapis ini menurunkan kompleksitas pencarian
+banyak \textit{node}. Pendekatan berlapis ini menurunkan kompleksitas pencarian
 per-\textit{query} dari $O(n)$ pada \textit{brute-force} menjadi
 $O(\log n)$ rata-rata,
 menjadikan HNSW pilihan utama untuk pencarian kemiripan semantik pada
@@ -323,10 +323,10 @@ untuk memastikan kebenaran faktual berkat kedalaman pemahaman
 kontekstualnya. Meski demikian, dalam proses anotasi data, tahapan
 validasi ini sering kali memunculkan perbedaan pendapat
 (\textit{disagreement}) di antara para pakar akibat tingkat
-subjektivitas masing-masing penilai \parencite{gu_survey_nodate, zheng_judging_2023}. Untuk mengatasi ketidaksepakatan tersebut tanpa mengorbankan
+subjektivitas masing-masing pakar \parencite{gu_survey_nodate, zheng_judging_2023}. Untuk mengatasi ketidaksepakatan tersebut tanpa mengorbankan
 skalabilitas dan menekan biaya operasional, pemanfaatan LLM dapat
 diimplementasikan melalui pendekatan \textit{LLM-as-a-judge}. Dalam skenario ini,
-alih-alih difungsikan sebagai penilai utama yang menggantikan peran
+alih-alih difungsikan sebagai pakar utama yang menggantikan peran
 manusia, LLM diposisikan secara spesifik sebagai moderator yang objektif
 untuk menyelesaikan konflik penilaian antarpakar \parencite{gu_survey_nodate}.
 
@@ -382,26 +382,20 @@ menggunakan tiga indikator utama.
 
 \subsubsection{Average Degree Centrality (ADC)}
 
-\textbf{Average Degree Centrality (ADC)} digunakan untuk mengukur
-rata-rata jumlah koneksi yang dimiliki oleh setiap simpul
-(\textit{node}) dalam graf:
+\textbf{Average Degree Centrality (ADC)} mengukur rata-rata jumlah koneksi
+yang dimiliki setiap \textit{node} dalam graf:
 
 \[
   ADC = \frac{1}{|V|} \sum_{v \in V} \deg(v)
 \]
 
-\noindent dengan $|V|$ adalah jumlah simpul dalam graf dan $\deg(v)$
-adalah jumlah relasi yang terhubung langsung ke simpul $v$.
-
-Dalam penelitian ini, ADC dihitung dalam dua bentuk. ADC \textbf{graf
-keseluruhan} menghitung seluruh simpul dan relasi dalam basis data graf,
-termasuk simpul struktural seperti kelas, bab, subbab, konsep, serta
-target konsep. ADC \textbf{antar-konsep} hanya melibatkan simpul konsep
-dan relasi langsung antar-konsep, merepresentasikan tingkat
-keterhubungan konseptual antarmateri sains tanpa dipengaruhi oleh simpul
-struktural. ADC antar-konsep digunakan sebagai metrik utama untuk
-membandingkan graf sebelum dan sesudah proses KGC, karena lebih langsung
-mencerminkan perubahan interkoneksi materi Fisika, Kimia, dan Biologi.
+\noindent dengan $|V|$ adalah jumlah \textit{node} dan $\deg(v)$ jumlah relasi
+yang terhubung langsung ke \textit{node} $v$. Dalam penelitian ini, ADC dihitung
+pada \textbf{subgraf konsep} (hanya melibatkan \textit{node} \texttt{Concept}
+dan relasi langsung antar-konsep) agar mencerminkan tingkat keterhubungan
+konseptual antarmateri sains tanpa dipengaruhi \textit{node} struktural (kelas,
+bab, subbab). Metrik ini menjadi indikator utama perubahan interkoneksi materi
+Fisika, Kimia, dan Biologi sebelum dan sesudah KGC.
 
 \subsubsection{Modularity}
 
@@ -414,8 +408,8 @@ pembagian komunitas yang dihasilkan tidak lebih baik dari partisi acak.
 
 Modularity dihitung dengan membandingkan jumlah \textit{edge} yang
 benar-benar ada dalam komunitas dengan jumlah \textit{edge} yang secara
-statistik diharapkan muncul apabila koneksi antarsimpul disebar secara
-acak---dengan syarat distribusi \textit{degree} tiap simpul
+statistik diharapkan muncul apabila koneksi antar-\textit{node} disebar secara
+acak---dengan syarat distribusi \textit{degree} tiap \textit{node}
 dipertahankan. Untuk graf berarah (\textit{directed graph}), modularity
 didefinisikan sebagai:
 
@@ -429,11 +423,11 @@ didefinisikan sebagai:
 
 \begin{itemize}
   \item $A_{ij}$: matriks adjasensi; bernilai 1 jika terdapat
-        \textit{edge} dari node $i$ ke node $j$, dan 0 jika tidak ada.
-  \item $k_i^{\text{out}}$: \textit{out-degree} dari node $i$.
-  \item $k_j^{\text{in}}$: \textit{in-degree} dari node $j$.
+        \textit{edge} dari \textit{node} $i$ ke \textit{node} $j$, dan 0 jika tidak ada.
+  \item $k_i^{\text{out}}$: \textit{out-degree} dari \textit{node} $i$.
+  \item $k_j^{\text{in}}$: \textit{in-degree} dari \textit{node} $j$.
   \item $m$: total jumlah \textit{edge} berarah.
-  \item $\delta(c_i, c_j) = 1$ jika simpul $i$ dan $j$ berada dalam
+  \item $\delta(c_i, c_j) = 1$ jika \textit{node} $i$ dan $j$ berada dalam
         komunitas yang sama; 0 jika tidak.
 \end{itemize}
 
@@ -448,7 +442,7 @@ menjumlahkan langsung per komunitas:
 
 \noindent dengan $e_{cc}$ adalah jumlah \textit{edge} internal komunitas
 $c$, sedangkan $k_c^{\text{out}}$ dan $k_c^{\text{in}}$ adalah total
-\textit{out-degree} dan \textit{in-degree} seluruh node dalam komunitas
+\textit{out-degree} dan \textit{in-degree} seluruh \textit{node} dalam komunitas
 $c$. Kedua bentuk rumus menghasilkan nilai yang identik; perbedaannya
 hanya pada cara penjumlahan.
 
@@ -471,19 +465,19 @@ konteks penelitian ini, \textit{density} digunakan untuk membandingkan tingkat
 keterkaitan antar-konsep sebelum dan sesudah penambahan relasi lintas
 buku (\textit{cross-book links}). Sejalan dengan ADC antar-konsep yang
 menjadi metrik utama, \textit{density} dihitung pada \textbf{subgraf konsep},
-yakni hanya melibatkan node \texttt{Concept} dan relasi langsung
+yakni hanya melibatkan \textit{node} \texttt{Concept} dan relasi langsung
 antar-konsep, agar mencerminkan kepadatan interkoneksi materi sains tanpa
-dipengaruhi oleh node struktural (kelas, bab, subbab). Untuk graf berarah,
+dipengaruhi oleh \textit{node} struktural (kelas, bab, subbab). Untuk graf berarah,
 formula yang digunakan adalah:
 
 \[
   D = \frac{|E_C|}{|V_C|(|V_C|-1)}
 \]
 
-\noindent dengan $|E_C|$ adalah jumlah relasi langsung antar-node
-\texttt{Concept}, dan $|V_C|$ adalah jumlah node \texttt{Concept}. Penyebut
+\noindent dengan $|E_C|$ adalah jumlah relasi langsung antar-\textit{node}
+\texttt{Concept}, dan $|V_C|$ adalah jumlah \textit{node} \texttt{Concept}. Penyebut
 $|V_C|(|V_C|-1)$ merepresentasikan jumlah maksimum \textit{edge} berarah
-yang mungkin ada antar-konsep, dari asumsi bahwa setiap pasangan node
+yang mungkin ada antar-konsep, dari asumsi bahwa setiap pasangan \textit{node}
 $(i, j)$ dengan $i \neq j$ dapat memiliki tepat satu \textit{edge} berarah
 tanpa \textit{self-loop}.
 
@@ -507,7 +501,7 @@ proses pembelajaran atau KGC. DC didefinisikan sebagai:
 \]
 
 \noindent dengan $V$ sebagai himpunan seluruh entitas yang diekstraksi
-(node bertipe \texttt{:Concept} dan \texttt{:Chapter}), dan $\text{desc}(v)$
+(\textit{node} bertipe \texttt{:Concept} dan \texttt{:Chapter}), dan $\text{desc}(v)$
 sebagai atribut deskripsi dari entitas $v$. Target minimal untuk metrik
 ini ditetapkan sebesar $\geq 0{,}90$ (90\%).
 
@@ -536,7 +530,7 @@ dikemukakan oleh \textcite{seo_structural_2022}; menurut prinsip ini, setiap kel
 didefinisikan dalam ontologi harus dimanfaatkan secara aktif untuk
 menampung data. Dalam konteks kurikulum sains, nilai ESR yang rendah
 menjamin bahwa setiap topik besar telah berhasil dipecah menjadi
-konsep-konsep operasional, sehingga menghindari adanya ``node buntu''
+konsep-konsep operasional, sehingga menghindari adanya ``\textit{node} buntu''
 yang tidak informatif dalam peta pembelajaran. Target maksimal untuk
 metrik ini ditetapkan sebesar $\leq 0{,}10$ (10\%).
 
@@ -666,7 +660,7 @@ dipertanggungjawabkan secara komputasional maupun pedagogis.
 
 Untuk memastikan bahwa penentuan validitas suatu relasi sains tidak
 didasari oleh bias subjektif individu, evaluasi kualitatif harus
-diiringi dengan perhitungan tingkat kesepakatan antarpenilai
+diiringi dengan perhitungan tingkat kesepakatan antarpakar
 (\textit{inter-rater agreement}).
 
 Pada evaluasi sistem LLM, khususnya ketika \textit{output} sistem
@@ -697,7 +691,7 @@ agreement}), dirumuskan sebagai:
 \]
 
 \noindent dengan $q$ adalah jumlah kategori label dan $\hat{p}_k$ adalah
-proporsi penilai yang menetapkan label kategori $k$. Rumus $P_e$ inilah
+proporsi pakar yang menetapkan label kategori $k$. Rumus $P_e$ inilah
 yang membedakan Gwet's AC1 dari Kappa: estimasi peluang kesepakatan
 dihitung berdasarkan proporsi penggunaan kategori secara aktual, sehingga
 nilai AC1 tetap mencerminkan kesepakatan yang sesungguhnya meskipun satu
