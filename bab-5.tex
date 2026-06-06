@@ -129,13 +129,21 @@ perbandingan struktur graf sebelum \textit{Knowledge Graph Completion} (pre-KGC)
 dan sesudahnya (post-KGC). Seluruh perhitungan pada bagian ini
 dieksekusi melalui kueri \textit{Cypher} di Neo4j dengan berpedoman pada
 formulasi metrik topologi yang telah dijelaskan pada Subbab~\ref{subsec:metrik-topologi}.
-Gambaran topologi keseluruhan graf hasil konstruksi ditunjukkan pada
-Gambar~\ref{fig:kg-topologi}.
+Perbandingan topologi graf sebelum dan sesudah KGC ditunjukkan pada
+Gambar~\ref{fig:kg-topologi}: pada kondisi pra-KGC tampak tiga graf
+yang terpisah, mencerminkan ketiga komunitas mata pelajaran yang
+terisolasi, sedangkan pada kondisi pasca-KGC ketiga graf tersebut saling
+terhubung oleh relasi lintas-buku.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\maxwidth]{images/media/image21.png}
-  \caption{Visualisasi topologi keseluruhan \textit{knowledge graph} hasil konstruksi.}
+  \includegraphics[width=0.82\linewidth]{figures/kg/pre-kgc.png}\\[0.2em]
+  {\small (a) Pra-KGC}\\[0.8em]
+  \includegraphics[width=0.82\linewidth]{figures/kg/post-kgc.png}\\[0.2em]
+  {\small (b) Pasca-KGC}
+  \caption{Perbandingan topologi \textit{knowledge graph} sebelum (a) dan
+    sesudah (b) proses KGC. Penambahan relasi lintas-buku menjembatani
+    ketiga komunitas mata pelajaran yang semula terpisah.}
   \label{fig:kg-topologi}
 \end{figure}
 
