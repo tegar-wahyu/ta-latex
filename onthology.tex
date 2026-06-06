@@ -25,15 +25,15 @@
 ]
 
   % --- 1. HIERARKI KELAS UTAMA (Backbone vertikal, kompak) ---
-  % Concept di atas (banyak relasi di sekitarnya), Grade/Subject di bawah.
-  \node[class] (concept) {Concept};
-  \node[class, below=1.2cm of concept]  (subtopic) {Subtopic};
-  \node[class, below=1.2cm of subtopic] (chapter)  {Chapter};
-  \node[class, below=1.2cm of chapter]  (grade)    {Grade/\\Subject};
+  % Grade/Subject sebagai akar di atas; Concept (+ ConceptTarget) di bawah.
+  \node[class] (grade) {Grade/\\Subject};
+  \node[class, below=1.2cm of grade]     (chapter)  {Chapter};
+  \node[class, below=1.2cm of chapter]   (subtopic) {Subtopic};
+  \node[class, below=1.2cm of subtopic]  (concept)  {Concept};
 
-  \node[target, above=2cm of concept] (target) {ConceptTarget\\(Placeholder)};
+  \node[target, below=2cm of concept] (target) {ConceptTarget\\(Placeholder)};
 
-  % Relasi Hierarki (label di kanan tulang punggung)
+  % Relasi Hierarki (arah akar->daun, label di kanan tulang punggung)
   \draw[edge] (grade)    -- node[right] {HAS\_CHAPTER}  (chapter);
   \draw[edge] (chapter)  -- node[right] {HAS\_SUBTOPIC} (subtopic);
   \draw[edge] (subtopic) -- node[right] {HAS\_CONCEPT}  (concept);
@@ -59,10 +59,10 @@
   \draw[edge] (concept) -- (desc); \draw[edge] (desc) -- (d_str1);
 
 
-  % --- 4. RELASI SEMANTIK (WITHIN-BOOK) — Concept ke Target (di atas) ---
-  \draw[rel] (concept) to[out=70,  in=-70] (target);
-  \draw[rel] (concept) to[out=90,  in=-90] (target);
-  \draw[rel] (concept) to[out=110, in=-110] (target);
+  % --- 4. RELASI SEMANTIK (WITHIN-BOOK) — Concept ke Target (di bawah) ---
+  \draw[rel] (concept) to[out=-70,  in=70] (target);
+  \draw[rel] (concept) to[out=-90,  in=90] (target);
+  \draw[rel] (concept) to[out=-110, in=110] (target);
 
   % Label di kiri celah Concept--Target
   \node[font=\tiny, align=center, fill=white, inner sep=3pt, draw=blue!30,
@@ -92,9 +92,9 @@
   % kanan-bawah) agar titik kontrol loop tidak menggelembungkan kotak.
   \pgfresetboundingbox
   \useasboundingbox
-    ([xshift=-3mm,yshift=-3mm]xblabel.west |- grade.south)
+    ([xshift=-3mm,yshift=-3mm]xblabel.west |- target.south)
     rectangle
-    ([xshift=3mm,yshift=3mm]d_bool.east |- target.north);
+    ([xshift=3mm,yshift=3mm]d_bool.east |- grade.north);
 
 \end{tikzpicture}%
   }
