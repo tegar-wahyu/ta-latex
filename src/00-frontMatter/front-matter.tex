@@ -37,7 +37,7 @@
 % oleh main).
 \newcommand{\juduluppercase}{LLM-Assisted Knowledge Graph Completion untuk
 Pemetaan Interkoneksi Materi Sains (Fisika, Kimia, Biologi) pada Kurikulum
-Merdeka Tingkat SMA}
+Merdeka SMA Kelas XII}
 % Blok label : nilai (untuk halaman pernyataan/pengesahan)
 \newcommand{\frow}[2]{\noindent\begin{tabular}{@{}p{3.2cm}@{ : }p{\dimexpr\linewidth-3.8cm}@{}}#1 & #2\end{tabular}\par}
 
@@ -48,12 +48,10 @@ Merdeka Tingkat SMA}
 % --- mencegah warning hyperref "destination name{page.i} duplicate".
 \thispagestyle{empty}
 \begin{center}
-  \onehalfspacing
+  \setstretch{1.4}
   {\large\bfseries UNIVERSITAS INDONESIA}\\[1.5cm]
 
-  {\bfseries\large LLM-Assisted Knowledge Graph Completion untuk Pemetaan
-  Interkoneksi Materi Sains (Fisika, Kimia, Biologi) pada Kurikulum Merdeka
-  Kelas XII}\\[1.5cm]
+  {\bfseries\large \juduluppercase}\\[1.5cm]
 
   {\large\bfseries SKRIPSI}\\[1.5cm]
 
@@ -75,7 +73,7 @@ Merdeka Tingkat SMA}
 % ===================== HALAMAN JUDUL =====================
 \thispagestyle{empty}
 \begin{center}
-  \onehalfspacing
+  \setstretch{1.4}
   {\large\bfseries UNIVERSITAS INDONESIA}\\[1.2cm]
 
   {\bfseries\large \juduluppercase}\\[1.2cm]
@@ -100,39 +98,68 @@ Merdeka Tingkat SMA}
 \clearpage
 
 % ===================== PERNYATAAN ORISINALITAS =====================
+\addcontentsline{toc}{chapter}{HALAMAN PERNYATAAN ORISINALITAS}
 \begin{center}\bfseries HALAMAN PERNYATAAN ORISINALITAS\end{center}
 \vspace{1cm}
-\onehalfspacing
-\noindent Tugas Akhir ini adalah hasil karya saya sendiri, dan semua sumber
-baik yang dikutip maupun dirujuk telah saya nyatakan dengan benar.
-\vspace{1.5cm}
+\setstretch{1.4}
+\noindent Tugas Akhir ini adalah hasil karya kami sendiri, dan semua sumber
+baik yang dikutip maupun dirujuk telah kami nyatakan dengan benar.
+\vspace{1.2cm}
 
-\frow{Nama}{Fadrian Yhoga Pratama, Soros Febriano, Tegar Wahyu Khisbulloh}
-\frow{NPM}{2206819395, 2206083445, 2206082032}
-\frow{Tanda Tangan}{\rule{5cm}{0.4pt}}
-\frow{Tanggal}{7 Desember 2026}
+\noindent Depok, Juni 2026
+\vspace{0.4cm}
+
+\begin{flushright}
+\begin{tabular}{@{}c@{}}
+Yang menyatakan,\\[1.4cm]
+\rule{6cm}{0.4pt}\\
+Fadrian Yhoga Pratama\\
+NPM. 2206819395\\[1cm]
+\rule{6cm}{0.4pt}\\
+Soros Febriano\\
+NPM. 2206083445\\[1cm]
+\rule{6cm}{0.4pt}\\
+Tegar Wahyu Khisbulloh\\
+NPM. 2206082032
+\end{tabular}
+\end{flushright}
 
 % ===================== PERNYATAAN PENGGUNAAN KECERDASAN ARTIFISIAL =====================
 \clearpage
+\addcontentsline{toc}{chapter}{HALAMAN PERNYATAAN PENGGUNAAN KECERDASAN ARTIFISIAL}
 \begin{center}\bfseries HALAMAN PERNYATAAN PENGGUNAAN KECERDASAN ARTIFISIAL\end{center}
 \vspace{1cm}
-\onehalfspacing
-\noindent Saya menyatakan bahwa dalam penyusunan Tugas Akhir ini, saya
+\setstretch{1.4}
+\noindent Kami menyatakan bahwa dalam penyusunan Tugas Akhir ini, kami
 menggunakan teknologi Kecerdasan Buatan dengan platform ChatGPT dan Gemini
-untuk tujuan pemeriksaan dan perbaikan tata bahasa dan saya bertanggung jawab
+untuk tujuan pemeriksaan dan perbaikan tata bahasa dan kami bertanggung jawab
 penuh atas keakuratan, orisinalitas, dan integritas seluruh isi Tugas Akhir ini.
-\vspace{1.5cm}
+\vspace{1.2cm}
 
-\frow{Nama}{Fadrian Yhoga Pratama, Soros Febriano, Tegar Wahyu Khisbulloh}
-\frow{NPM}{2206819395, 2206083445, 2206082032}
-\frow{Tanda Tangan}{\rule{5cm}{0.4pt}}
-\frow{Tanggal}{7 Desember 2026}
+\noindent Depok, Juni 2026
+\vspace{0.4cm}
+
+\begin{flushright}
+\begin{tabular}{@{}c@{}}
+Yang menyatakan,\\[1.4cm]
+\rule{6cm}{0.4pt}\\
+Fadrian Yhoga Pratama\\
+NPM. 2206819395\\[1cm]
+\rule{6cm}{0.4pt}\\
+Soros Febriano\\
+NPM. 2206083445\\[1cm]
+\rule{6cm}{0.4pt}\\
+Tegar Wahyu Khisbulloh\\
+NPM. 2206082032
+\end{tabular}
+\end{flushright}
 
 % ===================== HALAMAN PENGESAHAN =====================
 \clearpage
+\addcontentsline{toc}{chapter}{HALAMAN PENGESAHAN}
 \begin{center}\bfseries HALAMAN PENGESAHAN\end{center}
 \vspace{0.8cm}
-\onehalfspacing
+\setstretch{1.4}
 \noindent Tugas Akhir ini diajukan oleh:
 \vspace{0.5cm}
 
@@ -164,25 +191,27 @@ Universitas Indonesia.
 \addcontentsline{toc}{chapter}{KATA PENGANTAR}
 \begin{center}\bfseries KATA PENGANTAR\end{center}
 \vspace{0.8cm}
-\onehalfspacing
-% TODO: Kata Pengantar masih berisi template UI (menyebut "Sarjana Ekonomi
-% Jurusan Manajemen", "Drs. A", "X Company"). Sesuaikan dengan konteks skripsi.
+\setstretch{1.4}
+% TODO (isi final): lengkapi/sesuaikan daftar ucapan terima kasih di bawah
+% (nama pembimbing, pihak yang membantu pengumpulan data, dsb.).
 \noindent Puji syukur saya panjatkan kepada Tuhan Yang Maha Esa, karena atas
 berkat dan rahmat-Nya, saya dapat menyelesaikan skripsi ini. Penulisan skripsi
 ini dilakukan dalam rangka memenuhi salah satu syarat untuk mencapai gelar
-Sarjana Ekonomi Jurusan Manajemen pada Fakultas Ekonomi Universitas Indonesia.
+Sarjana Ilmu Komputer pada Fakultas Ilmu Komputer Universitas Indonesia.
 Saya menyadari bahwa, tanpa bantuan dan bimbingan dari berbagai pihak, dari masa
 perkuliahan sampai pada penyusunan skripsi ini, sangatlah sulit bagi saya untuk
 menyelesaikan skripsi ini. Oleh karena itu, saya mengucapkan terima kasih kepada:
 
 \begin{enumerate}
-  \item Drs.\ A, selaku dosen pembimbing yang telah menyediakan waktu, tenaga,
-        dan pikiran untuk mengarahkan saya dalam penyusunan skripsi ini;
-  \item pihak X Company yang telah banyak membantu dalam usaha memperoleh data
-        yang saya perlukan;
-  \item orang tua dan keluarga saya yang telah memberikan bantuan dukungan
-        material dan moral; dan
-  \item sahabat yang telah banyak membantu saya dalam menyelesaikan skripsi ini.
+  \item Dr.\ Siti Aminah, S.Kom., M.Kom., selaku dosen pembimbing yang telah
+        menyediakan waktu, tenaga, dan pikiran untuk mengarahkan kami dalam
+        penyusunan skripsi ini;
+  \item \emph{[isi: pihak yang membantu pengumpulan data / validasi pakar ---
+        mis.\ para guru dan pakar bidang Fisika, Kimia, dan Biologi]};
+  \item orang tua dan keluarga kami yang telah memberikan dukungan material dan
+        moral; dan
+  \item sahabat dan rekan yang telah banyak membantu dalam menyelesaikan skripsi
+        ini.
 \end{enumerate}
 
 \noindent Akhir kata, saya berharap Tuhan Yang Maha Esa berkenan membalas segala
@@ -191,17 +220,18 @@ bagi pengembangan ilmu.
 \vspace{1cm}
 
 \begin{flushright}
-Depok/Jakarta, \ldots\ldots\ldots\ldots (diisi tanggal)\\[1.5cm]
+Depok, Juni 2026\\[1.5cm]
 Penulis
 \end{flushright}
 
 % ===================== PERNYATAAN PERSETUJUAN PUBLIKASI =====================
 \clearpage
+\addcontentsline{toc}{chapter}{HALAMAN PERNYATAAN PERSETUJUAN PUBLIKASI}
 \begin{center}\bfseries
 HALAMAN PERNYATAAN PERSETUJUAN PUBLIKASI\\
 TUGAS AKHIR UNTUK KEPENTINGAN AKADEMIS\end{center}
 \vspace{0.8cm}
-\onehalfspacing
+\setstretch{1.4}
 \noindent Sebagai sivitas akademik Universitas Indonesia, saya yang bertanda
 tangan di bawah ini:
 \vspace{0.4cm}
@@ -234,7 +264,7 @@ mencantumkan nama saya sebagai penulis/pencipta dan sebagai pemilik Hak Cipta.
 \vspace{0.6cm}
 
 \noindent Dibuat di: Depok\\
-Pada tanggal: \rule{3cm}{0.4pt}
+Pada tanggal: Juni 2026
 \vspace{1cm}
 
 \begin{flushright}
@@ -251,7 +281,7 @@ Tegar Wahyu Khisbulloh
 \addcontentsline{toc}{chapter}{ABSTRAK}
 \begin{center}\bfseries ABSTRAK\end{center}
 \vspace{0.6cm}
-\onehalfspacing
+\setstretch{1.4}
 \frow{Nama}{Fadrian Yhoga Pratama, Soros Febriano, Tegar Wahyu Khisbulloh}
 \frow{NPM}{2206819395, 2206083445, 2206082032}
 \frow{Program Studi}{Ilmu Komputer}
@@ -273,13 +303,13 @@ Kurikulum Merdeka, Pendidikan Sains, Graph Completion, Pemetaan Kurikulum.
 \addcontentsline{toc}{chapter}{ABSTRACT}
 \begin{center}\bfseries ABSTRACT\end{center}
 \vspace{0.6cm}
-\onehalfspacing
+\setstretch{1.4}
 \frow{Name}{Fadrian Yhoga Pratama, Soros Febriano, Tegar Wahyu Khisbulloh}
 \frow{Student ID}{2206819395, 2206083445, 2206082032}
 \frow{Study Program}{Computer Science}
 \frow{Title}{LLM-Assisted Knowledge Graph Completion for Mapping the
-Interconnections of Science Topics (Physics, Chemistry, Biology) in the Senior
-High School Merdeka Curriculum}
+Interconnections of Science Topics (Physics, Chemistry, Biology) in the Grade XII
+Senior High School Merdeka Curriculum}
 \frow{Counsellor 1}{Dr.\ Siti Aminah, S.Kom., M.Kom.}
 \vspace{0.6cm}
 
