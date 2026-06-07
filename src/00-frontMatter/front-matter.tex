@@ -43,6 +43,11 @@ Merdeka SMA Kelas XII}
 % Varian label sempit (3.2cm) untuk blok tanda tangan Dewan Penguji, agar nama
 % pembimbing + garis tanda tangan muat satu baris (value rata kiri, tak teregang).
 \newcommand{\frowp}[2]{\noindent\begin{tabular}{@{}p{3.2cm}@{ : }>{\raggedright\arraybackslash}p{\dimexpr\linewidth-3.8cm}@{}}#1 & #2\end{tabular}\par}
+% Tanda tangan di atas garis (overlap nol-tinggi agar baris tabel tetap rata):
+% gambar dipusatkan pada garis 3,5cm lalu garis digambar di bawahnya.
+\newcommand{\signtegar}{\smash{\makebox[3.5cm][c]{\raisebox{1mm}{%
+  \includegraphics[height=1.1cm]{assets/signs/sign-tegar.png}}}}%
+  \hspace{-3.5cm}\rule{3.5cm}{0.4pt}}
 
 \ifSubfilesClassLoaded{\pagenumbering{roman}}{}
 
@@ -117,7 +122,7 @@ baik yang dikutip maupun dirujuk telah kami nyatakan dengan benar.
 \centering
 Yang menyatakan,\\[1.4cm]
 \begin{tabular}{ccc}
-\rule{3.5cm}{0.4pt} & \rule{3.5cm}{0.4pt} & \rule{3.5cm}{0.4pt} \\
+\rule{3.5cm}{0.4pt} & \rule{3.5cm}{0.4pt} & \signtegar \\
 Fadrian Yhoga Pratama & Soros Febriano & Tegar Wahyu Khisbulloh \\
 NPM. 2206819395 & NPM. 2206083445 & NPM. 2206082032 \\
 \end{tabular}
@@ -144,7 +149,7 @@ penuh atas keakuratan, orisinalitas, dan integritas seluruh isi Tugas Akhir ini.
 \centering
 Yang menyatakan,\\[1.4cm]
 \begin{tabular}{ccc}
-\rule{3.5cm}{0.4pt} & \rule{3.5cm}{0.4pt} & \rule{3.5cm}{0.4pt} \\
+\rule{3.5cm}{0.4pt} & \rule{3.5cm}{0.4pt} & \signtegar \\
 Fadrian Yhoga Pratama & Soros Febriano & Tegar Wahyu Khisbulloh \\
 NPM. 2206819395 & NPM. 2206083445 & NPM. 2206082032 \\
 \end{tabular}
@@ -269,7 +274,7 @@ Pada tanggal: Juni 2026
 \centering
 Yang menyatakan,\\[1.4cm]
 \begin{tabular}{ccc}
-\rule{3.5cm}{0.4pt} & \rule{3.5cm}{0.4pt} & \rule{3.5cm}{0.4pt} \\
+\rule{3.5cm}{0.4pt} & \rule{3.5cm}{0.4pt} & \signtegar \\
 Fadrian Yhoga Pratama & Soros Febriano & Tegar Wahyu Khisbulloh \\
 NPM. 2206819395 & NPM. 2206083445 & NPM. 2206082032 \\
 \end{tabular}
