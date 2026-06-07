@@ -22,8 +22,7 @@
     \usepackage[T1]{fontenc}
     \usepackage[indonesian]{babel}
     \usepackage{mathptmx}           % Times New Roman equivalent
-    \usepackage{helvet}             % Arial equivalent
-    \usepackage{courier}
+    \usepackage{courier}            % monospace (texttt, listings)
 \fi
 
 % ── Page geometry (A4, UI 2017 standard: 3 cm all sides) ─────
@@ -49,20 +48,20 @@
 \usepackage{titlesec}
 
 \titleformat{\chapter}[block]
-  {\centering\sffamily\bfseries\large}{}
+  {\centering\rmfamily\bfseries\large}{}
   {0pt}{\MakeUppercase}
 \titlespacing*{\chapter}{0pt}{0pt}{1.5em}
 
 \titleformat{\section}
-  {\sffamily\bfseries\normalsize}{\thesection}{1em}{}
+  {\rmfamily\bfseries\normalsize}{\thesection}{1em}{}
 \titlespacing*{\section}{0pt}{1.2em}{0.6em}
 
 \titleformat{\subsection}
-  {\sffamily\bfseries\normalsize}{\thesubsection}{1em}{}
+  {\rmfamily\bfseries\normalsize}{\thesubsection}{1em}{}
 \titlespacing*{\subsection}{0pt}{1em}{0.5em}
 
 \titleformat{\subsubsection}
-  {\sffamily\bfseries\normalsize}{\thesubsubsection}{1em}{}
+  {\rmfamily\bfseries\normalsize}{\thesubsubsection}{1em}{}
 \titlespacing*{\subsubsection}{0pt}{0.8em}{0.4em}
 
 % ── Tables ───────────────────────────────────────────────────
