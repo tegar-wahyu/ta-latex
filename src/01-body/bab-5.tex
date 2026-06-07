@@ -67,7 +67,6 @@
 \usepackage{longtable, booktabs, array, multirow}
 \usepackage{calc}
 \usepackage{tabularx}
-\usepackage{adjustbox}
 
 % ── Math ─────────────────────────────────────────────────────
 \usepackage{amsmath, amssymb}
@@ -158,7 +157,6 @@ terhubung oleh relasi lintas-buku.
 \centering
 \caption{Perbandingan metrik struktural pre-KGC dan post-KGC.}
 \label{tab:struktural}
-\begin{adjustbox}{max totalsize={\textwidth}{0.78\textheight},center}
 \begin{tabular}{@{}
   >{\raggedright\arraybackslash}p{0.38\linewidth}
   >{\centering\arraybackslash}p{0.27\linewidth}
@@ -171,7 +169,6 @@ ADC                & 0{,}7384 & 1{,}4651 \\
 \textit{Modularity}               & 0{,}8106 & 0{,}3732 \\
 \bottomrule
 \end{tabular}
-\end{adjustbox}
 \end{table}
 
 \begin{enumerate}
@@ -269,7 +266,6 @@ Subbab~\ref{subsec:validasi-manusia}.
   (rincian pada \ref{lamp:missing-triples}). Jumlah pada baris Final
   lebih kecil karena sebagian \textit{triple} dikonsolidasikan saat konsensus.}
 \label{tab:validasi-mapel}
-\begin{adjustbox}{max totalsize={\textwidth}{0.78\textheight},center}
 \begin{tabular}{@{}l l c c c c c c c c@{}}
 \toprule
 \textbf{Mapel} & \textbf{Penilai} & \textbf{Ditinjau} & \textbf{Benar} & \textbf{Parsial} & \textbf{KK} & \textbf{Salah} & \textbf{Hilang} & \textbf{P} & \textbf{R} \\
@@ -291,7 +287,6 @@ Keseluruhan & Expert 1   & 557 & 511 & 13 & 6  & 27 & 15 & 0{,}932 & 0{,}952 \\
             & \textit{Final} & 544 & 494 & 28 & 4 & 18 & 29 & \textbf{0{,}936} & \textbf{0{,}917} \\
 \bottomrule
 \end{tabular}
-\end{adjustbox}
 \end{table}
 }
 
@@ -299,7 +294,6 @@ Keseluruhan & Expert 1   & 557 & 511 & 13 & 6  & 27 & 15 & 0{,}932 & 0{,}952 \\
 \centering
 \caption{Uji kesepakatan antarpakar Gwet's AC1 per mata pelajaran (Fase 1).}
 \label{tab:ac1}
-\begin{adjustbox}{max totalsize={\textwidth}{0.78\textheight},center}
 \begin{tabular}{@{}
   >{\raggedright\arraybackslash}p{0.18\linewidth}
   >{\centering\arraybackslash}p{0.14\linewidth}
@@ -315,14 +309,12 @@ Fisika  & 240 & 0{,}771 & 0{,}069 & \textbf{0{,}754} & Baik \\
 Kimia   & 166 & 0{,}651 & 0{,}112 & \textbf{0{,}607} & Baik \\
 \bottomrule
 \end{tabular}
-\end{adjustbox}
 \end{table}
 
 \begin{table}[htbp]
 \centering
 \caption{Ringkasan metrik per fase evaluasi. Untuk Fase~2, Precision $=$ validitas relasi, sedangkan Recall, F1, dan AC1 tidak berlaku (lihat Subbab~\ref{subsec:metrik-fase2}).}
 \label{tab:validasi-metrik}
-\begin{adjustbox}{max totalsize={\textwidth}{0.78\textheight},center}
 \begin{tabular}{@{}
   >{\raggedright\arraybackslash}p{0.20\linewidth}
   >{\centering\arraybackslash}p{0.18\linewidth}
@@ -336,7 +328,6 @@ Fase 1 (konsensus) & 0{,}936 & 0{,}917 & 0{,}926 & lihat Tabel~\ref{tab:ac1} \\
 Fase 2 (panel diskusi) & 0{,}991 & — & — & — \\
 \bottomrule
 \end{tabular}
-\end{adjustbox}
 \end{table}
 
 \begin{enumerate}
@@ -415,7 +406,6 @@ Subbab~\ref{subsubsec:kualitas}.
 \centering
 \caption{Jumlah relasi lintas-buku per konfigurasi \textit{parameter sweep}.}
 \label{tab:param-sweep}
-\begin{adjustbox}{max totalsize={\textwidth}{0.78\textheight},center}
 \begin{tabular}{@{}
   >{\raggedright\arraybackslash}p{0.40\linewidth}
   >{\raggedright\arraybackslash}p{0.54\linewidth}@{}}
@@ -428,7 +418,6 @@ Subbab~\ref{subsubsec:kualitas}.
 0{,}85 / $k$=5 (paling ketat)                     & 14  \\
 \bottomrule
 \end{tabular}
-\end{adjustbox}
 \end{table}
 
 \begin{figure}[htbp]
@@ -638,7 +627,6 @@ atau normalisasi arah pasca-proses, bukan penyetelan
   \textit{sweep}; kolom $n$ adalah jumlah \textit{edge} yang
   benar-benar dinilai pakar pada survei Fase~2.}
 \label{tab:validasi-sweep}
-\begin{adjustbox}{max totalsize={\textwidth}{0.78\textheight},center}
 \begin{tabular}{@{}
   >{\raggedright\arraybackslash}p{0.20\linewidth}
   >{\centering\arraybackslash}p{0.10\linewidth}
@@ -655,7 +643,6 @@ atau normalisasi arah pasca-proses, bukan penyetelan
 0{,}85 / $k$=5 (paling ketat)     & 14  & 14  & 100{,}0\% (14/14)  & 100{,}0\% (14/14)  & 85{,}7\% (12/14)  \\
 \bottomrule
 \end{tabular}
-\end{adjustbox}
 \end{table}
 }
 
@@ -761,7 +748,6 @@ Tabel~\ref{tab:conf-kalibrasi}.
   penilaian pakar (Fase~2, $n = 117$). Penyebut \textit{ketepatan arah}
   mengecualikan satu \textit{edge} ber-status NA (LB085).}
 \label{tab:conf-kalibrasi}
-\begin{adjustbox}{max totalsize={\textwidth}{0.78\textheight},center}
 \begin{tabular}{@{}
   >{\raggedright\arraybackslash}p{0.18\linewidth}
   >{\centering\arraybackslash}p{0.07\linewidth}
@@ -778,7 +764,6 @@ $[0{,}85;\;1{,}0)$ & 69 & 69/69 = 100\% & 67/69 = 97{,}1\% & 52/69 = 75{,}4\% \\
 $= 1{,}0$        & 20 & 20/20 = 100\% & 20/20 = 100\% & 15/20 = 75{,}0\% \\
 \bottomrule
 \end{tabular}
-\end{adjustbox}
 \end{table}
 
 Pola kalibrasi pada Tabel~\ref{tab:conf-kalibrasi} memberikan tiga
@@ -893,7 +878,6 @@ antar-domain:
 \centering
 \caption{Presisi ekstraksi per domain sains (Fase 1 validasi pakar).}
 \label{tab:komparatif-domain}
-\begin{adjustbox}{max totalsize={\textwidth}{0.78\textheight},center}
 \begin{tabular}{@{}
   >{\raggedright\arraybackslash}p{0.15\linewidth}
   >{\raggedright\arraybackslash}p{0.50\linewidth}
@@ -906,7 +890,6 @@ Fisika  & $\sim$0{,}87--1{,}00 & rentang lebar; lemah pada relasi kuantitatif/ru
 Kimia   & $\sim$0{,}82--0{,}88 & kesalahan terbanyak pada terminologi proses \\
 \bottomrule
 \end{tabular}
-\end{adjustbox}
 \end{table}
 
 Perbedaan ini selaras dengan analisis kesalahan pada Subbab~\ref{subsubsec:error-analysis}:
