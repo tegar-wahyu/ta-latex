@@ -41,14 +41,14 @@
 #### Reviewed existing triples (summary)
 | Subject | Actor | Reviewed | Correct | Partial | Wrong | Missing label | Missing Triples | Precision | Recall | F1 |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| Biologi | Expert 1 | 151 | 140 | 6 | 2 | 3 | 0 | 0.952 | 0.965 | 0.958 |
-| Biologi | Expert 2 | 151 | 143 | 6 | 0 | 2 | 0 | 0.970 | 0.970 | 0.970 |
+| Biologi | Expert 1 | 151 | 140 | 6 | 2 | 3 | 0 | 0.952 | 0.965 | 0.958 | # Pendidikan Biologi UPI 2022
+| Biologi | Expert 2 | 151 | 143 | 6 | 0 | 2 | 0 | 0.970 | 0.970 | 0.970 | # Biologi UI 2022
 | Biologi | Final consensus | 151 | 144 | 4 | 1 | 2 | 0 | 0.970 | 0.977 | 0.973 |
-| Fisika | Expert 1 | 240 | 239 | 0 | 0 | 1 | 15 | 0.997 | 0.938 | 0.967 |
-| Fisika | Expert 2 | 240 | 186 | 40 | 3 | 11 | 0 | 0.870 | 0.881 | 0.875 |
+| Fisika | Expert 1 | 240 | 239 | 0 | 0 | 1 | 15 | 0.997 | 0.938 | 0.967 | # Pendidikan Fisika UPI 2023
+| Fisika | Expert 2 | 240 | 186 | 40 | 3 | 11 | 0 | 0.870 | 0.881 | 0.875 | # Fisika UGM 2022
 | Fisika | Final consensus | 235 | 215 | 18 | 2 | 0 | 10 | 0.953 | 0.922 | 0.937 |
-| Kimia | Expert 1 | 166 | 132 | 7 | 25 | 2 | 0 | 0.819 | 0.965 | 0.886 |
-| Kimia | Expert 2 | 166 | 136 | 6 | 5 | 19 | 29 | 0.866 | 0.757 | 0.808 |
+| Kimia | Expert 1 | 166 | 132 | 7 | 25 | 2 | 0 | 0.819 | 0.965 | 0.886 | # Pendidikan Kimia UPI 2022
+| Kimia | Expert 2 | 166 | 136 | 6 | 5 | 19 | 29 | 0.866 | 0.757 | 0.808 | # Kimia ITB 2022
 | Kimia | Final consensus | 158 | 135 | 6 | 15 | 2 | 19 | 0.877 | 0.855 | 0.866 |
 | Overall | Expert 1 | 557 | 511 | 13 | 27 | 6 | 15 | 0.932 | 0.952 | 0.942 |
 | Overall | Expert 2 | 557 | 465 | 52 | 8 | 32 | 29 | 0.896 | 0.863 | 0.879 |
