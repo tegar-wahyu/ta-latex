@@ -267,6 +267,8 @@ Kimia, dan Biologi Fase~F, yang diperoleh dari repositori resmi
 \url{https://buku.kemdikbud.go.id}. Pembatasan pada buku teks resmi
 memastikan bahwa entitas materi dan relasi dasar yang diekstrak sistem
 benar-benar mencerminkan standar materi yang diajarkan secara nasional.
+Rincian bibliografis ketiga buku siswa beserta Buku Panduan Guru
+pasangannya (judul, penulis, dan ISBN) disajikan pada \ref{lamp:korpus}.
 
 \subsection{Data Validasi Pakar}\label{subsec:data-validasi}
 
@@ -288,7 +290,7 @@ F1-Score, serta menguji tingkat kesepakatan antarpakar pada Fase~1
 menggunakan Gwet's AC1.
 
 % ============================================================
-\section{Subjek Evaluasi dan Panel Pakar}
+\section{Subjek Evaluasi dan Panel Pakar}\label{subsec:subjek-evaluasi}
 % ============================================================
 
 Evaluasi performa sistem menggunakan pendekatan \textit{human
@@ -298,7 +300,8 @@ relevansi pedagogis relasi lintas-disiplin yang dihasilkan sistem.
 
 Penelitian ini melibatkan enam pakar yang mewakili mata
 pelajaran Fisika, Kimia, dan Biologi (dua pakar per mata
-pelajaran). Jumlah dan kriteria pakar ditetapkan secara
+pelajaran); profil keilmuan masing-masing pakar disajikan pada
+\ref{lamp:profil-pakar}. Jumlah dan kriteria pakar ditetapkan secara
 \textit{purposive sampling} berdasarkan tiga pertimbangan metodologis
 berikut.
 
@@ -385,7 +388,8 @@ Gambar~\ref{fig:pipeline}.
         Pakar.} Diterapkan setelah Tahap~4. Memverifikasi \textit{edge}
         lintas-disiplin baru yang dihasilkan proses KGC. Mengingat
         sifat relasi yang implisit, konflik tidak diselesaikan oleh AI,
-        melainkan melalui diskusi panel yang melibatkan seluruh pakar
+        melainkan melalui diskusi panel lintas-disiplin yang terdiri atas
+        tiga pakar (satu wakil---Expert~2---per mata pelajaran)
         untuk mencapai konsensus keilmuan.
 \end{enumerate}
 
@@ -707,7 +711,8 @@ diolah melalui tahapan berikut.
         pakar sepakat, label konsensus digunakan langsung.
         Jika tidak sepakat, AI Judge (LLM berbasis konteks buku teks)
         menentukan label akhir, kecuali pada Fase~2 yang
-        menggunakan diskusi panel pakar secara keseluruhan.
+        menggunakan diskusi panel lintas-disiplin tiga pakar (satu wakil
+        per mata pelajaran).
 
   \item \textbf{Perhitungan Metrik Pakar:} Fuzzy Precision, Recall, dan
         F1-Score dihitung per bab per mata pelajaran menggunakan

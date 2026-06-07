@@ -1,0 +1,135 @@
+% ============================================================
+%  LAMPIRAN 8 – PROFIL DAN KUALIFIKASI PAKAR
+%  Compile standalone:  pdflatex lampiran-8.tex
+%  Compile as part of thesis: pdflatex main.tex
+% ============================================================
+\documentclass[../../thesis]{subfiles}
+\usepackage{hyphenat}
+\usepackage{iftex}
+
+% ── Encoding, Language & Fonts ───────────────────────────────
+\ifXeTeX
+    \usepackage{polyglossia}
+    \setmainlanguage{bahasai}
+    \usepackage{fontspec}
+    \setmainfont{TeX Gyre Termes}
+    \setsansfont{TeX Gyre Heros}
+    \setmonofont[Scale=0.88]{TeX Gyre Cursor}
+\else
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage[indonesian]{babel}
+    \usepackage{mathptmx}
+    \usepackage{helvet}
+    \usepackage{courier}
+\fi
+
+% ── Page geometry (A4, UI thesis margins) ────────────────────
+\usepackage[
+  a4paper,
+  top    = 2.54cm,
+  bottom = 2.54cm,
+  left   = 3.17cm,
+  right  = 2.54cm
+]{geometry}
+
+% ── Line spacing & paragraph ─────────────────────────────────
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+
+% ── Microtype & justification ────────────────────────────────
+\usepackage{microtype}
+\sloppy
+
+% ── Headings ─────────────────────────────────────────────────
+\usepackage{titlesec}
+
+\titleformat{\chapter}[block]
+  {\centering\rmfamily\bfseries\large}{}
+  {0pt}{\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{0pt}{1.5em}
+
+\titleformat{\section}
+  {\rmfamily\bfseries\normalsize}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.6em}
+
+\titleformat{\subsection}
+  {\rmfamily\bfseries\normalsize}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{1em}{0.5em}
+
+% ── Tables ───────────────────────────────────────────────────
+\usepackage{longtable, booktabs, array, multirow}
+\usepackage{calc}
+\usepackage{tabularx}
+
+% ── Hyperlinks ───────────────────────────────────────────────
+\usepackage[hidelinks]{hyperref}
+
+% Bibliography setup is inherited from main.tex (biblatex + references.bib)
+% when this file is compiled standalone via the subfiles class.
+
+% ============================================================
+\begin{document}
+
+% When standalone: switch to appendix mode and set the counter so the
+% appendix heading renders correctly. When compiled inside main.tex,
+% main.tex issues \appendix and advances the counter before \subfile.
+\ifSubfilesClassLoaded{}{\appendix\setcounter{chapter}{1}}
+
+\lampiran{Profil dan Kualifikasi Pakar}
+\label{lamp:profil-pakar}
+
+Lampiran ini merinci latar belakang keilmuan panel pakar yang memvalidasi
+keluaran sistem (Subbab~\ref{subsec:subjek-evaluasi}). Identitas pakar
+disajikan secara anonim dalam bentuk kualifikasi keilmuan---bidang studi,
+institusi, dan tahun---tanpa menyebut nama pribadi. Penetapan pakar mengikuti
+kriteria \textit{purposive sampling} pada Bab~3, yakni mahasiswa aktif atau
+lulusan dengan latar belakang ilmu murni atau kependidikan yang linier dengan
+mata pelajaran yang dinilai.
+
+\begin{longtable}{@{}
+  >{\raggedright\arraybackslash}p{0.16\linewidth}
+  >{\raggedright\arraybackslash}p{0.16\linewidth}
+  >{\raggedright\arraybackslash}p{0.60\linewidth}@{}}
+\caption{Profil keilmuan enam pakar validasi (dua per mata pelajaran). Label
+  ``Expert~1''/``Expert~2'' bersifat lokal per mata pelajaran, konsisten dengan
+  Tabel~\ref{tab:validasi-mapel}.}
+\label{tab:profil-pakar}\\
+\toprule
+\textbf{Mata Pelajaran} & \textbf{Pakar} & \textbf{Latar belakang keilmuan} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Mata Pelajaran} & \textbf{Pakar} & \textbf{Latar belakang keilmuan} \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+\multirow{2}{*}{Biologi}
+  & Expert 1 & Pendidikan Biologi, Universitas Pendidikan Indonesia (2022) \\
+  & Expert 2 & Biologi, Universitas Indonesia (2022) \\
+\midrule
+\multirow{2}{*}{Fisika}
+  & Expert 1 & Pendidikan Fisika (2023) \\
+  & Expert 2 & Fisika, Universitas Gadjah Mada (2022) \\
+\midrule
+\multirow{2}{*}{Kimia}
+  & Expert 1 & Pendidikan Kimia, Universitas Pendidikan Indonesia (2022) \\
+  & Expert 2 & Kimia, Institut Teknologi Bandung (2022) \\
+\end{longtable}
+
+Komposisi dua pakar per mata pelajaran sengaja memadukan latar \emph{kependidikan}
+(Expert~1) dan \emph{ilmu murni} (Expert~2) agar penilaian mencakup ketepatan
+pedagogis sekaligus akurasi keilmuan. Susunan ini juga memungkinkan perhitungan
+kesepakatan antarpakar (Gwet's AC1) pada validasi Fase~1.
+
+Pada validasi lintas-disiplin (Fase~2), penilaian dilakukan oleh panel diskusi
+yang terdiri atas \textbf{tiga pakar}, yakni satu wakil per mata pelajaran
+(Expert~2 dari Biologi, Fisika, dan Kimia). Ketiga pakar lintas-disiplin ini
+menilai relasi lintas-buku secara bersama untuk mencapai satu jawaban konsensus
+per relasi, sehingga, berbeda dari Fase~1 yang melibatkan dua pakar independen
+per \textit{triple}, kesepakatan antarpakar tidak dihitung pada fase ini.
+
+\end{document}

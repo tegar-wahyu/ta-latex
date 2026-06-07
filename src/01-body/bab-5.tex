@@ -253,40 +253,45 @@ Subbab~\ref{subsec:validasi-manusia}.
 
 {\setlength{\tabcolsep}{3pt}
 \begin{longtable}{@{}
-  >{\raggedright\arraybackslash}p{0.13\linewidth}
-  >{\raggedright\arraybackslash}p{0.12\linewidth}
-  >{\centering\arraybackslash}p{0.085\linewidth}
-  >{\centering\arraybackslash}p{0.075\linewidth}
-  >{\centering\arraybackslash}p{0.075\linewidth}
-  >{\centering\arraybackslash}p{0.055\linewidth}
-  >{\centering\arraybackslash}p{0.065\linewidth}
-  >{\centering\arraybackslash}p{0.07\linewidth}
-  >{\centering\arraybackslash}p{0.07\linewidth}@{}}
+  >{\raggedright\arraybackslash}p{0.115\linewidth}
+  >{\raggedright\arraybackslash}p{0.105\linewidth}
+  >{\centering\arraybackslash}p{0.072\linewidth}
+  >{\centering\arraybackslash}p{0.062\linewidth}
+  >{\centering\arraybackslash}p{0.066\linewidth}
+  >{\centering\arraybackslash}p{0.048\linewidth}
+  >{\centering\arraybackslash}p{0.058\linewidth}
+  >{\centering\arraybackslash}p{0.060\linewidth}
+  >{\centering\arraybackslash}p{0.062\linewidth}
+  >{\centering\arraybackslash}p{0.062\linewidth}@{}}
 \caption{Hasil validasi Fase~1 (intra-mapel) per pakar dan konsensus final.
   P/R = \textit{Fuzzy Precision}/\textit{Recall} (bobot pada
   Subbab~\ref{subsec:validasi-manusia}); semua \textit{triple} yang ditinjau,
-  termasuk berlabel Salah, masuk ke penyebut presisi. Jumlah pada baris Final
+  termasuk berlabel Salah, masuk ke penyebut presisi. Kolom \textbf{Hilang}
+  adalah jumlah \textit{missing triples}, yakni relasi esensial yang dilaporkan
+  pakar sebagai terlewat oleh sistem; relasi ini tidak termasuk dalam kolom
+  Ditinjau dan menjadi \textit{false negative} yang menurunkan \textit{Recall}
+  (rincian pada \ref{lamp:missing-triples}). Jumlah pada baris Final
   lebih kecil karena sebagian \textit{triple} dikonsolidasikan saat konsensus.}
 \label{tab:validasi-mapel}\\
 \toprule
-\textbf{Mapel} & \textbf{Penilai} & \textbf{Ditinjau} & \textbf{Benar} & \textbf{Parsial} & \textbf{KK} & \textbf{Salah} & \textbf{P} & \textbf{R} \\
+\textbf{Mapel} & \textbf{Penilai} & \textbf{Ditinjau} & \textbf{Benar} & \textbf{Parsial} & \textbf{KK} & \textbf{Salah} & \textbf{Hilang} & \textbf{P} & \textbf{R} \\
 \midrule
 \endhead
-Biologi  & Expert 1      & 151 & 140 & 6  & 3  & 2  & 0{,}952 & 0{,}965 \\
-         & Expert 2      & 151 & 143 & 6  & 2  & 0  & 0{,}970 & 0{,}970 \\
-         & \textit{Final}& 151 & 144 & 4  & 2  & 1  & \textbf{0{,}970} & \textbf{0{,}977} \\
+Biologi  & Expert 1      & 151 & 140 & 6  & 3  & 2  & 0  & 0{,}952 & 0{,}965 \\
+         & Expert 2      & 151 & 143 & 6  & 2  & 0  & 0  & 0{,}970 & 0{,}970 \\
+         & \textit{Final}& 151 & 144 & 4  & 2  & 1  & 0  & \textbf{0{,}970} & \textbf{0{,}977} \\
 \midrule
-Fisika   & Expert 1      & 240 & 239 & 0  & 1  & 0  & 0{,}997 & 0{,}938 \\
-         & Expert 2      & 240 & 186 & 40 & 11 & 3  & 0{,}870 & 0{,}881 \\
-         & \textit{Final}& 235 & 215 & 18 & 0  & 2  & \textbf{0{,}953} & \textbf{0{,}922} \\
+Fisika   & Expert 1      & 240 & 239 & 0  & 1  & 0  & 15 & 0{,}997 & 0{,}938 \\
+         & Expert 2      & 240 & 186 & 40 & 11 & 3  & 0  & 0{,}870 & 0{,}881 \\
+         & \textit{Final}& 235 & 215 & 18 & 0  & 2  & 10 & \textbf{0{,}953} & \textbf{0{,}922} \\
 \midrule
-Kimia    & Expert 1      & 166 & 132 & 7  & 2  & 25 & 0{,}819 & 0{,}965 \\
-         & Expert 2      & 166 & 136 & 6  & 19 & 5  & 0{,}866 & 0{,}757 \\
-         & \textit{Final}& 158 & 135 & 6  & 2  & 15 & \textbf{0{,}877} & \textbf{0{,}855} \\
+Kimia    & Expert 1      & 166 & 132 & 7  & 2  & 25 & 0  & 0{,}819 & 0{,}965 \\
+         & Expert 2      & 166 & 136 & 6  & 19 & 5  & 29 & 0{,}866 & 0{,}757 \\
+         & \textit{Final}& 158 & 135 & 6  & 2  & 15 & 19 & \textbf{0{,}877} & \textbf{0{,}855} \\
 \midrule
-Keseluruhan & Expert 1   & 557 & 511 & 13 & 6  & 27 & 0{,}932 & 0{,}952 \\
-            & Expert 2   & 557 & 465 & 52 & 32 & 8  & 0{,}896 & 0{,}863 \\
-            & \textit{Final} & 544 & 494 & 28 & 4 & 18 & \textbf{0{,}936} & \textbf{0{,}917} \\
+Keseluruhan & Expert 1   & 557 & 511 & 13 & 6  & 27 & 15 & 0{,}932 & 0{,}952 \\
+            & Expert 2   & 557 & 465 & 52 & 32 & 8  & 29 & 0{,}896 & 0{,}863 \\
+            & \textit{Final} & 544 & 494 & 28 & 4 & 18 & 29 & \textbf{0{,}936} & \textbf{0{,}917} \\
 \bottomrule
 \end{longtable}
 }

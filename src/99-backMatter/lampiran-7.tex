@@ -1,0 +1,147 @@
+% ============================================================
+%  LAMPIRAN 7 – DAFTAR BUKU TEKS / KORPUS PENELITIAN
+%  Compile standalone:  pdflatex lampiran-7.tex
+%  Compile as part of thesis: pdflatex main.tex
+% ============================================================
+\documentclass[../../thesis]{subfiles}
+\usepackage{hyphenat}
+\usepackage{iftex}
+
+% ── Encoding, Language & Fonts ───────────────────────────────
+\ifXeTeX
+    \usepackage{polyglossia}
+    \setmainlanguage{bahasai}
+    \usepackage{fontspec}
+    \setmainfont{TeX Gyre Termes}
+    \setsansfont{TeX Gyre Heros}
+    \setmonofont[Scale=0.88]{TeX Gyre Cursor}
+\else
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage[indonesian]{babel}
+    \usepackage{mathptmx}
+    \usepackage{helvet}
+    \usepackage{courier}
+\fi
+
+% ── Page geometry (A4, UI thesis margins) ────────────────────
+\usepackage[
+  a4paper,
+  top    = 2.54cm,
+  bottom = 2.54cm,
+  left   = 3.17cm,
+  right  = 2.54cm
+]{geometry}
+
+% ── Line spacing & paragraph ─────────────────────────────────
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+
+% ── Microtype & justification ────────────────────────────────
+\usepackage{microtype}
+\sloppy
+
+% ── Headings ─────────────────────────────────────────────────
+\usepackage{titlesec}
+
+\titleformat{\chapter}[block]
+  {\centering\rmfamily\bfseries\large}{}
+  {0pt}{\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{0pt}{1.5em}
+
+\titleformat{\section}
+  {\rmfamily\bfseries\normalsize}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.6em}
+
+\titleformat{\subsection}
+  {\rmfamily\bfseries\normalsize}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{1em}{0.5em}
+
+% ── Tables ───────────────────────────────────────────────────
+\usepackage{longtable, booktabs, array, multirow}
+\usepackage{calc}
+\usepackage{tabularx}
+
+% ── Hyperlinks ───────────────────────────────────────────────
+\usepackage[hidelinks]{hyperref}
+
+% Bibliography setup is inherited from main.tex (biblatex + references.bib)
+% when this file is compiled standalone via the subfiles class.
+
+% ============================================================
+\begin{document}
+
+% When standalone: switch to appendix mode and set the counter so the
+% appendix heading renders correctly. When compiled inside main.tex,
+% main.tex issues \appendix and advances the counter before \subfile.
+\ifSubfilesClassLoaded{}{\appendix\setcounter{chapter}{1}}
+
+\lampiran{Daftar Buku Teks (Korpus Penelitian)}
+\label{lamp:korpus}
+
+Lampiran ini merinci korpus buku teks yang dipakai pada Tahap~1--2
+\textit{pipeline} (Subbab~\ref{subsec:data-primer}). Korpus primer adalah tiga
+\textbf{Buku Siswa} Fisika, Kimia, dan Biologi Fase~F Kelas~XII yang menjadi
+sumber ekstraksi entitas dan relasi. Tiga \textbf{Buku Panduan Guru} pasangannya
+disertakan sebagai sumber pendukung, khusus untuk validasi ``Materi Pokok'' pada
+tahap ekstraksi (Subbab~\ref{sec:ingestion}, butir Ekstraksi materi pokok).
+Seluruh buku merupakan terbitan resmi Pusat Perbukuan, Badan Standar, Kurikulum,
+dan Asesmen Pendidikan, Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi
+(Kemendikbudristek), cetakan pertama 2022, dan diperoleh dari repositori resmi
+\url{https://buku.kemdikbud.go.id}.
+
+\begin{longtable}{@{}
+  >{\raggedright\arraybackslash}p{0.06\linewidth}
+  >{\raggedright\arraybackslash}p{0.30\linewidth}
+  >{\raggedright\arraybackslash}p{0.42\linewidth}
+  >{\raggedright\arraybackslash}p{0.16\linewidth}@{}}
+\caption{Korpus buku teks Kemendikbudristek Fase~F Kelas~XII (cetakan pertama,
+  2022).}
+\label{tab:korpus}\\
+\toprule
+\textbf{No.} & \textbf{Judul} & \textbf{Penulis} & \textbf{ISBN (jil.~2)} \\
+\midrule
+\endfirsthead
+\multicolumn{4}{@{}l}{\small\itshape Lanjutan Tabel~\ref{tab:korpus}}\\
+\toprule
+\textbf{No.} & \textbf{Judul} & \textbf{Penulis} & \textbf{ISBN (jil.~2)} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r@{}}{\small\itshape bersambung ke halaman berikutnya}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\multicolumn{4}{@{}l}{\textit{Buku Siswa (korpus primer ekstraksi)}}\\
+\midrule
+1 & Fisika untuk SMA/MA Kelas XII
+  & Lia Laela Sarah dan Irma Rahma Suwarma
+  & 978-623-472-722-7 \\
+2 & Kimia untuk SMA/MA Kelas XII
+  & Galuh Yuliani, Hanhan Dianhar, dan Aang Suhendar
+  & 978-602-427-968-4 \\
+3 & Biologi untuk SMA/MA Kelas XII
+  & Shilviani Dewi, Amalia Shari, Rani Elisa Purba, dan Remigius Gunawan
+    Susilowarno
+  & 978-602-427-958-5 \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{Buku Panduan Guru (sumber pendukung ``Materi Pokok'')}}\\
+\midrule
+4 & Buku Panduan Guru Fisika untuk SMA/MA Kelas XII
+  & Lia Laela Sarah dan Irma Rahma Suwarma
+  & 978-623-472-725-8 \\
+5 & Buku Panduan Guru Kimia untuk SMA/MA Kelas XII
+  & Galuh Yuliani, Hanhan Dianhar, dan Aang Suhendar
+  & 978-602-427-969-1 \\
+6 & Buku Panduan Guru Biologi untuk SMA/MA Kelas XII
+  & Shilviani Dewi, Amalia Shari, Rani Elisa Purba, dan Remigius Gunawan
+    Susilowarno
+  & 978-602-427-959-2 \\
+\end{longtable}
+
+\noindent\textit{Catatan.} ISBN yang dicantumkan adalah nomor jilid~2 (Kelas~XII)
+dari masing-masing judul; setiap judul juga memiliki ISBN nomor jilid lengkap.
+
+\end{document}
