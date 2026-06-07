@@ -523,7 +523,7 @@ utama, menyisakan 117 relasi yang dinilai pakar.
       PRASYARAT\_UNTUK   & DNA (Kim)            & Gen (Bio)            & 1{,}0 \\
       MEMPERDALAM        & DNA (Kim)            & Materi Genetik (Bio) & 0{,}9 \\
       APLIKASI\_DARI     & DNA (Bio)            & Nukleotida (Kim)     & 0{,}9 \\
-      BERKAITAN\_DENGAN  & Fotoelektron (Fis)   & Pot. Elektrode (Kim) & 0{,}7 \\
+      BERKAITAN\_DENGAN  & alat ukur listrik (Fis) & jembatan garam (Kim) & 0{,}7 \\
       SAMA\_DENGAN       & DNA (Kim)            & DNA (Bio)            & 1{,}0 \\
       \bottomrule
     \end{tabular}
@@ -547,7 +547,7 @@ keyakinan tinggi LLM terhadap relasi tersebut. Contoh relasi dengan
   \item Enzim [Biologi] $\to$ Protein [Kimia]: \texttt{APLIKASI\_DARI} (conf = 1{,}0).
     Enzim merupakan manifestasi fungsional dari protein dalam konteks biologis.
   \item Fosforilasi Oksidatif [Biologi] $\to$ Oksidasi [Kimia]:
-    \texttt{PRASYARAT\_UNTUK} (conf = 1{,}0). Pemahaman reaksi oksidasi secara kimia
+    \texttt{PRASYARAT\_UNTUK} (conf = 0{,}9). Pemahaman reaksi oksidasi secara kimia
     diperlukan sebelum mempelajari fosforilasi oksidatif dalam metabolisme.
 \end{itemize}
 
@@ -636,6 +636,53 @@ Konfigurasi yang lebih ketat ($\tau\!\ge\!0{,}75$) merupakan
 himpunan bagian dari subset 117 yang sama, sehingga
 \textbf{Edge dihasilkan} = $n$ pada baris kedua dan seterusnya.
 
+\subsubsection{Pemilihan Konfigurasi Produksi}\label{subsubsec:konfigurasi-final}
+
+Berdasarkan Tabel~\ref{tab:validasi-sweep}, \textbf{konfigurasi produksi
+yang dipilih untuk \textit{Knowledge Graph} final adalah
+$\tau = 0{,}70$ dengan top-$k = 20$}, menghasilkan 125 relasi lintas-buku
+(117 di antaranya divalidasi pakar) dengan validitas 99{,}1\%, ketepatan
+tipe 98{,}3\%, dan ketepatan arah 75{,}9\%. Pilihan ini dapat dijustifikasi
+melalui tiga pertimbangan yang ditopang oleh data validasi:
+
+\begin{enumerate}
+  \item \textbf{Tujuan KGC adalah memaksimalkan cakupan jembatan
+    lintas-disiplin}, bukan memaksimalkan presisi relasi. Pengetatan
+    \textit{threshold} dari 0{,}70 ke 0{,}75 menaikkan validitas hanya
+    0{,}9 poin (99{,}1\% $\to$ 100\%) dan ketepatan tipe 1{,}7 poin
+    (98{,}3\% $\to$ 100\%), tetapi sekaligus menghilangkan 45
+    \textit{edge} (35\% jembatan lintas-disiplin) yang sebagian besar
+    juga valid menurut pakar. Tradeoff ini tidak menguntungkan dalam
+    konteks penelitian yang menargetkan keterhubungan antar-mapel
+    sebagai luaran utama.
+
+  \item \textbf{\textit{Noise} sisa pada $\tau=0{,}70$ bersifat terbatas
+    dan dapat di-\textit{filter} pasca-survei.} Total 3 \textit{edge}
+    bermasalah pada konfigurasi paling permisif --- LB005
+    (\textit{relasi valid?} = \textit{Tidak}), serta LB008 dan LB074
+    (tipe relasi salah) --- teridentifikasi melalui validasi pakar Fase~2
+    dan dapat dihapus secara terarah dari graf produksi tanpa
+    mempengaruhi 114 \textit{edge} lainnya.
+
+  \item \textbf{Pengetatan \textit{threshold} tidak menyelesaikan sumber
+    kesalahan dominan.} Sebagaimana ditunjukkan oleh
+    Tabel~\ref{tab:validasi-sweep} dan, lebih kuantitatif, oleh
+    Tabel~\ref{tab:conf-kalibrasi} pada Subbab~\ref{subsubsec:false-positive},
+    ketepatan arah tetap stagnan pada rentang 71--86\% lintas-konfigurasi
+    tanpa kecenderungan monotonik. Dengan demikian \textit{tradeoff}
+    cakupan-versus-presisi-arah menjadi negatif: stricter configurations
+    kehilangan cakupan tanpa imbal balik perbaikan arah yang merupakan
+    sumber kesalahan dominan.
+\end{enumerate}
+
+Konfigurasi alternatif ($\tau = 0{,}75 / k=15$ dengan 72 relasi;
+$\tau = 0{,}80 / k=10$ dengan 42 relasi; $\tau = 0{,}85 / k=5$ dengan
+14 relasi) tetap relevan sebagai \textit{view} alternatif atas graf
+yang sama: peneliti turunan yang memprioritaskan presisi atas cakupan
+dapat menyaring graf produksi menggunakan ambang \textit{cosine}
+yang lebih ketat tanpa perlu menjalankan ulang \textit{pipeline}
+ekstraksi.
+
 % ──────────────────────────────────────────
 \subsection{Analisis Relasi Berpotensi False Positive}\label{subsubsec:false-positive}
 % ──────────────────────────────────────────
@@ -673,6 +720,74 @@ lebih rendah daripada tipe lain. Rata-rata \textit{confidence} 0{,}50 untuk 21
 \textit{edge} \texttt{BERKAITAN\_DENGAN} yang dibandingkan dengan 0{,}85--0{,}94 pada tipe relasi
 spesifik menunjukkan bahwa LLM memilih label ini ketika tidak yakin terhadap
 arah atau tipe relasi yang lebih spesifik.
+
+Perlu dicatat bahwa asumsi $\hat{y}_i = 1{,}0$ (``keyakinan penuh
+model'') pada Subbab~\ref{subsec:validasi-manusia} merupakan
+penyederhanaan aljabar khusus untuk rumus \textit{Fuzzy Precision}
+\parencite{harju_evaluating_2023}, di mana skor keanggotaan LLM
+diabaikan sehingga irisan \textit{fuzzy} mengikuti penilaian pakar.
+Di sini sebaliknya, variansi \textit{confidence} aktual yang
+dikeluarkan LLM dianalisis sebagai sinyal pemisah relasi
+\textit{fallback} dari relasi spesifik --- konsisten dengan
+peran \textit{confidence} sebagai heuristik penyaring (lihat
+Tabel~\ref{tab:definisi} dan Lampiran~\ref{lamp:prompt-completion}),
+bukan probabilitas terkalibrasi.
+
+Untuk menguji apakah \textit{confidence} LLM merupakan sinyal yang
+dapat diandalkan, dilakukan analisis kalibrasi \textit{post hoc}
+dengan mem-\textit{bucket} 117 \textit{edge} tersurvei berdasarkan
+nilai \textit{confidence} dan menghitung tingkat persetujuan pakar
+per \textit{bucket}. Hasilnya disajikan pada
+Tabel~\ref{tab:conf-kalibrasi}.
+
+\begin{longtable}{@{}
+  >{\raggedright\arraybackslash}p{0.18\linewidth}
+  >{\centering\arraybackslash}p{0.07\linewidth}
+  >{\centering\arraybackslash}p{0.20\linewidth}
+  >{\centering\arraybackslash}p{0.22\linewidth}
+  >{\centering\arraybackslash}p{0.25\linewidth}@{}}
+\caption{Kalibrasi \textit{post hoc} \textit{confidence} LLM terhadap
+  penilaian pakar (Fase~2, $n = 117$). Penyebut \textit{ketepatan arah}
+  mengecualikan satu \textit{edge} ber-status NA (LB085).}
+\label{tab:conf-kalibrasi}\\
+\toprule
+\textbf{Bucket \textit{conf}} & \textbf{$n$} & \textbf{Validitas} & \textbf{Ketepatan tipe} & \textbf{Ketepatan arah} \\
+\midrule
+\endhead
+$< 0{,}5$        &  0 & --- & --- & --- \\
+$[0{,}5;\;0{,}7)$ &  1 & 1/1 = 100\% & 1/1 = 100\% & 1/1 = 100\% \\
+$[0{,}7;\;0{,}85)$ & 27 & 26/27 = 96{,}3\% & 27/27 = 100\% & 20/26 = 76{,}9\% \\
+$[0{,}85;\;1{,}0)$ & 69 & 69/69 = 100\% & 67/69 = 97{,}1\% & 52/69 = 75{,}4\% \\
+$= 1{,}0$        & 20 & 20/20 = 100\% & 20/20 = 100\% & 15/20 = 75{,}0\% \\
+\bottomrule
+\end{longtable}
+
+Pola kalibrasi pada Tabel~\ref{tab:conf-kalibrasi} memberikan tiga
+implikasi metodologis. \textbf{Pertama}, \textit{confidence}
+memiliki sinyal yang cukup baik untuk \textit{keberadaan} relasi:
+validitas pakar mencapai 100\% pada seluruh \textit{bucket}
+$\geq 0{,}85$ dan tetap di atas 96\% pada \textit{bucket}
+$[0{,}7;\;0{,}85)$, sehingga ambang gerbang produksi
+(\textsc{berkaitan\_dengan} $\geq 0{,}85$; tipe lain $\geq 0{,}70$;
+lihat Lampiran~\ref{lamp:prompt-completion}) terbukti efektif
+menyaring \textit{false positive}. \textbf{Kedua}, sinyal terhadap
+\textit{ketepatan tipe} hanya marginal: kenaikan dari 97{,}1\%
+pada \textit{bucket} $[0{,}85;\;1{,}0)$ ke 100\% pada
+\textit{bucket} $\text{conf}=1{,}0$ kecil dan terjadi pada $n$ kecil.
+\textbf{Ketiga}, dan terpenting, \textit{confidence} \textbf{tidak}
+memberikan sinyal terhadap \textit{ketepatan arah}: ketepatan
+arah stagnan pada 75--77\% di seluruh \textit{bucket}
+\textit{confidence} ($n > 1$), termasuk pada \textit{bucket}
+$\text{conf} = 1{,}0$ yang masih meleset arah pada 5 dari 20
+\textit{edge}. Temuan ini secara empiris memperkuat argumen pada
+Subbab~\ref{subsubsec:kualitas} bahwa kesalahan arah bukan
+persoalan ambang \textit{confidence} --- LLM dapat sepenuhnya yakin
+sambil tetap salah arah, sehingga penanganannya memerlukan
+perbaikan pada \textit{prompt} klasifikasi atau kanonikalisasi arah
+pasca-proses, bukan penyetelan \textit{threshold}. Pola ini juga
+sejalan dengan literatur yang menunjukkan keterbatasan kalibrasi
+\textit{self-reported confidence} pada model bahasa
+\parencite{kadavath_language_2022}.
 
 % ──────────────────────────────────────────
 \subsection{Analisis Pola Kesalahan Ekstraksi (Error Analysis)}\label{subsubsec:error-analysis}
