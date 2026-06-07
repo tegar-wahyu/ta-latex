@@ -80,11 +80,11 @@
 \begin{document}
 
 % When standalone: switch to appendix lettering and set the counter
-% so \chapter{} renders as "LAMPIRAN D". When compiled inside main.tex,
+% so \section{} renders as "LAMPIRAN D". When compiled inside main.tex,
 % main.tex issues \appendix and advances the counter before \subfile.
 \ifSubfilesClassLoaded{}{\appendix\setcounter{chapter}{3}}
 
-\chapter{Templat Prompt}
+\section{Templat Prompt}
 \label{lamp:prompt}
 
 Lampiran ini memuat templat \textit{prompt} lengkap yang digunakan pada
@@ -101,7 +101,7 @@ kode sengaja \textbf{tidak} disertakan. Bagian bertanda kurung kurawal
 yang disubstitusi pada saat eksekusi.
 
 % ------------------------------------------------------------------
-\section{Prompt Ekstraksi Pengetahuan (Pass-1)}
+\subsection{Prompt Ekstraksi Pengetahuan (Pass-1)}
 \label{lamp:prompt-ekstraksi}
 
 \textit{Prompt} ekstraksi dikirim per potongan teks (\textit{chunk};
@@ -188,7 +188,7 @@ KONSEP DARI {nama_buku_lain}:
 \end{lstlisting}
 
 % ------------------------------------------------------------------
-\section{Prompt Klasifikasi Relasi Lintas-Buku (Pass-2)}
+\subsection{Prompt Klasifikasi Relasi Lintas-Buku (Pass-2)}
 \label{lamp:prompt-completion}
 
 Pada tahap \textit{completion}, setiap pasangan konsep kandidat (hasil pencarian
@@ -274,7 +274,7 @@ Output JSON sesuai schema.
 $\geq 0{,}70$), dan arah konsisten dengan sifat simetri tipe relasi.
 
 % ------------------------------------------------------------------
-\section{Prompt LLM-as-a-Judge (Konsensus Fase~1)}
+\subsection{Prompt LLM-as-a-Judge (Konsensus Fase~1)}
 \label{lamp:prompt-judge}
 
 Pada konsensus Fase~1, kasus ketidaksepakatan antara dua pakar diselesaikan oleh

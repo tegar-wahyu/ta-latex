@@ -47,13 +47,12 @@
 % ── Headings ─────────────────────────────────────────────────
 \usepackage{titlesec}
 
-% Chapter heading: "BAB <n>" (atau "LAMPIRAN <n>" di appendix) pada baris
-% pertama, lalu judul (UPPERCASE) di baris kedua. \iflampiranchap di-set true
-% saat \appendix dipanggil di body.
-\newif\iflampiranchap
+% Chapter heading: "BAB <n>" pada baris pertama, judul (UPPERCASE) di baris
+% kedua. (Lampiran memakai \chapter*{LAMPIRAN} sebagai pembatas, lalu tiap
+% lampiran jadi subbab — lihat blok LAMPIRAN di bawah.)
 \titleformat{\chapter}[display]
   {\centering\rmfamily\bfseries\large}
-  {\iflampiranchap LAMPIRAN~\thechapter\else BAB~\thechapter\fi}
+  {BAB~\thechapter}
   {0.6em}{\MakeUppercase}
 \titlespacing*{\chapter}{0pt}{0pt}{1.5em}
 
@@ -213,22 +212,27 @@
 \printbibliography[heading=bibintoc, title={Daftar Pustaka}]
 
 % ── LAMPIRAN ─────────────────────────────────────────────────
-\appendix
-\lampiranchaptrue
-\setcounter{chapter}{0}
-\renewcommand{\thechapter}{\arabic{chapter}}      % Lampiran 1, 2, …
-% Prefiks "L" pada penomoran subbab/gambar/tabel lampiran agar tidak bentrok
-% dengan body yang juga memakai angka arab (mis. Tabel 2.1 di bab vs di lampiran).
-\renewcommand{\thesection}{L\arabic{chapter}.\arabic{section}}
-\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
-\renewcommand{\thefigure}{L\arabic{chapter}.\arabic{figure}}
-\renewcommand{\thetable}{L\arabic{chapter}.\arabic{table}}
-\subfile{src/99-backMatter/lampiran-a}
-\subfile{src/99-backMatter/lampiran-b}
-\subfile{src/99-backMatter/lampiran-c}
-\subfile{src/99-backMatter/lampiran-d}
-\subfile{src/99-backMatter/lampiran-e}
-\subfile{src/99-backMatter/lampiran-f}
+% Halaman pembatas "LAMPIRAN" setingkat bab (masuk Daftar Isi). Tiap lampiran
+% menjadi subbab "Lampiran 1", "Lampiran 2", … di bawahnya; subbab/gambar/tabel
+% di dalamnya diberi prefiks "L<n>." agar tak bentrok dgn penomoran body.
+\clearpage
+\chapter*{LAMPIRAN}
+\addcontentsline{toc}{chapter}{LAMPIRAN}
+\clearpage
+\setcounter{section}{0}
+\renewcommand{\thesection}{Lampiran~\arabic{section}}
+\renewcommand{\thesubsection}{L\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\renewcommand{\thefigure}{L\arabic{section}.\arabic{figure}}
+\renewcommand{\thetable}{L\arabic{section}.\arabic{table}}
+\subfile{src/99-backMatter/lampiran-a}\clearpage
+\subfile{src/99-backMatter/lampiran-b}\clearpage
+\subfile{src/99-backMatter/lampiran-c}\clearpage
+\subfile{src/99-backMatter/lampiran-d}\clearpage
+\subfile{src/99-backMatter/lampiran-e}\clearpage
+\subfile{src/99-backMatter/lampiran-f}\clearpage
 \subfile{src/99-backMatter/lampiran-g}
 
 \end{document}

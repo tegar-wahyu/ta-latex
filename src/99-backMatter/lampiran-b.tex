@@ -88,11 +88,11 @@
 \begin{document}
 
 % When standalone: switch to appendix lettering and set the counter
-% so \chapter{} renders as "LAMPIRAN B". When compiled inside main.tex,
+% so \section{} renders as "LAMPIRAN B". When compiled inside main.tex,
 % main.tex issues \appendix and advances the counter before \subfile.
 \ifSubfilesClassLoaded{}{\appendix\setcounter{chapter}{1}}
 
-\chapter{Arsitektur KG Review App}
+\section{Arsitektur KG Review App}
 \label{lamp:kg-review-app}
 
 Lampiran ini merinci implementasi \textit{KG Review App}, yakni instrumen
@@ -103,7 +103,7 @@ meliputi \textit{tech stack}, diagram arsitektur, skema kunci penyimpanan
 Fase~2).
 
 % ------------------------------------------------------------------
-\section{Tech Stack}
+\subsection{Tech Stack}
 \label{lamp:tech-stack}
 
 Tabel~\ref{tab:tech-stack} merangkum komponen perangkat lunak yang
@@ -129,7 +129,7 @@ menyusun aplikasi beserta perannya.
 \end{table}
 
 % ------------------------------------------------------------------
-\section{Diagram Arsitektur}
+\subsection{Diagram Arsitektur}
 \label{lamp:diagram-arsitektur}
 
 Gambar~\ref{fig:arsitektur-review-app} menggambarkan alur data dari graf hasil
@@ -176,7 +176,7 @@ sistem menuju antarmuka peninjauan dan kembali sebagai rekam keputusan pakar.
 \end{figure}
 
 % ------------------------------------------------------------------
-\section{Skema Kunci Redis}
+\subsection{Skema Kunci Redis}
 \label{lamp:skema-redis}
 
 Tabel~\ref{tab:skema-redis} mendokumentasikan pola kunci utama yang dipakai
@@ -207,7 +207,7 @@ untuk menyimpan status peninjauan.
 sebagai payload JSON.
 
 % ------------------------------------------------------------------
-\section{Tangkapan Layar Antarmuka}
+\subsection{Tangkapan Layar Antarmuka}
 \label{lamp:tangkapan-layar}
 
 KG Review App menyediakan dua antarmuka yang sesuai dengan dua fase peninjauan.

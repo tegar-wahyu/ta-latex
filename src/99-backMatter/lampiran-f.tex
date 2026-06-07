@@ -94,11 +94,11 @@
 \begin{document}
 
 % When standalone: switch to appendix lettering and set the counter
-% so \chapter{} renders as "LAMPIRAN F". When compiled inside main.tex,
+% so \section{} renders as "LAMPIRAN F". When compiled inside main.tex,
 % main.tex issues \appendix and advances the counter before \subfile.
 \ifSubfilesClassLoaded{}{\appendix\setcounter{chapter}{5}}
 
-\chapter{Kueri Cypher}
+\section{Kueri Cypher}
 \label{lamp:cypher}
 
 Lampiran ini memuat kueri Cypher yang dipakai untuk (1)~mengonstruksi
@@ -111,10 +111,10 @@ pada Bab~2. Kueri konstruksi diparametrikan; \textit{placeholder} bertanda
 eksekusi. Kredensial koneksi Neo4j tidak disertakan.
 
 % ==================================================================
-\section{Konstruksi Graf (Strategi \texttt{MERGE})}
+\subsection{Konstruksi Graf (Strategi \texttt{MERGE})}
 \label{lamp:cypher-konstruksi}
 
-\subsection{Batasan Keunikan (\textit{Constraints})}
+\subsubsection{Batasan Keunikan (\textit{Constraints})}
 
 Sebelum \textit{ingest}, lima \textit{constraint} keunikan dibuat agar
 \texttt{MERGE} bersifat idempoten dan tidak menduplikasi \textit{node}.
@@ -132,7 +132,7 @@ CREATE CONSTRAINT consensus_concept_target_key IF NOT EXISTS
   FOR (t:ConceptTarget) REQUIRE (t.grade, t.name) IS UNIQUE;
 \end{lstlisting}
 
-\subsection{Pass~1 --- Node Struktural}
+\subsubsection{Pass~1 --- Node Struktural}
 
 Pass~1 membuat hierarki \texttt{Grade}~$\rightarrow$~\texttt{Chapter}~$\rightarrow$~\texttt{Subtopic}~$\rightarrow$~\texttt{Concept}
 beserta relasi struktural \texttt{HAS\_CHAPTER}, \texttt{NEXT\_CHAPTER},
@@ -178,7 +178,7 @@ MERGE (s)-[r:HAS_CONCEPT]->(k)
 SET r.source = 'consensus', r.graph_role = 'structure';
 \end{lstlisting}
 
-\subsection{Pass~2 --- Relasi Intra-Buku}
+\subsubsection{Pass~2 --- Relasi Intra-Buku}
 
 Pass~2 menulis relasi semantik antar-konsep dalam satu buku. Jika target
 relasi belum berupa \texttt{Concept} yang dikenal, sistem membuat
@@ -209,7 +209,7 @@ SET r.description = $description, r.relation_type = $relation_type,
     r.source = 'consensus', r.graph_role = 'structure';
 \end{lstlisting}
 
-\subsection{Pass~3 --- Relasi Lintas-Buku}
+\subsubsection{Pass~3 --- Relasi Lintas-Buku}
 
 Pass~3 menulis \textit{edge} lintas-buku berprefiks \texttt{LINTAS\_BUKU\_}
 dengan \texttt{graph\_role = 'semantic'}, sehingga dapat dibedakan dari relasi
@@ -230,7 +230,7 @@ SET r.description = $description, r.relation_type = $relation_type,
 \end{lstlisting}
 
 % ==================================================================
-\section{Kueri Perhitungan Metrik}
+\subsection{Kueri Perhitungan Metrik}
 \label{lamp:cypher-metrik}
 
 Kueri berikut menghitung metrik yang didefinisikan pada Bab~2. Metrik
@@ -238,7 +238,7 @@ struktural utama (ADC dan \textit{Graph Density}) dihitung pada
 \textbf{subgraf konsep} --- hanya \textit{node} \texttt{:Concept} dan relasi
 langsung antar-konsep --- agar tidak terpengaruh \textit{node} struktural.
 
-\subsection{Average Degree Centrality (ADC)}
+\subsubsection{Average Degree Centrality (ADC)}
 
 \begin{lstlisting}[style=cypherbox,caption={ADC pada subgraf konsep.},label={lst:cypher-adc}]
 MATCH (m:Concept)
@@ -246,7 +246,7 @@ WITH m, COUNT { (m)--(:Concept) } AS degree
 RETURN avg(degree) AS average_concept_degree
 \end{lstlisting}
 
-\subsection{Graph Density}
+\subsubsection{Graph Density}
 
 \begin{lstlisting}[style=cypherbox,caption={Graph Density pada subgraf konsep. Untuk kondisi pre-KGC tambahkan filter \texttt{WHERE NOT type(r) STARTS WITH 'LINTAS\_BUKU'}.},label={lst:cypher-density}]
 MATCH (n:Concept)
@@ -257,7 +257,7 @@ RETURN total_nodes, total_edges,
        toFloat(total_edges) / (total_nodes * (total_nodes - 1)) AS graph_density
 \end{lstlisting}
 
-\subsection{Modularity}
+\subsubsection{Modularity}
 
 Partisi komunitas ditetapkan tetap berdasarkan mata pelajaran (properti
 \texttt{grade} pada \texttt{:Concept}), bukan deteksi komunitas otomatis,
@@ -289,7 +289,7 @@ WITH m, os.e_cc AS e_cc, os.k_out AS k_out,
 RETURN sum( (1.0 * e_cc / m) - (1.0 * k_out * k_in / (m * m)) ) AS modularity
 \end{lstlisting}
 
-\subsection{Description Completeness (DC)}
+\subsubsection{Description Completeness (DC)}
 
 \begin{lstlisting}[style=cypherbox,caption={DC atas node :Concept (deskripsi) dan :Chapter (ringkasan).},label={lst:cypher-dc}]
 MATCH (n)
@@ -303,7 +303,7 @@ RETURN total_entities, entities_with_description,
        toFloat(entities_with_description) / total_entities AS description_completeness
 \end{lstlisting}
 
-\subsection{Empty SubKonsep Rate (ESR)}
+\subsubsection{Empty SubKonsep Rate (ESR)}
 
 \begin{lstlisting}[style=cypherbox,caption={ESR: proporsi :Subtopic tanpa anak :Concept.},label={lst:cypher-esr}]
 MATCH (s:Subtopic)
@@ -314,7 +314,7 @@ RETURN total_subtopics, empty_subtopics,
        toFloat(empty_subtopics) / total_subtopics AS empty_subkonsep_rate
 \end{lstlisting}
 
-\subsection{Typed Relation Ratio (TRR)}
+\subsubsection{Typed Relation Ratio (TRR)}
 
 \begin{lstlisting}[style=cypherbox,caption={TRR: proporsi relasi semantik bertipe spesifik (di luar relasi struktural).},label={lst:cypher-trr}]
 WITH ["MENDEFINISIKAN","MENYEBABKAN","MEMUNGKINKAN","MENGATUR","BAGIAN_DARI",
