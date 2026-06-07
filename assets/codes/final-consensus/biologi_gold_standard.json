@@ -1,0 +1,2720 @@
+[
+  {
+    "triple_id":0,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Enzim",
+    "relation":"MEMILIKI_SIFAT",
+    "target":"Spesifisitas",
+    "description":"Enzim bersifat spesifik, artinya hanya dapat bekerja pada substrat tertentu, misalnya enzim amilase hanya pada amilum.",
+    "refined_description":"Enzim bersifat spesifik, artinya hanya dapat bekerja pada substrat tertentu, misalnya enzim amilase hanya pada amilum.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":1,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Enzim",
+    "relation":"MENGATUR",
+    "target":"Kecepatan Reaksi Kimia",
+    "description":"Enzim mempercepat laju reaksi kimia dalam sel dengan menurunkan energi aktivasi.",
+    "refined_description":"Enzim mempercepat laju reaksi kimia dalam sel dengan menurunkan energi aktivasi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":2,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Holoenzim",
+    "relation":"TERDIRI_DARI",
+    "target":"Apoenzim",
+    "description":"Holoenzim tersusun atas bagian protein yang disebut apoenzim.",
+    "refined_description":"Holoenzim tersusun atas bagian protein yang disebut apoenzim.",
+    "r1_rating":"correct",
+    "r2_rating":"partial",
+    "final_consensus_label":"partial",
+    "reasoning":"Holoenzim merupakan enzim aktif yang tersusun atas bagian protein (apoenzim) yang telah mengikat gugus prostetik (kofaktor atau koenzim).",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":3,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Holoenzim",
+    "relation":"TERDIRI_DARI",
+    "target":"Gugus Prostetik",
+    "description":"Holoenzim tersusun atas gugus prostetik, yang dapat berupa koenzim (organik) atau kofaktor (anorganik).",
+    "refined_description":"Holoenzim tersusun atas gugus prostetik, yang dapat berupa koenzim (organik) atau kofaktor (anorganik).",
+    "r1_rating":"correct",
+    "r2_rating":"partial",
+    "final_consensus_label":"partial",
+    "reasoning":"Holoenzim merupakan enzim aktif yang secara utuh tersusun atas apoenzim (bagian protein) dan gugus prostetik (bagian nonprotein, baik berupa koenzim maupun kofaktor).",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":4,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Energi Aktivasi",
+    "relation":"DIPENGARUHI_OLEH",
+    "target":"Enzim",
+    "description":"Enzim berfungsi menurunkan energi aktivasi substrat, sehingga reaksi dapat berlangsung lebih cepat.",
+    "refined_description":"Enzim berfungsi menurunkan energi aktivasi substrat, sehingga reaksi dapat berlangsung lebih cepat.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":5,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Teori Induced Fit",
+    "relation":"MENDEFINISIKAN",
+    "target":"Mekanisme Kerja Enzim",
+    "description":"Teori ini menjelaskan interaksi dinamis antara sisi aktif enzim dan substrat selama katalisis.",
+    "refined_description":"Teori ini menjelaskan interaksi dinamis antara sisi aktif enzim dan substrat selama katalisis.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":6,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Inhibitor Enzim",
+    "relation":"MEMPENGARUHI",
+    "target":"Kerja Enzim",
+    "description":"Inhibitor mengurangi atau menghentikan aktivitas katalitik enzim.",
+    "refined_description":"Inhibitor mengurangi atau menghentikan aktivitas katalitik enzim.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":7,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Inhibitor Enzim",
+    "relation":"TERDIRI_DARI",
+    "target":"Inhibitor Kompetitif",
+    "description":"Salah satu jenis inhibitor yang memiliki kemiripan dengan substrat dan menempel pada sisi aktif enzim.",
+    "refined_description":"Salah satu jenis inhibitor yang memiliki kemiripan dengan substrat dan menempel pada sisi aktif enzim.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":8,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Metabolisme",
+    "relation":"TERDIRI_DARI",
+    "target":"Anabolisme",
+    "description":"Metabolisme mencakup anabolisme, yaitu proses penyusunan molekul kompleks yang memerlukan energi.",
+    "refined_description":"Metabolisme mencakup anabolisme, yaitu proses penyusunan molekul kompleks yang memerlukan energi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":9,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Metabolisme",
+    "relation":"TERDIRI_DARI",
+    "target":"Katabolisme",
+    "description":"Metabolisme mencakup katabolisme, yaitu proses pembongkaran molekul kompleks yang menghasilkan energi.",
+    "refined_description":"Metabolisme mencakup katabolisme, yaitu proses pembongkaran molekul kompleks yang menghasilkan energi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":10,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Respirasi Seluler",
+    "relation":"MENGHASILKAN",
+    "target":"ATP",
+    "description":"Tujuan utama respirasi seluler adalah menghasilkan energi dalam bentuk ATP untuk aktivitas sel.",
+    "refined_description":"Tujuan utama respirasi seluler adalah menghasilkan energi dalam bentuk ATP untuk aktivitas sel.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":11,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Respirasi Seluler",
+    "relation":"TERDIRI_DARI",
+    "target":"Respirasi Aerob",
+    "description":"Respirasi seluler dapat terjadi secara aerob, memerlukan oksigen dan menghasilkan ATP lebih banyak.",
+    "refined_description":"Respirasi seluler dapat terjadi secara aerob, memerlukan oksigen dan menghasilkan ATP lebih banyak.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":12,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Fotosintesis",
+    "relation":"MEMBUTUHKAN",
+    "target":"Cahaya Matahari",
+    "description":"Fotosintesis memerlukan energi cahaya matahari untuk memulai reaksi terang.",
+    "refined_description":"Fotosintesis memerlukan energi cahaya matahari untuk memulai reaksi terang.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":13,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Fotosintesis",
+    "relation":"TERDIRI_DARI",
+    "target":"Reaksi Terang",
+    "description":"Fotosintesis memiliki tahap reaksi terang yang menghasilkan ATP dan NADPH.",
+    "refined_description":"Fotosintesis memiliki tahap reaksi terang yang menghasilkan ATP dan NADPH.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":14,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Fotosintesis",
+    "relation":"TERDIRI_DARI",
+    "target":"Reaksi Gelap",
+    "description":"Fotosintesis memiliki tahap reaksi gelap (siklus Calvin) yang menggunakan ATP dan NADPH untuk fiksasi CO2 menjadi gula.",
+    "refined_description":"Fotosintesis memiliki tahap reaksi gelap (siklus Calvin) yang menggunakan ATP dan NADPH untuk fiksasi CO2 menjadi gula.",
+    "r1_rating":"partial",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Deskripsi secara akurat menyatakan bahwa reaksi gelap (Siklus Calvin) merupakan tahapan dari fotosintesis yang menggunakan ATP dan NADPH (dari reaksi terang) untuk memfiksasi CO2 menjadi gula (glukosa). Hal ini sesuai dengan konteks buku teks yang diberikan.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":15,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Siklus Krebs",
+    "relation":"MENGHASILKAN",
+    "target":"NADH",
+    "description":"Siklus Krebs merupakan sumber utama NADH sebagai pembawa elektron untuk transpor elektron.",
+    "refined_description":"Siklus Krebs merupakan sumber utama NADH sebagai pembawa elektron untuk transpor elektron.",
+    "r1_rating":"partial",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Teks dengan jelas menyatakan bahwa siklus Krebs menghasilkan 6 NADH (bersama dengan 2 ATP dan 2 FADH2), yang merupakan jumlah terbanyak dibandingkan glikolisis dan dekarboksilasi oksidatif. Oleh karena itu, siklus Krebs benar menghasilkan NADH dan merupakan sumber utama pembawa elektron tersebut untuk tahap transpor elektron.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":16,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Siklus Krebs",
+    "relation":"TERJADI_DI",
+    "target":"Matriks Mitokondria",
+    "description":"Siklus Krebs berlangsung di dalam matriks mitokondria.",
+    "refined_description":"Siklus Krebs berlangsung di dalam matriks mitokondria.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":17,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Fosforilasi Oksidatif",
+    "relation":"MENGHASILKAN",
+    "target":"ATP (34)",
+    "description":"Fosforilasi oksidatif adalah tahap respirasi aerob yang menghasilkan ATP terbanyak.",
+    "refined_description":"Fosforilasi oksidatif adalah tahap respirasi aerob yang menghasilkan ATP terbanyak.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":18,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Fosforilasi Oksidatif",
+    "relation":"TERDIRI_DARI",
+    "target":"Transpor Elektron",
+    "description":"Transpor elektron adalah bagian dari fosforilasi oksidatif yang memindahkan elektron berenergi tinggi.",
+    "refined_description":"Transpor elektron adalah bagian dari fosforilasi oksidatif yang memindahkan elektron berenergi tinggi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":19,
+    "chapter":"Enzim dan Metabolisme",
+    "subject":"Fosforilasi Oksidatif",
+    "relation":"TERDIRI_DARI",
+    "target":"Kemiosmosis",
+    "description":"Kemiosmosis menggunakan gradien proton yang dibentuk oleh transpor elektron untuk mensintesis ATP.",
+    "refined_description":"Kemiosmosis menggunakan gradien proton yang dibentuk oleh transpor elektron untuk mensintesis ATP.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":20,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Materi Genetik",
+    "relation":"TERDIRI_DARI",
+    "target":"DNA",
+    "description":"Materi genetik tersusun atas DNA yang membawa informasi pewarisan sifat.",
+    "refined_description":"Materi genetik tersusun atas DNA yang membawa informasi pewarisan sifat.",
+    "r1_rating":"missing",
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":21,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Materi Genetik",
+    "relation":"TERDIRI_DARI",
+    "target":"Gen",
+    "description":"Gen adalah unit fungsional dari materi genetik yang menentukan sifat tertentu.",
+    "refined_description":"Gen adalah unit fungsional dari materi genetik yang menentukan sifat tertentu.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":22,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Materi Genetik",
+    "relation":"TERDIRI_DARI",
+    "target":"Kromosom",
+    "description":"Kromosom merupakan struktur makromolekul yang mengemas DNA di dalam sel.",
+    "refined_description":"Kromosom merupakan struktur makromolekul yang mengemas DNA di dalam sel.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":23,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"DNA (Deoxyribonucleic Acid)",
+    "relation":"TERDIRI_DARI",
+    "target":"Nukleotida",
+    "description":"DNA tersusun atas unit-unit dasar berupa nukleotida.",
+    "refined_description":"DNA tersusun atas unit-unit dasar berupa nukleotida.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":24,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"DNA (Deoxyribonucleic Acid)",
+    "relation":"MEMILIKI_STRUKTUR",
+    "target":"Double helix",
+    "description":"Rantai ganda benang DNA yang saling komplemen membentuk struktur double helix.",
+    "refined_description":"Rantai ganda benang DNA yang saling komplemen membentuk struktur double helix.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":25,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"DNA (Deoxyribonucleic Acid)",
+    "relation":"MENGALAMI",
+    "target":"Replikasi DNA",
+    "description":"DNA harus digandakan melalui replikasi sebelum sel membelah untuk memastikan informasi genetik diteruskan.",
+    "refined_description":"DNA harus digandakan melalui replikasi sebelum sel membelah untuk memastikan informasi genetik diteruskan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":26,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Gen",
+    "relation":"BAGIAN_DARI",
+    "target":"DNA",
+    "description":"Gen merupakan bagian fungsional dari untaian DNA.",
+    "refined_description":"Gen merupakan bagian fungsional dari untaian DNA.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":27,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Gen",
+    "relation":"MENENTUKAN",
+    "target":"Fenotip",
+    "description":"Gen akan menentukan sifat yang tampak pada individu (fenotip).",
+    "refined_description":"Gen akan menentukan sifat yang tampak pada individu (fenotip).",
+    "r1_rating":"partial",
+    "r2_rating":"partial",
+    "final_consensus_label":"partial",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":28,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Gen",
+    "relation":"MENGALAMI",
+    "target":"Ekspresi melalui sintesis protein",
+    "description":"Informasi dalam gen diekspresikan melalui proses sintesis protein.",
+    "refined_description":"Informasi dalam gen diekspresikan melalui proses sintesis protein.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":29,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Kromosom",
+    "relation":"TERDIRI_DARI",
+    "target":"DNA",
+    "description":"Kromosom mengandung DNA sebagai materi genetik utamanya.",
+    "refined_description":"Kromosom mengandung DNA sebagai materi genetik utamanya.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":30,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Kromosom",
+    "relation":"TERDIRI_DARI",
+    "target":"Protein histon",
+    "description":"DNA pada kromosom dipintal dengan bantuan protein histon untuk pengemasan.",
+    "refined_description":"DNA pada kromosom dipintal dengan bantuan protein histon untuk pengemasan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":31,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Kromosom",
+    "relation":"MEMBAWA",
+    "target":"Faktor keturunan",
+    "description":"Kromosom bertugas membawa gen-gen yang menentukan sifat yang diwariskan.",
+    "refined_description":"Kromosom bertugas membawa gen-gen yang menentukan sifat yang diwariskan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":32,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Replikasi DNA",
+    "relation":"MENGHASILKAN",
+    "target":"Dua DNA yang identik",
+    "description":"Replikasi DNA bertujuan untuk menghasilkan dua salinan DNA yang persis sama dari DNA induk.",
+    "refined_description":"Replikasi DNA bertujuan untuk menghasilkan dua salinan DNA yang persis sama dari DNA induk.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":33,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Replikasi DNA",
+    "relation":"MEMBUTUHKAN",
+    "target":"Enzim DNA polimerase",
+    "description":"Enzim DNA polimerase membentuk rantai DNA baru sebagai polimer dari rantai DNA lama yang dijadikan cetakan.",
+    "refined_description":"Enzim DNA polimerase membentuk rantai DNA baru sebagai polimer dari rantai DNA lama yang dijadikan cetakan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":34,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Replikasi DNA",
+    "relation":"TERJADI_PADA",
+    "target":"Interfase",
+    "description":"Replikasi DNA merupakan tahap persiapan penting dalam interfase sebelum sel memulai pembelahan.",
+    "refined_description":"Replikasi DNA merupakan tahap persiapan penting dalam interfase sebelum sel memulai pembelahan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":35,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Dogma Sentral Biologi",
+    "relation":"MELIBATKAN",
+    "target":"DNA",
+    "description":"DNA adalah sumber informasi genetik awal dalam dogma sentral.",
+    "refined_description":"DNA adalah sumber informasi genetik awal dalam dogma sentral.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":36,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Dogma Sentral Biologi",
+    "relation":"MELIBATKAN",
+    "target":"Transkripsi",
+    "description":"Transkripsi adalah langkah pertama dalam dogma sentral, mengubah informasi dari DNA ke mRNA.",
+    "refined_description":"Transkripsi adalah langkah pertama dalam dogma sentral, mengubah informasi dari DNA ke mRNA.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":37,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Dogma Sentral Biologi",
+    "relation":"MELIBATKAN",
+    "target":"Translasi",
+    "description":"Translasi adalah langkah kedua dalam dogma sentral, mengubah informasi dari mRNA menjadi protein.",
+    "refined_description":"Translasi adalah langkah kedua dalam dogma sentral, mengubah informasi dari mRNA menjadi protein.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":38,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Sintesis Protein",
+    "relation":"TERDIRI_DARI",
+    "target":"Transkripsi",
+    "description":"Transkripsi merupakan tahap awal sintesis protein di mana mRNA dibuat dari cetakan DNA.",
+    "refined_description":"Transkripsi merupakan tahap awal sintesis protein di mana mRNA dibuat dari cetakan DNA.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":39,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Sintesis Protein",
+    "relation":"TERDIRI_DARI",
+    "target":"Translasi",
+    "description":"Translasi merupakan tahap lanjutan sintesis protein di mana kode mRNA diterjemahkan menjadi urutan asam amino.",
+    "refined_description":"Translasi merupakan tahap lanjutan sintesis protein di mana kode mRNA diterjemahkan menjadi urutan asam amino.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":40,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Sintesis Protein",
+    "relation":"MEMUNGKINKAN",
+    "target":"Pembentukan protein",
+    "description":"Sintesis protein adalah mekanisme utama untuk menghasilkan protein yang menjalankan fungsi seluler.",
+    "refined_description":"Sintesis protein adalah mekanisme utama untuk menghasilkan protein yang menjalankan fungsi seluler.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":41,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Transkripsi",
+    "relation":"MENGHASILKAN",
+    "target":"mRNA (Messenger RNA)",
+    "description":"Transkripsi menghasilkan molekul mRNA yang membawa pesan genetik dari DNA.",
+    "refined_description":"Transkripsi menghasilkan molekul mRNA yang membawa pesan genetik dari DNA.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":42,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Transkripsi",
+    "relation":"TERJADI_DI",
+    "target":"Nukleus",
+    "description":"Proses transkripsi berlangsung di dalam inti sel eukariotik.",
+    "refined_description":"Proses transkripsi berlangsung di dalam inti sel eukariotik.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":43,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Transkripsi",
+    "relation":"DIKATALISIS_OLEH",
+    "target":"RNA polimerase",
+    "description":"Enzim RNA polimerase bertanggung jawab untuk memisahkan untaian DNA dan membentuk mRNA.",
+    "refined_description":"Enzim RNA polimerase bertanggung jawab untuk memisahkan untaian DNA dan membentuk mRNA.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":44,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Translasi",
+    "relation":"MENGHASILKAN",
+    "target":"Polipeptida",
+    "description":"Translasi adalah proses di mana asam amino dirangkai membentuk rantai polipeptida.",
+    "refined_description":"Translasi adalah proses di mana asam amino dirangkai membentuk rantai polipeptida.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":45,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Translasi",
+    "relation":"TERJADI_DI",
+    "target":"Ribosom",
+    "description":"Ribosom adalah tempat berlangsungnya proses translasi.",
+    "refined_description":"Ribosom adalah tempat berlangsungnya proses translasi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":46,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Translasi",
+    "relation":"MEMBUTUHKAN",
+    "target":"tRNA (Transfer RNA)",
+    "description":"tRNA membawa asam amino yang sesuai dengan kodon pada mRNA ke ribosom untuk dirangkai.",
+    "refined_description":"tRNA membawa asam amino yang sesuai dengan kodon pada mRNA ke ribosom untuk dirangkai.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":47,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Kode Genetik",
+    "relation":"MENENTUKAN",
+    "target":"Asam amino",
+    "description":"Setiap kodon dalam kode genetik menyandikan asam amino tertentu yang akan ditambahkan ke rantai polipeptida.",
+    "refined_description":"Setiap kodon dalam kode genetik menyandikan asam amino tertentu yang akan ditambahkan ke rantai polipeptida.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":48,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Kode Genetik",
+    "relation":"TERDIRI_DARI",
+    "target":"Kodon",
+    "description":"Kode genetik terdiri dari urutan kodon, yaitu triplet basa nitrogen.",
+    "refined_description":"Kode genetik terdiri dari urutan kodon, yaitu triplet basa nitrogen.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":49,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Kode Genetik",
+    "relation":"MEMILIKI_SIFAT",
+    "target":"Degenerasi (satu asam amino oleh lebih dari satu kodon)",
+    "description":"Beberapa asam amino dapat dikodekan oleh lebih dari satu kodon, menunjukkan sifat degenerasi kode genetik.",
+    "refined_description":"Beberapa asam amino dapat dikodekan oleh lebih dari satu kodon, menunjukkan sifat degenerasi kode genetik.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":50,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Pembelahan Sel",
+    "relation":"TERDIRI_DARI",
+    "target":"Mitosis",
+    "description":"Mitosis adalah salah satu cara pembelahan sel yang menghasilkan sel anakan identik.",
+    "refined_description":"Mitosis adalah salah satu cara pembelahan sel yang menghasilkan sel anakan identik.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":51,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Pembelahan Sel",
+    "relation":"TERDIRI_DARI",
+    "target":"Meiosis",
+    "description":"Meiosis adalah jenis pembelahan sel yang menghasilkan sel gamet haploid.",
+    "refined_description":"Meiosis adalah jenis pembelahan sel yang menghasilkan sel gamet haploid.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":52,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Mitosis",
+    "relation":"MENGHASILKAN",
+    "target":"Dua sel anakan diploid",
+    "description":"Setiap sel anakan hasil mitosis memiliki jumlah kromosom yang sama dengan sel induknya.",
+    "refined_description":"Setiap sel anakan hasil mitosis memiliki jumlah kromosom yang sama dengan sel induknya.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":53,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Mitosis",
+    "relation":"BERPERAN_DALAM",
+    "target":"Pertumbuhan dan perkembangan",
+    "description":"Mitosis memungkinkan organisme untuk tumbuh dan mengganti sel-sel yang rusak.",
+    "refined_description":"Mitosis memungkinkan organisme untuk tumbuh dan mengganti sel-sel yang rusak.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":54,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Mitosis",
+    "relation":"MELIBATKAN",
+    "target":"Profase",
+    "description":"Profase adalah tahap awal mitosis di mana kromosom mulai mengondensasi.",
+    "refined_description":"Profase adalah tahap awal mitosis di mana kromosom mulai mengondensasi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":55,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Meiosis",
+    "relation":"MENGHASILKAN",
+    "target":"Empat sel anakan haploid",
+    "description":"Meiosis menghasilkan sel-sel gamet dengan jumlah kromosom setengah dari sel induk.",
+    "refined_description":"Meiosis menghasilkan sel-sel gamet dengan jumlah kromosom setengah dari sel induk.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":56,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Meiosis",
+    "relation":"BERPERAN_DALAM",
+    "target":"Gametogenesis",
+    "description":"Meiosis adalah proses kunci dalam pembentukan sel kelamin (gamet).",
+    "refined_description":"Meiosis adalah proses kunci dalam pembentukan sel kelamin (gamet).",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":57,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Meiosis",
+    "relation":"MENYEBABKAN",
+    "target":"Variasi genetik",
+    "description":"Pindah silang selama meiosis I menghasilkan rekombinasi genetik yang meningkatkan variasi pada keturunan.",
+    "refined_description":"Pindah silang selama meiosis I menghasilkan rekombinasi genetik yang meningkatkan variasi pada keturunan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":58,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Siklus Sel",
+    "relation":"TERDIRI_DARI",
+    "target":"Interfase",
+    "description":"Interfase adalah tahap terpanjang dalam siklus sel, di mana sel tumbuh dan mereplikasi DNA-nya.",
+    "refined_description":"Interfase adalah tahap terpanjang dalam siklus sel, di mana sel tumbuh dan mereplikasi DNA-nya.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":59,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Siklus Sel",
+    "relation":"TERDIRI_DARI",
+    "target":"Mitosis",
+    "description":"Mitosis merupakan fase M dalam siklus sel yang melibatkan pembelahan inti.",
+    "refined_description":"Mitosis merupakan fase M dalam siklus sel yang melibatkan pembelahan inti.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":60,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Siklus Sel",
+    "relation":"TERDIRI_DARI",
+    "target":"Sitokinesis",
+    "description":"Sitokinesis adalah tahap akhir siklus sel yang memisahkan sitoplasma menjadi dua sel anakan.",
+    "refined_description":"Sitokinesis adalah tahap akhir siklus sel yang memisahkan sitoplasma menjadi dua sel anakan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":61,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Gametogenesis",
+    "relation":"MENGHASILKAN",
+    "target":"Gamet",
+    "description":"Gametogenesis adalah proses yang menghasilkan sel-sel reproduksi.",
+    "refined_description":"Gametogenesis adalah proses yang menghasilkan sel-sel reproduksi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":62,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Gametogenesis",
+    "relation":"MELIBATKAN",
+    "target":"Meiosis",
+    "description":"Pembelahan meiosis adalah inti dari gametogenesis untuk mengurangi jumlah kromosom menjadi haploid.",
+    "refined_description":"Pembelahan meiosis adalah inti dari gametogenesis untuk mengurangi jumlah kromosom menjadi haploid.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":63,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Gametogenesis",
+    "relation":"TERDIRI_DARI",
+    "target":"Spermatogenesis",
+    "description":"Spermatogenesis adalah proses spesifik pembentukan sperma dalam gametogenesis jantan.",
+    "refined_description":"Spermatogenesis adalah proses spesifik pembentukan sperma dalam gametogenesis jantan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":64,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Hukum Mendel I (Hukum Pemisahan)",
+    "relation":"MENJELASKAN",
+    "target":"Pemisahan alel",
+    "description":"Hukum ini menggambarkan bagaimana dua alel untuk satu sifat berpisah selama pembentukan gamet.",
+    "refined_description":"Hukum ini menggambarkan bagaimana dua alel untuk satu sifat berpisah selama pembentukan gamet.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":65,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Hukum Mendel I (Hukum Pemisahan)",
+    "relation":"BERLAKU_UNTUK",
+    "target":"Persilangan Monohibrid",
+    "description":"Hukum Mendel I ditemukan dari hasil pengamatan pada persilangan monohibrid.",
+    "refined_description":"Hukum Mendel I ditemukan dari hasil pengamatan pada persilangan monohibrid.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":66,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Hukum Mendel II (Hukum Berpasangan Secara Bebas)",
+    "relation":"MENJELASKAN",
+    "target":"Penggabungan gen secara bebas",
+    "description":"Hukum ini menjelaskan bahwa alel-alel dari gen yang berbeda bersegregasi secara independen satu sama lain.",
+    "refined_description":"Hukum ini menjelaskan bahwa alel-alel dari gen yang berbeda bersegregasi secara independen satu sama lain.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":67,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Hukum Mendel II (Hukum Berpasangan Secara Bebas)",
+    "relation":"BERLAKU_UNTUK",
+    "target":"Persilangan Dihibrid",
+    "description":"Hukum Mendel II ditemukan dari hasil pengamatan pada persilangan dihibrid atau lebih.",
+    "refined_description":"Hukum Mendel II ditemukan dari hasil pengamatan pada persilangan dihibrid atau lebih.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":68,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Penyimpangan Semu Hukum Mendel",
+    "relation":"MELIBATKAN",
+    "target":"Interaksi gen",
+    "description":"Penyimpangan semu terjadi karena adanya interaksi kompleks antara gen atau alel yang memodifikasi rasio fenotip.",
+    "refined_description":"Penyimpangan semu terjadi karena adanya interaksi kompleks antara gen atau alel yang memodifikasi rasio fenotip.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":69,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Penyimpangan Semu Hukum Mendel",
+    "relation":"MENGHASILKAN",
+    "target":"Rasio fenotip yang dimodifikasi",
+    "description":"Rasio fenotip pada keturunan tidak sesuai dengan prediksi langsung dari hukum Mendel karena adanya modifikasi.",
+    "refined_description":"Rasio fenotip pada keturunan tidak sesuai dengan prediksi langsung dari hukum Mendel karena adanya modifikasi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":70,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Penyimpangan Semu Hukum Mendel",
+    "relation":"TERDIRI_DARI",
+    "target":"Kodominansi",
+    "description":"Kodominansi adalah salah satu jenis penyimpangan semu di mana kedua alel terekspresi bersamaan.",
+    "refined_description":"Kodominansi adalah salah satu jenis penyimpangan semu di mana kedua alel terekspresi bersamaan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":71,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Kodominansi",
+    "relation":"MENGHASILKAN",
+    "target":"Ekspresi alel bersamaan",
+    "description":"Pada kodominansi, kedua alel dari gen heterozigot akan terekspresi penuh secara bersamaan dalam fenotip.",
+    "refined_description":"Pada kodominansi, kedua alel dari gen heterozigot akan terekspresi penuh secara bersamaan dalam fenotip.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":72,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Kodominansi",
+    "relation":"CONTOH",
+    "target":"Golongan darah AB",
+    "description":"Golongan darah AB adalah contoh klasik kodominansi di mana alel IA dan IB terekspresi keduanya.",
+    "refined_description":"Golongan darah AB adalah contoh klasik kodominansi di mana alel IA dan IB terekspresi keduanya.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":73,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Kodominansi",
+    "relation":"BAGIAN_DARI",
+    "target":"Penyimpangan Semu Hukum Mendel",
+    "description":"Kodominansi merupakan salah satu jenis pola pewarisan yang memodifikasi rasio fenotip Mendel.",
+    "refined_description":"Kodominansi merupakan salah satu jenis pola pewarisan yang memodifikasi rasio fenotip Mendel.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":74,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Mutasi",
+    "relation":"MENYEBABKAN",
+    "target":"Keanekaragaman genetik",
+    "description":"Mutasi adalah sumber utama variasi genetik dalam suatu populasi.",
+    "refined_description":"Mutasi adalah sumber utama variasi genetik dalam suatu populasi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":75,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Mutasi",
+    "relation":"MENYEBABKAN",
+    "target":"Penyakit keturunan",
+    "description":"Mutasi pada gen atau kromosom dapat mengakibatkan berbagai penyakit genetik yang diwariskan.",
+    "refined_description":"Mutasi pada gen atau kromosom dapat mengakibatkan berbagai penyakit genetik yang diwariskan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":76,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Mutasi",
+    "relation":"MELIBATKAN",
+    "target":"Perubahan gen atau kromosom",
+    "description":"Mutasi dapat terjadi pada tingkat gen (perubahan urutan basa) atau pada tingkat kromosom (perubahan jumlah atau struktur).",
+    "refined_description":"Mutasi dapat terjadi pada tingkat gen (perubahan urutan basa) atau pada tingkat kromosom (perubahan jumlah atau struktur).",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":77,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Epigenetik",
+    "relation":"MENGATUR",
+    "target":"Ekspresi gen",
+    "description":"Epigenetik memengaruhi gen mana yang dihidupkan atau dimatikan, memodifikasi ekspresi gen tanpa mengubah sekuens DNA itu sendiri.",
+    "refined_description":"Epigenetik memengaruhi gen mana yang dihidupkan atau dimatikan, memodifikasi ekspresi gen tanpa mengubah sekuens DNA itu sendiri.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":78,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Epigenetik",
+    "relation":"TIDAK_MENGUBAH",
+    "target":"Urutan DNA",
+    "description":"Ciri khas epigenetik adalah perubahan terjadi pada ekspresi gen, bukan pada urutan basa DNA.",
+    "refined_description":"Ciri khas epigenetik adalah perubahan terjadi pada ekspresi gen, bukan pada urutan basa DNA.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":79,
+    "chapter":"Genetik dan Pewarisan Sifat",
+    "subject":"Epigenetik",
+    "relation":"MELIBATKAN",
+    "target":"Metilasi DNA",
+    "description":"Metilasi DNA adalah salah satu mekanisme epigenetik kunci yang melibatkan penambahan gugus metil ke basa sitosin, memengaruhi aktivasi gen.",
+    "refined_description":"Metilasi DNA adalah salah satu mekanisme epigenetik kunci yang melibatkan penambahan gugus metil ke basa sitosin, memengaruhi aktivasi gen.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":80,
+    "chapter":"Evolusi",
+    "subject":"Evolusi",
+    "relation":"TERDIRI_DARI",
+    "target":"Evolusi Progresif",
+    "description":"Evolusi dapat terjadi secara progresif, yaitu perubahan menuju bentuk yang lebih kompleks atau ukuran yang lebih besar.",
+    "refined_description":"Evolusi dapat terjadi secara progresif, yaitu perubahan menuju bentuk yang lebih kompleks atau ukuran yang lebih besar.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":81,
+    "chapter":"Evolusi",
+    "subject":"Evolusi",
+    "relation":"TERDIRI_DARI",
+    "target":"Evolusi Regresif",
+    "description":"Evolusi juga dapat terjadi secara regresif, yaitu perubahan menuju bentuk yang lebih sederhana atau menuju kepunahan.",
+    "refined_description":"Evolusi juga dapat terjadi secara regresif, yaitu perubahan menuju bentuk yang lebih sederhana atau menuju kepunahan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":82,
+    "chapter":"Evolusi",
+    "subject":"Evolusi Progresif",
+    "relation":"CONTOH_DARI",
+    "target":"Evolusi",
+    "description":"Perkembangan ukuran tubuh kuda seperti Eohippus hingga kuda modern adalah contoh dari evolusi progresif.",
+    "refined_description":"Perkembangan ukuran tubuh kuda seperti Eohippus hingga kuda modern adalah contoh dari evolusi progresif.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":83,
+    "chapter":"Evolusi",
+    "subject":"Evolusi Regresif",
+    "relation":"CONTOH_DARI",
+    "target":"Evolusi",
+    "description":"Kepunahan dinosaurus akibat ketidakmampuan beradaptasi adalah contoh evolusi regresif.",
+    "refined_description":"Kepunahan dinosaurus akibat ketidakmampuan beradaptasi adalah contoh evolusi regresif.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":84,
+    "chapter":"Evolusi",
+    "subject":"Common Ancestor",
+    "relation":"MEREPRESENTASIKAN",
+    "target":"Pohon Filogeni",
+    "description":"Pohon filogeni menggambarkan hubungan evolusi dan kekerabatan makhluk hidup yang berasal dari common ancestor.",
+    "refined_description":"Pohon filogeni menggambarkan hubungan evolusi dan kekerabatan makhluk hidup yang berasal dari common ancestor.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":85,
+    "chapter":"Evolusi",
+    "subject":"Teori Abiogenesis (Generatio Spontanea)",
+    "relation":"DIDUKUNG_OLEH",
+    "target":"Antonie Van Leeuwenhoek",
+    "description":"Antonie Van Leeuwenhoek mendukung teori abiogenesis berdasarkan pengamatan mikroorganisme spontan dalam tetesan air.",
+    "refined_description":"Antonie Van Leeuwenhoek mendukung teori abiogenesis berdasarkan pengamatan mikroorganisme spontan dalam tetesan air.",
+    "r1_rating":"wrong",
+    "r2_rating":"partial",
+    "final_consensus_label":"correct",
+    "reasoning":"Konteks buku secara eksplisit menyatakan bahwa Antonie Van Leeuwenhoek adalah salah satu pendukung teori abiogenesis. Pendapatnya didasarkan pada hasil pengamatan di bawah mikroskop terhadap mikroorganisme di dalam tetesan air hujan dan air rendaman jerami, sehingga ia menyimpulkan bahwa makhluk hidup berskala mikroskopis tersebut berasal dari benda mati (air). Oleh karena itu, relasi dan deskripsi pada triple ini sudah sangat akurat.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":86,
+    "chapter":"Evolusi",
+    "subject":"Teori Biogenesis",
+    "relation":"DIDUKUNG_OLEH",
+    "target":"Percobaan Francesco Redi",
+    "description":"Percobaan Francesco Redi membuktikan belatung pada daging berasal dari telur lalat, mendukung teori biogenesis.",
+    "refined_description":"Percobaan Francesco Redi membuktikan belatung pada daging berasal dari telur lalat, mendukung teori biogenesis.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":87,
+    "chapter":"Evolusi",
+    "subject":"Teori Biogenesis",
+    "relation":"DIDUKUNG_OLEH",
+    "target":"Percobaan Louis Pasteur",
+    "description":"Percobaan Louis Pasteur dengan tabung leher angsa menyempurnakan teori biogenesis dengan menunjukkan mikroorganisme berasal dari udara, bukan benda mati.",
+    "refined_description":"Percobaan Louis Pasteur dengan tabung leher angsa menyempurnakan teori biogenesis dengan menunjukkan mikroorganisme berasal dari udara, bukan benda mati.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":88,
+    "chapter":"Evolusi",
+    "subject":"Teori Evolusi Kimia",
+    "relation":"DIKEMUKAKAN_OLEH",
+    "target":"Harold Urey",
+    "description":"Harold Urey adalah ilmuwan yang mengemukakan teori evolusi kimia tentang asal-usul kehidupan.",
+    "refined_description":"Harold Urey adalah ilmuwan yang mengemukakan teori evolusi kimia tentang asal-usul kehidupan.",
+    "r1_rating":"partial",
+    "r2_rating":"partial",
+    "final_consensus_label":"partial",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":89,
+    "chapter":"Evolusi",
+    "subject":"Teori Evolusi Kimia",
+    "relation":"DIBUKTIKAN_OLEH",
+    "target":"Percobaan Stanley Miller",
+    "description":"Percobaan Stanley Miller menggunakan pesawat uratmosphare berhasil mensintesis asam amino, mendukung teori evolusi kimia.",
+    "refined_description":"Percobaan Stanley Miller menggunakan pesawat uratmosphare berhasil mensintesis asam amino, mendukung teori evolusi kimia.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":90,
+    "chapter":"Evolusi",
+    "subject":"Endosimbiosis",
+    "relation":"MENGHASILKAN",
+    "target":"Sel Eukariotik",
+    "description":"Endosimbiosis adalah proses pembentukan organel sel yang menjadi ciri khas sel eukariotik.",
+    "refined_description":"Endosimbiosis adalah proses pembentukan organel sel yang menjadi ciri khas sel eukariotik.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":91,
+    "chapter":"Evolusi",
+    "subject":"Teori Evolusi Lamarck",
+    "relation":"MEMILIKI_PRINSIP",
+    "target":"Use and Disuse",
+    "description":"Prinsip 'use and disuse' adalah gagasan inti dalam teori Lamarck yang menjelaskan perkembangan organ.",
+    "refined_description":"Prinsip 'use and disuse' adalah gagasan inti dalam teori Lamarck yang menjelaskan perkembangan organ.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":92,
+    "chapter":"Evolusi",
+    "subject":"Teori Evolusi Lamarck",
+    "relation":"CONTOH",
+    "target":"Leher Jerapah Lamarck",
+    "description":"Lamarck menjelaskan leher panjang jerapah sebagai hasil penggunaan leher yang terus-menerus untuk menjangkau makanan, kemudian sifat ini diwariskan.",
+    "refined_description":"Lamarck menjelaskan leher panjang jerapah sebagai hasil penggunaan leher yang terus-menerus untuk menjangkau makanan, kemudian sifat ini diwariskan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":93,
+    "chapter":"Evolusi",
+    "subject":"Teori Evolusi Darwin",
+    "relation":"MEMILIKI_MEKANISME_UTAMA",
+    "target":"Seleksi Alam",
+    "description":"Seleksi alam merupakan mekanisme utama yang diusulkan Darwin untuk menjelaskan perubahan evolusi dan adaptasi makhluk hidup.",
+    "refined_description":"Seleksi alam merupakan mekanisme utama yang diusulkan Darwin untuk menjelaskan perubahan evolusi dan adaptasi makhluk hidup.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":94,
+    "chapter":"Evolusi",
+    "subject":"Teori Evolusi Darwin",
+    "relation":"DIBUKTIKAN_OLEH_OBSERVASI",
+    "target":"Variasi Burung Finch",
+    "description":"Pengamatan Darwin terhadap variasi paruh burung finch di Galapagos menjadi bukti kunci bagi teorinya tentang adaptasi terhadap jenis makanan.",
+    "refined_description":"Pengamatan Darwin terhadap variasi paruh burung finch di Galapagos menjadi bukti kunci bagi teorinya tentang adaptasi terhadap jenis makanan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":95,
+    "chapter":"Evolusi",
+    "subject":"Teori Evolusi Wallace",
+    "relation":"MEMILIKI_MEKANISME_UTAMA",
+    "target":"Seleksi Alam",
+    "description":"Wallace juga menyimpulkan bahwa seleksi alam adalah mekanisme utama yang menyebabkan perubahan evolusi.",
+    "refined_description":"Wallace juga menyimpulkan bahwa seleksi alam adalah mekanisme utama yang menyebabkan perubahan evolusi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":96,
+    "chapter":"Evolusi",
+    "subject":"Teori Evolusi Wallace",
+    "relation":"DIDUKUNG_OLEH_OBSERVASI",
+    "target":"Garis Wallace",
+    "description":"Garis Wallace yang memisahkan biodiversitas Asia dan Australia menjadi bukti observasi penting bagi teori Wallace mengenai isolasi geografis dan spesiasi.",
+    "refined_description":"Garis Wallace yang memisahkan biodiversitas Asia dan Australia menjadi bukti observasi penting bagi teori Wallace mengenai isolasi geografis dan spesiasi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":97,
+    "chapter":"Evolusi",
+    "subject":"Seleksi Alam",
+    "relation":"MENGHASILKAN",
+    "target":"Adaptasi",
+    "description":"Seleksi alam menyebabkan organisme yang paling cocok dengan lingkungan dapat bertahan hidup dan bereproduksi, menghasilkan adaptasi.",
+    "refined_description":"Seleksi alam menyebabkan organisme yang paling cocok dengan lingkungan dapat bertahan hidup dan bereproduksi, menghasilkan adaptasi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":98,
+    "chapter":"Evolusi",
+    "subject":"Seleksi Alam",
+    "relation":"TERDIRI_DARI",
+    "target":"Seleksi Alami",
+    "description":"Seleksi alami terjadi secara alami di lingkungan, membentuk variasi yang sesuai dengan kondisi lingkungan.",
+    "refined_description":"Seleksi alami terjadi secara alami di lingkungan, membentuk variasi yang sesuai dengan kondisi lingkungan.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"wrong",
+    "reasoning":"'Seleksi Alam' dan 'Seleksi Alami' adalah dua istilah yang memiliki makna yang sama (bersinonim). Oleh karena itu, penggunaan relasi TERDIRI_DARI (yang menunjukkan hubungan antara keseluruhan dan bagiannya) tidak tepat untuk kedua entitas ini.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":99,
+    "chapter":"Evolusi",
+    "subject":"Adaptasi",
+    "relation":"HASIL_DARI",
+    "target":"Seleksi Alam",
+    "description":"Adaptasi adalah hasil dari proses seleksi alam di mana individu yang paling sesuai dengan lingkungan akan bertahan hidup dan mewariskan sifatnya.",
+    "refined_description":"Adaptasi adalah hasil dari proses seleksi alam di mana individu yang paling sesuai dengan lingkungan akan bertahan hidup dan mewariskan sifatnya.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":100,
+    "chapter":"Evolusi",
+    "subject":"Seleksi Buatan (Artifisial)",
+    "relation":"MENGGUNAKAN",
+    "target":"Rekayasa Genetika",
+    "description":"Seleksi buatan seringkali melibatkan rekayasa genetika untuk memodifikasi sifat organisme sesuai keinginan manusia.",
+    "refined_description":"Seleksi buatan seringkali melibatkan rekayasa genetika untuk memodifikasi sifat organisme sesuai keinginan manusia.",
+    "r1_rating":"correct",
+    "r2_rating":"partial",
+    "final_consensus_label":"correct",
+    "reasoning":"Teks secara eksplisit menyatakan bahwa manusia dapat menciptakan sifat unggul dengan mengubah sifat genetik melalui persilangan atau rekayasa genetik, yang disebut sebagai seleksi buatan. Oleh karena itu, relasi dan deskripsi sudah tepat dan didukung oleh teks.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":101,
+    "chapter":"Evolusi",
+    "subject":"Rekayasa Genetika",
+    "relation":"DIGUNAKAN_DALAM",
+    "target":"Seleksi Buatan (Artifisial)",
+    "description":"Rekayasa genetika adalah salah satu metode yang digunakan dalam seleksi buatan untuk mendapatkan sifat unggul.",
+    "refined_description":"Rekayasa genetika adalah salah satu metode yang digunakan dalam seleksi buatan untuk mendapatkan sifat unggul.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":102,
+    "chapter":"Evolusi",
+    "subject":"Hukum Hardy Weinberg",
+    "relation":"MEMPREDIKSI",
+    "target":"Frekuensi Alel",
+    "description":"Hukum Hardy Weinberg digunakan untuk memprediksi frekuensi alel dan genotip dalam populasi yang berada dalam kesetimbangan dan tidak berevolusi.",
+    "refined_description":"Hukum Hardy Weinberg digunakan untuk memprediksi frekuensi alel dan genotip dalam populasi yang berada dalam kesetimbangan dan tidak berevolusi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":103,
+    "chapter":"Evolusi",
+    "subject":"Hukum Hardy Weinberg",
+    "relation":"TIDAK_BERLAKU_JIKA",
+    "target":"Mikroevolusi",
+    "description":"Jika salah satu syarat hukum Hardy Weinberg tidak terpenuhi, maka akan terjadi mikroevolusi, yaitu perubahan frekuensi gen dalam populasi.",
+    "refined_description":"Jika salah satu syarat hukum Hardy Weinberg tidak terpenuhi, maka akan terjadi mikroevolusi, yaitu perubahan frekuensi gen dalam populasi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":104,
+    "chapter":"Evolusi",
+    "subject":"Gene Pool",
+    "relation":"TERDIRI_DARI",
+    "target":"Frekuensi Alel",
+    "description":"Gene pool adalah totalitas gen dalam populasi yang diukur melalui frekuensi alelnya.",
+    "refined_description":"Gene pool adalah totalitas gen dalam populasi yang diukur melalui frekuensi alelnya.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":105,
+    "chapter":"Evolusi",
+    "subject":"Mikroevolusi",
+    "relation":"DISEBABKAN_OLEH",
+    "target":"Hanyutan Genetik (Genetic Drift)",
+    "description":"Hanyutan genetik adalah salah satu faktor utama yang menyebabkan perubahan frekuensi alel dan mengakibatkan mikroevolusi.",
+    "refined_description":"Hanyutan genetik adalah salah satu faktor utama yang menyebabkan perubahan frekuensi alel dan mengakibatkan mikroevolusi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":106,
+    "chapter":"Evolusi",
+    "subject":"Mikroevolusi",
+    "relation":"DISEBABKAN_OLEH",
+    "target":"Aliran Gen (Gene Flow)",
+    "description":"Aliran gen dapat mengubah frekuensi alel dalam populasi dengan membawa alel masuk atau keluar, menyebabkan mikroevolusi.",
+    "refined_description":"Aliran gen dapat mengubah frekuensi alel dalam populasi dengan membawa alel masuk atau keluar, menyebabkan mikroevolusi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":107,
+    "chapter":"Evolusi",
+    "subject":"Hanyutan Genetik (Genetic Drift)",
+    "relation":"TERDIRI_DARI",
+    "target":"Efek Pendiri (Founder Effect)",
+    "description":"Efek pendiri terjadi ketika sekelompok kecil individu membentuk populasi baru dengan gene pool yang berbeda secara acak dari populasi asal, sebagai jenis hanyutan genetik.",
+    "refined_description":"Efek pendiri terjadi ketika sekelompok kecil individu membentuk populasi baru dengan gene pool yang berbeda secara acak dari populasi asal, sebagai jenis hanyutan genetik.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":108,
+    "chapter":"Evolusi",
+    "subject":"Hanyutan Genetik (Genetic Drift)",
+    "relation":"TERDIRI_DARI",
+    "target":"Efek Leher Botol (Bottleneck Effect)",
+    "description":"Efek leher botol adalah peristiwa penurunan ukuran populasi secara besar-besaran karena perubahan lingkungan, mengurangi variasi genetik dan menyebabkan hanyutan genetik.",
+    "refined_description":"Efek leher botol adalah peristiwa penurunan ukuran populasi secara besar-besaran karena perubahan lingkungan, mengurangi variasi genetik dan menyebabkan hanyutan genetik.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":109,
+    "chapter":"Evolusi",
+    "subject":"Aliran Gen (Gene Flow)",
+    "relation":"MENGURANGI",
+    "target":"Perbedaan Antarpopulasi",
+    "description":"Aliran gen antarpopulasi menyebabkan pertukaran alel, yang pada akhirnya mengurangi perbedaan genetik di antara populasi tersebut.",
+    "refined_description":"Aliran gen antarpopulasi menyebabkan pertukaran alel, yang pada akhirnya mengurangi perbedaan genetik di antara populasi tersebut.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":110,
+    "chapter":"Evolusi",
+    "subject":"Fosil",
+    "relation":"DIPELAJARI_OLEH",
+    "target":"Paleontologi",
+    "description":"Fosil adalah objek studi utama dalam paleontologi, ilmu yang memberikan petunjuk evolusi melalui catatan geologis.",
+    "refined_description":"Fosil adalah objek studi utama dalam paleontologi, ilmu yang memberikan petunjuk evolusi melalui catatan geologis.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":111,
+    "chapter":"Evolusi",
+    "subject":"Fosil",
+    "relation":"CONTOH_NYATA",
+    "target":"Evolusi Kuda (Fosil)",
+    "description":"Fosil kuda merupakan rekaman terlengkap yang menunjukkan perubahan morfologi kuda dari Eohippus hingga Equus, menjadi bukti kuat evolusi.",
+    "refined_description":"Fosil kuda merupakan rekaman terlengkap yang menunjukkan perubahan morfologi kuda dari Eohippus hingga Equus, menjadi bukti kuat evolusi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":112,
+    "chapter":"Evolusi",
+    "subject":"Paleontologi",
+    "relation":"MENGGUNAKAN",
+    "target":"Fosil",
+    "description":"Paleontologi menggunakan fosil sebagai petunjuk utama untuk merekonstruksi sejarah evolusi kehidupan di Bumi.",
+    "refined_description":"Paleontologi menggunakan fosil sebagai petunjuk utama untuk merekonstruksi sejarah evolusi kehidupan di Bumi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":113,
+    "chapter":"Evolusi",
+    "subject":"Homologi Organ",
+    "relation":"MENUNJUKKAN",
+    "target":"Nenek Moyang Bersama",
+    "description":"Homologi organ mengindikasikan bahwa spesies yang berbeda memiliki nenek moyang yang sama meskipun fungsi organ mereka telah berdivergensi.",
+    "refined_description":"Homologi organ mengindikasikan bahwa spesies yang berbeda memiliki nenek moyang yang sama meskipun fungsi organ mereka telah berdivergensi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":114,
+    "chapter":"Evolusi",
+    "subject":"Homologi Organ",
+    "relation":"BERLAWANA_DENGAN",
+    "target":"Analogi Organ",
+    "description":"Homologi berfokus pada kesamaan asal struktur, berbeda dengan analogi yang berfokus pada kesamaan fungsi meskipun asal strukturnya berbeda.",
+    "refined_description":"Homologi berfokus pada kesamaan asal struktur, berbeda dengan analogi yang berfokus pada kesamaan fungsi meskipun asal strukturnya berbeda.",
+    "r1_rating":"partial",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Teks dalam buku secara eksplisit menyebutkan 'Lawan dari homologi, yaitu analogi organ tubuh' serta menjelaskan bahwa homologi memiliki bentuk asal yang sama tetapi fungsinya berbeda, sedangkan analogi memiliki fungsi yang sama tetapi bentuk asalnya berbeda. Hal ini sangat sesuai dengan relasi BERLAWANA_DENGAN dan deskripsi pada triple.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":115,
+    "chapter":"Evolusi",
+    "subject":"Analogi Organ",
+    "relation":"MENUNJUKKAN",
+    "target":"Adaptasi Konvergen",
+    "description":"Analogi organ seringkali merupakan hasil dari adaptasi konvergen, di mana organisme mengembangkan fitur serupa karena tekanan lingkungan yang sama.",
+    "refined_description":"Analogi organ seringkali merupakan hasil dari adaptasi konvergen, di mana organisme mengembangkan fitur serupa karena tekanan lingkungan yang sama.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":116,
+    "chapter":"Evolusi",
+    "subject":"Kemiripan DNA",
+    "relation":"DASAR_PEMBUATAN",
+    "target":"Kladogram (Pohon Filogeni)",
+    "description":"Kemiripan DNA digunakan sebagai dasar untuk membangun kladogram atau pohon filogeni yang menggambarkan hubungan kekerabatan evolusioner.",
+    "refined_description":"Kemiripan DNA digunakan sebagai dasar untuk membangun kladogram atau pohon filogeni yang menggambarkan hubungan kekerabatan evolusioner.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":117,
+    "chapter":"Evolusi",
+    "subject":"Sintesis Modern (Neo-Darwinisme)",
+    "relation":"MENGGABUNGKAN",
+    "target":"Teori Evolusi Darwin",
+    "description":"Neo-Darwinisme mengintegrasikan konsep seleksi alam Darwin sebagai pendorong evolusi.",
+    "refined_description":"Neo-Darwinisme mengintegrasikan konsep seleksi alam Darwin sebagai pendorong evolusi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":118,
+    "chapter":"Evolusi",
+    "subject":"Sintesis Modern (Neo-Darwinisme)",
+    "relation":"MELIBATKAN",
+    "target":"Mutasi",
+    "description":"Mutasi atau perubahan acak dalam DNA diakui sebagai sumber variasi genetik baru dalam Neo-Darwinisme.",
+    "refined_description":"Mutasi atau perubahan acak dalam DNA diakui sebagai sumber variasi genetik baru dalam Neo-Darwinisme.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":119,
+    "chapter":"Evolusi",
+    "subject":"Sintesis Modern (Neo-Darwinisme)",
+    "relation":"MELIBATKAN",
+    "target":"Rekombinasi Gen",
+    "description":"Rekombinasi gen dari parental diakui sebagai salah satu cara untuk menghasilkan variasi baru dalam populasi menurut Neo-Darwinisme.",
+    "refined_description":"Rekombinasi gen dari parental diakui sebagai salah satu cara untuk menghasilkan variasi baru dalam populasi menurut Neo-Darwinisme.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":120,
+    "chapter":"Evolusi",
+    "subject":"Mutasi",
+    "relation":"MENYEBABKAN",
+    "target":"Variasi Genetik",
+    "description":"Mutasi adalah sumber utama variasi genetik yang dapat mempengaruhi kemampuan adaptasi dan evolusi spesies.",
+    "refined_description":"Mutasi adalah sumber utama variasi genetik yang dapat mempengaruhi kemampuan adaptasi dan evolusi spesies.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":121,
+    "chapter":"Evolusi",
+    "subject":"Rekombinasi Gen",
+    "relation":"MENGHASILKAN",
+    "target":"Variasi Genetik",
+    "description":"Rekombinasi gen adalah proses penting yang menghasilkan kombinasi alel baru, berkontribusi pada variasi genetik dalam populasi.",
+    "refined_description":"Rekombinasi gen adalah proses penting yang menghasilkan kombinasi alel baru, berkontribusi pada variasi genetik dalam populasi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":122,
+    "chapter":"Evolusi",
+    "subject":"Integrated Synthesis (Sintesis Terpadu)",
+    "relation":"MENGEMBANGKAN_DARI",
+    "target":"Sintesis Modern (Neo-Darwinisme)",
+    "description":"Sintesis Terpadu merupakan pengembangan dan perluasan dari kerangka Neo-Darwinisme dengan memasukkan berbagai disiplin ilmu biologi modern.",
+    "refined_description":"Sintesis Terpadu merupakan pengembangan dan perluasan dari kerangka Neo-Darwinisme dengan memasukkan berbagai disiplin ilmu biologi modern.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":123,
+    "chapter":"Evolusi",
+    "subject":"Integrated Synthesis (Sintesis Terpadu)",
+    "relation":"MELIBATKAN",
+    "target":"Epigenetika",
+    "description":"Epigenetika adalah salah satu faktor penting yang dipertimbangkan dalam Sintesis Terpadu untuk menjelaskan variasi dan pewarisan sifat yang tidak melibatkan perubahan urutan DNA.",
+    "refined_description":"Epigenetika adalah salah satu faktor penting yang dipertimbangkan dalam Sintesis Terpadu untuk menjelaskan variasi dan pewarisan sifat yang tidak melibatkan perubahan urutan DNA.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":124,
+    "chapter":"Evolusi",
+    "subject":"Epigenetika",
+    "relation":"MEMPENGARUHI",
+    "target":"Ekspresi Gen",
+    "description":"Epigenetika memodifikasi ekspresi gen, seperti pada contoh tikus Agouti, tanpa mengubah urutan DNA aslinya, yang berdampak pada fenotip.",
+    "refined_description":"Epigenetika memodifikasi ekspresi gen, seperti pada contoh tikus Agouti, tanpa mengubah urutan DNA aslinya, yang berdampak pada fenotip.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":125,
+    "chapter":"Evolusi",
+    "subject":"Epigenetika",
+    "relation":"CONTOH_NYATA",
+    "target":"Ekspresi Gen Agouti",
+    "description":"Ekspresi gen Agouti pada tikus menunjukkan bagaimana nutrisi pada induk dapat secara epigenetik mengubah warna bulu dan risiko penyakit pada keturunan.",
+    "refined_description":"Ekspresi gen Agouti pada tikus menunjukkan bagaimana nutrisi pada induk dapat secara epigenetik mengubah warna bulu dan risiko penyakit pada keturunan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":126,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Bioteknologi",
+    "relation":"MENGHASILKAN",
+    "target":"Produk Bioteknologi",
+    "description":"Bioteknologi memanfaatkan agen biologi untuk mengolah bahan mentah menjadi produk dan jasa yang bermanfaat.",
+    "refined_description":"Bioteknologi memanfaatkan agen biologi untuk mengolah bahan mentah menjadi produk dan jasa yang bermanfaat.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":127,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Agen Biologi",
+    "relation":"BERPERAN_DALAM",
+    "target":"Bioteknologi",
+    "description":"Agen biologi adalah katalis utama dalam proses bioteknologi, mengolah bahan mentah melalui prinsip ilmiah.",
+    "refined_description":"Agen biologi adalah katalis utama dalam proses bioteknologi, mengolah bahan mentah melalui prinsip ilmiah.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":128,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Bioremediasi",
+    "relation":"MEMECAHKAN_MASALAH",
+    "target":"Pencemaran Lingkungan",
+    "description":"Bioremediasi memanfaatkan bakteri aerob dan anaerob untuk mengolah air limbah dan polutan minyak di laut.",
+    "refined_description":"Bioremediasi memanfaatkan bakteri aerob dan anaerob untuk mengolah air limbah dan polutan minyak di laut.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":129,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Biodegradasi",
+    "relation":"MEMECAHKAN_MASALAH",
+    "target":"Penghancuran Plastik",
+    "description":"Biodegradasi memanfaatkan bakteri tertentu untuk menghancurkan berbagai jenis plastik.",
+    "refined_description":"Biodegradasi memanfaatkan bakteri tertentu untuk menghancurkan berbagai jenis plastik.",
+    "r1_rating":"partial",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Konteks e-book secara eksplisit menyatakan bahwa teknologi biodegradasi adalah salah satu pemecahan masalah pencemaran lingkungan dengan menghancurkan plastik memanfaatkan bakteri tertentu. Relasi, entitas target, dan deskripsi sudah akurat dan sesuai dengan teks acuan.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":130,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Kultur Jaringan",
+    "relation":"MEMUNGKINKAN",
+    "target":"Penyediaan Bibit Unggul",
+    "description":"Kultur jaringan memungkinkan penyediaan bibit unggul dalam jumlah banyak, seragam, dan singkat untuk pertanian dan perkebunan.",
+    "refined_description":"Kultur jaringan memungkinkan penyediaan bibit unggul dalam jumlah banyak, seragam, dan singkat untuk pertanian dan perkebunan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":131,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Hibridoma",
+    "relation":"MENGHASILKAN",
+    "target":"Antibodi Monoklonal",
+    "description":"Teknologi hibridoma digunakan untuk memproduksi antibodi monoklonal yang spesifik mengenali satu antigen, bermanfaat dalam deteksi sel kanker.",
+    "refined_description":"Teknologi hibridoma digunakan untuk memproduksi antibodi monoklonal yang spesifik mengenali satu antigen, bermanfaat dalam deteksi sel kanker.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":132,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Rekayasa Genetika",
+    "relation":"MEMECAHKAN_MASALAH",
+    "target":"Peningkatan Produktivitas Pertanian",
+    "description":"Rekayasa genetika dapat menghasilkan tanaman transgenik yang tahan hama atau kondisi lingkungan ekstrem.",
+    "refined_description":"Rekayasa genetika dapat menghasilkan tanaman transgenik yang tahan hama atau kondisi lingkungan ekstrem.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":133,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Rekayasa Genetika",
+    "relation":"MEMECAHKAN_MASALAH",
+    "target":"Masalah Kesehatan",
+    "description":"Rekayasa genetika dapat memproduksi interferon, hormon insulin, dan antibiotik untuk kebutuhan medis.",
+    "refined_description":"Rekayasa genetika dapat memproduksi interferon, hormon insulin, dan antibiotik untuk kebutuhan medis.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":134,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Bioteknologi Konvensional",
+    "relation":"MENGHASILKAN",
+    "target":"Tempe",
+    "description":"Produksi tempe melalui fermentasi adalah contoh produk dari bioteknologi konvensional.",
+    "refined_description":"Produksi tempe melalui fermentasi adalah contoh produk dari bioteknologi konvensional.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":135,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Bioteknologi Modern",
+    "relation":"MENGGUNAKAN",
+    "target":"Rekayasa Genetika",
+    "description":"Bioteknologi modern secara ekstensif menggunakan rekayasa genetika untuk memanipulasi susunan genetik organisme.",
+    "refined_description":"Bioteknologi modern secara ekstensif menggunakan rekayasa genetika untuk memanipulasi susunan genetik organisme.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":136,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Bioinformatika",
+    "relation":"MEMUNGKINKAN",
+    "target":"Analisis Genom",
+    "description":"Bioinformatika berperan penting dalam genomik struktural dan fungsional, serta proteomik untuk menganalisis informasi biologis skala besar.",
+    "refined_description":"Bioinformatika berperan penting dalam genomik struktural dan fungsional, serta proteomik untuk menganalisis informasi biologis skala besar.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":137,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Ilmu Pendukung Bioteknologi",
+    "relation":"MEMBANGUN",
+    "target":"Bioteknologi",
+    "description":"Berbagai cabang ilmu ini esensial untuk memahami, mengembangkan, dan menerapkan proses serta produk bioteknologi.",
+    "refined_description":"Berbagai cabang ilmu ini esensial untuk memahami, mengembangkan, dan menerapkan proses serta produk bioteknologi.",
+    "r1_rating":"missing",
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":138,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Produksi Tempe",
+    "relation":"DIKATALISIS_OLEH",
+    "target":"Enzim Fermentasi",
+    "description":"Dalam produksi tempe, enzim protease, lipase, amilase, dan fitase bekerja memecah komponen biji kedelai menjadi lebih sederhana.",
+    "refined_description":"Dalam produksi tempe, enzim protease, lipase, amilase, dan fitase bekerja memecah komponen biji kedelai menjadi lebih sederhana.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":139,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Enzim Fermentasi",
+    "relation":"MENGATUR",
+    "target":"Proses Fermentasi",
+    "description":"Enzim-enzim ini secara spesifik memecah makromolekul dalam bahan dasar tempe selama fermentasi.",
+    "refined_description":"Enzim-enzim ini secara spesifik memecah makromolekul dalam bahan dasar tempe selama fermentasi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":140,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Kultur Jaringan",
+    "relation":"MENGHASILKAN",
+    "target":"Planlet",
+    "description":"Kultur jaringan menghasilkan planlet, tanaman kecil yang berkembang dari kalus, yang kemudian dapat diaklimatisasi.",
+    "refined_description":"Kultur jaringan menghasilkan planlet, tanaman kecil yang berkembang dari kalus, yang kemudian dapat diaklimatisasi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":141,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Rekayasa Genetika",
+    "relation":"MEMUNGKINKAN",
+    "target":"DNA Rekombinan",
+    "description":"Rekayasa genetika dilakukan dengan metode DNA rekombinan, yaitu transfer segmen DNA dari satu organisme ke DNA organisme lain.",
+    "refined_description":"Rekayasa genetika dilakukan dengan metode DNA rekombinan, yaitu transfer segmen DNA dari satu organisme ke DNA organisme lain.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":142,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Kloning",
+    "relation":"MENGHASILKAN",
+    "target":"Individu Identik",
+    "description":"Kloning bertujuan untuk menghasilkan organisme dengan susunan genetik yang sama persis dengan donornya.",
+    "refined_description":"Kloning bertujuan untuk menghasilkan organisme dengan susunan genetik yang sama persis dengan donornya.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":143,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Vaksin",
+    "relation":"MENYEBABKAN",
+    "target":"Imunisasi",
+    "description":"Pemberian vaksin (vaksinasi) memicu sistem kekebalan tubuh untuk membentuk antibodi dan memperoleh imunitas terhadap penyakit.",
+    "refined_description":"Pemberian vaksin (vaksinasi) memicu sistem kekebalan tubuh untuk membentuk antibodi dan memperoleh imunitas terhadap penyakit.",
+    "r1_rating":"missing",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Teks secara eksplisit menyebutkan bahwa vaksinasi (pemberian vaksin) akan diikuti dengan imunisasi, dan vaksin berfungsi membentuk kekebalan tubuh terhadap suatu penyakit. Oleh karena itu, relasi Vaksin MENYEBABKAN Imunisasi sudah tepat dan didukung oleh konteks.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":144,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Sel Punca (Stem Cell)",
+    "relation":"MEMILIKI_SIFAT",
+    "target":"Pluripoten",
+    "description":"Sel punca embrionik bersifat pluripotent, artinya mampu berkembang menjadi berbagai jenis sel tubuh.",
+    "refined_description":"Sel punca embrionik bersifat pluripotent, artinya mampu berkembang menjadi berbagai jenis sel tubuh.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":145,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Penyuntingan Genom (Genome Editing)",
+    "relation":"MENGGUNAKAN",
+    "target":"Enzim Nuklease",
+    "description":"Penyuntingan genom memanfaatkan enzim nuklease yang direkayasa untuk memotong DNA pada lokasi target spesifik.",
+    "refined_description":"Penyuntingan genom memanfaatkan enzim nuklease yang direkayasa untuk memotong DNA pada lokasi target spesifik.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":146,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Harapan Bioteknologi Modern",
+    "relation":"MEMUNGKINKAN",
+    "target":"Peningkatan Kualitas Hidup",
+    "description":"Harapan bioteknologi modern adalah meningkatkan kualitas hidup manusia melalui berbagai inovasi di bidang kesehatan, pangan, energi, dan industri.",
+    "refined_description":"Harapan bioteknologi modern adalah meningkatkan kualitas hidup manusia melalui berbagai inovasi di bidang kesehatan, pangan, energi, dan industri.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":147,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Kendala Bioteknologi Modern",
+    "relation":"MEMPENGARUHI",
+    "target":"Penyebaran Teknologi",
+    "description":"Kendala-kendala ini menghambat adopsi dan pengembangan penuh produk bioteknologi modern secara global.",
+    "refined_description":"Kendala-kendala ini menghambat adopsi dan pengembangan penuh produk bioteknologi modern secara global.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":148,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Bioetika",
+    "relation":"MENGATUR",
+    "target":"Penerapan Bioteknologi",
+    "description":"Bioetika memberikan kerangka moral dan etika untuk memastikan penggunaan ilmu biologis tidak melanggar martabat dan kesucian hidup.",
+    "refined_description":"Bioetika memberikan kerangka moral dan etika untuk memastikan penggunaan ilmu biologis tidak melanggar martabat dan kesucian hidup.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":149,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Prinsip Bioetika",
+    "relation":"MENGATUR",
+    "target":"Penelitian Subjek Manusia",
+    "description":"Prinsip-prinsip ini harus dipatuhi dalam setiap penelitian yang melibatkan manusia untuk menjamin hak dan kesejahteraan subjek.",
+    "refined_description":"Prinsip-prinsip ini harus dipatuhi dalam setiap penelitian yang melibatkan manusia untuk menjamin hak dan kesejahteraan subjek.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":150,
+    "chapter":"Inovasi Bioteknologi",
+    "subject":"Etik Klirens (Ethical Clearance)",
+    "relation":"DIPERLUKAN_UNTUK",
+    "target":"Penelitian Ilmiah",
+    "description":"Etik klirens adalah syarat mutlak untuk penelitian yang melibatkan organisme hidup guna memastikan praktik yang bertanggung jawab.",
+    "refined_description":"Etik klirens adalah syarat mutlak untuk penelitian yang melibatkan organisme hidup guna memastikan praktik yang bertanggung jawab.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  }
+]

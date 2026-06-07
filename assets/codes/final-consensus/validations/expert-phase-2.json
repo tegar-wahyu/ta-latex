@@ -1,0 +1,517 @@
+{
+  "answers": {
+    "LB001": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB002": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB003": {
+      "comment": "Fungsi kerja logam kurang dijelaskan konteksnya",
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB004": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik",
+      "comment": "Hasil dari translasi itu salah satunya adalah protein"
+    },
+    "LB005": {
+      "relationValid": "Tidak",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar",
+      "comment": "Lebih tepatnya potensial listrik aja, medan listrik diganti Gaya Gerak Listrik"
+    },
+    "LB006": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB007": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB008": {
+      "relationTypeCorrect": "Salah",
+      "relationValid": "Ya",
+      "directionCorrect": "Benar",
+      "comment": "Hapus kata memahami supaya tidak misleading"
+    },
+    "LB009": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB010": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB011": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB012": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB013": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB014": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB015": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB016": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB017": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB018": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB019": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB020": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB021": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB022": {
+      "comment": "**Fungsi Kerja Logam (W0)**: Energi ambang minimum agar elektron lepas dari permukaan logam pada efek fotolistrik.",
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB023": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB024": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB026": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB027": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB028": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB029": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB030": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB031": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB032": {
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar",
+      "relationValid": "Ya"
+    },
+    "LB033": {
+      "directionCorrect": "Terbalik",
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar"
+    },
+    "LB034": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB035": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB036": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB037": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB038": {
+      "comment": "Teori Evolusi Kimia: Makhluk hidup berasal dari reaksi senyawa anorganik membentuk senyawa organik (asam amino).",
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB039": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB040": {
+      "directionCorrect": "Terbalik",
+      "relationTypeCorrect": "Benar",
+      "relationValid": "Ya",
+      "comment": "Kimia -> Bio"
+    },
+    "LB041": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB042": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB043": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB044": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB045": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB046": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB047": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar",
+      "comment": "Transkripsi memilih produk akhir protein"
+    },
+    "LB048": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB049": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB050": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB051": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB052": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB053": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB054": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB055": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB056": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB057": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB058": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB059": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB060": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB061": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar",
+      "comment": "Cek untuk duplikasi dengan penulisan sumber-->target"
+    },
+    "LB062": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB063": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB064": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB065": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB066": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB067": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB068": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB069": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB070": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB071": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB072": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB073": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB074": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Salah",
+      "directionCorrect": "Benar",
+      "comment": "Bukan prasayarat, sebagai alat saja"
+    },
+    "LB075": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB076": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB077": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB078": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB079": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB080": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB081": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB082": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB083": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB084": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB085": {
+      "relationValid": "Ya",
+      "comment": "Kurang konteks, tidak bisa tahu reaksi spontan tanpa mengetahui energi aktivasi",
+      "directionCorrect": "NA",
+      "relationTypeCorrect": "Benar"
+    },
+    "LB086": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB087": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB088": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB089": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB090": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB091": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB092": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB093": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB094": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB095": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar",
+      "comment": "idem"
+    },
+    "LB096": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Terbalik"
+    },
+    "LB097": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB098": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB099": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB100": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    },
+    "LB025": {
+      "relationValid": "Ya",
+      "relationTypeCorrect": "Benar",
+      "directionCorrect": "Benar"
+    }
+  },
+  "updatedAt": "2026-06-01T09:51:59.104Z"
+}

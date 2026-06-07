@@ -1,0 +1,3512 @@
+[
+  {
+    "triple_id":0,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Asam Brønsted-Lowry",
+    "relation":"MEMILIKI_SIFAT",
+    "target":"Donor Proton",
+    "description":"Asam Brønsted-Lowry dicirikan oleh kemampuannya untuk mendonasikan proton.",
+    "refined_description":"Asam Brønsted-Lowry dicirikan oleh kemampuannya untuk mendonasikan proton.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":1,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Basa Brønsted-Lowry",
+    "relation":"MEMILIKI_SIFAT",
+    "target":"Akseptor Proton",
+    "description":"Basa Brønsted-Lowry dicirikan oleh kemampuannya untuk menerima proton.",
+    "refined_description":"Basa Brønsted-Lowry dicirikan oleh kemampuannya untuk menerima proton.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":2,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Asam Lewis",
+    "relation":"MEMILIKI_SIFAT",
+    "target":"Akseptor Pasangan Elektron Bebas",
+    "description":"Asam Lewis berperan sebagai penerima pasangan elektron bebas dalam pembentukan ikatan kovalen koordinasi.",
+    "refined_description":"Asam Lewis berperan sebagai penerima pasangan elektron bebas dalam pembentukan ikatan kovalen koordinasi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":3,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Basa Lewis",
+    "relation":"MEMILIKI_SIFAT",
+    "target":"Donor Pasangan Elektron Bebas",
+    "description":"Basa Lewis berperan sebagai pemberi pasangan elektron bebas dalam pembentukan ikatan kovalen koordinasi.",
+    "refined_description":"Basa Lewis berperan sebagai pemberi pasangan elektron bebas dalam pembentukan ikatan kovalen koordinasi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":4,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"pH",
+    "relation":"DIFORMULASIKAN_SEBAGAI",
+    "target":"–log [H+]",
+    "description":"pH dihitung dari nilai negatif logaritma konsentrasi ion hidrogen dalam larutan.",
+    "refined_description":"pH dihitung dari nilai negatif logaritma konsentrasi ion hidrogen dalam larutan.",
+    "r1_rating":"correct",
+    "r2_rating":"missing",
+    "final_consensus_label":"correct",
+    "reasoning":"Teks menyebutkan secara eksplisit bahwa pH dirumuskan sebagai negatif logaritma dari konsentrasi ion hidrogen dalam larutan, yang dinyatakan dengan persamaan pH = –log [H+]. Oleh karena itu, relasi dan deskripsi tersebut sudah tepat.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":5,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"pH",
+    "relation":"MENGATUR",
+    "target":"Keasaman Larutan",
+    "description":"Nilai pH menentukan tingkat keasaman atau kebasaan suatu larutan.",
+    "refined_description":"Nilai pH menentukan tingkat keasaman atau kebasaan suatu larutan.",
+    "r1_rating":"wrong",
+    "r2_rating":"missing",
+    "final_consensus_label":"wrong",
+    "reasoning":"Relasi MENGATUR tidak tepat. Nilai pH tidak berfungsi untuk 'mengatur' keasaman suatu larutan, melainkan merupakan satuan atau besaran yang 'menyatakan' atau 'mengukur' tingkat keasaman dan kebasaan suatu larutan berdasarkan konsentrasi ion hidrogen.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":6,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Tetapan Swaionisasi Air (Kw)",
+    "relation":"DIFORMULASIKAN_SEBAGAI",
+    "target":"[H3O+][OH–]",
+    "description":"Kw adalah hasil kali konsentrasi ion hidronium dan ion hidroksida dalam air pada kesetimbangan.",
+    "refined_description":"Kw adalah hasil kali konsentrasi ion hidronium dan ion hidroksida dalam air pada kesetimbangan.",
+    "r1_rating":"correct",
+    "r2_rating":"missing",
+    "final_consensus_label":"correct",
+    "reasoning":"Konteks secara eksplisit menyatakan bahwa tetapan kesetimbangan (Kc) untuk swaionisasi air disebut Kw, dengan persamaan Kc = [H3O+][OH–]. Dengan demikian, relasi formulasi Kw sebagai [H3O+][OH–] dan deskripsinya sudah sangat tepat serta didukung oleh teks.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":7,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Tetapan Swaionisasi Air (Kw)",
+    "relation":"BERGANTUNG_PADA",
+    "target":"Suhu",
+    "description":"Nilai Kw bervariasi tergantung pada temperatur larutan.",
+    "refined_description":"Nilai Kw bervariasi tergantung pada temperatur larutan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":8,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Asam Lemah",
+    "relation":"DIFORMULASIKAN_SEBAGAI",
+    "target":"Ka",
+    "description":"Kekuatan asam lemah diukur dengan tetapan kesetimbangan asam (Ka).",
+    "refined_description":"Kekuatan asam lemah diukur dengan tetapan kesetimbangan asam (Ka).",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"wrong",
+    "reasoning":"Relasi DIFORMULASIKAN_SEBAGAI tidak tepat karena Ka (tetapan kesetimbangan asam) adalah nilai atau ukuran untuk menentukan kekuatan asam, bukan rumus kimia dari asam lemah.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":9,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Asam Lemah",
+    "relation":"DIFORMULASIKAN_SEBAGAI",
+    "target":"α (Derajat Ionisasi)",
+    "description":"Derajat ionisasi menunjukkan seberapa banyak asam lemah yang terurai dalam larutan.",
+    "refined_description":"Derajat ionisasi menunjukkan seberapa banyak asam lemah yang terurai dalam larutan.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"wrong",
+    "reasoning":"Asam lemah tidak 'diformulasikan sebagai' derajat ionisasi (α). Derajat ionisasi merupakan besaran yang menunjukkan tingkat disosiasi dari suatu asam (seberapa banyak asam tersebut terurai menjadi ion), bukan rumusan kimia atau matematis dari asam lemah itu sendiri. Relasi DIFORMULASIKAN_SEBAGAI tidak tepat digunakan di sini.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":10,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Basa Lemah",
+    "relation":"DIFORMULASIKAN_SEBAGAI",
+    "target":"Kb",
+    "description":"Kekuatan basa lemah diukur dengan tetapan kesetimbangan basa (Kb).",
+    "refined_description":"Kekuatan basa lemah diukur dengan tetapan kesetimbangan basa (Kb).",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"wrong",
+    "reasoning":"Relasi DIFORMULASIKAN_SEBAGAI kurang tepat karena Kb merupakan tetapan kesetimbangan basa yang menjadi parameter untuk mengukur kekuatan basa lemah, bukan formulasi atau rumus kimia dari basa lemah itu sendiri.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":11,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Basa Lemah",
+    "relation":"DIFORMULASIKAN_SEBAGAI",
+    "target":"α (Derajat Ionisasi)",
+    "description":"Derajat ionisasi menunjukkan seberapa banyak basa lemah yang terurai dalam larutan.",
+    "refined_description":"Derajat ionisasi menunjukkan seberapa banyak basa lemah yang terurai dalam larutan.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"wrong",
+    "reasoning":"Relasi 'DIFORMULASIKAN_SEBAGAI' tidak tepat karena basa lemah tidak dirumuskan sebagai derajat ionisasi (α). Derajat ionisasi merupakan besaran atau parameter yang menunjukkan proporsi molekul basa lemah yang terionisasi di dalam larutan, bukan sebuah rumus untuk basa lemah itu sendiri. Relasi yang lebih sesuai misalnya 'MEMILIKI_PARAMETER' atau 'DIUKUR_DENGAN'.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":12,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Hidrolisis Garam",
+    "relation":"MENYEBABKAN",
+    "target":"Perubahan pH Larutan",
+    "description":"Hidrolisis garam mengakibatkan perubahan pH larutan bergantung pada kekuatan asam dan basa pembentuknya.",
+    "refined_description":"Hidrolisis garam mengakibatkan perubahan pH larutan bergantung pada kekuatan asam dan basa pembentuknya.",
+    "r1_rating":"correct",
+    "r2_rating":"missing",
+    "final_consensus_label":"correct",
+    "reasoning":"Konsep bahwa hidrolisis garam menyebabkan perubahan pH larutan yang bergantung pada kekuatan asam dan basa pembentuknya adalah benar secara keilmuan kimia dan sangat relevan dengan bab Larutan dan Koloid (subbab Hidrolisis Garam). Meskipun konteks hanya memuat daftar isi, relasi ini merupakan fakta fundamental dalam materi tersebut.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":13,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Larutan Penyangga",
+    "relation":"MEMILIKI_SIFAT",
+    "target":"Mempertahankan pH",
+    "description":"Larutan penyangga berfungsi untuk menjaga kestabilan pH dalam sistem kimia dan biologis.",
+    "refined_description":"Larutan penyangga berfungsi untuk menjaga kestabilan pH dalam sistem kimia dan biologis.",
+    "r1_rating":"correct",
+    "r2_rating":"missing",
+    "final_consensus_label":"correct",
+    "reasoning":"Konteks e-book secara eksplisit menyatakan bahwa 'Larutan penyangga adalah larutan yang dapat mempertahankan pH', sehingga relasi bahwa larutan penyangga memiliki sifat mempertahankan pH sudah sangat tepat dan sesuai dengan materi.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":14,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Larutan Penyangga",
+    "relation":"TERDIRI_DARI",
+    "target":"Asam Lemah dan Basa Konjugasinya",
+    "description":"Salah satu komponen larutan penyangga adalah pasangan asam lemah dan basa konjugasinya.",
+    "refined_description":"Salah satu komponen larutan penyangga adalah pasangan asam lemah dan basa konjugasinya.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":15,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Larutan Penyangga",
+    "relation":"TERDIRI_DARI",
+    "target":"Basa Lemah dan Asam Konjugasinya",
+    "description":"Salah satu komponen larutan penyangga adalah pasangan basa lemah dan asam konjugasinya.",
+    "refined_description":"Salah satu komponen larutan penyangga adalah pasangan basa lemah dan asam konjugasinya.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":16,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Titrasi Asam Basa",
+    "relation":"MEMUNGKINKAN",
+    "target":"Penentuan Konsentrasi Larutan",
+    "description":"Titrasi asam basa adalah teknik analitis untuk mengukur konsentrasi analit tak dikenal.",
+    "refined_description":"Titrasi asam basa adalah teknik analitis untuk mengukur konsentrasi analit tak dikenal.",
+    "r1_rating":"correct",
+    "r2_rating":"missing",
+    "final_consensus_label":"correct",
+    "reasoning":"Konsep bahwa titrasi asam basa memungkinkan penentuan konsentrasi larutan (analit) yang belum diketahui merupakan prinsip dasar kimia yang tepat. Deskripsi dan relasi yang diberikan sudah sesuai dengan keilmuan kimia.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":17,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Titrasi Asam Basa",
+    "relation":"BERINTERAKSI_DENGAN",
+    "target":"Indikator Asam Basa",
+    "description":"Indikator asam basa digunakan untuk mendeteksi titik akhir titrasi melalui perubahan warna.",
+    "refined_description":"Indikator asam basa digunakan untuk mendeteksi titik akhir titrasi melalui perubahan warna.",
+    "r1_rating":"correct",
+    "r2_rating":"missing",
+    "final_consensus_label":"correct",
+    "reasoning":"Teks secara eksplisit menyebutkan bahwa dalam titrasi asam basa, indikator digunakan untuk menandai titik ekivalen (titik akhir) yang telah tercapai melalui perubahan warnanya. Deskripsi dan relasi sudah tepat dan didukung oleh konteks.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":18,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Kelarutan (s)",
+    "relation":"MENDEFINISIKAN",
+    "target":"Larutan Jenuh",
+    "description":"Larutan jenuh adalah larutan yang mengandung jumlah zat terlarut sama dengan nilai kelarutan.",
+    "refined_description":"Larutan jenuh adalah larutan yang mengandung jumlah zat terlarut sama dengan nilai kelarutan.",
+    "r1_rating":"correct",
+    "r2_rating":"missing",
+    "final_consensus_label":"correct",
+    "reasoning":"Teks secara eksplisit menyatakan bahwa larutan yang mengandung jumlah zat terlarut sama dengan nilai kelarutan (s) disebut larutan jenuh. Relasi MENDEFINISIKAN dan deskripsinya sudah sangat sesuai dengan konteks.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":19,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Kelarutan (s)",
+    "relation":"BERGANTUNG_PADA",
+    "target":"Suhu",
+    "description":"Kelarutan suatu zat dapat berubah seiring perubahan temperatur.",
+    "refined_description":"Kelarutan suatu zat dapat berubah seiring perubahan temperatur.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":20,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Hasil Kali Kelarutan (Ksp)",
+    "relation":"DIFORMULASIKAN_SEBAGAI",
+    "target":"[Py+]x [Qx–]y",
+    "description":"Ksp dihitung dari hasil kali konsentrasi ion-ion penyusun senyawa ionik pada kesetimbangan, dipangkatkan koefisien stoikiometrinya.",
+    "refined_description":"Ksp dihitung dari hasil kali konsentrasi ion-ion penyusun senyawa ionik pada kesetimbangan, dipangkatkan koefisien stoikiometrinya.",
+    "r1_rating":"correct",
+    "r2_rating":"missing",
+    "final_consensus_label":"correct",
+    "reasoning":"Target secara konsep benar menggambarkan formulasi Ksp, yang perhitungannya di teks disamakan dengan perhitungan Qsp yaitu hasil kali konsentrasi ion-ion. Karakter x dan y pada target merepresentasikan pangkat dari koefisien stoikiometri, yang meskipun ditulis tanpa format superscript karena keterbatasan teks biasa, secara substansi sudah tepat dan sesuai dengan deskripsi.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":21,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Hasil Kali Kelarutan (Ksp)",
+    "relation":"BERGANTUNG_PADA",
+    "target":"Suhu",
+    "description":"Nilai Ksp suatu senyawa berubah mengikuti perubahan temperatur.",
+    "refined_description":"Nilai Ksp suatu senyawa berubah mengikuti perubahan temperatur.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":22,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Sifat Koligatif Larutan",
+    "relation":"BERGANTUNG_PADA",
+    "target":"Jumlah Zat Terlarut",
+    "description":"Sifat koligatif ditentukan oleh konsentrasi partikel zat terlarut, bukan identitas kimianya.",
+    "refined_description":"Sifat koligatif ditentukan oleh konsentrasi partikel zat terlarut, bukan identitas kimianya.",
+    "r1_rating":"partial",
+    "r2_rating":"missing",
+    "final_consensus_label":"correct",
+    "reasoning":"Teks pada buku secara eksplisit menyatakan bahwa sifat koligatif larutan hanya bergantung pada jumlah zat terlarut dan bukan pada jenis zat terlarut. Relasi, target, dan deskripsi sudah sangat tepat dan sesuai dengan konteks buku.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":23,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Faktor Van’t Hoff (i)",
+    "relation":"MEMPENGARUHI",
+    "target":"Perhitungan Sifat Koligatif",
+    "description":"Faktor Van't Hoff digunakan untuk menyesuaikan perhitungan sifat koligatif pada larutan elektrolit.",
+    "refined_description":"Faktor Van't Hoff digunakan untuk menyesuaikan perhitungan sifat koligatif pada larutan elektrolit.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":24,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Faktor Van’t Hoff (i)",
+    "relation":"BERGANTUNG_PADA",
+    "target":"Derajat Ionisasi (α)",
+    "description":"Nilai faktor Van't Hoff terkait dengan tingkat ionisasi zat terlarut dalam larutan.",
+    "refined_description":"Nilai faktor Van't Hoff terkait dengan tingkat ionisasi zat terlarut dalam larutan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":25,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Penurunan Tekanan Uap Larutan (∆P)",
+    "relation":"DIFORMULASIKAN_SEBAGAI",
+    "target":"∆P = Xterlarut . Popelarut",
+    "description":"Penurunan tekanan uap dihitung berdasarkan fraksi mol zat terlarut dan tekanan uap pelarut murni, sesuai Hukum Raoult.",
+    "refined_description":"Penurunan tekanan uap dihitung berdasarkan fraksi mol zat terlarut dan tekanan uap pelarut murni, sesuai Hukum Raoult.",
+    "r1_rating":"correct",
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Penurunan tekanan uap (∆P) dapat diformulasikan sebagai hasil kali antara fraksi mol zat terlarut (Xterlarut) dengan tekanan uap pelarut murni (Popelarut), yang merupakan turunan dari Hukum Raoult. Teks pada buku hanya mencantumkan ∆P = P0 pelarut – Plarutan, sehingga rumus ini perlu ditambahkan untuk melengkapi konsep.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":26,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Penurunan Tekanan Uap Larutan (∆P)",
+    "relation":"MENYEBABKAN",
+    "target":"Kenaikan Titik Didih",
+    "description":"Penurunan tekanan uap berimplikasi pada kenaikan titik didih larutan karena suhu yang lebih tinggi diperlukan untuk mencapai tekanan atmosfer.",
+    "refined_description":"Penurunan tekanan uap berimplikasi pada kenaikan titik didih larutan karena suhu yang lebih tinggi diperlukan untuk mencapai tekanan atmosfer.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":27,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Penurunan Titik Beku Larutan (∆Tf)",
+    "relation":"DIFORMULASIKAN_SEBAGAI",
+    "target":"∆Tf = Kf . m . i",
+    "description":"Penurunan titik beku dihitung dengan mengalikan tetapan penurunan titik beku molal (Kf) dengan molalitas (m) dan faktor Van't Hoff (i).",
+    "refined_description":"Penurunan titik beku dihitung dengan mengalikan tetapan penurunan titik beku molal (Kf) dengan molalitas (m) dan faktor Van't Hoff (i).",
+    "r1_rating":"correct",
+    "r2_rating":"missing",
+    "final_consensus_label":"correct",
+    "reasoning":"Rumus penurunan titik beku larutan yang terdapat dalam triple (∆Tf = Kf . m . i) dan deskripsinya sesuai dengan teks pada buku referensi, yaitu penurunan titik beku dihitung dengan mengalikan tetapan penurunan titik beku molal (Kf), molalitas (m), dan faktor Van't Hoff (i). Tidak ada informasi esensial yang hilang.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":28,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Kenaikan Titik Didih Larutan (∆Tb)",
+    "relation":"DIFORMULASIKAN_SEBAGAI",
+    "target":"∆Tb = Kb . m . i",
+    "description":"Kenaikan titik didih dihitung dengan mengalikan tetapan kenaikan titik didih molal (Kb) dengan molalitas (m) dan faktor Van't Hoff (i).",
+    "refined_description":"Kenaikan titik didih dihitung dengan mengalikan tetapan kenaikan titik didih molal (Kb) dengan molalitas (m) dan faktor Van't Hoff (i).",
+    "r1_rating":"correct",
+    "r2_rating":"missing",
+    "final_consensus_label":"correct",
+    "reasoning":"Konteks pada e-book (halaman 49) secara eksplisit memuat formulasi kenaikan titik didih larutan (∆Tb) yaitu ∆Tb = Kb . m . i beserta keterangan variabelnya (Kb = tetapan kenaikan titik didih molal, m = konsentrasi molal, dan i = faktor van't Hoff). Target dan deskripsi pada triple sudah sangat akurat.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":29,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Tekanan Osmosis Larutan (π)",
+    "relation":"DIFORMULASIKAN_SEBAGAI",
+    "target":"π = M . R . T . i",
+    "description":"Tekanan osmosis dihitung dengan mengalikan konsentrasi molar (M), tetapan gas (R), temperatur (T) dalam Kelvin, dan faktor Van't Hoff (i).",
+    "refined_description":"Tekanan osmosis dihitung dengan mengalikan konsentrasi molar (M), tetapan gas (R), temperatur (T) dalam Kelvin, dan faktor Van't Hoff (i).",
+    "r1_rating":"correct",
+    "r2_rating":"missing",
+    "final_consensus_label":"correct",
+    "reasoning":"Formula dan deskripsi yang diberikan sudah sepenuhnya sesuai dengan teks pada buku sumber yang menyatakan bahwa tekanan osmosis diformulasikan sebagai π = M . R . T . i, di mana M adalah konsentrasi molar, R adalah tetapan gas, T adalah temperatur dalam Kelvin, dan i adalah faktor Van't Hoff.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":30,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Tekanan Osmosis Larutan (π)",
+    "relation":"MEMUNGKINKAN",
+    "target":"Proses Reverse Osmosis",
+    "description":"Konsep tekanan osmosis menjadi dasar dalam teknologi pemurnian air, seperti reverse osmosis.",
+    "refined_description":"Konsep tekanan osmosis menjadi dasar dalam teknologi pemurnian air, seperti reverse osmosis.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":31,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Koloid",
+    "relation":"BAGIAN_DARI",
+    "target":"Campuran",
+    "description":"Koloid adalah salah satu jenis campuran, dibedakan berdasarkan ukuran partikelnya.",
+    "refined_description":"Koloid adalah salah satu jenis campuran, dibedakan berdasarkan ukuran partikelnya.",
+    "r1_rating":"correct",
+    "r2_rating":"missing",
+    "final_consensus_label":"correct",
+    "reasoning":"Secara konsep kimia SMA, koloid memang merupakan salah satu jenis campuran (sistem dispersi) yang dibedakan dari larutan sejati dan suspensi berdasarkan ukuran partikelnya. Meskipun teks secara eksplisit tidak menyebutkan kata 'campuran', relasi dan deskripsi tersebut sangat mendasar dan benar.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":32,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Koloid",
+    "relation":"TERDIRI_DARI",
+    "target":"Zat Terdispersi",
+    "description":"Zat terdispersi adalah komponen yang tersebar dalam medium pendispersi koloid.",
+    "refined_description":"Zat terdispersi adalah komponen yang tersebar dalam medium pendispersi koloid.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":33,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Koloid",
+    "relation":"TERDIRI_DARI",
+    "target":"Medium Pendispersi",
+    "description":"Medium pendispersi adalah fasa kontinu tempat zat terdispersi tersebar dalam koloid.",
+    "refined_description":"Medium pendispersi adalah fasa kontinu tempat zat terdispersi tersebar dalam koloid.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":34,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Koloid Liofil",
+    "relation":"MEMILIKI_SIFAT",
+    "target":"Hidrofil (jika medium air)",
+    "description":"Dalam medium air, koloid liofil disebut hidrofil karena adanya interaksi kuat dengan air.",
+    "refined_description":"Dalam medium air, koloid liofil disebut hidrofil karena adanya interaksi kuat dengan air.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":35,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Koloid Liofob",
+    "relation":"MEMILIKI_SIFAT",
+    "target":"Hidrofob (jika medium air)",
+    "description":"Dalam medium air, koloid liofob disebut hidrofob karena tidak adanya interaksi kuat dengan air.",
+    "refined_description":"Dalam medium air, koloid liofob disebut hidrofob karena tidak adanya interaksi kuat dengan air.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":36,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Gerak Brown",
+    "relation":"DISEBABKAN_OLEH",
+    "target":"Tumbukan Molekul",
+    "description":"Gerak Brown terjadi karena partikel koloid bertumbukan secara acak dengan molekul medium pendispersi.",
+    "refined_description":"Gerak Brown terjadi karena partikel koloid bertumbukan secara acak dengan molekul medium pendispersi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":37,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Efek Tyndall",
+    "relation":"DISEBABKAN_OLEH",
+    "target":"Ukuran Partikel Koloid",
+    "description":"Ukuran partikel koloid yang lebih besar dari molekul larutan menyebabkan penghamburan cahaya.",
+    "refined_description":"Ukuran partikel koloid yang lebih besar dari molekul larutan menyebabkan penghamburan cahaya.",
+    "r1_rating":"correct",
+    "r2_rating":"missing",
+    "final_consensus_label":"correct",
+    "reasoning":"Konteks pada buku secara eksplisit menyebutkan bahwa efek Tyndall adalah gejala penghamburan berkas sinar (cahaya) oleh partikel koloid yang disebabkan oleh ukuran molekul\/partikel koloid yang cukup besar. Oleh karena itu, relasi dan deskripsi sudah tepat mencerminkan informasi tersebut.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":38,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Adsorpsi",
+    "relation":"MENYEBABKAN",
+    "target":"Muatan Koloid",
+    "description":"Adsorpsi ion pada permukaan partikel koloid seringkali menjadi penyebab munculnya muatan pada koloid.",
+    "refined_description":"Adsorpsi ion pada permukaan partikel koloid seringkali menjadi penyebab munculnya muatan pada koloid.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":39,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Koagulasi",
+    "relation":"MENYEBABKAN",
+    "target":"Penggumpalan Partikel",
+    "description":"Koagulasi adalah proses dimana partikel-partikel koloid bergabung membentuk gumpalan yang lebih besar.",
+    "refined_description":"Koagulasi adalah proses dimana partikel-partikel koloid bergabung membentuk gumpalan yang lebih besar.",
+    "r1_rating":"correct",
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Koagulasi adalah peristiwa penggumpalan partikel-partikel koloid akibat hilangnya kestabilan sistem koloid, sehingga partikel-partikel tersebut bergabung membentuk gumpalan yang lebih besar atau endapan.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":40,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Dialisis",
+    "relation":"MEMUNGKINKAN",
+    "target":"Pemisahan Koloid",
+    "description":"Dialisis adalah metode untuk memurnikan koloid dari pengotor berupa ion-ion kecil.",
+    "refined_description":"Dialisis adalah metode untuk memurnikan koloid dari pengotor berupa ion-ion kecil.",
+    "r1_rating":"partial",
+    "r2_rating":"correct",
+    "final_consensus_label":"partial",
+    "reasoning":"Dialisis merupakan proses pemurnian koloid untuk memisahkan dan menghilahkan atau menghilangkannya dari ion-ion pengotor dengan menggunakan membran semipermeabel.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":41,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Elektroforesis",
+    "relation":"MEMUNGKINKAN",
+    "target":"Pemisahan Partikel Bermuatan",
+    "description":"Elektroforesis memanfaatkan perbedaan muatan partikel koloid untuk memisahkannya di bawah pengaruh medan listrik.",
+    "refined_description":"Elektroforesis memanfaatkan perbedaan muatan partikel koloid untuk memisahkannya di bawah pengaruh medan listrik.",
+    "r1_rating":"correct",
+    "r2_rating":"missing",
+    "final_consensus_label":"correct",
+    "reasoning":"Teks pada buku secara eksplisit membenarkan bahwa elektroforesis adalah peristiwa pemisahan partikel koloid yang bermuatan dengan menggunakan arus atau medan listrik. Oleh karena itu, relasi dan deskripsi pada triple sudah tepat.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":42,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Metode Dispersi",
+    "relation":"MEMUNGKINKAN",
+    "target":"Pembuatan Koloid",
+    "description":"Metode dispersi adalah salah satu teknik utama untuk menghasilkan sistem koloid.",
+    "refined_description":"Metode dispersi adalah salah satu teknik utama untuk menghasilkan sistem koloid.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":43,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"Metode Kondensasi",
+    "relation":"MEMUNGKINKAN",
+    "target":"Pembuatan Koloid",
+    "description":"Metode kondensasi adalah salah satu teknik utama untuk menghasilkan sistem koloid dari partikel yang lebih kecil.",
+    "refined_description":"Metode kondensasi adalah salah satu teknik utama untuk menghasilkan sistem koloid dari partikel yang lebih kecil.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":44,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Elektrolit",
+    "relation":"MEMUNGKINKAN",
+    "target":"Hantaran Listrik",
+    "description":"Elektrolit memungkinkan hantaran listrik karena keberadaan ion-ion bebas yang dapat bergerak.",
+    "refined_description":"Elektrolit memungkinkan hantaran listrik karena keberadaan ion-ion bebas yang dapat bergerak.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":45,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Elektrolit",
+    "relation":"TERDIRI_DARI",
+    "target":"Senyawa Ionik",
+    "description":"Umumnya, elektrolit adalah senyawa ionik atau senyawa polar seperti asam, basa, dan garam yang dapat terurai menjadi ion.",
+    "refined_description":"Umumnya, elektrolit adalah senyawa ionik atau senyawa polar seperti asam, basa, dan garam yang dapat terurai menjadi ion.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":46,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Elektrolit Kuat",
+    "relation":"MEMILIKI_SIFAT",
+    "target":"Derajat Ionisasi Besar",
+    "description":"Elektrolit kuat dicirikan oleh derajat ionisasi yang besar, menunjukkan disosiasi sempurna zat menjadi ion-ionnya.",
+    "refined_description":"Elektrolit kuat dicirikan oleh derajat ionisasi yang besar, menunjukkan disosiasi sempurna zat menjadi ion-ionnya.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":47,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Elektrolit Lemah",
+    "relation":"MEMILIKI_SIFAT",
+    "target":"Derajat Ionisasi Kecil",
+    "description":"Elektrolit lemah memiliki derajat ionisasi yang kecil, menandakan bahwa reaksi ionisasi tidak berlangsung sempurna dan sebagian molekul tetap tidak terurai.",
+    "refined_description":"Elektrolit lemah memiliki derajat ionisasi yang kecil, menandakan bahwa reaksi ionisasi tidak berlangsung sempurna dan sebagian molekul tetap tidak terurai.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":48,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Non-elektrolit",
+    "relation":"TIDAK_MENGHANTARKAN_LISTRIK",
+    "target":"Arus Listrik",
+    "description":"Non-elektrolit tidak menghantarkan arus listrik karena proses pelarutannya tidak menyebabkan pemutusan ikatan dan pembentukan ion bebas.",
+    "refined_description":"Non-elektrolit tidak menghantarkan arus listrik karena proses pelarutannya tidak menyebabkan pemutusan ikatan dan pembentukan ion bebas.",
+    "r1_rating":"partial",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Triple dan deskripsi sudah sangat sesuai dengan teks pada buku referensi yang menyatakan bahwa non-elektrolit tidak menghantarkan listrik karena proses pelarutannya tidak memutus ikatan sehingga tidak menghasilkan ion bebas.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":49,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Reaksi Redoks",
+    "relation":"TERDIRI_DARI",
+    "target":"Oksidasi",
+    "description":"Reaksi redoks selalu melibatkan dua proses utama, yaitu oksidasi dan reduksi, yang terjadi secara bersamaan.",
+    "refined_description":"Reaksi redoks selalu melibatkan dua proses utama, yaitu oksidasi dan reduksi, yang terjadi secara bersamaan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":50,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Reaksi Redoks",
+    "relation":"TERDIRI_DARI",
+    "target":"Reduksi",
+    "description":"Reaksi redoks selalu melibatkan dua proses utama, yaitu oksidasi dan reduksi, yang terjadi secara bersamaan.",
+    "refined_description":"Reaksi redoks selalu melibatkan dua proses utama, yaitu oksidasi dan reduksi, yang terjadi secara bersamaan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":51,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Bilangan Oksidasi",
+    "relation":"MEMPENGARUHI",
+    "target":"Perubahan Kimia",
+    "description":"Perubahan bilangan oksidasi pada suatu spesi menunjukkan terjadinya reaksi redoks, yang melibatkan pertukaran elektron.",
+    "refined_description":"Perubahan bilangan oksidasi pada suatu spesi menunjukkan terjadinya reaksi redoks, yang melibatkan pertukaran elektron.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"wrong",
+    "reasoning":"Relasi 'MEMPENGARUHI' kurang tepat karena bilangan oksidasi adalah metrik atau konsep yang digunakan untuk melacak perpindahan elektron dalam reaksi redoks, bukan penyebab atau faktor yang mempengaruhi perubahan kimia secara langsung. Sebaliknya, perubahan kimia (reaksi redoks) itulah yang menyebabkan terjadinya perubahan bilangan oksidasi pada suatu spesi.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":52,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Oksidasi",
+    "relation":"MENGHASILKAN",
+    "target":"Agen Pengoksidasi",
+    "description":"Unsur yang mengalami oksidasi disebut sebagai agen pereduksi karena ia menyebabkan zat lain tereduksi.",
+    "refined_description":"Unsur yang mengalami oksidasi disebut sebagai agen pereduksi karena ia menyebabkan zat lain tereduksi.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"wrong",
+    "reasoning":"Berdasarkan teks, unsur yang mengalami oksidasi disebut sebagai agen pereduksi, bukan agen pengoksidasi. Agen pengoksidasi adalah unsur yang mengalami reduksi. Oleh karena itu, relasi yang menyatakan bahwa oksidasi menghasilkan agen pengoksidasi adalah salah.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":53,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Oksidasi",
+    "relation":"MENYEBABKAN",
+    "target":"Kenaikan Bilangan Oksidasi",
+    "description":"Proses oksidasi selalu ditandai dengan peningkatan bilangan oksidasi dari spesi yang bereaksi.",
+    "refined_description":"Proses oksidasi selalu ditandai dengan peningkatan bilangan oksidasi dari spesi yang bereaksi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":54,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Reduksi",
+    "relation":"MENGHASILKAN",
+    "target":"Agen Pereduksi",
+    "description":"Unsur yang mengalami reduksi disebut sebagai agen pengoksidasi karena ia menyebabkan zat lain teroksidasi.",
+    "refined_description":"Unsur yang mengalami reduksi disebut sebagai agen pengoksidasi karena ia menyebabkan zat lain teroksidasi.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"wrong",
+    "reasoning":"Berdasarkan konteks pada buku, unsur yang mengalami reduksi disebut sebagai agen pengoksidasi, bukan agen pereduksi. Oleh karena itu, relasi yang menyatakan bahwa reduksi menghasilkan agen pereduksi adalah salah.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":55,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Reduksi",
+    "relation":"MENYEBABKAN",
+    "target":"Penurunan Bilangan Oksidasi",
+    "description":"Proses reduksi selalu ditandai dengan penurunan bilangan oksidasi dari spesi yang bereaksi.",
+    "refined_description":"Proses reduksi selalu ditandai dengan penurunan bilangan oksidasi dari spesi yang bereaksi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":56,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Setengah Reaksi",
+    "relation":"MEMUNGKINKAN",
+    "target":"Penyetaraan Reaksi Redoks",
+    "description":"Penggunaan setengah reaksi adalah metode penting untuk menyetarakan persamaan reaksi redoks secara sistematis.",
+    "refined_description":"Penggunaan setengah reaksi adalah metode penting untuk menyetarakan persamaan reaksi redoks secara sistematis.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":57,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Reaksi Elektrokimia",
+    "relation":"TERDIRI_DARI",
+    "target":"Sel Volta",
+    "description":"Reaksi elektrokimia dapat diklasifikasikan menjadi sel Volta dan sel elektrolisis berdasarkan arah konversi energinya.",
+    "refined_description":"Reaksi elektrokimia dapat diklasifikasikan menjadi sel Volta dan sel elektrolisis berdasarkan arah konversi energinya.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Berdasarkan konteks pada buku, reaksi elektrokimia dibagi menjadi dua jenis utama berdasarkan arah konversi energinya, yaitu sel Volta dan sel elektrolisis. Oleh karena itu, relasi bahwa reaksi elektrokimia terdiri dari sel Volta adalah tepat.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":58,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Reaksi Elektrokimia",
+    "relation":"TERDIRI_DARI",
+    "target":"Sel Elektrolisis",
+    "description":"Reaksi elektrokimia dapat diklasifikasikan menjadi sel Volta dan sel elektrolisis berdasarkan arah konversi energinya.",
+    "refined_description":"Reaksi elektrokimia dapat diklasifikasikan menjadi sel Volta dan sel elektrolisis berdasarkan arah konversi energinya.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Teks secara eksplisit menyebutkan bahwa ada dua jenis reaksi elektrokimia yang akan dibahas, yaitu sel Volta dan sel elektrolisis. Oleh karena itu, menyatakan bahwa reaksi elektrokimia terdiri dari sel elektrolisis adalah benar dan didukung oleh konteks.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":59,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Sel Volta",
+    "relation":"MENGHASILKAN",
+    "target":"Energi Listrik",
+    "description":"Sel Volta dirancang untuk menghasilkan energi listrik dari reaksi kimia spontan yang berlangsung pada elektrodenya.",
+    "refined_description":"Sel Volta dirancang untuk menghasilkan energi listrik dari reaksi kimia spontan yang berlangsung pada elektrodenya.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":60,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Sel Volta",
+    "relation":"MEMILIKI_KOMPONEN",
+    "target":"Jembatan Garam",
+    "description":"Jembatan garam merupakan komponen penting dalam sel Volta yang menjaga keseimbangan muatan ion antar setengah sel.",
+    "refined_description":"Jembatan garam merupakan komponen penting dalam sel Volta yang menjaga keseimbangan muatan ion antar setengah sel.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":61,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Sel Elektrolisis",
+    "relation":"MEMBUTUHKAN",
+    "target":"Sumber Arus Listrik Eksternal",
+    "description":"Sel elektrolisis memerlukan sumber arus listrik eksternal untuk 'memaksa' terjadinya reaksi kimia non-spontan.",
+    "refined_description":"Sel elektrolisis memerlukan sumber arus listrik eksternal untuk 'memaksa' terjadinya reaksi kimia non-spontan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":62,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Sel Elektrolisis",
+    "relation":"APLIKASI",
+    "target":"Pemisahan Unsur",
+    "description":"Elektrolisis banyak digunakan dalam industri manufaktur sebagai metode untuk memisahkan unsur-unsur dari suatu senyawa.",
+    "refined_description":"Elektrolisis banyak digunakan dalam industri manufaktur sebagai metode untuk memisahkan unsur-unsur dari suatu senyawa.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":63,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Elektrode",
+    "relation":"TERDIRI_DARI",
+    "target":"Anode",
+    "description":"Elektrode dibagi menjadi anode, tempat terjadinya reaksi oksidasi, dan katode, tempat terjadinya reaksi reduksi.",
+    "refined_description":"Elektrode dibagi menjadi anode, tempat terjadinya reaksi oksidasi, dan katode, tempat terjadinya reaksi reduksi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":64,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Elektrode",
+    "relation":"TERDIRI_DARI",
+    "target":"Katode",
+    "description":"Elektrode dibagi menjadi anode, tempat terjadinya reaksi oksidasi, dan katode, tempat terjadinya reaksi reduksi.",
+    "refined_description":"Elektrode dibagi menjadi anode, tempat terjadinya reaksi oksidasi, dan katode, tempat terjadinya reaksi reduksi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":65,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Notasi Sel Standar",
+    "relation":"MENGGAMBARKAN",
+    "target":"Rancangan Sel Elektrokimia",
+    "description":"Notasi sel standar berfungsi sebagai cara ringkas untuk menggambarkan konfigurasi dan reaksi yang terjadi dalam sel elektrokimia.",
+    "refined_description":"Notasi sel standar berfungsi sebagai cara ringkas untuk menggambarkan konfigurasi dan reaksi yang terjadi dalam sel elektrokimia.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":66,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Potensial Elektrode",
+    "relation":"BERGANTUNG_PADA",
+    "target":"Kereaktifan Logam",
+    "description":"Nilai potensial elektrode suatu logam secara langsung bergantung pada kecenderungan logam tersebut untuk bereaksi dan melepaskan elektron.",
+    "refined_description":"Nilai potensial elektrode suatu logam secara langsung bergantung pada kecenderungan logam tersebut untuk bereaksi dan melepaskan elektron.",
+    "r1_rating":"correct",
+    "r2_rating":"partial",
+    "final_consensus_label":"correct",
+    "reasoning":"Konteks pada e-book menjelaskan bahwa setiap logam memiliki tingkat kereaktifan yang berbeda, di mana logam yang lebih reaktif (seperti seng dibandingkan tembaga) lebih cenderung melepaskan elektron. Perbedaan kereaktifan ini menghasilkan perbedaan potensial pada elektrode di tiap setengah sel. Hal ini mendukung bahwa potensial elektrode bergantung pada kereaktifan logam.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":67,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Potensial Elektrode Standar",
+    "relation":"BERGANTUNG_PADA",
+    "target":"Elektrode Hidrogen Standar",
+    "description":"Potensial elektrode standar diukur dengan membandingkannya secara relatif terhadap elektrode hidrogen standar yang nilai potensialnya ditetapkan nol.",
+    "refined_description":"Potensial elektrode standar diukur dengan membandingkannya secara relatif terhadap elektrode hidrogen standar yang nilai potensialnya ditetapkan nol.",
+    "r1_rating":"partial",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Konteks secara eksplisit menyatakan bahwa 'nilai potensial elektrode standar ini bukanlah nilai absolut, namun merupakan nilai relatif terhadap elektrode hidrogen standar yang dianggap sama dengan nol.' Relasi BERGANTUNG_PADA dan deskripsi pada triple sudah sangat akurat dan sesuai dengan teks acuan.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":68,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Potensial Elektrode Standar",
+    "relation":"MEMUNGKINKAN",
+    "target":"Perhitungan GGL Sel",
+    "description":"Data potensial elektrode standar digunakan untuk menghitung Gaya Gerak Listrik (GGL) suatu sel elektrokimia.",
+    "refined_description":"Data potensial elektrode standar digunakan untuk menghitung Gaya Gerak Listrik (GGL) suatu sel elektrokimia.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":69,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Elektrode Hidrogen Standar",
+    "relation":"MENDEFINISIKAN",
+    "target":"Titik Acuan",
+    "description":"Elektrode hidrogen standar berfungsi sebagai titik acuan universal untuk menentukan nilai potensial elektrode standar logam lain.",
+    "refined_description":"Elektrode hidrogen standar berfungsi sebagai titik acuan universal untuk menentukan nilai potensial elektrode standar logam lain.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":70,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Gaya Gerak Listrik (GGL) Sel Elektrokimia",
+    "relation":"DIFORMULASIKAN_SEBAGAI",
+    "target":"Selisih Potensial Elektrode",
+    "description":"GGL sel dihitung sebagai selisih potensial elektrode standar antara elektrode di katode dan elektrode di anode.",
+    "refined_description":"GGL sel dihitung sebagai selisih potensial elektrode standar antara elektrode di katode dan elektrode di anode.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":71,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Gaya Gerak Listrik (GGL) Sel Elektrokimia",
+    "relation":"MEMPENGARUHI",
+    "target":"Spontanitas Reaksi Elektrokimia",
+    "description":"Nilai GGL sel yang positif menandakan reaksi elektrokimia berlangsung spontan, sedangkan nilai negatif menunjukkan reaksi tidak spontan.",
+    "refined_description":"Nilai GGL sel yang positif menandakan reaksi elektrokimia berlangsung spontan, sedangkan nilai negatif menunjukkan reaksi tidak spontan.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Teks secara eksplisit menyatakan bahwa potensial sel (GGL sel) digunakan untuk memprediksi apakah reaksi berlangsung spontan atau tidak. Nilai positif berarti reaksi spontan, sedangkan nilai negatif berarti tidak spontan. Oleh karena itu, relasi dan deskripsi sudah sangat tepat.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":72,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Spontanitas Reaksi Elektrokimia",
+    "relation":"DITENTUKAN_OLEH",
+    "target":"Gaya Gerak Listrik (GGL) Sel Elektrokimia",
+    "description":"Reaksi elektrokimia dianggap spontan jika nilai GGL selnya positif, dan tidak spontan jika nilainya negatif.",
+    "refined_description":"Reaksi elektrokimia dianggap spontan jika nilai GGL selnya positif, dan tidak spontan jika nilainya negatif.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":73,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Pelapisan Logam (Electroplating)",
+    "relation":"MENGGUNAKAN",
+    "target":"Arus Listrik",
+    "description":"Pelapisan logam memanfaatkan arus listrik dari luar untuk mengendapkan lapisan logam pada suatu objek.",
+    "refined_description":"Pelapisan logam memanfaatkan arus listrik dari luar untuk mengendapkan lapisan logam pada suatu objek.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":74,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Pelapisan Logam (Electroplating)",
+    "relation":"MEMUNGKINKAN",
+    "target":"Pemurnian Tembaga",
+    "description":"Teknik pelapisan logam digunakan secara efektif untuk memurnikan tembaga dari campuran logam lainnya, yang penting untuk industri kelistrikan.",
+    "refined_description":"Teknik pelapisan logam digunakan secara efektif untuk memurnikan tembaga dari campuran logam lainnya, yang penting untuk industri kelistrikan.",
+    "r1_rating":"wrong",
+    "r2_rating":"wrong",
+    "final_consensus_label":"wrong",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":75,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Baterai Litium-ion",
+    "relation":"MENGGUNAKAN",
+    "target":"Interkalasi",
+    "description":"Baterai Litium-ion memanfaatkan proses interkalasi ion litium pada material anode dan katode selama pemakaian dan pengisian daya.",
+    "refined_description":"Baterai Litium-ion memanfaatkan proses interkalasi ion litium pada material anode dan katode selama pemakaian dan pengisian daya.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":76,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Baterai Litium-ion",
+    "relation":"APLIKASI_PADA",
+    "target":"Mobil Listrik",
+    "description":"Baterai Litium-ion adalah komponen paling penting pada mobil listrik, menyediakan daya yang dapat diisi ulang untuk operasional kendaraan.",
+    "refined_description":"Baterai Litium-ion adalah komponen paling penting pada mobil listrik, menyediakan daya yang dapat diisi ulang untuk operasional kendaraan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":77,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"Interkalasi",
+    "relation":"TERJADI_PADA",
+    "target":"Anode Baterai Litium-ion",
+    "description":"Dalam baterai Li-ion, interkalasi terjadi ketika ion litium disisipkan pada karbon sebagai LiC6 di anode.",
+    "refined_description":"Dalam baterai Li-ion, interkalasi terjadi ketika ion litium disisipkan pada karbon sebagai LiC6 di anode.",
+    "r1_rating":"partial",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Deskripsi sudah tepat dan secara akurat menjelaskan relasi antara subjek dan target berdasarkan teks. Teks menyebutkan bahwa litium mengalami interkalasi pada karbon sebagai senyawa LiC6 di anode.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":78,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Senyawa Organik",
+    "relation":"TERDIRI_DARI",
+    "target":"Rantai Karbon",
+    "description":"Senyawa organik memiliki kerangka utama berupa rantai atom karbon yang saling terikat.",
+    "refined_description":"Senyawa organik memiliki kerangka utama berupa rantai atom karbon yang saling terikat.",
+    "r1_rating":"missing",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Konteks buku pada halaman 141 menyebutkan salah satu sifat senyawa organik pada pilihan soal, yaitu 'Memiliki rantai utama terdiri atas atom karbon'. Oleh karena itu, relasi dan deskripsi yang menyatakan bahwa senyawa organik terdiri dari rantai karbon sudah sangat tepat dan didukung oleh teks.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":79,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Senyawa Organik",
+    "relation":"TERDIRI_DARI",
+    "target":"Atom Hidrogen",
+    "description":"Atom hidrogen adalah salah satu penyusun utama senyawa organik selain karbon.",
+    "refined_description":"Atom hidrogen adalah salah satu penyusun utama senyawa organik selain karbon.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":80,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Senyawa Organik",
+    "relation":"TERDIRI_DARI",
+    "target":"Atom Elektronegatif",
+    "description":"Senyawa organik seringkali mengandung atom elektronegatif seperti oksigen, nitrogen, belerang, fosfor, halogen, bahkan logam.",
+    "refined_description":"Senyawa organik seringkali mengandung atom elektronegatif seperti oksigen, nitrogen, belerang, fosfor, halogen, bahkan logam.",
+    "r1_rating":"correct",
+    "r2_rating":"partial",
+    "final_consensus_label":"partial",
+    "reasoning":"Beberapa kelompok senyawa organik mengandung atom elektronegatif seperti oksigen, nitrogen, belerang, fosfor, halogen, bahkan logam yang umumnya terikat langsung pada atom karbon.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":81,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Hidrokarbon",
+    "relation":"BAGIAN_DARI",
+    "target":"Senyawa Organik",
+    "description":"Hidrokarbon merupakan golongan senyawa organik paling sederhana.",
+    "refined_description":"Hidrokarbon merupakan golongan senyawa organik paling sederhana.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":82,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Hidrokarbon",
+    "relation":"TERDIRI_DARI",
+    "target":"Atom Hidrogen",
+    "description":"Hidrokarbon secara spesifik hanya mengandung atom hidrogen.",
+    "refined_description":"Hidrokarbon secara spesifik hanya mengandung atom hidrogen.",
+    "r1_rating":"partial",
+    "r2_rating":"wrong",
+    "final_consensus_label":"partial",
+    "reasoning":"Hidrokarbon merupakan senyawa karbon paling sederhana yang tersusun dari atom hidrogen dan atom karbon.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":83,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Hidrokarbon",
+    "relation":"TERDIRI_DARI",
+    "target":"Atom Karbon",
+    "description":"Hidrokarbon secara spesifik hanya mengandung atom karbon.",
+    "refined_description":"Hidrokarbon secara spesifik hanya mengandung atom karbon.",
+    "r1_rating":"partial",
+    "r2_rating":"wrong",
+    "final_consensus_label":"partial",
+    "reasoning":"Hidrokarbon merupakan senyawa karbon paling sederhana yang tersusun dari atom hidrogen dan atom karbon.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":84,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Gugus Fungsi",
+    "relation":"MEMPENGARUHI",
+    "target":"Sifat Fisika Senyawa Organik",
+    "description":"Gugus fungsi meningkatkan interaksi antarmolekul seperti ikatan hidrogen atau dipol-dipol, yang mempengaruhi sifat fisika seperti titik didih.",
+    "refined_description":"Gugus fungsi meningkatkan interaksi antarmolekul seperti ikatan hidrogen atau dipol-dipol, yang mempengaruhi sifat fisika seperti titik didih.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":85,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Gugus Fungsi",
+    "relation":"MEMPENGARUHI",
+    "target":"Kereaktifan Senyawa Organik",
+    "description":"Gugus fungsi adalah pusat reaktif dalam senyawa organik yang menentukan jenis dan cara suatu senyawa bereaksi.",
+    "refined_description":"Gugus fungsi adalah pusat reaktif dalam senyawa organik yang menentukan jenis dan cara suatu senyawa bereaksi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":86,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Pengaruh Gugus Fungsi pada Sifat Fisika",
+    "relation":"MENYEBABKAN",
+    "target":"Peningkatan Titik Didih",
+    "description":"Interaksi antarmolekul yang kuat akibat gugus fungsi memerlukan energi lebih besar untuk diputuskan, sehingga meningkatkan titik didih.",
+    "refined_description":"Interaksi antarmolekul yang kuat akibat gugus fungsi memerlukan energi lebih besar untuk diputuskan, sehingga meningkatkan titik didih.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":87,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Pengaruh Gugus Fungsi pada Sifat Fisika",
+    "relation":"MELIBATKAN",
+    "target":"Ikatan Hidrogen",
+    "description":"Beberapa gugus fungsi seperti alkohol dan asam karboksilat dapat membentuk ikatan hidrogen antarmolekul.",
+    "refined_description":"Beberapa gugus fungsi seperti alkohol dan asam karboksilat dapat membentuk ikatan hidrogen antarmolekul.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":88,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Isomer",
+    "relation":"MEMPENGARUHI",
+    "target":"Kereaktifan Senyawa Organik",
+    "description":"Perbedaan penataan atom dalam isomer dapat mengakibatkan perbedaan gugus fungsi dan lokasi gugus fungsi, sehingga mempengaruhi kereaktifan senyawa.",
+    "refined_description":"Perbedaan penataan atom dalam isomer dapat mengakibatkan perbedaan gugus fungsi dan lokasi gugus fungsi, sehingga mempengaruhi kereaktifan senyawa.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":89,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Identifikasi Gugus Fungsi",
+    "relation":"MEMUNGKINKAN",
+    "target":"Penentuan Struktur Molekul Organik",
+    "description":"Reaksi spesifik pada gugus fungsi memberikan informasi penting untuk identifikasi dan penentuan struktur senyawa organik.",
+    "refined_description":"Reaksi spesifik pada gugus fungsi memberikan informasi penting untuk identifikasi dan penentuan struktur senyawa organik.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":90,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Tata Nama IUPAC Senyawa Organik",
+    "relation":"DIATUR_OLEH",
+    "target":"IUPAC",
+    "description":"IUPAC adalah organisasi yang menetapkan aturan baku untuk penamaan senyawa kimia.",
+    "refined_description":"IUPAC adalah organisasi yang menetapkan aturan baku untuk penamaan senyawa kimia.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":91,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Tata Nama IUPAC Senyawa Organik",
+    "relation":"BERGANTUNG_PADA",
+    "target":"Prioritas Gugus Fungsi",
+    "description":"Dalam penamaan senyawa organik, gugus fungsi dengan prioritas lebih tinggi menentukan rantai utama dan akhiran nama senyawa.",
+    "refined_description":"Dalam penamaan senyawa organik, gugus fungsi dengan prioritas lebih tinggi menentukan rantai utama dan akhiran nama senyawa.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":92,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Prioritas Gugus Fungsi dalam Penamaan",
+    "relation":"MENGATUR",
+    "target":"Penentuan Rantai Utama",
+    "description":"Gugus fungsi dengan prioritas tertinggi akan menjadi bagian dari rantai utama dan memberikan akhiran pada nama senyawa.",
+    "refined_description":"Gugus fungsi dengan prioritas tertinggi akan menjadi bagian dari rantai utama dan memberikan akhiran pada nama senyawa.",
+    "r1_rating":"correct",
+    "r2_rating":"missing",
+    "final_consensus_label":"correct",
+    "reasoning":"Konteks memvalidasi bahwa dalam tata nama senyawa dengan lebih dari satu gugus fungsi, gugus dengan prioritas tertinggi akan menentukan rantai utama, mendapatkan penomoran prioritas (sekecil mungkin), dan memberikan akhiran nama senyawa (seperti -on pada keton atau alkil -oat pada ester). Deskripsi yang diberikan sudah tepat dan sesuai dengan contoh pada konteks.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":93,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Prioritas Gugus Fungsi dalam Penamaan",
+    "relation":"MENGATUR",
+    "target":"Penentuan Posisi Cabang",
+    "description":"Gugus fungsi dengan prioritas lebih rendah akan bertindak sebagai cabang dan diberi awalan dalam nama senyawa.",
+    "refined_description":"Gugus fungsi dengan prioritas lebih rendah akan bertindak sebagai cabang dan diberi awalan dalam nama senyawa.",
+    "r1_rating":"correct",
+    "r2_rating":"partial",
+    "final_consensus_label":"partial",
+    "reasoning":"Prioritas gugus fungsi mengatur gugus mana yang bertindak sebagai rantai utama dan mana yang menjadi cabang, bukan mengatur posisi cabangnya. Gugus fungsi dengan prioritas lebih rendah akan bertindak sebagai cabang dan dituliskan dengan awalan dalam nama senyawa.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":94,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Reaksi Substitusi",
+    "relation":"MENGHASILKAN",
+    "target":"Senyawa Organik Baru",
+    "description":"Reaksi substitusi memungkinkan sintesis senyawa organik baru dengan gugus fungsional yang berbeda.",
+    "refined_description":"Reaksi substitusi memungkinkan sintesis senyawa organik baru dengan gugus fungsional yang berbeda.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":95,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Reaksi Substitusi",
+    "relation":"BEREAKSI_DENGAN",
+    "target":"Alkil Halida",
+    "description":"Alkil halida sering mengalami reaksi substitusi di mana gugus halida digantikan oleh gugus lain.",
+    "refined_description":"Alkil halida sering mengalami reaksi substitusi di mana gugus halida digantikan oleh gugus lain.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"wrong",
+    "reasoning":"Relasi BEREAKSI_DENGAN kurang tepat digunakan karena 'Reaksi Substitusi' merupakan jenis\/nama reaksi, bukan zat kimia atau pereaksi. Alkil halida mengalami reaksi substitusi, bukan bereaksi dengan reaksi substitusi.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":96,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Reaksi Eliminasi",
+    "relation":"MENGHASILKAN",
+    "target":"Ikatan Rangkap",
+    "description":"Produk utama dari reaksi eliminasi adalah senyawa organik yang memiliki ikatan rangkap.",
+    "refined_description":"Produk utama dari reaksi eliminasi adalah senyawa organik yang memiliki ikatan rangkap.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":97,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Reaksi Eliminasi",
+    "relation":"MENGIKUTI",
+    "target":"Aturan Zaytsev",
+    "description":"Reaksi eliminasi sering menghasilkan alkena yang lebih tersubstitusi sesuai dengan aturan Zaytsev.",
+    "refined_description":"Reaksi eliminasi sering menghasilkan alkena yang lebih tersubstitusi sesuai dengan aturan Zaytsev.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":98,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Reaksi Adisi",
+    "relation":"MENGUBAH",
+    "target":"Ikatan Rangkap",
+    "description":"Reaksi adisi menjenuhkan ikatan rangkap menjadi ikatan tunggal.",
+    "refined_description":"Reaksi adisi menjenuhkan ikatan rangkap menjadi ikatan tunggal.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":99,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Reaksi Adisi",
+    "relation":"BEREAKSI_DENGAN",
+    "target":"Alkena",
+    "description":"Alkena merupakan salah satu jenis senyawa yang sering mengalami reaksi adisi pada ikatan rangkap karbon-karbonnya.",
+    "refined_description":"Alkena merupakan salah satu jenis senyawa yang sering mengalami reaksi adisi pada ikatan rangkap karbon-karbonnya.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"wrong",
+    "reasoning":"Relasi 'BEREAKSI_DENGAN' tidak tepat digunakan antara 'Reaksi Adisi' dan 'Alkena'. Sebuah jenis reaksi tidak 'bereaksi dengan' suatu senyawa, melainkan senyawa tersebut yang 'mengalami' jenis reaksi tersebut (misalnya, Alkena MENGALAMI Reaksi Adisi).",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":100,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Reaksi Oksidasi Senyawa Organik",
+    "relation":"MENGHASILKAN",
+    "target":"Gugus Fungsi dengan Tingkat Oksidasi Lebih Tinggi",
+    "description":"Oksidasi mengubah gugus fungsi menjadi bentuk yang lebih teroksidasi.",
+    "refined_description":"Oksidasi mengubah gugus fungsi menjadi bentuk yang lebih teroksidasi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":101,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Reaksi Oksidasi Senyawa Organik",
+    "relation":"DIKATALISIS_OLEH",
+    "target":"Piridinium Klorokromat (PCC)",
+    "description":"PCC adalah agen pengoksidasi ringan yang digunakan untuk mengoksidasi alkohol primer menjadi aldehida.",
+    "refined_description":"PCC adalah agen pengoksidasi ringan yang digunakan untuk mengoksidasi alkohol primer menjadi aldehida.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"wrong",
+    "reasoning":"PCC (Piridinium Klorokromat) bertindak sebagai agen atau reagen pengoksidasi (oksidator) dalam reaksi oksidasi senyawa organik seperti alkohol primer menjadi aldehida. PCC ikut bereaksi secara kimia dan mengalami reduksi sehingga bukan merupakan sebuah katalis. Oleh karena itu, relasi DIKATALISIS_OLEH tidak tepat.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":102,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Reaksi Reduksi Senyawa Organik",
+    "relation":"MENGHASILKAN",
+    "target":"Gugus Fungsi dengan Tingkat Oksidasi Lebih Rendah",
+    "description":"Reduksi mengubah gugus fungsi menjadi bentuk yang lebih tereduksi.",
+    "refined_description":"Reduksi mengubah gugus fungsi menjadi bentuk yang lebih tereduksi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":103,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Reaksi Reduksi Senyawa Organik",
+    "relation":"DIKATALISIS_OLEH",
+    "target":"Litium Alumunium Hidrida (LiAlH4)",
+    "description":"LiAlH4 adalah agen pereduksi kuat yang digunakan untuk mereduksi aldehida dan keton menjadi alkohol.",
+    "refined_description":"LiAlH4 adalah agen pereduksi kuat yang digunakan untuk mereduksi aldehida dan keton menjadi alkohol.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"wrong",
+    "reasoning":"LiAlH4 bertindak sebagai agen pereduksi (reduktor) atau reagen dalam reaksi reduksi aldehida dan keton, bukan sebagai katalis. Reduktor ikut bereaksi secara stoikiometris dan dikonsumsi dalam reaksi, berbeda dengan katalis yang tidak habis bereaksi. Oleh karena itu, relasi DIKATALISIS_OLEH tidak tepat.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":104,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Reaksi Esterifikasi",
+    "relation":"MENGHASILKAN",
+    "target":"Ester",
+    "description":"Esterifikasi adalah metode utama untuk mensintesis senyawa ester.",
+    "refined_description":"Esterifikasi adalah metode utama untuk mensintesis senyawa ester.",
+    "r1_rating":"correct",
+    "r2_rating":"partial",
+    "final_consensus_label":"partial",
+    "reasoning":"Reaksi esterifikasi adalah reaksi pembentukan senyawa ester melalui reaksi antara asam karboksilat dan alkohol dengan menggunakan katalis asam.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":105,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Reaksi Esterifikasi",
+    "relation":"BEREAKSI_DENGAN",
+    "target":"Asam Karboksilat",
+    "description":"Asam karboksilat merupakan salah satu pereaksi penting dalam reaksi esterifikasi.",
+    "refined_description":"Asam karboksilat merupakan salah satu pereaksi penting dalam reaksi esterifikasi.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"wrong",
+    "reasoning":"Relasi 'BEREAKSI_DENGAN' kurang tepat karena menghubungkan entitas proses atau jenis reaksi (Reaksi Esterifikasi) dengan entitas zat (Asam Karboksilat). Sebuah reaksi tidak 'bereaksi dengan' suatu zat, melainkan 'melibatkan' zat tersebut sebagai reaktan atau produk. Asam karboksilat bereaksi dengan alkohol di dalam reaksi esterifikasi.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":106,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Reaksi Saponifikasi (Penyabunan)",
+    "relation":"MENGHASILKAN",
+    "target":"Sabun",
+    "description":"Reaksi saponifikasi secara industri digunakan untuk memproduksi sabun.",
+    "refined_description":"Reaksi saponifikasi secara industri digunakan untuk memproduksi sabun.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":107,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Reaksi Saponifikasi (Penyabunan)",
+    "relation":"MENGHASILKAN",
+    "target":"Gliserol",
+    "description":"Gliserol adalah produk samping yang berharga dari reaksi saponifikasi.",
+    "refined_description":"Gliserol adalah produk samping yang berharga dari reaksi saponifikasi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":108,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Metanol",
+    "relation":"DIGUNAKAN_SEBAGAI",
+    "target":"Pelarut Industri",
+    "description":"Metanol banyak dimanfaatkan sebagai pelarut dalam berbagai proses industri.",
+    "refined_description":"Metanol banyak dimanfaatkan sebagai pelarut dalam berbagai proses industri.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":109,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Metanol",
+    "relation":"DIPRODUKSI_DARI",
+    "target":"Syn Gas",
+    "description":"Metanol komersial dihasilkan dari reaksi antara karbon monoksida dan gas hidrogen.",
+    "refined_description":"Metanol komersial dihasilkan dari reaksi antara karbon monoksida dan gas hidrogen.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":110,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Etanol",
+    "relation":"DIPRODUKSI_MELALUI",
+    "target":"Fermentasi Karbohidrat",
+    "description":"Bakteri memfermentasi karbohidrat untuk menghasilkan etanol.",
+    "refined_description":"Bakteri memfermentasi karbohidrat untuk menghasilkan etanol.",
+    "r1_rating":"correct",
+    "r2_rating":"wrong",
+    "final_consensus_label":"correct",
+    "reasoning":"Teks dalam buku secara eksplisit menyatakan bahwa 'Etanol diperoleh dari hasil fermentasi karbohidrat oleh bakteri.' Oleh karena itu, relasi dan deskripsi pada triple ini sudah sepenuhnya tepat.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":111,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Etanol",
+    "relation":"DIGUNAKAN_SEBAGAI",
+    "target":"Aditif Bahan Bakar",
+    "description":"Etanol ditambahkan ke bahan bakar kendaraan sebagai aditif.",
+    "refined_description":"Etanol ditambahkan ke bahan bakar kendaraan sebagai aditif.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":112,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Fenol",
+    "relation":"DIGUNAKAN_SEBAGAI",
+    "target":"Antiseptik",
+    "description":"Fenol memiliki kemampuan membunuh bakteri sehingga dimanfaatkan sebagai antiseptik.",
+    "refined_description":"Fenol memiliki kemampuan membunuh bakteri sehingga dimanfaatkan sebagai antiseptik.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":113,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Fenol",
+    "relation":"DIGUNAKAN_SEBAGAI",
+    "target":"Bahan Baku Industri",
+    "description":"Fenol adalah bahan baku kunci dalam pembuatan berbagai produk seperti plastik dan obat-obatan.",
+    "refined_description":"Fenol adalah bahan baku kunci dalam pembuatan berbagai produk seperti plastik dan obat-obatan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":114,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Gliserol",
+    "relation":"PRODUK_SAMPING_DARI",
+    "target":"Reaksi Saponifikasi (Penyabunan)",
+    "description":"Gliserol dihasilkan bersamaan dengan sabun dalam reaksi hidrolisis ester berantai panjang.",
+    "refined_description":"Gliserol dihasilkan bersamaan dengan sabun dalam reaksi hidrolisis ester berantai panjang.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":115,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Gliserol",
+    "relation":"DIGUNAKAN_SEBAGAI",
+    "target":"Agen Pelembab Kosmetik",
+    "description":"Gliserol ditambahkan ke produk kosmetik karena sifatnya sebagai humektan.",
+    "refined_description":"Gliserol ditambahkan ke produk kosmetik karena sifatnya sebagai humektan.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":116,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Formaldehida",
+    "relation":"DIGUNAKAN_SEBAGAI",
+    "target":"Desinfektan",
+    "description":"Formaldehida efektif membunuh mikroorganisme penyebab infeksi.",
+    "refined_description":"Formaldehida efektif membunuh mikroorganisme penyebab infeksi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":117,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Formaldehida",
+    "relation":"DIGUNAKAN_SEBAGAI",
+    "target":"Bahan Baku Resin dan Plastik",
+    "description":"Formaldehida adalah komponen penting dalam sintesis berbagai resin dan plastik.",
+    "refined_description":"Formaldehida adalah komponen penting dalam sintesis berbagai resin dan plastik.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":118,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Aseton",
+    "relation":"DIGUNAKAN_SEBAGAI",
+    "target":"Pelarut Industri",
+    "description":"Aseton adalah pelarut serbaguna yang banyak dipakai dalam pembuatan berbagai produk.",
+    "refined_description":"Aseton adalah pelarut serbaguna yang banyak dipakai dalam pembuatan berbagai produk.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":119,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Manfaat Ester",
+    "relation":"DIGUNAKAN_SEBAGAI",
+    "target":"Aditif Makanan",
+    "description":"Ester sering ditambahkan pada makanan untuk memberikan aroma buah yang spesifik.",
+    "refined_description":"Ester sering ditambahkan pada makanan untuk memberikan aroma buah yang spesifik.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Berdasarkan konteks (mind map), 'Aditif Makanan' merupakan salah satu manfaat dari senyawa organik, yang di dalamnya termasuk senyawa dengan gugus fungsi ester. Dalam materi kimia SMA, ester secara spesifik dikenal luas manfaatnya sebagai perisa atau esens buatan yang memberikan aroma buah-buahan spesifik pada makanan. Oleh karena itu, relasi dan deskripsinya tepat.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":120,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"Manfaat Ester",
+    "relation":"DIGUNAKAN_SEBAGAI",
+    "target":"Parfum",
+    "description":"Sifat volatil dan aroma khas ester membuatnya cocok digunakan dalam formulasi parfum.",
+    "refined_description":"Sifat volatil dan aroma khas ester membuatnya cocok digunakan dalam formulasi parfum.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Penggunaan ester sebagai parfum atau pewangi adalah fakta dasar dalam kimia organik tingkat SMA karena ester dikenal memiliki aroma khas (seperti buah-buahan) dan bersifat volatil. Meskipun teks konteks (halaman 110) yang berupa peta konsep hanya menyebutkan secara umum 'Kosmetika' dan 'Aditif Makanan', penggunaan ester sebagai parfum sangat relevan dengan materi ini.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":121,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Polimer",
+    "relation":"TERDIRI_DARI",
+    "target":"Monomer",
+    "description":"Polimer tersusun dari molekul-molekul kecil yang disebut monomer sebagai unit-unit penyusunnya.",
+    "refined_description":"Polimer tersusun dari molekul-molekul kecil yang disebut monomer sebagai unit-unit penyusunnya.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":122,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Polimer",
+    "relation":"TERDIRI_DARI",
+    "target":"Unit Ulang Monomer",
+    "description":"Polimer terbentuk dari unit-unit ulang monomer yang berikatan membentuk rantai panjang.",
+    "refined_description":"Polimer terbentuk dari unit-unit ulang monomer yang berikatan membentuk rantai panjang.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":123,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Monomer",
+    "relation":"MEMBENTUK",
+    "target":"Polimer",
+    "description":"Monomer adalah unit dasar yang berulang untuk membentuk rantai panjang polimer.",
+    "refined_description":"Monomer adalah unit dasar yang berulang untuk membentuk rantai panjang polimer.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":124,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Unit Ulang Monomer",
+    "relation":"BAGIAN_DARI",
+    "target":"Polimer",
+    "description":"Unit ulang monomer merupakan segmen yang berulang ribuan kali dalam struktur polimer.",
+    "refined_description":"Unit ulang monomer merupakan segmen yang berulang ribuan kali dalam struktur polimer.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":125,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Penamaan Polimer",
+    "relation":"BERIKUT_ATURAN",
+    "target":"IUPAC",
+    "description":"Penamaan polimer seringkali mengikuti aturan IUPAC atau menggunakan nama trivial\/dagang.",
+    "refined_description":"Penamaan polimer seringkali mengikuti aturan IUPAC atau menggunakan nama trivial\/dagang.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":126,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Reaksi Polimerisasi",
+    "relation":"MENGHASILKAN",
+    "target":"Polimer",
+    "description":"Reaksi polimerisasi adalah proses kimia yang mengubah monomer menjadi polimer.",
+    "refined_description":"Reaksi polimerisasi adalah proses kimia yang mengubah monomer menjadi polimer.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":127,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Polimerisasi Adisi",
+    "relation":"TERDIRI_DARI",
+    "target":"Mekanisme Polimerisasi Adisi",
+    "description":"Polimerisasi adisi melibatkan tiga tahapan reaksi untuk pembentukan polimer.",
+    "refined_description":"Polimerisasi adisi melibatkan tiga tahapan reaksi untuk pembentukan polimer.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":128,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Mekanisme Polimerisasi Adisi",
+    "relation":"MENYEBABKAN",
+    "target":"Polimerisasi Adisi",
+    "description":"Tahapan inisiasi, propagasi, dan terminasi secara berurutan menjalankan proses polimerisasi adisi.",
+    "refined_description":"Tahapan inisiasi, propagasi, dan terminasi secara berurutan menjalankan proses polimerisasi adisi.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"wrong",
+    "reasoning":"Tahapan inisiasi, propagasi, dan terminasi bukanlah penyebab (yang merepresentasikan relasi MENYEBABKAN) dari polimerisasi adisi, melainkan merupakan tahapan-tahapan yang menyusun proses polimerisasi adisi itu sendiri. Relasi yang lebih tepat adalah TERDIRI_DARI (jika dari arah proses ke tahapan) atau MERUPAKAN_BAGIAN_DARI (jika dari tahapan ke proses).",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":129,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Polimerisasi Kondensasi",
+    "relation":"MENGHASILKAN",
+    "target":"Poliester",
+    "description":"Polimerisasi kondensasi adalah mekanisme pembentukan poliester melalui pelepasan molekul sederhana.",
+    "refined_description":"Polimerisasi kondensasi adalah mekanisme pembentukan poliester melalui pelepasan molekul sederhana.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":130,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Polimer Organik",
+    "relation":"TERDIRI_DARI",
+    "target":"Polimer Sintetik",
+    "description":"Polimer organik dapat berupa polimer sintetik yang dibuat oleh manusia.",
+    "refined_description":"Polimer organik dapat berupa polimer sintetik yang dibuat oleh manusia.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":131,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Polimer Sintetik",
+    "relation":"MENGHASILKAN",
+    "target":"Plastik",
+    "description":"Plastik adalah contoh umum dari polimer sintetik yang banyak digunakan dalam kehidupan sehari-hari.",
+    "refined_description":"Plastik adalah contoh umum dari polimer sintetik yang banyak digunakan dalam kehidupan sehari-hari.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":132,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Polimer Semi-sintetik",
+    "relation":"BERASAL_DARI",
+    "target":"Polimer Alam",
+    "description":"Polimer semi-sintetik dikembangkan dari polimer alam melalui modifikasi kimia.",
+    "refined_description":"Polimer semi-sintetik dikembangkan dari polimer alam melalui modifikasi kimia.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":133,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Polimer Alam (Biopolimer)",
+    "relation":"TERDIRI_DARI",
+    "target":"Karbohidrat (Sakarida)",
+    "description":"Karbohidrat merupakan salah satu jenis utama biopolimer yang ditemukan di alam.",
+    "refined_description":"Karbohidrat merupakan salah satu jenis utama biopolimer yang ditemukan di alam.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":134,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Polimer Alam (Biopolimer)",
+    "relation":"TERDIRI_DARI",
+    "target":"Protein",
+    "description":"Protein adalah biopolimer yang memiliki fungsi biologis vital dalam organisme.",
+    "refined_description":"Protein adalah biopolimer yang memiliki fungsi biologis vital dalam organisme.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":135,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Struktur Polimer",
+    "relation":"MEMPENGARUHI",
+    "target":"Gaya Antarmolekul Polimer",
+    "description":"Struktur rantai polimer memengaruhi seberapa kuat gaya tarik-menarik antar rantai polimer.",
+    "refined_description":"Struktur rantai polimer memengaruhi seberapa kuat gaya tarik-menarik antar rantai polimer.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":136,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Gaya Antarmolekul Polimer",
+    "relation":"MENYEBABKAN",
+    "target":"Polimer Termoplastik",
+    "description":"Gaya antarmolekul yang lemah pada polimer menyebabkan sifat termoplastik yang mudah meleleh.",
+    "refined_description":"Gaya antarmolekul yang lemah pada polimer menyebabkan sifat termoplastik yang mudah meleleh.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Teks secara eksplisit menjelaskan bahwa gaya antarmolekul berperan penting dalam menentukan sifat polimer, termasuk respons terhadap pemanasan. Polimer termoplastik disebutkan memiliki gaya antarmolekul yang lemah, yang menyebabkannya dapat meleleh dan dibentuk ulang saat dipanaskan. Oleh karena itu, relasi MENYEBABKAN antara gaya antarmolekul (yang lemah) dengan sifat polimer termoplastik adalah benar sesuai dengan konteks.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":137,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Gaya Antarmolekul Polimer",
+    "relation":"MENYEBABKAN",
+    "target":"Polimer Termoset",
+    "description":"Ikatan kovalen antar rantai yang kuat pada polimer berikatan silang menghasilkan sifat termoset yang kaku.",
+    "refined_description":"Ikatan kovalen antar rantai yang kuat pada polimer berikatan silang menghasilkan sifat termoset yang kaku.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"unknown",
+    "reasoning":"",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":138,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Polimer Termoplastik",
+    "relation":"MEMILIKI_SIFAT",
+    "target":"Daur Ulang",
+    "description":"Sifat termoplastik memungkinkan polimer untuk didaur ulang karena dapat dilelehkan dan dibentuk kembali.",
+    "refined_description":"Sifat termoplastik memungkinkan polimer untuk didaur ulang karena dapat dilelehkan dan dibentuk kembali.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":139,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Polimer Termoset",
+    "relation":"TIDAK_MEMUNGKINKAN",
+    "target":"Daur Ulang",
+    "description":"Sifat termoset yang tidak dapat dilelehkan atau dibentuk ulang menyebabkannya tidak dapat didaur ulang.",
+    "refined_description":"Sifat termoset yang tidak dapat dilelehkan atau dibentuk ulang menyebabkannya tidak dapat didaur ulang.",
+    "r1_rating":"correct",
+    "r2_rating":"partial",
+    "final_consensus_label":"unknown",
+    "reasoning":"",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":140,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Plastik",
+    "relation":"DAPAT_MENGANDUNG",
+    "target":"Aditif",
+    "description":"Plastik dapat ditambahkan aditif untuk meningkatkan performa atau karakteristik tertentu.",
+    "refined_description":"Plastik dapat ditambahkan aditif untuk meningkatkan performa atau karakteristik tertentu.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":141,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Plastik",
+    "relation":"MENYEBABKAN",
+    "target":"Limbah Plastik",
+    "description":"Sifat plastik yang tidak mudah terdegradasi menyebabkan penumpukan limbah plastik sebagai masalah lingkungan.",
+    "refined_description":"Sifat plastik yang tidak mudah terdegradasi menyebabkan penumpukan limbah plastik sebagai masalah lingkungan.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"unknown",
+    "reasoning":"",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":142,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Aditif",
+    "relation":"MEMPENGARUHI",
+    "target":"Karakteristik Plastik",
+    "description":"Penambahan aditif dapat mengubah karakteristik plastik, misalnya menjadikannya lebih fleksibel.",
+    "refined_description":"Penambahan aditif dapat mengubah karakteristik plastik, misalnya menjadikannya lebih fleksibel.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":143,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Kopolimer",
+    "relation":"TERDIRI_DARI",
+    "target":"Monomer",
+    "description":"Kopolimer terbentuk dari kombinasi dua atau lebih jenis monomer yang berbeda.",
+    "refined_description":"Kopolimer terbentuk dari kombinasi dua atau lebih jenis monomer yang berbeda.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":144,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Degradasi Plastik",
+    "relation":"TERDIRI_DARI",
+    "target":"Biodegradable Plastic",
+    "description":"Degradasi plastik dapat terjadi melalui jalur biologis oleh mikroorganisme.",
+    "refined_description":"Degradasi plastik dapat terjadi melalui jalur biologis oleh mikroorganisme.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"unknown",
+    "reasoning":"",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":145,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Degradasi Plastik",
+    "relation":"TERDIRI_DARI",
+    "target":"Photodegradable Plastic",
+    "description":"Degradasi plastik dapat dipicu oleh paparan cahaya dengan panjang gelombang tertentu.",
+    "refined_description":"Degradasi plastik dapat dipicu oleh paparan cahaya dengan panjang gelombang tertentu.",
+    "r1_rating":"wrong",
+    "r2_rating":"correct",
+    "final_consensus_label":"unknown",
+    "reasoning":"",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":146,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Biodegradable Plastic",
+    "relation":"DIURAIKAN_OLEH",
+    "target":"Mikroorganisme",
+    "description":"Biodegradable plastic dapat diuraikan oleh mikroorganisme menjadi karbondioksida, air, dan biomassa.",
+    "refined_description":"Biodegradable plastic dapat diuraikan oleh mikroorganisme menjadi karbondioksida, air, dan biomassa.",
+    "r1_rating":"missing",
+    "r2_rating":"correct",
+    "final_consensus_label":"unknown",
+    "reasoning":"",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":147,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Photodegradable Plastic",
+    "relation":"MEMILIKI_KOMPONEN",
+    "target":"Kromofor",
+    "description":"Kromofor pada rantai polimer photodegradable plastic memungkinkan penyerapan cahaya dan perubahan struktur yang memicu penguraian.",
+    "refined_description":"Kromofor pada rantai polimer photodegradable plastic memungkinkan penyerapan cahaya dan perubahan struktur yang memicu penguraian.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":148,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Polimer Alam",
+    "relation":"TERDIRI_DARI",
+    "target":"Selulosa",
+    "description":"Selulosa adalah salah satu polimer alam yang paling berlimpah dan memiliki peran struktural.",
+    "refined_description":"Selulosa adalah salah satu polimer alam yang paling berlimpah dan memiliki peran struktural.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":149,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Polimer Alam",
+    "relation":"TERDIRI_DARI",
+    "target":"Biopolimer Organik",
+    "description":"Biopolimer organik merupakan subkelompok penting dari polimer alam yang ditemukan pada organisme hidup.",
+    "refined_description":"Biopolimer organik merupakan subkelompok penting dari polimer alam yang ditemukan pada organisme hidup.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":150,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Selulosa",
+    "relation":"TERDIRI_DARI",
+    "target":"Glukosa",
+    "description":"Selulosa adalah polisakarida yang tersusun dari unit-unit monomer glukosa.",
+    "refined_description":"Selulosa adalah polisakarida yang tersusun dari unit-unit monomer glukosa.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":151,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Karbohidrat (Sakarida)",
+    "relation":"TERDIRI_DARI",
+    "target":"Monosakarida",
+    "description":"Karbohidrat diklasifikasikan menjadi monosakarida sebagai unit terkecilnya.",
+    "refined_description":"Karbohidrat diklasifikasikan menjadi monosakarida sebagai unit terkecilnya.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":152,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Karbohidrat (Sakarida)",
+    "relation":"TERDIRI_DARI",
+    "target":"Disakarida",
+    "description":"Karbohidrat dapat berupa disakarida yang terdiri dari dua unit sakarida.",
+    "refined_description":"Karbohidrat dapat berupa disakarida yang terdiri dari dua unit sakarida.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":153,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Karbohidrat (Sakarida)",
+    "relation":"TERDIRI_DARI",
+    "target":"Polisakarida",
+    "description":"Karbohidrat kompleks seperti pati dan selulosa termasuk dalam golongan polisakarida.",
+    "refined_description":"Karbohidrat kompleks seperti pati dan selulosa termasuk dalam golongan polisakarida.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":154,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Monosakarida",
+    "relation":"MEMBENTUK",
+    "target":"Disakarida",
+    "description":"Dua unit monosakarida dapat bereaksi melalui kondensasi membentuk disakarida.",
+    "refined_description":"Dua unit monosakarida dapat bereaksi melalui kondensasi membentuk disakarida.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":155,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Disakarida",
+    "relation":"TERBENTUK_DARI",
+    "target":"Monosakarida",
+    "description":"Disakarida terbentuk dari gabungan dua molekul monosakarida melalui reaksi kondensasi.",
+    "refined_description":"Disakarida terbentuk dari gabungan dua molekul monosakarida melalui reaksi kondensasi.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":156,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Pati",
+    "relation":"TERDIRI_DARI",
+    "target":"Glukosa",
+    "description":"Pati merupakan polimer yang tersusun atas rantai panjang monomer glukosa.",
+    "refined_description":"Pati merupakan polimer yang tersusun atas rantai panjang monomer glukosa.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":157,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Pati",
+    "relation":"MEMILIKI_FUNGSI",
+    "target":"Penyimpanan Energi",
+    "description":"Pati berperan sebagai bentuk penyimpanan energi utama pada tanaman.",
+    "refined_description":"Pati berperan sebagai bentuk penyimpanan energi utama pada tanaman.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":158,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Protein",
+    "relation":"TERDIRI_DARI",
+    "target":"Asam Amino",
+    "description":"Protein adalah polimer yang dibentuk dari monomer-monomer asam amino yang berikatan melalui ikatan amida.",
+    "refined_description":"Protein adalah polimer yang dibentuk dari monomer-monomer asam amino yang berikatan melalui ikatan amida.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":159,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Protein",
+    "relation":"DIKONTROL_OLEH",
+    "target":"DNA (Asam 2-Deoksiribonukleat)",
+    "description":"Struktur dan fungsi protein dikontrol oleh kode genetik yang terdapat dalam DNA.",
+    "refined_description":"Struktur dan fungsi protein dikontrol oleh kode genetik yang terdapat dalam DNA.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":160,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Asam Amino",
+    "relation":"MEMBENTUK",
+    "target":"Protein",
+    "description":"Asam amino adalah unit dasar yang bergabung melalui ikatan amida untuk membentuk rantai polipeptida protein.",
+    "refined_description":"Asam amino adalah unit dasar yang bergabung melalui ikatan amida untuk membentuk rantai polipeptida protein.",
+    "r1_rating":"correct",
+    "r2_rating":"wrong",
+    "final_consensus_label":"unknown",
+    "reasoning":"",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":161,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"DNA (Asam 2-Deoksiribonukleat)",
+    "relation":"TERDIRI_DARI",
+    "target":"Nukleotida",
+    "description":"DNA adalah polimer yang tersusun dari monomer-monomer nukleotida sebagai unit ulangnya.",
+    "refined_description":"DNA adalah polimer yang tersusun dari monomer-monomer nukleotida sebagai unit ulangnya.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":162,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"DNA (Asam 2-Deoksiribonukleat)",
+    "relation":"MENGATUR",
+    "target":"Sintesis Protein",
+    "description":"DNA menyediakan kode genetik yang diperlukan untuk menyusun protein spesifik organisme.",
+    "refined_description":"DNA menyediakan kode genetik yang diperlukan untuk menyusun protein spesifik organisme.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":163,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Nukleotida",
+    "relation":"BAGIAN_DARI",
+    "target":"DNA (Asam 2-Deoksiribonukleat)",
+    "description":"Nukleotida adalah unit ulang yang membangun struktur polimer DNA.",
+    "refined_description":"Nukleotida adalah unit ulang yang membangun struktur polimer DNA.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":164,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Uji Identifikasi Biopolimer",
+    "relation":"MENGIDENTIFIKASI",
+    "target":"Karbohidrat (Sakarida)",
+    "description":"Beberapa uji, seperti Molisch dan Benedict, digunakan untuk mengidentifikasi keberadaan karbohidrat.",
+    "refined_description":"Beberapa uji, seperti Molisch dan Benedict, digunakan untuk mengidentifikasi keberadaan karbohidrat.",
+    "r1_rating":"correct",
+    "r2_rating":"correct",
+    "final_consensus_label":"correct",
+    "reasoning":"Auto-agreed: both reviewers gave the same label.",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_agreed"
+  },
+  {
+    "triple_id":165,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"Uji Identifikasi Biopolimer",
+    "relation":"MENGIDENTIFIKASI",
+    "target":"Protein",
+    "description":"Uji Biuret dan Ninhidrin adalah metode untuk mendeteksi keberadaan protein atau ikatan peptida.",
+    "refined_description":"Uji Biuret dan Ninhidrin adalah metode untuk mendeteksi keberadaan protein atau ikatan peptida.",
+    "r1_rating":"correct",
+    "r2_rating":"partial",
+    "final_consensus_label":"unknown",
+    "reasoning":"",
+    "added_by_reviewers":[
+
+    ],
+    "source":"system_generated",
+    "bucket":"ratings_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"deret elektrokimia",
+    "relation":"menunjukkan",
+    "target":"kecenderungan reduksi",
+    "description":"",
+    "refined_description":"Deret elektrokimia menunjukkan kecenderungan reduksi suatu unsur, di mana nilai potensial elektrode standar mengindikasikan seberapa mudah suatu zat mengalami reduksi atau oksidasi.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Deret elektrokimia menunjukkan kecenderungan reduksi suatu unsur, di mana nilai potensial elektrode standar mengindikasikan seberapa mudah suatu zat mengalami reduksi atau oksidasi.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"elektrolisis",
+    "relation":"mengikuti",
+    "target":"hukum faraday",
+    "description":"",
+    "refined_description":"Elektrolisis mengikuti Hukum Faraday yang menjelaskan hubungan kuantitatif antara jumlah muatan listrik yang mengalir dalam sel dengan jumlah zat yang bereaksi atau dihasilkan pada elektrode.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Elektrolisis mengikuti Hukum Faraday yang menjelaskan hubungan kuantitatif antara jumlah muatan listrik yang mengalir dalam sel dengan jumlah zat yang bereaksi atau dihasilkan pada elektrode.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"esel",
+    "relation":"berhubungan dengan",
+    "target":"delta g",
+    "description":"",
+    "refined_description":"Nilai potensial sel (esel) berhubungan dengan perubahan energi bebas Gibbs (delta g) untuk menentukan kespontanan suatu reaksi elektrokimia, di mana reaksi spontan memiliki esel positif dan delta g negatif.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Nilai potensial sel (esel) berhubungan dengan perubahan energi bebas Gibbs (delta g) untuk menentukan kespontanan suatu reaksi elektrokimia, di mana reaksi spontan memiliki esel positif dan delta g negatif.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"ggl sel",
+    "relation":"menentukan",
+    "target":"spontanitas reaksi",
+    "description":"",
+    "refined_description":"Nilai gaya gerak listrik (GGL) sel atau potensial sel digunakan untuk menentukan spontanitas suatu reaksi redoks dalam sel Volta. Suatu reaksi redoks dapat berlangsung secara spontan jika nilai GGL selnya bernilai positif, sehingga konsep ini merupakan bagian penting dari kurikulum elektrokimia.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Nilai gaya gerak listrik (GGL) sel atau potensial sel digunakan untuk menentukan spontanitas suatu reaksi redoks dalam sel Volta. Suatu reaksi redoks dapat berlangsung secara spontan jika nilai GGL selnya bernilai positif, sehingga konsep ini merupakan bagian penting dari kurikulum elektrokimia.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"jembatan garam",
+    "relation":"menjaga",
+    "target":"kenetralan muatan",
+    "description":"",
+    "refined_description":"Jembatan garam memiliki peran penting dalam sel elektrokimia untuk menjaga keseimbangan atau kenetralan muatan dalam larutan dengan menyuplai ion-ion yang dibutuhkan guna menetralkan penumpukan muatan.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Jembatan garam memiliki peran penting dalam sel elektrokimia untuk menjaga keseimbangan atau kenetralan muatan dalam larutan dengan menyuplai ion-ion yang dibutuhkan guna menetralkan penumpukan muatan.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"persamaan nernst",
+    "relation":"menghubungkan",
+    "target":"potential dan konsentrasi",
+    "description":"",
+    "refined_description":"",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"abaikan",
+    "reasoning":"Konsep 'persamaan nernst' tidak disebutkan secara eksplisit dalam teks konteks yang diberikan. Oleh karena itu, relasi ini tidak dapat divalidasi berdasarkan bukti dari teks.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"reaksi spontan",
+    "relation":"memiliki",
+    "target":"esel positif",
+    "description":"",
+    "refined_description":"Reaksi elektrokimia diprediksi dapat berlangsung secara spontan apabila memiliki nilai potensial sel (Esel) yang berharga positif.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Reaksi elektrokimia diprediksi dapat berlangsung secara spontan apabila memiliki nilai potensial sel (Esel) yang berharga positif.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"sel elektrokimia",
+    "relation":"terdapat",
+    "target":"katoda dan anoda",
+    "description":"",
+    "refined_description":"Sel elektrokimia memiliki elektroda yang terdiri atas katoda dan anoda.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Sel elektrokimia memiliki elektroda yang terdiri atas katoda dan anoda.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"ELEKTROKIMIA",
+    "subject":"sel elektrokimia",
+    "relation":"terdiri dari",
+    "target":"reaksi setengah sel",
+    "description":"",
+    "refined_description":"",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"abaikan",
+    "reasoning":"Hubungan 'terdiri dari' kurang tepat karena sel elektrokimia secara fisik terdiri dari komponen seperti elektrode dan elektrolit. Reaksi setengah sel (oksidasi dan reduksi) adalah proses yang terjadi di dalam sel tersebut, bukan komponen fisik yang menyusun alatnya.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"efek induktif",
+    "relation":"memengaruhi",
+    "target":"kereaktifan",
+    "description":"",
+    "refined_description":"",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"abaikan",
+    "reasoning":"Teks pada konteks yang diberikan tidak menyebutkan mengenai efek induktif. Teks hanya menyebutkan bahwa gugus fungsi memengaruhi kereaktifan senyawa organik dalam reaksi. Oleh karena itu, usulan ini tidak didukung oleh teks.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"gugus fungsi",
+    "relation":"memengaruhi",
+    "target":"kepolaran",
+    "description":"",
+    "refined_description":"Gugus fungsi pada senyawa organik yang mengandung atom-atom elektronegatif memengaruhi perubahan kepolaran pada atom karbon yang mengikat atom elektronegatif tersebut.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Gugus fungsi pada senyawa organik yang mengandung atom-atom elektronegatif memengaruhi perubahan kepolaran pada atom karbon yang mengikat atom elektronegatif tersebut.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"gugus fungsi",
+    "relation":"terdapat",
+    "target":"klasifikasi",
+    "description":"",
+    "refined_description":"",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"abaikan",
+    "reasoning":"Konteks menyebutkan 'Macam-Macam Gugus Fungsi' berdasarkan atom yang dikandungnya (oksigen, nitrogen, dsb.), namun relasi 'gugus fungsi terdapat klasifikasi' terlalu rancu dan tidak tepat secara semantik untuk dijadikan bagian dari Knowledge Graph.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"isomer",
+    "relation":"memengaruhi",
+    "target":"sifat senyawa",
+    "description":"",
+    "refined_description":"Isomer, yaitu perbedaan cara mengatur atom-atom dalam molekul, memengaruhi sifat senyawa, khususnya kereaktifan senyawa tersebut dalam suatu reaksi kimia.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Isomer, yaitu perbedaan cara mengatur atom-atom dalam molekul, memengaruhi sifat senyawa, khususnya kereaktifan senyawa tersebut dalam suatu reaksi kimia.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"kepolaran",
+    "relation":"menentukan",
+    "target":"titik didih",
+    "description":"",
+    "refined_description":"",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"abaikan",
+    "reasoning":"Konteks yang diberikan pada halaman 110 tidak menyebutkan konsep 'kepolaran' secara eksplisit. Teks dan peta konsep hanya menjelaskan bahwa 'gugus fungsi' yang menentukan sifat fisika senyawa organik, misalnya titik didih. Oleh karena itu, usulan relasi ini tidak didukung oleh teks konteks.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"oksidasi dan reduksi organik",
+    "relation":"menghasilkan",
+    "target":"senyawa yang sesuai",
+    "description":"",
+    "refined_description":"",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"abaikan",
+    "reasoning":"Target 'senyawa yang sesuai' terlalu umum dan tidak memberikan informasi kimia yang spesifik atau bermakna untuk graf pengetahuan. Reaksi oksidasi dan reduksi organik menghasilkan produk spesifik (seperti aldehida, keton, atau asam karboksilat) bergantung pada jenis reaktannya, sehingga pernyataan ini kurang tepat untuk dijadikan entitas.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"GUGUS FUNGSI DALAM SENYAWA KARBON",
+    "subject":"resonansi",
+    "relation":"menstabilkan",
+    "target":"molekul",
+    "description":"",
+    "refined_description":"",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"abaikan",
+    "reasoning":"Konsep resonansi yang menstabilkan molekul tidak dibahas dalam teks yang diberikan, yang lebih berfokus pada titik didih, gaya antarmolekul, dan perbedaan sifat gugus fungsi.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"aktivitas ion",
+    "relation":"dipengaruhi oleh",
+    "target":"kekuatan ionik",
+    "description":"",
+    "refined_description":"",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"abaikan",
+    "reasoning":"Konsep mengenai 'aktivitas ion' dan 'kekuatan ionik' tidak dibahas dalam teks yang diberikan. Teks tersebut hanya menjelaskan tentang kekuatan asam dan basa serta faktor-faktor yang mempengaruhinya (seperti kekuatan ikatan dan polaritas). Oleh karena itu, usulan relasi ini diabaikan karena tidak didukung oleh konteks.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"elektrolit",
+    "relation":"meningkatkan",
+    "target":"jumlah partikel larutan",
+    "description":"",
+    "refined_description":"Elektrolit di dalam larutan akan terionisasi menjadi ion-ion penyusunnya, sehingga keberadaan zat elektrolit dapat meningkatkan jumlah partikel di dalam larutan dibandingkan dengan zat nonelektrolit pada konsentrasi yang sama.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Elektrolit di dalam larutan akan terionisasi menjadi ion-ion penyusunnya, sehingga keberadaan zat elektrolit dapat meningkatkan jumlah partikel di dalam larutan dibandingkan dengan zat nonelektrolit pada konsentrasi yang sama.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"elektrolit lemah",
+    "relation":"memiliki",
+    "target":"derajat disosiasi",
+    "description":"",
+    "refined_description":"Larutan elektrolit lemah memiliki derajat disosiasi tertentu (lebih besar dari 0 dan kurang dari 1) karena zat terlarutnya hanya terurai sebagian menjadi ion-ion di dalam pelarut.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Larutan elektrolit lemah memiliki derajat disosiasi tertentu (lebih besar dari 0 dan kurang dari 1) karena zat terlarutnya hanya terurai sebagian menjadi ion-ion di dalam pelarut.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"hamburan cahaya koloid",
+    "relation":"disebut",
+    "target":"efek tyndall",
+    "description":"",
+    "refined_description":"Penghamburan berkas sinar atau cahaya oleh partikel-partikel koloid disebut sebagai efek Tyndall, yang terjadi karena ukuran molekul koloid cukup besar.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Penghamburan berkas sinar atau cahaya oleh partikel-partikel koloid disebut sebagai efek Tyndall, yang terjadi karena ukuran molekul koloid cukup besar.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"kesetimbangan larutan",
+    "relation":"mengikuti",
+    "target":"prinsip le chatelier",
+    "description":"",
+    "refined_description":"Kesetimbangan larutan mengikuti prinsip Le Chatelier, di mana penambahan ion senama atau perubahan konsentrasi akan menggeser arah kesetimbangan dan mempengaruhi kelarutan suatu senyawa ionik.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Kesetimbangan larutan mengikuti prinsip Le Chatelier, di mana penambahan ion senama atau perubahan konsentrasi akan menggeser arah kesetimbangan dan mempengaruhi kelarutan suatu senyawa ionik.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"LARUTAN DAN KOLOID",
+    "subject":"sifat koligatif",
+    "relation":"dipengaruhi oleh",
+    "target":"faktor van't hoff",
+    "description":"",
+    "refined_description":"Sifat koligatif larutan, terutama untuk zat terlarut elektrolit, dipengaruhi oleh faktor Van't Hoff yang merupakan faktor pengali terhadap jumlah zat terlarut dalam suatu larutan.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Sifat koligatif larutan, terutama untuk zat terlarut elektrolit, dipengaruhi oleh faktor Van't Hoff yang merupakan faktor pengali terhadap jumlah zat terlarut dalam suatu larutan.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"derajat polimerisasi",
+    "relation":"menentukan",
+    "target":"massa molekul polimer",
+    "description":"",
+    "refined_description":"Derajat polimerisasi menentukan besarnya massa molekul suatu polimer.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Derajat polimerisasi menentukan besarnya massa molekul suatu polimer.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"elastomer",
+    "relation":"memiliki",
+    "target":"elastisitas tinggi",
+    "description":"",
+    "refined_description":"",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"abaikan",
+    "reasoning":"Konteks yang diberikan tidak menyebutkan tentang 'elastomer' maupun sifat 'elastisitas tinggi'. Konteks hanya membahas polimer seperti polietilena, polimer termoplastik, dan struktur rantai polimer (lurus, bercabang, berikatan silang). Oleh karena itu, informasi ini tidak didukung oleh teks.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"ikatan silang",
+    "relation":"meningkatkan",
+    "target":"kekakuan polimer",
+    "description":"",
+    "refined_description":"Ikatan silang pada struktur polimer berkontribusi dalam meningkatkan kekerasan dan kekakuan polimer tersebut, seperti contohnya pada bakelit.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Ikatan silang pada struktur polimer berkontribusi dalam meningkatkan kekerasan dan kekakuan polimer tersebut, seperti contohnya pada bakelit.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"polimer",
+    "relation":"tersusun dari",
+    "target":"monomer",
+    "description":"",
+    "refined_description":"Polimer merupakan molekul berukuran besar yang tersusun dari penggabungan banyak molekul-molekul kecil yang disebut monomer.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Polimer merupakan molekul berukuran besar yang tersusun dari penggabungan banyak molekul-molekul kecil yang disebut monomer.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"termoplastik",
+    "relation":"dapat",
+    "target":"dilelehkan ulang",
+    "description":"",
+    "refined_description":"Polimer termoplastik memiliki sifat dapat dilelehkan ulang saat dipanaskan dan dapat dibentuk kembali karena memiliki gaya antarmolekul yang lemah.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Polimer termoplastik memiliki sifat dapat dilelehkan ulang saat dipanaskan dan dapat dibentuk kembali karena memiliki gaya antarmolekul yang lemah.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"termoset",
+    "relation":"memiliki",
+    "target":"ikatan silang permanen",
+    "description":"",
+    "refined_description":"Termoset merupakan jenis polimer yang memiliki ikatan silang permanen antar rantai polimernya, yang menyebabkannya bersifat keras, kaku, dan tidak dapat dilelehkan kembali seperti contohnya pada bakelit.",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"missing",
+    "reasoning":"Termoset merupakan jenis polimer yang memiliki ikatan silang permanen antar rantai polimernya, yang menyebabkannya bersifat keras, kaku, dan tidak dapat dilelehkan kembali seperti contohnya pada bakelit.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  },
+  {
+    "triple_id":null,
+    "chapter":"MAKROMOLEKUL ORGANIK",
+    "subject":"vulkanisasi",
+    "relation":"membentuk",
+    "target":"ikatan silang",
+    "description":"",
+    "refined_description":"",
+    "r1_rating":null,
+    "r2_rating":"missing",
+    "final_consensus_label":"abaikan",
+    "reasoning":"Konteks yang diberikan tidak membahas tentang proses vulkanisasi maupun perannya dalam membentuk ikatan silang pada polimer. Oleh karena itu, usulan ini tidak dapat diverifikasi dari teks dan harus diabaikan.",
+    "added_by_reviewers":[
+      "expert-kimia-6"
+    ],
+    "source":"manual_addition",
+    "bucket":"missing_disagreed_llm"
+  }
+]
