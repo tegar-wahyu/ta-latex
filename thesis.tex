@@ -213,26 +213,33 @@
 
 % ── LAMPIRAN ─────────────────────────────────────────────────
 % Halaman pembatas "LAMPIRAN" setingkat bab (masuk Daftar Isi). Tiap lampiran
-% menjadi subbab "Lampiran 1", "Lampiran 2", … di bawahnya; subbab/gambar/tabel
-% di dalamnya diberi prefiks "L<n>." agar tak bentrok dgn penomoran body.
+% dibuka dengan \lampiran{judul} → subbab tak bernomor "Lampiran N  judul"
+% (pakai \section* + entri TOC manual, sehingga "Lampiran N" mengalir sebagai
+% teks dan tidak terpotong kotak nomor TOC). Subbab/gambar/tabel di dalamnya
+% diberi prefiks "L<n>." dan direset di tiap lampiran.
 \clearpage
 \chapter*{LAMPIRAN}
 \addcontentsline{toc}{chapter}{LAMPIRAN}
-\clearpage
-\setcounter{section}{0}
-\renewcommand{\thesection}{Lampiran~\arabic{section}}
-\renewcommand{\thesubsection}{L\arabic{section}.\arabic{subsection}}
+
+\newcounter{lampno}
+\renewcommand{\thelampno}{Lampiran~\arabic{lampno}}      % dipakai oleh \ref → "Lampiran 5"
+\renewcommand{\thesubsection}{L\arabic{lampno}.\arabic{subsection}}
 \renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
-\counterwithin{figure}{section}
-\counterwithin{table}{section}
-\renewcommand{\thefigure}{L\arabic{section}.\arabic{figure}}
-\renewcommand{\thetable}{L\arabic{section}.\arabic{table}}
-\subfile{src/99-backMatter/lampiran-a}\clearpage
-\subfile{src/99-backMatter/lampiran-b}\clearpage
-\subfile{src/99-backMatter/lampiran-c}\clearpage
-\subfile{src/99-backMatter/lampiran-d}\clearpage
-\subfile{src/99-backMatter/lampiran-e}\clearpage
-\subfile{src/99-backMatter/lampiran-f}\clearpage
+\renewcommand{\thefigure}{L\arabic{lampno}.\arabic{figure}}
+\renewcommand{\thetable}{L\arabic{lampno}.\arabic{table}}
+\newcommand{\lampiran}[1]{%
+  \clearpage
+  \refstepcounter{lampno}%
+  \setcounter{subsection}{0}\setcounter{figure}{0}\setcounter{table}{0}%
+  \section*{Lampiran~\arabic{lampno}\quad #1}%
+  \addcontentsline{toc}{section}{Lampiran~\arabic{lampno}\quad #1}%
+}
+\subfile{src/99-backMatter/lampiran-a}
+\subfile{src/99-backMatter/lampiran-b}
+\subfile{src/99-backMatter/lampiran-c}
+\subfile{src/99-backMatter/lampiran-d}
+\subfile{src/99-backMatter/lampiran-e}
+\subfile{src/99-backMatter/lampiran-f}
 \subfile{src/99-backMatter/lampiran-g}
 
 \end{document}
