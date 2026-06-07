@@ -172,7 +172,13 @@
 % ============================================================
 \begin{document}
 
+% Penanda outline Overleaf: \iffalse...\fi membuat TeX melewati perintah
+% sectioning (tidak tercetak & tidak memengaruhi penomoran), tetapi pemindai
+% File Outline Overleaf tetap menampilkannya sehingga master file ini bisa
+% dinavigasi per-bab/lampiran. Judul bab/lampiran asli tetap di tiap subfile.
+
 % ── HALAMAN DEPAN (front matter, angka Romawi) ───────────────
+\iffalse\chapter{Halaman Depan}\fi
 \pagenumbering{roman}
 \subfile{src/00-frontMatter/front-matter}
 
@@ -185,30 +191,37 @@
 \pagenumbering{arabic}
 
 % ── BAB 1 ────────────────────────────────────────────────────
+\iffalse\chapter{BAB 1: Pendahuluan}\fi
 \setcounter{chapter}{0}
 \subfile{src/01-body/bab-1}
 
 % ── BAB 2 ────────────────────────────────────────────────────
+\iffalse\chapter{BAB 2: Tinjauan Literatur}\fi
 \setcounter{chapter}{1}
 \subfile{src/01-body/bab-2}
 
 % ── BAB 3 ────────────────────────────────────────────────────
+\iffalse\chapter{BAB 3: Metodologi Penelitian}\fi
 \setcounter{chapter}{2}
 \subfile{src/01-body/bab-3}
 
 % ── BAB 4 ────────────────────────────────────────────────────
+\iffalse\chapter{BAB 4: Perancangan dan Pengembangan Artefak}\fi
 \setcounter{chapter}{3}
 \subfile{src/01-body/bab-4}
 
 % ── BAB 5 ────────────────────────────────────────────────────
+\iffalse\chapter{BAB 5: Pembahasan}\fi
 \setcounter{chapter}{4}
 \subfile{src/01-body/bab-5}
 
 % ── BAB 6 ────────────────────────────────────────────────────
+\iffalse\chapter{BAB 6: Penutup}\fi
 \setcounter{chapter}{5}
 \subfile{src/01-body/bab-6}
 
 % ── DAFTAR PUSTAKA ───────────────────────────────────────────
+\iffalse\chapter{Daftar Pustaka}\fi
 \printbibliography[heading=bibintoc, title={Daftar Pustaka}]
 
 % ── LAMPIRAN ─────────────────────────────────────────────────
@@ -234,13 +247,21 @@
   \section*{Lampiran~\arabic{lampno}\quad #1}%
   \addcontentsline{toc}{section}{Lampiran~\arabic{lampno}\quad #1}%
 }
+\iffalse\section{Lampiran 1: Arsitektur KG Review App}\fi
 \subfile{src/99-backMatter/lampiran-1}
+\iffalse\section{Lampiran 2: Visualisasi Knowledge Graph per Mata Pelajaran}\fi
 \subfile{src/99-backMatter/lampiran-2}
+\iffalse\section{Lampiran 3: Templat Prompt}\fi
 \subfile{src/99-backMatter/lampiran-3}
+\iffalse\section{Lampiran 4: Daftar Relasi Lintas-Buku dan Hasil Validasi Fase 2}\fi
 \subfile{src/99-backMatter/lampiran-4}
+\iffalse\section{Lampiran 5: Kueri Cypher}\fi
 \subfile{src/99-backMatter/lampiran-5}
+\iffalse\section{Lampiran 6: Daftar Missing Triples}\fi
 \subfile{src/99-backMatter/lampiran-6}
+\iffalse\section{Lampiran 7: Daftar Buku Teks (Korpus Penelitian)}\fi
 \subfile{src/99-backMatter/lampiran-7}
+\iffalse\section{Lampiran 8: Profil dan Kualifikasi Pakar}\fi
 \subfile{src/99-backMatter/lampiran-8}
 
 \end{document}
