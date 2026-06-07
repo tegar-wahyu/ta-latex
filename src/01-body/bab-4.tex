@@ -137,9 +137,12 @@ daftar subbab, glosarium, dan materi pokok.
         yang menyimpan \texttt{page\_label}.
 
   \item \textbf{Deteksi halaman TOC (daftar isi).} Halaman diklasifikasikan
-        sebagai TOC menggunakan heuristik dua-sinyal yang mencegah
-        \textit{false positive} pada halaman konten biasa; detail
-        implementasi disajikan di Lampiran A.
+        sebagai TOC bila memenuhi dua sinyal sekaligus: (a) memuat kata penanda
+        seperti ``daftar isi'' atau ``bab'' (pencocokan tidak peka huruf
+        besar--kecil), dan (b) memuat pola \textit{leader dots} yang diakhiri
+        nomor halaman (mis.\ ``\texttt{..... 191}''). Gabungan kedua sinyal ini
+        mencegah \textit{false positive} pada halaman konten biasa yang kebetulan
+        memuat hanya salah satu pola.
 
   \item \textbf{Parsing struktur Bab dan Subbab.} Pola Bab diekstrak dengan
         \textit{regex} yang menangkap format judul--\textit{leader dots}--nomor
@@ -452,7 +455,7 @@ berbasis \textit{Cypher} dan aplikasi web KG Review App untuk validasi pakar.
   acak (skor kepercayaan model disembunyikan dan urutan diacak) agar penilaian
   pakar tidak ter-\textit{anchor} pada keyakinan model. Rincian \textit{tech stack},
   skema kunci Redis, dan diagram arsitektur lengkap disajikan di
-  Lampiran B; tampilan antarmukanya ditunjukkan pada Gambar~\ref{fig:admin-dashboard}.
+  \ref{lamp:kg-review-app}; tampilan antarmukanya ditunjukkan pada Gambar~\ref{fig:admin-dashboard}.
 
   \begin{figure}[htbp]
     \centering
