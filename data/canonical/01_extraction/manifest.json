@@ -1,0 +1,63 @@
+{
+  "version": "extraction-v4-validated-byCC",
+  "source_state": "extraction-v3-toc-gap-byCC",
+  "built_at": "2026-05-25",
+  "built_by": "Claude Code (Opus 4.7)",
+  "feedback_snapshot": "redis_snapshot_2026-05-13",
+  "per_grade": {
+    "Biologi Kelas XII": {
+      "kept": 151,
+      "dropped": 0,
+      "annotated_correct": 147,
+      "annotated_partial": 3,
+      "annotated_needs_context": 1,
+      "added": 0
+    },
+    "Fisika Kelas XII": {
+      "kept": 237,
+      "dropped": 3,
+      "annotated_correct": 186,
+      "annotated_partial": 40,
+      "annotated_needs_context": 11,
+      "added": 10
+    },
+    "Kimia Kelas XII": {
+      "kept": 164,
+      "dropped": 2,
+      "annotated_correct": 140,
+      "annotated_partial": 5,
+      "annotated_needs_context": 19,
+      "added": 32
+    }
+  },
+  "totals": {
+    "operations": {
+      "keep+annotate": 473,
+      "flag-partial": 48,
+      "needs-context": 31,
+      "drop": 5,
+      "add": 37
+    },
+    "n_dropped": 5
+  },
+  "policy": {
+    "single_reviewer_drops": "honored",
+    "comment_handling": "flag-only (annotation, no rating override)"
+  },
+  "toc_gap_completion": {
+    "date": "2026-05-25",
+    "fisika_added": 5,
+    "kimia_added": 3,
+    "biologi_added": 0,
+    "method": "ToC-vs-KG gap analysis; descriptions sourced from book PDF pages"
+  },
+  "expert_fisika_4_integration": {
+    "date": "2026-05-25",
+    "source_file": "expert-fisika-4.json",
+    "reviewer_ratings": "239 correct, 1 missing (out of 240)",
+    "new_concepts_added": 5,
+    "new_relations_added": 6,
+    "cc_concepts_validated": "3/5 CC additions independently confirmed (Inframerah, Dilatasi Waktu, Penambahan Kecepatan)",
+    "bio_review": "expert-biologi-4: 151/151 correct, 0 missing triples, 2 cosmetic comments"
+  }
+}
