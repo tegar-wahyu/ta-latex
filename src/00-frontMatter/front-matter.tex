@@ -1,0 +1,295 @@
+% ============================================================
+%  HALAMAN DEPAN (Front Matter) — UI Skripsi
+%  Compile standalone:  pdflatex front-matter.tex
+%  Compile as part of thesis: pdflatex main.tex
+%  Dikonversi dari: revisions/cover-etc/TA - Main - Google Docs.pdf
+%  CATATAN: Kata Pengantar (template UI) & Abstrak/Abstract (Lorem ipsum)
+%           masih placeholder — lihat % TODO.
+% ============================================================
+\documentclass[../../thesis]{subfiles}
+\usepackage{hyphenat}
+\usepackage{iftex}
+
+\ifXeTeX
+    \usepackage{polyglossia}
+    \setmainlanguage{bahasai}
+    \usepackage{fontspec}
+    \setmainfont{TeX Gyre Termes}
+    \setsansfont{TeX Gyre Heros}
+\else
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage[indonesian]{babel}
+    \usepackage{mathptmx}
+    \usepackage{helvet}
+\fi
+
+\usepackage[a4paper, top=2.54cm, bottom=2.54cm, left=3.17cm, right=2.54cm]{geometry}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+
+\begin{document}
+
+% Macros didefinisikan di dalam body agar tersedia baik saat kompilasi
+% standalone maupun saat di-\subfile dari main.tex (preamble subfile diabaikan
+% oleh main).
+\newcommand{\juduluppercase}{LLM-Assisted Knowledge Graph Completion untuk
+Pemetaan Interkoneksi Materi Sains (Fisika, Kimia, Biologi) pada Kurikulum
+Merdeka Tingkat SMA}
+% Blok label : nilai (untuk halaman pernyataan/pengesahan)
+\newcommand{\frow}[2]{\noindent\begin{tabular}{@{}p{3.2cm}@{ : }p{\dimexpr\linewidth-3.8cm}@{}}#1 & #2\end{tabular}\par}
+
+\ifSubfilesClassLoaded{\pagenumbering{roman}}{}
+
+% ===================== SAMPUL =====================
+% Halaman manual (bukan env titlepage) agar tidak me-reset counter halaman ke 1
+% --- mencegah warning hyperref "destination name{page.i} duplicate".
+\thispagestyle{empty}
+\begin{center}
+  \onehalfspacing
+  {\large\bfseries UNIVERSITAS INDONESIA}\\[1.5cm]
+
+  {\bfseries\large LLM-Assisted Knowledge Graph Completion untuk Pemetaan
+  Interkoneksi Materi Sains (Fisika, Kimia, Biologi) pada Kurikulum Merdeka
+  Kelas XII}\\[1.5cm]
+
+  {\large\bfseries SKRIPSI}\\[1.5cm]
+
+  \includegraphics[width=4cm]{assets/pics/logo-ui.png}\\[1.5cm]
+
+  \begin{tabular}{@{}l l@{}}
+    FADRIAN YHOGA PRATAMA   & 2206819395 \\
+    SOROS FEBRIANO          & 2206083445 \\
+    TEGAR WAHYU KHISBULLOH  & 2206082032 \\
+  \end{tabular}\\[1.5cm]
+
+  {\bfseries FAKULTAS ILMU KOMPUTER\\
+  PROGRAM STUDI ILMU KOMPUTER\\
+  DEPOK\\
+  JUNI 2026}
+\end{center}
+\clearpage
+
+% ===================== HALAMAN JUDUL =====================
+\thispagestyle{empty}
+\begin{center}
+  \onehalfspacing
+  {\large\bfseries UNIVERSITAS INDONESIA}\\[1.2cm]
+
+  {\bfseries\large \juduluppercase}\\[1.2cm]
+
+  {\large\bfseries SKRIPSI}\\[0.6cm]
+  Diajukan sebagai salah satu syarat memperoleh gelar\\
+  Sarjana Ilmu Komputer\\[1.2cm]
+
+  \includegraphics[width=4cm]{assets/pics/logo-ui.png}\\[1.2cm]
+
+  \begin{tabular}{@{}l l@{}}
+    FADRIAN YHOGA PRATAMA   & 2206819395 \\
+    SOROS FEBRIANO          & 2206083445 \\
+    TEGAR WAHYU KHISBULLOH  & 2206082032 \\
+  \end{tabular}\\[1.2cm]
+
+  {\bfseries FAKULTAS ILMU KOMPUTER\\
+  PROGRAM STUDI ILMU KOMPUTER\\
+  DEPOK\\
+  JUNI 2026}
+\end{center}
+\clearpage
+
+% ===================== PERNYATAAN ORISINALITAS =====================
+\begin{center}\bfseries HALAMAN PERNYATAAN ORISINALITAS\end{center}
+\vspace{1cm}
+\onehalfspacing
+\noindent Tugas Akhir ini adalah hasil karya saya sendiri, dan semua sumber
+baik yang dikutip maupun dirujuk telah saya nyatakan dengan benar.
+\vspace{1.5cm}
+
+\frow{Nama}{Fadrian Yhoga Pratama, Soros Febriano, Tegar Wahyu Khisbulloh}
+\frow{NPM}{2206819395, 2206083445, 2206082032}
+\frow{Tanda Tangan}{\rule{5cm}{0.4pt}}
+\frow{Tanggal}{7 Desember 2026}
+
+% ===================== PERNYATAAN PENGGUNAAN KECERDASAN ARTIFISIAL =====================
+\clearpage
+\begin{center}\bfseries HALAMAN PERNYATAAN PENGGUNAAN KECERDASAN ARTIFISIAL\end{center}
+\vspace{1cm}
+\onehalfspacing
+\noindent Saya menyatakan bahwa dalam penyusunan Tugas Akhir ini, saya
+menggunakan teknologi Kecerdasan Buatan dengan platform ChatGPT dan Gemini
+untuk tujuan pemeriksaan dan perbaikan tata bahasa dan saya bertanggung jawab
+penuh atas keakuratan, orisinalitas, dan integritas seluruh isi Tugas Akhir ini.
+\vspace{1.5cm}
+
+\frow{Nama}{Fadrian Yhoga Pratama, Soros Febriano, Tegar Wahyu Khisbulloh}
+\frow{NPM}{2206819395, 2206083445, 2206082032}
+\frow{Tanda Tangan}{\rule{5cm}{0.4pt}}
+\frow{Tanggal}{7 Desember 2026}
+
+% ===================== HALAMAN PENGESAHAN =====================
+\clearpage
+\begin{center}\bfseries HALAMAN PENGESAHAN\end{center}
+\vspace{0.8cm}
+\onehalfspacing
+\noindent Tugas Akhir ini diajukan oleh:
+\vspace{0.5cm}
+
+\frow{Nama/NPM Mahasiswa 1}{Fadrian Yhoga Pratama / 2206819395}
+\frow{Nama/NPM Mahasiswa 2}{Soros Febriano / 2206083445}
+\frow{Nama/NPM Mahasiswa 3}{Tegar Wahyu Khisbulloh / 2206082032}
+\frow{Program Studi}{Sarjana Ilmu Komputer}
+\frow{Judul}{\juduluppercase}
+\vspace{0.5cm}
+
+\noindent Telah berhasil dipertahankan di hadapan Dewan Penguji dan diterima
+sebagai bagian persyaratan yang diperlukan untuk memperoleh gelar Sarjana Ilmu
+Komputer pada Program Studi Sarjana Ilmu Komputer, Fakultas Ilmu Komputer,
+Universitas Indonesia.
+\vspace{1cm}
+
+\begin{center}\bfseries DEWAN PENGUJI\end{center}
+\frow{Pembimbing}{Dr.\ Siti Aminah, S.Kom., M.Kom. \hfill (\rule{4cm}{0.4pt})}
+\frow{Pembimbing}{\rule{6cm}{0.4pt} \hfill (\rule{4cm}{0.4pt})}
+\frow{Penguji}{\rule{6cm}{0.4pt} \hfill (\rule{4cm}{0.4pt})}
+\frow{Penguji}{\rule{6cm}{0.4pt} \hfill (\rule{4cm}{0.4pt})}
+\vspace{0.8cm}
+
+\frow{Ditetapkan di}{Depok, Jawa Barat}
+\frow{Tanggal}{\rule{4cm}{0.4pt}}
+
+% ===================== KATA PENGANTAR =====================
+\clearpage
+\addcontentsline{toc}{chapter}{KATA PENGANTAR}
+\begin{center}\bfseries KATA PENGANTAR\end{center}
+\vspace{0.8cm}
+\onehalfspacing
+% TODO: Kata Pengantar masih berisi template UI (menyebut "Sarjana Ekonomi
+% Jurusan Manajemen", "Drs. A", "X Company"). Sesuaikan dengan konteks skripsi.
+\noindent Puji syukur saya panjatkan kepada Tuhan Yang Maha Esa, karena atas
+berkat dan rahmat-Nya, saya dapat menyelesaikan skripsi ini. Penulisan skripsi
+ini dilakukan dalam rangka memenuhi salah satu syarat untuk mencapai gelar
+Sarjana Ekonomi Jurusan Manajemen pada Fakultas Ekonomi Universitas Indonesia.
+Saya menyadari bahwa, tanpa bantuan dan bimbingan dari berbagai pihak, dari masa
+perkuliahan sampai pada penyusunan skripsi ini, sangatlah sulit bagi saya untuk
+menyelesaikan skripsi ini. Oleh karena itu, saya mengucapkan terima kasih kepada:
+
+\begin{enumerate}
+  \item Drs.\ A, selaku dosen pembimbing yang telah menyediakan waktu, tenaga,
+        dan pikiran untuk mengarahkan saya dalam penyusunan skripsi ini;
+  \item pihak X Company yang telah banyak membantu dalam usaha memperoleh data
+        yang saya perlukan;
+  \item orang tua dan keluarga saya yang telah memberikan bantuan dukungan
+        material dan moral; dan
+  \item sahabat yang telah banyak membantu saya dalam menyelesaikan skripsi ini.
+\end{enumerate}
+
+\noindent Akhir kata, saya berharap Tuhan Yang Maha Esa berkenan membalas segala
+kebaikan semua pihak yang telah membantu. Semoga skripsi ini membawa manfaat
+bagi pengembangan ilmu.
+\vspace{1cm}
+
+\begin{flushright}
+Depok/Jakarta, \ldots\ldots\ldots\ldots (diisi tanggal)\\[1.5cm]
+Penulis
+\end{flushright}
+
+% ===================== PERNYATAAN PERSETUJUAN PUBLIKASI =====================
+\clearpage
+\begin{center}\bfseries
+HALAMAN PERNYATAAN PERSETUJUAN PUBLIKASI\\
+TUGAS AKHIR UNTUK KEPENTINGAN AKADEMIS\end{center}
+\vspace{0.8cm}
+\onehalfspacing
+\noindent Sebagai sivitas akademik Universitas Indonesia, saya yang bertanda
+tangan di bawah ini:
+\vspace{0.4cm}
+
+\frow{Nama}{Fadrian Yhoga Pratama, Soros Febriano, Tegar Wahyu Khisbulloh}
+\frow{NPM}{2206819395, 2206083445, 2206082032}
+\frow{Program Studi}{Ilmu Komputer}
+\frow{Fakultas}{Ilmu Komputer}
+\frow{Jenis karya}{Tugas Akhir}
+\vspace{0.4cm}
+
+\noindent demi pengembangan ilmu pengetahuan, menyetujui untuk memberikan kepada
+Universitas Indonesia \textbf{Hak Bebas Royalti Noneksklusif}
+(\textit{Non-exclusive Royalty-Free Right}) atas karya ilmiah saya yang berjudul:
+\vspace{0.4cm}
+
+\begin{quote}
+``\juduluppercase''
+\end{quote}
+\vspace{0.2cm}
+
+\noindent beserta perangkat yang ada (jika diperlukan). Dengan Hak Bebas Royalti
+Noneksklusif ini Universitas Indonesia berhak menyimpan,
+mengalihmedia/format-kan, mengelola dalam bentuk pangkalan data
+(\textit{database}), merawat, dan memublikasikan Tugas Akhir saya selama tetap
+mencantumkan nama saya sebagai penulis/pencipta dan sebagai pemilik Hak Cipta.
+\vspace{0.6cm}
+
+\noindent Demikian pernyataan ini saya buat dengan sebenarnya.
+\vspace{0.6cm}
+
+\noindent Dibuat di: Depok\\
+Pada tanggal: \rule{3cm}{0.4pt}
+\vspace{1cm}
+
+\begin{flushright}
+Yang menyatakan,\\[1.2cm]
+Fadrian Yhoga Pratama\\[0.8cm]
+Yang menyatakan,\\[1.2cm]
+Soros Febriano\\[0.8cm]
+Yang menyatakan,\\[1.2cm]
+Tegar Wahyu Khisbulloh
+\end{flushright}
+
+% ===================== ABSTRAK (ID) =====================
+\clearpage
+\addcontentsline{toc}{chapter}{ABSTRAK}
+\begin{center}\bfseries ABSTRAK\end{center}
+\vspace{0.6cm}
+\onehalfspacing
+\frow{Nama}{Fadrian Yhoga Pratama, Soros Febriano, Tegar Wahyu Khisbulloh}
+\frow{NPM}{2206819395, 2206083445, 2206082032}
+\frow{Program Studi}{Ilmu Komputer}
+\frow{Judul}{\juduluppercase}
+\frow{Pembimbing 1}{Dr.\ Siti Aminah, S.Kom., M.Kom.}
+\vspace{0.6cm}
+
+% TODO: ganti Lorem ipsum dengan abstrak final (Bahasa Indonesia).
+\noindent Lorem ipsum dolor sit amet, consectetur adipiscing elit. \emph{[Abstrak
+final belum diisi --- ganti paragraf Lorem ipsum ini dengan ringkasan latar
+belakang, metode, hasil utama, dan kesimpulan penelitian.]}
+\vspace{0.6cm}
+
+\noindent\textbf{Kata kunci:} Knowledge Graph, Large Language Models (LLM),
+Kurikulum Merdeka, Pendidikan Sains, Graph Completion, Pemetaan Kurikulum.
+
+% ===================== ABSTRACT (EN) =====================
+\clearpage
+\addcontentsline{toc}{chapter}{ABSTRACT}
+\begin{center}\bfseries ABSTRACT\end{center}
+\vspace{0.6cm}
+\onehalfspacing
+\frow{Name}{Fadrian Yhoga Pratama, Soros Febriano, Tegar Wahyu Khisbulloh}
+\frow{Student ID}{2206819395, 2206083445, 2206082032}
+\frow{Study Program}{Computer Science}
+\frow{Title}{LLM-Assisted Knowledge Graph Completion for Mapping the
+Interconnections of Science Topics (Physics, Chemistry, Biology) in the Senior
+High School Merdeka Curriculum}
+\frow{Counsellor 1}{Dr.\ Siti Aminah, S.Kom., M.Kom.}
+\vspace{0.6cm}
+
+% TODO: replace Lorem ipsum with the final English abstract.
+\noindent Lorem ipsum dolor sit amet, consectetur adipiscing elit. \emph{[Final
+abstract not yet written --- replace this Lorem ipsum paragraph with the English
+translation of the abstract.]}
+\vspace{0.6cm}
+
+\noindent\textbf{Keywords:} Knowledge Graph, Large Language Models (LLM), Merdeka
+Curriculum, Science Education, Graph Completion, Curriculum Mapping.
+
+\end{document}

@@ -1,0 +1,147 @@
+% ============================================================
+%  Subfile: Diagram pipeline KG Construction & Completion
+%  Included by bab-3.tex via \subfile{pipeline-kgc}
+% ============================================================
+\documentclass[../../thesis]{subfiles}
+\begin{document}
+\begin{figure}[htbp]
+  \centering
+  \resizebox{\textwidth}{!}{%
+  \begin{tikzpicture}[
+    node distance=1.2cm and 1.5cm,
+    font=\small,
+    basic/.style={draw, text centered, font=\footnotesize,
+      minimum height=1.2cm, rounded corners=2mm, text width=4.5cm},
+    input/.style={basic, fill=blue!5, thick, draw=blue!70!black,
+      text width=6cm, minimum height=1.2cm},
+    process/.style={basic, fill=white, thick, draw=gray!60},
+    db/.style={basic, fill=green!5, cylinder, shape border rotate=90,
+      aspect=0.15, text width=4.5cm, minimum height=1.5cm, thick,
+      draw=green!60!black, rounded corners=0mm},
+    human/.style={basic, fill=orange!10, thick, draw=orange!80!black,
+      text width=3.5cm},
+    llmmod/.style={basic, fill=purple!5, thick, draw=purple!70!black,
+      text width=4cm, minimum height=1.2cm},
+    stagebox/.style={draw, gray!50, thick, dashed, rounded corners=3mm,
+      fill=gray!5, inner sep=12pt},
+    arrow/.style={thick, -{Latex[length=3mm, width=2mm]},
+      draw=gray!80!black},
+    darrow/.style={thick, dashed, -{Latex[length=3mm, width=2mm]},
+      draw=gray!80!black},
+    doublearrow/.style={thick, <->, >=stealth, draw=gray!80!black},
+    elabel/.style={fill=white, font=\scriptsize, inner sep=2pt,
+      align=center},
+    slabel/.style={font=\bfseries\footnotesize, text=gray!80!black,
+      fill=white, inner sep=3pt, yshift=1.5mm}
+  ]
+    % ==== INPUT ====
+    \node[input] (input)
+      {\textbf{Input Dokumen}\\
+       (Buku Siswa \& Buku Guru Kelas XII Kurikulum Merdeka)};
+
+    % ==== STAGE 1 ====
+    \node[process, below=2cm of input] (a1)
+      {Ekstraksi Struktur Hierarki\\(Daftar Isi \& Segmentasi Bab)};
+    \node[process, below=0.3cm of a1] (a2)
+      {Ekstraksi Terminologi\\(Glosarium \& Materi Pokok)};
+    \node[process, below=0.3cm of a2] (a3)
+      {Pemotongan Teks\\(Sentence Chunking)};
+    \begin{scope}[on background layer]
+      \node[stagebox, fit=(a1)(a2)(a3),
+        label={[slabel]above:Stage 1: Pemrosesan Dokumen (Ingestion)}]
+        (stage1) {};
+    \end{scope}
+    \draw[arrow] (input) -- (stage1);
+
+    % ==== STAGE 2 ====
+    \node[process, below=2cm of stage1] (b1)
+      {Ekstraksi Entitas \&\\Relasi Internal};
+    \node[process, below=0.5cm of b1] (b2)
+      {Validasi Terminologi\\Glosarium};
+    \begin{scope}[on background layer]
+      \node[stagebox, fit=(b1)(b2),
+        label={[slabel]above:Stage 2: Ekstraksi Pengetahuan (LLM)}]
+        (stage2) {};
+    \end{scope}
+    \draw[arrow] (b1) -- (b2);
+    \draw[arrow] (stage1) -- node[elabel] {Chunks Teks} (stage2);
+
+    % ==== HUMAN 1 ====
+    \node[human, left=2.5cm of stage2] (human1)
+      {\textbf{Peneliti}\\Prompt Engineering \&\\Kontrol Skema};
+    \draw[darrow] (human1) -- node[elabel] {Aturan Ontologi} (stage2);
+
+    % ==== STAGE 3 ====
+    \node[process, below=2cm of stage2] (c1)
+      {Instansiasi Hierarki\\Struktural};
+    \node[process, below=0.5cm of c1] (c2)
+      {Pembentukan Relasi\\Semantik Dalam-Buku};
+    \begin{scope}[on background layer]
+      \node[stagebox, fit=(c1)(c2),
+        label={[slabel]above:Stage 3: Konstruksi Graf}]
+        (stage3) {};
+    \end{scope}
+    \draw[arrow] (c1) -- (c2);
+    \draw[arrow] (stage2) -- node[elabel] {Graf Ekstraksi} (stage3);
+
+    % ==== DATABASE ====
+    \node[db, below=2cm of stage3] (db) {\textbf{(Graph Database)}};
+    \draw[arrow] (stage3) -- node[elabel] {Ingest Data Internal} (db);
+
+    % ==== STAGE 4 ====
+    \node[process, right=2.5cm of stage3, yshift=-1.5cm] (d1)
+      {Pembuatan Vektor Semantik\\(Concept Embedding)};
+    \node[process, below=0.5cm of d1] (d2)
+      {Pencarian Kemiripan\\Lintas-Buku};
+    \node[process, below=0.5cm of d2] (d3)
+      {Klasifikasi Relasi\\Lintas-Disiplin (oleh LLM)};
+    \begin{scope}[on background layer]
+      \node[stagebox, fit=(d1)(d2)(d3),
+        label={[slabel]above:Stage 4: Penyempurnaan Graf}]
+        (stage4) {};
+    \end{scope}
+    \draw[arrow] (d1) -- (d2);
+    \draw[arrow] (d2) -- (d3);
+    \draw[doublearrow] (db.east)
+      -- node[elabel] {Baca Vektor \&\\Tulis Relasi Baru}
+      (stage4.west |- db.east);
+
+    % ==== EVALUATION ====
+    \node[llmmod, below=2.5cm of db] (e3) {\textbf{LLM-Moderator}};
+    \node[process, below=1.2cm of e3, xshift=-2.8cm] (e1)
+      {Evaluasi Metrik Topologi\\(Modularity, Density, TRR)};
+    \node[process, below=1.2cm of e3, xshift=2.8cm] (e2)
+      {Evaluasi Klasifikasi Semantik\\(Precision, Recall, F1-Score)};
+    \begin{scope}[on background layer]
+      \node[stagebox, fit=(e3)(e1)(e2),
+        label={[slabel]above:Tahap Evaluasi dan Validasi}]
+        (eval) {};
+    \end{scope}
+    \draw[arrow] (db)  -- node[elabel] {Ekstraksi Data Graf} (eval);
+    \draw[arrow] (e3)  -- node[elabel] {Keputusan Final}     (e1);
+    \draw[arrow] (e3)  -- node[elabel] {Validasi Label}      (e2);
+
+    % ==== HUMAN 2 ====
+    \node[human, left=2.5cm of e3] (human2)
+      {\textbf{Pakar}\\Expert Judgment};
+    \draw[darrow] (human2) -- node[elabel] {Input Evaluasi} (e3);
+
+    % ==== FEEDBACK LOOPS ====
+    \path (human2.west) ++(-0.6,0) coordinate (clearLeft);
+    \draw[darrow, rounded corners=5mm]
+      (e3.west) -- (e3.west -| clearLeft) coordinate (turn1)
+      -- node[elabel, midway]
+           {Feedback Tervalidasi\\(Perbaikan Entitas/Relasi)}
+         (turn1 |- stage3.west)
+      -- (stage3.west);
+    \draw[darrow, rounded corners=5mm]
+      (e3.east) -- (e3.east -| stage4.south) coordinate (turn2)
+      -- node[elabel, midway]
+           {Feedback Tervalidasi\\(Perbaikan Interkoneksi)}
+         (stage4.south);
+  \end{tikzpicture}%
+  }
+  \caption{\textit{Pipeline} KG \textit{Construction} \& \textit{Completion}}
+  \label{fig:pipeline}
+\end{figure}
+\end{document}
