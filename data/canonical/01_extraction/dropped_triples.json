@@ -1,0 +1,114 @@
+{
+  "built_at": "2026-05-13",
+  "feedback_snapshot": "redis_snapshot_2026-05-13",
+  "policy_note": "These 5 triples were rated 'wrong' by expert reviewers and removed from v3-canonical-pre-completion. Single-reviewer drops are honored (the reviewer is the only domain expert who reviewed that course). Each drop preserves the original triple, the reviewer ratings/comments, and the rationale below so the friend/team can audit or override.",
+  "n_dropped": 5,
+  "dropped": [
+    {
+      "grade": "Fisika Kelas XII",
+      "chapter": "LISTRIK STATIS",
+      "subtopic": "A. Gaya Listrik",
+      "source_concept": "Rumus Gaya Coulomb",
+      "relation_type": "BERGANTUNG_PADA",
+      "target": "Konstanta Listrik (k)",
+      "description": "Besar gaya Coulomb ditentukan oleh nilai konstanta listrik k, yang bergantung pada jenis medium tempat muatan berada.",
+      "triple_index": 1,
+      "consensus": "wrong",
+      "n_reviewers": 1,
+      "rating_counts": {
+        "wrong": 1
+      },
+      "ratings": {
+        "expert-fisika-6": "wrong"
+      },
+      "comments": {},
+      "rationale": "Consensus rating 'wrong' from 1 reviewer(s). Honoring single-reviewer drops per build policy; reviewer identities recorded for audit."
+    },
+    {
+      "grade": "Fisika Kelas XII",
+      "chapter": "LISTRIK ARUS SEARAH",
+      "subtopic": "A. Arus Listrik",
+      "source_concept": "Persamaan Arus Listrik",
+      "relation_type": "DIFORMULASIKAN_SEBAGAI",
+      "target": "I = Q/t",
+      "description": "Persamaan ini menghubungkan arus listrik dengan jumlah muatan yang melewati penampang kawat dan waktu.",
+      "triple_index": 15,
+      "consensus": "wrong",
+      "n_reviewers": 1,
+      "rating_counts": {
+        "wrong": 1
+      },
+      "ratings": {
+        "expert-fisika-6": "wrong"
+      },
+      "comments": {},
+      "rationale": "Consensus rating 'wrong' from 1 reviewer(s). Honoring single-reviewer drops per build policy; reviewer identities recorded for audit."
+    },
+    {
+      "grade": "Fisika Kelas XII",
+      "chapter": "LISTRIK ARUS SEARAH",
+      "subtopic": "F. Daya Listrik",
+      "source_concept": "Daya Listrik",
+      "relation_type": "MENDEFINISIKAN",
+      "target": "Laju Transfer Energi",
+      "description": "Daya listrik mengukur seberapa cepat energi listrik diubah atau digunakan.",
+      "triple_index": 40,
+      "consensus": "wrong",
+      "n_reviewers": 1,
+      "rating_counts": {
+        "wrong": 1
+      },
+      "ratings": {
+        "expert-fisika-6": "wrong"
+      },
+      "comments": {
+        "expert-fisika-6": "Definisinya keliru"
+      },
+      "rationale": "Consensus rating 'wrong' from 1 reviewer(s). Honoring single-reviewer drops per build policy; reviewer identities recorded for audit."
+    },
+    {
+      "grade": "Kimia Kelas XII",
+      "chapter": "ELEKTROKIMIA",
+      "subtopic": "E. Aplikasi elektrokimia",
+      "source_concept": "Pelapisan Logam (Electroplating)",
+      "relation_type": "MEMUNGKINKAN",
+      "target": "Pemurnian Tembaga",
+      "description": "Teknik pelapisan logam digunakan secara efektif untuk memurnikan tembaga dari campuran logam lainnya, yang penting untuk industri kelistrikan.",
+      "triple_index": 74,
+      "consensus": "wrong",
+      "n_reviewers": 1,
+      "rating_counts": {
+        "wrong": 1
+      },
+      "ratings": {
+        "expert-kimia-6": "wrong"
+      },
+      "comments": {
+        "expert-kimia-6": "pemurnian tembaga dilakukan melalui elektrorefining, bukan teknik pelapisan (electroplating)"
+      },
+      "rationale": "Consensus rating 'wrong' from 1 reviewer(s). Honoring single-reviewer drops per build policy; reviewer identities recorded for audit."
+    },
+    {
+      "grade": "Kimia Kelas XII",
+      "chapter": "GUGUS FUNGSI DALAM SENYAWA KARBON",
+      "subtopic": "E. Beberapa Senyawa Organik Penting dan Manfaatnya",
+      "source_concept": "Etanol",
+      "relation_type": "DIPRODUKSI_MELALUI",
+      "target": "Fermentasi Karbohidrat",
+      "description": "Bakteri memfermentasi karbohidrat untuk menghasilkan etanol.",
+      "triple_index": 110,
+      "consensus": "wrong",
+      "n_reviewers": 1,
+      "rating_counts": {
+        "wrong": 1
+      },
+      "ratings": {
+        "expert-kimia-6": "wrong"
+      },
+      "comments": {
+        "expert-kimia-6": "etanol dihasilkan melalui fermentasi oleh ragi (yeast, Saccharomyces cerevisiae)"
+      },
+      "rationale": "Consensus rating 'wrong' from 1 reviewer(s). Honoring single-reviewer drops per build policy; reviewer identities recorded for audit."
+    }
+  ]
+}
