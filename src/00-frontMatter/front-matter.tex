@@ -40,6 +40,9 @@ Pemetaan Interkoneksi Materi Sains (Fisika, Kimia, Biologi) pada Kurikulum
 Merdeka SMA Kelas XII}
 % Blok label : nilai (untuk halaman pernyataan/pengesahan)
 \newcommand{\frow}[2]{\noindent\begin{tabular}{@{}p{4.6cm}@{ : }p{\dimexpr\linewidth-5.2cm}@{}}#1 & #2\end{tabular}\par}
+% Varian label sempit (3.2cm) untuk blok tanda tangan Dewan Penguji, agar nama
+% pembimbing + garis tanda tangan muat satu baris (value rata kiri, tak teregang).
+\newcommand{\frowp}[2]{\noindent\begin{tabular}{@{}p{3.2cm}@{ : }>{\raggedright\arraybackslash}p{\dimexpr\linewidth-3.8cm}@{}}#1 & #2\end{tabular}\par}
 
 \ifSubfilesClassLoaded{\pagenumbering{roman}}{}
 
@@ -110,12 +113,15 @@ baik yang dikutip maupun dirujuk telah kami nyatakan dengan benar.
 \vspace{0.4cm}
 
 \begin{center}
+\begin{minipage}{\linewidth}
+\centering
 Yang menyatakan,\\[1.4cm]
 \begin{tabular}{ccc}
 \rule{3.5cm}{0.4pt} & \rule{3.5cm}{0.4pt} & \rule{3.5cm}{0.4pt} \\
 Fadrian Yhoga Pratama & Soros Febriano & Tegar Wahyu Khisbulloh \\
 NPM. 2206819395 & NPM. 2206083445 & NPM. 2206082032 \\
 \end{tabular}
+\end{minipage}
 \end{center}
 
 % ===================== PERNYATAAN PENGGUNAAN KECERDASAN ARTIFISIAL =====================
@@ -134,12 +140,15 @@ penuh atas keakuratan, orisinalitas, dan integritas seluruh isi Tugas Akhir ini.
 \vspace{0.4cm}
 
 \begin{center}
+\begin{minipage}{\linewidth}
+\centering
 Yang menyatakan,\\[1.4cm]
 \begin{tabular}{ccc}
 \rule{3.5cm}{0.4pt} & \rule{3.5cm}{0.4pt} & \rule{3.5cm}{0.4pt} \\
 Fadrian Yhoga Pratama & Soros Febriano & Tegar Wahyu Khisbulloh \\
 NPM. 2206819395 & NPM. 2206083445 & NPM. 2206082032 \\
 \end{tabular}
+\end{minipage}
 \end{center}
 
 % ===================== HALAMAN PENGESAHAN =====================
@@ -165,14 +174,14 @@ Universitas Indonesia.
 \vspace{1cm}
 
 \begin{center}\bfseries DEWAN PENGUJI\end{center}
-\frow{Pembimbing}{Dr.\ Siti Aminah, S.Kom., M.Kom. \hfill (\rule{4cm}{0.4pt})}
-\frow{Pembimbing}{\rule{6cm}{0.4pt} \hfill (\rule{4cm}{0.4pt})}
-\frow{Penguji}{\rule{6cm}{0.4pt} \hfill (\rule{4cm}{0.4pt})}
-\frow{Penguji}{\rule{6cm}{0.4pt} \hfill (\rule{4cm}{0.4pt})}
+\frowp{Pembimbing}{Dr.\ Siti Aminah, S.Kom., M.Kom. \hfill (\rule{4cm}{0.4pt})}
+\frowp{Pembimbing}{\rule{6cm}{0.4pt} \hfill (\rule{4cm}{0.4pt})}
+\frowp{Penguji}{\rule{6cm}{0.4pt} \hfill (\rule{4cm}{0.4pt})}
+\frowp{Penguji}{\rule{6cm}{0.4pt} \hfill (\rule{4cm}{0.4pt})}
 \vspace{0.8cm}
 
-\frow{Ditetapkan di}{Depok, Jawa Barat}
-\frow{Tanggal}{\rule{4cm}{0.4pt}}
+\frowp{Ditetapkan di}{Depok, Jawa Barat}
+\frowp{Tanggal}{\rule{4cm}{0.4pt}}
 
 % ===================== KATA PENGANTAR =====================
 \clearpage
@@ -256,12 +265,15 @@ Pada tanggal: Juni 2026
 \vspace{1cm}
 
 \begin{center}
+\begin{minipage}{\linewidth}
+\centering
 Yang menyatakan,\\[1.4cm]
 \begin{tabular}{ccc}
 \rule{3.5cm}{0.4pt} & \rule{3.5cm}{0.4pt} & \rule{3.5cm}{0.4pt} \\
 Fadrian Yhoga Pratama & Soros Febriano & Tegar Wahyu Khisbulloh \\
 NPM. 2206819395 & NPM. 2206083445 & NPM. 2206082032 \\
 \end{tabular}
+\end{minipage}
 \end{center}
 
 % ===================== ABSTRAK (ID) =====================
