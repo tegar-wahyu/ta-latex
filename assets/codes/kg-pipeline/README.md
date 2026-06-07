@@ -80,3 +80,7 @@ dari atas berurutan). Cek output cell config — semua PDF harus `OK`, bukan `MI
 ## Catatan
 - `PROJECT_DIR` dideteksi otomatis dari folder notebook (`Path.cwd()`), jadi tidak perlu edit path manual.
 - Folder `venv/`, `outputs/`, dan `textbook/` sebaiknya tidak ikut di-commit.
+- Catatan replikasi: sebelum memakai keluaran Pass-1 sebagai basis Pass-2 atau analisis akhir,
+  sebaiknya validasi dulu relasi intra-buku hasil Pass-1. Untuk alur validasi pakar,
+  konsensus akhir, dan metrik validasi, lanjutkan ke
+  [`../final-consensus/`](../final-consensus/).
