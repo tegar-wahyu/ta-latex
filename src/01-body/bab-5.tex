@@ -177,7 +177,13 @@ ADC                & 0{,}7384 & 1{,}4651 \\
   tajam ini mencerminkan bahwa \textit{pipeline} KGC berhasil menambahkan 125
   relasi lintas-buku baru yang secara langsung menghubungkan \textit{node}
   \texttt{Concept} antar-mapel, meningkatkan kepadatan interkoneksi semantik
-  yang sebelumnya tidak ada.
+  yang sebelumnya tidak ada. Perlu dicatat bahwa seluruh metrik struktural pada
+  bagian ini dihitung atas \textbf{125 \textit{edge}} keluaran \textit{pipeline}
+  pada konfigurasi final---termasuk 8 \textit{edge} berkeyakinan rendah
+  (\textit{confidence} $< 0{,}5$) yang tidak diikutkan dalam survei pakar
+  (Subbab~\ref{subsec:kualitatif})---sehingga himpunan ini berbeda dari
+  \textbf{117 \textit{edge}} yang menjadi basis validasi pakar pada
+  Subbab~\ref{subsec:validasi-pakar}.
   Kueri Cypher untuk menghitung metrik struktural ini diberikan pada
   \ref{lamp:cypher-metrik}, sedangkan daftar lengkap \textit{edge}
   lintas-buku yang dievaluasi pada Fase~2 beserta hasil validasinya diberikan
@@ -662,8 +668,8 @@ melalui tiga pertimbangan yang ditopang oleh data validasi:
     bermasalah pada konfigurasi paling permisif --- LB005
     (\textit{relasi valid?} = \textit{Tidak}), serta LB008 dan LB074
     (tipe relasi salah) --- teridentifikasi melalui validasi pakar Fase~2
-    dan dapat dihapus secara terarah dari graf final tanpa
-    mempengaruhi 114 \textit{edge} lainnya.
+    dan dapat dihapus secara terarah bila diinginkan, tanpa mempengaruhi
+    114 \textit{edge} tersurvei lainnya.
 
   \item \textbf{Pengetatan \textit{threshold} tidak menyelesaikan sumber
     kesalahan dominan.} Sebagaimana telah ditunjukkan sebelumnya, ketepatan
