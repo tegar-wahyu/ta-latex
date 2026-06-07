@@ -636,21 +636,15 @@ teknis utama yang digunakan sepanjang penelitian ini.
     & Strategi pemanfaatan LLM dengan menyertakan demonstrasi struktur
       ontologi di dalam instruksi \textit{prompt} tanpa memerlukan
       \textit{fine-tuning}. \\
-  \textit{Confidence} (LLM \textit{self-reported})
+  \textit{Confidence} (LLM)
     & Skor dalam rentang $[0,1]$ yang dikeluarkan model klasifikasi
-      LINTAS\_BUKU bersama setiap prediksi relasi (lihat skema respons
-      pada Lampiran~\ref{lamp:prompt-completion}); diminta lewat
-      petunjuk singkat dalam \textit{system prompt} ("\texttt{0.0--1.0;
-      gunakan 0.85+ hanya jika sangat yakin}''). Dalam penelitian ini
-      \textit{confidence} diperlakukan sebagai \textit{heuristik
-      penyaring} yang tidak terkalibrasi secara formal: digunakan untuk
-      \textit{gating} produksi (BERKAITAN\_DENGAN $\geq 0{,}85$, tipe
-      lain $\geq 0{,}70$) dan untuk mengeluarkan kandidat dengan
-      \textit{confidence} $< 0{,}5$ dari survei utama. Keandalannya
-      divalidasi \textit{post hoc} pada
-      Subbab~\ref{subsubsec:false-positive} mengingat literatur
-      menunjukkan kalibrasi \textit{self-reported confidence} pada model
-      bahasa cenderung terbatas \parencite{kadavath_language_2022}. \\
+      \texttt{LINTAS\_BUKU} bersama setiap prediksi relasi sebagai ukuran
+      tingkat keyakinan model. Skor ini dipakai untuk menyaring relasi:
+      relasi diterima bila skornya memenuhi ambang
+      (\texttt{BERKAITAN\_DENGAN} $\geq 0{,}85$; tipe lain $\geq 0{,}70$),
+      sedangkan kandidat dengan skor $< 0{,}5$ tidak diikutkan dalam
+      survei pakar. Karena skor ini belum terkalibrasi, keandalannya
+      diperiksa kembali pada Subbab~\ref{subsubsec:false-positive}. \\
 \end{longtable}
 
 % ============================================================
