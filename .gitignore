@@ -1,0 +1,40 @@
+# ── LaTeX build artifacts ────────────────────────────────────
+**/*.aux
+**/*.log
+**/*.out
+**/*.toc
+**/*.lof
+**/*.lot
+**/*.lol
+**/*.loe
+**/*.fls
+**/*.fdb_latexmk
+**/*.synctex.gz
+**/*.synctex(busy)
+
+# ── biblatex / biber ─────────────────────────────────────────
+**/*.bbl
+**/*.blg
+**/*.bcf
+**/*.run.xml
+**/*-blx.bib
+
+# ── glossaries / index (if ever used) ────────────────────────
+**/*.acn
+**/*.acr
+**/*.alg
+**/*.glg
+**/*.gls
+**/*.glo
+**/*.ist
+**/*.lox
+
+# ── compiled output ──────────────────────────────────────────
+thesis.pdf
+output.pdf
+
+# ── local fallback copies (not part of the build) ────────────
+legacy (ignore)/
+
+# ── OS cruft ─────────────────────────────────────────────────
+.DS_Store
