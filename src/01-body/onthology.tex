@@ -181,22 +181,16 @@ dengan peran berbeda dalam \textit{pipeline}:
         (Tabel~\ref{tab:relasi-lintas-buku}).
 \end{enumerate}
 
-\begin{longtable}{@{}p{0.32\linewidth}p{0.45\linewidth}p{0.16\linewidth}@{}}
-  \caption{Vokabulari Relasi Dalam-Buku
+\begin{table}[htbp]
+\centering
+\caption{Vokabulari Relasi Dalam-Buku
     (\texttt{Concept} $\leftrightarrow$ \texttt{Concept})}
-  \label{tab:relasi-dalam-buku}\\
+\label{tab:relasi-dalam-buku}
+\begin{adjustbox}{max totalsize={\textwidth}{0.78\textheight},center}
+\begin{tabular}{@{}p{0.32\linewidth}p{0.45\linewidth}p{0.16\linewidth}@{}}
   \toprule
   \textbf{Tipe Relasi} & \textbf{Semantik} & \textbf{Sifat} \\
   \midrule
-  \endfirsthead
-  \toprule
-  \textbf{Tipe Relasi} & \textbf{Semantik} & \textbf{Sifat} \\
-  \midrule
-  \endhead
-  \midrule
-  \endfoot
-  \bottomrule
-  \endlastfoot
   \texttt{BAGIAN\_DARI}
     & A merupakan bagian dari B (komposisi/hierarki)
     & asimetris, hierarkis \\
@@ -242,23 +236,19 @@ dengan peran berbeda dalam \textit{pipeline}:
   \texttt{MEMILIKI\_SIFAT}
     & A memiliki sifat atau atribut B
     & asimetris \\
-\end{longtable}
+\end{tabular}
+\end{adjustbox}
+\end{table}
 
-\begin{longtable}{@{}p{0.38\linewidth}p{0.42\linewidth}p{0.13\linewidth}@{}}
-  \caption{Vokabulari Relasi Lintas-Buku (Lintas-Disiplin)}
-  \label{tab:relasi-lintas-buku}\\
+\begin{table}[htbp]
+\centering
+\caption{Vokabulari Relasi Lintas-Buku (Lintas-Disiplin)}
+\label{tab:relasi-lintas-buku}
+\begin{adjustbox}{max totalsize={\textwidth}{0.78\textheight},center}
+\begin{tabular}{@{}p{0.38\linewidth}p{0.42\linewidth}p{0.13\linewidth}@{}}
   \toprule
   \textbf{Tipe Relasi} & \textbf{Semantik} & \textbf{Sifat} \\
   \midrule
-  \endfirsthead
-  \toprule
-  \textbf{Tipe Relasi} & \textbf{Semantik} & \textbf{Sifat} \\
-  \midrule
-  \endhead
-  \midrule
-  \endfoot
-  \bottomrule
-  \endlastfoot
   \texttt{LINTAS\_BUKU\_SAMA\_DENGAN}
     & Konsep di buku berbeda merujuk pada entitas yang sama
     & simetris \\
@@ -274,7 +264,9 @@ dengan peran berbeda dalam \textit{pipeline}:
   \texttt{LINTAS\_BUKU\_BERKAITAN\_DENGAN}
     & Berkaitan secara umum (\textit{fallback})
     & simetris \\
-\end{longtable}
+\end{tabular}
+\end{adjustbox}
+\end{table}
 
 \subsubsection*{Properti Data (Data Properties)}
 

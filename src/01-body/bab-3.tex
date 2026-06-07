@@ -66,6 +66,7 @@
 % ── Tables ───────────────────────────────────────────────────
 \usepackage{longtable, booktabs, array, multirow}
 \usepackage{calc}
+\usepackage{adjustbox}
 
 % ── Math ─────────────────────────────────────────────────────
 \usepackage{amsmath, amssymb}
@@ -161,27 +162,23 @@ Secara metodologis, penelitian ini dikategorikan sebagai penelitian
 terapan (\textit{applied research}) sebagaimana dirangkum pada
 Tabel~\ref{tab:karakteristik}.
 
-\begin{longtable}{@{}ll@{}}
-  \caption{Karakteristik Metodologi Penelitian}
-  \label{tab:karakteristik}\\
+\begin{table}[htbp]
+\centering
+\caption{Karakteristik Metodologi Penelitian}
+\label{tab:karakteristik}
+\begin{adjustbox}{max totalsize={\textwidth}{0.78\textheight},center}
+\begin{tabular}{@{}ll@{}}
   \toprule
   \textbf{Karakteristik} & \textbf{Deskripsi} \\
   \midrule
-  \endfirsthead
-  \toprule
-  \textbf{Karakteristik} & \textbf{Deskripsi} \\
-  \midrule
-  \endhead
-  \midrule
-  \endfoot
-  \bottomrule
-  \endlastfoot
   Jenis Penelitian & Terapan (\textit{Applied Research}) \\
   Pendekatan       & \textit{Design Science Research} (DSR) \\
   Metode           & Eksperimental dengan validasi kualitatif pakar \\
   Output           & Artefak sistem (Metode KGC dan Purwarupa Visualisasi) \\
   Paradigma        & Pragmatisme (berfokus pada utilitas dan pemecahan masalah) \\
-\end{longtable}
+\end{tabular}
+\end{adjustbox}
+\end{table}
 
 Adopsi DSR dalam penelitian ini mengikuti kerangka kerja
 \textcite{peffers_design_2007}, yang meliputi enam tahapan berikut.
@@ -217,21 +214,15 @@ data validasi dilakukan melalui platform digital.
 Penelitian berlangsung selama enam bulan, dari Januari hingga Juni 2026.
 Rincian tahapan disajikan pada Tabel~\ref{tab:waktu}.
 
-\begin{longtable}{@{}lll@{}}
-  \caption{Rincian Waktu Penelitian}
-  \label{tab:waktu}\\
+\begin{table}[htbp]
+\centering
+\caption{Rincian Waktu Penelitian}
+\label{tab:waktu}
+\begin{adjustbox}{max totalsize={\textwidth}{0.78\textheight},center}
+\begin{tabular}{@{}lll@{}}
   \toprule
   \textbf{Fase} & \textbf{Kegiatan} & \textbf{Periode} \\
   \midrule
-  \endfirsthead
-  \toprule
-  \textbf{Fase} & \textbf{Kegiatan} & \textbf{Periode} \\
-  \midrule
-  \endhead
-  \midrule
-  \endfoot
-  \bottomrule
-  \endlastfoot
   1 & Studi literatur dan desain sistem
     & Januari -- Februari 2026 \\
   2 & Implementasi \textit{pipeline} ekstraksi
@@ -245,7 +236,9 @@ Rincian tahapan disajikan pada Tabel~\ref{tab:waktu}.
     & Mei 2026 \\
   7 & Analisis hasil dan penulisan
     & Mei -- Juni 2026 \\
-\end{longtable}
+\end{tabular}
+\end{adjustbox}
+\end{table}
 
 % ============================================================
 \section{Sumber Data dan Korpus Penelitian}
@@ -443,21 +436,15 @@ dapat dimodifikasi peneliti dan memengaruhi karakteristik \textit{knowledge
 graph} yang dihasilkan. Variabel-variabel tersebut dirangkum pada
 Tabel~\ref{tab:parameter}.
 
-\begin{longtable}{@{}p{0.30\linewidth}p{0.35\linewidth}p{0.27\linewidth}@{}}
-  \caption{Parameter Sistem \textit{Pipeline}}
-  \label{tab:parameter}\\
+\begin{table}[htbp]
+\centering
+\caption{Parameter Sistem \textit{Pipeline}}
+\label{tab:parameter}
+\begin{adjustbox}{max totalsize={\textwidth}{0.78\textheight},center}
+\begin{tabular}{@{}p{0.30\linewidth}p{0.35\linewidth}p{0.27\linewidth}@{}}
   \toprule
   \textbf{Parameter} & \textbf{Deskripsi} & \textbf{Nilai/Level} \\
   \midrule
-  \endfirsthead
-  \toprule
-  \textbf{Parameter} & \textbf{Deskripsi} & \textbf{Nilai/Level} \\
-  \midrule
-  \endhead
-  \midrule
-  \endfoot
-  \bottomrule
-  \endlastfoot
   Model LLM Ekstraksi \& Completion
     & Model bahasa besar untuk ekstraksi konsep/relasi dan
       penyempurnaan graf (KGC) lintas-disiplin
@@ -481,7 +468,9 @@ Tabel~\ref{tab:parameter}.
   Sumber Data
     & Domain materi yang diproses \textit{pipeline}
     & Biologi, Fisika, Kimia Kelas~XII \\
-\end{longtable}
+\end{tabular}
+\end{adjustbox}
+\end{table}
 
 \subsection{Metrik Evaluasi}\label{subsec:metrik-evaluasi}
 
@@ -492,21 +481,15 @@ struktural telah dijabarkan pada Subbab~\ref{subsec:metrik-topologi}
 dan~\ref{subsec:metrik-ekstraksi}; definisi
 metrik validasi pakar pada Subbab~\ref{subsec:validasi-manusia}.
 
-\begin{longtable}{@{}p{0.35\linewidth}p{0.37\linewidth}p{0.20\linewidth}@{}}
-  \caption{Metrik Evaluasi Penelitian}
-  \label{tab:metrik}\\
+\begin{table}[htbp]
+\centering
+\caption{Metrik Evaluasi Penelitian}
+\label{tab:metrik}
+\begin{adjustbox}{max totalsize={\textwidth}{0.78\textheight},center}
+\begin{tabular}{@{}p{0.35\linewidth}p{0.37\linewidth}p{0.20\linewidth}@{}}
   \toprule
   \textbf{Variabel} & \textbf{Deskripsi} & \textbf{Satuan} \\
   \midrule
-  \endfirsthead
-  \toprule
-  \textbf{Variabel} & \textbf{Deskripsi} & \textbf{Satuan} \\
-  \midrule
-  \endhead
-  \midrule
-  \endfoot
-  \bottomrule
-  \endlastfoot
   Jumlah Konsep Terekstrak
     & Volume konsep hasil ekstraksi per dokumen
     & Jumlah \textit{node} \\
@@ -543,7 +526,9 @@ metrik validasi pakar pada Subbab~\ref{subsec:validasi-manusia}.
   Gwet's AC1
     & Kesepakatan antarpakar yang dikoreksi terhadap kebetulan
     & Nilai $-1$ hingga $1$ \\
-\end{longtable}
+\end{tabular}
+\end{adjustbox}
+\end{table}
 
 \subsection{Instrumen dan Metrik Evaluasi Fase 2}\label{subsec:metrik-fase2}
 
@@ -589,21 +574,15 @@ Fase~2 dari Fase~1:
 Tabel~\ref{tab:definisi} merangkum definisi operasional istilah-istilah
 teknis utama yang digunakan sepanjang penelitian ini.
 
-\begin{longtable}{@{}p{0.28\linewidth}p{0.65\linewidth}@{}}
-  \caption{Definisi Operasional Istilah Penelitian}
-  \label{tab:definisi}\\
+\begin{table}[htbp]
+\centering
+\caption{Definisi Operasional Istilah Penelitian}
+\label{tab:definisi}
+\begin{adjustbox}{max totalsize={\textwidth}{0.78\textheight},center}
+\begin{tabular}{@{}p{0.28\linewidth}p{0.65\linewidth}@{}}
   \toprule
   \textbf{Istilah} & \textbf{Definisi Operasional} \\
   \midrule
-  \endfirsthead
-  \toprule
-  \textbf{Istilah} & \textbf{Definisi Operasional} \\
-  \midrule
-  \endhead
-  \midrule
-  \endfoot
-  \bottomrule
-  \endlastfoot
   \textit{Knowledge Graph}
     & Struktur data graf dalam Neo4j yang terdiri dari \textit{node} berlabel
       \texttt{Grade/Subject}, \texttt{Chapter}, \texttt{Subtopic},
@@ -655,7 +634,9 @@ teknis utama yang digunakan sepanjang penelitian ini.
       sedangkan kandidat dengan skor $< 0{,}5$ tidak diikutkan dalam
       survei pakar. Karena skor ini belum terkalibrasi, keandalannya
       diperiksa kembali pada Subbab~\ref{subsubsec:false-positive}. \\
-\end{longtable}
+\end{tabular}
+\end{adjustbox}
+\end{table}
 
 % ============================================================
 \section{Teknik Pengumpulan Data}

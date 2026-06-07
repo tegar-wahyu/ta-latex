@@ -4,6 +4,7 @@
 %  Compile as part of thesis: pdflatex main.tex
 % ============================================================
 \documentclass[../../thesis]{subfiles}
+\usepackage{adjustbox}
 
 \begin{document}
 
@@ -286,25 +287,17 @@ metode KGC konvensional berbasis \textit{embedding} dengan pendekatan
 mutakhir yang dibantu LLM, mencakup dimensi sumber data, konteks
 penalaran, skalabilitas, serta penanganan \textit{long-tail entities}.
 
-\begin{longtable}{@{}p{0.18\linewidth}p{0.38\linewidth}p{0.38\linewidth}@{}}
-  \caption{Perbandingan Metode KGC Tradisional dan LLM-Assisted}
-  \label{tab:kgc-comparison}\\
+\begin{table}[htbp]
+\centering
+\caption{Perbandingan Metode KGC Tradisional dan LLM-Assisted}
+\label{tab:kgc-comparison}
+\begin{adjustbox}{max totalsize={\textwidth}{0.78\textheight},center}
+\begin{tabular}{@{}p{0.18\linewidth}p{0.38\linewidth}p{0.38\linewidth}@{}}
   \toprule
   \textbf{Aspek}
     & \textbf{Metode Tradisional (Pre-2021)}
     & \textbf{Metode LLM-Assisted (2021--Sekarang)} \\
   \midrule
-  \endfirsthead
-  \toprule
-  \textbf{Aspek}
-    & \textbf{Metode Tradisional (Pre-2021)}
-    & \textbf{Metode LLM-Assisted (2021--Sekarang)} \\
-  \midrule
-  \endhead
-  \midrule
-  \endfoot
-  \bottomrule
-  \endlastfoot
   Sumber Data
     & Terstruktur (RDF/SQL/Simbolik)
     & Tidak Terstruktur (Buku Teks, Modul, Silabus) \\
@@ -318,7 +311,9 @@ penalaran, skalabilitas, serta penanganan \textit{long-tail entities}.
     & Performa turun drastis pada data minim koneksi
     & Lebih \textit{robust} dengan memanfaatkan \textit{pre-trained knowledge}
       LLM \\
-\end{longtable}
+\end{tabular}
+\end{adjustbox}
+\end{table}
 
 \subsection{Large Language Model sebagai Penilai (LLM-as-a-judge)}
 
