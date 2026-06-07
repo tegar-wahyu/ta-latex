@@ -47,9 +47,14 @@
 % ── Headings ─────────────────────────────────────────────────
 \usepackage{titlesec}
 
-\titleformat{\chapter}[block]
-  {\centering\rmfamily\bfseries\large}{}
-  {0pt}{\MakeUppercase}
+% Chapter heading: "BAB <n>" (atau "LAMPIRAN <n>" di appendix) pada baris
+% pertama, lalu judul (UPPERCASE) di baris kedua. \iflampiranchap di-set true
+% saat \appendix dipanggil di body.
+\newif\iflampiranchap
+\titleformat{\chapter}[display]
+  {\centering\rmfamily\bfseries\large}
+  {\iflampiranchap LAMPIRAN~\thechapter\else BAB~\thechapter\fi}
+  {0.6em}{\MakeUppercase}
 \titlespacing*{\chapter}{0pt}{0pt}{1.5em}
 
 \titleformat{\section}
@@ -205,10 +210,19 @@
 \subfile{src/01-body/bab-6}
 
 % ── DAFTAR PUSTAKA ───────────────────────────────────────────
-\printbibliography[title={Daftar Pustaka}]
+\printbibliography[heading=bibintoc, title={Daftar Pustaka}]
 
 % ── LAMPIRAN ─────────────────────────────────────────────────
 \appendix
+\lampiranchaptrue
+\setcounter{chapter}{0}
+\renewcommand{\thechapter}{\arabic{chapter}}      % Lampiran 1, 2, …
+% Prefiks "L" pada penomoran subbab/gambar/tabel lampiran agar tidak bentrok
+% dengan body yang juga memakai angka arab (mis. Tabel 2.1 di bab vs di lampiran).
+\renewcommand{\thesection}{L\arabic{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thefigure}{L\arabic{chapter}.\arabic{figure}}
+\renewcommand{\thetable}{L\arabic{chapter}.\arabic{table}}
 \subfile{src/99-backMatter/lampiran-a}
 \subfile{src/99-backMatter/lampiran-b}
 \subfile{src/99-backMatter/lampiran-c}
