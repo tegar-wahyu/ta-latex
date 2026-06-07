@@ -613,7 +613,7 @@ atau kanonikalisasi arah pasca-proses, bukan penyetelan
   >{\centering\arraybackslash}p{0.16\linewidth}@{}}
 \caption{Hasil validasi pakar atas relasi lintas-buku per konfigurasi parameter.
   Kolom \textbf{Edge dihasilkan} adalah jumlah \textit{edge} keluaran
-  \textit{sweep} produksi; kolom $n$ adalah jumlah \textit{edge} yang
+  \textit{sweep}; kolom $n$ adalah jumlah \textit{edge} yang
   benar-benar dinilai pakar pada survei Fase~2.}
 \label{tab:validasi-sweep}\\
 \toprule
@@ -636,10 +636,10 @@ Konfigurasi yang lebih ketat ($\tau\!\ge\!0{,}75$) merupakan
 himpunan bagian dari subset 117 yang sama, sehingga
 \textbf{Edge dihasilkan} = $n$ pada baris kedua dan seterusnya.
 
-\subsubsection{Pemilihan Konfigurasi Produksi}\label{subsubsec:konfigurasi-final}
+\subsubsection{Pemilihan Konfigurasi Final}\label{subsubsec:konfigurasi-final}
 
-Berdasarkan Tabel~\ref{tab:validasi-sweep}, \textbf{konfigurasi produksi
-yang dipilih untuk \textit{Knowledge Graph} final adalah
+Berdasarkan Tabel~\ref{tab:validasi-sweep}, \textbf{konfigurasi final
+yang dipilih untuk \textit{Knowledge Graph} adalah
 $\tau = 0{,}70$ dengan top-$k = 20$}, menghasilkan 125 relasi lintas-buku
 (117 di antaranya divalidasi pakar) dengan validitas 99{,}1\%, ketepatan
 tipe 98{,}3\%, dan ketepatan arah 75{,}9\%. Pilihan ini dapat dijustifikasi
@@ -661,30 +661,26 @@ melalui tiga pertimbangan yang ditopang oleh data validasi:
     bermasalah pada konfigurasi paling permisif --- LB005
     (\textit{relasi valid?} = \textit{Tidak}), serta LB008 dan LB074
     (tipe relasi salah) --- teridentifikasi melalui validasi pakar Fase~2
-    dan dapat dihapus secara terarah dari graf produksi tanpa
+    dan dapat dihapus secara terarah dari graf final tanpa
     mempengaruhi 114 \textit{edge} lainnya.
 
   \item \textbf{Pengetatan \textit{threshold} tidak menyelesaikan sumber
-    kesalahan dominan.} Sebagaimana ditunjukkan oleh
-    Tabel~\ref{tab:validasi-sweep} dan, lebih kuantitatif, oleh
-    Tabel~\ref{tab:conf-kalibrasi} pada Subbab~\ref{subsubsec:false-positive},
-    ketepatan arah tetap stagnan pada rentang 71--86\% lintas-konfigurasi
-    tanpa kecenderungan monotonik. Dengan demikian \textit{tradeoff}
-    cakupan-versus-presisi-arah menjadi negatif: stricter configurations
-    kehilangan cakupan tanpa imbal balik perbaikan arah yang merupakan
-    sumber kesalahan dominan.
+    kesalahan dominan.} Sebagaimana telah ditunjukkan sebelumnya, ketepatan
+    arah tetap stagnan lintas-konfigurasi (Tabel~\ref{tab:validasi-sweep}
+    dan Tabel~\ref{tab:conf-kalibrasi}), sehingga konfigurasi yang lebih
+    ketat kehilangan cakupan tanpa imbal balik perbaikan arah.
 \end{enumerate}
 
 Konfigurasi alternatif ($\tau = 0{,}75 / k=15$ dengan 72 relasi;
 $\tau = 0{,}80 / k=10$ dengan 42 relasi; $\tau = 0{,}85 / k=5$ dengan
 14 relasi) tetap relevan sebagai \textit{view} alternatif atas graf
 yang sama: peneliti turunan yang memprioritaskan presisi atas cakupan
-dapat menyaring graf produksi menggunakan ambang \textit{cosine}
+dapat menyaring graf final menggunakan ambang \textit{cosine}
 yang lebih ketat tanpa perlu menjalankan ulang \textit{pipeline}
 ekstraksi.
 
 % ──────────────────────────────────────────
-\subsection{Analisis Relasi Berpotensi False Positive}\label{subsubsec:false-positive}
+\subsection{Analisis \textit{False Positive} dan Kalibrasi \textit{Confidence}}\label{subsubsec:false-positive}
 % ──────────────────────────────────────────
 
 Sebanyak 9 \textit{edge} memiliki \textit{confidence} LLM $< 0{,}7$,
@@ -721,18 +717,6 @@ lebih rendah daripada tipe lain. Rata-rata \textit{confidence} 0{,}50 untuk 21
 spesifik menunjukkan bahwa LLM memilih label ini ketika tidak yakin terhadap
 arah atau tipe relasi yang lebih spesifik.
 
-Perlu dicatat bahwa asumsi $\hat{y}_i = 1{,}0$ (``keyakinan penuh
-model'') pada Subbab~\ref{subsec:validasi-manusia} merupakan
-penyederhanaan aljabar khusus untuk rumus \textit{Fuzzy Precision}
-\parencite{harju_evaluating_2023}, di mana skor keanggotaan LLM
-diabaikan sehingga irisan \textit{fuzzy} mengikuti penilaian pakar.
-Di sini sebaliknya, variansi \textit{confidence} aktual yang
-dikeluarkan LLM dianalisis sebagai sinyal pemisah relasi
-\textit{fallback} dari relasi spesifik --- konsisten dengan
-peran \textit{confidence} sebagai heuristik penyaring (lihat
-Tabel~\ref{tab:definisi} dan Lampiran~\ref{lamp:prompt-completion}),
-bukan probabilitas terkalibrasi.
-
 Untuk menguji apakah \textit{confidence} LLM merupakan sinyal yang
 dapat diandalkan, dilakukan analisis kalibrasi \textit{post hoc}
 dengan mem-\textit{bucket} 117 \textit{edge} tersurvei berdasarkan
@@ -767,7 +751,7 @@ implikasi metodologis. \textbf{Pertama}, \textit{confidence}
 memiliki sinyal yang cukup baik untuk \textit{keberadaan} relasi:
 validitas pakar mencapai 100\% pada seluruh \textit{bucket}
 $\geq 0{,}85$ dan tetap di atas 96\% pada \textit{bucket}
-$[0{,}7;\;0{,}85)$, sehingga ambang gerbang produksi
+$[0{,}7;\;0{,}85)$, sehingga ambang seleksi
 (\textsc{berkaitan\_dengan} $\geq 0{,}85$; tipe lain $\geq 0{,}70$;
 lihat Lampiran~\ref{lamp:prompt-completion}) terbukti efektif
 menyaring \textit{false positive}. \textbf{Kedua}, sinyal terhadap
