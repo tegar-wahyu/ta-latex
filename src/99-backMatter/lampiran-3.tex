@@ -273,6 +273,32 @@ Output JSON sesuai schema.
 (\texttt{LINTAS\_BUKU\_BERKAITAN\_DENGAN}~$\geq 0{,}85$; tipe lain
 $\geq 0{,}70$), dan arah konsisten dengan sifat simetri tipe relasi.
 
+\noindent Setelah lolos \textit{gating}, prediksi dituliskan kembali ke
+Neo4j sebagai \textit{edge} berarah dengan subset properti yang
+dipertahankan (\texttt{relation\_type}, \texttt{confidence},
+\texttt{description}, dan \texttt{method}); \texttt{evidence\_quote} dan
+\texttt{rationale} pada skema respons digunakan saat klasifikasi namun
+tidak ikut dipersistensi. Kode~\ref{lst:edge-contoh} menampilkan satu
+rekaman \textit{edge} lintas-buku aktual (LB001) sebagaimana tersimpan,
+memperlihatkan asal nilai \textit{confidence} yang dianalisis pada
+Bab~5.
+
+\begin{lstlisting}[style=promptbox,caption={Contoh satu rekaman \textit{edge} lintas-buku aktual (LB001) sebagaimana dipersistensi ke Neo4j. Nilai \texttt{confidence} adalah skor \textit{self-reported} model untuk relasi ini (lihat Tabel~\ref{tab:conf-kalibrasi}).},label={lst:edge-contoh}]
+{
+  "rel_type":     "LINTAS_BUKU_PRASYARAT_UNTUK",
+  "source_name":  "DNA (Asam 2-Deoksiribonukleat)",   // Kimia Kelas XII
+  "target_name":  "Gen",                                // Biologi Kelas XII
+  "properties": {
+    "relation_type": "PRASYARAT_UNTUK",
+    "confidence":    1.0,
+    "description":   "Pemahaman tentang struktur kimia DNA adalah
+                      prasyarat untuk memahami gen sebagai segmen
+                      fungsional dari DNA.",
+    "method":        "ann-classifier-v1"
+  }
+}
+\end{lstlisting}
+
 % ------------------------------------------------------------------
 \subsection{Prompt LLM-as-a-Judge (Konsensus Fase~1)}
 \label{lamp:prompt-judge}
