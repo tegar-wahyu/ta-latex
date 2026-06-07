@@ -1,0 +1,114 @@
+% ============================================================
+%  KATA PENGANTAR — UI Skripsi (3 penulis)
+%  Compile standalone:  pdflatex kataPengantar.tex
+%  Compile as part of thesis: pdflatex thesis.tex
+%
+%  Diatur sebagai \subfile dari thesis.tex sehingga preamble (font,
+%  geometri, setspace, hyperref) otomatis terwarisi. Bila perlu kompilasi
+%  mandiri, kelas \texttt{subfiles} akan menggunakan preamble thesis.tex.
+%
+%  TODO (revisi final — diisi masing-masing penulis):
+%    * Butir 3: Nama Pembimbing Akademik Fadrian Yhoga Pratama.
+%    * Butir 8–10: Nama orang tua dan saudara masing-masing penulis.
+%    * Butir 11: Nama orang terkasih (jika ingin disebut eksplisit).
+%    * Butir 12–14: Nama grup pertemanan dan anggotanya per penulis.
+%    * Butir 7: Putuskan apakah enam pakar validasi disebut nama atau
+%      tetap anonim selaras dengan Lampiran 8.
+% ============================================================
+\documentclass[../../thesis]{subfiles}
+
+\begin{document}
+
+\addcontentsline{toc}{chapter}{KATA PENGANTAR}
+\begin{center}\bfseries KATA PENGANTAR\end{center}
+\vspace{0.8cm}
+\setstretch{1.4}
+
+\noindent Puji syukur kami panjatkan kepada Tuhan Yang Maha Esa, karena atas
+berkat, rahmat, dan karunia-Nya, kami dapat menyelesaikan skripsi ini.
+Penulisan skripsi ini dilakukan dalam rangka memenuhi salah satu syarat untuk
+mencapai gelar Sarjana Ilmu Komputer pada Fakultas Ilmu Komputer, Universitas
+Indonesia. Kami menyadari bahwa, tanpa bantuan, bimbingan, dan dukungan dari
+berbagai pihak, sejak masa perkuliahan hingga penyusunan skripsi ini,
+sangatlah sulit bagi kami untuk menyelesaikannya. Oleh karena itu, kami
+mengucapkan terima kasih kepada:
+
+\begin{enumerate}
+  \item Tuhan Yang Maha Esa, atas berkat, rahmat, kesehatan, dan kemudahan
+        yang tiada henti dilimpahkan kepada kami selama proses penyusunan
+        skripsi ini;
+  \item Dr.\ Siti Aminah, S.Kom., M.Kom., selaku dosen pembimbing skripsi,
+        yang dengan sabar telah menyediakan waktu, tenaga, dan pikiran untuk
+        mengarahkan kami sejak tahap perumusan masalah hingga penyusunan
+        akhir naskah skripsi ini;
+  \item \emph{[Nama Pembimbing Akademik --- diisi pada revisi final]},
+        selaku Pembimbing Akademik Fadrian Yhoga Pratama, yang telah
+        memberikan bimbingan dan arahan akademik selama masa perkuliahan;
+  \item Dr.\ Ade Azurat, S.Kom., selaku Pembimbing Akademik Soros Febriano,
+        yang telah memberikan bimbingan dan arahan akademik selama masa
+        perkuliahan;
+  \item Dr.\ Siti Aminah, S.Kom., M.Kom.\ --- yang juga merupakan dosen
+        pembimbing skripsi kami --- selaku Pembimbing Akademik Tegar Wahyu
+        Khisbulloh, yang telah memberikan bimbingan dan arahan akademik
+        selama masa perkuliahan;
+  \item Fakultas Ilmu Komputer Universitas Indonesia, yang telah menjadi
+        ruang bagi kami untuk belajar, berkembang, dan berkarya selama
+        menempuh pendidikan sarjana;
+  \item Para pakar bidang Fisika, Kimia, dan Biologi yang telah bersedia
+        meluangkan waktu untuk berperan sebagai validator domain pada
+        proses evaluasi pakar dalam penelitian ini --- waktu, ketelitian,
+        dan kepakaran mereka sangat berarti bagi kualitas hasil penelitian
+        ini;
+  \item Keluarga Peneliti 1 (Fadrian Yhoga Pratama):
+        \emph{[Nama ayah]} dan \emph{[Nama ibu]} selaku orang tua, serta
+        \emph{[nama saudara/i]}, yang telah memberikan dukungan material,
+        moral, dan doa yang tiada henti sejak awal masa studi hingga
+        selesainya skripsi ini;
+  \item Keluarga Peneliti 2 (Soros Febriano):
+        \emph{[Nama ayah]} dan \emph{[Nama ibu]} selaku orang tua, serta
+        \emph{[nama saudara/i]}, yang telah memberikan dukungan material,
+        moral, dan doa yang tiada henti sejak awal masa studi hingga
+        selesainya skripsi ini;
+  \item Keluarga Peneliti 3 (Tegar Wahyu Khisbulloh):
+        \emph{[Nama ayah]} dan \emph{[Nama ibu]} selaku orang tua, serta
+        \emph{[nama saudara/i]}, yang telah memberikan dukungan material,
+        moral, dan doa yang tiada henti sejak awal masa studi hingga
+        selesainya skripsi ini;
+  \item Orang-orang terkasih yang selalu setia mendampingi, menyemangati,
+        dan menjadi tempat berbagi suka maupun duka kami masing-masing
+        sepanjang proses penyusunan skripsi
+        ini\footnote{Nama-nama secara spesifik dicantumkan pada revisi
+        final masing-masing penulis.};
+  \item Teman-teman seperjuangan Peneliti 1 (Fadrian Yhoga Pratama),
+        antara lain grup \emph{[nama grup]} (\emph{[anggota]}) dan
+        teman-teman \emph{[isi: nama grup / nama-nama]}, yang telah
+        memberikan warna, motivasi, dan kenyamanan emosional selama
+        perjalanan akademik Peneliti 1;
+  \item Teman-teman seperjuangan Peneliti 2 (Soros Febriano),
+        antara lain grup \emph{[nama grup]} (\emph{[anggota]}) dan
+        teman-teman \emph{[isi: nama grup / nama-nama]}, yang selalu
+        bersedia menjadi tempat berbagi cerita dan ruang berproses bagi
+        Peneliti 2 selama masa perkuliahan;
+  \item Teman-teman seperjuangan Peneliti 3 (Tegar Wahyu Khisbulloh),
+        antara lain grup \emph{[nama grup]} (\emph{[anggota]}) dan
+        teman-teman \emph{[isi: nama grup / nama-nama]}, yang menjadi
+        rekan berbagi cerita, bertukar pikiran, dan saling mendukung
+        sepanjang masa studi Peneliti 3; serta
+  \item Sesama anggota tim peneliti --- Fadrian Yhoga Pratama, Soros
+        Febriano, dan Tegar Wahyu Khisbulloh --- atas kerja sama,
+        dedikasi, kesabaran, dan kepercayaan yang terjaga sepanjang
+        perjalanan penelitian ini.
+\end{enumerate}
+
+\noindent Akhir kata, kami berharap Tuhan Yang Maha Esa berkenan membalas
+segala kebaikan semua pihak yang telah membantu. Semoga skripsi ini membawa
+manfaat bagi pengembangan ilmu pengetahuan, khususnya bagi upaya pemetaan
+interkoneksi materi sains pada Kurikulum Merdeka.
+\vspace{1cm}
+
+\begin{flushright}
+Depok, Juni 2026\\[1.5cm]
+Penulis
+\end{flushright}
+
+\end{document}
