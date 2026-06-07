@@ -1,0 +1,12 @@
+numpy
+pandas
+google-genai
+llama-index
+llama-index-readers-file
+pypdf
+sentence-transformers
+neo4j
+jupyter
+ipykernel
+PyMuPDF
+python-dotenv
