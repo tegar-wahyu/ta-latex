@@ -1,0 +1,329 @@
+% ============================================================
+%  LAMPIRAN D – TEMPLAT PROMPT
+%  Compile standalone:  pdflatex lampiran-d.tex
+%  Compile as part of thesis: pdflatex main.tex
+% ============================================================
+\documentclass[../../thesis]{subfiles}
+\usepackage{hyphenat}
+\usepackage{iftex}
+
+% ── Encoding, Language & Fonts ───────────────────────────────
+\ifXeTeX
+    \usepackage{polyglossia}
+    \setmainlanguage{bahasai}
+    \usepackage{fontspec}
+    \setmainfont{TeX Gyre Termes}
+    \setsansfont{TeX Gyre Heros}
+    \setmonofont[Scale=0.88]{TeX Gyre Cursor}
+\else
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage[indonesian]{babel}
+    \usepackage{mathptmx}
+    \usepackage{helvet}
+    \usepackage{courier}
+\fi
+
+% ── Page geometry (A4, UI thesis margins) ────────────────────
+\usepackage[
+  a4paper,
+  top    = 2.54cm,
+  bottom = 2.54cm,
+  left   = 3.17cm,
+  right  = 2.54cm
+]{geometry}
+
+% ── Line spacing & paragraph ─────────────────────────────────
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+
+% ── Microtype & justification ────────────────────────────────
+\usepackage{microtype}
+\sloppy
+
+% ── Headings ─────────────────────────────────────────────────
+\usepackage{titlesec}
+
+\titleformat{\chapter}[block]
+  {\centering\sffamily\bfseries\large}{}
+  {0pt}{\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{0pt}{1.5em}
+
+\titleformat{\section}
+  {\sffamily\bfseries\normalsize}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.6em}
+
+% ── Code listings (only used when compiled standalone; inside
+%    main.tex the preamble from main.tex is used instead) ──────
+\usepackage{listings}
+\lstdefinestyle{promptbox}{
+  basicstyle      = \ttfamily\scriptsize,
+  breaklines      = true,
+  breakatwhitespace = false,
+  columns         = fullflexible,
+  keepspaces      = true,
+  showstringspaces = false,
+  frame           = single,
+  framesep        = 5pt,
+  xleftmargin     = 10pt,
+  xrightmargin    = 2pt,
+  aboveskip       = 8pt,
+  belowskip       = 8pt,
+}
+
+% ── Hyperlinks ───────────────────────────────────────────────
+\usepackage[hidelinks]{hyperref}
+
+% ============================================================
+\begin{document}
+
+% When standalone: switch to appendix lettering and set the counter
+% so \chapter{} renders as "LAMPIRAN D". When compiled inside main.tex,
+% main.tex issues \appendix and advances the counter before \subfile.
+\ifSubfilesClassLoaded{}{\appendix\setcounter{chapter}{3}}
+
+\chapter{Templat Prompt}
+\label{lamp:prompt}
+
+Lampiran ini memuat templat \textit{prompt} lengkap yang digunakan pada
+\textit{pipeline} implementasi (Bab~4), yakni: (1)~\textit{prompt} ekstraksi
+\textit{knowledge graph} dari teks buku (Pass-1), (2)~\textit{prompt}
+klasifikasi relasi lintas-buku pada tahap \textit{completion} (Pass-2), dan
+(3)~\textit{prompt} \textit{LLM-as-a-judge} untuk penyelesaian ketidaksepakatan
+pakar pada konsensus Fase~1. Seluruh \textit{prompt} ditranskripsi apa adanya
+dari kode implementasi final (\textit{notebook} \texttt{TA\_KG\_PIPELINE.ipynb}
+untuk Pass-1 dan Pass-2, serta \texttt{KG\_CONSENSUS.ipynb} untuk
+\textit{LLM-as-a-judge}). Kunci API dan kredensial basis data yang ada pada
+kode sengaja \textbf{tidak} disertakan. Bagian bertanda kurung kurawal
+(mis.\ \texttt{\{grade\}}, \texttt{\{text\_chunk\}}) merupakan \textit{placeholder}
+yang disubstitusi pada saat eksekusi.
+
+% ------------------------------------------------------------------
+\section{Prompt Ekstraksi Pengetahuan (Pass-1)}
+\label{lamp:prompt-ekstraksi}
+
+\textit{Prompt} ekstraksi dikirim per potongan teks (\textit{chunk};
+\texttt{CHUNK\_SIZE}~$=800$, \texttt{CHUNK\_OVERLAP}~$=200$) ke model
+\texttt{gemini-2.5-flash}. \textit{Prompt} disusun dari delapan blok: (1)~instruksi
+peran dan hierarki, (2)~konteks bab, (3)~daftar subbab, (4)~materi pokok dari
+buku guru, (5)~glosarium, (6)~daftar konsep dari buku lain (kandidat tautan
+lintas-buku), (7)~aturan penautan lintas-buku, dan (8)~spesifikasi format
+keluaran JSON yang ketat (\textit{schema-constrained}). Blok 3--6 hanya
+disisipkan jika data terkait tersedia. Templat utama ditunjukkan pada
+Kode~\ref{lst:prompt-ekstraksi}, sedangkan keempat blok dinamis pada
+Kode~\ref{lst:prompt-ekstraksi-blok}.
+
+\begin{lstlisting}[style=promptbox,caption={Templat utama prompt ekstraksi (Pass-1).},label={lst:prompt-ekstraksi}]
+Kamu membangun knowledge graph dari 3 buku: Biologi, Fisika, Kimia Kelas XII.
+HIERARKI: Kelas -> Bab -> Subchapter -> Konsep
+
+Buku: {grade} | Bab: {chapter}
+Bab sebelumnya: {previous_chapter} | Bab berikutnya: {next_chapter}
+
+{BLOK SUBCHAPTER}
+{BLOK MATERI POKOK}
+{BLOK GLOSARIUM}
+{BLOK KONSEP LINTAS-BUKU}
+
+ATURAN CROSS-BOOK:
+1. cross_book_links HARUS menghubungkan ke buku lain, BUKAN buku saat ini ({grade}).
+2. target_book hanya boleh: {allowed_targets}
+3. Isi 1-3 cross_book_links jika ada keterkaitan kuat, atau [] jika tidak ada.
+
+OUTPUT FORMAT (STRICT JSON):
+{
+  "chapter_summary": "Ringkasan 3-5 kalimat.",
+  "subtopics": [{
+    "name": "...",
+    "concepts": [{
+      "name": "...", "description": "Deskripsi 1-2 kalimat.",
+      "glossary_validated": true/false, "materi_pokok_ref": "...",
+      "cross_book_links": [{
+        "target_book": "...", "target_concept": "...",
+        "relation_type": "SAMA_DENGAN|APLIKASI_DARI|PRASYARAT_UNTUK|MEMPERDALAM|BERKAITAN_DENGAN",
+        "explanation": "..."
+      }],
+      "relations": [{
+        "type": "MENDEFINISIKAN|MENYEBABKAN|MEMUNGKINKAN|MENGATUR|BAGIAN_DARI|BERINTERAKSI_DENGAN|BERGANTUNG_PADA|MEMPENGARUHI",
+        "target": "...", "description": "..."
+      }]
+    }]
+  }],
+  "chapter_relations": [{
+    "type": "PRASYARAT|MEMPERSIAPKAN", "target_chapter": "...",
+    "description": "...", "concept_links": [{"source_concept": "...", "target_concept": "...", "explanation": "..."}]
+  }]
+}
+
+Semua output Bahasa Indonesia.
+
+Teks:
+{text_chunk}
+\end{lstlisting}
+
+\begin{lstlisting}[style=promptbox,caption={Empat blok dinamis yang disisipkan ke templat utama bila datanya tersedia.},label={lst:prompt-ekstraksi-blok}]
+# Blok 3 - SUBCHAPTER
+SUBCHAPTER:
+  {label}. {nama_subchapter}
+Gunakan nama subchapter persis untuk field "name" di "subtopics".
+
+# Blok 4 - MATERI POKOK (dari buku guru; maks. 25 butir)
+MATERI POKOK (BUKU GURU):
+  1. {materi_pokok}
+  2. {materi_pokok}
+  ...
+
+# Blok 5 - GLOSARIUM (maks. 25 entri; definisi dipangkas 100 karakter)
+GLOSARIUM:
+  {istilah}: {definisi}
+  ...
+
+# Blok 6 - KONSEP DARI BUKU LAIN (maks. 20 konsep per buku; kandidat tautan lintas-buku)
+KONSEP DARI {nama_buku_lain}:
+  - {konsep}
+  - {konsep}
+  ...
+\end{lstlisting}
+
+% ------------------------------------------------------------------
+\section{Prompt Klasifikasi Relasi Lintas-Buku (Pass-2)}
+\label{lamp:prompt-completion}
+
+Pada tahap \textit{completion}, setiap pasangan konsep kandidat (hasil pencarian
+ANN dengan \texttt{COS\_THRESHOLD}~$=0{,}75$ dan \texttt{TOP\_K}~$=15$)
+diklasifikasikan oleh \texttt{gemini-2.5-flash} (\texttt{temperature}~$=0{,}2$)
+dengan keluaran JSON terstruktur. \textit{Prompt} terdiri atas \textit{system
+prompt} (Kode~\ref{lst:prompt-sys}) yang memuat definisi kelima tipe relasi,
+\textit{user prompt} (Kode~\ref{lst:prompt-user}) yang memuat deskripsi kedua
+konsep beserta konteks graf, dan skema respons (Kode~\ref{lst:prompt-schema}).
+
+\begin{lstlisting}[style=promptbox,caption={System prompt klasifikasi relasi (Pass-2). Blok \texttt{DEFINISI TIPE RELASI} disisipkan dari konstanta \texttt{TYPE\_DEFINITIONS}.},label={lst:prompt-sys}]
+Anda adalah ahli kurikulum sains SMA yang menentukan jenis keterkaitan
+lintas-buku antara dua konsep dari Mata Pelajaran berbeda (Biologi/Fisika/Kimia Kelas XII).
+
+Pilih SATU dari 6 nilai untuk relation_type (5 tipe LINTAS_BUKU_* + NONE jika tidak ada keterkaitan).
+
+DEFINISI TIPE RELASI:
+
+1. LINTAS_BUKU_SAMA_DENGAN     -- A dan B merujuk pada entitas/konsep yang sama di buku berbeda. Simetris.
+2. LINTAS_BUKU_APLIKASI_DARI   -- A adalah penerapan/manifestasi konsep B di disiplin lain. Asimetris.
+3. LINTAS_BUKU_PRASYARAT_UNTUK -- A adalah prasyarat untuk memahami B di buku lain. Asimetris, hierarkis.
+4. LINTAS_BUKU_MEMPERDALAM     -- A memperdalam/memperluas pemahaman konsep B di buku lain. Asimetris.
+5. LINTAS_BUKU_BERKAITAN_DENGAN -- Berkaitan secara umum lintas-buku (fallback). Simetris.
+
+ATURAN:
+- Hanya LINTAS_BUKU_* jika Mata Pelajaran A != B. Jika sama, kembalikan NONE.
+- Pilih NONE jika tidak ada relasi jelas.
+- Tipe asimetris: tentukan direction A_TO_B atau B_TO_A.
+- SAMA_DENGAN dan BERKAITAN_DENGAN selalu SYMMETRIC.
+- evidence_quote: kutip dari deskripsi konsep (bukan KONTEKS GRAF).
+- confidence: 0.0-1.0, gunakan 0.85+ hanya jika sangat yakin.
+\end{lstlisting}
+
+\begin{lstlisting}[style=promptbox,caption={User prompt klasifikasi relasi (Pass-2). Blok \texttt{KONTEKS GRAF} memuat subtopik, hingga lima edge keluar tiap konsep, dan tetangga bersama.},label={lst:prompt-user}]
+Tentukan relasi LINTAS_BUKU antara dua konsep.
+
+KONSEP A:  Buku={a.book} | Bab={a.chapter} | Subtopic={a.subtopic}
+  Nama: {a.name}
+  Deskripsi: {a.description}
+
+KONSEP B:  Buku={b.book} | Bab={b.chapter} | Subtopic={b.subtopic}
+  Nama: {b.name}
+  Deskripsi: {b.description}
+
+Embedding similarity: {similarity}
+
+KONTEKS GRAF (HUBUNGAN YANG SUDAH ADA)
+Konsep A ("{a.name}") Subtopic: {a.subtopic}
+Edges A:
+  - {relasi} -> "{target}"
+  ... +{n} edge lain
+
+Konsep B ("{b.name}") Subtopic: {b.subtopic}
+Edges B:
+  - {relasi} -> "{target}"
+  ... +{n} edge lain
+
+Tetangga bersama: {daftar_tetangga_bersama}
+
+Output JSON sesuai schema.
+\end{lstlisting}
+
+\begin{lstlisting}[style=promptbox,caption={Skema respons JSON yang dipaksakan pada keluaran model (Pass-2).},label={lst:prompt-schema}]
+{
+  "type": "object",
+  "properties": {
+    "relation_type":  {"type": "string",
+                        "enum": [<5 tipe LINTAS_BUKU_*>, "NONE"]},
+    "direction":      {"type": "string",
+                        "enum": ["A_TO_B", "B_TO_A", "SYMMETRIC"]},
+    "confidence":     {"type": "number"},
+    "evidence_quote": {"type": "string"},
+    "rationale":      {"type": "string"}
+  },
+  "required": ["relation_type", "direction", "confidence",
+               "evidence_quote", "rationale"]
+}
+\end{lstlisting}
+
+\noindent Prediksi diterima hanya bila \texttt{relation\_type} bukan
+\texttt{NONE}, \texttt{confidence} melampaui ambang per-tipe
+(\texttt{LINTAS\_BUKU\_BERKAITAN\_DENGAN}~$\geq 0{,}85$; tipe lain
+$\geq 0{,}70$), dan arah konsisten dengan sifat simetri tipe relasi.
+
+% ------------------------------------------------------------------
+\section{Prompt LLM-as-a-Judge (Konsensus Fase~1)}
+\label{lamp:prompt-judge}
+
+Pada konsensus Fase~1, kasus ketidaksepakatan antara dua pakar diselesaikan oleh
+model \textit{LLM-as-a-judge} (model Gemini Pro, dikonfigurasi melalui variabel
+lingkungan). \textit{Judge} menerima konteks pendukung berupa potongan teks
+\textit{e-book} yang relevan (\textit{retrieval} sederhana berbasis kecocokan
+kata kunci) dan mengembalikan keputusan dalam format JSON dengan kunci
+\texttt{reasoning} dan \texttt{final\_consensus\_label}. Terdapat dua varian:
+penilaian ketidaksepakatan label (Kode~\ref{lst:judge-disagreed}) dan penilaian
+\textit{missing triple} yang hanya diusulkan satu pakar (Kode~\ref{lst:judge-missing}).
+
+\begin{lstlisting}[style=promptbox,caption={Prompt judge untuk ketidaksepakatan label rating.},label={lst:judge-disagreed}]
+You are an expert KG validator for high-school chemistry curriculum.
+Decide final label for this disagreement:
+- triple_id: {triple_id}
+- chapter: {chapter}
+- subject: {subject}
+- relation: {relation}
+- target: {target}
+- description: {description}
+- reviewer_1_label: {r1_rating}
+- reviewer_2_label: {r2_rating}
+
+Relevant ebook context:
+{ebook_context}
+Use the ebook context as supporting evidence when it is relevant. Do not invent facts beyond the triple and context.
+Return strict JSON with keys: reasoning, final_consensus_label.
+Use one of these labels: correct, wrong, partial, missing, abaikan.
+If final_consensus_label is partial or missing, write reasoning in Bahasa Indonesia as a clean KG relation description that can replace or enrich the original description.
+For other labels, write a concise validation rationale in Bahasa Indonesia.
+\end{lstlisting}
+
+\begin{lstlisting}[style=promptbox,caption={Prompt judge untuk missing triple yang diusulkan satu pakar.},label={lst:judge-missing}]
+You are validating a missing triple proposed by only one reviewer.
+Decide if this triple should be accepted as curriculum-required 'missing' or ignored as 'Abaikan'.
+- reviewer_source: {reviewer}
+- chapter: {chapter}
+- subject: {subject}
+- relation: {relation}
+- target: {target}
+- description: {description}
+
+Relevant ebook context:
+{ebook_context}
+Use the ebook context as supporting evidence when it is relevant. Do not invent facts beyond the triple and context.
+Return strict JSON with keys: reasoning, final_consensus_label.
+Use one of these labels: missing, abaikan.
+If final_consensus_label is missing, write reasoning in Bahasa Indonesia as a clean KG relation description that can be used directly as the description.
+If final_consensus_label is abaikan, write a concise validation rationale in Bahasa Indonesia.
+\end{lstlisting}
+
+\end{document}

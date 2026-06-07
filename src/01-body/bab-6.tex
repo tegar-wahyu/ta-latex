@@ -1,0 +1,278 @@
+% ============================================================
+%  BAB 6 – PENUTUP
+%  Compile standalone:  pdflatex bab-6.tex
+%  Compile as part of thesis: pdflatex main.tex
+% ============================================================
+\documentclass[../../thesis]{subfiles}
+\usepackage{hyphenat}
+\usepackage{iftex}
+
+% ── Encoding, Language & Fonts ───────────────────────────────
+\ifXeTeX
+    \usepackage{polyglossia}
+    \setmainlanguage{bahasai}
+    \usepackage{fontspec}
+    \setmainfont{TeX Gyre Termes}
+    \setsansfont{TeX Gyre Heros}
+    \setmonofont[Scale=0.88]{TeX Gyre Cursor}
+\else
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage[indonesian]{babel}
+    \usepackage{mathptmx}
+    \usepackage{helvet}
+    \usepackage{courier}
+\fi
+
+% ── Page geometry (A4, UI thesis margins) ────────────────────
+\usepackage[
+  a4paper,
+  top    = 2.54cm,
+  bottom = 2.54cm,
+  left   = 3.17cm,
+  right  = 2.54cm
+]{geometry}
+
+% ── Line spacing & paragraph ─────────────────────────────────
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+
+% ── Microtype & justification ────────────────────────────────
+\usepackage{microtype}
+\sloppy
+
+% ── Headings ─────────────────────────────────────────────────
+\usepackage{titlesec}
+
+\titleformat{\chapter}[block]
+  {\centering\sffamily\bfseries\large}{}
+  {0pt}{\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{0pt}{1.5em}
+
+\titleformat{\section}
+  {\sffamily\bfseries\normalsize}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.6em}
+
+\titleformat{\subsection}
+  {\sffamily\bfseries\normalsize}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{1em}{0.5em}
+
+\titleformat{\subsubsection}
+  {\sffamily\bfseries\normalsize}{\thesubsubsection}{1em}{}
+\titlespacing*{\subsubsection}{0pt}{0.8em}{0.4em}
+
+% ── Math ─────────────────────────────────────────────────────
+\usepackage{amsmath, amssymb}
+
+% ── Lists ────────────────────────────────────────────────────
+\usepackage{enumitem}
+\setlist[enumerate,1]{
+  label      = \arabic*.,
+  leftmargin = 1.27cm,
+  itemsep    = 4pt,
+  parsep     = 0pt,
+  topsep     = 4pt
+}
+\setlist[enumerate,2]{
+  label      = \alph*.,
+  leftmargin = 1.27cm,
+  itemsep    = 3pt,
+  parsep     = 0pt,
+  topsep     = 2pt
+}
+
+% ── Hyperlinks ───────────────────────────────────────────────
+\usepackage[hidelinks]{hyperref}
+
+% Bibliography setup is inherited from main.tex (biblatex + references.bib)
+% when this file is compiled standalone via the subfiles class.
+
+% ============================================================
+\begin{document}
+
+% When standalone: set counter so \chapter{} renders as "BAB 6".
+% When in main.tex: main.tex sets the counter before \subfile{bab-6}.
+\ifSubfilesClassLoaded{}{\setcounter{chapter}{5}}
+
+\chapter{Penutup}\label{sec:penutup}
+
+Bab ini menutup laporan penelitian dengan menarik kesimpulan atas keseluruhan
+proses perancangan, pengembangan, dan evaluasi artefak yang telah dipaparkan
+pada bab-bab sebelumnya. Kesimpulan disusun untuk menjawab secara langsung
+keempat pertanyaan penelitian yang dirumuskan pada Subbab~\ref{sec:ruang-lingkup},
+dilanjutkan dengan pemaparan keterbatasan penelitian dan saran bagi
+pengembangan lanjutan.
+
+% ============================================================
+\section{Kesimpulan}
+% ============================================================
+
+Penelitian ini, dalam kerangka \textit{Design Science Research} (DSR), berhasil
+merancang, membangun, dan mengevaluasi sebuah \textit{pipeline}
+\textit{LLM-Assisted Knowledge Graph Completion} (KGC) untuk memetakan
+interkoneksi materi sains lintas-disiplin (Fisika, Kimia, dan Biologi) pada
+Fase~F Kelas~XII Kurikulum Merdeka berbahasa Indonesia. Berdasarkan hasil
+evaluasi struktural dan validasi pakar yang dibahas pada Bab~5, kesimpulan yang
+menjawab keempat rumusan masalah penelitian adalah sebagai berikut.
+
+\begin{enumerate}
+  \item \textbf{Pemetaan interkoneksi untuk mengatasi \textit{siloed learning}.}
+        \textit{Pipeline} yang dikembangkan mampu memetakan interkoneksi semantik
+        antar-materi sains secara eksplisit, sehingga menjawab masalah
+        fragmentasi kurikulum. Sebelum KGC, ketiga mata pelajaran membentuk
+        komunitas yang nyaris terisolasi, ditandai nilai \textit{Modularity}
+        0{,}811 yang merefleksikan kondisi \textit{siloed learning}. Setelah
+        penambahan 125 relasi lintas-buku, \textit{Modularity} turun menjadi
+        0{,}373, sementara \textit{Average Degree Centrality} (ADC) meningkat
+        98{,}4\% (dari 0{,}74 menjadi 1{,}47) dan \textit{Graph Density}
+        antar-konsep hampir berlipat ganda (dari 0{,}00108 menjadi 0{,}00214).
+        Bukti topologis ini (Tabel~\ref{tab:struktural}) mengonfirmasi bahwa
+        \textit{Knowledge Graph} (KG) yang dihasilkan berhasil menjembatani
+        ketiga komunitas disiplin yang semula terpisah.
+
+  \item \textbf{Penanganan keterbatasan metode konvensional pada entitas
+        \textit{long-tail}.} Alih-alih mengandalkan KGC berbasis \textit{embedding}
+        struktural yang terbukti menurun performanya pada entitas \textit{long-tail},
+        penelitian ini menempuh pendekatan semantik dua tahap
+        (Subbab~\ref{sec:graph-completion}): pencarian kandidat melalui ANN
+        \textit{vector index} (HNSW) atas \textit{embedding} deskripsi konsep
+        (\texttt{gemini-embedding-001}), dilanjutkan klasifikasi relasi oleh LLM
+        dengan strategi \textit{few-shot In-Context Learning}. Karena pembangkitan
+        kandidat bertumpu pada kemiripan makna deskripsi---bukan pada pola
+        konektivitas graf---konsep yang berkoneksi sedikit (\textit{long-tail})
+        tetap memperoleh kandidat relasi yang bermakna. Pendekatan ini terbukti
+        mampu menemukan relasi lintas-disiplin yang valid (validitas 99{,}1\%)
+        yang tidak akan tertangkap oleh metode struktural murni.
+
+  \item \textbf{Efektivitas LLM-Assisted KGC untuk relasi implisit
+        lintas-disiplin.} LLM-Assisted KGC sangat efektif dalam \textit{menemukan}
+        dan \textit{melabeli} relasi implisit, namun memiliki kelemahan sistematis
+        pada penentuan arah relasi. Pada validasi pakar Fase~2 atas relasi
+        lintas-buku, sistem mencapai validitas 99{,}1\% (116/117) dan ketepatan
+        tipe 98{,}3\% (115/117), tetapi ketepatan arah hanya 75{,}9\% (88/116).
+        Kesalahan arah bersifat sistematis: 26 dari 28 relasi terbalik berasal
+        dari pasangan Biologi\,$\leftrightarrow$\,Kimia, dengan LLM cenderung
+        keliru menempatkan konsep Biologi sebagai sumber. Secara semantik, jenis
+        relasi didominasi \texttt{PRASYARAT\_UNTUK} (45{,}6\%), menandakan bahwa
+        jembatan lintas-disiplin pada kurikulum kelas XII lebih banyak bersifat
+        prasyarat pengetahuan, dengan Kimia berperan sebagai poros (\textit{hub})
+        yang menghubungkan Biologi (78\% relasi) dan Fisika
+        (Gambar~\ref{fig:bridge-graph}).
+
+  \item \textbf{Keandalan evaluasi hybrid dan pengukuran kualitas kuantitatif.}
+        \textit{Pipeline} evaluasi hybrid berhasil mengukur kualitas KG secara
+        andal dan terkuantifikasi. Pada validasi intra-mapel (Fase~1) oleh enam
+        pakar domain, sistem mencatatkan \textit{precision} 93{,}6\%,
+        \textit{recall} 91{,}7\%, dan F1-Score 92{,}6\%
+        (Tabel~\ref{tab:validasi-metrik}), dengan kesepakatan antarpakar Gwet's
+        AC1 yang bervariasi dari ``baik'' hingga ``sangat baik'' (0{,}607 pada
+        Kimia hingga 0{,}931 pada Biologi). Mekanisme \textit{LLM-as-a-judge}
+        (Gemini~3.1 Pro Preview) berfungsi sebagai penengah yang menyelesaikan
+        ketidaksepakatan intra-mapel berbasis konteks buku teks, sementara
+        validasi panel pada relasi lintas-disiplin (Fase~2) menghasilkan
+        validitas 99{,}1\%. Dengan demikian, kombinasi metrik struktural dan
+        validasi pakar berbantuan LLM terbukti mampu mempertanggungjawabkan
+        validitas keilmuan KG secara objektif dan terukur.
+\end{enumerate}
+
+Secara keseluruhan, penelitian ini membuktikan bahwa pendekatan LLM-Assisted KGC
+merupakan metode yang layak (\textit{viable}) untuk membangun dan melengkapi graf
+pengetahuan kurikulum sains lintas-disiplin berbahasa Indonesia. Artefak yang
+dihasilkan---berupa purwarupa KG tervalidasi beserta \textit{pipeline}-nya yang
+terdokumentasi---memenuhi tujuan penelitian dan menyediakan fondasi data terbuka
+pertama bagi pengembang kurikulum dan peneliti teknologi pendidikan, dengan catatan
+penting bahwa kanonikalisasi arah relasi masih memerlukan penyempurnaan lebih lanjut.
+
+% ============================================================
+\section{Keterbatasan Penelitian}
+% ============================================================
+
+Penelitian ini memiliki sejumlah keterbatasan yang perlu diperhatikan dalam
+menafsirkan hasilnya.
+
+\begin{enumerate}
+  \item \textbf{Cakupan korpus.} Korpus terbatas pada buku teks siswa Fisika,
+        Kimia, dan Biologi Fase~F Kelas~XII (\textit{e-book} resmi
+        Kemendikbudristek). Buku teks Kelas~XI dan dokumen Capaian Pembelajaran
+        (CP) tidak disertakan, sehingga generalisasi temuan ke fase atau jenjang
+        lain belum dapat dipastikan.
+
+  \item \textbf{Kesalahan arah relasi.} Sebagaimana disimpulkan di atas, sekitar
+        seperempat relasi lintas-buku memiliki arah yang terbalik. Analisis
+        \textit{parameter sweep} (Tabel~\ref{tab:validasi-sweep}) menunjukkan bahwa
+        kesalahan ini tidak teratasi dengan pengetatan \textit{threshold},
+        melainkan memerlukan perbaikan pada \textit{prompt} klasifikasi atau
+        kanonikalisasi arah pasca-proses yang belum diimplementasikan pada
+        penelitian ini.
+
+  \item \textbf{\textit{Under-extraction} relasi kuantitatif.} LLM cenderung kuat
+        pada konsep deskriptif namun lemah pada relasi berbasis persamaan
+        matematis; 67\% \textit{missing triples} yang diusulkan pakar Fisika
+        berupa rumus yang tidak berhasil diekstrak
+        (Subbab~\ref{subsubsec:error-analysis}).
+
+  \item \textbf{Batasan inferensi pedagogis.} Sistem hanya menginferensi relasi
+        \textit{single-hop} dan tidak menyusun jalur belajar multi-langkah, tidak
+        memodelkan tingkat kognitif (taksonomi Bloom) maupun keadaan pembelajar
+        (\textit{learner state}).
+
+  \item \textbf{Keterbatasan metrik dan model.} \textit{Recall} dan F1 pada
+        validasi lintas-disiplin (Fase~2) tidak dapat dihitung karena tiadanya
+        \textit{denominator} relasi benar yang menyeluruh dalam konfigurasi panel
+        tunggal. Selain itu, penelitian hanya memanfaatkan satu keluarga model
+        (Gemini) tanpa komparasi lintas-model, dan graf diinstansiasi pada skala
+        purwarupa (Neo4j Aura \textit{Free tier}) tanpa integrasi ke sistem
+        pengguna akhir.
+\end{enumerate}
+
+% ============================================================
+\section{Saran}
+% ============================================================
+
+Berdasarkan kesimpulan dan keterbatasan di atas, beberapa saran diajukan untuk
+penelitian dan pengembangan selanjutnya.
+
+\subsection{Bagi Peneliti dan Pengembang Teknologi Pendidikan}
+
+\begin{enumerate}
+  \item \textbf{Penanganan arah relasi.} Memprioritaskan perbaikan ketepatan arah,
+        misalnya melalui penambahan contoh \textit{few-shot} yang eksplisit
+        menunjukkan arah, langkah klasifikasi arah terpisah, atau kanonikalisasi
+        pasca-proses (misalnya memberlakukan kecenderungan arah Kimia$\to$Biologi
+        sebagai prasyarat) untuk mengoreksi 28 relasi terbalik secara sistematis.
+
+  \item \textbf{Penguatan ekstraksi relasi kuantitatif.} Menambahkan tahap
+        ekstraksi khusus untuk rumus dan persamaan matematis, atau memanfaatkan
+        kemampuan \textit{multimodal} model untuk membaca notasi matematis dan
+        diagram, guna mengurangi \textit{under-extraction}.
+
+  \item \textbf{Perluasan korpus dan generalisasi.} Memperluas korpus ke buku teks
+        Kelas~XI, dokumen Capaian Pembelajaran (CP), serta mata pelajaran dan fase
+        lain untuk menguji generalisasi \textit{pipeline}.
+
+  \item \textbf{Inferensi multi-langkah.} Mengembangkan kemampuan penalaran
+        \textit{multi-hop} untuk menyusun jalur belajar lintas-disiplin
+        terkomposisi, serta mengintegrasikan taksonomi Bloom dan pemodelan
+        \textit{learner state} untuk pengurutan konsep yang adaptif.
+
+  \item \textbf{Evaluasi lintas-model.} Membandingkan beberapa keluarga LLM (mis.\
+        GPT, Claude) pada tahap ekstraksi, \textit{completion}, dan
+        \textit{LLM-as-a-judge} untuk menguji ketangguhan hasil, serta memperkuat
+        validasi Fase~2 dengan dua pakar independen agar \textit{recall} dan AC1
+        dapat dihitung.
+\end{enumerate}
+
+\subsection{Bagi Pendidik dan Pengembang Kurikulum}
+
+KG yang dihasilkan dapat dimanfaatkan sebagai referensi dalam merancang unit
+pembelajaran terpadu lintas-disiplin, khususnya dengan memanfaatkan posisi Kimia
+sebagai poros konseptual yang menjembatani Biologi dan Fisika. Pengembangan
+lanjutan dapat membangun lapisan aplikasi bagi pengguna akhir di atas KG ini,
+seperti perkakas perancangan kurikulum, sistem rekomendasi pembelajaran adaptif,
+atau integrasi ke dalam platform LMS, yang berada di luar lingkup penelitian ini.
+
+\ifSubfilesClassLoaded{\printbibliography[title={Daftar Pustaka}]}{}
+
+\end{document}

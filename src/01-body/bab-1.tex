@@ -1,0 +1,346 @@
+% ============================================================
+%  BAB 1 – PENDAHULUAN
+%  Compile standalone:  pdflatex bab-1.tex
+%  Compile as part of thesis: pdflatex main.tex
+% ============================================================
+\documentclass[../../thesis]{subfiles}
+\usepackage{hyphenat}
+\usepackage{iftex} % Detects the compiler
+
+% ── Encoding, Language & Fonts ───────────────────────────────
+\ifXeTeX
+    % Use this if compiling with XeLaTeX / LuaLaTeX
+    \usepackage{polyglossia}
+    \setmainlanguage{bahasai}   
+    
+    \usepackage{fontspec}
+    \setmainfont{TeX Gyre Termes}   % Times New Roman equivalent
+    \setsansfont{TeX Gyre Heros}    % Arial equivalent
+    \setmonofont[Scale=0.88]{TeX Gyre Cursor}
+\else
+    % Use this if compiling with standard pdfLaTeX (Overleaf Default)
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage[indonesian]{babel}
+    
+    \usepackage{mathptmx} % Times New Roman equivalent
+    \usepackage{helvet}   % Arial equivalent
+    \usepackage{courier}
+\fi
+
+% ── Page geometry (A4, UI thesis margins) ────────────────────
+\usepackage[
+  a4paper,
+  top    = 2.54cm,
+  bottom = 2.54cm,
+  left   = 3.17cm,
+  right  = 2.54cm
+]{geometry}
+
+% ── Line spacing & paragraph ─────────────────────────────────
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+
+% ── Better justification & hyphenation ───────────────────────
+\usepackage{microtype}
+\sloppy
+
+% ── Headings (chapter/section styled like UI thesis) ─────────
+\usepackage{titlesec}
+
+% Chapter: centered, bold, uppercase, no "Chapter N" prefix
+\titleformat{\chapter}[block]
+  {\centering\sffamily\bfseries\large}
+  {}
+  {0pt}
+  {\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{0pt}{1.5em}
+
+% Section: left-aligned, bold, numbered
+\titleformat{\section}
+  {\sffamily\bfseries\normalsize}
+  {\thesection}
+  {1em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.6em}
+
+% Subsection
+\titleformat{\subsection}
+  {\sffamily\bfseries\normalsize}
+  {\thesubsection}
+  {1em}{}
+\titlespacing*{\subsection}{0pt}{1em}{0.5em}
+
+% ── List formatting ──────────────────────────────────────────
+\usepackage{enumitem}
+\setlist[enumerate, 1]{
+  label        = \arabic*.,
+  leftmargin   = 1.27cm,
+  itemsep      = 4pt,
+  parsep       = 0pt,
+  topsep       = 4pt
+}
+\setlist[enumerate, 2]{
+  label        = \alph*.,
+  leftmargin   = 1.27cm,
+  itemsep      = 3pt,
+  parsep       = 0pt,
+  topsep       = 2pt
+}
+
+% ── Hyperlinks (optional – comment out if submitting PDF/A) ──
+\usepackage[hidelinks]{hyperref}
+
+% Bibliography setup is inherited from main.tex (biblatex + references.bib)
+% when this file is compiled standalone via the subfiles class.
+
+% ============================================================
+\begin{document}
+
+\setcounter{chapter}{0}   % BAB 1
+
+% ── Chapter heading ──────────────────────────────────────────
+\chapter{Pendahuluan}
+
+% ============================================================
+\section{Latar Belakang}
+% ============================================================
+
+Kurikulum Merdeka, yang ditetapkan melalui Permendikbudristek Nomor 12 Tahun
+2024, menempatkan \textit{meaningful learning} dan penguasaan kompetensi lintas
+disiplin sebagai prioritas utama pendidikan nasional. Namun, pada jenjang SMA
+khususnya Fase~F, rumpun Ilmu Pengetahuan Alam (IPA) tetap terstruktur menjadi
+tiga mata pelajaran terpisah: Fisika, Kimia, dan Biologi.
+Pemisahan ini berisiko menimbulkan fenomena \textit{siloed learning}
+\parencite{harvey_silos_2025}, kondisi ketika batas-batas disipliner yang kaku
+menghalangi peserta didik untuk mengonstruksi koneksi konseptual
+antarmatapelajaran. Akibatnya, siswa kesulitan memahami keterkaitan yang secara
+ontologis menghubungkan ketiga disiplin ilmu tersebut, sementara guru menghadapi
+keterbatasan referensi kurikulum lintas-disiplin yang tersedia secara terstruktur.
+
+Sebagai solusi atas fragmentasi struktur kurikulum ini, pendekatan berbasis
+\textit{Knowledge Graph} (KG) menawarkan paradigma representasi yang mampu
+memodelkan interkoneksi materi secara eksplisit. \textcite{ji_survey_2022} mendefinisikan
+KG sebagai struktur data grafis yang merepresentasikan entitas dunia nyata dan
+relasi semantiknya dalam format \textit{triple} (\textit{head, relation, tail}),
+yang tidak hanya menyimpan fakta tetapi juga mendukung penalaran formal atas
+data tersebut. Sebagai ilustrasi, satu fakta materi sains dapat dinyatakan
+sebagai \textit{triple} (Fotosintesis, \texttt{MENGHASILKAN}, Glukosa).
+\textcite{kim_study_2023} mengajukan pendekatan KG untuk
+memvisualisasikan \textit{flow of knowledge} dan \textit{thinking style} yang
+esensial bagi siswa guna membangun inferensi logis antar-konsep. Urgensi
+penerapan ini diperkuat oleh \textcite{abu-salih_systematic_2024}, yang melalui tinjauan
+sistematisnya menyimpulkan bahwa KG berperan vital dalam desain kurikulum dan
+pemetaan konsep, khususnya untuk memvisualisasikan struktur pengetahuan yang
+kompleks dan merancang jalur pembelajaran yang adaptif.
+
+Meskipun menjanjikan, KG memiliki keterbatasan fundamental, yaitu sifatnya yang
+secara inheren tidak lengkap. Banyak hubungan antar-konsep yang valid tidak
+tertangkap ketika graf dibangun, baik melalui anotasi manual maupun ekstraksi
+otomatis \parencite{ji_survey_2022}. Dalam konteks kurikulum sains, relasi lintas-disiplin
+yang paling bernilai pedagogis justru seringkali bersifat implisit, yaitu tidak
+tersurat dalam teks satu buku tunggal. Untuk mengatasi hal ini,
+\textit{Knowledge Graph Completion} (KGC) diterapkan untuk memprediksi
+\textit{triple} yang hilang. Akan tetapi, metode KGC konvensional berbasis
+\textit{embedding} struktural terbukti tidak efektif dalam skenario kurikulum
+karena distribusi konsep yang tidak merata. \textcite{wei_kicgpt_2023} menegaskan bahwa
+metode berbasis \textit{triple} mengalami penurunan performa drastis saat
+berhadapan dengan \textit{long-tail entities}, yaitu entitas yang memiliki sedikit
+koneksi dalam graf sehingga pola struktural yang tersedia tidak cukup untuk
+menghasilkan representasi vektor yang akurat.
+
+Kemunculan \textit{Large Language Models} (LLM) membuka solusi yang menjanjikan
+atas keterbatasan tersebut. \textcite{pan_unifying_2024} mengklasifikasikan pendekatan
+LLM-augmented KGs melalui dua peran utama: sebagai \textit{encoder} yang
+menghasilkan representasi vektor lebih kaya makna dibanding \textit{embedding}
+struktural semata, serta sebagai \textit{generator} yang langsung memprediksi
+\textit{triple} baru berdasarkan konteks. \textcite{yao_exploring_2025} mendemonstrasikan
+bahwa dengan memperlakukan \textit{triple} pengetahuan sebagai sekuens teks,
+LLM mampu memprediksi relasi semantik dengan akurasi yang lebih baik dari metode
+konvensional. Secara khusus untuk mengatasi kelangkaan informasi pada entitas
+\textit{long-tail}, \textcite{wei_kicgpt_2023} membuktikan bahwa strategi
+\textit{In-Context Learning} (ICL), yakni \textit{prompt few-shot} pada tahap KGC
+yang menyertakan beberapa contoh \textit{triple} valid sebagai panduan di dalam
+\textit{prompt} klasifikasi, memungkinkan LLM menginferensikan
+relasi yang tidak mampu ditangkap oleh metode berbasis \textit{embedding}.
+
+Pemanfaatan LLM dalam KGC tetap memerlukan validasi pakar
+(\textit{human-in-the-loop}) untuk meminimalisir risiko \textit{AI hallucination}.
+Meski demikian, evaluasi pakar secara manual kerap menimbulkan ketidaksepakatan
+antar-evaluator yang subjektif dan sulit diterapkan pada skala besar
+\parencite{gu_survey_nodate}. Penelitian ini mengatasi masalah tersebut dengan
+mengadopsi pendekatan \textit{LLM-as-a-judge}, di mana LLM diposisikan sebagai
+penengah yang berlandaskan konteks buku teks sumber untuk menyelesaikan konflik
+penilaian antarpakar, sehingga validitas keilmuan KG yang dihasilkan dapat
+dipertanggungjawabkan \parencite{gu_survey_nodate}.
+
+Meskipun pendekatan \textit{LLM-Assisted Knowledge Graph Completion} telah
+terbukti efektif pada domain umum, belum ada studi yang secara spesifik
+mengadaptasinya untuk memetakan interkoneksi materi sains (Fisika, Kimia,
+Biologi) dalam konteks Kurikulum Merdeka berbahasa Indonesia. Penelitian ini
+mengisi kesenjangan tersebut dengan mengembangkan \textit{pipeline}
+LLM-Assisted KGC untuk membangun dan melengkapi graf pengetahuan sains
+lintas-disiplin berbasis buku teks resmi Kemendikbudristek.
+
+% ============================================================
+\section{Rumusan Masalah}
+% ============================================================
+
+Berdasarkan latar belakang di atas, penelitian ini merumuskan empat pertanyaan
+penelitian berikut.
+
+\begin{enumerate}
+  \item \textbf{Masalah Fragmentasi Kurikulum:} Bagaimana memetakan
+        interkoneksi semantik antar-materi sains (Fisika, Kimia, Biologi) pada
+        Fase~F Kelas~XII Kurikulum Merdeka untuk mengatasi fenomena
+        \textit{siloed learning} akibat struktur mata pelajaran yang terpisah?
+
+  \item \textbf{Keterbatasan Metode Konvensional:} Bagaimana mengatasi kendala
+        ketidaklengkapan dan penurunan performa metode KGC berbasis
+        \textit{embedding} struktural saat berhadapan dengan entitas
+        \textit{long-tail} dalam materi kurikulum yang distribusinya tidak merata?
+
+  \item \textbf{Implementasi LLM-Assisted KGC:} Bagaimana efektivitas penerapan
+        LLM-Assisted KGC dalam memprediksi relasi implisit lintas-disiplin
+        antar-materi sains pada Kurikulum Merdeka?
+
+  \item \textbf{Validasi Hybrid dan Evaluasi Metrik:} Bagaimana mengevaluasi
+        keandalan dan kebenaran relasi sains yang dihasilkan LLM melalui
+        \textit{pipeline} evaluasi hybrid (\textit{LLM-as-a-judge}) dan mengukur
+        kualitas KG yang dihasilkan secara kuantitatif?
+\end{enumerate}
+
+% ============================================================
+\section{Tujuan Penelitian}
+% ============================================================
+
+\subsection{Tujuan Umum}
+
+Penelitian ini bertujuan menghasilkan purwarupa \textit{Knowledge Graph}
+kurikulum sains Fase~F Kelas~XII yang memetakan interkoneksi lintas-disiplin
+antara Fisika, Kimia, dan Biologi secara eksplisit dan tervalidasi. Graf yang
+dihasilkan diharapkan menjadi fondasi data bagi pengembang kurikulum dan peneliti
+teknologi pendidikan dalam merancang representasi pengetahuan yang mengakomodasi
+keterkaitan antar-konsep lintas mata pelajaran.
+
+\subsection{Tujuan Khusus}
+
+Secara spesifik, penelitian ini bertujuan untuk:
+
+\begin{enumerate}
+  \item Membangun \textit{knowledge graph} awal dengan mengekstraksi entitas
+        materi dan relasi eksplisit dari buku teks siswa Fisika, Kimia, dan
+        Biologi Kelas~XII (e-book resmi Kemendikbudristek) menggunakan
+        \textit{pipeline} LLM berbasis skema ontologi OWL, sebagai fondasi
+        struktur pengetahuan kurikulum yang terstandarisasi.
+
+  \item Mengimplementasikan mekanisme LLM-Assisted \textit{Knowledge Graph
+        Completion} untuk memprediksi dan
+        melengkapi \textit{missing links} lintas-disiplin, yaitu relasi implisit
+        antar-entitas sains yang tidak tertangkap oleh ekstraksi berbasis aturan.
+
+  \item Mengevaluasi kualitas \textit{knowledge graph} yang dihasilkan melalui
+        dua pendekatan yang saling melengkapi:
+        \begin{enumerate}
+          \item \textbf{Evaluasi Struktural:} mengukur perubahan topologi graf
+                sebelum dan sesudah proses KGC menggunakan metrik
+                \textit{Average Degree Centrality} (ADC),
+                \textit{Graph Density}, \textit{Modularity},
+                \textit{Typed Relation Ratio}, dan
+                \textit{Description Completeness}.
+
+          \item \textbf{Validasi Pakar:} memverifikasi akurasi ontologis dan
+                relevansi pedagogis relasi yang diprediksi LLM melalui enam
+                \textit{pakar} domain (dua per mata pelajaran), dengan metrik
+                \textit{Fuzzy Precision and Recall},
+                pengujian kesepakatan Gwet's AC1, dan penengahan ketidaksepakatan
+                menggunakan \textit{pipeline LLM-as-a-judge}.
+        \end{enumerate}
+\end{enumerate}
+
+% ============================================================
+\section{Manfaat Penelitian}
+% ============================================================
+
+\subsection{Bagi Peneliti dan Pengembang Teknologi Pendidikan}
+
+Penelitian ini menghasilkan dua kontribusi yang dapat dilanjutkan oleh peneliti
+berikutnya. Pertama, \textit{pipeline} LLM-KGC yang didokumentasikan dalam
+skripsi ini, yang mencakup skema ontologi OWL beserta strategi
+\textit{prompt engineering}-nya, dapat diadaptasi untuk domain kurikulum lain
+atau jenjang pendidikan yang berbeda. Kedua, KG kurikulum sains Fase~F Kelas XII berbahasa Indonesia
+yang dihasilkan merupakan sumber daya terbuka pertama dari jenisnya, dan dapat
+menjadi \textit{ground truth} awal untuk penelitian pembelajaran mesin di bidang
+pendidikan nasional.
+
+\subsection{Bagi Pendidik dan Pengembang Kurikulum}
+
+Visualisasi KG yang dihasilkan menyediakan representasi eksplisit dari jembatan
+konseptual lintas-disiplin yang selama ini bersifat implisit, misalnya
+ketergantungan konsep Potensial Elektrode di Kimia terhadap Potensial Listrik di
+Fisika, atau peran Reaksi Oksidasi sebagai prasyarat pemahaman Fosforilasi
+Oksidatif di Biologi. Representasi ini dapat digunakan sebagai referensi ketika
+merancang unit pembelajaran terpadu atau mengidentifikasi urutan konsep prasyarat
+lintas mata pelajaran, tanpa harus membangun pemetaan tersebut secara manual.
+
+% ============================================================
+\section{Ruang Lingkup Penelitian}
+\label{sec:ruang-lingkup}
+% ============================================================
+
+Berikut adalah batasan-batasan yang ditetapkan untuk penelitian ini.
+
+\begin{enumerate}
+  \item \textbf{Objek Penelitian:} Korpus data terbatas pada buku teks siswa
+        (e-book PDF resmi Kemendikbudristek) mata pelajaran Fisika, Kimia, dan
+        Biologi Fase~F Kelas~XII, diperoleh dari repositori
+        \texttt{buku.kemdikbud.go.id}. Buku teks Kelas~XI dan dokumen
+        Capaian Pembelajaran (CP) tidak termasuk dalam korpus.
+
+  \item \textbf{Model dan Strategi LLM:} Model Gemini~2.5 Flash Lite
+        (Google GenAI SDK) digunakan untuk ekstraksi entitas maupun
+        penyempurnaan graf (\textit{completion}) relasi lintas-disiplin, sedangkan
+        Gemini~3.1 Pro Preview digunakan khusus sebagai \textit{LLM-as-a-judge}
+        dalam \textit{pipeline} validasi.
+        \textit{Output} seluruh model ditetapkan dalam Bahasa Indonesia.
+        Penelitian ini tidak mencakup \textit{pre-training} atau
+        \textit{fine-tuning} model baru; LLM dimanfaatkan melalui
+        \textit{prompt engineering} berbasis \textit{few-shot} dan
+        \textit{schema-constrained}, baik untuk ekstraksi entitas maupun untuk
+        klasifikasi relasi lintas-disiplin pada tahap \textit{completion}.
+
+  \item \textbf{Infrastruktur Graf:} Graf diinstansiasi pada basis data Neo4j
+        (Aura Free tier) menggunakan Cypher. Pencarian kemiripan semantik
+        memanfaatkan ANN \textit{vector index} HNSW dengan model
+        \textit{embedding} \texttt{gemini-embedding-001}. Metrik topologi (ADC,
+        \textit{Graph Density}, \textit{Modularity}) dihitung melalui kueri
+        Cypher.
+
+  \item \textbf{Cakupan Validasi:} Validasi pakar dilakukan oleh enam
+        \textit{pakar} (dua per mata pelajaran) dengan latar belakang ilmu
+        murni atau pendidikan sains yang linier. Setiap \textit{triple} dinilai
+        ke dalam empat kategori penilaian melalui aplikasi web KG Review App. Kesepakatan
+        diukur menggunakan Gwet's AC1. Ketidaksepakatan pada validasi
+        intra-mapel diselesaikan oleh \textit{LLM-as-a-judge} berbasis
+        Gemini~3.1 Pro Preview; ketidaksepakatan pada relasi lintas-disiplin
+        diselesaikan melalui diskusi panel seluruh pakar.
+
+  \item \textbf{Luaran dan Batasan Sistem:} Luaran penelitian adalah purwarupa
+        struktur data \textit{Knowledge Graph} pada Neo4j beserta visualisasinya.
+        Penelitian ini tidak mencakup pengembangan sistem rekomendasi pembelajaran
+        adaptif, aplikasi pembelajaran berbasis web bagi \textit{end-user}
+        (siswa/guru), atau integrasi ke dalam platform LMS.
+
+  \item \textbf{Batasan Inferensi Pedagogis:} Sistem hanya menginferensi
+        keterkaitan \textit{single-hop} (relasi langsung satu sambungan
+        antara dua konsep, tanpa rantai konsep perantara); sistem tidak
+        menyusun jalur belajar multi-langkah lintas-disiplin, tidak
+        memodelkan tingkat kognitif (taksonomi Bloom) maupun keadaan
+        pembelajar (\textit{learner state}), dan tidak menghasilkan jalur
+        belajar terkomposisi.
+\end{enumerate}
+
+\ifSubfilesClassLoaded{\printbibliography[title={Daftar Pustaka}]}{}
+
+\end{document}
