@@ -242,16 +242,31 @@ pembatasan konsep pada materi pokok.
   konsep per subbab---lengkap dengan deskripsi, status validasi glosarium,
   rujukan materi pokok, tautan lintas-buku, dan relasi antar-konsep.
 
-  \item \textbf{Validasi pascaproses.} Sebelum dikonstruksi ke graf, keluaran
-  LLM melewati tiga penyaringan. \emph{Pertama}, penyaringan tautan lintas-buku:
-  tautan ditolak apabila buku target sama dengan buku sumber atau buku target
-  tidak termuat dalam korpus, sehingga mencegah \textit{self-loop} dan referensi
-  \textit{dangling}. \emph{Kedua}, \textit{fallback} heuristik
-  (\texttt{infer\_cross\_links}): bila LLM mengembalikan keluaran kosong, sistem
-  menjalankan pencocokan tumpang-tindih token bergaya Jaccard, memakai token
-  sepanjang minimal empat karakter dan non-\textit{stopword}, lalu mengambil dua
-  pasangan konsep antarbuku dengan tumpang-tindih tertinggi. \emph{Ketiga},
-  sanitasi relasi: \textit{triple} dengan tipe atau target kosong dibuang.
+  \item \textbf{Validasi pascaproses.} Sebelum masuk ke graf, keluaran LLM
+  dirapikan melalui tiga langkah. Dua langkah bertugas membuang keluaran yang
+  tidak valid, sementara satu langkah justru mengisi keluaran apabila LLM gagal
+  menghasilkannya:
+
+  \begin{enumerate}
+    \item \textit{Menyaring tautan lintas-buku.} Sebuah tautan dibuang jika buku
+    tujuannya sama dengan buku asalnya, atau jika buku tujuannya tidak terdapat
+    dalam korpus. Langkah ini mencegah munculnya tautan yang menunjuk ke dirinya
+    sendiri (\textit{self-loop}) maupun tautan yang mengarah ke buku yang tidak
+    tersedia (\textit{dangling}).
+
+    \item \textit{Cadangan saat keluaran kosong.} Apabila LLM tidak menghasilkan
+    satu pun tautan lintas-buku, sistem menggunakan fungsi
+    \texttt{infer\_cross\_links} sebagai cadangan. Fungsi ini mencari pasangan
+    konsep antarbuku yang banyak menggunakan kata yang sama (serupa dengan cara
+    kerja Jaccard), namun hanya menghitung kata sepanjang minimal empat huruf dan
+    bukan \textit{stopword}, lalu mengambil dua pasangan dengan kemiripan
+    tertinggi. Berbeda dengan dua langkah lainnya, langkah ini menambah tautan,
+    bukan membuangnya.
+
+    \item \textit{Membersihkan relasi.} Terakhir, \textit{triple} yang tipe
+    relasi atau targetnya kosong ikut dibuang agar tidak ada relasi cacat yang
+    masuk ke graf.
+  \end{enumerate}
 \end{enumerate}
 
 % ============================================================
