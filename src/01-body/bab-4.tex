@@ -297,10 +297,13 @@ data baru.
       pada Subbab~\ref{subsec:skema-ontologi}.
   \end{itemize}
 
-  \item \textbf{Tulang punggung hierarki.} Relasi struktural
-  \texttt{HAS\_CHAPTER}, \texttt{HAS\_SUBTOPIC}, \texttt{HAS\_CONCEPT}, dan
-  \texttt{NEXT\_CHAPTER} ditarik dari struktur daftar isi (bukan dari LLM)
-  untuk menjamin keterurutan hierarki bab.
+  \item \textbf{Kerangka hierarki.} Tahap ini membentuk rangka struktural graf,
+  yaitu susunan berjenjang dari Kelas, Bab, Subbab, hingga Konsep. Rangka ini
+  dibangun melalui relasi struktural \texttt{HAS\_CHAPTER}, \texttt{HAS\_SUBTOPIC},
+  \texttt{HAS\_CONCEPT}, dan \texttt{NEXT\_CHAPTER} (urutan antarbab). Berbeda
+  dengan relasi semantik yang diprediksi LLM, relasi struktural ini ditarik
+  langsung dari struktur daftar isi sehingga keterurutan dan susunan hierarkinya
+  terjamin benar.
 
   \item \textbf{Pass 2 --- Relasi dalam-buku.}
   \begin{itemize}
