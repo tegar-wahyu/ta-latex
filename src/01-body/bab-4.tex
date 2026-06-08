@@ -330,8 +330,11 @@ data baru.
   \begin{itemize}
     \item \textit{Edge} lintas-buku diberi prefiks \texttt{LINTAS\_BUKU\_}
       diikuti tipe relasinya (mis.\ \texttt{LINTAS\_BUKU\_APLIKASI\_DARI}).
-    \item Penjagaan integritas diterapkan: buku target harus berbeda dari buku
-      sumber dan termuat dalam korpus yang diproses.
+    \item Diterapkan aturan pemeriksaan keabsahan agar setiap relasi lintas-buku
+      benar-benar valid, yaitu buku tujuan harus berbeda dari buku sumber (supaya
+      relasinya memang menyeberang antarbuku, bukan di dalam buku yang sama) dan
+      buku tujuan harus ada di dalam korpus yang diproses (supaya relasinya tidak
+      mengarah ke buku yang tidak tersedia).
     \item Apabila konsep target belum ada pada \textit{scope} mata pelajaran
       tujuan, \textit{node} \texttt{Concept} baru dibuat secara \textit{lazy}
       (\textit{lazy materialization}).
