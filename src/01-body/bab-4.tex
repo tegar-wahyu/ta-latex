@@ -315,9 +315,13 @@ data baru.
       belum ada, sistem tidak memaksakan pembuatan \texttt{Concept} baru,
       melainkan merepresentasikannya sebagai \textit{node} \texttt{ConceptTarget}
       yang berperan sebagai penampung sementara (\textit{placeholder}).
-    \item Pemisahan label \texttt{Concept} dan \texttt{ConceptTarget}
-      (Subbab~\ref{subsec:skema-ontologi}) memudahkan audit terhadap konsep yang
-      belum ter-\textit{anchor} pada sumber tekstual.
+    \item Pembedaan label \texttt{Concept} dan \texttt{ConceptTarget}
+      (Subbab~\ref{subsec:skema-ontologi}) berguna untuk audit. Label
+      \texttt{Concept} menandai konsep yang benar-benar diekstrak dari teks buku
+      (memiliki dasar tekstual), sedangkan \texttt{ConceptTarget} menandai konsep
+      yang baru disebut sebagai tujuan relasi tetapi belum ditemukan pada teks
+      mana pun. Karena keduanya berlabel berbeda, konsep yang belum memiliki
+      dasar tekstual dapat ditelusuri dengan mudah untuk diperiksa lebih lanjut.
     \item Tipe relasi dinormalisasi (karakter non-alfanumerik diganti garis
       bawah) agar sesuai dengan sintaksis \textit{relationship type} Cypher.
   \end{itemize}
