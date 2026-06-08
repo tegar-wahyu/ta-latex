@@ -124,14 +124,28 @@ Subbab~\ref{subsec:skema-ontologi}.
 
 Untuk merepresentasikan rancangan tersebut secara baku dan dapat diproses mesin,
 skema dinyatakan menggunakan \textit{Web Ontology Language} (OWL), yaitu bahasa
-standar W3C untuk merepresentasikan ontologi yang menyediakan konstruk formal
-guna mendefinisikan kelas (\textit{class}), relasi antar-entitas
+standar W3C untuk merepresentasikan ontologi yang menyediakan konstruk
+untuk mendefinisikan kelas (\textit{class}), relasi antar-entitas
 (\textit{object property}), serta properti data (\textit{datatype property})
-\parencite{w3c_owl2_2012}. Di sini OWL digunakan sebagai format penulisan skema
-yang baku dan dapat dibaca mesin, bukan untuk memanfaatkan seluruh kemampuan
-logika formalnya. Dengan kata lain, OWL dipakai untuk menuliskan struktur
-ontologi, sementara model yang dibangun tetap sederhana dan bersifat taksonomik,
-sehingga selaras dengan pendekatan ontologi informal yang telah diuraikan.
+\parencite{w3c_owl2_2012}.
+
+Penggunaan OWL ini perlu dijelaskan agar tidak terkesan bertentangan dengan
+pilihan pendekatan informal di atas. Pertama, spektrum formalitas
+\textcite{uschold_ontologies_2004} menilai \emph{seberapa dalam makna sebuah
+ontologi dimodelkan}, bukan format atau bahasa yang dipakai untuk menuliskannya.
+Kedua, OWL tidak hanya memiliki satu tingkat kerumitan. OWL menyediakan beberapa
+pilihan, dari yang ringan dan sederhana seperti profil OWL~2 EL, QL, dan RL
+hingga yang berat dan kompleks \parencite{w3c_owl2_profiles_2012}. Jadi,
+menuliskan ontologi yang ringan ke dalam OWL adalah hal yang wajar dan tidak
+otomatis membuatnya menjadi ontologi formal yang berat.
+
+Atas dasar itu, OWL dalam penelitian ini hanya dipakai sebagai \emph{format
+penulisan} yang baku dan dapat dibaca mesin, bukan untuk memanfaatkan seluruh
+kemampuan logika formalnya. Skema yang dibangun hanya menggunakan hierarki
+kelas dan daftar relasi (taksonomi), tanpa aturan logika yang rumit. Dengan
+kata lain, OWL dipakai untuk \emph{menuliskan} struktur ontologi, sedangkan
+model yang dibangun tetap sederhana dan bersifat taksonomik, sehingga tetap
+selaras dengan pendekatan ontologi informal yang dipilih.
 
 \subsection{Knowledge Graph Completion}
 \label{subsec:kgc}
