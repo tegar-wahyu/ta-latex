@@ -18,19 +18,7 @@
           "meta": {
             "latestCypherQueries": [
               {
-                "query": "MATCH (n:Concept)\n  WITH count(n) AS total_nodes\n\n  MATCH (n:Concept)-[r]->(m:Concept)\n  WITH total_nodes, count(r) AS total_edges\n\n  RETURN total_nodes, total_edges,\n      toFloat(total_edges) / (total_nodes * (total_nodes - 1)) AS graph_density",
-                "origin": "user"
-              },
-              {
-                "query": "MATCH (v)\nWITH count(v) AS total_nodes\nMATCH ()-[e]->()\nWITH total_nodes, count(e) AS total_edges\nRETURN\n    total_nodes,\n    total_edges,\n    CASE\n        WHEN total_nodes > 1\n        THEN toFloat(total_edges) / (total_nodes * (total_nodes - 1))\n        ELSE 0\n    END AS graph_density",
-                "origin": "user"
-              },
-              {
-                "query": "/* 1. Calculate total edges (m) */\nMATCH ()-[r]->()\nWITH count(r) AS m\nWHERE m > 0\n\n/* 2. Calculate the 'Expected' part of the formula (sum of degrees squared) */\nMATCH (n)\nWHERE n.community IS NOT NULL\nWITH m, n.community AS comm, sum(COUNT { (n)--() }) AS communityDegreeSum\nWITH m, sum((communityDegreeSum * communityDegreeSum) / (4.0 * m * m)) AS expectedValue\n\n/* 3. Calculate the 'Actual' part (edges inside communities) */\nMATCH (n1)-[r]->(n2)\nWHERE n1.community = n2.community\nWITH m, expectedValue, count(r) AS actualEdges\n\n/* 4. Final Calculation */\nRETURN (1.0 * actualEdges / m) - expectedValue AS modularity_score",
-                "origin": "user"
-              },
-              {
-                "query": "CALL gds.louvain.stats('myGraph')\nYIELD modularity\nRETURN modularity",
+                "query": "  MATCH (n:Concept)\n  WITH count(n) AS total_nodes\n  \n  MATCH (n:Concept)-[r]->(m:Concept)\n  WITH total_nodes, count(r) AS total_edges\n  \n  RETURN total_nodes, total_edges,\n      toFloat(total_edges) / (total_nodes * (total_nodes - 1)) AS graph_density",
                 "origin": "user"
               }
             ]
@@ -80,19 +68,69 @@
           "meta": {
             "latestCypherQueries": [
               {
-                "query": "// Step 1: total directed edges between chapter-mapped concepts\n  MATCH (c1:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(n:Concept)-[r]->(m:Concept)\n  MATCH (c2:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(m)\n  WITH count(r) AS total_m\n\n  // Step 2: k_out and e_cc per source community\n  MATCH (c1:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(n:Concept)-[r]->(m:Concept)\n  MATCH (c2:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(m)\n  WITH total_m, c1.name AS comm,\n       count(r) AS k_out,\n       sum(CASE WHEN c1.name = c2.name THEN 1 ELSE 0 END) AS e_cc\n  WITH total_m, collect({comm: comm, k_out: k_out, e_cc: e_cc}) AS out_stats\n\n  // Step 3: k_in per target community\n  MATCH (c2:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(m:Concept)\n  MATCH (n:Concept)-[r]->(m)\n  MATCH (c1:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(n)\n  WITH total_m, out_stats, c2.name AS comm, count(r) AS k_in\n  WITH total_m, out_stats, collect({comm: comm, k_in: k_in}) AS in_stats\n\n  // Step 4: join by community, compute Q\n  UNWIND out_stats AS os\n  WITH total_m, os, in_stats\n  WITH total_m, os.e_cc AS e_cc, os.k_out AS k_out,\n       coalesce([x IN in_stats WHERE x.comm = os.comm | x.k_in][0], 0) AS k_in\n  RETURN sum(\n    (1.0 * e_cc / total_m) - (1.0 * k_out * k_in / (total_m * total_m))\n  ) AS globalModularity",
+                "query": "// Grade-based directed modularity for Concept -> Concept edges\nMATCH (a:Concept)-[r]->(b:Concept)\nWITH collect({src: a.grade, dst: b.grade}) AS edges, count(r) AS m\nUNWIND edges AS e\nWITH edges, m, collect(DISTINCT e.src) + collect(DISTINCT e.dst) AS raw_comms\nUNWIND raw_comms AS comm\nWITH DISTINCT edges, m, comm\nWITH m,\n     size([e IN edges WHERE e.src = comm]) AS k_out,\n     size([e IN edges WHERE e.dst = comm]) AS k_in,\n     size([e IN edges WHERE e.src = comm AND e.dst = comm]) AS e_cc\nWITH m, sum((1.0 * e_cc / m) - (1.0 * k_out * k_in / (m * m))) AS q\nRETURN CASE WHEN m > 0 THEN q ELSE 0 END AS modularity",
                 "origin": "user"
               }
             ]
           },
           "settings": {
             "type": "singleValue",
-            "query": " // Step 1: total directed edges between chapter-mapped concepts\n  MATCH (c1:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(n:Concept)-[r]->(m:Concept)\n  MATCH (c2:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(m)\n  WITH count(r) AS total_m\n\n  // Step 2: k_out and e_cc per source community\n  MATCH (c1:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(n:Concept)-[r]->(m:Concept)\n  MATCH (c2:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(m)\n  WITH total_m, c1.name AS comm,\n       count(r) AS k_out,\n       sum(CASE WHEN c1.name = c2.name THEN 1 ELSE 0 END) AS e_cc\n  WITH total_m, collect({comm: comm, k_out: k_out, e_cc: e_cc}) AS out_stats\n\n  // Step 3: k_in per target community\n  MATCH (c2:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(m:Concept)\n  MATCH (n:Concept)-[r]->(m)\n  MATCH (c1:Chapter)-[:HAS_SUBTOPIC]->(:Subtopic)-[:HAS_CONCEPT]->(n)\n  WITH total_m, out_stats, c2.name AS comm, count(r) AS k_in\n  WITH total_m, out_stats, collect({comm: comm, k_in: k_in}) AS in_stats\n\n  // Step 4: join by community, compute Q\n  UNWIND out_stats AS os\n  WITH total_m, os, in_stats\n  WITH total_m, os.e_cc AS e_cc, os.k_out AS k_out,\n       coalesce([x IN in_stats WHERE x.comm = os.comm | x.k_in][0], 0) AS k_in\n  RETURN sum(\n    (1.0 * e_cc / total_m) - (1.0 * k_out * k_in / (total_m * total_m))\n  ) AS globalModularity",
+            "query": "// Grade-based directed modularity for Concept -> Concept edges\nMATCH (a:Concept)-[r]->(b:Concept)\nWITH collect({src: a.grade, dst: b.grade}) AS edges, count(r) AS m\nUNWIND edges AS e\nWITH edges, m, collect(DISTINCT e.src) + collect(DISTINCT e.dst) AS raw_comms\nUNWIND raw_comms AS comm\nWITH DISTINCT edges, m, comm\nWITH m,\n     size([e IN edges WHERE e.src = comm]) AS k_out,\n     size([e IN edges WHERE e.dst = comm]) AS k_in,\n     size([e IN edges WHERE e.src = comm AND e.dst = comm]) AS e_cc\nWITH m, sum((1.0 * e_cc / m) - (1.0 * k_out * k_in / (m * m))) AS q\nRETURN CASE WHEN m > 0 THEN q ELSE 0 END AS modularity",
             "databaseName": "772674a6",
             "version": 1,
             "fontSize": null,
             "textColor": null,
             "align": 4
+          }
+        },
+        {
+          "version": 1,
+          "title": "Robustness Metrics - Wrong Retained",
+          "w": 6,
+          "h": 5,
+          "x": 0,
+          "y": 4,
+          "meta": {
+            "latestCypherQueries": [
+              {
+                "query": "// Concept -> Concept structural metrics (wrong edges retained)\nCALL () {\n  MATCH (n:Concept)\n  WITH count(n) AS total_nodes\n  MATCH (:Concept)-[r]->(:Concept)\n  WITH total_nodes, count(r) AS total_edges\n  RETURN total_nodes,\n         total_edges,\n         CASE WHEN total_nodes > 1\n              THEN toFloat(total_edges) / (total_nodes * (total_nodes - 1))\n              ELSE 0 END AS density\n}\nCALL () {\n  MATCH (n:Concept)\n  WITH avg(COUNT { (n)-[r]-(:Concept) }) AS adc\n  RETURN adc\n}\nCALL () {\n  MATCH (a:Concept)-[r]->(b:Concept)\n  WITH collect({src: a.grade, dst: b.grade}) AS edges, count(r) AS m\n  UNWIND edges AS e\n  WITH edges, m, collect(DISTINCT e.src) + collect(DISTINCT e.dst) AS raw_comms\n  UNWIND raw_comms AS comm\n  WITH DISTINCT edges, m, comm\n  WITH m,\n       size([e IN edges WHERE e.src = comm]) AS k_out,\n       size([e IN edges WHERE e.dst = comm]) AS k_in,\n       size([e IN edges WHERE e.src = comm AND e.dst = comm]) AS e_cc\n  WITH m, sum((1.0 * e_cc / m) - (1.0 * k_out * k_in / (m * m))) AS q\n  RETURN CASE WHEN m > 0 THEN q ELSE 0 END AS modularity\n}\nWITH [\n  {metric: 'ADC', value: adc},\n  {metric: 'Graph Density', value: density},\n  {metric: 'Modularity', value: modularity},\n  {metric: 'Concept nodes', value: total_nodes},\n  {metric: 'Concept->Concept edges', value: total_edges}\n] AS rows\nUNWIND rows AS row\nRETURN row.metric AS metric, row.value AS value",
+                "origin": "user"
+              }
+            ]
+          },
+          "settings": {
+            "type": "table",
+            "query": "// Concept -> Concept structural metrics (wrong edges retained)\nCALL () {\n  MATCH (n:Concept)\n  WITH count(n) AS total_nodes\n  MATCH (:Concept)-[r]->(:Concept)\n  WITH total_nodes, count(r) AS total_edges\n  RETURN total_nodes,\n         total_edges,\n         CASE WHEN total_nodes > 1\n              THEN toFloat(total_edges) / (total_nodes * (total_nodes - 1))\n              ELSE 0 END AS density\n}\nCALL () {\n  MATCH (n:Concept)\n  WITH avg(COUNT { (n)-[r]-(:Concept) }) AS adc\n  RETURN adc\n}\nCALL () {\n  MATCH (a:Concept)-[r]->(b:Concept)\n  WITH collect({src: a.grade, dst: b.grade}) AS edges, count(r) AS m\n  UNWIND edges AS e\n  WITH edges, m, collect(DISTINCT e.src) + collect(DISTINCT e.dst) AS raw_comms\n  UNWIND raw_comms AS comm\n  WITH DISTINCT edges, m, comm\n  WITH m,\n       size([e IN edges WHERE e.src = comm]) AS k_out,\n       size([e IN edges WHERE e.dst = comm]) AS k_in,\n       size([e IN edges WHERE e.src = comm AND e.dst = comm]) AS e_cc\n  WITH m, sum((1.0 * e_cc / m) - (1.0 * k_out * k_in / (m * m))) AS q\n  RETURN CASE WHEN m > 0 THEN q ELSE 0 END AS modularity\n}\nWITH [\n  {metric: 'ADC', value: adc},\n  {metric: 'Graph Density', value: density},\n  {metric: 'Modularity', value: modularity},\n  {metric: 'Concept nodes', value: total_nodes},\n  {metric: 'Concept->Concept edges', value: total_edges}\n] AS rows\nUNWIND rows AS row\nRETURN row.metric AS metric, row.value AS value",
+            "databaseName": "772674a6",
+            "actions": [],
+            "version": 1,
+            "richRenderCells": false,
+            "enableRecordsDownload": true
+          }
+        },
+        {
+          "version": 1,
+          "title": "Robustness Metrics - Wrong Dropped",
+          "w": 6,
+          "h": 5,
+          "x": 6,
+          "y": 4,
+          "meta": {
+            "latestCypherQueries": [
+              {
+                "query": "// Concept -> Concept structural metrics (wrong edges dropped)\nCALL () {\n  MATCH (n:Concept)\n  WITH count(n) AS total_nodes\n  MATCH (:Concept)-[r]->(:Concept)\n  WHERE coalesce(r.consensus, r.status, '') <> 'wrong'\n  WITH total_nodes, count(r) AS total_edges\n  RETURN total_nodes,\n         total_edges,\n         CASE WHEN total_nodes > 1\n              THEN toFloat(total_edges) / (total_nodes * (total_nodes - 1))\n              ELSE 0 END AS density\n}\nCALL () {\n  MATCH (n:Concept)\n  WITH avg(COUNT { (n)-[r]-(:Concept) WHERE coalesce(r.consensus, r.status, '') <> 'wrong' }) AS adc\n  RETURN adc\n}\nCALL () {\n  MATCH (a:Concept)-[r]->(b:Concept)\n  WHERE coalesce(r.consensus, r.status, '') <> 'wrong'\n  WITH collect({src: a.grade, dst: b.grade}) AS edges, count(r) AS m\n  UNWIND edges AS e\n  WITH edges, m, collect(DISTINCT e.src) + collect(DISTINCT e.dst) AS raw_comms\n  UNWIND raw_comms AS comm\n  WITH DISTINCT edges, m, comm\n  WITH m,\n       size([e IN edges WHERE e.src = comm]) AS k_out,\n       size([e IN edges WHERE e.dst = comm]) AS k_in,\n       size([e IN edges WHERE e.src = comm AND e.dst = comm]) AS e_cc\n  WITH m, sum((1.0 * e_cc / m) - (1.0 * k_out * k_in / (m * m))) AS q\n  RETURN CASE WHEN m > 0 THEN q ELSE 0 END AS modularity\n}\nWITH [\n  {metric: 'ADC', value: adc},\n  {metric: 'Graph Density', value: density},\n  {metric: 'Modularity', value: modularity},\n  {metric: 'Concept nodes', value: total_nodes},\n  {metric: 'Concept->Concept edges', value: total_edges}\n] AS rows\nUNWIND rows AS row\nRETURN row.metric AS metric, row.value AS value",
+                "origin": "user"
+              }
+            ]
+          },
+          "settings": {
+            "type": "table",
+            "query": "// Concept -> Concept structural metrics (wrong edges dropped)\nCALL () {\n  MATCH (n:Concept)\n  WITH count(n) AS total_nodes\n  MATCH (:Concept)-[r]->(:Concept)\n  WHERE coalesce(r.consensus, r.status, '') <> 'wrong'\n  WITH total_nodes, count(r) AS total_edges\n  RETURN total_nodes,\n         total_edges,\n         CASE WHEN total_nodes > 1\n              THEN toFloat(total_edges) / (total_nodes * (total_nodes - 1))\n              ELSE 0 END AS density\n}\nCALL () {\n  MATCH (n:Concept)\n  WITH avg(COUNT { (n)-[r]-(:Concept) WHERE coalesce(r.consensus, r.status, '') <> 'wrong' }) AS adc\n  RETURN adc\n}\nCALL () {\n  MATCH (a:Concept)-[r]->(b:Concept)\n  WHERE coalesce(r.consensus, r.status, '') <> 'wrong'\n  WITH collect({src: a.grade, dst: b.grade}) AS edges, count(r) AS m\n  UNWIND edges AS e\n  WITH edges, m, collect(DISTINCT e.src) + collect(DISTINCT e.dst) AS raw_comms\n  UNWIND raw_comms AS comm\n  WITH DISTINCT edges, m, comm\n  WITH m,\n       size([e IN edges WHERE e.src = comm]) AS k_out,\n       size([e IN edges WHERE e.dst = comm]) AS k_in,\n       size([e IN edges WHERE e.src = comm AND e.dst = comm]) AS e_cc\n  WITH m, sum((1.0 * e_cc / m) - (1.0 * k_out * k_in / (m * m))) AS q\n  RETURN CASE WHEN m > 0 THEN q ELSE 0 END AS modularity\n}\nWITH [\n  {metric: 'ADC', value: adc},\n  {metric: 'Graph Density', value: density},\n  {metric: 'Modularity', value: modularity},\n  {metric: 'Concept nodes', value: total_nodes},\n  {metric: 'Concept->Concept edges', value: total_edges}\n] AS rows\nUNWIND rows AS row\nRETURN row.metric AS metric, row.value AS value",
+            "databaseName": "772674a6",
+            "actions": [],
+            "version": 1,
+            "richRenderCells": false,
+            "enableRecordsDownload": true
           }
         }
       ]

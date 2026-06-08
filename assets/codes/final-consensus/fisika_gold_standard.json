@@ -3807,8 +3807,8 @@
     "refined_description":"Defek massa dikonversi menjadi energi ikat sesuai dengan prinsip kesetaraan massa-energi Einstein (E=mc²).",
     "r1_rating":"correct",
     "r2_rating":"partial",
-    "final_consensus_label":"unknown",
-    "reasoning":"",
+    "final_consensus_label":"correct",
+    "reasoning":"Hubungan 'MENGHASILKAN' dapat diterima karena dalam fisika inti, defek massa merupakan selisih massa pembentuk inti yang dikonversi (menghasilkan) energi ikat inti sesuai dengan prinsip kesetaraan massa-energi Einstein. Deskripsi sudah menjelaskan konteks ini dengan sangat baik dan akurat.",
     "added_by_reviewers":[
 
     ],
@@ -3825,8 +3825,8 @@
     "refined_description":"Besarnya energi ikat (EB) dapat dihitung dari defek massa (Δm) dikalikan kuadrat kecepatan cahaya (c²).",
     "r1_rating":"correct",
     "r2_rating":"partial",
-    "final_consensus_label":"unknown",
-    "reasoning":"",
+    "final_consensus_label":"correct",
+    "reasoning":"Formula dan deskripsi energi ikat (EB = Δmc²) sudah tepat dan sesuai dengan teks pada materi rujukan. Teks secara eksplisit menyatakan bahwa besar energi ikat dihitung berdasarkan defek massa dikalikan kuadrat kecepatan cahaya.",
     "added_by_reviewers":[
 
     ],
@@ -3879,8 +3879,8 @@
     "refined_description":"Isotop memiliki nomor massa yang berbeda karena variasi jumlah neutron dalam intinya.",
     "r1_rating":"correct",
     "r2_rating":"partial",
-    "final_consensus_label":"unknown",
-    "reasoning":"",
+    "final_consensus_label":"correct",
+    "reasoning":"Berdasarkan konteks, isotop didefinisikan sebagai bentuk berbeda dari unsur yang sama yang memiliki jumlah proton sama tetapi jumlah neutron berbeda. Karena nomor massa adalah jumlah total proton dan neutron, maka perbedaan jumlah neutron pada isotop secara langsung menyebabkan isotop-isotop tersebut memiliki nomor massa yang berbeda. Hubungan dan deskripsi sudah tepat.",
     "added_by_reviewers":[
 
     ],
@@ -4131,8 +4131,8 @@
     "refined_description":"Karena massa dan muatannya yang relatif besar, sinar alfa memiliki daya tembus yang sangat lemah.",
     "r1_rating":"correct",
     "r2_rating":"partial",
-    "final_consensus_label":"unknown",
-    "reasoning":"",
+    "final_consensus_label":"correct",
+    "reasoning":"Konteks secara eksplisit menjelaskan bahwa partikel alfa memiliki massa dan muatan yang relatif besar, yang membuatnya memiliki kemampuan ionisasi besar sehingga cepat kehilangan energi, yang pada akhirnya menyebabkan daya tembusnya menjadi rendah atau lemah. Deskripsi sudah merangkum fakta ini dengan akurat.",
     "added_by_reviewers":[
 
     ],
@@ -4149,8 +4149,8 @@
     "refined_description":"Sinar beta dilepaskan dalam proses peluruhan beta, yang melibatkan perubahan identitas nukleon di dalam inti.",
     "r1_rating":"correct",
     "r2_rating":"partial",
-    "final_consensus_label":"unknown",
-    "reasoning":"",
+    "final_consensus_label":"partial",
+    "reasoning":"Sinar beta dihasilkan dari proses peluruhan beta, yang melibatkan perubahan identitas nukleon di dalam inti. Relasi asli 'MENGHASILKAN' terbalik secara arah, sehingga direvisi agar sesuai dengan konteks bahwa peluruhan beta yang menghasilkan sinar beta.",
     "added_by_reviewers":[
 
     ],

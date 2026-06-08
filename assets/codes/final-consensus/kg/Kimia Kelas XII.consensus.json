@@ -3557,8 +3557,8 @@
                   "target": "Polimer Termoset",
                   "description": "Ikatan kovalen antar rantai yang kuat pada polimer berikatan silang menghasilkan sifat termoset yang kaku.",
                   "expert_review": {
-                    "status": "unknown",
-                    "consensus": "unknown",
+                    "status": "wrong",
+                    "consensus": "wrong",
                     "ratings": {
                       "expert-kimia-4": "wrong",
                       "expert-kimia-6": "correct"
@@ -3603,8 +3603,8 @@
                   "target": "Daur Ulang",
                   "description": "Sifat termoset yang tidak dapat dilelehkan atau dibentuk ulang menyebabkannya tidak dapat didaur ulang.",
                   "expert_review": {
-                    "status": "unknown",
-                    "consensus": "unknown",
+                    "status": "correct",
+                    "consensus": "correct",
                     "ratings": {
                       "expert-kimia-4": "correct",
                       "expert-kimia-6": "partial"
@@ -3648,8 +3648,8 @@
                   "target": "Limbah Plastik",
                   "description": "Sifat plastik yang tidak mudah terdegradasi menyebabkan penumpukan limbah plastik sebagai masalah lingkungan.",
                   "expert_review": {
-                    "status": "unknown",
-                    "consensus": "unknown",
+                    "status": "correct",
+                    "consensus": "correct",
                     "ratings": {
                       "expert-kimia-4": "wrong",
                       "expert-kimia-6": "correct"
@@ -3719,8 +3719,8 @@
                   "target": "Biodegradable Plastic",
                   "description": "Degradasi plastik dapat terjadi melalui jalur biologis oleh mikroorganisme.",
                   "expert_review": {
-                    "status": "unknown",
-                    "consensus": "unknown",
+                    "status": "wrong",
+                    "consensus": "wrong",
                     "ratings": {
                       "expert-kimia-4": "wrong",
                       "expert-kimia-6": "correct"
@@ -3736,8 +3736,8 @@
                   "target": "Photodegradable Plastic",
                   "description": "Degradasi plastik dapat dipicu oleh paparan cahaya dengan panjang gelombang tertentu.",
                   "expert_review": {
-                    "status": "unknown",
-                    "consensus": "unknown",
+                    "status": "wrong",
+                    "consensus": "wrong",
                     "ratings": {
                       "expert-kimia-4": "wrong",
                       "expert-kimia-6": "correct"
@@ -3761,8 +3761,8 @@
                   "target": "Mikroorganisme",
                   "description": "Biodegradable plastic dapat diuraikan oleh mikroorganisme menjadi karbondioksida, air, dan biomassa.",
                   "expert_review": {
-                    "status": "unknown",
-                    "consensus": "unknown",
+                    "status": "correct",
+                    "consensus": "correct",
                     "ratings": {
                       "expert-kimia-4": "missing",
                       "expert-kimia-6": "correct"
@@ -4055,8 +4055,8 @@
                   "target": "Protein",
                   "description": "Asam amino adalah unit dasar yang bergabung melalui ikatan amida untuk membentuk rantai polipeptida protein.",
                   "expert_review": {
-                    "status": "unknown",
-                    "consensus": "unknown",
+                    "status": "correct",
+                    "consensus": "correct",
                     "ratings": {
                       "expert-kimia-4": "correct",
                       "expert-kimia-6": "wrong"
@@ -4154,8 +4154,8 @@
                   "target": "Protein",
                   "description": "Uji Biuret dan Ninhidrin adalah metode untuk mendeteksi keberadaan protein atau ikatan peptida.",
                   "expert_review": {
-                    "status": "unknown",
-                    "consensus": "unknown",
+                    "status": "correct",
+                    "consensus": "correct",
                     "ratings": {
                       "expert-kimia-4": "correct",
                       "expert-kimia-6": "partial"

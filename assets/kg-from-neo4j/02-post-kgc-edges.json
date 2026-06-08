@@ -5630,13 +5630,13 @@
       "source": "consensus",
       "relation_type": "MENGHASILKAN",
       "added_by_reviewers_json": "[]",
-      "consensus": "unknown",
+      "consensus": "correct",
       "provenance": "",
-      "expert_review_json": "{\"status\":\"unknown\",\"consensus\":\"unknown\",\"ratings\":{\"expert-fisika-4\":\"correct\",\"expert-fisika-6\":\"partial\"},\"comments\":{\"expert-fisika-4\":\"Ketika proton dan neutron bergabung membentuk inti, massa inti yang terbentuk selalu lebih kecil daripada jumlah total massa penyusunnya. Selisih massa ini disebut defek massa (Delta m), yang berubah menjadi energi ikat inti sesuai hukum kesetaraan massa-energi Einstein.\"},\"n_reviewers\":2}",
+      "expert_review_json": "{\"status\":\"correct\",\"consensus\":\"correct\",\"ratings\":{\"expert-fisika-4\":\"correct\",\"expert-fisika-6\":\"partial\"},\"comments\":{\"expert-fisika-4\":\"Ketika proton dan neutron bergabung membentuk inti, massa inti yang terbentuk selalu lebih kecil daripada jumlah total massa penyusunnya. Selisih massa ini disebut defek massa (Delta m), yang berubah menjadi energi ikat inti sesuai hukum kesetaraan massa-energi Einstein.\"},\"n_reviewers\":2}",
       "n_reviewers": 2,
       "ratings_json": "{\"expert-fisika-4\":\"correct\",\"expert-fisika-6\":\"partial\"}",
       "graph_role": "semantic",
-      "status": "unknown"
+      "status": "correct"
     }
   },
   {
@@ -5650,13 +5650,13 @@
       "source": "consensus",
       "relation_type": "DIFORMULASIKAN_SEBAGAI",
       "added_by_reviewers_json": "[]",
-      "consensus": "unknown",
+      "consensus": "correct",
       "provenance": "",
-      "expert_review_json": "{\"status\":\"unknown\",\"consensus\":\"unknown\",\"ratings\":{\"expert-fisika-4\":\"correct\",\"expert-fisika-6\":\"partial\"},\"comments\":{},\"n_reviewers\":2}",
+      "expert_review_json": "{\"status\":\"correct\",\"consensus\":\"correct\",\"ratings\":{\"expert-fisika-4\":\"correct\",\"expert-fisika-6\":\"partial\"},\"comments\":{},\"n_reviewers\":2}",
       "n_reviewers": 2,
       "ratings_json": "{\"expert-fisika-4\":\"correct\",\"expert-fisika-6\":\"partial\"}",
       "graph_role": "semantic",
-      "status": "unknown"
+      "status": "correct"
     }
   },
   {
@@ -5737,13 +5737,13 @@
       "source": "consensus",
       "relation_type": "MEMILIKI_SIFAT",
       "added_by_reviewers_json": "[]",
-      "consensus": "unknown",
+      "consensus": "correct",
       "provenance": "",
-      "expert_review_json": "{\"status\":\"unknown\",\"consensus\":\"unknown\",\"ratings\":{\"expert-fisika-4\":\"correct\",\"expert-fisika-6\":\"partial\"},\"comments\":{},\"n_reviewers\":2}",
+      "expert_review_json": "{\"status\":\"correct\",\"consensus\":\"correct\",\"ratings\":{\"expert-fisika-4\":\"correct\",\"expert-fisika-6\":\"partial\"},\"comments\":{},\"n_reviewers\":2}",
       "n_reviewers": 2,
       "ratings_json": "{\"expert-fisika-4\":\"correct\",\"expert-fisika-6\":\"partial\"}",
       "graph_role": "semantic",
-      "status": "unknown"
+      "status": "correct"
     }
   },
   {
@@ -6071,13 +6071,13 @@
       "source": "consensus",
       "relation_type": "MEMILIKI_SIFAT",
       "added_by_reviewers_json": "[]",
-      "consensus": "unknown",
+      "consensus": "correct",
       "provenance": "",
-      "expert_review_json": "{\"status\":\"unknown\",\"consensus\":\"unknown\",\"ratings\":{\"expert-fisika-4\":\"correct\",\"expert-fisika-6\":\"partial\"},\"comments\":{\"expert-fisika-4\":\"Partikel alfa adalah inti Helium (2 proton dan 2 neutron). Karena massanya yang sangat besar dibandingkan partikel radiasi lain, partikel alfa memiliki kecepatan rendah dan mudah menumbuk atom medium, sehingga energinya cepat habis (daya tembus lemah, bahkan dapat ditahan selembar kertas).\"},\"n_reviewers\":2}",
+      "expert_review_json": "{\"status\":\"correct\",\"consensus\":\"correct\",\"ratings\":{\"expert-fisika-4\":\"correct\",\"expert-fisika-6\":\"partial\"},\"comments\":{\"expert-fisika-4\":\"Partikel alfa adalah inti Helium (2 proton dan 2 neutron). Karena massanya yang sangat besar dibandingkan partikel radiasi lain, partikel alfa memiliki kecepatan rendah dan mudah menumbuk atom medium, sehingga energinya cepat habis (daya tembus lemah, bahkan dapat ditahan selembar kertas).\"},\"n_reviewers\":2}",
       "n_reviewers": 2,
       "ratings_json": "{\"expert-fisika-4\":\"correct\",\"expert-fisika-6\":\"partial\"}",
       "graph_role": "semantic",
-      "status": "unknown"
+      "status": "correct"
     }
   },
   {
@@ -6091,13 +6091,13 @@
       "source": "consensus",
       "relation_type": "MENGHASILKAN",
       "added_by_reviewers_json": "[]",
-      "consensus": "unknown",
+      "consensus": "partial",
       "provenance": "",
-      "expert_review_json": "{\"status\":\"unknown\",\"consensus\":\"unknown\",\"ratings\":{\"expert-fisika-4\":\"correct\",\"expert-fisika-6\":\"partial\"},\"comments\":{\"expert-fisika-4\":\"Pada peluruhan beta minus, sebuah neutron di dalam inti berubah menjadi proton dengan melepas elektron (sinar beta). Pada peluruhan beta plus, sebuah proton berubah menjadi neutron dengan memancarkan positron (elektron bermuatan positif). Proses ini mengubah jumlah nomor atom (Z) sehingga identitas unsur berubah.\"},\"n_reviewers\":2}",
+      "expert_review_json": "{\"status\":\"partial\",\"consensus\":\"partial\",\"ratings\":{\"expert-fisika-4\":\"correct\",\"expert-fisika-6\":\"partial\"},\"comments\":{\"expert-fisika-4\":\"Pada peluruhan beta minus, sebuah neutron di dalam inti berubah menjadi proton dengan melepas elektron (sinar beta). Pada peluruhan beta plus, sebuah proton berubah menjadi neutron dengan memancarkan positron (elektron bermuatan positif). Proses ini mengubah jumlah nomor atom (Z) sehingga identitas unsur berubah.\"},\"n_reviewers\":2}",
       "n_reviewers": 2,
       "ratings_json": "{\"expert-fisika-4\":\"correct\",\"expert-fisika-6\":\"partial\"}",
       "graph_role": "semantic",
-      "status": "unknown"
+      "status": "partial"
     }
   },
   {
@@ -15854,13 +15854,13 @@
       "source": "consensus",
       "relation_type": "MENYEBABKAN",
       "added_by_reviewers_json": "[]",
-      "consensus": "unknown",
+      "consensus": "wrong",
       "provenance": "",
-      "expert_review_json": "{\"status\":\"unknown\",\"consensus\":\"unknown\",\"ratings\":{\"expert-kimia-4\":\"wrong\",\"expert-kimia-6\":\"correct\"},\"comments\":{},\"n_reviewers\":2}",
+      "expert_review_json": "{\"status\":\"wrong\",\"consensus\":\"wrong\",\"ratings\":{\"expert-kimia-4\":\"wrong\",\"expert-kimia-6\":\"correct\"},\"comments\":{},\"n_reviewers\":2}",
       "n_reviewers": 2,
       "ratings_json": "{\"expert-kimia-4\":\"wrong\",\"expert-kimia-6\":\"correct\"}",
       "graph_role": "semantic",
-      "status": "unknown"
+      "status": "wrong"
     }
   },
   {
@@ -15928,13 +15928,13 @@
       "source": "consensus",
       "relation_type": "TIDAK_MEMUNGKINKAN",
       "added_by_reviewers_json": "[]",
-      "consensus": "unknown",
+      "consensus": "correct",
       "provenance": "",
-      "expert_review_json": "{\"status\":\"unknown\",\"consensus\":\"unknown\",\"ratings\":{\"expert-kimia-4\":\"correct\",\"expert-kimia-6\":\"partial\"},\"comments\":{\"expert-kimia-6\":\"polimer termoset tidak dapat dilelehkan ulang karena jaringan silang permanen. termoset tidak bisa didaur ulang secara termal, tetapi masih dapat didaur ulang melalui metode lain\"},\"n_reviewers\":2}",
+      "expert_review_json": "{\"status\":\"correct\",\"consensus\":\"correct\",\"ratings\":{\"expert-kimia-4\":\"correct\",\"expert-kimia-6\":\"partial\"},\"comments\":{\"expert-kimia-6\":\"polimer termoset tidak dapat dilelehkan ulang karena jaringan silang permanen. termoset tidak bisa didaur ulang secara termal, tetapi masih dapat didaur ulang melalui metode lain\"},\"n_reviewers\":2}",
       "n_reviewers": 2,
       "ratings_json": "{\"expert-kimia-4\":\"correct\",\"expert-kimia-6\":\"partial\"}",
       "graph_role": "semantic",
-      "status": "unknown"
+      "status": "correct"
     }
   },
   {
@@ -16080,13 +16080,13 @@
       "source": "consensus",
       "relation_type": "MENYEBABKAN",
       "added_by_reviewers_json": "[]",
-      "consensus": "unknown",
+      "consensus": "correct",
       "provenance": "",
-      "expert_review_json": "{\"status\":\"unknown\",\"consensus\":\"unknown\",\"ratings\":{\"expert-kimia-4\":\"wrong\",\"expert-kimia-6\":\"correct\"},\"comments\":{\"expert-kimia-4\":\"Benda (plastik) tidak secara aktif bertindak sebagai agen penyebab ('MENYEBABKAN') limbah; limbah adalah sebuah status atau potensi akhir produk tersebut.\"},\"n_reviewers\":2}",
+      "expert_review_json": "{\"status\":\"correct\",\"consensus\":\"correct\",\"ratings\":{\"expert-kimia-4\":\"wrong\",\"expert-kimia-6\":\"correct\"},\"comments\":{\"expert-kimia-4\":\"Benda (plastik) tidak secara aktif bertindak sebagai agen penyebab ('MENYEBABKAN') limbah; limbah adalah sebuah status atau potensi akhir produk tersebut.\"},\"n_reviewers\":2}",
       "n_reviewers": 2,
       "ratings_json": "{\"expert-kimia-4\":\"wrong\",\"expert-kimia-6\":\"correct\"}",
       "graph_role": "semantic",
-      "status": "unknown"
+      "status": "correct"
     }
   },
   {
@@ -16160,13 +16160,13 @@
       "source": "consensus",
       "relation_type": "TERDIRI_DARI",
       "added_by_reviewers_json": "[]",
-      "consensus": "unknown",
+      "consensus": "wrong",
       "provenance": "",
-      "expert_review_json": "{\"status\":\"unknown\",\"consensus\":\"unknown\",\"ratings\":{\"expert-kimia-4\":\"wrong\",\"expert-kimia-6\":\"correct\"},\"comments\":{\"expert-kimia-4\":\"Proses degradasi tidak terdiri dari material plastik. Plastik ('Biodegradable Plastic') yang seharusnya menjadi subjek yang mengalami degradasi.\"},\"n_reviewers\":2}",
+      "expert_review_json": "{\"status\":\"wrong\",\"consensus\":\"wrong\",\"ratings\":{\"expert-kimia-4\":\"wrong\",\"expert-kimia-6\":\"correct\"},\"comments\":{\"expert-kimia-4\":\"Proses degradasi tidak terdiri dari material plastik. Plastik ('Biodegradable Plastic') yang seharusnya menjadi subjek yang mengalami degradasi.\"},\"n_reviewers\":2}",
       "n_reviewers": 2,
       "ratings_json": "{\"expert-kimia-4\":\"wrong\",\"expert-kimia-6\":\"correct\"}",
       "graph_role": "semantic",
-      "status": "unknown"
+      "status": "wrong"
     }
   },
   {
@@ -16180,13 +16180,13 @@
       "source": "consensus",
       "relation_type": "TERDIRI_DARI",
       "added_by_reviewers_json": "[]",
-      "consensus": "unknown",
+      "consensus": "wrong",
       "provenance": "",
-      "expert_review_json": "{\"status\":\"unknown\",\"consensus\":\"unknown\",\"ratings\":{\"expert-kimia-4\":\"wrong\",\"expert-kimia-6\":\"correct\"},\"comments\":{\"expert-kimia-4\":\"sama seperti sebelumnya\"},\"n_reviewers\":2}",
+      "expert_review_json": "{\"status\":\"wrong\",\"consensus\":\"wrong\",\"ratings\":{\"expert-kimia-4\":\"wrong\",\"expert-kimia-6\":\"correct\"},\"comments\":{\"expert-kimia-4\":\"sama seperti sebelumnya\"},\"n_reviewers\":2}",
       "n_reviewers": 2,
       "ratings_json": "{\"expert-kimia-4\":\"wrong\",\"expert-kimia-6\":\"correct\"}",
       "graph_role": "semantic",
-      "status": "unknown"
+      "status": "wrong"
     }
   },
   {
@@ -16200,13 +16200,13 @@
       "source": "consensus",
       "relation_type": "DIURAIKAN_OLEH",
       "added_by_reviewers_json": "[]",
-      "consensus": "unknown",
+      "consensus": "correct",
       "provenance": "",
-      "expert_review_json": "{\"status\":\"unknown\",\"consensus\":\"unknown\",\"ratings\":{\"expert-kimia-4\":\"missing\",\"expert-kimia-6\":\"correct\"},\"comments\":{\"expert-kimia-4\":\"Kurang informasi operasional yang presisi. Degradasi oleh mikroorganisme sangat bergantung pada parameter suhu, kelembaban, dan ketersediaan oksigen tertentu (seperti pada komposter industri).\"},\"n_reviewers\":2}",
+      "expert_review_json": "{\"status\":\"correct\",\"consensus\":\"correct\",\"ratings\":{\"expert-kimia-4\":\"missing\",\"expert-kimia-6\":\"correct\"},\"comments\":{\"expert-kimia-4\":\"Kurang informasi operasional yang presisi. Degradasi oleh mikroorganisme sangat bergantung pada parameter suhu, kelembaban, dan ketersediaan oksigen tertentu (seperti pada komposter industri).\"},\"n_reviewers\":2}",
       "n_reviewers": 2,
       "ratings_json": "{\"expert-kimia-4\":\"missing\",\"expert-kimia-6\":\"correct\"}",
       "graph_role": "semantic",
-      "status": "unknown"
+      "status": "correct"
     }
   },
   {
@@ -16663,13 +16663,13 @@
       "source": "consensus",
       "relation_type": "MEMBENTUK",
       "added_by_reviewers_json": "[]",
-      "consensus": "unknown",
+      "consensus": "correct",
       "provenance": "",
-      "expert_review_json": "{\"status\":\"unknown\",\"consensus\":\"unknown\",\"ratings\":{\"expert-kimia-4\":\"correct\",\"expert-kimia-6\":\"wrong\"},\"comments\":{},\"n_reviewers\":2}",
+      "expert_review_json": "{\"status\":\"correct\",\"consensus\":\"correct\",\"ratings\":{\"expert-kimia-4\":\"correct\",\"expert-kimia-6\":\"wrong\"},\"comments\":{},\"n_reviewers\":2}",
       "n_reviewers": 2,
       "ratings_json": "{\"expert-kimia-4\":\"correct\",\"expert-kimia-6\":\"wrong\"}",
       "graph_role": "semantic",
-      "status": "unknown"
+      "status": "correct"
     }
   },
   {
@@ -17075,13 +17075,13 @@
       "source": "consensus",
       "relation_type": "MENGIDENTIFIKASI",
       "added_by_reviewers_json": "[]",
-      "consensus": "unknown",
+      "consensus": "correct",
       "provenance": "",
-      "expert_review_json": "{\"status\":\"unknown\",\"consensus\":\"unknown\",\"ratings\":{\"expert-kimia-4\":\"correct\",\"expert-kimia-6\":\"partial\"},\"comments\":{\"expert-kimia-6\":\"uji Biuret mendeteksi ikatan peptida (protein), sedangkan uji Ninhidrin mendeteksi asam amino bebas, bukan spesifik protein\"},\"n_reviewers\":2}",
+      "expert_review_json": "{\"status\":\"correct\",\"consensus\":\"correct\",\"ratings\":{\"expert-kimia-4\":\"correct\",\"expert-kimia-6\":\"partial\"},\"comments\":{\"expert-kimia-6\":\"uji Biuret mendeteksi ikatan peptida (protein), sedangkan uji Ninhidrin mendeteksi asam amino bebas, bukan spesifik protein\"},\"n_reviewers\":2}",
       "n_reviewers": 2,
       "ratings_json": "{\"expert-kimia-4\":\"correct\",\"expert-kimia-6\":\"partial\"}",
       "graph_role": "semantic",
-      "status": "unknown"
+      "status": "correct"
     }
   },
   {

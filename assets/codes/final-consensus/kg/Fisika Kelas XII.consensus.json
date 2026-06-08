@@ -5235,8 +5235,8 @@
                   "target": "Energi ikat",
                   "description": "Defek massa dikonversi menjadi energi ikat sesuai dengan prinsip kesetaraan massa-energi Einstein (E=mc²).",
                   "expert_review": {
-                    "status": "unknown",
-                    "consensus": "unknown",
+                    "status": "correct",
+                    "consensus": "correct",
                     "ratings": {
                       "expert-fisika-4": "correct",
                       "expert-fisika-6": "partial"
@@ -5281,8 +5281,8 @@
                   "target": "EB = Δmc²",
                   "description": "Besarnya energi ikat (EB) dapat dihitung dari defek massa (Δm) dikalikan kuadrat kecepatan cahaya (c²).",
                   "expert_review": {
-                    "status": "unknown",
-                    "consensus": "unknown",
+                    "status": "correct",
+                    "consensus": "correct",
                     "ratings": {
                       "expert-fisika-4": "correct",
                       "expert-fisika-6": "partial"
@@ -5343,8 +5343,8 @@
                   "target": "Nomor massa",
                   "description": "Isotop memiliki nomor massa yang berbeda karena variasi jumlah neutron dalam intinya.",
                   "expert_review": {
-                    "status": "unknown",
-                    "consensus": "unknown",
+                    "status": "correct",
+                    "consensus": "correct",
                     "ratings": {
                       "expert-fisika-4": "correct",
                       "expert-fisika-6": "partial"
@@ -5621,8 +5621,8 @@
                   "target": "Daya Tembus",
                   "description": "Karena massa dan muatannya yang relatif besar, sinar alfa memiliki daya tembus yang sangat lemah.",
                   "expert_review": {
-                    "status": "unknown",
-                    "consensus": "unknown",
+                    "status": "correct",
+                    "consensus": "correct",
                     "ratings": {
                       "expert-fisika-4": "correct",
                       "expert-fisika-6": "partial"
@@ -5646,8 +5646,8 @@
                   "target": "Peluruhan Beta",
                   "description": "Sinar beta dilepaskan dalam proses peluruhan beta, yang melibatkan perubahan identitas nukleon di dalam inti.",
                   "expert_review": {
-                    "status": "unknown",
-                    "consensus": "unknown",
+                    "status": "partial",
+                    "consensus": "partial",
                     "ratings": {
                       "expert-fisika-4": "correct",
                       "expert-fisika-6": "partial"
