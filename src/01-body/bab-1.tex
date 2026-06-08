@@ -131,15 +131,14 @@ menghalangi peserta didik untuk mengonstruksi koneksi konseptual
 antarmatapelajaran. Akibatnya, siswa kesulitan memahami keterkaitan yang secara
 ontologis menghubungkan ketiga disiplin ilmu tersebut, sementara guru menghadapi
 keterbatasan referensi kurikulum lintas-disiplin yang tersedia secara terstruktur.
+Kondisi ini menuntut bentuk representasi pengetahuan yang mampu menampilkan
+hubungan antarkonsep secara eksplisit dan dapat ditelusuri. Kebutuhan tersebut sulit
+dipenuhi oleh struktur dokumen kurikulum maupun buku teks konvensional yang umumnya
+tersusun secara linear dan terkotak menurut batas mata pelajaran, sehingga
+keterkaitan lintas-disiplin cenderung tersembunyi dan tidak terdokumentasi.
 
-Untuk mengatasi fragmentasi pengetahuan tersebut, diperlukan representasi yang
-mampu menampilkan hubungan antarkonsep secara eksplisit dan dapat ditelusuri.
-Representasi semacam ini sulit dicapai melalui struktur dokumen kurikulum atau
-buku teks konvensional yang bersifat linear.
-
-Sebagai solusi atas fragmentasi struktur kurikulum ini, pendekatan berbasis
-\textit{Knowledge Graph} (KG) menawarkan paradigma representasi yang mampu
-memodelkan interkoneksi materi secara eksplisit. Dalam penelitian ini,
+\textit{Knowledge Graph} (KG) menawarkan paradigma representasi yang menjawab
+kebutuhan tersebut, yakni dengan memodelkan interkoneksi materi secara eksplisit. Dalam penelitian ini,
 interkoneksi materi didefinisikan sebagai hubungan konseptual yang menunjukkan
 keterkaitan makna, ketergantungan prasyarat, kesamaan mekanisme, atau hubungan
 sebab-akibat antara konsep pada disiplin sains yang berbeda. \textcite{ji_survey_2022} mendefinisikan
@@ -148,53 +147,49 @@ relasi semantiknya dalam format \textit{triple} (\textit{head, relation, tail}),
 yang tidak hanya menyimpan fakta tetapi juga mendukung penalaran formal atas
 data tersebut. Sebagai ilustrasi, satu fakta materi sains dapat dinyatakan
 sebagai \textit{triple} (Fotosintesis, \texttt{MENGHASILKAN}, Glukosa).
-\textcite{kim_study_2023} mengajukan pendekatan KG untuk
-memvisualisasikan \textit{flow of knowledge} dan \textit{thinking style} yang
-esensial bagi siswa guna membangun inferensi logis antar-konsep. Urgensi
-penerapan ini diperkuat oleh \textcite{abu-salih_systematic_2024}, yang melalui tinjauan
-sistematisnya menyimpulkan bahwa KG berperan vital dalam desain kurikulum dan
-pemetaan konsep, khususnya untuk memvisualisasikan struktur pengetahuan yang
-kompleks dan merancang jalur pembelajaran yang adaptif.
+\textcite{abu-salih_systematic_2024}, melalui tinjauan sistematisnya, menyimpulkan
+bahwa KG berperan vital dalam desain kurikulum dan pemetaan konsep, khususnya untuk
+memvisualisasikan struktur pengetahuan yang kompleks dan merancang jalur pembelajaran
+yang adaptif.
 
 Meskipun menjanjikan, KG memiliki keterbatasan fundamental, yaitu sifatnya yang
-secara inheren tidak lengkap. Banyak hubungan antar-konsep yang valid tidak
-tertangkap ketika graf dibangun, baik melalui anotasi manual maupun ekstraksi
-otomatis \parencite{ji_survey_2022}. Dalam konteks kurikulum sains, relasi lintas-disiplin
-yang paling bernilai pedagogis justru seringkali bersifat implisit, yaitu tidak
+secara inheren tidak lengkap sehingga banyak hubungan antar-konsep yang valid
+tidak tertangkap ketika graf dibangun \parencite{ji_survey_2022}. Dalam konteks kurikulum sains, relasi lintas-disiplin
+yang bernilai pedagogis justru seringkali bersifat implisit, yaitu tidak
 tersurat dalam teks satu buku tunggal. Untuk mengatasi hal ini,
 \textit{Knowledge Graph Completion} (KGC) diterapkan untuk memprediksi
-\textit{triple} yang hilang. Akan tetapi, metode KGC konvensional berbasis
-\textit{embedding} struktural terbukti tidak efektif dalam skenario kurikulum
-karena distribusi konsep yang tidak merata. \textcite{wei_kicgpt_2023} menegaskan bahwa
-metode berbasis \textit{triple} mengalami penurunan performa drastis saat
-berhadapan dengan \textit{long-tail entities}, yaitu entitas yang memiliki sedikit
-koneksi dalam graf sehingga pola struktural yang tersedia tidak cukup untuk
+\textit{triple} yang hilang. Akan tetapi, metode KGC konvensional berbasis \textit{embedding} struktural kurang
+sesuai untuk skenario kurikulum, yang ditandai distribusi konsep tidak merata
+sehingga banyak konsep tergolong \textit{long-tail}, yaitu hanya memiliki sedikit
+koneksi dalam graf. \textcite{wei_kicgpt_2023} menegaskan bahwa metode berbasis
+\textit{triple} mengalami penurunan performa drastis saat berhadapan dengan
+\textit{long-tail entities}, karena pola struktural yang tersedia tidak cukup untuk
 menghasilkan representasi vektor yang akurat.
 
 Kemunculan \textit{Large Language Models} (LLM) membuka solusi yang menjanjikan
-atas keterbatasan tersebut. \textcite{pan_unifying_2024} mengklasifikasikan pendekatan
-LLM-augmented KGs melalui dua peran utama: sebagai \textit{encoder} yang
+atas keterbatasan tersebut. \textcite{pan_unifying_2024} mengklasifikasikan pemanfaatan LLM untuk
+\textit{KG Completion} ke dalam dua peran utama: sebagai \textit{encoder} yang
 menghasilkan representasi vektor lebih kaya makna dibanding \textit{embedding}
 struktural semata, serta sebagai \textit{generator} yang langsung memprediksi
 \textit{triple} baru berdasarkan konteks. \textcite{yao_exploring_2025} mendemonstrasikan
 bahwa dengan memperlakukan \textit{triple} pengetahuan sebagai sekuens teks,
 LLM mampu memprediksi relasi semantik dengan akurasi yang lebih baik dari metode
 konvensional. Secara khusus untuk mengatasi kelangkaan informasi pada entitas
-\textit{long-tail}, \textcite{wei_kicgpt_2023} membuktikan bahwa strategi
-\textit{In-Context Learning} (ICL), yakni \textit{prompt few-shot} pada tahap KGC
-yang menyertakan beberapa contoh \textit{triple} valid sebagai panduan di dalam
-\textit{prompt} klasifikasi, memungkinkan LLM menginferensikan
-relasi yang tidak mampu ditangkap oleh metode berbasis \textit{embedding}.
+\textit{long-tail}, \textcite{wei_kicgpt_2023} menunjukkan bahwa strategi
+\textit{In-Context Learning} (ICL), yakni menyertakan pengetahuan graf sebagai
+beberapa contoh (\textit{demonstration}) di dalam \textit{prompt} untuk memandu
+LLM, memungkinkan LLM melengkapi \textit{triple} yang tidak mampu ditangani metode
+berbasis \textit{embedding}, tanpa pelatihan ulang model.
 
 Pemanfaatan LLM dalam KGC tetap memerlukan validasi pakar
 (\textit{human-in-the-loop}) untuk meminimalisir risiko \textit{AI hallucination}.
 Meski demikian, evaluasi pakar secara manual kerap menimbulkan ketidaksepakatan
 antar-evaluator yang subjektif dan sulit diterapkan pada skala besar
-\parencite{gu_survey_nodate}. Penelitian ini mengatasi masalah tersebut dengan
-mengadopsi pendekatan \textit{LLM-as-a-judge}, di mana LLM diposisikan sebagai
-penengah yang berlandaskan konteks buku teks sumber untuk menyelesaikan konflik
-penilaian antarpakar, sehingga validitas keilmuan KG yang dihasilkan dapat
-dipertanggungjawabkan \parencite{gu_survey_nodate}.
+\parencite{gu_survey_2024}. Penelitian ini mengatasi masalah tersebut dengan
+mengadopsi pendekatan \textit{LLM-as-a-judge} \parencite{gu_survey_2024}, di mana
+LLM diposisikan sebagai penengah yang berlandaskan konteks buku teks sumber untuk
+menyelesaikan konflik penilaian antarpakar, sehingga validitas keilmuan KG yang
+dihasilkan dapat dipertanggungjawabkan.
 
 Meskipun pendekatan \textit{LLM-Assisted Knowledge Graph Completion} telah
 terbukti efektif pada domain umum, belum ada studi yang secara spesifik
@@ -357,10 +352,8 @@ Berikut adalah batasan-batasan yang ditetapkan untuk penelitian ini.
   \item \textbf{Batasan Inferensi Pedagogis:} Sistem hanya menginferensi
         keterkaitan \textit{single-hop} (relasi langsung satu sambungan
         antara dua konsep, tanpa rantai konsep perantara); sistem tidak
-        menyusun jalur belajar multi-langkah lintas-disiplin, tidak
-        memodelkan tingkat kognitif (taksonomi Bloom) maupun keadaan
-        pembelajar (\textit{learner state}), dan tidak menghasilkan jalur
-        belajar terkomposisi.
+        menyusun jalur belajar multi-langkah lintas-disiplin maupun urutan
+        pembelajaran yang terkomposisi dari rangkaian relasi tersebut.
 \end{enumerate}
 
 \ifSubfilesClassLoaded{\printbibliography[title={Daftar Pustaka}]}{}

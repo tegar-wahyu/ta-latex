@@ -61,9 +61,8 @@ kurikulum berbasis data, serta pemetaan konsep secara visual. Penggunaan
 KG memungkinkan sistem untuk menyusun jaringan informasi yang
 mencerminkan kerumitan konten kurikulum secara komputasional.
 
-Representasi pengetahuan berbasis KG tidak akan memberikan manfaat
-pedagogis yang optimal tanpa kerangka semantik yang mengatur struktur
-dan batas maknanya. \textcite{studer_knowledge_1998}, yang memperluas
+Namun, manfaat pedagogis representasi berbasis KG sangat bergantung pada
+kerangka semantik yang mengatur struktur dan batas maknanya. \textcite{studer_knowledge_1998}, yang memperluas
 gagasan \textcite{gruber_translation_1993}, mendefinisikan ontologi sebagai
 spesifikasi formal dan eksplisit atas sebuah konseptualisasi bersama terhadap
 suatu domain. Kehadiran ontologi pendidikan menjadi penting
@@ -346,12 +345,12 @@ untuk memastikan kebenaran faktual berkat kedalaman pemahaman
 kontekstualnya. Meski demikian, dalam proses anotasi data, tahapan
 validasi ini sering kali memunculkan perbedaan pendapat
 (\textit{disagreement}) di antara para pakar akibat tingkat
-subjektivitas masing-masing pakar \parencite{gu_survey_nodate, zheng_judging_2023}. Untuk mengatasi ketidaksepakatan tersebut tanpa mengorbankan
+subjektivitas masing-masing pakar \parencite{gu_survey_2024, zheng_judging_2023}. Untuk mengatasi ketidaksepakatan tersebut tanpa mengorbankan
 skalabilitas dan menekan biaya operasional, pemanfaatan LLM dapat
-diimplementasikan melalui pendekatan \textit{LLM-as-a-judge}. Dalam skenario ini,
-alih-alih difungsikan sebagai pakar utama yang menggantikan peran
+diimplementasikan melalui pendekatan \textit{LLM-as-a-judge} \parencite{gu_survey_2024}.
+Dalam skenario ini, alih-alih difungsikan sebagai pakar utama yang menggantikan peran
 manusia, LLM diposisikan secara spesifik sebagai moderator yang objektif
-untuk menyelesaikan konflik penilaian antarpakar \parencite{gu_survey_nodate}.
+untuk menyelesaikan konflik penilaian antarpakar.
 
 Meskipun terbukti efektif sebagai penengah, literatur menunjukkan bahwa
 LLM memiliki kerentanan terhadap bias kognitif saat dihadapkan pada dua
@@ -359,15 +358,16 @@ argumen yang berseberangan. Model sering kali terpengaruh oleh
 \textit{concreteness bias}, yaitu kecenderungan memihak pada respons
 yang menyajikan detail spesifik atau dikemas dengan gaya bahasa yang
 meyakinkan, sekalipun argumen tersebut secara faktual keliru
-\parencite{gu_survey_nodate, zheng_judging_2023}.
+\parencite{gu_survey_2024, zheng_judging_2023}.
 
 Untuk menjamin reliabilitas keputusan dan menekan tingkat \textit{hallucination}
 saat model melakukan ajudikasi, proses penengahan oleh LLM menuntut
-adanya mekanisme penjangkaran (\textit{grounding}) yang kuat. Sejalan
-dengan rekomendasi \textcite{gu_survey_nodate} dan prinsip evaluasi presisi
-faktual dari \textcite{min_factscore_2023}, penerapan \textit{LLM-as-a-judge} harus
-diiringi dengan injeksi konteks berupa bukti eksternal
-(\textit{textbook evidence}). Melalui integrasi referensi buku teks
+adanya mekanisme penjangkaran (\textit{grounding}) yang kuat. Sebagaimana dicatat
+\textcite{gu_survey_2024}, \textit{concreteness bias} pada LLM justru dapat
+mendorong \textit{hallucination} ketika kebenaran faktual diabaikan; karena itu,
+sejalan dengan prinsip evaluasi presisi faktual dari \textcite{min_factscore_2023},
+penerapan \textit{LLM-as-a-judge} harus diiringi dengan injeksi konteks berupa
+bukti eksternal (\textit{textbook evidence}). Melalui integrasi referensi buku teks
 kurikulum, landasan keputusan tidak lagi bergantung pada asumsi
 parametrik internal model yang rentan bias, melainkan berakar pada
 kebenaran fakta keilmuan yang disediakan.
