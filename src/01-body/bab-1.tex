@@ -132,9 +132,17 @@ antarmatapelajaran. Akibatnya, siswa kesulitan memahami keterkaitan yang secara
 ontologis menghubungkan ketiga disiplin ilmu tersebut, sementara guru menghadapi
 keterbatasan referensi kurikulum lintas-disiplin yang tersedia secara terstruktur.
 
+Untuk mengatasi fragmentasi pengetahuan tersebut, diperlukan representasi yang
+mampu menampilkan hubungan antarkonsep secara eksplisit dan dapat ditelusuri.
+Representasi semacam ini sulit dicapai melalui struktur dokumen kurikulum atau
+buku teks konvensional yang bersifat linear.
+
 Sebagai solusi atas fragmentasi struktur kurikulum ini, pendekatan berbasis
 \textit{Knowledge Graph} (KG) menawarkan paradigma representasi yang mampu
-memodelkan interkoneksi materi secara eksplisit. \textcite{ji_survey_2022} mendefinisikan
+memodelkan interkoneksi materi secara eksplisit. Dalam penelitian ini,
+interkoneksi materi didefinisikan sebagai hubungan konseptual yang menunjukkan
+keterkaitan makna, ketergantungan prasyarat, kesamaan mekanisme, atau hubungan
+sebab-akibat antara konsep pada disiplin sains yang berbeda. \textcite{ji_survey_2022} mendefinisikan
 KG sebagai struktur data grafis yang merepresentasikan entitas dunia nyata dan
 relasi semantiknya dalam format \textit{triple} (\textit{head, relation, tail}),
 yang tidak hanya menyimpan fakta tetapi juga mendukung penalaran formal atas
@@ -209,14 +217,13 @@ penelitian berikut.
         Fase~F Kelas~XII Kurikulum Merdeka untuk mengatasi fenomena
         \textit{siloed learning} akibat struktur mata pelajaran yang terpisah?
 
-  \item \textbf{Keterbatasan Metode Konvensional:} Bagaimana mengatasi kendala
-        ketidaklengkapan dan penurunan performa metode KGC berbasis
-        \textit{embedding} struktural saat berhadapan dengan entitas
-        \textit{long-tail} dalam materi kurikulum yang distribusinya tidak merata?
+  \item \textbf{Pelengkapan Relasi Implisit:} Bagaimana memanfaatkan kemampuan
+        semantik LLM untuk melengkapi relasi yang belum teridentifikasi pada
+        \textit{knowledge graph} kurikulum sains?
 
-  \item \textbf{Implementasi LLM-Assisted KGC:} Bagaimana efektivitas penerapan
-        LLM-Assisted KGC dalam memprediksi relasi implisit lintas-disiplin
-        antar-materi sains pada Kurikulum Merdeka?
+  \item \textbf{Implementasi LLM-Assisted KGC:} Apakah LLM-Assisted KGC mampu
+        menghasilkan relasi lintas-disiplin yang valid menurut pakar dan
+        meningkatkan kualitas struktural \textit{knowledge graph}?
 
   \item \textbf{Validasi Hybrid dan Evaluasi Metrik:} Bagaimana mengevaluasi
         keandalan dan kebenaran relasi sains yang dihasilkan LLM melalui
@@ -283,9 +290,10 @@ berikutnya. Pertama, \textit{pipeline} LLM-KGC yang didokumentasikan dalam
 skripsi ini, yang mencakup skema ontologi OWL beserta strategi
 \textit{prompt engineering}-nya, dapat diadaptasi untuk domain kurikulum lain
 atau jenjang pendidikan yang berbeda. Kedua, KG kurikulum sains Fase~F Kelas XII berbahasa Indonesia
-yang dihasilkan merupakan sumber daya terbuka pertama dari jenisnya, dan dapat
-menjadi \textit{ground truth} awal untuk penelitian pembelajaran mesin di bidang
-pendidikan nasional.
+yang dihasilkan merupakan salah satu sumber daya terbuka berbahasa Indonesia yang
+mendokumentasikan interkoneksi materi sains lintas-disiplin pada Kurikulum Merdeka,
+dan dapat menjadi \textit{ground truth} awal untuk penelitian pembelajaran mesin di
+bidang pendidikan nasional.
 
 \subsection{Bagi Pendidik dan Pengembang Kurikulum}
 
