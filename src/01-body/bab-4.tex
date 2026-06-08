@@ -335,9 +335,11 @@ data baru.
       relasinya memang menyeberang antarbuku, bukan di dalam buku yang sama) dan
       buku tujuan harus ada di dalam korpus yang diproses (supaya relasinya tidak
       mengarah ke buku yang tidak tersedia).
-    \item Apabila konsep target belum ada pada \textit{scope} mata pelajaran
-      tujuan, \textit{node} \texttt{Concept} baru dibuat secara \textit{lazy}
-      (\textit{lazy materialization}).
+    \item Apabila konsep tujuan belum ada pada lingkup mata pelajaran tujuan,
+      \textit{node} \texttt{Concept} untuk konsep tersebut baru dibuat tepat saat
+      dibutuhkan, yaitu ketika relasi lintas-buku hendak dibentuk. Cara ini
+      memastikan relasi selalu memiliki \textit{node} tujuan yang valid tanpa
+      perlu menyiapkan seluruh konsep di awal.
   \end{itemize}
 
   \item \textbf{Sifat idempoten.} Seluruh \textit{pass} menggunakan
