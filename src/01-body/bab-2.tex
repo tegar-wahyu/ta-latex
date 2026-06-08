@@ -537,6 +537,18 @@ DC didefinisikan sebagai:
 sebagai atribut deskripsi dari entitas $v$. Target minimal untuk metrik
 ini ditetapkan sebesar $\geq 0{,}90$ (90\%).
 
+DC tidak mengukur keberhasilan KGC secara langsung, tetapi menjadi syarat awal
+yang menentukan kualitas masukan bagi proses KGC. Pada pendekatan LLM-Assisted
+KGC, LLM memprediksi relasi implisit, khususnya relasi lintas-disiplin, dengan
+membaca konteks makna dari tiap entitas, bukan hanya dari nama labelnya. Jika
+sebuah \textit{node} hanya berisi nama seperti ``Fotosintesis'' tanpa deskripsi,
+LLM punya sedikit informasi untuk bekerja, sehingga lebih sulit menemukan
+keterkaitan yang tepat dan lebih mudah mengarang relasi yang keliru. Sebaliknya,
+deskripsi yang cukup memberi LLM konteks yang dibutuhkan untuk menyimpulkan
+relasi yang benar secara keilmuan. Jadi, DC yang tinggi memang tidak menjamin
+KGC berhasil, tetapi membuka peluang hasil yang lebih baik, sedangkan DC yang
+rendah justru membatasi sejauh mana KGC bisa berhasil.
+
 \subsubsection{Empty SubKonsep Rate (ESR)}
 
 \textbf{Empty SubKonsep Rate (ESR)} digunakan untuk mengevaluasi
