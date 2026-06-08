@@ -406,14 +406,19 @@ menggunakan tiga indikator utama.
 \subsubsection{Average Degree Centrality (ADC)}
 
 \textbf{Average Degree Centrality (ADC)} mengukur rata-rata jumlah koneksi
-yang dimiliki setiap \textit{node} dalam graf:
+yang dimiliki setiap \textit{node} dalam graf, yang dihitung sebagai rata-rata
+derajat (\textit{average degree}) seluruh \textit{node} \parencite[134]{newman_networks_2010}:
 
 \[
   ADC = \frac{1}{|V|} \sum_{v \in V} \deg(v)
 \]
 
 \noindent dengan $|V|$ adalah jumlah \textit{node} dan $\deg(v)$ jumlah relasi
-yang terhubung langsung ke \textit{node} $v$. Dalam penelitian ini, ADC dihitung
+yang terhubung langsung ke \textit{node} $v$. Perlu dicatat bahwa metrik ini
+adalah rata-rata derajat (\textit{average degree}, $\frac{2m}{n}$ untuk graf
+tak-berarah), sehingga pembaginya adalah jumlah \textit{node} $|V|$; istilah ini
+berbeda dari \textit{degree centrality} ternormalisasi ala Freeman yang membagi
+derajat tiap \textit{node} dengan $|V|-1$. Dalam penelitian ini, ADC dihitung
 pada \textbf{subgraf konsep} (hanya melibatkan \textit{node} \texttt{Concept}
 dan relasi langsung antar-konsep) agar mencerminkan tingkat keterhubungan
 konseptual antarmateri sains tanpa dipengaruhi \textit{node} struktural (kelas,
