@@ -273,8 +273,16 @@ pembatasan konsep pada materi pokok.
 \section{Graph Construction (Eksekusi Neo4j Cypher)}\label{sec:graph-construction}
 % ============================================================
 
-Tahap ini membuat \textit{knowledge graph} ke Neo4j dengan strategi
-tiga-\textit{pass} agar konsisten secara referensial dan idempoten.
+Tahap ini membangun \textit{knowledge graph} ke Neo4j dengan strategi
+tiga-\textit{pass}, yaitu tiga tahap yang dijalankan berurutan. Urutan ini
+dipilih agar graf yang terbentuk konsisten secara referensial dan idempoten. Maksud konsisten secara referensial,
+setiap relasi selalu menunjuk ke \textit{node} yang sudah ada, sehingga tidak
+muncul relasi yang menggantung ke konsep yang belum sempat dibuat. Karena itu,
+seluruh \textit{node} dibentuk lebih dahulu, baru relasinya ditarik kemudian.
+Adapun idempoten, proses ini bisa dijalankan ulang berkali-kali tanpa membuat
+\textit{node} atau relasi ganda, sebab semua operasi memakai \texttt{MERGE} yang
+hanya membuat data bila belum ada, bukan \texttt{CREATE} yang selalu menambah
+data baru.
 
 \begin{enumerate}
   \item \textbf{Pass 1 --- Instansiasi \textit{node}.}
