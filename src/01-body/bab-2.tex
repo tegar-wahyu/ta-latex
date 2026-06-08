@@ -488,7 +488,8 @@ proses KGC, bukan artefak dari komunitas yang berbeda di tiap fase.
 terbentuk dalam sebuah graf dibandingkan dengan koneksi maksimum yang
 secara teoritis mungkin ada. Nilai $D$ berkisar antara 0 hingga 1; nilai
 mendekati 1 menandakan graf yang sangat padat (\textit{dense}), sementara
-nilai mendekati 0 menandakan graf yang jarang (\textit{sparse}). Dalam
+nilai mendekati 0 menandakan graf yang jarang (\textit{sparse})
+\parencite[134]{newman_networks_2010}. Dalam
 konteks penelitian ini, \textit{density} digunakan untuk membandingkan tingkat
 keterkaitan antar-konsep sebelum dan sesudah penambahan relasi lintas
 buku (\textit{cross-book links}). Sejalan dengan ADC antar-konsep yang
@@ -522,7 +523,10 @@ berhasil diidentifikasi juga memiliki informasi pendukung berupa
 deskripsi atau definisi. Dalam konteks materi sains, sebuah entitas
 seperti ``Fotosintesis'' atau ``Hukum Ohm'' tidak cukup hanya muncul
 sebagai nama---ia harus memiliki deskripsi agar dapat digunakan dalam
-proses pembelajaran atau KGC. DC didefinisikan sebagai:
+proses pembelajaran atau KGC. Metrik DC dirumuskan dalam penelitian ini
+sebagai operasionalisasi dimensi kelengkapan (\textit{completeness}) dalam
+manajemen kualitas \textit{knowledge graph} \parencite{xue_knowledge_2022}.
+DC didefinisikan sebagai:
 
 \[
   DC = \frac{\bigl|\{ v \in V : \text{desc}(v) \neq \varnothing \}\bigr|}{|V|}
@@ -569,7 +573,10 @@ metrik ini ditetapkan sebesar $\leq 0{,}10$ (10\%).
 
 \textbf{Typed Relation Ratio (TRR)} mengukur sejauh mana relasi dalam KG
 menggunakan tipe relasi spesifik dari \textit{controlled vocabulary}
-ontologi dibandingkan dengan relasi generik. Berdasarkan ontologi yang
+ontologi dibandingkan dengan relasi generik. Metrik TRR dirumuskan dalam
+penelitian ini, mengacu pada prinsip kualitas struktural relasi yang
+dikemukakan \textcite{seo_structural_2022}, untuk menilai kekayaan semantik
+penjenisan relasi dalam KG. Berdasarkan ontologi yang
 didefinisikan, terdapat 20 tipe relasi spesifik yang terbagi menjadi dua
 kelompok: intra-buku (15 tipe, seperti \texttt{MENYEBABKAN} atau
 \texttt{BERGANTUNG\_PADA}) dan lintas-buku (5 tipe, seperti
