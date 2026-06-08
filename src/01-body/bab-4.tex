@@ -307,12 +307,14 @@ data baru.
 
   \item \textbf{Pass 2 --- Relasi dalam-buku.}
   \begin{itemize}
-    \item Relasi semantik antar-\texttt{Concept} ditanam dengan strategi
-      dua-tingkat: apabila konsep target sudah berada dalam himpunan
-      \texttt{Concept} buku yang sedang diproses, sistem membuat \textit{edge}
-      langsung antar-\texttt{Concept}; jika belum, target direpresentasikan
-      sebagai \textit{node} \texttt{ConceptTarget} yang berperan sebagai
-      \textit{placeholder}.
+    \item Relasi semantik antar-\texttt{Concept} ditanam dengan dua cara,
+      bergantung pada apakah konsep tujuannya sudah ada atau belum. Apabila
+      konsep tujuan sudah terdaftar sebagai \texttt{Concept} hasil ekstraksi
+      pada buku yang sedang diproses, sistem langsung membuat \textit{edge}
+      antar-\texttt{Concept} yang sebenarnya. Sebaliknya, apabila konsep tujuan
+      belum ada, sistem tidak memaksakan pembuatan \texttt{Concept} baru,
+      melainkan merepresentasikannya sebagai \textit{node} \texttt{ConceptTarget}
+      yang berperan sebagai penampung sementara (\textit{placeholder}).
     \item Pemisahan label \texttt{Concept} dan \texttt{ConceptTarget}
       (Subbab~\ref{subsec:skema-ontologi}) memudahkan audit terhadap konsep yang
       belum ter-\textit{anchor} pada sumber tekstual.
