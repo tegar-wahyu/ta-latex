@@ -122,14 +122,18 @@ menjawab keempat rumusan masalah penelitian adalah sebagai berikut.
         antar-materi sains secara eksplisit, sehingga menjawab masalah
         fragmentasi kurikulum. Sebelum KGC, ketiga mata pelajaran membentuk
         komunitas yang nyaris terisolasi, ditandai nilai \textit{Modularity}
-        0{,}811 yang merefleksikan kondisi \textit{siloed learning}. Setelah
+        0{,}666 yang merefleksikan kondisi \textit{siloed learning}. Setelah
         penambahan 125 relasi lintas-buku, \textit{Modularity} turun menjadi
-        0{,}373, sementara \textit{Average Degree Centrality} (ADC) meningkat
+        0{,}158, sementara \textit{Average Degree Centrality} (ADC) meningkat
         98{,}4\% (dari 0{,}74 menjadi 1{,}47) dan \textit{Graph Density}
         antar-konsep hampir berlipat ganda (dari 0{,}00108 menjadi 0{,}00214).
         Bukti topologis ini (Tabel~\ref{tab:struktural}) mengonfirmasi bahwa
         \textit{Knowledge Graph} (KG) yang dihasilkan berhasil menjembatani
-        ketiga komunitas disiplin yang semula terpisah.
+        ketiga komunitas disiplin yang semula terpisah. Uji ketahanan dengan
+        mengeluarkan \textit{edge} berlabel \texttt{wrong} menunjukkan pola yang
+        sama: ADC tetap meningkat dari 0{,}7093 menjadi 1{,}4360, densitas dari
+        0{,}00103 menjadi 0{,}00209, dan \textit{Modularity} turun dari 0{,}6654
+        menjadi 0{,}1489.
 
   \item \textbf{Penanganan keterbatasan metode konvensional pada entitas
         \textit{long-tail}.} Alih-alih mengandalkan KGC berbasis \textit{embedding}
@@ -162,14 +166,18 @@ menjawab keempat rumusan masalah penelitian adalah sebagai berikut.
 
   \item \textbf{Keandalan evaluasi hybrid dan pengukuran kualitas kuantitatif.}
         \textit{Pipeline} evaluasi hybrid berhasil mengukur kualitas KG secara
-        andal dan terkuantifikasi. Pada validasi intra-mapel (Fase~1) oleh enam
-        pakar domain, sistem mencatatkan \textit{precision} 93{,}6\%,
-        \textit{recall} 91{,}7\%, dan F1-Score 92{,}6\%
+        andal dan terukur. Pada validasi intra-mapel (Fase~1) oleh enam
+        pakar domain, sistem mencatatkan \textit{precision} 93{,}1\%,
+        \textit{recall} 91{,}8\%, dan F1-Score 92{,}4\%
         (Tabel~\ref{tab:validasi-metrik}), dengan kesepakatan antarpakar Gwet's
         AC1 yang bervariasi dari ``baik'' hingga ``sangat baik'' (0{,}607 pada
         Kimia hingga 0{,}931 pada Biologi). Mekanisme \textit{LLM-as-a-judge}
         (Gemini~3.1 Pro Preview) berfungsi sebagai penengah yang menyelesaikan
-        ketidaksepakatan intra-mapel berbasis konteks buku teks, sementara
+        ketidaksepakatan intra-mapel berbasis konteks buku teks: mekanisme ini
+        menengahi 123 konflik rating---memilih salah satu label yang telah
+        diberikan pakar pada 95{,}1\% kasus alih-alih menilai ulang secara
+        independen---serta menyetujui 29 dari 44 usulan
+        \textit{missing triple} (Tabel~\ref{tab:llm-judge}). Sementara itu,
         validasi panel pada relasi lintas-disiplin (Fase~2) menghasilkan
         validitas 99{,}1\%. Dengan demikian, kombinasi metrik struktural dan
         validasi pakar berbantuan LLM terbukti mampu mempertanggungjawabkan

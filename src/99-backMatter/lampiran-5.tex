@@ -1,5 +1,5 @@
 % ============================================================
-%  LAMPIRAN F – KUERI CYPHER
+%  LAMPIRAN 5 - KUERI CYPHER
 %  Compile standalone:  pdflatex lampiran-5.tex
 %  Compile as part of thesis: pdflatex main.tex
 % ============================================================
@@ -93,8 +93,8 @@
 % ============================================================
 \begin{document}
 
-% When standalone: switch to appendix lettering and set the counter
-% so \section{} renders as "LAMPIRAN F". When compiled inside main.tex,
+% When standalone: switch to appendix mode and set the counter
+% so appendix-local numbering renders correctly. When compiled inside main.tex,
 % main.tex issues \appendix and advances the counter before \subfile.
 \ifSubfilesClassLoaded{}{\appendix\setcounter{chapter}{5}}
 
@@ -287,6 +287,20 @@ UNWIND out_stats AS os
 WITH m, os.e_cc AS e_cc, os.k_out AS k_out,
      coalesce([x IN in_stats WHERE x.comm = os.comm | x.k_in][0], 0) AS k_in
 RETURN sum( (1.0 * e_cc / m) - (1.0 * k_out * k_in / (m * m)) ) AS modularity
+\end{lstlisting}
+
+\subsubsection{Uji Ketahanan dengan Mengeluarkan Relasi \texttt{wrong}}
+
+Untuk menghasilkan kolom ``\textit{Wrong} Dikeluarkan'' pada
+Tabel~\ref{tab:struktural-robustness}, seluruh pola pencocokan relasi
+\texttt{(:Concept)-[r]-(:Concept)} atau
+\texttt{(:Concept)-[r]->(:Concept)} pada kueri ADC, \textit{Graph Density},
+dan \textit{Modularity} diberi filter berikut. Node \texttt{:Concept} tetap
+dipertahankan, sedangkan relasi berlabel \texttt{wrong} dikeluarkan dari
+perhitungan.
+
+\begin{lstlisting}[style=cypherbox,caption={Filter untuk uji ketahanan metrik struktural tanpa relasi \texttt{wrong}.},label={lst:cypher-drop-wrong}]
+WHERE coalesce(r.consensus, r.status, '') <> 'wrong'
 \end{lstlisting}
 
 \subsubsection{Description Completeness (DC)}

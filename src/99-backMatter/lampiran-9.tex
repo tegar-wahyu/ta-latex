@@ -1,0 +1,160 @@
+% ============================================================
+%  LAMPIRAN 9 - DAFTAR RELASI BERLABEL WRONG
+%  Compile standalone:  pdflatex lampiran-9.tex
+%  Compile as part of thesis: pdflatex main.tex
+% ============================================================
+\documentclass[../../thesis]{subfiles}
+\usepackage{hyphenat}
+\usepackage{iftex}
+
+% -- Encoding, Language & Fonts --------------------------------
+\ifXeTeX
+    \usepackage{polyglossia}
+    \setmainlanguage{bahasai}
+    \usepackage{fontspec}
+    \setmainfont{TeX Gyre Termes}
+    \setsansfont{TeX Gyre Heros}
+    \setmonofont[Scale=0.88]{TeX Gyre Cursor}
+\else
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage[indonesian]{babel}
+    \usepackage{mathptmx}
+    \usepackage{helvet}
+    \usepackage{courier}
+\fi
+
+% -- Page geometry (A4, UI thesis margins) ---------------------
+\usepackage[
+  a4paper,
+  top    = 2.54cm,
+  bottom = 2.54cm,
+  left   = 3.17cm,
+  right  = 2.54cm
+]{geometry}
+
+% -- Line spacing & paragraph ----------------------------------
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+
+% -- Microtype & justification ---------------------------------
+\usepackage{microtype}
+\sloppy
+
+% -- Headings ---------------------------------------------------
+\usepackage{titlesec}
+
+\titleformat{\chapter}[block]
+  {\centering\rmfamily\bfseries\large}{}
+  {0pt}{\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{0pt}{1.5em}
+
+\titleformat{\section}
+  {\rmfamily\bfseries\normalsize}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.6em}
+
+\titleformat{\subsection}
+  {\rmfamily\bfseries\normalsize}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{1em}{0.5em}
+
+% -- Tables -----------------------------------------------------
+\usepackage{longtable, booktabs, array}
+\usepackage{tabularx}
+
+% -- Hyperlinks -------------------------------------------------
+\usepackage[hidelinks]{hyperref}
+
+% ============================================================
+\begin{document}
+
+% When standalone: switch to appendix mode and set the counter
+% so appendix-local numbering renders correctly. When compiled inside main.tex,
+% main.tex issues \appendix and advances the counter before \subfile.
+\ifSubfilesClassLoaded{}{\appendix\setcounter{chapter}{9}}
+
+\lampiran{Daftar Relasi Berlabel \texttt{wrong}}
+\label{lamp:wrong-triples}
+
+Lampiran ini memuat seluruh relasi semantik intra-mapel yang memperoleh
+konsensus akhir \texttt{wrong} pada validasi pakar Fase~1. Relasi-relasi ini
+tetap dipertahankan dalam graf sebagai artefak audit dan analisis galat, tetapi
+dapat dikeluarkan melalui properti \texttt{consensus}/\texttt{status} untuk uji
+ketahanan metrik struktural pada Tabel~\ref{tab:struktural-robustness}. Daftar
+berikut mencakup seluruh 21 relasi berlabel \texttt{wrong}; uji ketahanan
+struktural hanya memengaruhi relasi yang berada pada subgraf
+\texttt{Concept}$\rightarrow$\texttt{Concept}.
+
+\begingroup
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{@{}
+  >{\centering\arraybackslash}p{0.05\linewidth}
+  >{\raggedright\arraybackslash}p{0.10\linewidth}
+  >{\raggedright\arraybackslash}p{0.22\linewidth}
+  >{\raggedright\arraybackslash}p{0.57\linewidth}@{}}
+\caption{Relasi semantik intra-mapel dengan konsensus akhir \texttt{wrong}.}
+\label{tab:wrong-triples}\\
+\toprule
+\textbf{No.} & \textbf{Mapel} & \textbf{Bab} & \textbf{Relasi} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{No.} & \textbf{Mapel} & \textbf{Bab} & \textbf{Relasi} \\
+\midrule
+\endhead
+1 & Biologi & Evolusi &
+Seleksi Alam -- \texttt{TERDIRI\_DARI} -- Seleksi Alami \\
+2 & Fisika & KEMAGNETAN &
+Medan Magnet Induksi Kawat Melingkar Berarus -- \texttt{MENGATUR} --
+Arah Medan Magnet (Kawat Melingkar) \\
+3 & Fisika & RELATIVITAS &
+Transformasi Lorentz -- \texttt{MENGATUR} -- Faktor Lorentz ($\gamma$) \\
+4 & Kimia & ELEKTROKIMIA &
+Bilangan Oksidasi -- \texttt{MEMPENGARUHI} -- Perubahan Kimia \\
+5 & Kimia & ELEKTROKIMIA &
+Oksidasi -- \texttt{MENGHASILKAN} -- Agen Pengoksidasi \\
+6 & Kimia & ELEKTROKIMIA &
+Pelapisan Logam (Electroplating) -- \texttt{MEMUNGKINKAN} --
+Pemurnian Tembaga \\
+7 & Kimia & ELEKTROKIMIA &
+Reduksi -- \texttt{MENGHASILKAN} -- Agen Pereduksi \\
+8 & Kimia & GUGUS FUNGSI DALAM SENYAWA KARBON &
+Reaksi Adisi -- \texttt{BEREAKSI\_DENGAN} -- Alkena \\
+9 & Kimia & GUGUS FUNGSI DALAM SENYAWA KARBON &
+Reaksi Esterifikasi -- \texttt{BEREAKSI\_DENGAN} -- Asam Karboksilat \\
+10 & Kimia & GUGUS FUNGSI DALAM SENYAWA KARBON &
+Reaksi Oksidasi Senyawa Organik -- \texttt{DIKATALISIS\_OLEH} --
+Piridinium Klorokromat (PCC) \\
+11 & Kimia & GUGUS FUNGSI DALAM SENYAWA KARBON &
+Reaksi Reduksi Senyawa Organik -- \texttt{DIKATALISIS\_OLEH} --
+Litium Alumunium Hidrida (LiAlH4) \\
+12 & Kimia & GUGUS FUNGSI DALAM SENYAWA KARBON &
+Reaksi Substitusi -- \texttt{BEREAKSI\_DENGAN} -- Alkil Halida \\
+13 & Kimia & LARUTAN DAN KOLOID &
+Asam Lemah -- \texttt{DIFORMULASIKAN\_SEBAGAI} -- Ka \\
+14 & Kimia & LARUTAN DAN KOLOID &
+Asam Lemah -- \texttt{DIFORMULASIKAN\_SEBAGAI} -- $\alpha$ (Derajat
+Ionisasi) \\
+15 & Kimia & LARUTAN DAN KOLOID &
+Basa Lemah -- \texttt{DIFORMULASIKAN\_SEBAGAI} -- $\alpha$ (Derajat
+Ionisasi) \\
+16 & Kimia & LARUTAN DAN KOLOID &
+Basa Lemah -- \texttt{DIFORMULASIKAN\_SEBAGAI} -- Kb \\
+17 & Kimia & LARUTAN DAN KOLOID &
+pH -- \texttt{MENGATUR} -- Keasaman Larutan \\
+18 & Kimia & MAKROMOLEKUL ORGANIK &
+Degradasi Plastik -- \texttt{TERDIRI\_DARI} -- Biodegradable Plastic \\
+19 & Kimia & MAKROMOLEKUL ORGANIK &
+Degradasi Plastik -- \texttt{TERDIRI\_DARI} -- Photodegradable Plastic \\
+20 & Kimia & MAKROMOLEKUL ORGANIK &
+Gaya Antarmolekul Polimer -- \texttt{MENYEBABKAN} -- Polimer Termoset \\
+21 & Kimia & MAKROMOLEKUL ORGANIK &
+Mekanisme Polimerisasi Adisi -- \texttt{MENYEBABKAN} -- Polimerisasi
+Adisi \\
+\bottomrule
+\end{longtable}
+\endgroup
+
+\end{document}

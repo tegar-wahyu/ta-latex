@@ -27,8 +27,8 @@ validasi enam pakar domain, dengan *LLM-as-a-judge* sebagai penengah
 ketidaksepakatan.
 
 Temuan utama: penambahan 125 relasi lintas-buku menurunkan *Modularity* dari
-0,811 menjadi 0,373 dan menaikkan *Average Degree Centrality* sebesar 98,4%;
-ekstraksi intra-mapel mencapai F1-Score 92,6%; relasi lintas-disiplin tervalidasi
+0,666 menjadi 0,158 dan menaikkan *Average Degree Centrality* sebesar 98,4%;
+ekstraksi intra-mapel mencapai F1-Score 92,4%; relasi lintas-disiplin tervalidasi
 valid (99,1%) dan tepat tipe (98,3%), namun ketepatan arah relasi hanya 75,9%.
 
 ## Cara Kompilasi
@@ -63,7 +63,7 @@ preamble `thesis.tex`), mis. `pdflatex src/01-body/bab-5.tex`.
 thesis.tex                 # berkas master
 src/00-frontMatter/        # sampul, halaman judul, pernyataan, kata pengantar, abstrak
 src/01-body/               # bab-1 s.d. bab-6 (+ diagram TikZ: pipeline, ontologi, llm-judge)
-src/99-backMatter/         # lampiran-1 s.d. lampiran-8
+src/99-backMatter/         # lampiran-1 s.d. lampiran-9
 config/references.bib      # basis data pustaka (biblatex)
 assets/codes/kg-pipeline/  # notebook pipeline ekstraksi, KGC, dan ingest awal
 assets/codes/final-consensus/

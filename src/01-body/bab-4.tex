@@ -483,6 +483,42 @@ berbasis \textit{Cypher} dan aplikasi web KG Review App untuk validasi pakar.
   relasi dalam satu mata pelajaran terlebih dahulu sebelum mengevaluasi relasi
   lintas-disiplin, sehingga setiap fase dapat dianalisis secara lebih terisolasi
   dan akurat.
+
+  \item \textbf{Pipeline Konsolidasi Konsensus (\textit{LLM-as-a-judge}).}
+
+  Komponen terakhir mengubah penilaian mentah pakar menjadi \textit{ground truth}
+  final dan graf konsensus. Prosedur konseptualnya telah diuraikan pada
+  Subbab~\ref{sec:pengolahan-data}; bagian ini memaparkan implementasinya
+  melalui tiga \textit{notebook} yang dijalankan berurutan: pembentukan
+  konsensus, perhitungan metrik, dan pemuatan graf konsensus ke Neo4j.
+
+  Masukannya adalah dua berkas penilaian pakar per mata pelajaran yang diekspor
+  dari KG Review App (Fase~1) beserta berkas penilaian lintas-mapel (Fase~2).
+  \textit{Notebook} konsolidasi mengagregasi kedua penilaian; bila kedua pakar
+  berbeda rating atas satu \textit{triple}, atau bila sebuah \textit{missing
+  triple} hanya diusulkan satu pakar, kasus tersebut diteruskan ke
+  \textit{LLM-as-a-judge} (Gemini~3.1 Pro Preview) sebagaimana kerangka
+  pada Gambar~\ref{fig:llm-judge}. Agar putusan AI Judge berlandaskan sumber
+  alih-alih pengetahuan parametrik model, \textit{prompt} penengahan disertai
+  potongan konteks buku teks yang relevan (hasil ekstraksi Tahap~1). Setiap
+  panggilan AI Judge disimpan sebagai \textit{checkpoint} sehingga eksekusi ulang
+  tidak memanggil API secara berulang, sementara putusannya tetap dapat
+  ditelusuri (\textit{auditable}) dan direproduksi.
+
+  Keluarannya ada dua. \emph{Pertama}, \textit{gold standard} per mata pelajaran
+  berupa daftar label final yang menjadi masukan perhitungan metrik
+  (Gwet's AC1 serta \textit{Fuzzy Precision}/\textit{Recall}/F1). \emph{Kedua},
+  berkas KG konsensus, yakni ekspor graf dengan label konsensus dan metadata
+  peninjauan yang ditanamkan pada tiap relasi. \textit{Notebook} 
+  menulis KG konsensus ini kembali ke Neo4j dengan \textit{constraint} keunikan,
+  membentuk \textit{node} \texttt{Grade}, \texttt{Chapter}, \texttt{Subtopic},
+  \texttt{Concept}, dan \texttt{ConceptTarget} beserta relasi struktural dan relasi
+  semantik konsensus. Untuk analitik topologi, perhitungan
+  metrik (Subbab~\ref{subsec:struktural}) berpijak pada relasi semantik
+  antar-\texttt{Concept}, bukan relasi struktural hierarkis, agar nilai
+  \textit{modularity} dan komunitas tidak terdistorsi oleh struktur hierarki
+  bab. Volume dan hasil penengahan AI Judge atas data ini dilaporkan pada
+  Subbab~\ref{subsec:validasi-pakar} (Tabel~\ref{tab:llm-judge}).
 \end{enumerate}
 
 \ifSubfilesClassLoaded{\printbibliography[title={Daftar Pustaka}]}{}

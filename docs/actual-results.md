@@ -9,7 +9,16 @@
 | ADC | 2.4123006833712983 | 2.6970387243735794 |
 | ADC (Concept to Concept) | 0.7383720930232559 | 1.465116279069767 |
 | Density | 0.001076344158926029 | 0.0021357380161366873 |
-| Modularity | 0.8106482512809089 | 0.3731508875739645 |
+| Modularity | 0.6658813317626635 | 0.15797430083144365 |
+
+#### Robustness: Concept-to-Concept metrics without `wrong` consensus edges
+
+| Metric | KG | KGC |
+|---|---:|---:|
+| Concept-to-Concept edges | 122 | 247 |
+| ADC (Concept to Concept) | 0.7093023255813954 | 1.436046511627907 |
+| Density | 0.0010339684046376026 | 0.002093362261848261 |
+| Modularity | 0.6654125235151841 | 0.14887967349079645 |
 
 ### Ekstraksi
 
@@ -46,13 +55,13 @@
 | Biologi | Final consensus | 151 | 144 | 4 | 1 | 2 | 0 | 0.970 | 0.977 | 0.973 |
 | Fisika | Expert 1 | 240 | 239 | 0 | 0 | 1 | 15 | 0.997 | 0.938 | 0.967 | # Pendidikan Fisika UPI 2023
 | Fisika | Expert 2 | 240 | 186 | 40 | 3 | 11 | 0 | 0.870 | 0.881 | 0.875 | # Fisika UGM 2022
-| Fisika | Final consensus | 235 | 215 | 18 | 2 | 0 | 10 | 0.953 | 0.922 | 0.937 |
+| Fisika | Final consensus | 240 | 219 | 19 | 2 | 0 | 10 | 0.952 | 0.921 | 0.936 |
 | Kimia | Expert 1 | 166 | 132 | 7 | 25 | 2 | 0 | 0.819 | 0.965 | 0.886 | # Pendidikan Kimia UPI 2022
 | Kimia | Expert 2 | 166 | 136 | 6 | 5 | 19 | 29 | 0.866 | 0.757 | 0.808 | # Kimia ITB 2022
-| Kimia | Final consensus | 158 | 135 | 6 | 15 | 2 | 19 | 0.877 | 0.855 | 0.866 |
+| Kimia | Final consensus | 166 | 140 | 6 | 18 | 2 | 19 | 0.864 | 0.859 | 0.862 |
 | Overall | Expert 1 | 557 | 511 | 13 | 27 | 6 | 15 | 0.932 | 0.952 | 0.942 |
 | Overall | Expert 2 | 557 | 465 | 52 | 8 | 32 | 29 | 0.896 | 0.863 | 0.879 |
-| Overall | Final consensus | 544 | 494 | 28 | 18 | 4 | 29 | 0.936 | 0.917 | 0.926 |
+| Overall | Final consensus | 557 | 503 | 29 | 21 | 4 | 29 | 0.931 | 0.918 | 0.924 |
 
 ### Phase 2: KGC (cross-book relations)
 
