@@ -157,8 +157,16 @@ daftar subbab, glosarium, dan materi pokok.
         sementara halaman konten tidak disertakan agar \textit{parsing} bab dan
         subbab tetap stabil.
 
-  \item \textbf{Ekstraksi glosarium.} Glosarium dicari pada 30 halaman terakhir
-        menggunakan penanda \textit{state} \texttt{in\_glossary} yang diaktifkan
+  \item \textbf{Ekstraksi glosarium.} Pencarian glosarium dibatasi pada 30
+        halaman terakhir karena pada struktur buku teks, glosarium secara
+        konvensional terletak di bagian akhir buku (\textit{back matter}),
+        setelah seluruh materi pokok dan biasanya diikuti indeks serta daftar
+        pustaka. Jendela 30 halaman dipilih sebagai margin yang cukup lebar
+        untuk menjangkau bagian akhir seluruh \textit{e-book} yang digunakan,
+        sekaligus menjaga pencarian tetap terfokus dan menghindari
+        \textit{false positive} ketika kata ``glosarium'' kebetulan muncul di
+        bagian materi. Pada rentang tersebut, glosarium ditandai dengan
+        penanda \textit{state} \texttt{in\_glossary} yang diaktifkan
         oleh token ``glosarium'' dan dimatikan oleh terminator seperti
         ``indeks'' atau ``daftar pustaka''. Pasangan istilah--definisi yang
         ditemukan diuraikan menjadi \textit{lookup table}, yang kemudian dipakai
