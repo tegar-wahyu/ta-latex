@@ -62,12 +62,12 @@ KG memungkinkan sistem untuk menyusun jaringan informasi yang
 mencerminkan kerumitan konten kurikulum secara komputasional.
 
 Namun, manfaat pedagogis representasi berbasis KG sangat bergantung pada
-kerangka semantik yang mengatur struktur dan batas maknanya. \textcite{studer_knowledge_1998}, yang memperluas
-gagasan \textcite{gruber_translation_1993}, mendefinisikan ontologi sebagai
-spesifikasi formal dan eksplisit atas sebuah konseptualisasi bersama terhadap
-suatu domain. Kehadiran ontologi pendidikan menjadi penting
-karena berfungsi sebagai skema formal yang mendefinisikan jenis entitas
-(kelas), jenis relasi (properti), serta aturan keterhubungan dalam suatu
+kerangka semantik yang mengatur struktur dan batas maknanya. \textcite{studer_knowledge_1998}, yang membangun
+di atas definisi awal \textcite{gruber_translation_1993}, mendefinisikan ontologi sebagai
+spesifikasi formal dan eksplisit atas sebuah konseptualisasi bersama.
+Kehadiran ontologi pendidikan menjadi penting
+karena berfungsi sebagai skema formal yang mendefinisikan jenis entitas,
+jenis relasi, serta aturan keterhubungan dalam suatu
 domain. Dalam kerangka KG, ontologi berperan sebagai
 \textit{blueprint} yang mengatur struktur graf sehingga setiap triple
 yang ditambahkan mengikuti aturan yang konsisten dan dapat
@@ -80,9 +80,9 @@ Respirasi Seluler) menjadi valid dan bermakna secara ontologis.
 \textit{learning path}, konsep pembelajaran dapat direpresentasikan
 sebagai entitas spesifik yang dihubungkan melalui relasi ketergantungan
 seperti \textit{predecessor} sebagai pengetahuan prasyarat dan
-\textit{successor} sebagai pengetahuan lanjutan, sehingga tanpa
-struktur ontologis semacam ini, graf yang dihasilkan hanya akan menjadi
-kumpulan \textit{node} dan \textit{edge} tanpa makna pedagogis yang dapat diandalkan.
+\textit{successor} sebagai pengetahuan lanjutan. Tanpa struktur
+ontologis semacam ini, graf yang dihasilkan berisiko menjadi sekadar
+kumpulan \textit{node} dan \textit{edge} dengan makna pedagogis yang terbatas.
 
 Urgensi ontologi ini diperkuat oleh \textcite{guo_ontology-enhanced_2025} yang menunjukkan
 bahwa ontologi dapat berfungsi sebagai mekanisme pembatas
@@ -414,11 +414,7 @@ derajat (\textit{average degree}) seluruh \textit{node} \parencite[134]{newman_n
 \]
 
 \noindent dengan $|V|$ adalah jumlah \textit{node} dan $\deg(v)$ jumlah relasi
-yang terhubung langsung ke \textit{node} $v$. Perlu dicatat bahwa metrik ini
-adalah rata-rata derajat (\textit{average degree}, $\frac{2m}{n}$ untuk graf
-tak-berarah), sehingga pembaginya adalah jumlah \textit{node} $|V|$; istilah ini
-berbeda dari \textit{degree centrality} ternormalisasi ala Freeman yang membagi
-derajat tiap \textit{node} dengan $|V|-1$. Dalam penelitian ini, ADC dihitung
+yang terhubung langsung ke \textit{node} $v$. Dalam penelitian ini, ADC dihitung
 pada \textbf{subgraf konsep} (hanya melibatkan \textit{node} \texttt{Concept}
 dan relasi langsung antar-konsep) agar mencerminkan tingkat keterhubungan
 konseptual antarmateri sains tanpa dipengaruhi \textit{node} struktural (kelas,
@@ -647,6 +643,23 @@ keanggotaan fuzzy sebagai berikut:
         keanggotaan; relasi keliru secara ontologis atau gagal
         diekstraksi.
 \end{itemize}
+
+Pemetaan keempat nilai di atas merupakan keputusan desain penelitian ini,
+bukan ketentuan baku dari \textcite{harju_evaluating_2023}. Kerangka fuzzy yang
+diadopsi tidak menetapkan angka tertentu, melainkan hanya mensyaratkan bahwa
+derajat kebenaran dinyatakan sebagai nilai keanggotaan pada interval $[0,1]$
+\parencite{harju_evaluating_2023}. Atas dasar prinsip tersebut, kategori
+ordinal hasil penilaian pakar diproyeksikan menjadi derajat \textit{partial
+credit} yang menurun secara bertahap: $1{,}0$ untuk keanggotaan penuh, $0{,}5$
+sebagai titik tengah bagi relasi yang sahih secara saintifik namun belum
+sempurna, $0{,}25$ untuk derajat parsial yang lebih lemah, dan $0{,}0$ untuk
+ketiadaan keanggotaan. Penggunaan nilai tengah $0{,}5$ sebagai penanda
+keanggotaan parsial sejalan dengan perlakuan $0{,}5$ sebagai ambang baku
+(\textit{default threshold}) dalam metrik tersebut \parencite{harju_evaluating_2023}.
+Selain itu, batasan setiap kategori beserta nilai keanggotaannya tidak
+ditetapkan secara sepihak, melainkan turut disepakati melalui diskusi dengan
+pakar domain yang terlibat dalam proses validasi, sehingga skema penilaian ini
+selaras dengan interpretasi pakar terhadap kualitas relasi.
 
 Untuk menghitung metrik evaluasi ini, \textcite{harju_evaluating_2023} menggunakan
 prinsip irisan fuzzy (\textit{fuzzy intersection}) yang didefinisikan
