@@ -171,16 +171,16 @@ menjawab keempat rumusan masalah penelitian adalah sebagai berikut.
   \item \textbf{Keandalan evaluasi hybrid dan pengukuran kualitas kuantitatif.}
         \textit{Pipeline} evaluasi hybrid berhasil mengukur kualitas KG secara
         andal dan terukur. Pada validasi intra-mapel (Fase~1) oleh enam
-        pakar domain, sistem mencatatkan \textit{precision} 93{,}1\%,
-        \textit{recall} 91{,}8\%, dan F1-Score 92{,}4\%
+        pakar domain, sistem mencatatkan \textit{Fuzzy Precision} 93{,}1\%,
+        \textit{Fuzzy Recall} 91{,}8\%, dan F1-Score 92{,}4\%
         (Tabel~\ref{tab:validasi-metrik}), dengan kesepakatan antarpakar Gwet's
         AC1 yang bervariasi dari ``baik'' hingga ``sangat baik'' (0{,}607 pada
         Kimia hingga 0{,}931 pada Biologi). Mekanisme \textit{LLM-as-a-judge}
         (Gemini~3.1 Pro Preview) berfungsi sebagai penengah yang menyelesaikan
         ketidaksepakatan intra-mapel berbasis konteks buku teks: mekanisme ini
-        menengahi 123 konflik rating---memilih salah satu label yang telah
+        menengahi 123 konflik rating, memilih salah satu label yang telah
         diberikan pakar pada 95{,}1\% kasus alih-alih menilai ulang secara
-        independen---serta menyetujui 29 dari 44 usulan
+        independen, serta menyetujui 29 dari 44 usulan
         \textit{missing triple} (Tabel~\ref{tab:llm-judge}). Sementara itu,
         validasi panel pada relasi lintas-disiplin (Fase~2) menghasilkan
         validitas 99{,}1\%. Dengan demikian, kombinasi metrik struktural dan
@@ -230,7 +230,7 @@ menafsirkan hasilnya.
         memodelkan tingkat kognitif (taksonomi Bloom) maupun keadaan pembelajar
         (\textit{learner state}).
 
-  \item \textbf{Keterbatasan metrik dan model.} \textit{Recall} dan F1 pada
+  \item \textbf{Keterbatasan metrik dan model.} \textit{Fuzzy Recall} dan F1 pada
         validasi lintas-disiplin (Fase~2) tidak dapat dihitung karena tiadanya
         \textit{denominator} relasi benar yang menyeluruh dalam konfigurasi panel
         tunggal. Selain itu, penelitian hanya memanfaatkan satu keluarga model
@@ -272,7 +272,7 @@ penelitian dan pengembangan selanjutnya.
   \item \textbf{Evaluasi lintas-model.} Membandingkan beberapa keluarga LLM (mis.\
         GPT, Claude) pada tahap ekstraksi, \textit{completion}, dan
         \textit{LLM-as-a-judge} untuk menguji ketangguhan hasil, serta memperkuat
-        validasi Fase~2 dengan dua pakar independen agar \textit{recall} dan AC1
+        validasi Fase~2 dengan dua pakar independen agar \textit{Fuzzy Recall} dan AC1
         dapat dihitung.
 \end{enumerate}
 

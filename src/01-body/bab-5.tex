@@ -366,7 +366,7 @@ Tabel~\ref{tab:validasi-mapel}; label ini bersifat lokal per mata
 pelajaran, sehingga ``Expert~1 Biologi'' bukan orang yang sama dengan
 ``Expert~1 Fisika'' maupun ``Expert~1 Kimia''---total enam pakar berbeda
 terlibat. Data dianalisis menggunakan metrik \textit{Fuzzy
-Precision} dan \textit{Recall} \parencite{harju_evaluating_2023}, F1-Score,
+Precision} dan \textit{Fuzzy Recall} \parencite{harju_evaluating_2023}, F1-Score,
 serta uji kesepakatan Gwet's AC1, sebagaimana didefinisikan pada
 Subbab~\ref{subsec:validasi-manusia}.
 
@@ -429,7 +429,7 @@ Kimia   & 166 & 0{,}651 & 0{,}112 & \textbf{0{,}607} & Baik \\
 
 \begin{table}[htbp]
 \centering
-\caption{Ringkasan metrik per fase evaluasi. Untuk Fase~2, Precision $=$ validitas relasi, sedangkan Recall, F1, dan AC1 tidak berlaku (lihat Subbab~\ref{subsec:metrik-fase2}).}
+\caption{Ringkasan metrik per fase evaluasi.}
 \label{tab:validasi-metrik}
 \begin{tabular}{@{}
   >{\raggedright\arraybackslash}p{0.20\linewidth}
@@ -438,24 +438,42 @@ Kimia   & 166 & 0{,}651 & 0{,}112 & \textbf{0{,}607} & Baik \\
   >{\centering\arraybackslash}p{0.18\linewidth}
   >{\centering\arraybackslash}p{0.18\linewidth}@{}}
 \toprule
-\textbf{Fase} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Gwet's AC1} \\
+\textbf{Fase} & \textbf{Fuzzy Precision / Validitas} & \textbf{Fuzzy Recall} & \textbf{F1-Score} & \textbf{Gwet's AC1} \\
 \midrule
 Fase 1 (konsensus) & 0{,}931 & 0{,}918 & 0{,}924 & lihat Tabel~\ref{tab:ac1} \\
 Fase 2 (panel diskusi) & 0{,}991 & — & — & — \\
 \bottomrule
 \end{tabular}
+\vspace{0.35em}
+\begin{minipage}{0.88\linewidth}
+\footnotesize
+\textit{Catatan.} Pada Fase~1, kolom pertama adalah \textit{Fuzzy Precision}.
+Pada Fase~2, kolom yang sama dibaca sebagai validitas relasi terprediksi, yaitu
+proporsi kandidat relasi lintas-mapel yang dinilai valid oleh panel.
+\textit{Fuzzy Recall}, F1-Score, dan Gwet's AC1 tidak dihitung
+karena evaluasi dilakukan melalui panel diskusi dan tidak menyediakan penyebut
+relasi benar yang menyeluruh (lihat Subbab~\ref{subsec:metrik-fase2}).
+\end{minipage}
 \end{table}
 
 \begin{enumerate}
-  \item \textbf{Kuantitas Akurasi (Precision, Recall, F1-Score).}
+  \item \textbf{Kinerja Ekstraksi Intra-mapel (Fuzzy Precision, Fuzzy Recall, F1-Score).}
 
-  Secara agregat pada Fase 1, \textit{precision} konsensus final mencapai 93{,}1\%
-  dan \textit{recall} 91{,}8\%, menghasilkan F1-Score sebesar 92{,}4\%
-  (Tabel~\ref{tab:validasi-mapel}). Nilai ini menunjukkan bahwa
+  Ketiga metrik ini tidak diperlakukan sebagai akurasi klasifikasi sederhana,
+  melainkan sebagai ukuran kinerja ekstraksi relasi: \textit{Fuzzy Precision}
+  menunjukkan proporsi relasi hasil sistem yang dinilai benar atau sebagian
+  benar oleh pakar, \textit{Fuzzy Recall} menunjukkan sejauh mana sistem tidak
+  melewatkan relasi esensial yang kemudian diusulkan sebagai
+  \textit{missing triples}, dan F1-Score merangkum keseimbangan keduanya.
+  Tabel~\ref{tab:validasi-metrik}, yang berjudul Ringkasan metrik per fase evaluasi,
+  menunjukkan bahwa Fase~1 menghasilkan \textit{Fuzzy Precision} 93{,}1\%,
+  \textit{Fuzzy Recall} 91{,}8\%, dan F1-Score 92{,}4\%. Rincian per mata
+  pelajaran pada Tabel~\ref{tab:validasi-mapel}, yang berjudul Hasil validasi
+  Fase~1 per pakar dan konsensus final, menunjukkan bahwa
   kemampuan LLM dalam mengekstraksi relasi intra-mapel tergolong baik. Biologi
   mencatatkan F1 tertinggi (0{,}973), diikuti Fisika (0{,}936), dan Kimia (0{,}862).
 
-  Pada level keseluruhan, \textit{precision} melampaui \textit{recall} sebesar
+  Pada level keseluruhan, \textit{Fuzzy Precision} melampaui \textit{Fuzzy Recall} sebesar
   1{,}3 poin. Selisih ini melebar pada konsensus final Fisika (3{,}1 poin) dan
   terutama pada penilaian Expert 2 Kimia (10{,}9 poin). Penyebab utamanya adalah
   \textit{missing triples} (10 relasi pada konsensus final Fisika dan 29 relasi
@@ -469,10 +487,12 @@ Fase 2 (panel diskusi) & 0{,}991 & — & — & — \\
   oleh nilai AC1 Fisika (0{,}754) yang lebih rendah daripada Biologi (0{,}931).
 
   Pada Fase 2 (inter-mapel), validasi panel diskusi atas 117 relasi lintas-buku
-  menghasilkan \textit{precision} (validitas) 99{,}1\% (116/117 relasi dikonfirmasi
-  valid; satu relasi ditolak). Metrik \textit{Recall} dan F1 tidak dapat dihitung
+  menghasilkan validitas relasi terprediksi 99{,}1\% (116/117 relasi
+  dikonfirmasi valid; satu relasi ditolak). Nilai ini berbeda dari
+  \textit{Fuzzy Precision} Fase~1 karena Fase~2 memakai keputusan panel tunggal
+  dan tidak menggunakan skala parsial. Metrik \textit{Fuzzy Recall} dan F1 tidak dapat dihitung
   karena tidak tersedia informasi jumlah total relasi lintas-buku yang benar
-  (denominator \textit{recall}) dalam konfigurasi panel tunggal ini. Karena validasi
+  (penyebut untuk menghitung cakupan relasi benar) dalam konfigurasi panel tunggal ini. Karena validasi
   dilakukan melalui diskusi panel (bukan dua pakar independen), uji Gwet's AC1
   tidak berlaku.
 
@@ -480,7 +500,9 @@ Fase 2 (panel diskusi) & 0{,}991 & — & — & — \\
 
   Sesuai dengan pilihan metodologi yang ditetapkan pada Bab 3 (dan latar belakang
   teoritis Gwet's AC1 pada Subbab~\ref{subsec:validasi-manusia}), uji kesepakatan antarpakar menggunakan
-  Gwet's AC1 \parencite{gwet_handbook_2014}. Hasil pada Tabel~\ref{tab:ac1} menunjukkan variasi tingkat kesepakatan
+  Gwet's AC1 \parencite{gwet_handbook_2014}. Tabel~\ref{tab:ac1}, yang
+  berjudul Uji kesepakatan antarpakar Gwet's AC1 per mata pelajaran,
+  menunjukkan variasi tingkat kesepakatan
   yang signifikan antar mata pelajaran. Biologi mencatatkan AC1 tertinggi dan
   tergolong sangat baik (0{,}931), mengindikasikan kesepakatan yang hampir
   sempurna antara kedua pakar. Hal ini konsisten dengan sifat konten Biologi
@@ -780,8 +802,8 @@ ketat, mengonfirmasi bahwa pengetatan ambang menyaring sisa
 LB005, LB008, dan LB074). Namun, ketepatan arah relasi tetap berada di
 rentang 71--86\% lintas-konfigurasi tanpa kecenderungan monotonik
 terhadap pengetatan parameter, menegaskan bahwa kesalahan arah bukan
-persoalan ambang --- relasi terbalik tetap merupakan pasangan
-berkemiripan tinggi yang valid secara semantik --- sehingga
+persoalan ambang. Relasi terbalik tetap merupakan pasangan
+berkemiripan tinggi yang valid secara semantik, sehingga
 penanganannya memerlukan perbaikan pada \textit{prompt} klasifikasi
 atau normalisasi arah pasca-proses, bukan penyetelan
 \textit{threshold}.

@@ -632,8 +632,8 @@ evaluasi ekstraksi pengetahuan oleh LLM, hasil sering kali memiliki
 batas yang tidak tegas (\textit{soft boundaries}) karena adanya nilai
 kebenaran parsial \parencite{harju_evaluating_2023}.
 
-Untuk mengakomodasi hal tersebut, penelitian ini mengadopsi metrik Fuzzy
-Precision and Recall. Berdasarkan teori himpunan fuzzy, setiap elemen
+Untuk mengakomodasi hal tersebut, penelitian ini mengadopsi metrik
+\textit{Fuzzy Precision} dan \textit{Fuzzy Recall}. Berdasarkan teori himpunan fuzzy, setiap elemen
 memiliki nilai keanggotaan (\textit{membership value}) antara 0 hingga 1
 yang merepresentasikan derajat kebenarannya \parencite{harju_evaluating_2023}.
 Dalam penelitian ini, kategori evaluasi pakar dipetakan ke dalam nilai
@@ -674,14 +674,17 @@ sebagai nilai minimum antara prediksi model dan referensi
 LLM selalu menghasilkan prediksi dengan tingkat keyakinan penuh
 ($\hat{y}_i = 1{,}0$), nilai irisan dari setiap relasi akan selalu
 mengikuti skor keanggotaan yang ditetapkan oleh pakar. Dengan demikian,
-rumus evaluasi Fuzzy Precision, Fuzzy Recall, dan F1-Score dirumuskan
-sebagai berikut:
+Fuzzy Precision, Fuzzy Recall, dan F1-Score dalam penelitian ini digunakan
+sebagai metrik kinerja ekstraksi relasi, bukan sebagai akurasi klasifikasi
+sederhana. Ketiganya dirumuskan sebagai berikut:
 
 \begin{enumerate}
-  \item \textbf{Fuzzy Precision:} mengukur tingkat akurasi dari
-        keseluruhan relasi yang berhasil diekstrak oleh model LLM.
+  \item \textbf{Fuzzy Precision:} mengukur ketepatan relasi yang berhasil
+        diekstrak oleh model LLM, yaitu seberapa besar bagian dari relasi hasil
+        sistem yang diterima pakar sebagai benar, sebagian benar, atau kurang
+        konteks.
         \[
-          \text{Precision} =
+          \text{Fuzzy Precision} =
           \frac{\text{Benar}
                 + 0{,}5 \cdot \text{SebagianBenar}
                 + 0{,}25 \cdot \text{KurangKonteks}}
@@ -691,13 +694,14 @@ sebagai berikut:
                 + \text{Salah}}
         \]
 
-  \item \textbf{Fuzzy Recall:} mengukur sejauh mana sistem berhasil
-        menangkap seluruh relasi penting yang diwajibkan dalam kurikulum.
-        Penyebut merepresentasikan kardinalitas total dari
-        himpunan referensi pakar, termasuk relasi yang gagal diekstraksi
-        (Hilang).
+  \item \textbf{Fuzzy Recall:} mengukur kelengkapan ekstraksi terhadap referensi
+        pakar. Dalam penelitian ini, referensi tersebut mencakup relasi yang
+        berhasil diekstrak dan dinilai pakar, serta \textit{missing triples}
+        yang diusulkan pakar sebagai relasi esensial tetapi belum dihasilkan
+        sistem. Relasi hilang tersebut diperlakukan sebagai \textit{false
+        negative}.
         \[
-          \text{Recall} =
+          \text{Fuzzy Recall} =
           \frac{\text{Benar}
                 + 0{,}5 \cdot \text{SebagianBenar}
                 + 0{,}25 \cdot \text{KurangKonteks}}
@@ -707,13 +711,14 @@ sebagai berikut:
                 + \text{Hilang}}
         \]
 
-  \item \textbf{F1-Score:} rata-rata harmonik antara Precision dan Recall
+  \item \textbf{F1-Score:} rata-rata harmonik antara Fuzzy Precision dan
+        Fuzzy Recall
         untuk memberikan representasi kualitas ekstraksi model secara
         keseluruhan.
         \[
           F_1 = 2 \times
-          \frac{\text{Precision} \times \text{Recall}}
-               {\text{Precision} + \text{Recall}}
+          \frac{\text{Fuzzy Precision} \times \text{Fuzzy Recall}}
+               {\text{Fuzzy Precision} + \text{Fuzzy Recall}}
         \]
 \end{enumerate}
 
@@ -849,7 +854,7 @@ berbasis OWL, (c) menerapkan LLM-Assisted KGC dengan strategi
 \textit{few-shot}, \textit{schema-constrained prompting} untuk ekstraksi
 entitas maupun klasifikasi relasi lintas-disiplin, serta (d)
 memvalidasi hasilnya menggunakan \textit{pipeline LLM-as-a-judge} berbasis Gemini
-dengan metrik \textit{Fuzzy Precision and Recall}. Kombinasi keempat elemen
+dengan metrik \textit{Fuzzy Precision} dan \textit{Fuzzy Recall}. Kombinasi keempat elemen
 inilah yang menjadi kontribusi orisinal penelitian ini.
 
 \ifSubfilesClassLoaded{\printbibliography[title={Daftar Pustaka}]}{}
