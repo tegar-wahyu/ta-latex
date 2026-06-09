@@ -157,26 +157,25 @@ daftar subbab, glosarium, dan materi pokok.
         sementara halaman konten tidak disertakan agar \textit{parsing} bab dan
         subbab tetap stabil.
 
-  \item \textbf{Ekstraksi glosarium.} Pencarian glosarium dibatasi pada 30
-        halaman terakhir karena pada struktur buku teks, glosarium secara
+  \item \textbf{Ekstraksi glosarium.} Karena glosarium pada buku teks secara
         konvensional terletak di bagian akhir buku (\textit{back matter}),
-        setelah seluruh materi pokok dan biasanya diikuti indeks serta daftar
-        pustaka. Jendela 30 halaman dipilih sebagai margin yang cukup lebar
-        untuk menjangkau bagian akhir seluruh \textit{e-book} yang digunakan,
-        sekaligus menjaga pencarian tetap terfokus dan menghindari
-        \textit{false positive} ketika kata ``glosarium'' kebetulan muncul di
-        bagian materi. Pada rentang tersebut, glosarium ditandai dengan
-        penanda \textit{state} \texttt{in\_glossary} yang diaktifkan
-        oleh token ``glosarium'' dan dimatikan oleh terminator seperti
-        ``indeks'' atau ``daftar pustaka''. Pasangan istilah--definisi yang
-        ditemukan diuraikan menjadi \textit{lookup table}, yang kemudian dipakai
-        sebagai validasi terminologi pada Tahap~2.
+        setelah seluruh materi pokok, pencarian penanda ``glosarium'' dibatasi
+        hanya pada bagian setelah 30\% halaman pertama buku. Pembatasan ini
+        menghindari \textit{false positive} ketika kata ``glosarium'' kebetulan
+        muncul di bagian awal seperti daftar isi atau kata pengantar. Dari
+        halaman penanda pertama yang memenuhi syarat, ekstraksi berlanjut halaman
+        demi halaman hingga mencapai penanda awal bagian \textit{back matter}
+        berikutnya, seperti ``Indeks'' atau ``Daftar Pustaka''. Pasangan
+        istilah--definisi yang ditemukan diuraikan menjadi \textit{lookup table},
+        yang kemudian dipakai sebagai validasi terminologi pada Tahap~2.
 
   \item \textbf{Penugasan bab ke \textit{chunk}.} Setiap \textit{chunk}
         dihubungkan ke bab berdasarkan interval halaman
         (\texttt{page\_start <= page < next\_page}), dengan \texttt{page\_label}
-        dikonversi ke integer termasuk angka Romawi. Penugasan ini
-        berkompleksitas $O(N \cdot C)$ untuk $N$ \textit{chunk} dan $C$ bab.
+        dikonversi ke integer termasuk angka Romawi. Penugasan ini dilakukan satu
+        kali untuk seluruh 788 \textit{chunk} dengan pencocokan rentang halaman
+        tersebut, sehingga waktu komputasinya sangat kecil dibandingkan tahap
+        ekstraksi berbasis LLM.
 
   \item \textbf{Ekstraksi materi pokok (Buku Guru).} Untuk tiap bab, sistem
         mencari \textit{region} teks yang sesuai judul bab di Buku Guru, lalu
