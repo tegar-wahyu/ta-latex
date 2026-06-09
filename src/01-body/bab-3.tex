@@ -705,12 +705,16 @@ teknis utama yang digunakan sepanjang penelitian ini.
   \textit{Confidence} (LLM)
     & Skor dalam rentang $[0,1]$ yang dikeluarkan model klasifikasi
       \texttt{LINTAS\_BUKU} bersama setiap prediksi relasi sebagai ukuran
-      tingkat keyakinan model. Skor ini dipakai untuk menyaring relasi:
-      relasi diterima bila skornya memenuhi ambang
-      (\texttt{BERKAITAN\_DENGAN} $\geq 0{,}85$; tipe lain $\geq 0{,}70$),
-      sedangkan kandidat dengan skor $< 0{,}5$ tidak diikutkan dalam
-      survei pakar. Karena skor ini belum terkalibrasi, keandalannya
-      diperiksa kembali pada Subbab~\ref{subsubsec:false-positive}. \\
+      tingkat keyakinan model. \textit{Prompt} klasifikasi
+      \emph{menginstruksikan} model untuk hanya memakai keyakinan tinggi
+      ($\geq 0{,}85$ untuk \texttt{BERKAITAN\_DENGAN}; $\geq 0{,}70$ untuk
+      tipe lain), tetapi instruksi ini bukan penyaring keras pada kode:
+      setiap prediksi berlabel non-\texttt{NONE} tetap dituliskan ke graf
+      beserta skornya. Penyaringan berbasis skor yang benar-benar diterapkan
+      hanya mengecualikan kandidat berskor $< 0{,}5$ dari survei pakar (bukan
+      dari graf). Karena skor ini bersifat \textit{self-reported} dan belum
+      terkalibrasi, keandalannya diperiksa kembali pada
+      Subbab~\ref{subsubsec:false-positive}. \\
 \end{tabular}
 \end{table}
 

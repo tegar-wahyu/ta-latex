@@ -787,9 +787,10 @@ keyakinan tinggi LLM terhadap relasi tersebut. Contoh relasi dengan
     dalam fisika.
   \item Enzim [Biologi] $\to$ Protein [Kimia]: \texttt{APLIKASI\_DARI} (conf = 1{,}0).
     Enzim merupakan manifestasi fungsional dari protein dalam konteks biologis.
-  \item Fosforilasi Oksidatif [Biologi] $\to$ Oksidasi [Kimia]:
-    \texttt{PRASYARAT\_UNTUK} (conf = 0{,}9). Pemahaman reaksi oksidasi secara kimia
-    diperlukan sebelum mempelajari fosforilasi oksidatif dalam metabolisme.
+  \item Bilangan Oksidasi [Kimia] $\to$ Fosforilasi Oksidatif [Biologi]:
+    \texttt{PRASYARAT\_UNTUK} (conf = 0{,}9). Pemahaman bilangan oksidasi secara
+    kimia menjadi prasyarat untuk memahami perubahan redoks molekuler yang
+    terjadi selama fosforilasi oksidatif.
 \end{itemize}
 
 Satu-satunya relasi bertipe \texttt{SAMA\_DENGAN} yang ditemukan adalah DNA (Asam
@@ -821,6 +822,13 @@ Biologi\,$\leftrightarrow$\,Kimia: LLM cenderung menempatkan konsep
 Biologi sebagai sumber, padahal arah yang benar umumnya
 Kimia$\to$Biologi, karena konsep kimia berperan sebagai prasyarat/fondasi
 yang \textit{diperdalam} atau \textit{dibutuhkan} oleh proses biologis.
+Sebagai contoh konkret, \textit{edge} \texttt{Fosforilasi Oksidatif [Biologi]}
+$\to$ \texttt{PRASYARAT\_UNTUK} $\to$ \texttt{Oksidasi [Kimia]} (conf~$0{,}9$)
+memiliki arah terbalik: deskripsi yang dihasilkan model justru menyatakan
+``pemahaman oksidasi secara kimia diperlukan \emph{sebelum} mempelajari
+fosforilasi oksidatif'', sehingga arah yang benar seharusnya
+Oksidasi~$\to$~Fosforilasi Oksidatif. Kasus ini sekaligus menunjukkan bahwa
+keyakinan tinggi ($0{,}9$) tidak menjamin ketepatan arah.
 Tipe \texttt{MEMPERDALAM} paling rentan (ketepatan arah 60\%: 18 Benar, 12
 Terbalik), disusul \texttt{APLIKASI\_DARI} (73\%) dan
 \texttt{PRASYARAT\_UNTUK} (79\%),
@@ -1009,10 +1017,18 @@ implikasi metodologis. \textbf{Pertama}, \textit{confidence}
 memiliki sinyal yang cukup baik untuk \textit{keberadaan} relasi:
 validitas pakar mencapai 100\% pada seluruh \textit{bucket}
 $\geq 0{,}85$ dan tetap di atas 96\% pada \textit{bucket}
-$[0{,}7;\;0{,}85)$, sehingga ambang seleksi
-(\textsc{berkaitan\_dengan} $\geq 0{,}85$; tipe lain $\geq 0{,}70$;
-lihat \ref{lamp:prompt-completion}) terbukti efektif
-menyaring \textit{false positive}. \textbf{Kedua}, sinyal terhadap
+$[0{,}7;\;0{,}85)$. Namun perlu ditegaskan bahwa ambang
+$\geq 0{,}85$/$\geq 0{,}70$ (Kode~\ref{lst:prompt-sys}) hanya
+\emph{diinstruksikan} pada \textit{prompt} dan tidak ditegakkan sebagai
+penyaring keras: seluruh 21 \textit{edge} \texttt{BERKAITAN\_DENGAN} yang
+dihasilkan justru ber-\textit{confidence} $< 0{,}85$ (rata-rata $0{,}50$),
+dan satu-satunya penyaringan yang benar-benar diterapkan adalah pengecualian
+\textit{confidence} $< 0{,}5$ dari survei. Dengan demikian \textit{confidence}
+berfungsi sebagai sinyal \textit{post hoc} atas \textit{keberadaan} relasi,
+bukan sebagai \textit{gating} yang menyaring \textit{false positive} sejak
+awal --- terbukti dari \textit{false positive} ber-\textit{confidence} $0{,}2$
+(Gerbang Logika Dasar $\leftrightarrow$ Notasi Sel Standar) yang tetap masuk
+ke graf. \textbf{Kedua}, sinyal terhadap
 \textit{ketepatan tipe} hanya marginal: kenaikan dari 97{,}1\%
 pada \textit{bucket} $[0{,}85;\;1{,}0)$ ke 100\% pada
 \textit{bucket} $\text{conf}=1{,}0$ kecil dan terjadi pada $n$ kecil.
