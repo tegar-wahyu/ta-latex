@@ -447,7 +447,10 @@ tercampur.
         relasi tertipe, lalu mengklasifikasikan relasi dengan LLM dan
         menuliskannya kembali ke graf. Keluarannya adalah daftar \textit{edge}
         \texttt{LINTAS\_BUKU\_*} baru beserta \textit{confidence score}
-        dan deskripsi singkat.
+        dan deskripsi singkat. Karena relasi diprediksi di antara konsep yang
+        sudah ada dalam graf dan bukan digali dari teks mentah, tahap ini
+        merupakan \textit{relation prediction}, yaitu salah satu subtugas KGC
+        (lihat Subbab~\ref{subsec:kgc}).
 
   \item \textbf{Evaluasi pasca-\textit{completion}.} \textit{Edge}
         lintas-buku hasil \textit{completion} terlebih dahulu dituliskan

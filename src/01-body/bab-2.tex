@@ -157,6 +157,21 @@ ini, yakni menginferensi dan memprediksi entitas atau relasi yang hilang
 (\textit{missing links}) agar triple pengetahuan menjadi lebih utuh dan
 konsisten secara semantik.
 
+Lebih rinci, \textcite{ji_survey_2022} membagi KGC ke dalam beberapa subtugas, di
+antaranya \textit{link prediction}, \textit{entity prediction}, dan
+\textit{relation prediction}, yaitu memprediksi relasi yang menghubungkan
+pasangan entitas yang sudah ada di dalam graf. Subtugas \textit{relation
+prediction} inilah yang menjadi fokus penelitian ini. Tugas ini perlu dibedakan
+dari \textit{relation extraction} atau \textit{relation discovery} yang menggali
+relasi langsung dari teks mentah. Pada KGC, relasi diprediksi di antara entitas
+yang sudah terbentuk dalam graf, bukan dari potongan teks baru. Dengan demikian,
+melengkapi relasi implisit antar-entitas yang sudah ada tetap tergolong KGC,
+bukan sekadar penemuan relasi berbasis teks. Pendekatan serupa pada konteks
+pendidikan ditempuh oleh \textcite{abu-rasheed_llm-assisted_2025}, yang
+memanfaatkan LLM untuk melengkapi relasi antar-konsep kurikulum dan menyebut
+prosesnya sebagai \textit{Knowledge Graph Completion}; pendekatan inilah yang
+juga diadopsi penelitian ini.
+
 Metode-metode berbasis \textit{embedding} seperti TransE
 \parencite{bordes_translating_2013} dan RotatE \parencite{sun_rotate_2019} memodelkan relasi sebagai operasi
 matematis dalam ruang vektor berdimensi rendah. Meskipun efisien pada
@@ -859,6 +874,24 @@ DCI/ICI, tetapi skalabilitasnya terbatas karena dilakukan secara manual.
 Penelitian ini mengisi kekosongan tersebut dengan menggabungkan otomatisasi
 berbasis LLM dan struktur graf relasional dalam satu \textit{pipeline} yang
 terintegrasi, khusus untuk konteks kurikulum Indonesia.
+
+Karya yang paling dekat dengan penelitian ini adalah
+\textcite{abu-rasheed_llm-assisted_2025}, yang menerapkan LLM-Assisted KGC untuk
+memodelkan kurikulum pendidikan tinggi. Pendekatan mereka memiliki banyak
+kesamaan dengan penelitian ini, yakni ekstraksi konsep dari materi ajar dibantu
+LLM dengan panduan ontologi, penautan topik antar-program studi melalui
+kemiripan \textit{embedding}, validasi oleh pakar (\textit{human-in-the-loop}),
+serta evaluasi gabungan berupa umpan balik pakar dan metrik kualitas graf.
+Kesamaan ini sekaligus menegaskan bahwa pendekatan yang ditempuh penelitian ini
+memang tergolong KGC, karena karya tersebut yang berciri serupa juga menyebut
+prosesnya sebagai \textit{Knowledge Graph Completion}. Perbedaan utamanya
+terletak pada konteks dan cakupan: \citeauthor{abu-rasheed_llm-assisted_2025}
+bekerja pada jenjang pendidikan tinggi berbahasa Inggris dengan sumber berupa
+materi kuliah (slide dan rekaman) serta menautkan modul antar-program studi,
+sedangkan penelitian ini berfokus pada jenjang SMA Kurikulum Merdeka berbahasa
+Indonesia dengan sumber berupa buku teks resmi serta menargetkan relasi lintas
+tiga disiplin IPA (Fisika, Kimia, Biologi) dalam satu kurikulum nasional yang
+sama.
 
 Secara keseluruhan, belum ditemukan penelitian terdahulu yang secara
 bersamaan: (a) menggunakan buku teks resmi kurikulum Indonesia sebagai
