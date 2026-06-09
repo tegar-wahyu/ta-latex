@@ -257,8 +257,11 @@ penelitian dan pengembangan selanjutnya.
   \item \textbf{Penanganan arah relasi.} Memprioritaskan perbaikan ketepatan arah,
         misalnya melalui penambahan contoh \textit{few-shot} yang eksplisit
         menunjukkan arah, langkah klasifikasi arah terpisah, atau normalisasi
-        arah pasca-proses (misalnya memberlakukan kecenderungan arah Kimia$\to$Biologi
-        sebagai prasyarat) untuk mengoreksi 28 relasi terbalik secara sistematis.
+        arah pasca-proses berbasis \textit{reasoning} semantik. Mekanisme ini
+        dapat memeriksa apakah arah yang dipilih sudah sesuai dengan makna
+        relasi, misalnya apakah konsep sumber benar-benar berperan sebagai
+        prasyarat, aplikasi, atau pendalaman dari konsep tujuan, sehingga
+        koreksi arah tidak hanya mengikuti pola dominan tertentu dalam data.
 
   \item \textbf{Penguatan ekstraksi relasi kuantitatif.} Menambahkan tahap
         ekstraksi khusus untuk rumus dan persamaan matematis, atau memanfaatkan
