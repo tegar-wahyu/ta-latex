@@ -405,7 +405,7 @@ class Classification(BaseModel):
 
 
 # ── Yhoga LINTAS_BUKU classifier — 5-type closed cross-book vocab ───────────
-# Vocab per docs/yhoga-ontology.ttl:151-185. Emitted only when adapter.spec
+# Vocab mirrored from assets/data/onthology.ttl. Emitted only when adapter.spec
 # carries the LINTAS_BUKU classifier_vocab (i.e. schema='yhoga').
 
 _LINTAS_BUKU_CLASSIFICATION_PROMPT = """\

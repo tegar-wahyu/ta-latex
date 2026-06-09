@@ -5,10 +5,10 @@ from typing import Literal
 from pydantic import BaseModel
 
 # =============================================================================
-# Relation Types - Aligned with docs/ontology.ttl
+# Relation Types - Mirrored from assets/data/onthology.ttl
 # =============================================================================
 
-# The 7 ontology-defined semantic relations (authoritative)
+# The 15 ontology-defined within-book semantic relations (authoritative)
 RELATION_TYPES = {
     "BAGIAN_DARI",  # A is part of B (hierarchy)
     "MENYEBABKAN",  # A causes B (causation)
@@ -16,33 +16,36 @@ RELATION_TYPES = {
     "MENDEFINISIKAN",  # A defines B (definitional)
     "MEMPENGARUHI",  # A influences B (general influence)
     "BERINTERAKSI_DENGAN",  # A interacts with B (interaction)
+    "MEMUNGKINKAN",  # A enables B
+    "MENGATUR",  # A regulates B
+    "TERDIRI_DARI",  # A consists of B
+    "BEREAKSI_DENGAN",  # A reacts with B
+    "MENGHASILKAN",  # A produces B
+    "TERLETAK_DI",  # A is located in B
     "DIFORMULASIKAN_SEBAGAI",  # A is formulated as B (formal/mathematical)
+    "DIKATALISIS_OLEH",  # A is catalyzed by B
+    "MEMILIKI_SIFAT",  # A has property B
 }
 
 # Mapping from LLM-generated types to canonical ontology types
 # Used to normalize relations before inserting into Neo4j
 RELATION_TYPE_MAPPING = {
     # Influence variants → MEMPENGARUHI
-    "MEMUNGKINKAN": "MEMPENGARUHI",
-    "MENGATUR": "MEMPENGARUHI",
     "MENENTUKAN": "MEMPENGARUHI",
     "MENGONTROL": "MEMPENGARUHI",
     "MENGARAHKAN": "MEMPENGARUHI",
     # Hierarchy variants → BAGIAN_DARI
-    "TERDIRI_DARI": "BAGIAN_DARI",  # Note: direction may need swap
     "MENGANDUNG": "BAGIAN_DARI",
     "MEMILIKI": "BAGIAN_DARI",
     # Interaction variants → BERINTERAKSI_DENGAN
-    "BEREAKSI_DENGAN": "BERINTERAKSI_DENGAN",
     "BERKAITAN_DENGAN": "BERINTERAKSI_DENGAN",
     "BERHUBUNGAN_DENGAN": "BERINTERAKSI_DENGAN",
     "BERASOSIASI_DENGAN": "BERINTERAKSI_DENGAN",
     # Causation variants → MENYEBABKAN
     "MENIMBULKAN": "MENYEBABKAN",
-    # Product/reaction variants → MENYEBABKAN
-    "MENGHASILKAN": "MENYEBABKAN",
-    "MEMPRODUKSI": "MENYEBABKAN",
-    "MENGHASILKAN_PRODUK": "MENYEBABKAN",
+    # Product variants → MENGHASILKAN
+    "MEMPRODUKSI": "MENGHASILKAN",
+    "MENGHASILKAN_PRODUK": "MENGHASILKAN",
     # Process step variants → BAGIAN_DARI
     "TAHAP_DARI": "BAGIAN_DARI",
     "LANGKAH_DARI": "BAGIAN_DARI",
@@ -69,13 +72,13 @@ RelationType = str
 
 
 def normalize_relation_type(rel_type: str) -> str | None:
-    """Normalize a relation type to one of the 7 ontology-defined types.
+    """Normalize a relation type to one of the 15 ontology-defined types.
 
     Args:
         rel_type: The relation type string from LLM output
 
     Returns:
-        One of the 7 canonical types, or None if the relation should be skipped
+        One of the 15 canonical types, or None if the relation should be skipped
     """
     # Uppercase and strip whitespace
     rel_type = rel_type.upper().strip()

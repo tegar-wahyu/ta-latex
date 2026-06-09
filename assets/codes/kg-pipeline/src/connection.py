@@ -24,8 +24,8 @@ Selecting the target:
    behavior, preserved for backward compatibility.
 
 The intended common case for cross-schema experimentation is (1) or (2): the
-user picks yhoga schema in the sidebar but sets ``NEO4J_TARGET=default`` (or
-selects "default" in the sidebar) so the yhoga ontology runs against their
+user picks the curriculum schema in the sidebar but sets ``NEO4J_TARGET=default`` (or
+selects "default" in the sidebar) so the ontology runs against their
 own upstream.
 """
 

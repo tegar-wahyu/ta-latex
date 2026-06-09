@@ -68,21 +68,23 @@ YHOGA_SCHEMA = SchemaSpec(
     neo4j_user_env="NEO4J_USERNAME_YHOGA",
     neo4j_password_env="NEO4J_PASSWORD_YHOGA",
     existing_typed_rels=(
-        "BERINTERAKSI_DENGAN",
-        "MEMPENGARUHI",
         "BAGIAN_DARI",
-        "BERGANTUNG_PADA",
         "MENYEBABKAN",
-        "MEMUNGKINKAN",
+        "BERGANTUNG_PADA",
         "MENDEFINISIKAN",
-        "MEMDEFINISIKAN",
+        "MEMPENGARUHI",
+        "BERINTERAKSI_DENGAN",
+        "MEMUNGKINKAN",
+        "MENGATUR",
         "TERDIRI_DARI",
+        "BEREAKSI_DENGAN",
         "MENGHASILKAN",
-        "DIRUMUSKAN_SEBAGAI",
-        "PRASYARAT",
-        "MEMPERSIAPKAN",
+        "TERLETAK_DI",
+        "DIFORMULASIKAN_SEBAGAI",
+        "DIKATALISIS_OLEH",
+        "MEMILIKI_SIFAT",
     ),
-    # 5-type closed cross-book vocab from docs/yhoga-ontology.ttl:151-185.
+    # 5-type closed cross-book vocab mirrored from assets/data/onthology.ttl.
     # Plus "none" so the classifier can decline an edge.
     classifier_vocab=(
         "LINTAS_BUKU_SAMA_DENGAN",

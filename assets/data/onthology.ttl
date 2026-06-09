@@ -1,0 +1,313 @@
+@prefix : <http://llm-kg-completion.github.io/yhoga-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+
+#################################################################
+# Ontology Declaration
+#################################################################
+
+<http://llm-kg-completion.github.io/yhoga-ontology>
+    a owl:Ontology ;
+    dc:title "Ontologi Knowledge Graph Kurikulum Sains (Yhoga schema)" ;
+    dc:description "Ontologi knowledge graph untuk completion lintas-disiplin sains pada Kurikulum Merdeka. Memformalkan skema graf yang digunakan dalam pipeline ekstraksi-konstruksi-completion, dengan hierarki Grade → Chapter → Subtopic → Concept dan dua keluarga relasi semantik: dalam-buku (15 tipe) dan lintas-buku (5 tipe)." ;
+    owl:versionInfo "1.0" .
+
+
+#################################################################
+# Classes — Structural Hierarchy
+#################################################################
+
+:Grade a owl:Class ;
+    rdfs:label "Grade" ;
+    rdfs:comment "Tingkat kelas pada Kurikulum Merdeka (mis. Kelas XI atau XII). Akar hierarki struktural." .
+
+:Chapter a owl:Class ;
+    rdfs:label "Chapter" ;
+    rdfs:comment "Bab dalam buku teks, bersumber dari Daftar Isi (Table of Contents). Memiliki ringkasan akademik dan terhubung secara sekuensial dan pedagogis." .
+
+:Subtopic a owl:Class ;
+    rdfs:label "Subtopic" ;
+    rdfs:comment "Subbab di bawah Chapter. Mengelompokkan Concept yang berkaitan dalam satu unit pembelajaran." .
+
+
+#################################################################
+# Classes — Knowledge Nodes
+#################################################################
+
+:Concept a owl:Class ;
+    rdfs:label "Concept" ;
+    rdfs:comment "Konsep ilmiah yang diekstrak dari teks (mis. 'Hukum Newton II', 'Ikatan Kovalen'). Bersifat shared lintas dokumen via MERGE pada nama, sehingga konsep yang muncul di lebih dari satu buku diwakili oleh satu node — fondasi penemuan keterkaitan lintas-disiplin." .
+
+:ConceptTarget a owl:Class ;
+    rdfs:label "ConceptTarget" ;
+    rdfs:comment "Forward reference: konsep yang disebutkan sebagai target relasi tetapi belum diekstrak sebagai Concept lengkap. Eksis sementara hingga ekstraksi berikutnya meng-upgrade-nya menjadi Concept." .
+
+
+#################################################################
+# Object Properties — Structural
+#################################################################
+
+:HAS_CHAPTER a owl:ObjectProperty ;
+    rdfs:label "HAS_CHAPTER" ;
+    rdfs:comment "Menghubungkan Grade ke Chapter-Chapter di bawahnya." ;
+    rdfs:domain :Grade ;
+    rdfs:range :Chapter .
+
+:HAS_SUBTOPIC a owl:ObjectProperty ;
+    rdfs:label "HAS_SUBTOPIC" ;
+    rdfs:comment "Menghubungkan Chapter ke Subtopic." ;
+    rdfs:domain :Chapter ;
+    rdfs:range :Subtopic .
+
+:HAS_CONCEPT a owl:ObjectProperty ;
+    rdfs:label "HAS_CONCEPT" ;
+    rdfs:comment "Menghubungkan Subtopic ke Concept yang dibahas di dalamnya." ;
+    rdfs:domain :Subtopic ;
+    rdfs:range :Concept .
+
+
+#################################################################
+# Object Properties — Sequential & Pedagogical (Chapter-level)
+#################################################################
+
+:NEXT_CHAPTER a owl:ObjectProperty ;
+    rdfs:label "NEXT_CHAPTER" ;
+    rdfs:comment "Urutan baca: menghubungkan satu Chapter ke Chapter berikutnya dalam buku." ;
+    rdfs:domain :Chapter ;
+    rdfs:range :Chapter .
+
+:PRASYARAT a owl:ObjectProperty ;
+    rdfs:label "PRASYARAT" ;
+    rdfs:comment "Prasyarat pedagogis: Chapter A harus dipelajari sebelum Chapter B." ;
+    rdfs:domain :Chapter ;
+    rdfs:range :Chapter .
+
+:MEMPERSIAPKAN a owl:ObjectProperty ;
+    rdfs:label "MEMPERSIAPKAN" ;
+    rdfs:comment "Chapter A mempersiapkan pembelajar untuk Chapter B (kebalikan logis dari PRASYARAT)." ;
+    rdfs:domain :Chapter ;
+    rdfs:range :Chapter .
+
+
+#################################################################
+# Object Properties — Within-book Semantic (Concept ↔ Concept)
+# Vokabulari tertutup: 15 tipe relasi yang ditegakkan oleh prompt LLM
+# dalam tahap ekstraksi per-Bab.
+#################################################################
+
+:BAGIAN_DARI a owl:ObjectProperty ;
+    rdfs:label "BAGIAN_DARI" ;
+    rdfs:comment "A merupakan bagian dari B (komposisi/hierarki universal). Asimetris dan hierarkis (digunakan dalam pengecekan siklus)." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:MENYEBABKAN a owl:ObjectProperty ;
+    rdfs:label "MENYEBABKAN" ;
+    rdfs:comment "A menyebabkan B (kausasi). Asimetris." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:BERGANTUNG_PADA a owl:ObjectProperty ;
+    rdfs:label "BERGANTUNG_PADA" ;
+    rdfs:comment "A bergantung pada B (dependensi fungsional)." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:MENDEFINISIKAN a owl:ObjectProperty ;
+    rdfs:label "MENDEFINISIKAN" ;
+    rdfs:comment "A mendefinisikan B (relasi definisional)." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:MEMPENGARUHI a owl:ObjectProperty ;
+    rdfs:label "MEMPENGARUHI" ;
+    rdfs:comment "A mempengaruhi B (pengaruh umum, tanpa implikasi kausalitas ketat)." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:BERINTERAKSI_DENGAN a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:label "BERINTERAKSI_DENGAN" ;
+    rdfs:comment "A berinteraksi dengan B (interaksi resiprokal — mis. reaksi kimia, gaya tarik-menarik)." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:MEMUNGKINKAN a owl:ObjectProperty ;
+    rdfs:label "MEMUNGKINKAN" ;
+    rdfs:comment "A memungkinkan B terjadi atau berfungsi (enablement). Asimetris." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:MENGATUR a owl:ObjectProperty ;
+    rdfs:label "MENGATUR" ;
+    rdfs:comment "A mengatur atau mengontrol perilaku B (regulasi)." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:TERDIRI_DARI a owl:ObjectProperty ;
+    rdfs:label "TERDIRI_DARI" ;
+    rdfs:comment "A terdiri dari atau tersusun atas B (komposisi/agregasi). Asimetris dan hierarkis." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:BEREAKSI_DENGAN a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:label "BEREAKSI_DENGAN" ;
+    rdfs:comment "A bereaksi dengan B dalam konteks reaksi kimia. Simetris." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:MENGHASILKAN a owl:ObjectProperty ;
+    rdfs:label "MENGHASILKAN" ;
+    rdfs:comment "A menghasilkan B sebagai produk, keluaran, atau akibat dari suatu proses. Asimetris." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:TERLETAK_DI a owl:ObjectProperty ;
+    rdfs:label "TERLETAK_DI" ;
+    rdfs:comment "A terletak di atau berada pada B dalam konteks lokasi, struktur, atau kompartemen. Asimetris." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:DIFORMULASIKAN_SEBAGAI a owl:ObjectProperty ;
+    rdfs:label "DIFORMULASIKAN_SEBAGAI" ;
+    rdfs:comment "A diformulasikan sebagai B, misalnya melalui representasi matematis, persamaan, atau rumus. Asimetris." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:DIKATALISIS_OLEH a owl:ObjectProperty ;
+    rdfs:label "DIKATALISIS_OLEH" ;
+    rdfs:comment "A dikatalisis oleh B dalam konteks katalisis enzimatik atau kimiawi. Asimetris." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:MEMILIKI_SIFAT a owl:ObjectProperty ;
+    rdfs:label "MEMILIKI_SIFAT" ;
+    rdfs:comment "A memiliki sifat, karakteristik, atau atribut B. Asimetris." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+
+#################################################################
+# Object Properties — Cross-book Semantic (LINTAS_BUKU_*)
+# Vokabulari tertutup: 5 tipe relasi lintas-buku yang dihasilkan
+# pada tahap completion lintas-disiplin (TA_KG_COMPLETION-v2).
+# Edges menyimpan properti tambahan `relation_type` untuk audit.
+#################################################################
+
+:LINTAS_BUKU_SAMA_DENGAN a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:label "LINTAS_BUKU_SAMA_DENGAN" ;
+    rdfs:comment "Konsep di buku berbeda merujuk pada entitas yang sama (mis. 'energi' di Fisika dan Kimia). Ekuivalensi semantik lintas-disiplin." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:LINTAS_BUKU_APLIKASI_DARI a owl:ObjectProperty ;
+    rdfs:label "LINTAS_BUKU_APLIKASI_DARI" ;
+    rdfs:comment "Konsep A di satu buku merupakan penerapan konsep B di buku lain (mis. 'Difusi' Biologi adalah aplikasi 'Gerak Brown' Fisika). Asimetris." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:LINTAS_BUKU_PRASYARAT_UNTUK a owl:ObjectProperty ;
+    rdfs:label "LINTAS_BUKU_PRASYARAT_UNTUK" ;
+    rdfs:comment "Konsep A pada satu mata pelajaran adalah prasyarat pemahaman konsep B pada mata pelajaran lain. Asimetris dan hierarkis (digunakan dalam pengecekan siklus pedagogis lintas-disiplin)." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:LINTAS_BUKU_MEMPERDALAM a owl:ObjectProperty ;
+    rdfs:label "LINTAS_BUKU_MEMPERDALAM" ;
+    rdfs:comment "Konsep A di satu buku memperdalam atau memperluas pemahaman konsep B di buku lain (mis. 'Termodinamika' Fisika memperdalam 'Reaksi Endoterm/Eksoterm' Kimia)." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+:LINTAS_BUKU_BERKAITAN_DENGAN a owl:ObjectProperty, owl:SymmetricProperty ;
+    rdfs:label "LINTAS_BUKU_BERKAITAN_DENGAN" ;
+    rdfs:comment "Konsep berkaitan secara umum lintas buku tanpa hubungan struktural ketat — fallback bila tipe lain tidak tepat. Simetris." ;
+    rdfs:domain :Concept ;
+    rdfs:range :Concept .
+
+
+#################################################################
+# Data Properties — Shared
+#################################################################
+
+:name a owl:DatatypeProperty ;
+    rdfs:label "name" ;
+    rdfs:comment "Nama tampilan node. Hadir pada seluruh kelas (Grade, Chapter, Subtopic, Concept, ConceptTarget)." ;
+    rdfs:range xsd:string .
+
+:grade a owl:DatatypeProperty ;
+    rdfs:label "grade" ;
+    rdfs:comment "Atribut tingkat kelas (mis. 'XI', 'XII') yang disalin ke Chapter, Subtopic, Concept, dan ConceptTarget agar dapat difilter tanpa traversal." ;
+    rdfs:range xsd:string .
+
+
+#################################################################
+# Data Properties — Grade
+#################################################################
+
+:type a owl:DatatypeProperty ;
+    rdfs:label "type" ;
+    rdfs:comment "Tipe Grade (mis. 'SMA', 'SMP') untuk membedakan jenjang." ;
+    rdfs:domain :Grade ;
+    rdfs:range xsd:string .
+
+
+#################################################################
+# Data Properties — Chapter
+#################################################################
+
+:summary a owl:DatatypeProperty ;
+    rdfs:label "summary" ;
+    rdfs:comment "Ringkasan akademik 2–3 kalimat untuk Chapter; digunakan pada visualisasi dan validasi pakar." ;
+    rdfs:domain :Chapter ;
+    rdfs:range xsd:string .
+
+
+#################################################################
+# Data Properties — Subtopic
+#################################################################
+
+:chapter a owl:DatatypeProperty ;
+    rdfs:label "chapter" ;
+    rdfs:comment "Nama Chapter induk (denormalisasi pada Subtopic untuk akses cepat tanpa traversal)." ;
+    rdfs:domain :Subtopic ;
+    rdfs:range xsd:string .
+
+
+#################################################################
+# Data Properties — Concept
+#################################################################
+
+:description a owl:DatatypeProperty ;
+    rdfs:label "description" ;
+    rdfs:comment "Deskripsi tekstual konsep, dihasilkan oleh LLM saat ekstraksi. Menjadi sumber utama untuk embedding semantik." ;
+    rdfs:domain :Concept ;
+    rdfs:range xsd:string .
+
+:glossary_validated a owl:DatatypeProperty ;
+    rdfs:label "glossary_validated" ;
+    rdfs:comment "Bernilai true jika nama konsep tervalidasi terhadap entri glosarium buku teks." ;
+    rdfs:domain :Concept ;
+    rdfs:range xsd:boolean .
+
+:materi_pokok_ref a owl:DatatypeProperty ;
+    rdfs:label "materi_pokok_ref" ;
+    rdfs:comment "Referensi ke entri Materi Pokok pada dokumen Capaian Pembelajaran (CP) Kurikulum Merdeka, sebagai jangkar penyelarasan kurikulum." ;
+    rdfs:domain :Concept ;
+    rdfs:range xsd:string .
+
+
+#################################################################
+# Data Properties — Edge Annotations
+#################################################################
+
+:relation_description a owl:DatatypeProperty ;
+    rdfs:label "description" ;
+    rdfs:comment "Penjelasan singkat (1 kalimat) mengapa relasi semantik tertentu eksis. Disimpan sebagai properti edge pada seluruh tipe relasi semantik (within-book maupun LINTAS_BUKU_*)." ;
+    rdfs:range xsd:string .
+
+:relation_type a owl:DatatypeProperty ;
+    rdfs:label "relation_type" ;
+    rdfs:comment "Sub-tipe asli yang dilaporkan LLM untuk relasi LINTAS_BUKU_*, disimpan untuk audit dan analisis distribusi tanpa mengubah label edge." ;
+    rdfs:range xsd:string .

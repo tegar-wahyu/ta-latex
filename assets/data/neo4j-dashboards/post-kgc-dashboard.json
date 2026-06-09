@@ -235,16 +235,7 @@
           "meta": {
             "latestCypherQueries": [
               {
-                "query": "MATCH p = (start:Chapter)-[:PRASYARAT*1..10]->(end:Chapter)\nWHERE NOT (end)-[:PRASYARAT]->()\nRETURN length(p) AS prerequisite_chain_length,\n       [n IN nodes(p) | n.name] AS chain\nORDER BY prerequisite_chain_length DESC\nLIMIT 1",
-                "origin": "user"
-              },
-              {
-                "query": "MATCH ()-[r]->()\nWHERE type(r) CONTAINS \"PRASYARAT\"\n   OR type(r) CONTAINS \"BERGANTUNG\"\nRETURN type(r) AS relation_type, count(*) AS count\nORDER BY count DESC",
-                "origin": "user"
-              },
-              {
-                "query": "MATCH p = (start:Concept)-[:PRASYARAT_UNTUK|BERGANTUNG_PADA*1..10]->(end:Concept)\nWHERE NOT (end)-[:PRASYARAT_UNTUK|BERGANTUNG_PADA]->()\nRETURN length(p) AS prerequisite_chain_length,\n       [n IN nodes(p) | n.name] AS chain\nORDER BY prerequisite_chain_length DESC\nLIMIT 1",
-                "origin": "user"
+                "query": "MATCH p = (start:Chapter)-[:PRASYARAT*1..10]->(end:Chapter)\nWHERE NOT (end)-[:PRASYARAT]->()\nRETURN length(p) AS prerequisite_chain_length,\n       [n IN nodes(p) | n.name] AS chain\nORDER BY prerequisite_chain_length DESC\nLIMIT 1"
               }
             ]
           },
@@ -267,24 +258,7 @@
           "meta": {
             "latestCypherQueries": [
               {
-                "query": "WITH [\n  \"MENDEFINISIKAN\",\n  \"MENYEBABKAN\",\n  \"MEMUNGKINKAN\",\n  \"MENGATUR\",\n  \"BAGIAN_DARI\",\n  \"TERDIRI_DARI\",\n  \"BERGANTUNG_PADA\",\n  \"BERINTERAKSI_DENGAN\",\n  \"BEREAKSI_DENGAN\",\n  \"MENGHASILKAN\",\n  \"MEMPENGARUHI\",\n  \"TERLETAK_DI\",\n  \"DIFORMULASIKAN_SEBAGAI\",\n  \"DIKATALISIS_OLEH\",\n  \"MEMILIKI_SIFAT\",\n  \"LINTAS_BUKU_SAMA_DENGAN\",\n  \"LINTAS_BUKU_APLIKASI_DARI\",\n  \"LINTAS_BUKU_PRASYARAT_UNTUK\",\n  \"LINTAS_BUKU_MEMPERDALAM\",\n  \"LINTAS_BUKU_BERKAITAN_DENGAN\"\n] AS typed_vocab\nMATCH ()-[r]->()\nWHERE NOT type(r) IN [\"HAS_CHAPTER\", \"HAS_SUBTOPIC\", \"HAS_CONCEPT\", \"NEXT_CHAPTER\"]\nWITH typed_vocab,\n     count(r) AS total_semantic_relations,\n     sum(CASE WHEN type(r) IN typed_vocab THEN 1 ELSE 0 END) AS typed_relations\nRETURN total_semantic_relations,\n       typed_relations,\n       CASE\n         WHEN total_semantic_relations = 0 THEN null\n         ELSE toFloat(typed_relations) / total_semantic_relations\n       END AS typed_relation_ratio",
-                "origin": "user"
-              },
-              {
-                "query": "WITH [\n  \"MENDEFINISIKAN\",\n  \"MENYEBABKAN\",\n  \"MEMUNGKINKAN\",\n  \"MENGATUR\",\n  \"BAGIAN_DARI\",\n  \"TERDIRI_DARI\",\n  \"BERGANTUNG_PADA\",\n  \"BERINTERAKSI_DENGAN\",\n  \"BEREAKSI_DENGAN\",\n  \"MENGHASILKAN\",\n  \"MEMPENGARUHI\",\n  \"TERLETAK_DI\",\n  \"DIFORMULASIKAN_SEBAGAI\",\n  \"DIKATALISIS_OLEH\",\n  \"MEMILIKI_SIFAT\",\n  \"LINTAS_BUKU_SAMA_DENGAN\"\n  \"LINTAS_BUKU_APLIKASI_DARI\",\n  \"LINTAS_BUKU_PRASYARAT_UNTUK\",\n  \"LINTAS_BUKU_MEMPERDALAM\",\n  \"LINTAS_BUKU_BERKAITAN_DENGAN\"\n] AS typed_vocab\nMATCH ()-[r]->()\nWHERE NOT type(r) IN [\"HAS_CHAPTER\", \"HAS_SUBTOPIC\", \"HAS_CONCEPT\", \"NEXT_CHAPTER\"]\nWITH typed_vocab,\n     count(r) AS total_semantic_relations,\n     sum(CASE WHEN type(r) IN typed_vocab THEN 1 ELSE 0 END) AS typed_relations\nRETURN total_semantic_relations,\n       typed_relations,\n       CASE\n         WHEN total_semantic_relations = 0 THEN null\n         ELSE toFloat(typed_relations) / total_semantic_relations\n       END AS typed_relation_ratio",
-                "origin": "user"
-              },
-              {
-                "query": "WITH [\n  \"MENDEFINISIKAN\",\n  \"MENYEBABKAN\",\n  \"MEMUNGKINKAN\",\n  \"MENGATUR\",\n  \"BAGIAN_DARI\",\n  \"TERDIRI_DARI\",\n  \"BERGANTUNG_PADA\",\n  \"BERINTERAKSI_DENGAN\",\n  \"BEREAKSI_DENGAN\",\n  \"MENGHASILKAN\",\n  \"MEMPENGARUHI\",\n  \"TERLETAK_DI\",\n  \"DIFORMULASIKAN_SEBAGAI\",\n  \"DIKATALISIS_OLEH\",\n  \"MEMILIKI_SIFAT\",\n  \"LINTAS_BUKU_*\"\n] AS typed_vocab\nMATCH ()-[r]->()\nWHERE NOT type(r) IN [\"HAS_CHAPTER\", \"HAS_SUBTOPIC\", \"HAS_CONCEPT\", \"NEXT_CHAPTER\"]\nWITH typed_vocab,\n     count(r) AS total_semantic_relations,\n     sum(CASE WHEN type(r) IN typed_vocab THEN 1 ELSE 0 END) AS typed_relations\nRETURN total_semantic_relations,\n       typed_relations,\n       CASE\n         WHEN total_semantic_relations = 0 THEN null\n         ELSE toFloat(typed_relations) / total_semantic_relations\n       END AS typed_relation_ratio",
-                "origin": "user"
-              },
-              {
-                "query": "WITH [\n  \"MENDEFINISIKAN\",\n  \"MENYEBABKAN\",\n  \"MEMUNGKINKAN\",\n  \"MENGATUR\",\n  \"BAGIAN_DARI\",\n  \"TERDIRI_DARI\",\n  \"BERGANTUNG_PADA\",\n  \"BERINTERAKSI_DENGAN\",\n  \"BEREAKSI_DENGAN\",\n  \"MENGHASILKAN\",\n  \"MEMPENGARUHI\",\n  \"TERLETAK_DI\",\n  \"DIFORMULASIKAN_SEBAGAI\",\n  \"DIKATALISIS_OLEH\",\n  \"MEMILIKI_SIFAT\",\n  \"PRASYARAT_UNTUK\",\n  \"MEMPERDALAM\",\n  \"BERKAITAN_DENGAN\"\n] AS typed_vocab\nMATCH ()-[r]->()\nWHERE NOT type(r) IN [\"HAS_CHAPTER\", \"HAS_SUBTOPIC\", \"HAS_CONCEPT\", \"NEXT_CHAPTER\"]\nWITH typed_vocab,\n     count(r) AS total_semantic_relations,\n     sum(CASE WHEN type(r) IN typed_vocab THEN 1 ELSE 0 END) AS typed_relations\nRETURN total_semantic_relations,\n       typed_relations,\n       CASE\n         WHEN total_semantic_relations = 0 THEN null\n         ELSE toFloat(typed_relations) / total_semantic_relations\n       END AS typed_relation_ratio",
-                "origin": "user"
-              },
-              {
-                "query": "WITH [\n  \"MENDEFINISIKAN\",\n  \"MENYEBABKAN\",\n  \"MEMUNGKINKAN\",\n  \"MENGATUR\",\n  \"BAGIAN_DARI\",\n  \"TERDIRI_DARI\",\n  \"BERGANTUNG_PADA\",\n  \"BERINTERAKSI_DENGAN\",\n  \"BEREAKSI_DENGAN\",\n  \"MENGHASILKAN\",\n  \"MEMPENGARUHI\",\n  \"TERLETAK_DI\",\n  \"DIFORMULASIKAN_SEBAGAI\",\n  \"DIKATALISIS_OLEH\",\n  \"MEMILIKI_SIFAT\",\n  \"PRASYARAT_UNTUK\",\n  \"MEMPERDALAM\"\n] AS typed_vocab\nMATCH ()-[r]->()\nWHERE NOT type(r) IN [\"HAS_CHAPTER\", \"HAS_SUBTOPIC\", \"HAS_CONCEPT\", \"NEXT_CHAPTER\"]\nWITH typed_vocab,\n     count(r) AS total_semantic_relations,\n     sum(CASE WHEN type(r) IN typed_vocab THEN 1 ELSE 0 END) AS typed_relations\nRETURN total_semantic_relations,\n       typed_relations,\n       CASE\n         WHEN total_semantic_relations = 0 THEN null\n         ELSE toFloat(typed_relations) / total_semantic_relations\n       END AS typed_relation_ratio",
-                "origin": "user"
+                "query": "WITH [\n  \"MENDEFINISIKAN\",\n  \"MENYEBABKAN\",\n  \"MEMUNGKINKAN\",\n  \"MENGATUR\",\n  \"BAGIAN_DARI\",\n  \"TERDIRI_DARI\",\n  \"BERGANTUNG_PADA\",\n  \"BERINTERAKSI_DENGAN\",\n  \"BEREAKSI_DENGAN\",\n  \"MENGHASILKAN\",\n  \"MEMPENGARUHI\",\n  \"TERLETAK_DI\",\n  \"DIFORMULASIKAN_SEBAGAI\",\n  \"DIKATALISIS_OLEH\",\n  \"MEMILIKI_SIFAT\",\n  \"LINTAS_BUKU_SAMA_DENGAN\",\n  \"LINTAS_BUKU_APLIKASI_DARI\",\n  \"LINTAS_BUKU_PRASYARAT_UNTUK\",\n  \"LINTAS_BUKU_MEMPERDALAM\",\n  \"LINTAS_BUKU_BERKAITAN_DENGAN\"\n] AS typed_vocab\nMATCH ()-[r]->()\nWHERE NOT type(r) IN [\"HAS_CHAPTER\", \"HAS_SUBTOPIC\", \"HAS_CONCEPT\", \"NEXT_CHAPTER\"]\nWITH typed_vocab,\n     count(r) AS total_semantic_relations,\n     sum(CASE WHEN type(r) IN typed_vocab THEN 1 ELSE 0 END) AS typed_relations\nRETURN total_semantic_relations,\n       typed_relations,\n       CASE\n         WHEN total_semantic_relations = 0 THEN null\n         ELSE toFloat(typed_relations) / total_semantic_relations\n       END AS typed_relation_ratio"
               }
             ]
           },

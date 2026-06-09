@@ -44,7 +44,7 @@ class SchemaAdapter(ABC):
 
     Schema (ontology shape) and Neo4j connection (which DB instance) are
     independently configurable. A subclass instance can be constructed with an
-    explicit ``connection`` to run e.g. the Yhoga ontology against the project's
+    explicit ``connection`` to run e.g. the curriculum ontology against the project's
     own Neo4j upstream, or vice versa. With no explicit connection, the adapter
     falls back to the ``NEO4J_TARGET`` env var if set, and otherwise to the
     spec's own env-var names — the legacy "yhoga schema implies yhoga DB"
@@ -657,7 +657,7 @@ class YhogaAdapter(SchemaAdapter):
                 score=score,
             )
 
-    # Closed cross-book vocabulary per docs/yhoga-ontology.ttl:151-185.
+    # Closed cross-book vocabulary mirrored from assets/data/onthology.ttl.
     LINTAS_BUKU_TYPES = frozenset(
         {
             "LINTAS_BUKU_SAMA_DENGAN",
@@ -838,7 +838,7 @@ def get_adapter(
         # Default behavior — yhoga schema on yhoga DB (legacy)
         adapter = get_adapter("yhoga")
 
-        # Yhoga ontology on the project's own NEO4J_URI
+        # Curriculum ontology on the project's own NEO4J_URI
         from src.connection import Neo4jConnection
         adapter = get_adapter("yhoga", connection=Neo4jConnection.default())
 
