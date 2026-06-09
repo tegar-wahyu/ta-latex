@@ -1,7 +1,7 @@
 # KG Pipeline — Extraction and Completion Artifacts
 
 The current thesis pipeline is split across separate artifacts. Do not treat
-`TA_KG_PIPELINE.ipynb` as the canonical end-to-end flow; it is an older
+`TA_KG_PIPELINE.ipynb` as the main end-to-end flow; it is an older
 all-in-one notebook kept for traceability.
 
 > **Legacy artifact:** `TA_KG_PIPELINE.ipynb` is deprecated and should not be
@@ -9,7 +9,7 @@ all-in-one notebook kept for traceability.
 > extraction-time `cross_book_links` / `infer_cross_links` logic. Use
 > `TA_KG_EXTRACTION.ipynb` plus the `src/` completion runtime instead.
 
-Canonical sources:
+Main sources:
 
 1. **Extraction / KG JSON awal** — `TA_KG_EXTRACTION.ipynb`
 2. **Expert review + final consensus** — `assets/codes/final-consensus/`
@@ -34,7 +34,7 @@ JSON for Biologi, Fisika, and Kimia:
 - Python 3.10+ (tested with Python 3.13)
 - VS Code with the Python and Jupyter extensions, or Jupyter Lab
 - Neo4j Aura / Neo4j 5 with vector indexes enabled
-- Google Gemini API key for the canonical run
+- Google Gemini API key for the main run
 
 ## Setup
 
@@ -190,7 +190,7 @@ bundled project package under `./src` and calls:
 - `src.completion.classify_similar_pairs`
 - `src.completion.dump_lintas_buku_results`
 
-Canonical notebook parameters:
+Main notebook parameters:
 
 ```python
 EMBED_MODEL = "gemini/gemini-embedding-001"
@@ -213,7 +213,7 @@ Completion stages:
    `description`, and `method`.
 8. Dump an audit JSON with model/threshold metadata.
 
-The Yhoga completion vocabulary is closed:
+The completion vocabulary is closed:
 
 - `LINTAS_BUKU_SAMA_DENGAN`
 - `LINTAS_BUKU_APLIKASI_DARI`
