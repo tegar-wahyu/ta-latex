@@ -146,15 +146,20 @@ model, metode, dan instansiasi. Artefak yang dikembangkan dalam
 penelitian ini meliputi:
 
 \begin{enumerate}
-  \item \textbf{Instansiasi (Purwarupa Sistem):} \textit{Knowledge Graph}
-        kurikulum sains yang terinstansiasi pada basis data Neo4j beserta
-        visualisasinya, sebagai purwarupa struktur data yang dapat ditelusuri
-        dan diakses secara komputasional.
+  \item \textbf{Model (Skema Ontologi):} Skema ontologi kurikulum sains yang
+        dinyatakan dalam \textit{Web Ontology Language} (OWL), mencakup definisi
+        kelas, relasi objek (\textit{object property}), dan properti data
+        (\textit{datatype property}). Skema ini menjadi kerangka semantik yang
+        menstrukturkan KG dan dirancang pada Subbab~\ref{subsec:skema-ontologi}.
   \item \textbf{Metode (Algoritma dan \textit{Pipeline}):} Algoritma
         ekstraksi pengetahuan terstruktur menggunakan LLM dengan
         \textit{output} berbasis ontologi, serta \textit{pipeline} KG
         \textit{Construction} dan \textit{Completion} yang diuraikan pada
         Subbab~\ref{subsec:kerangka-konsep}.
+  \item \textbf{Instansiasi (Purwarupa Sistem):} \textit{Knowledge Graph}
+        kurikulum sains yang terinstansiasi pada basis data Neo4j beserta
+        visualisasinya, sebagai purwarupa struktur data yang dapat ditelusuri
+        dan diakses secara komputasional.
 \end{enumerate}
 
 Secara metodologis, penelitian ini dikategorikan sebagai penelitian
@@ -172,7 +177,7 @@ Tabel~\ref{tab:karakteristik}.
   Jenis Penelitian & Terapan (\textit{Applied Research}) \\
   Pendekatan       & \textit{Design Science Research} (DSR) \\
   Metode           & Eksperimental dengan validasi kualitatif pakar \\
-  Output           & Artefak sistem (Metode KGC dan Purwarupa Visualisasi) \\
+  Output           & Artefak sistem (Skema Ontologi, Metode KGC, dan Purwarupa Visualisasi) \\
   Paradigma        & Pragmatisme (berfokus pada utilitas dan pemecahan masalah) \\
 \end{tabular}
 \end{table}
@@ -258,6 +263,32 @@ benar-benar mencerminkan standar materi yang diajarkan secara nasional.
 Rincian bibliografis ketiga buku siswa beserta Buku Panduan Guru
 pasangannya (judul, penulis, dan ISBN) disajikan pada \ref{lamp:korpus}.
 
+Secara kuantitatif, korpus mencakup total 708 halaman yang terbagi atas 17 bab
+dan 77 subbab. Untuk diproses oleh \textit{pipeline}, teks dipecah menjadi 788
+\textit{chunk} dengan ukuran 800 token dan tumpang-tindih (\textit{overlap}) 200
+token antar-\textit{chunk}. Estimasi jumlah kata setelah dikurangi tumpang-tindih
+adalah sekitar 110 ribu kata. Rincian ukuran korpus per mata pelajaran disajikan
+pada Tabel~\ref{tab:ukuran-korpus}.
+
+\begin{table}[htbp]
+\centering
+\caption{Ukuran Korpus Ekstraksi per Mata Pelajaran}
+\label{tab:ukuran-korpus}
+\begin{tabular}{@{}lrrrrr@{}}
+  \toprule
+  \textbf{Mata Pelajaran} & \textbf{Halaman} & \textbf{Bab} & \textbf{Subbab}
+    & \textbf{\textit{Chunk}} & \textbf{Kata ($\approx$)} \\
+  \midrule
+  Fisika  & 228 & 9 & 39 & 252 & 35.600 \\
+  Kimia   & 210 & 4 & 22 & 235 & 29.400 \\
+  Biologi & 270 & 4 & 16 & 301 & 45.600 \\
+  \midrule
+  \textbf{Total} & \textbf{708} & \textbf{17} & \textbf{77} & \textbf{788}
+    & \textbf{110.600} \\
+  \bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{Data Validasi Pakar}\label{subsec:data-validasi}
 
 Data validasi diperoleh melalui penilaian kualitatif oleh panel pakar
@@ -271,11 +302,12 @@ namun tidak ditemukan sistem.
 
 Pengumpulan data validasi dilakukan melalui aplikasi web KG Review App
 yang dikembangkan khusus untuk penelitian ini (arsitektur teknis dibahas
-pada Subbab~\ref{sec:instrumen-evaluasi}). Data penilaian akhir, yakni label
-konsensus setelah resolusi ketidaksepakatan, menjadi
-\textit{ground truth} untuk menghitung Fuzzy Precision, Recall, dan
-F1-Score, serta menguji tingkat kesepakatan antarpakar pada Fase~1
-menggunakan Gwet's AC1.
+pada Subbab~\ref{sec:instrumen-evaluasi}). Pada Fase~1, penilaian awal dari
+dua pakar di KG Review App dan label konsensus akhir digunakan bersama:
+label konsensus menjadi \textit{ground truth} untuk menghitung
+Fuzzy Precision, Recall, dan F1-Score, sedangkan dua penilaian asli tersebut
+digunakan untuk menguji tingkat kesepakatan antarpakar menggunakan
+Gwet's AC1.
 
 % ============================================================
 \section{Subjek Evaluasi dan Panel Pakar}\label{subsec:subjek-evaluasi}
@@ -322,63 +354,77 @@ berikut.
 
 Kerangka konsep penelitian ini menggambarkan \textit{pipeline}
 pemrosesan data dari dokumen kurikulum hingga \textit{Knowledge Graph
-Completion}. Sistem dibangun dengan arsitektur empat tahap yang saling
-terintegrasi untuk mengekstraksi, membangun, dan menyempurnakan jaringan
-pengetahuan sains, serta dua fase evaluasi untuk memastikan validitasnya.
+Completion}. Alur penelitian tidak hanya terdiri atas ekstraksi dan
+\textit{completion}, tetapi juga mencakup perantara artefak JSON,
+penayangan graf pada aplikasi validasi, konsensus pakar, pemuatan ulang
+graf konsensus ke Neo4j, serta pengukuran metrik sebelum dan sesudah
+\textit{completion}.
 
 \subsection{Diagram Alur Penelitian}
 
-\textit{Pipeline} penelitian terbagi ke dalam empat tahap eksekusi dan
-dua fase evaluasi sebagaimana diilustrasikan pada
-Gambar~\ref{fig:pipeline}.
+\textit{Pipeline} penelitian mengikuti alur artefak sebagaimana
+diilustrasikan pada Gambar~\ref{fig:pipeline}. Setiap tahap memiliki
+masukan dan keluaran eksplisit agar perbedaan antara graf hasil
+ekstraksi, graf konsensus, dan graf pasca-\textit{completion} tidak
+tercampur.
 
 \subfile{pipeline-kgc}
 
-\noindent\textbf{Tahap-Tahap Eksekusi:}
+\noindent\textbf{Masukan dan keluaran tiap tahap:}
 
 \begin{enumerate}
-  \item \textbf{Tahap 1: Pemrosesan Dokumen (\textit{Ingestion}).}
-        Mengubah buku teks PDF menjadi format terstruktur, meliputi
-        segmentasi hierarki bab, ekstraksi terminologi glosarium, dan
-        pemotongan teks (\textit{sentence chunking}).
+  \item \textbf{KG Construction.} Masukan tahap ini adalah PDF Buku Siswa
+        dan Buku Guru Kelas XII. Prosesnya mencakup ekstraksi struktur
+        hierarki dari daftar isi, ekstraksi terminologi glosarium dan
+        materi pokok, pemotongan teks menjadi \textit{chunk}, ekstraksi
+        konsep dan relasi dalam-buku dengan LLM yang
+        \textit{schema-constrained}, serta penyusunan struktur graf.
+        Keluarannya adalah berkas KG JSON awal per mata pelajaran. Ingest
+        ke Neo4j pada titik ini bersifat opsional dan digunakan untuk
+        inspeksi atau penayangan graf, bukan sebagai sumber konsensus
+        final.
 
-  \item \textbf{Tahap 2: Ekstraksi Pengetahuan (\textit{LLM
-        Extraction}).} Menggunakan LLM terpandu
-        (\textit{schema-constrained}) untuk mengekstrak entitas konsep
-        dan memetakan relasi dalam-buku, divalidasi dengan terminologi
-        glosarium.
+  \item \textbf{KG Review App dan review pakar.} KG JSON awal
+        ditampilkan dalam KG Review App agar pakar dapat menilai relasi
+        dalam-buku, memberi label kebenaran, dan mengusulkan
+        \textit{missing triple}. Keluarannya adalah berkas penilaian
+        pakar per mata pelajaran.
 
-  \item \textbf{Tahap 3: Konstruksi Graf (\textit{Graph
-        Construction}).} Menginstansiasi hierarki struktural dan relasi
-        semantik dalam-buku ke dalam basis data \textit{Knowledge Graph}
-        (Neo4j).
+  \item \textbf{Final consensus.} Berkas KG JSON awal, penilaian pakar,
+        dan konteks buku teks diproses pada \textit{notebook} konsensus.
+        Ketidaksepakatan antarpakar diajudikasi dengan
+        \textit{LLM-as-a-judge} berbasis konteks sumber; rincian alur
+        ajudikasi ditunjukkan pada Gambar~\ref{fig:llm-judge}. Hasil
+        akhirnya disimpan sebagai \texttt{\{mapel\}.consensus.json} dan
+        \textit{gold standard}. Graf konsensus ini diingest kembali ke
+        Neo4j dengan membentuk hierarki struktural
+        \texttt{Grade--Chapter--Subtopic--Concept} dan relasi semantik
+        dalam-buku untuk menghitung metrik struktural. Adapun berkas penilaian
+        awal pakar dari KG Review App dan \textit{gold standard} digunakan
+        bersama untuk menghitung metrik validasi Fase~1: Gwet's AC1 dihitung
+        dari pasangan penilaian pakar, sedangkan Precision, Recall, dan F1-Score
+        dihitung dengan membandingkan label awal pakar terhadap label final
+        pada \textit{gold standard}/konsensus.
 
-  \item \textbf{Tahap 4: Penyempurnaan Graf (\textit{Graph
-        Completion}).} Membangun vektor semantik (\textit{concept
-        embedding}) dari konsep yang ada, mencari kemiripan lintas-buku
-        menggunakan ANN, dan menggunakan LLM sebagai pengklasifikasi
-        untuk memprediksi relasi antardisiplin.
-\end{enumerate}
+  \item \textbf{KG Completion.} Masukan tahap ini adalah graf konsensus
+        yang telah diingest ke Neo4j dari
+        \texttt{\{mapel\}.consensus.json}. Graf tersebut telah memuat relasi
+        dalam-buku hasil ajudikasi. Proses \textit{completion} membangun
+        \textit{embedding} konsep pada \textit{node} Neo4j, mencari kandidat
+        lintas-buku dengan ANN pada Neo4j Vector Index, menyaring kandidat agar
+        hanya mencakup pasangan lintas-mata-pelajaran yang belum memiliki
+        relasi tertipe, lalu mengklasifikasikan relasi dengan LLM dan
+        menuliskannya kembali ke graf. Keluarannya adalah daftar \textit{edge}
+        \texttt{LINTAS\_BUKU\_*} baru beserta \textit{confidence score}
+        dan deskripsi singkat.
 
-\noindent\textbf{Fase-Fase Evaluasi:}
-
-\begin{enumerate}
-  \item \textbf{Fase Evaluasi 1: Validasi Intra-Mapel \&
-        \textit{LLM-as-a-judge}.} Diterapkan setelah Tahap~3. Kerangka
-        kerja \textit{LLM-as-a-judge} (Gambar~\ref{fig:llm-judge}; selanjutnya
-        disebut AI Judge) digunakan untuk mengevaluasi kumpulan \textit{triple} dalam satu
-        mata pelajaran. Jika dua pakar tidak sepakat, AI Judge dipanggil
-        sebagai penengah berbasis konteks buku teks sumber. Jika pakar
-        mengidentifikasi \textit{triple} yang terlewat, LLM mengevaluasi
-        kelayakan usulan penambahan sebelum diintegrasikan ke dalam KG.
-
-  \item \textbf{Fase Evaluasi 2: Validasi Inter-Mapel \& Diskusi
-        Pakar.} Diterapkan setelah Tahap~4. Memverifikasi \textit{edge}
-        lintas-disiplin baru yang dihasilkan proses KGC. Mengingat
-        sifat relasi yang implisit, konflik tidak diselesaikan oleh AI,
-        melainkan melalui diskusi panel lintas-disiplin yang terdiri atas
-        tiga pakar (satu wakil---Expert~2---per mata pelajaran)
-        untuk mencapai konsensus keilmuan.
+  \item \textbf{Evaluasi pasca-\textit{completion}.} \textit{Edge}
+        lintas-buku hasil \textit{completion} terlebih dahulu dituliskan
+        ke graf Neo4j pasca-KGC. Graf ini kemudian digunakan untuk
+        menghitung metrik struktural pasca-KGC dan membandingkan kondisi
+        pra-KGC dan pasca-KGC. Relasi tersebut juga dibahas melalui panel
+        pakar lintas-disiplin untuk menilai validitas, ketepatan tipe,
+        dan ketepatan arah relasi.
 \end{enumerate}
 
 \subfile{llm-judge}
@@ -402,12 +448,13 @@ Predikat ``dangkal'' bersifat operasional: sistem hanya menginferensi
 keterkaitan \textit{single-hop} antar dua konsep di buku berbeda dan
 tidak menyusun jalur belajar multi-langkah lintas-disiplin (batasan
 inferensi pedagogis dirinci pada Subbab~\ref{sec:ruang-lingkup}).
-Dengan demikian, relasi berarah seperti
-\texttt{PRASYARAT\_UNTUK} pada Tier ekstraksi dimaknai sebagai
+Dengan demikian, relasi berarah pada Tier ekstraksi seperti
+\texttt{PRASYARAT} dan \texttt{MEMPERSIAPKAN} dimaknai sebagai
 ketergantungan konseptual yang terdokumentasikan dalam materi sumber
-(keputusan editorial penyusun buku), sedangkan relasi pada Tier
-completion dimaknai sebagai sugesti per-pasangan yang dapat
-dipertimbangkan secara lokal, bukan anjuran kronologis bagi siswa.
+(keputusan editorial penyusun buku), sedangkan relasi lintas-buku pada Tier
+completion seperti \texttt{LINTAS\_BUKU\_PRASYARAT\_UNTUK} dimaknai sebagai
+sugesti per-pasangan yang dapat dipertimbangkan secara lokal, bukan anjuran
+kronologis bagi siswa.
 
 Skema \textit{knowledge graph} diformalkan sebagai ontologi OWL untuk
 memastikan konsistensi struktur dan vokabulari relasi antartahap
@@ -439,10 +486,12 @@ Tabel~\ref{tab:parameter}.
   \toprule
   \textbf{Parameter} & \textbf{Deskripsi} & \textbf{Nilai/Level} \\
   \midrule
-  Model LLM Ekstraksi \& Completion
-    & Model bahasa besar untuk ekstraksi konsep/relasi dan
-      penyempurnaan graf (KGC) lintas-disiplin
+  Model LLM Ekstraksi
+    & Model bahasa besar untuk ekstraksi konsep dan relasi dalam-buku
     & {\scriptsize \texttt{gemini-2.5-flash-lite} (akses Mei 2026)} \\
+  Model LLM Completion
+    & Model bahasa besar untuk klasifikasi relasi lintas-disiplin pada tahap KGC
+    & {\scriptsize \texttt{gemini-2.5-flash} (akses Mei 2026)} \\
   Model LLM-as-a-judge
     & Model penengah ketidaksepakatan pakar pada \textit{pipeline} validasi
     & {\scriptsize \texttt{gemini-3.1-pro-preview} (akses Mei 2026)} \\
@@ -655,7 +704,7 @@ Google Forms. Alur pengumpulan data adalah sebagai berikut.
   \item Pakar masuk ke aplikasi, memilih mata pelajaran yang
         ditugaskan, dan menilai setiap \textit{triple} menggunakan empat
         kategori penilaian (Subbab~\ref{subsec:validasi-manusia}).
-  \item \textit{`Pakar} dapat menambahkan \textit{missing triples} dan
+  \item Pakar dapat menambahkan \textit{missing triples} dan
         memberikan komentar per relasi.
   \item Setelah seluruh \textit{triple} dinilai, pakar
         mengonfirmasi penyelesaian \textit{review}.
@@ -685,9 +734,10 @@ diolah melalui tahapan berikut.
         per mata pelajaran).
 
   \item \textbf{Perhitungan Metrik Pakar:} Fuzzy Precision, Recall, dan
-        F1-Score dihitung per bab per mata pelajaran menggunakan
-        formulasi pada Subbab~\ref{subsec:validasi-manusia}, dengan label konsensus sebagai
-        \textit{ground truth}.
+        F1-Score dihitung per bab per mata pelajaran dengan membandingkan
+        label awal pakar dari KG Review App terhadap label final
+        pada \textit{gold standard}/konsensus, menggunakan formulasi pada
+        Subbab~\ref{subsec:validasi-manusia}.
 
   \item \textbf{Perhitungan Kesepakatan:} Gwet's AC1 dihitung khusus pada
         Fase~1, mengukur konsistensi \textit{inter-rater} sebelum
@@ -732,7 +782,8 @@ Analisis ini menafsirkan akurasi dan kelengkapan relasi yang dihasilkan KG
 dari metrik validasi pakar yang dihitung pada Subbab~\ref{sec:pengolahan-data}.
 Nilai Gwet's AC1 dibaca sebagai keandalan kesepakatan antarpakar pada Fase~1,
 sedangkan Fuzzy Precision, Recall, dan F1-Score \parencite{harju_evaluating_2023}
-ditafsirkan sebagai kinerja sistem terhadap \textit{ground truth} konsensus
+ditafsirkan sebagai kinerja relasi hasil sistem berdasarkan perbandingan antara
+label awal pakar dan label final pada \textit{ground truth} konsensus
 (Subbab~\ref{subsec:validasi-manusia}).
 
 \subsection{Analisis Komparatif}

@@ -61,14 +61,13 @@ kurikulum berbasis data, serta pemetaan konsep secara visual. Penggunaan
 KG memungkinkan sistem untuk menyusun jaringan informasi yang
 mencerminkan kerumitan konten kurikulum secara komputasional.
 
-Representasi pengetahuan berbasis KG tidak akan memberikan manfaat
-pedagogis yang optimal tanpa kerangka semantik yang mengatur struktur
-dan batas maknanya. \textcite{studer_knowledge_1998}, yang memperluas
-gagasan \textcite{gruber_translation_1993}, mendefinisikan ontologi sebagai
-spesifikasi formal dan eksplisit atas sebuah konseptualisasi bersama terhadap
-suatu domain. Kehadiran ontologi pendidikan menjadi penting
-karena berfungsi sebagai skema formal yang mendefinisikan jenis entitas
-(kelas), jenis relasi (properti), serta aturan keterhubungan dalam suatu
+Namun, manfaat pedagogis representasi berbasis KG sangat bergantung pada
+kerangka semantik yang mengatur struktur dan batas maknanya. \textcite{studer_knowledge_1998}, yang membangun
+di atas definisi awal \textcite{gruber_translation_1993}, mendefinisikan ontologi sebagai
+spesifikasi formal dan eksplisit atas sebuah konseptualisasi bersama.
+Kehadiran ontologi pendidikan menjadi penting
+karena berfungsi sebagai skema formal yang mendefinisikan jenis entitas,
+jenis relasi, serta aturan keterhubungan dalam suatu
 domain. Dalam kerangka KG, ontologi berperan sebagai
 \textit{blueprint} yang mengatur struktur graf sehingga setiap triple
 yang ditambahkan mengikuti aturan yang konsisten dan dapat
@@ -81,19 +80,20 @@ Respirasi Seluler) menjadi valid dan bermakna secara ontologis.
 \textit{learning path}, konsep pembelajaran dapat direpresentasikan
 sebagai entitas spesifik yang dihubungkan melalui relasi ketergantungan
 seperti \textit{predecessor} sebagai pengetahuan prasyarat dan
-\textit{successor} sebagai pengetahuan lanjutan, sehingga tanpa
-struktur ontologis semacam ini, graf yang dihasilkan hanya akan menjadi
-kumpulan \textit{node} dan \textit{edge} tanpa makna pedagogis yang dapat diandalkan.
+\textit{successor} sebagai pengetahuan lanjutan. Tanpa struktur
+ontologis semacam ini, graf yang dihasilkan berisiko menjadi sekadar
+kumpulan \textit{node} dan \textit{edge} dengan makna pedagogis yang terbatas.
 
-Urgensi ontologi ini diperkuat oleh \textcite{guo_ontology-enhanced_2025} yang menegaskan
-bahwa sistem ekstraksi pengetahuan berbasis kecerdasan buatan (AI) yang
-tidak dipandu oleh ontologi sangat rentan menghasilkan
-\textit{hallucination}, yakni pemetaan relasi yang keliru atau tidak
-relevan secara keilmuan. Tanpa pengetahuan ontologis yang mendefinisikan
-batasan secara eksplisit, sistem AI tidak memiliki panduan normatif
-untuk memilih relasi yang valid secara epistemologis. Dalam penelitian
-ini, ontologi pendidikan diperlakukan sebagai fondasi wajib yang
-menjamin bahwa KG yang dihasilkan memiliki relevansi pedagogis,
+Urgensi ontologi ini diperkuat oleh \textcite{guo_ontology-enhanced_2025} yang menunjukkan
+bahwa ontologi dapat berfungsi sebagai mekanisme pembatas
+(\textit{semantic constraint}) yang membantu mengurangi kemungkinan munculnya
+relasi yang tidak konsisten atau tidak relevan secara domain pada sistem
+ekstraksi pengetahuan berbasis kecerdasan buatan (AI). Dengan pengetahuan
+ontologis yang mendefinisikan batasan secara eksplisit, sistem AI memperoleh
+panduan normatif untuk lebih memprioritaskan relasi yang valid secara
+epistemologis. Dalam penelitian
+ini, ontologi pendidikan diperlakukan sebagai fondasi yang
+mendukung KG yang dihasilkan agar memiliki relevansi pedagogis,
 konsistensi semantik, dan akurasi keilmuan yang dapat
 dipertanggungjawabkan dalam konteks kurikulum sains SMA.
 
@@ -120,6 +120,31 @@ konsep, dari mata pelajaran, bab, dan subbab hingga konsep, yang dilengkapi
 vokabulari relasi semantik intra- maupun lintas-disiplin; rancangan lengkapnya,
 meliputi definisi kelas, relasi objek, dan properti data, dijabarkan pada
 Subbab~\ref{subsec:skema-ontologi}.
+
+Untuk merepresentasikan rancangan tersebut secara baku dan dapat diproses mesin,
+skema dinyatakan menggunakan \textit{Web Ontology Language} (OWL), yaitu bahasa
+standar W3C untuk merepresentasikan ontologi yang menyediakan konstruk
+untuk mendefinisikan kelas (\textit{class}), relasi antar-entitas
+(\textit{object property}), serta properti data (\textit{datatype property})
+\parencite{w3c_owl2_2012}.
+
+Penggunaan OWL ini perlu dijelaskan agar tidak terkesan bertentangan dengan
+pilihan pendekatan informal di atas. Pertama, spektrum formalitas
+\textcite{uschold_ontologies_2004} menilai \emph{seberapa dalam makna sebuah
+ontologi dimodelkan}, bukan format atau bahasa yang dipakai untuk menuliskannya.
+Kedua, OWL tidak hanya memiliki satu tingkat kerumitan. OWL menyediakan beberapa
+pilihan, dari yang ringan dan sederhana seperti profil OWL~2 EL, QL, dan RL
+hingga yang berat dan kompleks \parencite{w3c_owl2_profiles_2012}. Jadi,
+menuliskan ontologi yang ringan ke dalam OWL adalah hal yang wajar dan tidak
+otomatis membuatnya menjadi ontologi formal yang berat.
+
+Atas dasar itu, OWL dalam penelitian ini hanya dipakai sebagai \emph{format
+penulisan} yang baku dan dapat dibaca mesin, bukan untuk memanfaatkan seluruh
+kemampuan logika formalnya. Skema yang dibangun hanya menggunakan hierarki
+kelas dan daftar relasi (taksonomi), tanpa aturan logika yang rumit. Dengan
+kata lain, OWL dipakai untuk \emph{menuliskan} struktur ontologi, sedangkan
+model yang dibangun tetap sederhana dan bersifat taksonomik, sehingga tetap
+selaras dengan pendekatan ontologi informal yang dipilih.
 
 \subsection{Knowledge Graph Completion}
 \label{subsec:kgc}
@@ -320,12 +345,12 @@ untuk memastikan kebenaran faktual berkat kedalaman pemahaman
 kontekstualnya. Meski demikian, dalam proses anotasi data, tahapan
 validasi ini sering kali memunculkan perbedaan pendapat
 (\textit{disagreement}) di antara para pakar akibat tingkat
-subjektivitas masing-masing pakar \parencite{gu_survey_nodate, zheng_judging_2023}. Untuk mengatasi ketidaksepakatan tersebut tanpa mengorbankan
+subjektivitas masing-masing pakar \parencite{gu_survey_2024}. Untuk mengatasi ketidaksepakatan tersebut tanpa mengorbankan
 skalabilitas dan menekan biaya operasional, pemanfaatan LLM dapat
-diimplementasikan melalui pendekatan \textit{LLM-as-a-judge}. Dalam skenario ini,
-alih-alih difungsikan sebagai pakar utama yang menggantikan peran
-manusia, LLM diposisikan secara spesifik sebagai moderator yang objektif
-untuk menyelesaikan konflik penilaian antarpakar \parencite{gu_survey_nodate}.
+diimplementasikan melalui pendekatan \textit{LLM-as-a-judge} \parencite{gu_survey_2024}.
+Dalam skenario ini, alih-alih difungsikan sebagai pakar utama yang menggantikan peran
+manusia, LLM diposisikan secara spesifik sebagai penengah berbasis konteks
+untuk menyelesaikan konflik penilaian antarpakar.
 
 Meskipun terbukti efektif sebagai penengah, literatur menunjukkan bahwa
 LLM memiliki kerentanan terhadap bias kognitif saat dihadapkan pada dua
@@ -333,15 +358,16 @@ argumen yang berseberangan. Model sering kali terpengaruh oleh
 \textit{concreteness bias}, yaitu kecenderungan memihak pada respons
 yang menyajikan detail spesifik atau dikemas dengan gaya bahasa yang
 meyakinkan, sekalipun argumen tersebut secara faktual keliru
-\parencite{gu_survey_nodate, zheng_judging_2023}.
+\parencite{gu_survey_2024}.
 
 Untuk menjamin reliabilitas keputusan dan menekan tingkat \textit{hallucination}
 saat model melakukan ajudikasi, proses penengahan oleh LLM menuntut
-adanya mekanisme penjangkaran (\textit{grounding}) yang kuat. Sejalan
-dengan rekomendasi \textcite{gu_survey_nodate} dan prinsip evaluasi presisi
-faktual dari \textcite{min_factscore_2023}, penerapan \textit{LLM-as-a-judge} harus
-diiringi dengan injeksi konteks berupa bukti eksternal
-(\textit{textbook evidence}). Melalui integrasi referensi buku teks
+adanya mekanisme penjangkaran (\textit{grounding}) yang kuat. Sebagaimana dicatat
+\textcite{gu_survey_2024}, \textit{concreteness bias} pada LLM justru dapat
+mendorong \textit{hallucination} ketika kebenaran faktual diabaikan; karena itu,
+sejalan dengan prinsip evaluasi presisi faktual dari \textcite{min_factscore_2023},
+penerapan \textit{LLM-as-a-judge} harus diiringi dengan injeksi konteks berupa
+bukti eksternal (\textit{textbook evidence}). Melalui integrasi referensi buku teks
 kurikulum, landasan keputusan tidak lagi bergantung pada asumsi
 parametrik internal model yang rentan bias, melainkan berakar pada
 kebenaran fakta keilmuan yang disediakan.
@@ -380,7 +406,8 @@ menggunakan tiga indikator utama.
 \subsubsection{Average Degree Centrality (ADC)}
 
 \textbf{Average Degree Centrality (ADC)} mengukur rata-rata jumlah koneksi
-yang dimiliki setiap \textit{node} dalam graf:
+yang dimiliki setiap \textit{node} dalam graf, yang dihitung sebagai rata-rata
+derajat (\textit{average degree}) seluruh \textit{node} \parencite[134]{newman_networks_2010}:
 
 \[
   ADC = \frac{1}{|V|} \sum_{v \in V} \deg(v)
@@ -457,7 +484,8 @@ proses KGC, bukan artefak dari komunitas yang berbeda di tiap fase.
 terbentuk dalam sebuah graf dibandingkan dengan koneksi maksimum yang
 secara teoritis mungkin ada. Nilai $D$ berkisar antara 0 hingga 1; nilai
 mendekati 1 menandakan graf yang sangat padat (\textit{dense}), sementara
-nilai mendekati 0 menandakan graf yang jarang (\textit{sparse}). Dalam
+nilai mendekati 0 menandakan graf yang jarang (\textit{sparse})
+\parencite[134]{newman_networks_2010}. Dalam
 konteks penelitian ini, \textit{density} digunakan untuk membandingkan tingkat
 keterkaitan antar-konsep sebelum dan sesudah penambahan relasi lintas
 buku (\textit{cross-book links}). Sejalan dengan ADC antar-konsep yang
@@ -491,7 +519,10 @@ berhasil diidentifikasi juga memiliki informasi pendukung berupa
 deskripsi atau definisi. Dalam konteks materi sains, sebuah entitas
 seperti ``Fotosintesis'' atau ``Hukum Ohm'' tidak cukup hanya muncul
 sebagai nama---ia harus memiliki deskripsi agar dapat digunakan dalam
-proses pembelajaran atau KGC. DC didefinisikan sebagai:
+proses pembelajaran atau KGC. Metrik DC dirumuskan dalam penelitian ini
+sebagai operasionalisasi dimensi kelengkapan (\textit{completeness}) dalam
+manajemen kualitas \textit{knowledge graph} \parencite{xue_knowledge_2022}.
+DC didefinisikan sebagai:
 
 \[
   DC = \frac{\bigl|\{ v \in V : \text{desc}(v) \neq \varnothing \}\bigr|}{|V|}
@@ -501,6 +532,18 @@ proses pembelajaran atau KGC. DC didefinisikan sebagai:
 (\textit{node} bertipe \texttt{:Concept} dan \texttt{:Chapter}), dan $\text{desc}(v)$
 sebagai atribut deskripsi dari entitas $v$. Target minimal untuk metrik
 ini ditetapkan sebesar $\geq 0{,}90$ (90\%).
+
+DC tidak mengukur keberhasilan KGC secara langsung, tetapi menjadi syarat awal
+yang menentukan kualitas masukan bagi proses KGC. Pada pendekatan LLM-Assisted
+KGC, LLM memprediksi relasi implisit, khususnya relasi lintas-disiplin, dengan
+membaca konteks makna dari tiap entitas, bukan hanya dari nama labelnya. Jika
+sebuah \textit{node} hanya berisi nama seperti ``Fotosintesis'' tanpa deskripsi,
+LLM punya sedikit informasi untuk bekerja, sehingga lebih sulit menemukan
+keterkaitan yang tepat dan lebih mudah mengarang relasi yang keliru. Sebaliknya,
+deskripsi yang cukup memberi LLM konteks yang dibutuhkan untuk menyimpulkan
+relasi yang benar secara keilmuan. Jadi, DC yang tinggi memang tidak menjamin
+KGC berhasil, tetapi membuka peluang hasil yang lebih baik, sedangkan DC yang
+rendah justru membatasi sejauh mana KGC bisa berhasil.
 
 \subsubsection{Empty SubKonsep Rate (ESR)}
 
@@ -538,7 +581,10 @@ metrik ini ditetapkan sebesar $\leq 0{,}10$ (10\%).
 
 \textbf{Typed Relation Ratio (TRR)} mengukur sejauh mana relasi dalam KG
 menggunakan tipe relasi spesifik dari \textit{controlled vocabulary}
-ontologi dibandingkan dengan relasi generik. Berdasarkan ontologi yang
+ontologi dibandingkan dengan relasi generik. Metrik TRR dirumuskan dalam
+penelitian ini, mengacu pada prinsip kualitas struktural relasi yang
+dikemukakan \textcite{seo_structural_2022}, untuk menilai kekayaan semantik
+penjenisan relasi dalam KG. Berdasarkan ontologi yang
 didefinisikan, terdapat 20 tipe relasi spesifik yang terbagi menjadi dua
 kelompok: intra-buku (15 tipe, seperti \texttt{MENYEBABKAN} atau
 \texttt{BERGANTUNG\_PADA}) dan lintas-buku (5 tipe, seperti
@@ -597,6 +643,20 @@ keanggotaan fuzzy sebagai berikut:
         keanggotaan; relasi keliru secara ontologis atau gagal
         diekstraksi.
 \end{itemize}
+
+Pemetaan keempat nilai di atas merupakan keputusan desain penelitian ini,
+bukan ketentuan baku dari \textcite{harju_evaluating_2023}. Kerangka fuzzy yang
+diadopsi tidak menetapkan angka tertentu, melainkan hanya mensyaratkan bahwa
+derajat kebenaran dinyatakan sebagai nilai keanggotaan pada interval $[0,1]$
+\parencite{harju_evaluating_2023}. Atas dasar prinsip tersebut, kategori
+ordinal hasil penilaian pakar diproyeksikan menjadi derajat \textit{partial
+credit} yang menurun secara bertahap: $1{,}0$ untuk keanggotaan penuh, $0{,}5$
+sebagai titik tengah bagi relasi yang benar secara saintifik namun belum
+sempurna, $0{,}25$ untuk derajat parsial yang lebih lemah, dan $0{,}0$ untuk
+ketiadaan keanggotaan. Batasan setiap kategori beserta nilai keanggotaannya tidak
+ditetapkan secara sepihak, melainkan turut disepakati melalui diskusi dengan
+pakar domain yang terlibat dalam proses validasi, sehingga skema penilaian ini
+selaras dengan interpretasi pakar terhadap kualitas relasi.
 
 Untuk menghitung metrik evaluasi ini, \textcite{harju_evaluating_2023} menggunakan
 prinsip irisan fuzzy (\textit{fuzzy intersection}) yang didefinisikan
@@ -693,7 +753,7 @@ yang membedakan Gwet's AC1 dari Kappa: estimasi peluang kesepakatan
 dihitung berdasarkan proporsi penggunaan kategori secara aktual, sehingga
 nilai AC1 tetap mencerminkan kesepakatan yang sesungguhnya meskipun satu
 label muncul jauh lebih sering daripada label lainnya
-\parencite{mahbub_multi-stage_2026}.
+\parencite{gwet_handbook_2014, james_counting_2026}.
 
 Nilai AC1 berada pada rentang $-1$ hingga $1$, dengan kategori
 interpretatif sebagai berikut: buruk ($<0{,}40$), sedang
@@ -746,8 +806,8 @@ umum, dan (3) pemetaan interkoneksi kurikulum secara komputasional.
 Pada kluster pertama, \textcite{zhang_learning_2023} mengembangkan KG silabus
 berbasis relasi prasyarat untuk mendukung \textit{adaptive learning
 path}. Studi tersebut menunjukkan bahwa relasi prasyarat dan \textit{successor}
-yang dikodifikasi secara eksplisit secara signifikan meningkatkan
-efektivitas rekomendasi urutan belajar. Perbedaan utama dengan penelitian
+yang dikodifikasi secara eksplisit dapat digunakan sebagai dasar
+perencanaan urutan belajar. Perbedaan utama dengan penelitian
 ini adalah cakupan domain: \citeauthor{zhang_learning_2023} bekerja pada satu mata pelajaran
 tunggal, sementara penelitian ini secara spesifik menargetkan relasi
 lintas tiga disiplin ilmu (Fisika, Kimia, Biologi) dalam satu kurikulum
@@ -756,8 +816,9 @@ nasional yang sama.
 Pada kluster kedua, \textcite{wei_kicgpt_2023} mengajukan kerangka KICGPT yang
 membuktikan efektivitas ICL berbasis \textit{Knowledge Prompt} untuk KGC pada
 dataset umum (FB15k-237 dan WN18RR). Kontribusi teknis \citeauthor{wei_kicgpt_2023}
-menjadi fondasi \textit{pipeline} klasifikasi relasi lintas-disiplin dalam
-penelitian ini. Perbedaan kritis terletak pada konteks: dataset
+menjadi preseden penggunaan kombinasi pencarian kandidat dan ICL pada tugas KGC,
+sementara penelitian ini mengadaptasi gagasan tersebut ke klasifikasi relasi
+lintas-disiplin. Perbedaan kritis terletak pada konteks: dataset
 \textit{benchmark} \citeauthor{wei_kicgpt_2023} bersifat bahasa Inggris dengan entitas
 berupa fakta umum, sedangkan penelitian ini beroperasi pada bahasa
 Indonesia dengan entitas berupa konsep kurikulum sains SMA yang

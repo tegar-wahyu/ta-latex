@@ -157,18 +157,25 @@ daftar subbab, glosarium, dan materi pokok.
         sementara halaman konten tidak disertakan agar \textit{parsing} bab dan
         subbab tetap stabil.
 
-  \item \textbf{Ekstraksi glosarium.} Glosarium dicari pada 30 halaman terakhir
-        menggunakan penanda \textit{state} \texttt{in\_glossary} yang diaktifkan
-        oleh token ``glosarium'' dan dimatikan oleh terminator seperti
-        ``indeks'' atau ``daftar pustaka''. Pasangan istilah--definisi yang
-        ditemukan diuraikan menjadi \textit{lookup table}, yang kemudian dipakai
-        sebagai validasi terminologi pada Tahap~2.
+  \item \textbf{Ekstraksi glosarium.} Karena glosarium pada buku teks secara
+        konvensional terletak di bagian akhir buku (\textit{back matter}),
+        setelah seluruh materi pokok, pencarian penanda ``glosarium'' dibatasi
+        hanya pada bagian setelah 30\% halaman pertama buku. Pembatasan ini
+        menghindari \textit{false positive} ketika kata ``glosarium'' kebetulan
+        muncul di bagian awal seperti daftar isi atau kata pengantar. Dari
+        halaman penanda pertama yang memenuhi syarat, ekstraksi berlanjut halaman
+        demi halaman hingga mencapai penanda awal bagian \textit{back matter}
+        berikutnya, seperti ``Indeks'' atau ``Daftar Pustaka''. Pasangan
+        istilah--definisi yang ditemukan diuraikan menjadi \textit{lookup table},
+        yang kemudian dipakai sebagai validasi terminologi pada Tahap~2.
 
   \item \textbf{Penugasan bab ke \textit{chunk}.} Setiap \textit{chunk}
         dihubungkan ke bab berdasarkan interval halaman
         (\texttt{page\_start <= page < next\_page}), dengan \texttt{page\_label}
-        dikonversi ke integer termasuk angka Romawi. Penugasan ini
-        berkompleksitas $O(N \cdot C)$ untuk $N$ \textit{chunk} dan $C$ bab.
+        dikonversi ke integer termasuk angka Romawi. Penugasan ini dilakukan satu
+        kali untuk seluruh 788 \textit{chunk} dengan pencocokan rentang halaman
+        tersebut, sehingga waktu komputasinya sangat kecil dibandingkan tahap
+        ekstraksi berbasis LLM.
 
   \item \textbf{Ekstraksi materi pokok (Buku Guru).} Untuk tiap bab, sistem
         mencari \textit{region} teks yang sesuai judul bab di Buku Guru, lalu
@@ -203,9 +210,8 @@ pembatasan konsep pada materi pokok.
   Model: Gemini 2.5 Flash Lite via Google GenAI SDK. \textit{Prompt} bersifat
   \textit{few-shot} dan \textit{schema-constrained}. \textit{Prompt} menyertakan nama bab 
   beserta bab sebelum dan sesudahnya, daftar subbab dari daftar isi, glosarium sebagai 
-  \textit{validation set}, materi pokok sebagai \textit{curriculum constraint}, konsep dari 
-  buku lain sebagai \textit{cross-book context}, serta beberapa contoh \textit{triple} sebagai
-  demonstrasi (\textit{few-shot}).
+  \textit{validation set}, materi pokok sebagai \textit{curriculum constraint},
+  serta beberapa contoh \textit{triple} sebagai demonstrasi (\textit{few-shot}).
 
   \item \textbf{Struktur \textit{prompt}.}
 
@@ -221,40 +227,47 @@ pembatasan konsep pada materi pokok.
 
   \item \textbf{Vokabulari relasi.}
 
-  \textit{Prompt} membatasi ekstraksi relasi antar-konsep pada 15 tipe relasi
-  intra-buku sesuai \textit{controlled vocabulary} ontologi
-  (Subbab~\ref{subsec:skema-ontologi}); instruksi \textit{cross-chapter
-  reasoning} secara terpisah menghasilkan relasi pedagogis antar-bab
-  (\texttt{PRASYARAT} atau \texttt{MEMPERSIAPKAN}).
+  \textit{Prompt} diarahkan untuk menghasilkan relasi antar-konsep sesuai
+  vokabulari relasi dalam-buku pada ontologi, yaitu 15 tipe relasi yang
+  didefinisikan pada Tabel~\ref{tab:relasi-dalam-buku}. Instruksi
+  \textit{cross-chapter reasoning} secara terpisah menghasilkan relasi
+  pedagogis antar-bab (\texttt{PRASYARAT} atau \texttt{MEMPERSIAPKAN}).
+  Validasi pascaproses pada tahap ini memastikan tipe dan target relasi tidak
+  kosong.
 
   \item \textbf{Penguraian keluaran terstruktur.}
 
   Respons LLM dibersihkan dari penanda \textit{markdown} lalu diuraikan dari
   format JSON menjadi objek terstruktur yang memuat ringkasan bab serta daftar
   konsep per subbab---lengkap dengan deskripsi, status validasi glosarium,
-  rujukan materi pokok, tautan lintas-buku, dan relasi antar-konsep.
+  rujukan materi pokok, dan relasi antar-konsep.
 
-  \item \textbf{Validasi pascaproses.} Sebelum dikonstruksi ke graf, keluaran
-  LLM melewati tiga penyaringan. \emph{Pertama}, penyaringan tautan lintas-buku:
-  tautan ditolak apabila buku target sama dengan buku sumber atau buku target
-  tidak termuat dalam korpus, sehingga mencegah \textit{self-loop} dan referensi
-  \textit{dangling}. \emph{Kedua}, \textit{fallback} heuristik
-  (\texttt{infer\_cross\_links}): bila LLM mengembalikan keluaran kosong, sistem
-  menjalankan pencocokan tumpang-tindih token bergaya Jaccard, memakai token
-  sepanjang minimal empat karakter dan non-\textit{stopword}, lalu mengambil dua
-  pasangan konsep antarbuku dengan tumpang-tindih tertinggi. \emph{Ketiga},
-  sanitasi relasi: \textit{triple} dengan tipe atau target kosong dibuang.
+  \item \textbf{Validasi pascaproses.} Sebelum masuk ke graf, keluaran LLM
+  dirapikan dengan membuang \textit{triple} yang tipe relasi atau targetnya kosong,
+  agar tidak ada relasi cacat yang masuk ke graf.
 \end{enumerate}
 
 % ============================================================
 \section{Graph Construction (Eksekusi Neo4j Cypher)}\label{sec:graph-construction}
 % ============================================================
 
-Tahap ini membuat \textit{knowledge graph} ke Neo4j dengan strategi
-tiga-\textit{pass} agar konsisten secara referensial dan idempoten.
+Pada alur utama penelitian, instansiasi graf ke Neo4j dilakukan setelah proses konsensus,
+yaitu dengan membaca berkas \texttt{\{mapel\}.consensus.json} yang telah memuat
+hasil validasi dan ajudikasi pakar. Ingest awal dari KG JSON hasil ekstraksi
+hanya bersifat opsional untuk inspeksi atau penayangan pada KG Review App.
+Ingest konsensus membangun \textit{knowledge graph} ke Neo4j dengan strategi
+dua-\textit{pass}, yaitu dua tahap yang dijalankan berurutan. Urutan ini
+dipilih agar graf yang terbentuk konsisten secara referensial dan idempoten. Maksud konsisten secara referensial,
+setiap relasi selalu menunjuk ke \textit{node} yang sudah ada, sehingga tidak
+muncul relasi yang menggantung ke konsep yang belum sempat dibuat. Karena itu,
+seluruh \textit{node} dibentuk lebih dahulu, baru relasinya ditarik kemudian.
+Adapun idempoten, proses ini bisa dijalankan ulang berkali-kali tanpa membuat
+\textit{node} atau relasi ganda, sebab semua operasi pembuatan \textit{node} dan
+relasi memakai \texttt{MERGE} yang hanya membuat data bila belum ada, bukan
+\texttt{CREATE} yang selalu menambah data baru.
 
 \begin{enumerate}
-  \item \textbf{Pass 1 --- Instansiasi \textit{node}.}
+  \item \textbf{Pass 1 --- Instansiasi \textit{node} dan kerangka hierarki.}
   \begin{itemize}
     \item Node \texttt{Grade}, \texttt{Chapter}, \texttt{Subtopic}, dan
       \texttt{Concept} dibuat melalui operasi \texttt{MERGE}
@@ -264,44 +277,44 @@ tiga-\textit{pass} agar konsisten secara referensial dan idempoten.
     \item Kunci \texttt{MERGE} gabungan (\texttt{name}, \texttt{grade}) menegakkan
       sifat \textit{shared \textit{node}} pada \texttt{Concept} sebagaimana didefinisikan
       pada Subbab~\ref{subsec:skema-ontologi}.
+    \item Pada \textit{pass} yang sama, kerangka hierarki graf dibentuk, yaitu
+      rangka struktural berjenjang dari Kelas, Bab, Subbab, hingga Konsep melalui
+      relasi struktural \texttt{HAS\_CHAPTER}, \texttt{HAS\_SUBTOPIC},
+      \texttt{HAS\_CONCEPT}, dan \texttt{NEXT\_CHAPTER} (urutan antarbab). Berbeda
+      dengan relasi semantik yang diprediksi LLM, relasi struktural ini ditarik
+      langsung dari struktur daftar isi sehingga keterurutan dan susunan
+      hierarkinya terjamin benar.
   \end{itemize}
-
-  \item \textbf{Tulang punggung hierarki.} Relasi struktural
-  \texttt{HAS\_CHAPTER}, \texttt{HAS\_SUBTOPIC}, \texttt{HAS\_CONCEPT}, dan
-  \texttt{NEXT\_CHAPTER} ditarik dari struktur daftar isi (bukan dari LLM)
-  untuk menjamin keterurutan hierarki bab.
 
   \item \textbf{Pass 2 --- Relasi dalam-buku.}
   \begin{itemize}
-    \item Relasi semantik antar-\texttt{Concept} ditanam dengan strategi
-      dua-tingkat: apabila konsep target sudah berada dalam himpunan
-      \texttt{Concept} buku yang sedang diproses, sistem membuat \textit{edge}
-      langsung antar-\texttt{Concept}; jika belum, target direpresentasikan
-      sebagai \textit{node} \texttt{ConceptTarget} yang berperan sebagai
-      \textit{placeholder}.
-    \item Pemisahan label \texttt{Concept} dan \texttt{ConceptTarget}
-      (Subbab~\ref{subsec:skema-ontologi}) memudahkan audit terhadap konsep yang
-      belum ter-\textit{anchor} pada sumber tekstual.
+    \item Relasi semantik antar-\texttt{Concept} ditanam dengan dua cara,
+      bergantung pada apakah konsep tujuannya sudah ada atau belum. Apabila
+      konsep tujuan sudah terdaftar sebagai \texttt{Concept} hasil ekstraksi
+      pada buku yang sedang diproses, sistem langsung membuat \textit{edge}
+      antar-\texttt{Concept} yang sebenarnya. Sebaliknya, apabila konsep tujuan
+      belum ada, sistem tidak memaksakan pembuatan \texttt{Concept} baru,
+      melainkan merepresentasikannya sebagai \textit{node} \texttt{ConceptTarget}
+      yang berperan sebagai penampung sementara (\textit{placeholder}).
+    \item Pembedaan label \texttt{Concept} dan \texttt{ConceptTarget}
+      (Subbab~\ref{subsec:skema-ontologi}) berguna untuk audit. Label
+      \texttt{Concept} menandai konsep yang benar-benar diekstrak dari teks buku
+      (memiliki dasar tekstual), sedangkan \texttt{ConceptTarget} menandai konsep
+      yang baru disebut sebagai tujuan relasi tetapi tidak terdapat dalam
+      himpunan konsep terekstrak resmi pada bab tersebut. Karena keduanya
+      berlabel berbeda, konsep yang belum memiliki
+      dasar tekstual dapat ditelusuri dengan mudah untuk diperiksa lebih lanjut.
     \item Tipe relasi dinormalisasi (karakter non-alfanumerik diganti garis
       bawah) agar sesuai dengan sintaksis \textit{relationship type} Cypher.
   \end{itemize}
 
-  \item \textbf{Pass 3 --- Relasi lintas-buku.}
-  \begin{itemize}
-    \item \textit{Edge} lintas-buku diberi prefiks \texttt{LINTAS\_BUKU\_}
-      diikuti tipe relasinya (mis.\ \texttt{LINTAS\_BUKU\_APLIKASI\_DARI}).
-    \item Penjagaan integritas diterapkan: buku target harus berbeda dari buku
-      sumber dan termuat dalam korpus yang diproses.
-    \item Apabila konsep target belum ada pada \textit{scope} mata pelajaran
-      tujuan, \textit{node} \texttt{Concept} baru dibuat secara \textit{lazy}
-      (\textit{lazy materialization}).
-  \end{itemize}
-
-  \item \textbf{Sifat idempoten.} Seluruh \textit{pass} menggunakan
+  \item \textbf{Sifat idempoten.} Kedua \textit{pass} menggunakan
   \texttt{MERGE} sehingga eksekusi ulang \textit{notebook} tidak menggandakan
   \textit{node} maupun \textit{edge}. Properti ini penting agar eksperimen dapat
-  dijalankan secara iteratif tanpa mengotori graf yang telah terbentuk. Kueri
-  Cypher untuk ketiga \textit{pass} konstruksi beserta \textit{constraint}
+  dijalankan secara iteratif tanpa mengotori graf yang telah terbentuk. Relasi
+  lintas-buku tidak dibentuk pada tahap ini, melainkan diprediksi dan dituliskan
+  ke graf pada tahap \textit{Graph Completion} (Subbab~\ref{sec:graph-completion}).
+  Kueri Cypher untuk kedua \textit{pass} konstruksi beserta \textit{constraint}
   keunikannya disajikan pada \ref{lamp:cypher-konstruksi}.
 \end{enumerate}
 
@@ -314,6 +327,30 @@ pada Tahap 2, mengikuti paradigma \textit{embedding} + \textit{retrieval} + \tex
 Prosesnya terdiri dari empat sub-tahap: (1) \textit{concept embedding},
 (2) \textit{candidate retrieval} via ANN, (3) \textit{candidate pruning},
 dan (4) \textit{relation classification} via LLM.
+
+Perlu ditegaskan bahwa tahap ini tetap tergolong \textit{Knowledge Graph
+Completion} (KGC), bukan sekadar penemuan relasi (\textit{relation discovery})
+berbasis teks. \textcite{ji_survey_2022} mendefinisikan KGC sebagai tugas
+menambahkan \textit{triple} baru ke dalam graf yang sudah ada, dengan subtugas
+mencakup \textit{link prediction}, \textit{entity prediction}, dan
+\textit{relation prediction}. Tahap \textit{completion} dalam penelitian ini
+beroperasi di atas himpunan \texttt{Concept} yang telah terbentuk pada tahap
+konstruksi, lalu memprediksi relasi lintas-disiplin implisit yang belum tertangkap
+pada tahap ekstraksi (Tahap~2), di antara konsep-konsep yang sudah ada; dengan
+demikian prosesnya merupakan \textit{relation prediction}, yaitu
+salah satu subtugas KGC, dan berbeda dari \textit{relation extraction} atas teks
+mentah yang justru dikerjakan pada tahap ekstraksi (Tahap~2). Penggunaan
+\textit{retrieval} berbasis \textit{embedding} untuk menyaring kandidat dan LLM
+untuk mengklasifikasikan relasi sejalan dengan paradigma KGC berbasis LLM:
+\textcite{yao_exploring_2025} memperlakukan KGC sebagai tugas tekstual dengan LLM
+untuk \textit{triple classification} dan \textit{relation prediction};
+\textcite{wei_kicgpt_2023} memadukan komponen pencarian kandidat (\textit{retriever})
+dengan LLM untuk KGC;
+serta \textcite{pan_unifying_2024} menggolongkan pemanfaatan LLM untuk melengkapi
+relasi pada KG seperti ini sebagai salah satu kelas pendekatan
+\textit{LLM-augmented} KGC. Dengan demikian, langkah \textit{retrieval} berperan sebagai
+mekanisme skalabilitas untuk membatasi ruang kandidat, bukan penyimpangan dari
+tugas KGC.
 
 \begin{enumerate}
   \item \textbf{\texttt{Concept} embedding.}
@@ -344,7 +381,7 @@ dan (4) \textit{relation classification} via LLM.
   \item \textbf{Candidate retrieval via ANN (Approximate Nearest Neighbor).}
 
   Untuk tiap \textit{query} \textit{node} $q$, dijalankan pencarian ANN pada Neo4j Vector Index
-  yang mengembalikan top-$k$ \textit{node} terdekat berdasarkan \textit{cosine similarity}
+  yang mengembalikan top-$k$ ($k = 20$) \textit{node} terdekat berdasarkan \textit{cosine similarity}
   (didefinisikan pada Subbab~\ref{subsec:kgc}). Proyeksi 2D
   (UMAP) atas seluruh konsep antar mapel ditunjukkan pada
   Gambar~\ref{fig:concept-umap}: konsep diwarnai berdasarkan mata
@@ -396,7 +433,7 @@ dan (4) \textit{relation classification} via LLM.
   \item \textbf{Relation classification via LLM.}
 
   Tiap pasangan yang lolos \textit{pruning} diklasifikasikan oleh LLM
-  (Gemini 2.5 Flash Lite) melalui \textit{prompt few-shot} yang memuat: (1)
+  (Gemini 2.5 Flash) melalui \textit{prompt few-shot} yang memuat: (1)
   deskripsi dan konteks kedua konsep (nama, deskripsi, mata pelajaran); (2)
   konteks graf berupa bab asal, hingga lima \textit{edge} keluar yang sudah ada,
   serta tetangga bersama (\textit{shared neighbors}); dan (3) definisi ketat tiap
@@ -506,8 +543,10 @@ berbasis \textit{Cypher} dan aplikasi web KG Review App untuk validasi pakar.
   ditelusuri (\textit{auditable}) dan direproduksi.
 
   Keluarannya ada dua. \emph{Pertama}, \textit{gold standard} per mata pelajaran
-  berupa daftar label final yang menjadi masukan perhitungan metrik
-  (Gwet's AC1 serta \textit{Fuzzy Precision}/\textit{Recall}/F1). \emph{Kedua},
+  berupa daftar label final. Berkas ini digunakan bersama penilaian awal dua pakar
+  dari KG Review App untuk menghitung \textit{Fuzzy Precision}/\textit{Recall}/F1,
+  sedangkan Gwet's AC1 dihitung langsung dari dua penilaian asli pakar
+  tersebut. \emph{Kedua},
   berkas KG konsensus, yakni ekspor graf dengan label konsensus dan metadata
   peninjauan yang ditanamkan pada tiap relasi. \textit{Notebook} 
   menulis KG konsensus ini kembali ke Neo4j dengan \textit{constraint} keunikan,

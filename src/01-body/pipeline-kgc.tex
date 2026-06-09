@@ -1,147 +1,134 @@
 % ============================================================
-%  Subfile: Diagram pipeline KG Construction & Completion
+%  Subfile: Diagram pipeline penelitian KG
 %  Included by bab-3.tex via \subfile{pipeline-kgc}
 % ============================================================
 \documentclass[../../thesis]{subfiles}
 \begin{document}
-\begin{figure}[htbp]
+\begin{figure}[p]
   \centering
-  \resizebox{\textwidth}{!}{%
+  \adjustbox{width=\linewidth, totalheight=0.92\textheight, keepaspectratio, center}{%
   \begin{tikzpicture}[
-    node distance=1.2cm and 1.5cm,
+    node distance=0.75cm and 1.35cm,
     font=\small,
     basic/.style={draw, text centered, font=\footnotesize,
-      minimum height=1.2cm, rounded corners=2mm, text width=4.5cm},
-    input/.style={basic, fill=blue!5, thick, draw=blue!70!black,
-      text width=6cm, minimum height=1.2cm},
+      minimum height=1.0cm, rounded corners=2mm, text width=3.9cm},
     process/.style={basic, fill=white, thick, draw=gray!60},
+    io/.style={basic, fill=blue!5, trapezium,
+      trapezium left angle=75, trapezium right angle=105,
+      thick, draw=blue!70!black, text width=3.7cm, inner sep=2pt},
     db/.style={basic, fill=green!5, cylinder, shape border rotate=90,
-      aspect=0.15, text width=4.5cm, minimum height=1.5cm, thick,
+      aspect=0.16, text width=3.7cm, minimum height=1.3cm, thick,
       draw=green!60!black, rounded corners=0mm},
     human/.style={basic, fill=orange!10, thick, draw=orange!80!black,
-      text width=3.5cm},
-    llmmod/.style={basic, fill=purple!5, thick, draw=purple!70!black,
-      text width=4cm, minimum height=1.2cm},
-    stagebox/.style={draw, gray!50, thick, dashed, rounded corners=3mm,
-      fill=gray!5, inner sep=12pt},
+      rounded corners=5mm, text width=3.55cm},
+    llm/.style={basic, fill=purple!6, thick, draw=purple!70!black,
+      text width=3.75cm},
+    metric/.style={basic, fill=yellow!10, thick, draw=yellow!60!black,
+      text width=3.65cm},
+    stagebox/.style={draw, gray!50, thick, dashed,
+      rounded corners=3mm, fill=gray!5, inner xsep=15pt, inner ysep=14pt},
     arrow/.style={thick, -{Latex[length=3mm, width=2mm]},
       draw=gray!80!black},
-    darrow/.style={thick, dashed, -{Latex[length=3mm, width=2mm]},
-      draw=gray!80!black},
-    doublearrow/.style={thick, <->, >=stealth, draw=gray!80!black},
-    elabel/.style={fill=white, font=\scriptsize, inner sep=2pt,
-      align=center},
+    optional/.style={thick, dashed, -{Latex[length=3mm, width=2mm]},
+      draw=gray!70!black},
+    elabel/.style={fill=white, font=\scriptsize,
+      inner sep=2pt, align=center},
     slabel/.style={font=\bfseries\footnotesize, text=gray!80!black,
       fill=white, inner sep=3pt, yshift=1.5mm}
   ]
-    % ==== INPUT ====
-    \node[input] (input)
-      {\textbf{Input Dokumen}\\
-       (Buku Siswa \& Buku Guru Kelas XII Kurikulum Merdeka)};
+    % ==== LANGKAH 1: KG CONSTRUCTION ====
+    \node[io] (Input) at (0,0)
+      {\textbf{Input Dokumen}\\Buku Siswa \& Buku Guru\\PDF Kelas XII};
+    \node[process, below=0.65cm of Input] (Construct)
+      {\textbf{KG Construction}\\ingestion, ekstraksi konsep,\\relasi dalam-buku};
+    \node[io, below=0.65cm of Construct] (KGJson)
+      {\textbf{KG JSON Awal}\\graf awal per\\mata pelajaran};
+    \node[db, right=2.25cm of KGJson] (Neo4jAwal)
+      {\textbf{Neo4j Awal}\\ingest opsional\\untuk display};
 
-    % ==== STAGE 1 ====
-    \node[process, below=2cm of input] (a1)
-      {Ekstraksi Struktur Hierarki\\(Daftar Isi \& Segmentasi Bab)};
-    \node[process, below=0.3cm of a1] (a2)
-      {Ekstraksi Terminologi\\(Glosarium \& Materi Pokok)};
-    \node[process, below=0.3cm of a2] (a3)
-      {Pemotongan Teks\\(Sentence Chunking)};
     \begin{scope}[on background layer]
-      \node[stagebox, fit=(a1)(a2)(a3),
-        label={[slabel]above:Stage 1: Pemrosesan Dokumen (Ingestion)}]
-        (stage1) {};
+      \node[stagebox, fit=(Input)(Construct)(KGJson)(Neo4jAwal),
+        label={[slabel]above:Langkah 1: KG Construction}]
+        (StageConstruct) {};
     \end{scope}
-    \draw[arrow] (input) -- (stage1);
 
-    % ==== STAGE 2 ====
-    \node[process, below=2cm of stage1] (b1)
-      {Ekstraksi Entitas \&\\Relasi Internal};
-    \node[process, below=0.5cm of b1] (b2)
-      {Validasi Terminologi\\Glosarium};
+    % ==== LANGKAH 2: REVIEW DAN KONSENSUS ====
+    \node[process, below=1.55cm of KGJson] (ReviewApp)
+      {\textbf{KG Review App}\\visualisasi graf\\untuk pakar};
+    \node[human, below left=0.9cm and 1.25cm of ReviewApp] (Expert)
+      {\textbf{Review Pakar}\\dua pakar per\\mata pelajaran};
+    \node[llm, below right=0.9cm and 1.25cm of ReviewApp] (Consensus)
+      {\textbf{Final Consensus}\\ajudikasi disagreement\\\& missing triples};
+    \node[io] (ConsensusJson)
+      at ($(Expert)!0.5!(Consensus) - (0,1.45cm)$)
+      {\textbf{\{mapel\}.consensus.json}\\gold standard\\per mata pelajaran};
+
     \begin{scope}[on background layer]
-      \node[stagebox, fit=(b1)(b2),
-        label={[slabel]above:Stage 2: Ekstraksi Pengetahuan (LLM)}]
-        (stage2) {};
+      \node[stagebox, fit=(ReviewApp)(Expert)(Consensus)(ConsensusJson),
+        label={[slabel]above:Langkah 2: Validasi Pakar \& Konsensus}]
+        (StageConsensus) {};
     \end{scope}
-    \draw[arrow] (b1) -- (b2);
-    \draw[arrow] (stage1) -- node[elabel] {Chunks Teks} (stage2);
 
-    % ==== HUMAN 1 ====
-    \node[human, left=2.5cm of stage2] (human1)
-      {\textbf{Peneliti}\\Prompt Engineering \&\\Kontrol Skema};
-    \draw[darrow] (human1) -- node[elabel] {Aturan Ontologi} (stage2);
+    % ==== LANGKAH 3: INGEST DAN METRIK FASE 1 ====
+    \node[db, below=1.55cm of ConsensusJson] (Neo4jConsensus)
+      {\textbf{Neo4j Konsensus}\\ingest graf final\\intra-mapel};
+    \node[metric, right=2.1cm of Neo4jConsensus] (MetricFase1)
+      {\textbf{Metrik Fase 1}\\review pakar + gold standard\\+ metrik struktur};
 
-    % ==== STAGE 3 ====
-    \node[process, below=2cm of stage2] (c1)
-      {Instansiasi Hierarki\\Struktural};
-    \node[process, below=0.5cm of c1] (c2)
-      {Pembentukan Relasi\\Semantik Dalam-Buku};
     \begin{scope}[on background layer]
-      \node[stagebox, fit=(c1)(c2),
-        label={[slabel]above:Stage 3: Konstruksi Graf}]
-        (stage3) {};
+      \node[stagebox, fit=(Neo4jConsensus)(MetricFase1),
+        label={[slabel]above:Langkah 3: Ingest Konsensus \& Metrik Fase 1}]
+        (StageMetric1) {};
     \end{scope}
-    \draw[arrow] (c1) -- (c2);
-    \draw[arrow] (stage2) -- node[elabel] {Graf Ekstraksi} (stage3);
 
-    % ==== DATABASE ====
-    \node[db, below=2cm of stage3] (db) {\textbf{(Graph Database)}};
-    \draw[arrow] (stage3) -- node[elabel] {Ingest Data Internal} (db);
+    % ==== LANGKAH 4: COMPLETION DAN EVALUASI FASE 2 ====
+    \node[llm, below=1.55cm of Neo4jConsensus] (Completion)
+      {\textbf{KG Completion}\\embedding, ANN,\\LLM classifier};
+    \node[io, below=0.75cm of Completion] (CompletionOut)
+      {\textbf{Output Completion}\\\texttt{LINTAS\_BUKU}\\edges};
+    \node[db, below left=0.85cm and 0.95cm of CompletionOut] (Neo4jPost)
+      {\textbf{Neo4j Post-KGC}\\ingest edge\\lintas-buku};
+    \node[metric, below=0.75cm of Neo4jPost] (MetricPost)
+      {\textbf{Metrik Post-KGC}\\perbandingan\\pre/post completion};
+    \node[human, below right=0.85cm and 0.95cm of CompletionOut] (Panel)
+      {\textbf{Diskusi Pakar}\\validasi relasi\\lintas-disiplin};
 
-    % ==== STAGE 4 ====
-    \node[process, right=2.5cm of stage3, yshift=-1.5cm] (d1)
-      {Pembuatan Vektor Semantik\\(Concept Embedding)};
-    \node[process, below=0.5cm of d1] (d2)
-      {Pencarian Kemiripan\\Lintas-Buku};
-    \node[process, below=0.5cm of d2] (d3)
-      {Klasifikasi Relasi\\Lintas-Disiplin (oleh LLM)};
     \begin{scope}[on background layer]
-      \node[stagebox, fit=(d1)(d2)(d3),
-        label={[slabel]above:Stage 4: Penyempurnaan Graf}]
-        (stage4) {};
+      \node[stagebox, fit=(Completion)(CompletionOut)(Neo4jPost)(MetricPost)(Panel),
+        label={[slabel]above:Langkah 4: KG Completion \& Evaluasi Fase 2}]
+        (StageCompletion) {};
     \end{scope}
-    \draw[arrow] (d1) -- (d2);
-    \draw[arrow] (d2) -- (d3);
-    \draw[doublearrow] (db.east)
-      -- node[elabel] {Baca Vektor \&\\Tulis Relasi Baru}
-      (stage4.west |- db.east);
 
-    % ==== EVALUATION ====
-    \node[llmmod, below=2.5cm of db] (e3) {\textbf{LLM-Moderator}};
-    \node[process, below=1.2cm of e3, xshift=-2.8cm] (e1)
-      {Evaluasi Metrik Topologi\\(Modularity, Density, TRR)};
-    \node[process, below=1.2cm of e3, xshift=2.8cm] (e2)
-      {Evaluasi Klasifikasi Semantik\\(Precision, Recall, F1-Score)};
-    \begin{scope}[on background layer]
-      \node[stagebox, fit=(e3)(e1)(e2),
-        label={[slabel]above:Tahap Evaluasi dan Validasi}]
-        (eval) {};
-    \end{scope}
-    \draw[arrow] (db)  -- node[elabel] {Ekstraksi Data Graf} (eval);
-    \draw[arrow] (e3)  -- node[elabel] {Keputusan Final}     (e1);
-    \draw[arrow] (e3)  -- node[elabel] {Validasi Label}      (e2);
+    % ==== ARROWS: LANGKAH 1 ====
+    \draw[arrow] (Input) -- (Construct);
+    \draw[arrow] (Construct) -- (KGJson);
+    \draw[optional] (KGJson) -- node[elabel] {opsional} (Neo4jAwal);
 
-    % ==== HUMAN 2 ====
-    \node[human, left=2.5cm of e3] (human2)
-      {\textbf{Pakar}\\Expert Judgment};
-    \draw[darrow] (human2) -- node[elabel] {Input Evaluasi} (e3);
+    % ==== ARROWS: VALIDASI DAN KONSENSUS ====
+    \draw[arrow] (KGJson) -- (ReviewApp);
+    \draw[optional] (Neo4jAwal.south) |- node[elabel, near start] {display}
+      (ReviewApp.east);
+    \draw[arrow] (ReviewApp) -| (Expert);
+    \draw[arrow] (Expert) -- node[elabel] {rating pakar} (Consensus);
+    \draw[arrow] (Consensus) -- node[elabel, right] {label final} (ConsensusJson);
 
-    % ==== FEEDBACK LOOPS ====
-    \path (human2.west) ++(-0.6,0) coordinate (clearLeft);
-    \draw[darrow, rounded corners=5mm]
-      (e3.west) -- (e3.west -| clearLeft) coordinate (turn1)
-      -- node[elabel, midway]
-           {Feedback Tervalidasi\\(Perbaikan Entitas/Relasi)}
-         (turn1 |- stage3.west)
-      -- (stage3.west);
-    \draw[darrow, rounded corners=5mm]
-      (e3.east) -- (e3.east -| stage4.south) coordinate (turn2)
-      -- node[elabel, midway]
-           {Feedback Tervalidasi\\(Perbaikan Interkoneksi)}
-         (stage4.south);
+    % ==== ARROWS: KONSENSUS DAN METRIK ====
+    \draw[arrow] (ConsensusJson) -- (Neo4jConsensus);
+    \draw[arrow] (Neo4jConsensus) -- (MetricFase1);
+    \draw[arrow] (ConsensusJson.east) -- ++(4.6,0)
+      |- node[elabel, near end] {validasi + gold standard} (MetricFase1.north);
+
+    % ==== ARROWS: COMPLETION OUTPUT ====
+    \draw[arrow] (Neo4jConsensus) -- node[elabel, left] {graf konsensus}
+      (Completion);
+    \draw[arrow] (Completion) -- (CompletionOut);
+    \draw[arrow] (CompletionOut) -| (Neo4jPost);
+    \draw[arrow] (Neo4jPost) -- (MetricPost);
+    \draw[arrow] (CompletionOut) -| (Panel);
   \end{tikzpicture}%
   }
-  \caption{\textit{Pipeline} KG \textit{Construction} \& \textit{Completion}}
+  \caption{\textit{Pipeline} penelitian KG \textit{Construction}, validasi pakar,
+  konsensus, dan \textit{Completion}}
   \label{fig:pipeline}
 \end{figure}
 \end{document}
