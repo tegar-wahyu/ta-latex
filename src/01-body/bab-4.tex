@@ -359,6 +359,30 @@ Prosesnya terdiri dari empat sub-tahap: (1) \textit{concept embedding},
 (2) \textit{candidate retrieval} via ANN, (3) \textit{candidate pruning},
 dan (4) \textit{relation classification} via LLM.
 
+Perlu ditegaskan bahwa tahap ini tetap tergolong \textit{Knowledge Graph
+Completion} (KGC), bukan sekadar penemuan relasi (\textit{relation discovery})
+berbasis teks. \textcite{ji_survey_2022} mendefinisikan KGC sebagai tugas
+menambahkan \textit{triple} baru ke dalam graf yang sudah ada, dengan subtugas
+mencakup \textit{link prediction}, \textit{entity prediction}, dan
+\textit{relation prediction}. Tahap \textit{completion} dalam penelitian ini
+beroperasi di atas himpunan \texttt{Concept} yang telah terbentuk pada tahap
+konstruksi, lalu memprediksi relasi lintas-disiplin implisit yang belum tertangkap
+pada tahap ekstraksi (Tahap~2), di antara konsep-konsep yang sudah ada; dengan
+demikian prosesnya merupakan \textit{relation prediction}, yaitu
+salah satu subtugas KGC, dan berbeda dari \textit{relation extraction} atas teks
+mentah yang justru dikerjakan pada tahap ekstraksi (Tahap~2). Penggunaan
+\textit{retrieval} berbasis \textit{embedding} untuk menyaring kandidat dan LLM
+untuk mengklasifikasikan relasi sejalan dengan paradigma KGC berbasis LLM:
+\textcite{yao_exploring_2025} memperlakukan KGC sebagai tugas tekstual dengan LLM
+untuk \textit{triple classification} dan \textit{relation prediction};
+\textcite{wei_kicgpt_2023} memadukan komponen pencarian kandidat (\textit{retriever})
+dengan LLM untuk KGC;
+serta \textcite{pan_unifying_2024} menggolongkan pemanfaatan LLM untuk melengkapi
+relasi pada KG seperti ini sebagai salah satu kelas pendekatan
+\textit{LLM-augmented} KGC. Dengan demikian, langkah \textit{retrieval} berperan sebagai
+mekanisme skalabilitas untuk membatasi ruang kandidat, bukan penyimpangan dari
+tugas KGC.
+
 \begin{enumerate}
   \item \textbf{\texttt{Concept} embedding.}
 
