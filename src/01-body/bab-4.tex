@@ -317,8 +317,9 @@ relasi memakai \texttt{MERGE} yang hanya membuat data bila belum ada, bukan
       (Subbab~\ref{subsec:skema-ontologi}) berguna untuk audit. Label
       \texttt{Concept} menandai konsep yang benar-benar diekstrak dari teks buku
       (memiliki dasar tekstual), sedangkan \texttt{ConceptTarget} menandai konsep
-      yang baru disebut sebagai tujuan relasi tetapi belum ditemukan pada teks
-      mana pun. Karena keduanya berlabel berbeda, konsep yang belum memiliki
+      yang baru disebut sebagai tujuan relasi tetapi tidak terdapat dalam
+      himpunan konsep terekstrak resmi pada bab tersebut. Karena keduanya
+      berlabel berbeda, konsep yang belum memiliki
       dasar tekstual dapat ditelusuri dengan mudah untuk diperiksa lebih lanjut.
     \item Tipe relasi dinormalisasi (karakter non-alfanumerik diganti garis
       bawah) agar sesuai dengan sintaksis \textit{relationship type} Cypher.
