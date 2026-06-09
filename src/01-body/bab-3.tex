@@ -270,8 +270,10 @@ subbab yang dirujuk dari daftar isi Buku Siswa. Untuk diproses oleh
 dengan tumpang-tindih (\textit{overlap}) 200 token: 782 \textit{chunk} dari Buku
 Siswa ($\approx$139.200 kata) dan 747 \textit{chunk} dari Buku Guru, sehingga
 total korpus berjumlah 1.529 \textit{chunk}. Jumlah kata Buku Guru tidak
-terhitung penuh karena Buku Guru Biologi berupa PDF hasil pindai tanpa lapisan
-teks; estimasi parsial dari dua buku guru lainnya adalah sekitar 79.300 kata.
+terhitung penuh karena pada Buku Guru Biologi setiap halaman tersimpan sebagai
+gambar dan bukan teks, sehingga jumlah katanya tidak bisa dihitung otomatis
+(lihat catatan Tabel~\ref{tab:ukuran-korpus}). Estimasi dari dua buku guru
+lainnya sekitar 79.300 kata.
 Rincian ukuran korpus per mata pelajaran disajikan pada
 Tabel~\ref{tab:ukuran-korpus}.
 
@@ -304,13 +306,14 @@ Tabel~\ref{tab:ukuran-korpus}.
 \vspace{4pt}
 \begin{minipage}{\textwidth}
 {\footnotesize\setstretch{1.1}\noindent
-\textsuperscript{*}~Buku Guru Biologi (\texttt{Biologi\_BG\_KLS\_XII.pdf})
-berupa PDF hasil pindai (\textit{scan}) tanpa lapisan teks, sehingga jumlah
-katanya tidak dapat diekstraksi; ke-264 \textit{chunk}-nya berkorespondensi
-satu-ke-satu dengan halaman dan tidak memuat teks.
-\textsuperscript{+}~Total kata Buku Guru merupakan estimasi parsial dari Fisika
-dan Kimia saja. Kolom Bab dan Subbab tidak dipisah Siswa/Guru karena merujuk
-pada struktur daftar isi Buku Siswa.\par}
+\textsuperscript{*}~Pada berkas Buku Guru Biologi
+(\texttt{Biologi\_BG\_KLS\_XII.pdf}), setiap halaman tersimpan dalam bentuk
+gambar dan bukan teks, sehingga jumlah katanya tidak bisa dihitung secara
+otomatis. Karena itu, jumlah \textit{chunk}-nya (264) sama persis dengan jumlah
+halaman dan tidak berisi teks.
+\textsuperscript{+}~Total kata Buku Guru hanya dihitung dari Fisika dan Kimia.
+Kolom Bab dan Subbab tidak dipisah Siswa/Guru karena mengikuti daftar isi Buku
+Siswa.\par}
 \end{minipage}
 \end{table}
 
