@@ -327,10 +327,15 @@ dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{
   diidentifikasi sebagai masalah penelitian. Setelah KGC, nilai \textit{Modularity}
   turun secara signifikan menjadi 0{,}158, menandakan bahwa relasi lintas-buku yang
   ditambahkan berhasil menjembatani ketiga komunitas tersebut dan mengurangi
-  keterpisahan topologis antar-disiplin. Penurunan ini merupakan indikator
-  keberhasilan utama \textit{pipeline}, karena penurunan \textit{Modularity}
-  mencerminkan peningkatan interkoneksi lintas-komunitas sebagaimana dirumuskan
-  pada Subbab~\ref{subsec:metrik-topologi}. Setelah \textit{edge} berlabel
+  keterpisahan topologis antar-disiplin. Penurunan ini konsisten dengan tujuan
+  penelitian, tetapi perlu dimaknai secara hati-hati: karena tahap
+  \textit{completion} hanya menambahkan \textit{edge} lintas-mapel
+  (Subbab~\ref{sec:graph-completion}) dan $Q$ dihitung atas partisi mapel yang
+  \textbf{tetap}, penambahan \textit{edge} antar-komunitas mana pun --- valid
+  maupun tidak --- pasti menurunkan $Q$. Dengan demikian \textit{Modularity}
+  mengonfirmasi \emph{keterhubungan} lintas-disiplin yang dihasilkan KGC, tetapi
+  tidak dengan sendirinya membuktikan \emph{ketepatan} relasi; ketepatan
+  bersandar pada validasi pakar (Subbab~\ref{subsec:validasi-pakar}). Setelah \textit{edge} berlabel
   \texttt{wrong} dikeluarkan, \textit{Modularity} tetap turun dari 0{,}6654
   menjadi 0{,}1489, sehingga arah kesimpulan struktural tetap sama.
 
@@ -343,7 +348,14 @@ dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{
   Subbab~\ref{subsec:metrik-ekstraksi} dan~\ref{subsec:metrik-hubungan}.
   Sistem mencatatkan nilai DC sebesar 93{,}07\% --- identik pada
   fase pre-KGC maupun post-KGC karena DC mengukur kualitas deskripsi \textit{node} yang
-  tidak berubah akibat penambahan \textit{edge} KGC. Metrik ESR tercatat 0\%
+  tidak berubah akibat penambahan \textit{edge} KGC. Sisa 6{,}93\% (25
+\textit{node}, seluruhnya \texttt{Concept}) merupakan konsep rintisan
+berdeskripsi kosong --- umumnya istilah huruf kecil seperti ``ggl sel'' atau
+``jembatan garam'' --- yang tetap berlabel \texttt{Concept} sehingga ikut
+di-\textit{embed} dan dipertimbangkan pada tahap \textit{completion}; ketiadaan
+deskripsi membuat kemiripannya lemah dan menjadi salah satu sumber relasi
+\texttt{BERKAITAN\_DENGAN} berkeyakinan rendah (misalnya ``alat ukur listrik''
+$\leftrightarrow$ ``jembatan garam''). Metrik ESR tercatat 0\%
   (0,00) pada kedua fase --- jauh di bawah ambang maksimal 10\% --- yang
   menandakan bahwa seluruh entitas induk (\texttt{:Subtopic}) berhasil
   didekomposisi menjadi setidaknya satu konsep turunan, sehingga tidak ada
@@ -721,6 +733,19 @@ pada kurikulum sains kelas XII lebih banyak bersifat prasyarat pengetahuan
 daripada aplikasi atau analogi. Dari 125 relasi, 8 \textit{edge} memiliki \textit{confidence}
 $< 0{,}5$ (seluruhnya \texttt{BERKAITAN\_\allowbreak DENGAN}) dikeluarkan dari survei validasi
 utama, menyisakan 117 relasi yang dinilai pakar.
+
+Perlu dicatat bahwa sebagian \textit{edge} bersifat redundan secara semantik:
+beberapa konsep \emph{hub} menarik banyak relasi ke sekelompok konsep
+lintas-mapel yang nyaris bersinonim. Sebagai contoh, konsep Fosforilasi
+Oksidatif (Biologi) terhubung ke sekitar sepuluh konsep redoks Kimia yang
+berdekatan (Oksidasi, Reduksi, Reaksi Redoks, Bilangan Oksidasi, Setengah
+Reaksi, Sel Volta, dan seterusnya) yang secara pedagogis mewakili satu jembatan
+yang sama, yaitu kimia redoks sebagai dasar fosforilasi oksidatif. Karena itu,
+angka 125 lebih tepat dibaca sebagai jumlah \textit{edge}, bukan jumlah
+interkoneksi konseptual yang benar-benar berbeda, dan sebagian kenaikan
+\textit{Average Degree} pada Subbab~\ref{subsec:struktural} turut disumbang oleh
+redundansi \textit{hub} ini. Penyederhanaan (deduplikasi) relasi lintas-buku
+yang bersinonim menjadi arah pengembangan lanjutan.
 
 \begin{figure}[htbp]
   \centering
