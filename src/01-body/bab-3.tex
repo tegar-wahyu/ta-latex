@@ -195,7 +195,7 @@ Adopsi DSR dalam penelitian ini mengikuti kerangka kerja
         ekstraksi--konstruksi--penyempurnaan \textit{knowledge graph}.
   \item \textbf{Demonstrasi:} Menerapkan artefak pada buku teks resmi
         Kemendikbudristek Fisika, Kimia, dan Biologi Kelas~XII.
-  \item \textbf{Evaluasi:} Pengukuran metrik struktural (ADC,
+  \item \textbf{Evaluasi:} Pengukuran metrik struktural (AD,
         \textit{Modularity}), metrik ekstraksi, dan validasi pakar.
   \item \textbf{Komunikasi:} Dokumentasi dalam bentuk skripsi dan
         publikasi ilmiah.
@@ -537,7 +537,7 @@ metrik validasi pakar pada Subbab~\ref{subsec:validasi-manusia}.
   Jumlah Relasi Terprediksi
     & Volume relasi lintas-buku hasil KGC
     & Jumlah \textit{edge} \\
-  \textit{Average Degree Centrality} (ADC)
+  \textit{Average Degree} (AD)
     & Tingkat keterhubungan rata-rata; dibandingkan pre- dan post-KGC
     & Rata-rata derajat ($\geq 0$) \\
   \textit{Graph Density}
@@ -748,7 +748,7 @@ diolah melalui tahapan berikut.
         \textit{inter-rater agreement}.
 
   \item \textbf{Kalkulasi Metrik Struktural:} Metrik topologi graf
-        (ADC, \textit{Density}, \textit{Modularity}, TRR, DC) dihitung
+        (AD, \textit{Density}, \textit{Modularity}, TRR, DC) dihitung
         melalui kueri Cypher deterministik di Neo4j Aura pada kondisi
         pre-KGC dan post-KGC.
 \end{enumerate}
@@ -794,14 +794,14 @@ karakteristik struktur pengetahuan antardisiplin sains dalam konteks
 Kurikulum Merdeka.
 
 Perbandingan dilakukan pada dua dimensi. Pertama, dimensi struktural
-membandingkan nilai metrik graf (ADC, \textit{Density},
+membandingkan nilai metrik graf (AD, \textit{Density},
 \textit{Modularity}, TRR) antarmata pelajaran pada kondisi post-KGC.
 Kedua, dimensi validasi membandingkan nilai Precision, Recall, dan F1
 antarmata pelajaran untuk mengidentifikasi disiplin mana yang paling
 diuntungkan oleh pendekatan LLM-Assisted KGC.
 
 Triangulasi antara metrik struktural dan hasil validasi pakar dilakukan
-untuk menguji koherensi keduanya: apabila mata pelajaran dengan ADC
+untuk menguji koherensi keduanya: apabila mata pelajaran dengan AD
 tinggi juga memperoleh nilai Precision tinggi dari pakar,
 maka ini memperkuat argumen bahwa kepadatan koneksi yang dihasilkan
 sistem memang mencerminkan interkoneksi yang valid secara pedagogis,

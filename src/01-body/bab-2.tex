@@ -403,23 +403,32 @@ bagaimana konsep-konsep materi sains berinteraksi satu sama lain secara
 struktural. Dalam penelitian ini, analisis topologi graf diukur
 menggunakan tiga indikator utama.
 
-\subsubsection{Average Degree Centrality (ADC)}
+\subsubsection{Average Degree (AD)}
 
-\textbf{Average Degree Centrality (ADC)} mengukur rata-rata jumlah koneksi
-yang dimiliki setiap \textit{node} dalam graf, yang dihitung sebagai rata-rata
-derajat (\textit{average degree}) seluruh \textit{node} \parencite[134]{newman_networks_2010}:
+\textbf{Average Degree (AD)} mengukur rata-rata jumlah koneksi langsung yang
+dimiliki setiap \textit{node} pada graf. Dalam penelitian ini, AD dihitung pada
+subgraf konsep, sehingga rumusnya mengikuti definisi derajat rata-rata graf
+\parencite{newman_networks_2010} dan digunakan sebagai statistik struktural KG
+untuk membaca tingkat aktivitas atau keterhubungan graf
+\parencite{ruenin_terekg_2024}:
 
 \[
-  ADC = \frac{1}{|V|} \sum_{v \in V} \deg(v)
+  AD = \frac{1}{|V_C|} \sum_{v \in V_C} \deg_C(v)
 \]
 
-\noindent dengan $|V|$ adalah jumlah \textit{node} dan $\deg(v)$ jumlah relasi
-yang terhubung langsung ke \textit{node} $v$. Dalam penelitian ini, ADC dihitung
-pada \textbf{subgraf konsep} (hanya melibatkan \textit{node} \texttt{Concept}
-dan relasi langsung antar-konsep) agar mencerminkan tingkat keterhubungan
-konseptual antarmateri sains tanpa dipengaruhi \textit{node} struktural (kelas,
-bab, subbab). Metrik ini menjadi indikator utama perubahan interkoneksi materi
-Fisika, Kimia, dan Biologi sebelum dan sesudah KGC.
+\noindent dengan $V_C$ adalah himpunan \textit{node} \texttt{Concept} dan
+$\deg_C(v)$ adalah jumlah relasi langsung dari \textit{node} konsep $v$ ke
+\textit{node} konsep lain. Rumus ini perlu dibedakan dari \textit{degree
+centrality} ternormalisasi, yang membagi derajat sebuah \textit{node} dengan
+jumlah koneksi maksimum yang mungkin, yaitu $|V|-1$
+\parencite{pavel_degree_2022}. Penelitian ini menggunakan rata-rata derajat tak
+ternormalisasi karena tujuan metrik adalah membaca perubahan jumlah relasi
+konseptual rata-rata per \texttt{Concept}, bukan proporsi koneksi maksimum yang
+mungkin terbentuk. Dengan pembatasan pada subgraf konsep, AD mencerminkan
+tingkat keterhubungan konseptual antarmateri sains tanpa dipengaruhi
+\textit{node} struktural (kelas, bab, subbab). Metrik ini menjadi indikator
+utama perubahan interkoneksi materi Fisika, Kimia, dan Biologi sebelum dan
+sesudah KGC.
 
 \subsubsection{Modularity}
 
@@ -488,7 +497,7 @@ nilai mendekati 0 menandakan graf yang jarang (\textit{sparse})
 \parencite[134]{newman_networks_2010}. Dalam
 konteks penelitian ini, \textit{density} digunakan untuk membandingkan tingkat
 keterkaitan antar-konsep sebelum dan sesudah penambahan relasi lintas
-buku (\textit{cross-book links}). Sejalan dengan ADC antar-konsep yang
+buku (\textit{cross-book links}). Sejalan dengan AD antar-konsep yang
 menjadi metrik utama, \textit{density} dihitung pada \textbf{subgraf konsep},
 yakni hanya melibatkan \textit{node} \texttt{Concept} dan relasi langsung
 antar-konsep, agar mencerminkan kepadatan interkoneksi materi sains tanpa

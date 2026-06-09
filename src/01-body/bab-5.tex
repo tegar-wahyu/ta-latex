@@ -165,7 +165,7 @@ terhubung oleh relasi lintas-buku.
 \toprule
 \textbf{Metrik Struktural} & \textbf{Pre-KGC} & \textbf{Post-KGC} \\
 \midrule
-ADC                & 0{,}7384 & 1{,}4651 \\
+AD                & 0{,}7384 & 1{,}4651 \\
 \textit{Graph Density} & 0{,}00108 & 0{,}00214 \\
 \textit{Modularity}               & 0{,}6659 & 0{,}1580 \\
 \bottomrule
@@ -210,7 +210,7 @@ ADC & 0{,}7384 & 1{,}4651 & 0{,}7093 & 1{,}4360 \\
   width=0.32\linewidth,
   height=5.2cm,
   ybar,
-  bar width=8pt,
+  /pgf/bar width=8pt,
   ymin=0,
   enlarge x limits=0.38,
   symbolic x coords={Pre-KGC,Post-KGC},
@@ -229,7 +229,7 @@ ADC & 0{,}7384 & 1{,}4651 & 0{,}7093 & 1{,}4360 \\
 ]
 
 \nextgroupplot[
-  title={ADC},
+  title={AD},
   ylabel={Nilai},
   ymax=1.7,
   nodes near coords={\pgfmathprintnumber[fixed,precision=2]{\pgfplotspointmeta}}
@@ -275,9 +275,9 @@ dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{
 \end{figure}
 
 \begin{enumerate}
-  \item \textbf{Evaluasi \textit{Average Degree Centrality} (ADC) dan Kepadatan.}
+  \item \textbf{Evaluasi \textit{Average Degree} (AD) dan Kepadatan.}
 
-  Berdasarkan Tabel~\ref{tab:struktural}, ADC antar-konsep hampir berlipat ganda
+  Berdasarkan Tabel~\ref{tab:struktural}, AD antar-konsep hampir berlipat ganda
   dari 0{,}74 (pre-KGC) menjadi 1{,}47 (post-KGC), naik 98{,}4\%. Peningkatan
   tajam ini mencerminkan bahwa \textit{pipeline} KGC berhasil menambahkan 125
   relasi lintas-buku baru yang secara langsung menghubungkan \textit{node}
@@ -304,7 +304,7 @@ dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{
   Untuk memastikan bahwa pola ini tidak bergantung pada relasi yang dinilai salah
   oleh pakar, Tabel~\ref{tab:struktural-robustness} menyajikan perhitungan ulang
   setelah seluruh \textit{edge} berlabel \texttt{wrong} dikeluarkan dari subgraf
-  \texttt{Concept}$\rightarrow$\texttt{Concept}. Hasilnya tetap searah: ADC
+  \texttt{Concept}$\rightarrow$\texttt{Concept}. Hasilnya tetap searah: AD
   meningkat dari 0{,}7093 menjadi 1{,}4360, sedangkan densitas meningkat dari
   0{,}00103 menjadi 0{,}00209. Visualisasi pada
   Gambar~\ref{fig:robustness-wrong-comparison} memperlihatkan bahwa selisih
@@ -678,7 +678,7 @@ utama, menyisakan 117 relasi yang dinilai pakar.
         nodes near coords style={font=\scriptsize, /pgf/number format/precision=0, /pgf/number format/fixed},
         every node near coord/.append style={anchor=west, xshift=2pt},
         xmin=0, xmax=70,
-        bar width=10pt,
+        /pgf/bar width=10pt,
         xlabel={Jumlah \textit{edge}},
         xlabel style={font=\scriptsize},
         ticklabel style={font=\scriptsize},

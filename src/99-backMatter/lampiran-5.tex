@@ -237,13 +237,13 @@ SET r.description = $description, r.relation_type = $relation_type,
 \label{lamp:cypher-metrik}
 
 Kueri berikut menghitung metrik yang didefinisikan pada Bab~2. Metrik
-struktural utama (ADC dan \textit{Graph Density}) dihitung pada
+struktural utama (AD dan \textit{Graph Density}) dihitung pada
 \textbf{subgraf konsep} --- hanya \textit{node} \texttt{:Concept} dan relasi
 langsung antar-konsep --- agar tidak terpengaruh \textit{node} struktural.
 
-\subsubsection{Average Degree Centrality (ADC)}
+\subsubsection{Average Degree (AD)}
 
-\begin{lstlisting}[style=cypherbox,caption={ADC pada subgraf konsep.},label={lst:cypher-adc}]
+\begin{lstlisting}[style=cypherbox,caption={AD pada subgraf konsep.},label={lst:cypher-ad}]
 MATCH (m:Concept)
 WITH m, COUNT { (m)--(:Concept) } AS degree
 RETURN avg(degree) AS average_concept_degree
@@ -297,7 +297,7 @@ RETURN sum( (1.0 * e_cc / m) - (1.0 * k_out * k_in / (m * m)) ) AS modularity
 Untuk menghasilkan kolom ``\textit{Wrong} Dikeluarkan'' pada
 Tabel~\ref{tab:struktural-robustness}, seluruh pola pencocokan relasi
 \texttt{(:Concept)-[r]-(:Concept)} atau
-\texttt{(:Concept)-[r]->(:Concept)} pada kueri ADC, \textit{Graph Density},
+\texttt{(:Concept)-[r]->(:Concept)} pada kueri AD, \textit{Graph Density},
 dan \textit{Modularity} diberi filter berikut. Node \texttt{:Concept} tetap
 dipertahankan, sedangkan relasi berlabel \texttt{wrong} dikeluarkan dari
 perhitungan.

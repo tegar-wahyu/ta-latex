@@ -260,7 +260,7 @@ Secara spesifik, penelitian ini bertujuan untuk:
         \begin{enumerate}
           \item \textbf{Evaluasi Struktural:} mengukur perubahan topologi graf
                 sebelum dan sesudah proses KGC menggunakan metrik
-                \textit{Average Degree Centrality} (ADC),
+                \textit{Average Degree} (AD),
                 \textit{Graph Density}, \textit{Modularity},
                 \textit{Typed Relation Ratio}, dan
                 \textit{Description Completeness}.
@@ -330,7 +330,7 @@ Berikut adalah batasan-batasan yang ditetapkan untuk penelitian ini.
   \item \textbf{Infrastruktur Graf:} Graf diinstansiasi pada basis data Neo4j
         (Aura Free tier) menggunakan Cypher. Pencarian kemiripan semantik
         memanfaatkan ANN \textit{vector index} HNSW dengan model
-        \textit{embedding} \texttt{gemini-embedding-001}. Metrik topologi (ADC,
+        \textit{embedding} \texttt{gemini-embedding-001}. Metrik topologi (AD,
         \textit{Graph Density}, \textit{Modularity}) dihitung melalui kueri
         Cypher.
 
