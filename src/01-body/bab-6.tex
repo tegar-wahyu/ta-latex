@@ -124,14 +124,15 @@ menjawab keempat rumusan masalah penelitian adalah sebagai berikut.
         komunitas yang nyaris terisolasi, ditandai nilai \textit{Modularity}
         0{,}666 yang merefleksikan kondisi \textit{siloed learning}. Setelah
         penambahan 125 relasi lintas-buku, \textit{Modularity} turun menjadi
-        0{,}158, sementara \textit{Average Degree Centrality} (ADC) meningkat
+        0{,}158, sementara \textit{Average Degree} (AD) meningkat
         98{,}4\% (dari 0{,}74 menjadi 1{,}47) dan \textit{Graph Density}
         antar-konsep hampir berlipat ganda (dari 0{,}00108 menjadi 0{,}00214).
         Bukti topologis ini (Tabel~\ref{tab:struktural}) mengonfirmasi bahwa
-        \textit{Knowledge Graph} (KG) yang dihasilkan berhasil menjembatani
-        ketiga komunitas disiplin yang semula terpisah. Uji ketahanan dengan
+        \textit{Knowledge Graph} (KG) yang dihasilkan berhasil meningkatkan
+        keterhubungan konseptual antar-disiplin dalam representasi graf yang
+        dibangun. Uji ketahanan dengan
         mengeluarkan \textit{edge} berlabel \texttt{wrong} menunjukkan pola yang
-        sama: ADC tetap meningkat dari 0{,}7093 menjadi 1{,}4360, densitas dari
+        sama: AD tetap meningkat dari 0{,}7093 menjadi 1{,}4360, densitas dari
         0{,}00103 menjadi 0{,}00209, dan \textit{Modularity} turun dari 0{,}6654
         menjadi 0{,}1489.
 
@@ -143,10 +144,13 @@ menjawab keempat rumusan masalah penelitian adalah sebagai berikut.
         \textit{vector index} (HNSW) atas \textit{embedding} deskripsi konsep
         (\texttt{gemini-embedding-001}), dilanjutkan klasifikasi relasi oleh LLM
         dengan strategi \textit{few-shot In-Context Learning}. Karena pembangkitan
-        kandidat bertumpu pada kemiripan makna deskripsi---bukan pada pola
-        konektivitas graf---konsep yang berkoneksi sedikit (\textit{long-tail})
-        pun tetap memperoleh kandidat relasi yang bermakna. Pendekatan ini berhasil
-        menemukan relasi lintas-disiplin implisit yang valid (validitas 99{,}1\%),
+        kandidat bertumpu pada kemiripan makna deskripsi, bukan pada pola
+        konektivitas graf, pendekatan ini sesuai untuk menangani keterbatasan
+        metode struktural pada konsep dengan konektivitas rendah, meskipun
+        penelitian ini belum melakukan analisis kuantitatif khusus terhadap
+        distribusi \textit{long-tail}. Hasil yang terukur menunjukkan bahwa
+        pendekatan semantik tersebut berhasil menemukan relasi lintas-disiplin
+        implisit yang valid (validitas 99{,}1\%),
         yaitu relasi yang tidak tersurat dalam teks satu buku dan tidak tertangkap
         oleh ekstraksi berbasis aturan.
 
@@ -154,8 +158,8 @@ menjawab keempat rumusan masalah penelitian adalah sebagai berikut.
         kualitas struktural KG.} LLM-Assisted KGC mampu menghasilkan relasi
         lintas-disiplin yang valid menurut pakar dan, sekaligus, meningkatkan
         kualitas struktural graf sebagaimana ditunjukkan oleh perbaikan metrik
-        topologis pada poin~(1). Sistem unggul dalam \textit{menemukan} dan
-        \textit{melabeli} relasi implisit, namun memiliki kelemahan sistematis
+        topologis pada poin~(1). Sistem menunjukkan kinerja tinggi dalam
+        \textit{menemukan} dan \textit{melabeli} relasi implisit, namun memiliki kelemahan sistematis
         pada penentuan arah relasi. Pada validasi pakar Fase~2 atas relasi
         lintas-buku, sistem mencapai validitas 99{,}1\% (116/117) dan ketepatan
         tipe 98{,}3\% (115/117), tetapi ketepatan arah hanya 75{,}9\% (88/116).
@@ -171,30 +175,31 @@ menjawab keempat rumusan masalah penelitian adalah sebagai berikut.
   \item \textbf{Keandalan evaluasi hybrid dan pengukuran kualitas kuantitatif.}
         \textit{Pipeline} evaluasi hybrid berhasil mengukur kualitas KG secara
         andal dan terukur. Pada validasi intra-mapel (Fase~1) oleh enam
-        pakar domain, sistem mencatatkan \textit{precision} 93{,}1\%,
-        \textit{recall} 91{,}8\%, dan F1-Score 92{,}4\%
+        pakar domain, sistem mencatatkan \textit{Fuzzy Precision} 93{,}1\%,
+        \textit{Fuzzy Recall} 91{,}8\%, dan F1-Score 92{,}4\%
         (Tabel~\ref{tab:validasi-metrik}), dengan kesepakatan antarpakar Gwet's
         AC1 yang bervariasi dari ``baik'' hingga ``sangat baik'' (0{,}607 pada
         Kimia hingga 0{,}931 pada Biologi). Mekanisme \textit{LLM-as-a-judge}
         (Gemini~3.1 Pro Preview) berfungsi sebagai penengah yang menyelesaikan
         ketidaksepakatan intra-mapel berbasis konteks buku teks: mekanisme ini
-        menengahi 123 konflik rating---memilih salah satu label yang telah
+        menengahi 123 konflik rating, memilih salah satu label yang telah
         diberikan pakar pada 95{,}1\% kasus alih-alih menilai ulang secara
-        independen---serta menyetujui 29 dari 44 usulan
+        independen, serta menyetujui 29 dari 44 usulan
         \textit{missing triple} (Tabel~\ref{tab:llm-judge}). Sementara itu,
         validasi panel pada relasi lintas-disiplin (Fase~2) menghasilkan
         validitas 99{,}1\%. Dengan demikian, kombinasi metrik struktural dan
-        validasi pakar berbantuan LLM terbukti mampu mempertanggungjawabkan
-        validitas keilmuan KG secara objektif dan terukur.
+        validasi pakar berbantuan LLM menyediakan dasar yang sistematis dan
+        terukur untuk mempertanggungjawabkan validitas keilmuan KG.
 \end{enumerate}
 
-Secara keseluruhan, penelitian ini membuktikan bahwa pendekatan LLM-Assisted KGC
+Secara keseluruhan, penelitian ini menunjukkan bahwa pendekatan LLM-Assisted KGC
 merupakan metode yang layak (\textit{viable}) untuk membangun dan melengkapi graf
 pengetahuan kurikulum sains lintas-disiplin berbahasa Indonesia. Artefak yang
-dihasilkan---berupa purwarupa KG tervalidasi beserta \textit{pipeline}-nya yang
-terdokumentasi---memenuhi tujuan penelitian dan menjadi salah satu sumber daya
-data terbuka berbahasa Indonesia bagi pengembang kurikulum dan peneliti teknologi
-pendidikan, dengan catatan
+dihasilkan berupa purwarupa KG tervalidasi beserta \textit{pipeline} yang
+terdokumentasi, dan menjadi salah satu sumber daya terbuka berbahasa Indonesia
+yang mendokumentasikan interkoneksi materi sains lintas-disiplin pada Kurikulum
+Merdeka. Artefak ini dapat dimanfaatkan oleh pengembang kurikulum dan peneliti
+teknologi pendidikan, dengan catatan
 penting bahwa normalisasi arah relasi masih memerlukan penyempurnaan lebih lanjut.
 
 % ============================================================
@@ -230,7 +235,7 @@ menafsirkan hasilnya.
         memodelkan tingkat kognitif (taksonomi Bloom) maupun keadaan pembelajar
         (\textit{learner state}).
 
-  \item \textbf{Keterbatasan metrik dan model.} \textit{Recall} dan F1 pada
+  \item \textbf{Keterbatasan metrik dan model.} \textit{Fuzzy Recall} dan F1 pada
         validasi lintas-disiplin (Fase~2) tidak dapat dihitung karena tiadanya
         \textit{denominator} relasi benar yang menyeluruh dalam konfigurasi panel
         tunggal. Selain itu, penelitian hanya memanfaatkan satu keluarga model
@@ -252,8 +257,11 @@ penelitian dan pengembangan selanjutnya.
   \item \textbf{Penanganan arah relasi.} Memprioritaskan perbaikan ketepatan arah,
         misalnya melalui penambahan contoh \textit{few-shot} yang eksplisit
         menunjukkan arah, langkah klasifikasi arah terpisah, atau normalisasi
-        arah pasca-proses (misalnya memberlakukan kecenderungan arah Kimia$\to$Biologi
-        sebagai prasyarat) untuk mengoreksi 28 relasi terbalik secara sistematis.
+        arah pasca-proses berbasis \textit{reasoning} semantik. Mekanisme ini
+        dapat memeriksa apakah arah yang dipilih sudah sesuai dengan makna
+        relasi, misalnya apakah konsep sumber benar-benar berperan sebagai
+        prasyarat, aplikasi, atau pendalaman dari konsep tujuan, sehingga
+        koreksi arah tidak hanya mengikuti pola dominan tertentu dalam data.
 
   \item \textbf{Penguatan ekstraksi relasi kuantitatif.} Menambahkan tahap
         ekstraksi khusus untuk rumus dan persamaan matematis, atau memanfaatkan
@@ -272,7 +280,7 @@ penelitian dan pengembangan selanjutnya.
   \item \textbf{Evaluasi lintas-model.} Membandingkan beberapa keluarga LLM (mis.\
         GPT, Claude) pada tahap ekstraksi, \textit{completion}, dan
         \textit{LLM-as-a-judge} untuk menguji ketangguhan hasil, serta memperkuat
-        validasi Fase~2 dengan dua pakar independen agar \textit{recall} dan AC1
+        validasi Fase~2 dengan dua pakar independen agar \textit{Fuzzy Recall} dan AC1
         dapat dihitung.
 \end{enumerate}
 

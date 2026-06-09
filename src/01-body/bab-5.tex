@@ -165,7 +165,7 @@ terhubung oleh relasi lintas-buku.
 \toprule
 \textbf{Metrik Struktural} & \textbf{Pre-KGC} & \textbf{Post-KGC} \\
 \midrule
-ADC                & 0{,}7384 & 1{,}4651 \\
+AD                & 0{,}7384 & 1{,}4651 \\
 \textit{Graph Density} & 0{,}00108 & 0{,}00214 \\
 \textit{Modularity}               & 0{,}6659 & 0{,}1580 \\
 \bottomrule
@@ -190,7 +190,7 @@ berlabel \texttt{wrong}.}
 \textbf{Metrik} & \textbf{Pre-KGC} & \textbf{Post-KGC} &
 \textbf{Pre-KGC} & \textbf{Post-KGC} \\
 \midrule
-ADC & 0{,}7384 & 1{,}4651 & 0{,}7093 & 1{,}4360 \\
+AD & 0{,}7384 & 1{,}4651 & 0{,}7093 & 1{,}4360 \\
 \textit{Graph Density} & 0{,}00108 & 0{,}00214 & 0{,}00103 & 0{,}00209 \\
 \textit{Modularity} & 0{,}6659 & 0{,}1580 & 0{,}6654 & 0{,}1489 \\
 \textit{Concept}$\rightarrow$\textit{Concept} \textit{edge}
@@ -210,7 +210,7 @@ ADC & 0{,}7384 & 1{,}4651 & 0{,}7093 & 1{,}4360 \\
   width=0.32\linewidth,
   height=5.2cm,
   ybar,
-  bar width=8pt,
+  /pgf/bar width=8pt,
   ymin=0,
   enlarge x limits=0.38,
   symbolic x coords={Pre-KGC,Post-KGC},
@@ -229,7 +229,7 @@ ADC & 0{,}7384 & 1{,}4651 & 0{,}7093 & 1{,}4360 \\
 ]
 
 \nextgroupplot[
-  title={ADC},
+  title={AD},
   ylabel={Nilai},
   ymax=1.7,
   nodes near coords={\pgfmathprintnumber[fixed,precision=2]{\pgfplotspointmeta}}
@@ -275,9 +275,9 @@ dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{
 \end{figure}
 
 \begin{enumerate}
-  \item \textbf{Evaluasi \textit{Average Degree Centrality} (ADC) dan Kepadatan.}
+  \item \textbf{Evaluasi \textit{Average Degree} (AD) dan Kepadatan.}
 
-  Berdasarkan Tabel~\ref{tab:struktural}, ADC antar-konsep hampir berlipat ganda
+  Berdasarkan Tabel~\ref{tab:struktural}, AD antar-konsep hampir berlipat ganda
   dari 0{,}74 (pre-KGC) menjadi 1{,}47 (post-KGC), naik 98{,}4\%. Peningkatan
   tajam ini mencerminkan bahwa \textit{pipeline} KGC berhasil menambahkan 125
   relasi lintas-buku baru yang secara langsung menghubungkan \textit{node}
@@ -304,7 +304,7 @@ dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{
   Untuk memastikan bahwa pola ini tidak bergantung pada relasi yang dinilai salah
   oleh pakar, Tabel~\ref{tab:struktural-robustness} menyajikan perhitungan ulang
   setelah seluruh \textit{edge} berlabel \texttt{wrong} dikeluarkan dari subgraf
-  \texttt{Concept}$\rightarrow$\texttt{Concept}. Hasilnya tetap searah: ADC
+  \texttt{Concept}$\rightarrow$\texttt{Concept}. Hasilnya tetap searah: AD
   meningkat dari 0{,}7093 menjadi 1{,}4360, sedangkan densitas meningkat dari
   0{,}00103 menjadi 0{,}00209. Visualisasi pada
   Gambar~\ref{fig:robustness-wrong-comparison} memperlihatkan bahwa selisih
@@ -348,9 +348,14 @@ dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{
   menandakan bahwa seluruh entitas induk (\texttt{:Subtopic}) berhasil
   didekomposisi menjadi setidaknya satu konsep turunan, sehingga tidak ada
   ``\textit{node} buntu'' dalam graf. Nilai TRR meningkat dari
-  69{,}69\% (pre-KGC) menjadi 74{,}86\% (post-KGC), mencerminkan bahwa KGC
-  menambahkan \textit{edge} bertipe semantik spesifik sehingga proporsi relasi
-  bertipe meningkat relatif terhadap total \textit{edge} dalam graf.
+  69{,}69\% (pre-KGC) menjadi 74{,}86\% (post-KGC). Kenaikan ini menunjukkan
+  bahwa relasi baru hasil KGC tidak hanya menambah koneksi antarkonsep, tetapi
+  juga langsung dipetakan ke lima tipe relasi lintas-buku dalam kosakata
+  ontologi, seperti \texttt{LINTAS\_BUKU\_PRASYARAT\_UNTUK} dan
+  \texttt{LINTAS\_BUKU\_APLIKASI\_DARI}. Dengan demikian, lebih banyak relasi
+  dalam graf yang tidak sekadar menyatakan bahwa dua konsep saling berhubungan,
+  tetapi juga menjelaskan jenis hubungannya, misalnya prasyarat, aplikasi,
+  pendalaman, kesetaraan, atau keterkaitan umum.
 \end{enumerate}
 
 % ────────────────────────────────────────────────────────────
@@ -366,21 +371,25 @@ Tabel~\ref{tab:validasi-mapel}; label ini bersifat lokal per mata
 pelajaran, sehingga ``Expert~1 Biologi'' bukan orang yang sama dengan
 ``Expert~1 Fisika'' maupun ``Expert~1 Kimia''---total enam pakar berbeda
 terlibat. Data dianalisis menggunakan metrik \textit{Fuzzy
-Precision} dan \textit{Recall} \parencite{harju_evaluating_2023}, F1-Score,
+Precision} dan \textit{Fuzzy Recall} \parencite{harju_evaluating_2023}, F1-Score,
 serta uji kesepakatan Gwet's AC1, sebagaimana didefinisikan pada
 Subbab~\ref{subsec:validasi-manusia}.
+
+Alur pembacaan hasil validasi pada bagian ini adalah sebagai berikut. Pertama,
+pakar memberi penilaian awal terhadap \textit{triple} intra-mapel melalui KG
+Review App. Kedua, penilaian awal tersebut digabungkan menjadi konsensus final;
+apabila dua pakar tidak sepakat, \textit{LLM-as-a-judge} digunakan untuk
+menetapkan label akhir berbasis konteks buku teks. Ketiga, label awal pakar dan
+konsensus final digunakan untuk menghitung Fase~1, yaitu \textit{Fuzzy
+Precision}, \textit{Fuzzy Recall}, F1-Score, dan Gwet's AC1. Keempat, relasi
+lintas-mapel hasil KGC divalidasi secara terpisah pada Fase~2 melalui diskusi
+panel, sehingga metrik yang dilaporkan pada fase ini adalah validitas relasi
+terprediksi, bukan \textit{Fuzzy Recall}.
 
 {\setlength{\tabcolsep}{4pt}
 \begin{table}[htbp]
 \centering
-\caption{Hasil validasi Fase~1 (intra-mapel) per pakar dan konsensus final.
-  P/R = \textit{Fuzzy Precision}/\textit{Recall} (bobot pada
-  Subbab~\ref{subsec:validasi-manusia}); semua \textit{triple} yang ditinjau,
-  termasuk berlabel Salah, masuk ke penyebut presisi. Kolom \textbf{Hilang}
-  adalah jumlah \textit{missing triples}, yakni relasi esensial yang dilaporkan
-  pakar sebagai terlewat oleh sistem; relasi ini tidak termasuk dalam kolom
-  Ditinjau dan menjadi \textit{false negative} yang menurunkan \textit{Recall}
-  (rincian pada \ref{lamp:missing-triples}).}
+\caption{Hasil validasi Fase~1 per pakar dan konsensus final.}
 \label{tab:validasi-mapel}
 \begin{tabular}{@{}l l c c c c c c c c@{}}
 \toprule
@@ -403,6 +412,17 @@ Keseluruhan & Expert 1   & 557 & 511 & 13 & 6  & 27 & 15 & 0{,}932 & 0{,}952 \\
             & \textit{Final} & 557 & 503 & 29 & 4 & 21 & 29 & \textbf{0{,}931} & \textbf{0{,}918} \\
 \bottomrule
 \end{tabular}
+\vspace{0.35em}
+\begin{minipage}{0.96\linewidth}
+\footnotesize
+\textit{Catatan.} P/R = \textit{Fuzzy Precision}/\textit{Fuzzy Recall} (bobot
+pada Subbab~\ref{subsec:validasi-manusia}). Semua \textit{triple} yang
+ditinjau, termasuk berlabel Salah, masuk ke penyebut presisi. Kolom
+\textbf{Hilang} menunjukkan \textit{missing triples}, yaitu relasi esensial
+yang dilaporkan pakar sebagai terlewat oleh sistem; relasi ini tidak termasuk
+dalam kolom Ditinjau dan dihitung sebagai \textit{false negative} yang
+menurunkan \textit{Fuzzy Recall} (rincian pada \ref{lamp:missing-triples}).
+\end{minipage}
 \end{table}
 }
 
@@ -429,7 +449,7 @@ Kimia   & 166 & 0{,}651 & 0{,}112 & \textbf{0{,}607} & Baik \\
 
 \begin{table}[htbp]
 \centering
-\caption{Ringkasan metrik per fase evaluasi. Untuk Fase~2, Precision $=$ validitas relasi, sedangkan Recall, F1, dan AC1 tidak berlaku (lihat Subbab~\ref{subsec:metrik-fase2}).}
+\caption{Ringkasan metrik per fase evaluasi.}
 \label{tab:validasi-metrik}
 \begin{tabular}{@{}
   >{\raggedright\arraybackslash}p{0.20\linewidth}
@@ -438,24 +458,42 @@ Kimia   & 166 & 0{,}651 & 0{,}112 & \textbf{0{,}607} & Baik \\
   >{\centering\arraybackslash}p{0.18\linewidth}
   >{\centering\arraybackslash}p{0.18\linewidth}@{}}
 \toprule
-\textbf{Fase} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Gwet's AC1} \\
+\textbf{Fase} & \textbf{Fuzzy Precision / Validitas} & \textbf{Fuzzy Recall} & \textbf{F1-Score} & \textbf{Gwet's AC1} \\
 \midrule
 Fase 1 (konsensus) & 0{,}931 & 0{,}918 & 0{,}924 & lihat Tabel~\ref{tab:ac1} \\
 Fase 2 (panel diskusi) & 0{,}991 & — & — & — \\
 \bottomrule
 \end{tabular}
+\vspace{0.35em}
+\begin{minipage}{0.88\linewidth}
+\footnotesize
+\textit{Catatan.} Pada Fase~1, kolom pertama adalah \textit{Fuzzy Precision}.
+Pada Fase~2, kolom yang sama dibaca sebagai validitas relasi terprediksi, yaitu
+proporsi kandidat relasi lintas-mapel yang dinilai valid oleh panel.
+\textit{Fuzzy Recall}, F1-Score, dan Gwet's AC1 tidak dihitung
+karena evaluasi dilakukan melalui panel diskusi dan tidak menyediakan penyebut
+relasi benar yang menyeluruh (lihat Subbab~\ref{subsec:metrik-fase2}).
+\end{minipage}
 \end{table}
 
 \begin{enumerate}
-  \item \textbf{Kuantitas Akurasi (Precision, Recall, F1-Score).}
+  \item \textbf{Kinerja Ekstraksi Intra-mapel (Fuzzy Precision, Fuzzy Recall, F1-Score).}
 
-  Secara agregat pada Fase 1, \textit{precision} konsensus final mencapai 93{,}1\%
-  dan \textit{recall} 91{,}8\%, menghasilkan F1-Score sebesar 92{,}4\%
-  (Tabel~\ref{tab:validasi-mapel}). Nilai ini menunjukkan bahwa
+  Ketiga metrik ini tidak diperlakukan sebagai akurasi klasifikasi sederhana,
+  melainkan sebagai ukuran kinerja ekstraksi relasi: \textit{Fuzzy Precision}
+  menunjukkan proporsi relasi hasil sistem yang dinilai benar atau sebagian
+  benar oleh pakar, \textit{Fuzzy Recall} menunjukkan sejauh mana sistem tidak
+  melewatkan relasi esensial yang kemudian diusulkan sebagai
+  \textit{missing triples}, dan F1-Score merangkum keseimbangan keduanya.
+  Tabel~\ref{tab:validasi-metrik}, yang berjudul Ringkasan metrik per fase evaluasi,
+  menunjukkan bahwa Fase~1 menghasilkan \textit{Fuzzy Precision} 93{,}1\%,
+  \textit{Fuzzy Recall} 91{,}8\%, dan F1-Score 92{,}4\%. Rincian per mata
+  pelajaran pada Tabel~\ref{tab:validasi-mapel}, yang berjudul Hasil validasi
+  Fase~1 per pakar dan konsensus final, menunjukkan bahwa
   kemampuan LLM dalam mengekstraksi relasi intra-mapel tergolong baik. Biologi
   mencatatkan F1 tertinggi (0{,}973), diikuti Fisika (0{,}936), dan Kimia (0{,}862).
 
-  Pada level keseluruhan, \textit{precision} melampaui \textit{recall} sebesar
+  Pada level keseluruhan, \textit{Fuzzy Precision} melampaui \textit{Fuzzy Recall} sebesar
   1{,}3 poin. Selisih ini melebar pada konsensus final Fisika (3{,}1 poin) dan
   terutama pada penilaian Expert 2 Kimia (10{,}9 poin). Penyebab utamanya adalah
   \textit{missing triples} (10 relasi pada konsensus final Fisika dan 29 relasi
@@ -469,10 +507,12 @@ Fase 2 (panel diskusi) & 0{,}991 & — & — & — \\
   oleh nilai AC1 Fisika (0{,}754) yang lebih rendah daripada Biologi (0{,}931).
 
   Pada Fase 2 (inter-mapel), validasi panel diskusi atas 117 relasi lintas-buku
-  menghasilkan \textit{precision} (validitas) 99{,}1\% (116/117 relasi dikonfirmasi
-  valid; satu relasi ditolak). Metrik \textit{Recall} dan F1 tidak dapat dihitung
+  menghasilkan validitas relasi terprediksi 99{,}1\% (116/117 relasi
+  dikonfirmasi valid; satu relasi ditolak). Nilai ini berbeda dari
+  \textit{Fuzzy Precision} Fase~1 karena Fase~2 memakai keputusan panel tunggal
+  dan tidak menggunakan skala parsial. Metrik \textit{Fuzzy Recall} dan F1 tidak dapat dihitung
   karena tidak tersedia informasi jumlah total relasi lintas-buku yang benar
-  (denominator \textit{recall}) dalam konfigurasi panel tunggal ini. Karena validasi
+  (penyebut untuk menghitung cakupan relasi benar) dalam konfigurasi panel tunggal ini. Karena validasi
   dilakukan melalui diskusi panel (bukan dua pakar independen), uji Gwet's AC1
   tidak berlaku.
 
@@ -480,7 +520,9 @@ Fase 2 (panel diskusi) & 0{,}991 & — & — & — \\
 
   Sesuai dengan pilihan metodologi yang ditetapkan pada Bab 3 (dan latar belakang
   teoritis Gwet's AC1 pada Subbab~\ref{subsec:validasi-manusia}), uji kesepakatan antarpakar menggunakan
-  Gwet's AC1 \parencite{gwet_handbook_2014}. Hasil pada Tabel~\ref{tab:ac1} menunjukkan variasi tingkat kesepakatan
+  Gwet's AC1 \parencite{gwet_handbook_2014}. Tabel~\ref{tab:ac1}, yang
+  berjudul Uji kesepakatan antarpakar Gwet's AC1 per mata pelajaran,
+  menunjukkan variasi tingkat kesepakatan
   yang signifikan antar mata pelajaran. Biologi mencatatkan AC1 tertinggi dan
   tergolong sangat baik (0{,}931), mengindikasikan kesepakatan yang hampir
   sempurna antara kedua pakar. Hal ini konsisten dengan sifat konten Biologi
@@ -493,11 +535,14 @@ Fase 2 (panel diskusi) & 0{,}991 & — & — & — \\
 
   \item \textbf{Penengahan \textit{LLM-as-a-judge}.}
 
-  Mekanisme \textit{LLM-as-a-judge} (Gemini~3.1 Pro Preview) menengahi dua jenis
-  ketidaksepakatan intra-mapel pada Fase~1 yang tidak terselesaikan oleh
-  kesepakatan langsung antarpakar: (a) perbedaan rating atas \textit{triple} yang
-  sama, dan (b) usulan \textit{missing triple} yang hanya diajukan satu pakar.
-  Volume dan hasil penengahannya dirangkum pada Tabel~\ref{tab:llm-judge}.
+  Dalam penelitian ini, ajudikasi berarti proses menetapkan satu label final
+  ketika penilaian pakar belum mencapai kesepakatan. Mekanisme
+  \textit{LLM-as-a-judge} (Gemini~3.1 Pro Preview) digunakan untuk menengahi dua
+  jenis ketidaksepakatan intra-mapel pada Fase~1: (a) perbedaan rating atas
+  \textit{triple} yang sama, dan (b) usulan \textit{missing triple} yang hanya
+  diajukan satu pakar.
+  Volume dan hasil penengahannya dirangkum pada Tabel~\ref{tab:llm-judge}, yang
+  berjudul Volume dan hasil penengahan \textit{LLM-as-a-judge}.
 
   Untuk perbedaan rating, AI Judge menengahi total 123 \textit{triple} (Biologi
   10, Fisika 55, Kimia 58). Pada 117 dari 123 kasus (95{,}1\%) ia memilih salah
@@ -509,13 +554,27 @@ Fase 2 (panel diskusi) & 0{,}991 & — & — & — \\
   sebagai relasi esensial yang layak ditambahkan ke \textit{ground truth}, dan
   menolak 15 sisanya. Jumlah usulan yang disetujui inilah yang muncul sebagai
   kolom \textbf{Hilang} pada Tabel~\ref{tab:validasi-mapel} dan diperhitungkan
-  sebagai \textit{false negative} dalam \textit{Recall}. Putusan lengkap
+  sebagai \textit{false negative} dalam \textit{Fuzzy Recall}. Putusan lengkap
   AI Judge per \textit{triple} diberikan pada \ref{lamp:missing-triples}.
 
   Volume penengahan selaras dengan tingkat kesepakatan pada Tabel~\ref{tab:ac1}:
   Biologi yang ber-AC1 tertinggi (0{,}931) hanya menyisakan 10 perbedaan rating,
   sedangkan Fisika dan Kimia yang ber-AC1 lebih rendah menyisakan masing-masing
   55 dan 58 perbedaan yang memerlukan penengahan.
+
+  Secara kualitatif, pola ketidaksepakatan pakar tidak bersifat acak. Pada
+  Biologi, kedua pakar relatif konsisten dan tidak mengusulkan
+  \textit{missing triple}, sehingga F1-Score akhir menjadi yang tertinggi. Pada
+  Fisika, selisih \textit{Fuzzy Precision} dan \textit{Fuzzy Recall} terutama
+  muncul karena relasi kuantitatif atau rumus yang luput diekstraksi; contoh
+  konkretnya adalah usulan \textit{missing triples} terkait formula matematis
+  yang kemudian dibahas pada \ref{lamp:missing-triples}. Pada Kimia,
+  ketidaksepakatan lebih banyak muncul dari batas istilah teknis yang berdekatan,
+  misalnya pembedaan antara \textit{electroplating} dan
+  \textit{electrorefining}. Contoh-contoh ini menunjukkan bahwa perbedaan
+  penilaian pakar mencerminkan karakter materi tiap disiplin: Biologi lebih
+  deskriptif, Fisika sensitif terhadap ekspresi kuantitatif, dan Kimia sensitif
+  terhadap ketepatan istilah proses.
 \end{enumerate}
 
 \begin{table}[htbp]
@@ -636,8 +695,8 @@ Subbab~\ref{subsubsec:kualitas}.
 
 Konfigurasi membentuk himpunan bersarang: setiap konfigurasi yang lebih
 ketat merupakan himpunan bagian dari yang lebih permisif. Pengetatan
-parameter dengan demikian berfungsi sebagai kompromi \textit{recall} ---
-menukar cakupan relasi (lebih banyak interkoneksi ditemukan) dengan
+parameter dengan demikian berfungsi sebagai kompromi cakupan kandidat:
+menukar jumlah relasi yang ditemukan (lebih banyak interkoneksi ditemukan) dengan
 selektivitas (hanya pasangan berkemiripan tertinggi yang dipertahankan).
 Sebagaimana akan dibahas pada Subbab~\ref{subsubsec:kualitas}, pengetatan ini menurunkan
 kuantitas relasi tetapi \textbf{tidak} memperbaiki ketepatan arah relasi.
@@ -678,7 +737,7 @@ utama, menyisakan 117 relasi yang dinilai pakar.
         nodes near coords style={font=\scriptsize, /pgf/number format/precision=0, /pgf/number format/fixed},
         every node near coord/.append style={anchor=west, xshift=2pt},
         xmin=0, xmax=70,
-        bar width=10pt,
+        /pgf/bar width=10pt,
         xlabel={Jumlah \textit{edge}},
         xlabel style={font=\scriptsize},
         ticklabel style={font=\scriptsize},
@@ -760,13 +819,25 @@ menentukan arah pada hampir satu dari empat relasi. Kesalahan arah ini
 bersifat sistematis: 26 dari 28 relasi terbalik berasal dari pasangan
 Biologi\,$\leftrightarrow$\,Kimia: LLM cenderung menempatkan konsep
 Biologi sebagai sumber, padahal arah yang benar umumnya
-Kimia$\to$Biologi --- konsep kimia berperan sebagai prasyarat/fondasi
+Kimia$\to$Biologi, karena konsep kimia berperan sebagai prasyarat/fondasi
 yang \textit{diperdalam} atau \textit{dibutuhkan} oleh proses biologis.
 Tipe \texttt{MEMPERDALAM} paling rentan (ketepatan arah 60\%: 18 Benar, 12
 Terbalik), disusul \texttt{APLIKASI\_DARI} (73\%) dan
 \texttt{PRASYARAT\_UNTUK} (79\%),
 sementara tipe simetris \texttt{BERKAITAN\_DENGAN} dan \texttt{SAMA\_DENGAN} mencapai
 100\% karena arah tidak relevan secara semantik.
+
+Pola ini berkaitan dengan desain tahap \textit{completion}. Tahap
+\textit{retrieval} menggunakan \textit{embedding} dan \textit{cosine similarity}
+untuk menemukan pasangan konsep yang berdekatan secara semantik. Ukuran ini
+bersifat simetris, sehingga nilai kemiripan untuk pasangan $(a,b)$ sama dengan
+$(b,a)$ dan tidak menyimpan informasi arah prasyarat, aplikasi, atau pendalaman.
+Akibatnya, \textit{retrieval} efektif menemukan bahwa dua konsep layak menjadi
+kandidat relasi, tetapi keputusan tentang arah tetap sepenuhnya bergantung pada
+tahap klasifikasi LLM. Ketika dua konsep sama-sama dapat dijelaskan sebagai
+``berhubungan'' tetapi urutan pedagogisnya tidak eksplisit dalam konteks yang
+diberikan, LLM cenderung memilih arah yang tampak natural secara naratif,
+meskipun arah ontologis yang diharapkan adalah sebaliknya.
 
 Karena konfigurasi yang lebih ketat merupakan himpunan bagian dari
 konfigurasi paling permisif (Gambar~\ref{fig:nested-sweep}), \textit{edge}
@@ -780,8 +851,8 @@ ketat, mengonfirmasi bahwa pengetatan ambang menyaring sisa
 LB005, LB008, dan LB074). Namun, ketepatan arah relasi tetap berada di
 rentang 71--86\% lintas-konfigurasi tanpa kecenderungan monotonik
 terhadap pengetatan parameter, menegaskan bahwa kesalahan arah bukan
-persoalan ambang --- relasi terbalik tetap merupakan pasangan
-berkemiripan tinggi yang valid secara semantik --- sehingga
+persoalan ambang. Relasi terbalik tetap merupakan pasangan
+berkemiripan tinggi yang valid secara semantik, sehingga
 penanganannya memerlukan perbaikan pada \textit{prompt} klasifikasi
 atau normalisasi arah pasca-proses, bukan penyetelan
 \textit{threshold}.
@@ -952,7 +1023,7 @@ arah stagnan pada 75--77\% di seluruh \textit{bucket}
 $\text{conf} = 1{,}0$ yang masih meleset arah pada 5 dari 20
 \textit{edge}. Temuan ini secara empiris memperkuat argumen pada
 Subbab~\ref{subsubsec:kualitas} bahwa kesalahan arah bukan
-persoalan ambang \textit{confidence} --- LLM dapat sepenuhnya yakin
+persoalan ambang \textit{confidence}. LLM dapat sepenuhnya yakin
 sambil tetap salah arah, sehingga penanganannya memerlukan
 perbaikan pada \textit{prompt} klasifikasi atau normalisasi arah
 pasca-proses, bukan penyetelan \textit{threshold}. Pola ini juga
@@ -967,6 +1038,35 @@ sejalan dengan literatur yang menunjukkan keterbatasan kalibrasi
 Analisis \textit{feedback} pakar mengungkapkan empat pola kesalahan sistematis
 pada \textit{pipeline} ekstraksi LLM.
 
+\begin{table}[htbp]
+\centering
+\caption{Ringkasan kategori kesalahan dari umpan balik pakar.}
+\label{tab:error-category-summary}
+\begin{tabular}{@{}
+  >{\raggedright\arraybackslash}p{0.30\linewidth}
+  >{\centering\arraybackslash}p{0.18\linewidth}
+  >{\raggedright\arraybackslash}p{0.43\linewidth}@{}}
+\toprule
+\textbf{Kategori} & \textbf{Jumlah} & \textbf{Dasar penghitungan} \\
+\midrule
+\textit{Hallucination} faktual & 1 temuan & Komentar pakar pada \textit{triple} etanol yang salah menyebut bakteri, bukan ragi. \\
+Pencampuran konsep teknis & 1 \textit{triple} & Kesalahan \textit{electroplating} vs.\ \textit{electrorefining}; muncul pada dua komentar pakar untuk \textit{triple} yang sama. \\
+Definisi terlalu luas, ambigu, atau usang & 6 temuan & Komentar eksplisit tentang definisi/target yang terlalu luas, ambigu, bias, atau usang. \\
+\textit{Under-extraction} & 29 \textit{missing triples} & Relasi esensial yang tidak diekstraksi sistem tetapi diterima dalam konsensus final; 10 di antaranya berupa rumus Fisika. \\
+\bottomrule
+\end{tabular}
+\vspace{0.35em}
+\begin{minipage}{0.92\linewidth}
+\footnotesize
+\textit{Catatan.} Tiga kategori pertama dihitung dari komentar korektif eksplisit
+terhadap \textit{triple} yang sudah dihasilkan sistem, sedangkan
+\textit{under-extraction} dihitung dari \textit{missing triples} yang diterima
+dalam konsensus final. Karena sumber penghitungannya berbeda, angka-angka ini
+dibaca sebagai statistik deskriptif per kategori, bukan sebagai bagian dari satu
+total kesalahan tunggal.
+\end{minipage}
+\end{table}
+
 \subsubsection{Kesalahan faktual agen biologis.} Pada Kimia, \textit{triple} mengenai produksi
 etanol menyatakan ``bakteri memfermentasi karbohidrat'' padahal seharusnya
 ``ragi (\textit{Saccharomyces cerevisiae})''. Kesalahan ini termasuk dalam kategori
@@ -978,14 +1078,21 @@ bahwa \textit{electroplating} digunakan untuk pemurnian tembaga, padahal proses 
 benar adalah \textit{elektrorefining}. Kedua konsep memang melibatkan elektrolisis,
 namun tujuan dan mekanismenya berbeda.
 
-\subsubsection{Definisi yang terlalu luas.} Expert 2 (Fisika) mencatat sejumlah definisi yang
+\subsubsection{Definisi yang terlalu luas, ambigu, atau usang.} Expert 2 (Fisika) mencatat sejumlah definisi yang
 menimbulkan bias, misalnya definisi konstanta Coulomb yang ``terlalu luas'' tanpa
 menyebutkan jenis konstantanya. Umpan balik umum dari pakar ini menekankan:
 ``Penjelasannya dipastikan jangan ada bias\ldots Lebih ke penulisan, notasi, dan
-definisi nya perlu dicek dan dirapihkan kembali.''
+definisinya perlu dicek dan dirapikan kembali.'' Secara keseluruhan, terdapat
+enam temuan eksplisit dalam kategori ini, mencakup definisi konstanta Coulomb yang
+terlalu umum, target ``penghancuran plastik'' yang ambigu, definisi sifat
+koligatif yang dapat bermakna massa atau molalitas, rujukan teori vitalisme yang
+usang pada senyawa organik, penyebutan ``logam'' yang terlalu luas pada konteks
+organologam, serta satu komentar umum tentang kalimat yang bias.
 
-\subsubsection{\textit{Under-extraction} rumus matematis.} Expert 1 (Fisika) mengusulkan
-15 \textit{missing triples}; 10 di antaranya (67\%) merupakan rumus matematis
+\subsubsection{\textit{Under-extraction} relasi esensial.} Secara keseluruhan, konsensus final
+menerima 29 \textit{missing triples} sebagai relasi esensial yang luput
+diekstraksi sistem. Pada Fisika, Expert 1 mengusulkan 15 \textit{missing triples};
+10 di antaranya diterima dalam konsensus final dan seluruhnya merupakan rumus matematis
 yang tidak berhasil diekstrak oleh LLM. Ini menunjukkan bahwa LLM cenderung
 mengekstrak konsep deskriptif namun melewatkan relasi kuantitatif berbasis
 persamaan matematika. Contoh: rumus efisiensi transformator ($\eta$), nilai
@@ -1026,17 +1133,15 @@ per domain.
 Distribusi jembatan lintas-disiplin sangat tidak merata. Pasangan
 Biologi--Kimia mendominasi (91 relasi, 78\%), diikuti Fisika--Kimia (21
 relasi, 18\%), sedangkan Biologi--Fisika nyaris tidak terhubung (5
-relasi, 4\%). Pola ini menempatkan Kimia sebagai poros (\textit{hub}) yang
-menjembatani kedua disiplin lain. Temuan ini konsisten secara pedagogis
-\parencite{dyachenko_integration_2024}: tumpang-tindih molekuler dan
-biokimiawi (DNA, protein, enzim, reaksi redoks) membuat Biologi dan Kimia
-berbagi banyak konsep dasar --- analisis ko-sitasi antar-disiplin
-menempatkan biokimia sebagai bidang paling terkoneksi dan kimia pada posisi
-sentral di antara sains \parencite{balaban_central_2006} --- sementara
-keterkaitan Fisika sebagian besar terbatas pada elektrokimia (arus dan
-potensial listrik $\leftrightarrow$ sel elektrokimia). Sifat Fisika yang lebih
-abstrak-matematis menjadikannya domain paling terisolasi dalam jaringan
-konsep kurikulum kelas XII.
+relasi, 4\%). Dalam graf yang dibangun dari korpus kelas XII ini, Kimia
+muncul sebagai simpul perantara yang paling sering terlibat dalam relasi
+lintas-mapel, terutama karena banyak konsep Biologi beririsan dengan konsep
+molekuler dan biokimiawi seperti DNA, protein, enzim, dan reaksi redoks.
+Sebaliknya, keterkaitan Fisika dalam hasil ini lebih banyak muncul pada area
+elektrokimia, misalnya arus dan potensial listrik yang berhubungan dengan sel
+elektrokimia. Dengan demikian, pola tersebut dibaca sebagai karakteristik
+representasi KG pada dataset penelitian ini, bukan sebagai generalisasi bahwa
+Kimia selalu menjadi pusat integrasi seluruh disiplin sains.
 
 Dari sisi kualitas ekstraksi (validasi Fase 1), terdapat perbedaan
 antar-domain:

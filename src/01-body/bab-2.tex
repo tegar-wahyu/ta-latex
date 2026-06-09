@@ -361,7 +361,8 @@ meyakinkan, sekalipun argumen tersebut secara faktual keliru
 \parencite{gu_survey_2024}.
 
 Untuk menjamin reliabilitas keputusan dan menekan tingkat \textit{hallucination}
-saat model melakukan ajudikasi, proses penengahan oleh LLM menuntut
+saat model melakukan ajudikasi---yakni menengahi dan memutus ketidaksepakatan
+penilaian secara otomatis---proses penengahan oleh LLM menuntut
 adanya mekanisme penjangkaran (\textit{grounding}) yang kuat. Sebagaimana dicatat
 \textcite{gu_survey_2024}, \textit{concreteness bias} pada LLM justru dapat
 mendorong \textit{hallucination} ketika kebenaran faktual diabaikan; karena itu,
@@ -403,23 +404,32 @@ bagaimana konsep-konsep materi sains berinteraksi satu sama lain secara
 struktural. Dalam penelitian ini, analisis topologi graf diukur
 menggunakan tiga indikator utama.
 
-\subsubsection{Average Degree Centrality (ADC)}
+\subsubsection{Average Degree (AD)}
 
-\textbf{Average Degree Centrality (ADC)} mengukur rata-rata jumlah koneksi
-yang dimiliki setiap \textit{node} dalam graf, yang dihitung sebagai rata-rata
-derajat (\textit{average degree}) seluruh \textit{node} \parencite[134]{newman_networks_2010}:
+\textbf{Average Degree (AD)} mengukur rata-rata jumlah koneksi langsung yang
+dimiliki setiap \textit{node} pada graf. Dalam penelitian ini, AD dihitung pada
+subgraf konsep, sehingga rumusnya mengikuti definisi derajat rata-rata graf
+\parencite{newman_networks_2010} dan digunakan sebagai statistik struktural KG
+untuk membaca tingkat aktivitas atau keterhubungan graf
+\parencite{ruenin_terekg_2024}:
 
 \[
-  ADC = \frac{1}{|V|} \sum_{v \in V} \deg(v)
+  AD = \frac{1}{|V_C|} \sum_{v \in V_C} \deg_C(v)
 \]
 
-\noindent dengan $|V|$ adalah jumlah \textit{node} dan $\deg(v)$ jumlah relasi
-yang terhubung langsung ke \textit{node} $v$. Dalam penelitian ini, ADC dihitung
-pada \textbf{subgraf konsep} (hanya melibatkan \textit{node} \texttt{Concept}
-dan relasi langsung antar-konsep) agar mencerminkan tingkat keterhubungan
-konseptual antarmateri sains tanpa dipengaruhi \textit{node} struktural (kelas,
-bab, subbab). Metrik ini menjadi indikator utama perubahan interkoneksi materi
-Fisika, Kimia, dan Biologi sebelum dan sesudah KGC.
+\noindent dengan $V_C$ adalah himpunan \textit{node} \texttt{Concept} dan
+$\deg_C(v)$ adalah jumlah relasi langsung dari \textit{node} konsep $v$ ke
+\textit{node} konsep lain. Rumus ini perlu dibedakan dari \textit{degree
+centrality} ternormalisasi, yang membagi derajat sebuah \textit{node} dengan
+jumlah koneksi maksimum yang mungkin, yaitu $|V|-1$
+\parencite{pavel_degree_2022}. Penelitian ini menggunakan rata-rata derajat tak
+ternormalisasi karena tujuan metrik adalah membaca perubahan jumlah relasi
+konseptual rata-rata per \texttt{Concept}, bukan proporsi koneksi maksimum yang
+mungkin terbentuk. Dengan pembatasan pada subgraf konsep, AD mencerminkan
+tingkat keterhubungan konseptual antarmateri sains tanpa dipengaruhi
+\textit{node} struktural (kelas, bab, subbab). Metrik ini menjadi indikator
+utama perubahan interkoneksi materi Fisika, Kimia, dan Biologi sebelum dan
+sesudah KGC.
 
 \subsubsection{Modularity}
 
@@ -433,7 +443,7 @@ pembagian komunitas yang dihasilkan tidak lebih baik dari partisi acak.
 Modularity dihitung dengan membandingkan jumlah \textit{edge} yang
 benar-benar ada dalam komunitas dengan jumlah \textit{edge} yang secara
 statistik diharapkan muncul apabila koneksi antar-\textit{node} disebar secara
-acak---dengan syarat distribusi \textit{degree} tiap \textit{node}
+acak, dengan syarat distribusi \textit{degree} tiap \textit{node}
 dipertahankan. Untuk graf berarah (\textit{directed graph}), modularity
 didefinisikan sebagai \parencite{leicht_community_2008}:
 
@@ -488,7 +498,7 @@ nilai mendekati 0 menandakan graf yang jarang (\textit{sparse})
 \parencite[134]{newman_networks_2010}. Dalam
 konteks penelitian ini, \textit{density} digunakan untuk membandingkan tingkat
 keterkaitan antar-konsep sebelum dan sesudah penambahan relasi lintas
-buku (\textit{cross-book links}). Sejalan dengan ADC antar-konsep yang
+buku (\textit{cross-book links}). Sejalan dengan AD antar-konsep yang
 menjadi metrik utama, \textit{density} dihitung pada \textbf{subgraf konsep},
 yakni hanya melibatkan \textit{node} \texttt{Concept} dan relasi langsung
 antar-konsep, agar mencerminkan kepadatan interkoneksi materi sains tanpa
@@ -518,7 +528,7 @@ atribut dari dokumen sumber.
 berhasil diidentifikasi juga memiliki informasi pendukung berupa
 deskripsi atau definisi. Dalam konteks materi sains, sebuah entitas
 seperti ``Fotosintesis'' atau ``Hukum Ohm'' tidak cukup hanya muncul
-sebagai nama---ia harus memiliki deskripsi agar dapat digunakan dalam
+sebagai nama; entitas tersebut harus memiliki deskripsi agar dapat digunakan dalam
 proses pembelajaran atau KGC. Metrik DC dirumuskan dalam penelitian ini
 sebagai operasionalisasi dimensi kelengkapan (\textit{completeness}) dalam
 manajemen kualitas \textit{knowledge graph} \parencite{xue_knowledge_2022}.
@@ -617,14 +627,14 @@ mengingat proses KGC dalam penelitian ini dibantu oleh LLM yang rentan
 terhadap \textit{hallucination} informasi, seperti mengekstrak entitas yang salah
 atau memetakan relasi lintas disiplin yang tidak relevan secara
 pedagogis. Dalam evaluasi klasifikasi tradisional, prediksi sistem
-dinilai secara biner---hanya ada benar (1,0) atau salah (0,0), yang
+dinilai secara biner, yaitu benar (1,0) atau salah (0,0), yang
 disebut sebagai himpunan tegas (\textit{crisp sets}). Sebaliknya, dalam
 evaluasi ekstraksi pengetahuan oleh LLM, hasil sering kali memiliki
 batas yang tidak tegas (\textit{soft boundaries}) karena adanya nilai
 kebenaran parsial \parencite{harju_evaluating_2023}.
 
-Untuk mengakomodasi hal tersebut, penelitian ini mengadopsi metrik Fuzzy
-Precision and Recall. Berdasarkan teori himpunan fuzzy, setiap elemen
+Untuk mengakomodasi hal tersebut, penelitian ini mengadopsi metrik
+\textit{Fuzzy Precision} dan \textit{Fuzzy Recall}. Berdasarkan teori himpunan fuzzy, setiap elemen
 memiliki nilai keanggotaan (\textit{membership value}) antara 0 hingga 1
 yang merepresentasikan derajat kebenarannya \parencite{harju_evaluating_2023}.
 Dalam penelitian ini, kategori evaluasi pakar dipetakan ke dalam nilai
@@ -658,21 +668,36 @@ ditetapkan secara sepihak, melainkan turut disepakati melalui diskusi dengan
 pakar domain yang terlibat dalam proses validasi, sehingga skema penilaian ini
 selaras dengan interpretasi pakar terhadap kualitas relasi.
 
-Untuk menghitung metrik evaluasi ini, \textcite{harju_evaluating_2023} menggunakan
-prinsip irisan fuzzy (\textit{fuzzy intersection}) yang didefinisikan
-sebagai nilai minimum antara prediksi model dan referensi
-\textit{ground truth} pakar, yaitu $\min(\hat{y}_i, y)$. Karena model
-LLM selalu menghasilkan prediksi dengan tingkat keyakinan penuh
-($\hat{y}_i = 1{,}0$), nilai irisan dari setiap relasi akan selalu
-mengikuti skor keanggotaan yang ditetapkan oleh pakar. Dengan demikian,
-rumus evaluasi Fuzzy Precision, Fuzzy Recall, dan F1-Score dirumuskan
-sebagai berikut:
+Untuk menghitung metrik evaluasi ini, penelitian ini mengadaptasi prinsip irisan
+fuzzy (\textit{fuzzy intersection}) dari \textcite{harju_evaluating_2023}, yaitu
+bahwa kecocokan antara prediksi model dan referensi pakar dapat dinyatakan
+dengan nilai minimum antara keanggotaan prediksi dan keanggotaan referensi.
+Dalam konteks penelitian ini, setiap \textit{triple} yang dihasilkan sistem
+diperlakukan sebagai prediksi penuh, sedangkan tingkat kebenarannya ditentukan
+oleh skor pakar (1{,}0; 0{,}5; 0{,}25; atau 0{,}0). Sebagai contoh, jika sistem
+menghasilkan \textit{triple} (Fotosintesis, \texttt{MENGHASILKAN}, Glukosa),
+maka dari sisi model prediksi tersebut dihitung sebagai satu keluaran penuh
+($\hat{y}=1{,}0$). Namun, kontribusinya terhadap metrik mengikuti penilaian
+pakar: bernilai 1{,}0 jika relasi dinilai benar, 0{,}5 jika benar tetapi
+deskripsinya perlu diperbaiki, 0{,}25 jika maknanya masih kurang konteks, dan
+0{,}0 jika relasi dinilai salah. Berbeda dari formulasi
+soft-label umum pada \textcite{harju_evaluating_2023} yang menjumlahkan nilai
+keanggotaan pada seluruh elemen referensi, rumus di bawah ini dioperasionalkan
+untuk skenario validasi KG: penyebut \textit{Fuzzy Precision} adalah seluruh
+relasi yang diekstraksi sistem, sedangkan penyebut \textit{Fuzzy Recall} adalah
+relasi yang dinilai pakar ditambah \textit{missing triples} yang diusulkan pakar
+sebagai relasi esensial. Dengan demikian, Fuzzy Precision, Fuzzy Recall, dan
+F1-Score dalam penelitian ini digunakan sebagai metrik kinerja ekstraksi relasi,
+bukan sebagai akurasi klasifikasi sederhana. Ketiganya dirumuskan sebagai
+berikut:
 
 \begin{enumerate}
-  \item \textbf{Fuzzy Precision:} mengukur tingkat akurasi dari
-        keseluruhan relasi yang berhasil diekstrak oleh model LLM.
+  \item \textbf{Fuzzy Precision:} mengukur ketepatan relasi yang berhasil
+        diekstrak oleh model LLM, yaitu seberapa besar bagian dari relasi hasil
+        sistem yang diterima pakar sebagai benar, sebagian benar, atau kurang
+        konteks.
         \[
-          \text{Precision} =
+          \text{Fuzzy Precision} =
           \frac{\text{Benar}
                 + 0{,}5 \cdot \text{SebagianBenar}
                 + 0{,}25 \cdot \text{KurangKonteks}}
@@ -682,13 +707,14 @@ sebagai berikut:
                 + \text{Salah}}
         \]
 
-  \item \textbf{Fuzzy Recall:} mengukur sejauh mana sistem berhasil
-        menangkap seluruh relasi penting yang diwajibkan dalam kurikulum.
-        Penyebut merepresentasikan kardinalitas total dari
-        himpunan referensi pakar, termasuk relasi yang gagal diekstraksi
-        (Hilang).
+  \item \textbf{Fuzzy Recall:} mengukur kelengkapan ekstraksi terhadap referensi
+        pakar. Dalam penelitian ini, referensi tersebut mencakup relasi yang
+        berhasil diekstrak dan dinilai pakar, serta \textit{missing triples}
+        yang diusulkan pakar sebagai relasi esensial tetapi belum dihasilkan
+        sistem. Relasi hilang tersebut diperlakukan sebagai \textit{false
+        negative}.
         \[
-          \text{Recall} =
+          \text{Fuzzy Recall} =
           \frac{\text{Benar}
                 + 0{,}5 \cdot \text{SebagianBenar}
                 + 0{,}25 \cdot \text{KurangKonteks}}
@@ -698,13 +724,14 @@ sebagai berikut:
                 + \text{Hilang}}
         \]
 
-  \item \textbf{F1-Score:} rata-rata harmonik antara Precision dan Recall
+  \item \textbf{F1-Score:} rata-rata harmonik antara Fuzzy Precision dan
+        Fuzzy Recall
         untuk memberikan representasi kualitas ekstraksi model secara
         keseluruhan.
         \[
           F_1 = 2 \times
-          \frac{\text{Precision} \times \text{Recall}}
-               {\text{Precision} + \text{Recall}}
+          \frac{\text{Fuzzy Precision} \times \text{Fuzzy Recall}}
+               {\text{Fuzzy Precision} + \text{Fuzzy Recall}}
         \]
 \end{enumerate}
 
@@ -840,7 +867,7 @@ berbasis OWL, (c) menerapkan LLM-Assisted KGC dengan strategi
 \textit{few-shot}, \textit{schema-constrained prompting} untuk ekstraksi
 entitas maupun klasifikasi relasi lintas-disiplin, serta (d)
 memvalidasi hasilnya menggunakan \textit{pipeline LLM-as-a-judge} berbasis Gemini
-dengan metrik \textit{Fuzzy Precision and Recall}. Kombinasi keempat elemen
+dengan metrik \textit{Fuzzy Precision} dan \textit{Fuzzy Recall}. Kombinasi keempat elemen
 inilah yang menjadi kontribusi orisinal penelitian ini.
 
 \ifSubfilesClassLoaded{\printbibliography[title={Daftar Pustaka}]}{}
