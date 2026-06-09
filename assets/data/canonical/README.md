@@ -30,9 +30,12 @@ Alur kanonik penelitian mengikuti urutan berikut:
      `02_consensus/*_gold_standard.json`.
 
 5. **Ingest Neo4j konsensus dan metrik Fase 1**
-   - Input: KG konsensus.
+   - Input: KG konsensus, gold standard, dan validasi pakar mentah dari KG
+     Review App.
    - Proses: ingest ke Neo4j dan perhitungan metrik struktural serta metrik
-     validasi intra-mapel.
+     validasi intra-mapel. Precision, recall, dan F1 dihitung dari perbandingan
+     label pakar mentah terhadap label final gold standard/konsensus; Gwet's AC1
+     dihitung dari pasangan rating mentah dua pakar.
    - Output: graf konsensus Neo4j, laporan metrik, precision, recall, F1, dan
      Gwet's AC1.
 
