@@ -373,14 +373,7 @@ Subbab~\ref{subsec:validasi-manusia}.
 {\setlength{\tabcolsep}{4pt}
 \begin{table}[htbp]
 \centering
-\caption{Hasil validasi Fase~1 (intra-mapel) per pakar dan konsensus final.
-  P/R = \textit{Fuzzy Precision}/\textit{Recall} (bobot pada
-  Subbab~\ref{subsec:validasi-manusia}); semua \textit{triple} yang ditinjau,
-  termasuk berlabel Salah, masuk ke penyebut presisi. Kolom \textbf{Hilang}
-  adalah jumlah \textit{missing triples}, yakni relasi esensial yang dilaporkan
-  pakar sebagai terlewat oleh sistem; relasi ini tidak termasuk dalam kolom
-  Ditinjau dan menjadi \textit{false negative} yang menurunkan \textit{Recall}
-  (rincian pada \ref{lamp:missing-triples}).}
+\caption{Hasil validasi Fase~1 per pakar dan konsensus final.}
 \label{tab:validasi-mapel}
 \begin{tabular}{@{}l l c c c c c c c c@{}}
 \toprule
@@ -403,6 +396,17 @@ Keseluruhan & Expert 1   & 557 & 511 & 13 & 6  & 27 & 15 & 0{,}932 & 0{,}952 \\
             & \textit{Final} & 557 & 503 & 29 & 4 & 21 & 29 & \textbf{0{,}931} & \textbf{0{,}918} \\
 \bottomrule
 \end{tabular}
+\vspace{0.35em}
+\begin{minipage}{0.96\linewidth}
+\footnotesize
+\textit{Catatan.} P/R = \textit{Fuzzy Precision}/\textit{Fuzzy Recall} (bobot
+pada Subbab~\ref{subsec:validasi-manusia}). Semua \textit{triple} yang
+ditinjau, termasuk berlabel Salah, masuk ke penyebut presisi. Kolom
+\textbf{Hilang} menunjukkan \textit{missing triples}, yaitu relasi esensial
+yang dilaporkan pakar sebagai terlewat oleh sistem; relasi ini tidak termasuk
+dalam kolom Ditinjau dan dihitung sebagai \textit{false negative} yang
+menurunkan \textit{Fuzzy Recall} (rincian pada \ref{lamp:missing-triples}).
+\end{minipage}
 \end{table}
 }
 
