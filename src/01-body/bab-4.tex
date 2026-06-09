@@ -279,12 +279,12 @@ setiap relasi selalu menunjuk ke \textit{node} yang sudah ada, sehingga tidak
 muncul relasi yang menggantung ke konsep yang belum sempat dibuat. Karena itu,
 seluruh \textit{node} dibentuk lebih dahulu, baru relasinya ditarik kemudian.
 Adapun idempoten, proses ini bisa dijalankan ulang berkali-kali tanpa membuat
-\textit{node} atau relasi ganda, sebab semua operasi memakai \texttt{MERGE} yang
-hanya membuat data bila belum ada, bukan \texttt{CREATE} yang selalu menambah
-data baru.
+\textit{node} atau relasi ganda, sebab semua operasi pembuatan \textit{node} dan
+relasi memakai \texttt{MERGE} yang hanya membuat data bila belum ada, bukan
+\texttt{CREATE} yang selalu menambah data baru.
 
 \begin{enumerate}
-  \item \textbf{Pass 1 --- Instansiasi \textit{node}.}
+  \item \textbf{Pass 1 --- Instansiasi \textit{node} dan kerangka hierarki.}
   \begin{itemize}
     \item Node \texttt{Grade}, \texttt{Chapter}, \texttt{Subtopic}, dan
       \texttt{Concept} dibuat melalui operasi \texttt{MERGE}
@@ -294,15 +294,14 @@ data baru.
     \item Kunci \texttt{MERGE} gabungan (\texttt{name}, \texttt{grade}) menegakkan
       sifat \textit{shared \textit{node}} pada \texttt{Concept} sebagaimana didefinisikan
       pada Subbab~\ref{subsec:skema-ontologi}.
+    \item Pada \textit{pass} yang sama, kerangka hierarki graf dibentuk, yaitu
+      rangka struktural berjenjang dari Kelas, Bab, Subbab, hingga Konsep melalui
+      relasi struktural \texttt{HAS\_CHAPTER}, \texttt{HAS\_SUBTOPIC},
+      \texttt{HAS\_CONCEPT}, dan \texttt{NEXT\_CHAPTER} (urutan antarbab). Berbeda
+      dengan relasi semantik yang diprediksi LLM, relasi struktural ini ditarik
+      langsung dari struktur daftar isi sehingga keterurutan dan susunan
+      hierarkinya terjamin benar.
   \end{itemize}
-
-  \item \textbf{Kerangka hierarki.} Tahap ini membentuk rangka struktural graf,
-  yaitu susunan berjenjang dari Kelas, Bab, Subbab, hingga Konsep. Rangka ini
-  dibangun melalui relasi struktural \texttt{HAS\_CHAPTER}, \texttt{HAS\_SUBTOPIC},
-  \texttt{HAS\_CONCEPT}, dan \texttt{NEXT\_CHAPTER} (urutan antarbab). Berbeda
-  dengan relasi semantik yang diprediksi LLM, relasi struktural ini ditarik
-  langsung dari struktur daftar isi sehingga keterurutan dan susunan hierarkinya
-  terjamin benar.
 
   \item \textbf{Pass 2 --- Relasi dalam-buku.}
   \begin{itemize}
