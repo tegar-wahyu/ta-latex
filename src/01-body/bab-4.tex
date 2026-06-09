@@ -210,9 +210,8 @@ pembatasan konsep pada materi pokok.
   Model: Gemini 2.5 Flash Lite via Google GenAI SDK. \textit{Prompt} bersifat
   \textit{few-shot} dan \textit{schema-constrained}. \textit{Prompt} menyertakan nama bab 
   beserta bab sebelum dan sesudahnya, daftar subbab dari daftar isi, glosarium sebagai 
-  \textit{validation set}, materi pokok sebagai \textit{curriculum constraint}, konsep dari 
-  buku lain sebagai \textit{cross-book context}, serta beberapa contoh \textit{triple} sebagai
-  demonstrasi (\textit{few-shot}).
+  \textit{validation set}, materi pokok sebagai \textit{curriculum constraint},
+  serta beberapa contoh \textit{triple} sebagai demonstrasi (\textit{few-shot}).
 
   \item \textbf{Struktur \textit{prompt}.}
 
@@ -239,33 +238,11 @@ pembatasan konsep pada materi pokok.
   Respons LLM dibersihkan dari penanda \textit{markdown} lalu diuraikan dari
   format JSON menjadi objek terstruktur yang memuat ringkasan bab serta daftar
   konsep per subbab---lengkap dengan deskripsi, status validasi glosarium,
-  rujukan materi pokok, tautan lintas-buku, dan relasi antar-konsep.
+  rujukan materi pokok, dan relasi antar-konsep.
 
   \item \textbf{Validasi pascaproses.} Sebelum masuk ke graf, keluaran LLM
-  dirapikan melalui tiga langkah. Dua langkah bertugas membuang keluaran yang
-  tidak valid, sementara satu langkah justru mengisi keluaran apabila LLM gagal
-  menghasilkannya:
-
-  \begin{enumerate}
-    \item \textit{Menyaring tautan lintas-buku.} Sebuah tautan dibuang jika buku
-    tujuannya sama dengan buku asalnya, atau jika buku tujuannya tidak terdapat
-    dalam korpus. Langkah ini mencegah munculnya tautan yang menunjuk ke dirinya
-    sendiri (\textit{self-loop}) maupun tautan yang mengarah ke buku yang tidak
-    tersedia (\textit{dangling}).
-
-    \item \textit{Cadangan saat keluaran kosong.} Apabila LLM tidak menghasilkan
-    satu pun tautan lintas-buku, sistem menggunakan fungsi
-    \texttt{infer\_cross\_links} sebagai cadangan. Fungsi ini mencari pasangan
-    konsep antarbuku yang banyak menggunakan kata yang sama (serupa dengan cara
-    kerja Jaccard), namun hanya menghitung kata sepanjang minimal empat huruf dan
-    bukan \textit{stopword}, lalu mengambil dua pasangan dengan kemiripan
-    tertinggi. Berbeda dengan dua langkah lainnya, langkah ini menambah tautan,
-    bukan membuangnya.
-
-    \item \textit{Membersihkan relasi.} Terakhir, \textit{triple} yang tipe
-    relasi atau targetnya kosong ikut dibuang agar tidak ada relasi cacat yang
-    masuk ke graf.
-  \end{enumerate}
+  dirapikan dengan membuang \textit{triple} yang tipe relasi atau targetnya kosong,
+  agar tidak ada relasi cacat yang masuk ke graf.
 \end{enumerate}
 
 % ============================================================
@@ -273,7 +250,7 @@ pembatasan konsep pada materi pokok.
 % ============================================================
 
 Tahap ini membangun \textit{knowledge graph} ke Neo4j dengan strategi
-tiga-\textit{pass}, yaitu tiga tahap yang dijalankan berurutan. Urutan ini
+dua-\textit{pass}, yaitu dua tahap yang dijalankan berurutan. Urutan ini
 dipilih agar graf yang terbentuk konsisten secara referensial dan idempoten. Maksud konsisten secara referensial,
 setiap relasi selalu menunjuk ke \textit{node} yang sudah ada, sehingga tidak
 muncul relasi yang menggantung ke konsep yang belum sempat dibuat. Karena itu,
@@ -325,27 +302,13 @@ relasi memakai \texttt{MERGE} yang hanya membuat data bila belum ada, bukan
       bawah) agar sesuai dengan sintaksis \textit{relationship type} Cypher.
   \end{itemize}
 
-  \item \textbf{Pass 3 --- Relasi lintas-buku.}
-  \begin{itemize}
-    \item \textit{Edge} lintas-buku diberi prefiks \texttt{LINTAS\_BUKU\_}
-      diikuti tipe relasinya (mis.\ \texttt{LINTAS\_BUKU\_APLIKASI\_DARI}).
-    \item Diterapkan aturan pemeriksaan keabsahan agar setiap relasi lintas-buku
-      benar-benar valid, yaitu buku tujuan harus berbeda dari buku sumber (supaya
-      relasinya memang menyeberang antarbuku, bukan di dalam buku yang sama) dan
-      buku tujuan harus ada di dalam korpus yang diproses (supaya relasinya tidak
-      mengarah ke buku yang tidak tersedia).
-    \item Apabila konsep tujuan belum ada pada lingkup mata pelajaran tujuan,
-      \textit{node} \texttt{Concept} untuk konsep tersebut baru dibuat tepat saat
-      dibutuhkan, yaitu ketika relasi lintas-buku hendak dibentuk. Cara ini
-      memastikan relasi selalu memiliki \textit{node} tujuan yang valid tanpa
-      perlu menyiapkan seluruh konsep di awal.
-  \end{itemize}
-
-  \item \textbf{Sifat idempoten.} Seluruh \textit{pass} menggunakan
+  \item \textbf{Sifat idempoten.} Kedua \textit{pass} menggunakan
   \texttt{MERGE} sehingga eksekusi ulang \textit{notebook} tidak menggandakan
   \textit{node} maupun \textit{edge}. Properti ini penting agar eksperimen dapat
-  dijalankan secara iteratif tanpa mengotori graf yang telah terbentuk. Kueri
-  Cypher untuk ketiga \textit{pass} konstruksi beserta \textit{constraint}
+  dijalankan secara iteratif tanpa mengotori graf yang telah terbentuk. Relasi
+  lintas-buku tidak dibentuk pada tahap ini, melainkan diprediksi dan dituliskan
+  ke graf pada tahap \textit{Graph Completion} (Subbab~\ref{sec:graph-completion}).
+  Kueri Cypher untuk kedua \textit{pass} konstruksi beserta \textit{constraint}
   keunikannya disajikan pada \ref{lamp:cypher-konstruksi}.
 \end{enumerate}
 
@@ -412,7 +375,7 @@ tugas KGC.
   \item \textbf{Candidate retrieval via ANN (Approximate Nearest Neighbor).}
 
   Untuk tiap \textit{query} \textit{node} $q$, dijalankan pencarian ANN pada Neo4j Vector Index
-  yang mengembalikan top-$k$ \textit{node} terdekat berdasarkan \textit{cosine similarity}
+  yang mengembalikan top-$k$ ($k = 20$) \textit{node} terdekat berdasarkan \textit{cosine similarity}
   (didefinisikan pada Subbab~\ref{subsec:kgc}). Proyeksi 2D
   (UMAP) atas seluruh konsep antar mapel ditunjukkan pada
   Gambar~\ref{fig:concept-umap}: konsep diwarnai berdasarkan mata
