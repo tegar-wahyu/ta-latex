@@ -345,11 +345,11 @@ untuk memastikan kebenaran faktual berkat kedalaman pemahaman
 kontekstualnya. Meski demikian, dalam proses anotasi data, tahapan
 validasi ini sering kali memunculkan perbedaan pendapat
 (\textit{disagreement}) di antara para pakar akibat tingkat
-subjektivitas masing-masing pakar \parencite{gu_survey_2024, zheng_judging_2023}. Untuk mengatasi ketidaksepakatan tersebut tanpa mengorbankan
+subjektivitas masing-masing pakar \parencite{gu_survey_2024}. Untuk mengatasi ketidaksepakatan tersebut tanpa mengorbankan
 skalabilitas dan menekan biaya operasional, pemanfaatan LLM dapat
 diimplementasikan melalui pendekatan \textit{LLM-as-a-judge} \parencite{gu_survey_2024}.
 Dalam skenario ini, alih-alih difungsikan sebagai pakar utama yang menggantikan peran
-manusia, LLM diposisikan secara spesifik sebagai moderator yang objektif
+manusia, LLM diposisikan secara spesifik sebagai penengah berbasis konteks
 untuk menyelesaikan konflik penilaian antarpakar.
 
 Meskipun terbukti efektif sebagai penengah, literatur menunjukkan bahwa
@@ -358,7 +358,7 @@ argumen yang berseberangan. Model sering kali terpengaruh oleh
 \textit{concreteness bias}, yaitu kecenderungan memihak pada respons
 yang menyajikan detail spesifik atau dikemas dengan gaya bahasa yang
 meyakinkan, sekalipun argumen tersebut secara faktual keliru
-\parencite{gu_survey_2024, zheng_judging_2023}.
+\parencite{gu_survey_2024}.
 
 Untuk menjamin reliabilitas keputusan dan menekan tingkat \textit{hallucination}
 saat model melakukan ajudikasi, proses penengahan oleh LLM menuntut
@@ -753,7 +753,7 @@ yang membedakan Gwet's AC1 dari Kappa: estimasi peluang kesepakatan
 dihitung berdasarkan proporsi penggunaan kategori secara aktual, sehingga
 nilai AC1 tetap mencerminkan kesepakatan yang sesungguhnya meskipun satu
 label muncul jauh lebih sering daripada label lainnya
-\parencite{mahbub_multi-stage_2026}.
+\parencite{gwet_handbook_2014, james_counting_2026}.
 
 Nilai AC1 berada pada rentang $-1$ hingga $1$, dengan kategori
 interpretatif sebagai berikut: buruk ($<0{,}40$), sedang
@@ -806,8 +806,8 @@ umum, dan (3) pemetaan interkoneksi kurikulum secara komputasional.
 Pada kluster pertama, \textcite{zhang_learning_2023} mengembangkan KG silabus
 berbasis relasi prasyarat untuk mendukung \textit{adaptive learning
 path}. Studi tersebut menunjukkan bahwa relasi prasyarat dan \textit{successor}
-yang dikodifikasi secara eksplisit secara signifikan meningkatkan
-efektivitas rekomendasi urutan belajar. Perbedaan utama dengan penelitian
+yang dikodifikasi secara eksplisit dapat digunakan sebagai dasar
+perencanaan urutan belajar. Perbedaan utama dengan penelitian
 ini adalah cakupan domain: \citeauthor{zhang_learning_2023} bekerja pada satu mata pelajaran
 tunggal, sementara penelitian ini secara spesifik menargetkan relasi
 lintas tiga disiplin ilmu (Fisika, Kimia, Biologi) dalam satu kurikulum
@@ -816,8 +816,9 @@ nasional yang sama.
 Pada kluster kedua, \textcite{wei_kicgpt_2023} mengajukan kerangka KICGPT yang
 membuktikan efektivitas ICL berbasis \textit{Knowledge Prompt} untuk KGC pada
 dataset umum (FB15k-237 dan WN18RR). Kontribusi teknis \citeauthor{wei_kicgpt_2023}
-menjadi fondasi \textit{pipeline} klasifikasi relasi lintas-disiplin dalam
-penelitian ini. Perbedaan kritis terletak pada konteks: dataset
+menjadi preseden penggunaan kombinasi pencarian kandidat dan ICL pada tugas KGC,
+sementara penelitian ini mengadaptasi gagasan tersebut ke klasifikasi relasi
+lintas-disiplin. Perbedaan kritis terletak pada konteks: dataset
 \textit{benchmark} \citeauthor{wei_kicgpt_2023} bersifat bahasa Inggris dengan entitas
 berupa fakta umum, sedangkan penelitian ini beroperasi pada bahasa
 Indonesia dengan entitas berupa konsep kurikulum sains SMA yang
