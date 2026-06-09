@@ -263,39 +263,55 @@ benar-benar mencerminkan standar materi yang diajarkan secara nasional.
 Rincian bibliografis ketiga buku siswa beserta Buku Panduan Guru
 pasangannya (judul, penulis, dan ISBN) disajikan pada \ref{lamp:korpus}.
 
-Secara kuantitatif, korpus mencakup total 708 halaman yang terbagi atas 17 bab
-dan 77 subbab. Untuk diproses oleh \textit{pipeline}, teks Buku Siswa dipecah
-menjadi 782 \textit{chunk} dengan ukuran 800 token dan tumpang-tindih
-(\textit{overlap}) 200 token antar-\textit{chunk}; estimasi jumlah kata setelah
-dikurangi tumpang-tindih adalah sekitar 110 ribu kata. Buku Panduan Guru
-pasangannya dipecah menjadi 747 \textit{chunk} yang dimanfaatkan sebagai sumber
-ekstraksi materi pokok (\textit{constraint} kurikulum), sehingga total korpus
-berjumlah 1.529 \textit{chunk}. Rincian ukuran korpus per mata pelajaran
-disajikan pada Tabel~\ref{tab:ukuran-korpus}; kolom Halaman, Bab, Subbab, dan
-Kata merujuk pada Buku Siswa, sedangkan kolom \textit{Chunk} menampilkan kedua
-buku.
+Secara kuantitatif, korpus mencakup 752 halaman Buku Siswa dan 736 halaman Buku
+Panduan Guru pasangannya, dengan struktur kurikulum acuan sebanyak 17 bab dan 77
+subbab yang dirujuk dari daftar isi Buku Siswa. Untuk diproses oleh
+\textit{pipeline}, teks dipecah menjadi \textit{chunk} berukuran 800 token
+dengan tumpang-tindih (\textit{overlap}) 200 token: 782 \textit{chunk} dari Buku
+Siswa ($\approx$139.200 kata) dan 747 \textit{chunk} dari Buku Guru, sehingga
+total korpus berjumlah 1.529 \textit{chunk}. Jumlah kata Buku Guru tidak
+terhitung penuh karena Buku Guru Biologi berupa PDF hasil pindai tanpa lapisan
+teks; estimasi parsial dari dua buku guru lainnya adalah sekitar 79.300 kata.
+Rincian ukuran korpus per mata pelajaran disajikan pada
+Tabel~\ref{tab:ukuran-korpus}.
 
 \begin{table}[htbp]
 \centering
 \caption{Ukuran Korpus Ekstraksi per Mata Pelajaran}
 \label{tab:ukuran-korpus}
-\begin{tabular}{@{}lrrrrrr@{}}
+\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}lrrrrrrrr@{}}
   \toprule
-  \multirow{2}{*}{\textbf{Mata Pelajaran}} & \multirow{2}{*}{\textbf{Halaman}}
+  \multirow{2}{*}{\textbf{Mata Pelajaran}}
+    & \multicolumn{2}{c}{\textbf{Halaman}}
     & \multirow{2}{*}{\textbf{Bab}} & \multirow{2}{*}{\textbf{Subbab}}
     & \multicolumn{2}{c}{\textbf{\textit{Chunk}}}
-    & \multirow{2}{*}{\textbf{Kata ($\approx$)}} \\
-  \cmidrule(lr){5-6}
-    & & & & \textbf{Siswa} & \textbf{Guru} & \\
+    & \multicolumn{2}{c}{\textbf{Kata ($\approx$)}} \\
+  \cmidrule(lr){2-3} \cmidrule(lr){6-7} \cmidrule(lr){8-9}
+    & \textbf{Siswa} & \textbf{Guru} & & & \textbf{Siswa} & \textbf{Guru}
+    & \textbf{Siswa} & \textbf{Guru} \\
   \midrule
-  Fisika  & 228 & 9 & 39 & 249 & 264 & 35.600 \\
-  Kimia   & 210 & 4 & 22 & 234 & 219 & 29.400 \\
-  Biologi & 270 & 4 & 16 & 299 & 264 & 45.600 \\
+  Fisika  & 248 & 256 & 9 & 39 & 249 & 264 & 45.300 & 48.700 \\
+  Kimia   & 224 & 216 & 4 & 22 & 234 & 219 & 36.900 & 30.600 \\
+  Biologi & 280 & 264 & 4 & 16 & 299 & 264 & 57.000 & --\textsuperscript{*} \\
   \midrule
-  \textbf{Total} & \textbf{708} & \textbf{17} & \textbf{77} & \textbf{782}
-    & \textbf{747} & \textbf{110.600} \\
+  \textbf{Total} & \textbf{752} & \textbf{736} & \textbf{17} & \textbf{77}
+    & \textbf{782} & \textbf{747} & \textbf{139.200} & \textbf{79.300\textsuperscript{+}} \\
   \bottomrule
 \end{tabular}
+
+\vspace{4pt}
+\begin{minipage}{\textwidth}
+{\footnotesize\setstretch{1.1}\noindent
+\textsuperscript{*}~Buku Guru Biologi (\texttt{Biologi\_BG\_KLS\_XII.pdf})
+berupa PDF hasil pindai (\textit{scan}) tanpa lapisan teks, sehingga jumlah
+katanya tidak dapat diekstraksi; ke-264 \textit{chunk}-nya berkorespondensi
+satu-ke-satu dengan halaman dan tidak memuat teks.
+\textsuperscript{+}~Total kata Buku Guru merupakan estimasi parsial dari Fisika
+dan Kimia saja. Kolom Bab dan Subbab tidak dipisah Siswa/Guru karena merujuk
+pada struktur daftar isi Buku Siswa.\par}
+\end{minipage}
 \end{table}
 
 \subsection{Data Validasi Pakar}\label{subsec:data-validasi}
