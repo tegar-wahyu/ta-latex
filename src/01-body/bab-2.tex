@@ -442,7 +442,7 @@ pembagian komunitas yang dihasilkan tidak lebih baik dari partisi acak.
 Modularity dihitung dengan membandingkan jumlah \textit{edge} yang
 benar-benar ada dalam komunitas dengan jumlah \textit{edge} yang secara
 statistik diharapkan muncul apabila koneksi antar-\textit{node} disebar secara
-acak---dengan syarat distribusi \textit{degree} tiap \textit{node}
+acak, dengan syarat distribusi \textit{degree} tiap \textit{node}
 dipertahankan. Untuk graf berarah (\textit{directed graph}), modularity
 didefinisikan sebagai \parencite{leicht_community_2008}:
 
@@ -527,7 +527,7 @@ atribut dari dokumen sumber.
 berhasil diidentifikasi juga memiliki informasi pendukung berupa
 deskripsi atau definisi. Dalam konteks materi sains, sebuah entitas
 seperti ``Fotosintesis'' atau ``Hukum Ohm'' tidak cukup hanya muncul
-sebagai nama---ia harus memiliki deskripsi agar dapat digunakan dalam
+sebagai nama; entitas tersebut harus memiliki deskripsi agar dapat digunakan dalam
 proses pembelajaran atau KGC. Metrik DC dirumuskan dalam penelitian ini
 sebagai operasionalisasi dimensi kelengkapan (\textit{completeness}) dalam
 manajemen kualitas \textit{knowledge graph} \parencite{xue_knowledge_2022}.
@@ -626,7 +626,7 @@ mengingat proses KGC dalam penelitian ini dibantu oleh LLM yang rentan
 terhadap \textit{hallucination} informasi, seperti mengekstrak entitas yang salah
 atau memetakan relasi lintas disiplin yang tidak relevan secara
 pedagogis. Dalam evaluasi klasifikasi tradisional, prediksi sistem
-dinilai secara biner---hanya ada benar (1,0) atau salah (0,0), yang
+dinilai secara biner, yaitu benar (1,0) atau salah (0,0), yang
 disebut sebagai himpunan tegas (\textit{crisp sets}). Sebaliknya, dalam
 evaluasi ekstraksi pengetahuan oleh LLM, hasil sering kali memiliki
 batas yang tidak tegas (\textit{soft boundaries}) karena adanya nilai
@@ -667,16 +667,28 @@ ditetapkan secara sepihak, melainkan turut disepakati melalui diskusi dengan
 pakar domain yang terlibat dalam proses validasi, sehingga skema penilaian ini
 selaras dengan interpretasi pakar terhadap kualitas relasi.
 
-Untuk menghitung metrik evaluasi ini, \textcite{harju_evaluating_2023} menggunakan
-prinsip irisan fuzzy (\textit{fuzzy intersection}) yang didefinisikan
-sebagai nilai minimum antara prediksi model dan referensi
-\textit{ground truth} pakar, yaitu $\min(\hat{y}_i, y)$. Karena model
-LLM selalu menghasilkan prediksi dengan tingkat keyakinan penuh
-($\hat{y}_i = 1{,}0$), nilai irisan dari setiap relasi akan selalu
-mengikuti skor keanggotaan yang ditetapkan oleh pakar. Dengan demikian,
-Fuzzy Precision, Fuzzy Recall, dan F1-Score dalam penelitian ini digunakan
-sebagai metrik kinerja ekstraksi relasi, bukan sebagai akurasi klasifikasi
-sederhana. Ketiganya dirumuskan sebagai berikut:
+Untuk menghitung metrik evaluasi ini, penelitian ini mengadaptasi prinsip irisan
+fuzzy (\textit{fuzzy intersection}) dari \textcite{harju_evaluating_2023}, yaitu
+bahwa kecocokan antara prediksi model dan referensi pakar dapat dinyatakan
+dengan nilai minimum antara keanggotaan prediksi dan keanggotaan referensi.
+Dalam konteks penelitian ini, setiap \textit{triple} yang dihasilkan sistem
+diperlakukan sebagai prediksi penuh, sedangkan tingkat kebenarannya ditentukan
+oleh skor pakar (1{,}0; 0{,}5; 0{,}25; atau 0{,}0). Sebagai contoh, jika sistem
+menghasilkan \textit{triple} (Fotosintesis, \texttt{MENGHASILKAN}, Glukosa),
+maka dari sisi model prediksi tersebut dihitung sebagai satu keluaran penuh
+($\hat{y}=1{,}0$). Namun, kontribusinya terhadap metrik mengikuti penilaian
+pakar: bernilai 1{,}0 jika relasi dinilai benar, 0{,}5 jika benar tetapi
+deskripsinya perlu diperbaiki, 0{,}25 jika maknanya masih kurang konteks, dan
+0{,}0 jika relasi dinilai salah. Berbeda dari formulasi
+soft-label umum pada \textcite{harju_evaluating_2023} yang menjumlahkan nilai
+keanggotaan pada seluruh elemen referensi, rumus di bawah ini dioperasionalkan
+untuk skenario validasi KG: penyebut \textit{Fuzzy Precision} adalah seluruh
+relasi yang diekstraksi sistem, sedangkan penyebut \textit{Fuzzy Recall} adalah
+relasi yang dinilai pakar ditambah \textit{missing triples} yang diusulkan pakar
+sebagai relasi esensial. Dengan demikian, Fuzzy Precision, Fuzzy Recall, dan
+F1-Score dalam penelitian ini digunakan sebagai metrik kinerja ekstraksi relasi,
+bukan sebagai akurasi klasifikasi sederhana. Ketiganya dirumuskan sebagai
+berikut:
 
 \begin{enumerate}
   \item \textbf{Fuzzy Precision:} mengukur ketepatan relasi yang berhasil
