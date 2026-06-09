@@ -447,7 +447,10 @@ tercampur.
         relasi tertipe, lalu mengklasifikasikan relasi dengan LLM dan
         menuliskannya kembali ke graf. Keluarannya adalah daftar \textit{edge}
         \texttt{LINTAS\_BUKU\_*} baru beserta \textit{confidence score}
-        dan deskripsi singkat.
+        dan deskripsi singkat. Karena relasi diprediksi di antara konsep yang
+        sudah ada dalam graf dan bukan digali dari teks mentah, tahap ini
+        merupakan \textit{relation prediction}, yaitu salah satu subtugas KGC
+        (lihat Subbab~\ref{subsec:kgc}).
 
   \item \textbf{Evaluasi pasca-\textit{completion}.} \textit{Edge}
         lintas-buku hasil \textit{completion} terlebih dahulu dituliskan
@@ -571,9 +574,6 @@ metrik validasi pakar pada Subbab~\ref{subsec:validasi-manusia}.
   \textit{Average Degree} (AD)
     & Tingkat keterhubungan rata-rata; dibandingkan pre- dan post-KGC
     & Rata-rata derajat ($\geq 0$) \\
-  \textit{Graph Density}
-    & Kepadatan relasi graf; dibandingkan pre- dan post-KGC
-    & Nilai 0--1 \\
   \textit{Modularity}
     & Keterpisahan komunitas antarmapel; dibandingkan pre- dan post-KGC
     & Nilai $-0{,}5$ hingga $1$ \\
@@ -702,12 +702,16 @@ teknis utama yang digunakan sepanjang penelitian ini.
   \textit{Confidence} (LLM)
     & Skor dalam rentang $[0,1]$ yang dikeluarkan model klasifikasi
       \texttt{LINTAS\_BUKU} bersama setiap prediksi relasi sebagai ukuran
-      tingkat keyakinan model. Skor ini dipakai untuk menyaring relasi:
-      relasi diterima bila skornya memenuhi ambang
-      (\texttt{BERKAITAN\_DENGAN} $\geq 0{,}85$; tipe lain $\geq 0{,}70$),
-      sedangkan kandidat dengan skor $< 0{,}5$ tidak diikutkan dalam
-      survei pakar. Karena skor ini belum terkalibrasi, keandalannya
-      diperiksa kembali pada Subbab~\ref{subsubsec:false-positive}. \\
+      tingkat keyakinan model. \textit{Prompt} klasifikasi
+      \emph{menginstruksikan} model untuk hanya memakai keyakinan tinggi
+      ($\geq 0{,}85$ untuk \texttt{BERKAITAN\_DENGAN}; $\geq 0{,}70$ untuk
+      tipe lain), tetapi instruksi ini bukan penyaring keras pada kode:
+      setiap prediksi berlabel non-\texttt{NONE} tetap dituliskan ke graf
+      beserta skornya. Penyaringan berbasis skor yang benar-benar diterapkan
+      hanya mengecualikan kandidat berskor $< 0{,}5$ dari survei pakar (bukan
+      dari graf). Karena skor ini bersifat \textit{self-reported} dan belum
+      terkalibrasi, keandalannya diperiksa kembali pada
+      Subbab~\ref{subsubsec:false-positive}. \\
 \end{tabular}
 \end{table}
 
@@ -783,7 +787,7 @@ diolah melalui tahapan berikut.
         \textit{inter-rater agreement}.
 
   \item \textbf{Kalkulasi Metrik Struktural:} Metrik topologi graf
-        (AD, \textit{Density}, \textit{Modularity}, TRR, DC) dihitung
+        (AD, \textit{Modularity}, TRR, DC) dihitung
         melalui kueri Cypher deterministik di Neo4j Aura pada kondisi
         pre-KGC dan post-KGC.
 \end{enumerate}
@@ -803,7 +807,7 @@ Analisis struktural menafsirkan perubahan karakteristik topologi
 kualitas interkoneksi antarkonsep. Berdasarkan metrik struktural yang
 dihitung pada tahap pengolahan data (Subbab~\ref{sec:pengolahan-data}),
 hasil perbandingan kondisi pre-KGC dan post-KGC disajikan dalam bentuk
-tabel berpasangan per mata pelajaran. Peningkatan AD dan \textit{Density}
+tabel berpasangan per mata pelajaran. Peningkatan AD
 setelah KGC diinterpretasikan sebagai indikator bahwa relasi implisit
 yang diprediksi LLM berhasil memperkaya kepadatan jaringan pengetahuan.
 Sebaliknya, penurunan \textit{Modularity} yang terlalu drastis dapat
@@ -829,7 +833,7 @@ karakteristik struktur pengetahuan antardisiplin sains dalam konteks
 Kurikulum Merdeka.
 
 Perbandingan dilakukan pada dua dimensi. Pertama, dimensi struktural
-membandingkan nilai metrik graf (AD, \textit{Density},
+membandingkan nilai metrik graf (AD,
 \textit{Modularity}, TRR) antarmata pelajaran pada kondisi post-KGC.
 Kedua, dimensi validasi membandingkan nilai Fuzzy Precision, Fuzzy Recall, dan F1
 antarmata pelajaran untuk mengidentifikasi disiplin mana yang paling

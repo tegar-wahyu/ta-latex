@@ -117,7 +117,7 @@ evaluasi struktural dan validasi pakar yang dibahas pada Bab~5, kesimpulan yang
 menjawab keempat rumusan masalah penelitian adalah sebagai berikut.
 
 \begin{enumerate}
-  \item \textbf{Pemetaan interkoneksi untuk mengatasi \textit{siloed learning}.}
+  \item \textbf{Pemetaan interkoneksi untuk menjembatani fragmentasi penyajian kurikulum.}
         \textit{Pipeline} yang dikembangkan mampu memetakan interkoneksi semantik
         antar-materi sains secara eksplisit, sehingga menjawab masalah
         fragmentasi kurikulum. Sebelum KGC, ketiga mata pelajaran membentuk
@@ -125,16 +125,14 @@ menjawab keempat rumusan masalah penelitian adalah sebagai berikut.
         0{,}666 yang merefleksikan kondisi \textit{siloed learning}. Setelah
         penambahan 125 relasi lintas-buku, \textit{Modularity} turun menjadi
         0{,}158, sementara \textit{Average Degree} (AD) meningkat
-        98{,}4\% (dari 0{,}74 menjadi 1{,}47) dan \textit{Graph Density}
-        antar-konsep hampir berlipat ganda (dari 0{,}00108 menjadi 0{,}00214).
+        98{,}4\% (dari 0{,}74 menjadi 1{,}47).
         Bukti topologis ini (Tabel~\ref{tab:struktural}) mengonfirmasi bahwa
         \textit{Knowledge Graph} (KG) yang dihasilkan berhasil meningkatkan
         keterhubungan konseptual antar-disiplin dalam representasi graf yang
         dibangun. Uji ketahanan dengan
         mengeluarkan \textit{edge} berlabel \texttt{wrong} menunjukkan pola yang
-        sama: AD tetap meningkat dari 0{,}7093 menjadi 1{,}4360, densitas dari
-        0{,}00103 menjadi 0{,}00209, dan \textit{Modularity} turun dari 0{,}6654
-        menjadi 0{,}1489.
+        sama: AD tetap meningkat dari 0{,}7093 menjadi 1{,}4360, dan
+        \textit{Modularity} turun dari 0{,}6654 menjadi 0{,}1489.
 
   \item \textbf{Pemanfaatan kemampuan semantik LLM untuk melengkapi relasi
         implisit.} Penelitian ini memanfaatkan kemampuan semantik LLM untuk
@@ -194,7 +192,8 @@ menjawab keempat rumusan masalah penelitian adalah sebagai berikut.
 
 Secara keseluruhan, penelitian ini menunjukkan bahwa pendekatan LLM-Assisted KGC
 merupakan metode yang layak (\textit{viable}) untuk membangun dan melengkapi graf
-pengetahuan kurikulum sains lintas-disiplin berbahasa Indonesia. Artefak yang
+pengetahuan kurikulum sains lintas-disiplin berbahasa Indonesia pada korpus dan
+konfigurasi yang diuji. Artefak yang
 dihasilkan berupa purwarupa KG tervalidasi beserta \textit{pipeline} yang
 terdokumentasi, dan menjadi salah satu sumber daya terbuka berbahasa Indonesia
 yang mendokumentasikan interkoneksi materi sains lintas-disiplin pada Kurikulum
@@ -235,13 +234,46 @@ menafsirkan hasilnya.
         memodelkan tingkat kognitif (taksonomi Bloom) maupun keadaan pembelajar
         (\textit{learner state}).
 
-  \item \textbf{Keterbatasan metrik dan model.} \textit{Fuzzy Recall} dan F1 pada
-        validasi lintas-disiplin (Fase~2) tidak dapat dihitung karena tiadanya
-        \textit{denominator} relasi benar yang menyeluruh dalam konfigurasi panel
-        tunggal. Selain itu, penelitian hanya memanfaatkan satu keluarga model
-        (Gemini) tanpa komparasi lintas-model, dan graf diinstansiasi pada skala
-        purwarupa (Neo4j Aura \textit{Free tier}) tanpa integrasi ke sistem
-        pengguna akhir.
+  \item \textbf{Keterbatasan metrik dan independensi evaluasi.} Validitas relasi
+        lintas-disiplin (Fase~2, 99{,}1\%) berasal dari \emph{satu} keputusan
+        konsensus panel yang dinilai bersama; akibatnya \textit{Fuzzy Recall},
+        F1-Score, maupun kesepakatan antarpakar (Gwet's AC1) tidak dapat dihitung
+        untuk fase ini, dan angka validitas tersebut perlu dibaca dengan
+        hati-hati karena tidak disertai ukuran keandalan serta rentan terhadap
+        \textit{leniency} dan dominasi suara dalam diskusi panel. Selain itu,
+        model ekstraksi, \textit{completion}, dan \textit{LLM-as-a-judge} berasal
+        dari satu keluarga (Gemini) tanpa komparasi lintas-model, sehingga
+        \textit{judge} tidak sepenuhnya independen dari sistem yang dinilainya.
+        Graf juga diinstansiasi pada skala purwarupa (Neo4j Aura \textit{Free
+        tier}) tanpa integrasi ke sistem pengguna akhir.
+
+  \item \textbf{Ketiadaan metode pembanding (\textit{baseline}).} Klaim bahwa pendekatan berbasis
+        LLM lebih sesuai daripada metode \textit{embedding} struktural untuk
+        konsep \textit{long-tail} (Bab~2) bertumpu pada literatur dan tidak diuji
+        langsung pada korpus ini: penelitian tidak membandingkan
+        \textit{pipeline} terhadap baseline mana pun (misalnya \textit{embedding}
+        struktural seperti TransE/RotatE, ekstraksi berbasis aturan, atau LLM
+        tanpa penyaringan kandidat ANN), dan belum melakukan analisis kuantitatif
+        atas distribusi \textit{long-tail}. Karena itu, klaim kelayakan bersifat
+        absolut pada konfigurasi yang diuji, bukan komparatif.
+
+  \item \textbf{Profil dan kedalaman pengalaman pakar.} Validasi dilakukan oleh
+        mahasiswa aktif atau lulusan baru (angkatan 2022--2023) berlatar ilmu
+        murni atau kependidikan yang linier (\ref{lamp:profil-pakar}), bukan
+        pakar kurikulum atau praktisi senior. Karena penilaian ``relevansi
+        pedagogis'' bergantung pada kedalaman pengalaman ini, klaim pedagogis
+        sebaiknya ditafsirkan sebagai penilaian keilmuan per-relasi, bukan
+        rekomendasi kurikuler yang telah tervalidasi dalam praktik pembelajaran.
+
+  \item \textbf{Kualitas data konsep rintisan.} Sebanyak 25 \textit{node}
+        \texttt{Concept} berdeskripsi kosong (tercermin pada DC 93{,}07\%) dan
+        berupa istilah rintisan huruf kecil. Karena tetap berlabel
+        \texttt{Concept}, konsep-konsep ini ikut di-\textit{embed} dan
+        dipertimbangkan pada tahap \textit{completion} meskipun deskripsinya
+        tidak memadai, sehingga dapat memunculkan relasi lintas-buku
+        \texttt{BERKAITAN\_DENGAN} berkeyakinan rendah. Pembersihan atau
+        pelengkapan deskripsi konsep rintisan ini belum dilakukan dan menjadi
+        arah perbaikan kualitas data.
 \end{enumerate}
 
 % ============================================================

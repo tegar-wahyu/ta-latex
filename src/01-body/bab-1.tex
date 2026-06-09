@@ -192,9 +192,11 @@ menyelesaikan konflik penilaian antarpakar, sehingga validitas keilmuan KG yang
 dihasilkan dapat dipertanggungjawabkan.
 
 Meskipun pendekatan \textit{LLM-Assisted Knowledge Graph Completion} telah
-terbukti efektif pada domain umum, belum ada studi yang secara spesifik
-mengadaptasinya untuk memetakan interkoneksi materi sains (Fisika, Kimia,
-Biologi) dalam konteks Kurikulum Merdeka berbahasa Indonesia. Penelitian ini
+terbukti efektif pada domain umum dan mulai diterapkan untuk memodelkan
+kurikulum pendidikan tinggi \parencite{abu-rasheed_llm-assisted_2025}, belum ada
+studi yang secara spesifik mengadaptasinya untuk memetakan interkoneksi materi
+sains (Fisika, Kimia, Biologi) dalam konteks Kurikulum Merdeka berbahasa
+Indonesia. Penelitian ini
 mengisi kesenjangan tersebut dengan mengembangkan \textit{pipeline}
 LLM-Assisted KGC untuk membangun dan melengkapi graf pengetahuan sains
 lintas-disiplin berbasis buku teks resmi Kemendikbudristek.
@@ -209,8 +211,9 @@ penelitian berikut.
 \begin{enumerate}
   \item \textbf{Masalah Fragmentasi Kurikulum:} Bagaimana memetakan
         interkoneksi semantik antar-materi sains (Fisika, Kimia, Biologi) pada
-        Fase~F Kelas~XII Kurikulum Merdeka untuk mengatasi fenomena
-        \textit{siloed learning} akibat struktur mata pelajaran yang terpisah?
+        Fase~F Kelas~XII Kurikulum Merdeka secara eksplisit dan dapat
+        ditelusuri, sehingga keterkaitan lintas-disiplin yang tersembunyi
+        akibat struktur mata pelajaran yang terpisah menjadi terdokumentasi?
 
   \item \textbf{Pelengkapan Relasi Implisit:} Bagaimana memanfaatkan kemampuan
         semantik LLM untuk melengkapi relasi yang belum teridentifikasi pada
@@ -261,7 +264,7 @@ Secara spesifik, penelitian ini bertujuan untuk:
           \item \textbf{Evaluasi Struktural:} mengukur perubahan topologi graf
                 sebelum dan sesudah proses KGC menggunakan metrik
                 \textit{Average Degree} (AD),
-                \textit{Graph Density}, \textit{Modularity},
+                \textit{Modularity},
                 \textit{Typed Relation Ratio}, dan
                 \textit{Description Completeness}.
 
@@ -295,8 +298,8 @@ bidang pendidikan nasional.
 Visualisasi KG yang dihasilkan menyediakan representasi eksplisit dari jembatan
 konseptual lintas-disiplin yang selama ini bersifat implisit, misalnya
 ketergantungan konsep Potensial Elektrode di Kimia terhadap Potensial Listrik di
-Fisika, atau peran Reaksi Oksidasi sebagai prasyarat pemahaman Fosforilasi
-Oksidatif di Biologi. Representasi ini dapat digunakan sebagai referensi ketika
+Fisika, atau peran pemahaman struktur kimia DNA di Kimia sebagai prasyarat
+pemahaman konsep Gen di Biologi. Representasi ini dapat digunakan sebagai referensi ketika
 merancang unit pembelajaran terpadu atau mengidentifikasi urutan konsep prasyarat
 lintas mata pelajaran, tanpa harus membangun pemetaan tersebut secara manual.
 
@@ -331,7 +334,7 @@ Berikut adalah batasan-batasan yang ditetapkan untuk penelitian ini.
         (Aura Free tier) menggunakan Cypher. Pencarian kemiripan semantik
         memanfaatkan ANN \textit{vector index} HNSW dengan model
         \textit{embedding} \texttt{gemini-embedding-001}. Metrik topologi (AD,
-        \textit{Graph Density}, \textit{Modularity}) dihitung melalui kueri
+        \textit{Modularity}) dihitung melalui kueri
         Cypher.
 
   \item \textbf{Cakupan Validasi:} Validasi pakar dilakukan oleh enam

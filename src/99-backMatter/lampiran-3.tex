@@ -251,12 +251,20 @@ Output JSON sesuai schema.
 }
 \end{lstlisting}
 
-\noindent Prediksi diterima hanya bila \texttt{relation\_type} bukan
-\texttt{NONE}, \texttt{confidence} melampaui ambang per-tipe
-(\texttt{LINTAS\_BUKU\_BERKAITAN\_DENGAN}~$\geq 0{,}85$; tipe lain
-$\geq 0{,}70$), dan arah konsisten dengan sifat simetri tipe relasi.
+\noindent \textit{System prompt} \emph{meminta} model menetapkan keyakinan
+tinggi (\texttt{LINTAS\_BUKU\_BERKAITAN\_DENGAN}~$\geq 0{,}85$; tipe lain
+$\geq 0{,}70$; baris terakhir Kode~\ref{lst:prompt-sys}), namun ketentuan ini
+merupakan \emph{instruksi ke model}, bukan penyaring keras pada kode. Pada
+praktiknya, setiap prediksi berlabel non-\texttt{NONE} dengan arah yang
+konsisten terhadap sifat simetri tipenya dituliskan ke Neo4j beserta skornya;
+penyaringan berbasis skor yang benar-benar diterapkan hanya mengecualikan
+kandidat ber-\texttt{confidence}~$< 0{,}5$ dari survei pakar Fase~2 (bukan dari
+graf). Akibatnya, seluruh 21 \textit{edge}
+\texttt{LINTAS\_BUKU\_BERKAITAN\_DENGAN} yang tersimpan
+ber-\texttt{confidence}~$< 0{,}85$ (dianalisis pada
+Subbab~\ref{subsubsec:false-positive}).
 
-\noindent Setelah lolos \textit{gating}, prediksi dituliskan kembali ke
+\noindent Prediksi non-\texttt{NONE} kemudian dituliskan ke
 Neo4j sebagai \textit{edge} berarah dengan subset properti yang
 dipertahankan (\texttt{relation\_type}, \texttt{confidence},
 \texttt{description}, dan \texttt{method}); \texttt{evidence\_quote} dan

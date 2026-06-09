@@ -157,6 +157,20 @@ ini, yakni menginferensi dan memprediksi entitas atau relasi yang hilang
 (\textit{missing links}) agar triple pengetahuan menjadi lebih utuh dan
 konsisten secara semantik.
 
+Lebih rinci, \textcite{ji_survey_2022} membagi KGC ke dalam beberapa subtugas, di
+antaranya \textit{link prediction}, \textit{entity prediction}, dan
+\textit{relation prediction}, yaitu memprediksi relasi yang menghubungkan
+pasangan entitas yang sudah ada di dalam graf. Subtugas \textit{relation
+prediction} inilah yang menjadi fokus penelitian ini. Tugas ini perlu dibedakan
+dari \textit{relation extraction} atau \textit{relation discovery} yang menggali
+relasi langsung dari teks mentah. Pada KGC, relasi diprediksi di antara entitas
+yang sudah terbentuk dalam graf, bukan dari potongan teks baru. Dengan demikian,
+melengkapi relasi implisit antar-entitas yang sudah ada tetap tergolong KGC,
+bukan sekadar penemuan relasi berbasis teks. Pendekatan inilah yang diadopsi
+penelitian ini, sejalan dengan \textcite{abu-rasheed_llm-assisted_2025} yang
+menerapkan LLM-Assisted KGC pada pemodelan kurikulum dan dibahas lebih lanjut
+pada Subbab~\ref{sec:penelitian-terkait}.
+
 Metode-metode berbasis \textit{embedding} seperti TransE
 \parencite{bordes_translating_2013} dan RotatE \parencite{sun_rotate_2019} memodelkan relasi sebagai operasi
 matematis dalam ruang vektor berdimensi rendah. Meskipun efisien pada
@@ -433,12 +447,16 @@ sesudah KGC.
 
 \subsubsection{Modularity}
 
-\textbf{Modularity ($Q$)} mengukur seberapa baik sebuah graf terbagi
+\textbf{Modularity ($Q$)} mengukur seberapa kuat sebuah graf terbagi
 menjadi komunitas-komunitas yang terpisah. Nilai $Q$ berkisar antara
-$-0{,}5$ hingga $1$; nilai yang lebih tinggi menunjukkan pembagian
-komunitas yang lebih baik, ditandai dengan koneksi yang rapat di dalam
+$-0{,}5$ hingga $1$; nilai yang lebih tinggi menunjukkan pemisahan
+komunitas yang lebih tegas, ditandai dengan koneksi yang rapat di dalam
 komunitas dan jarang di luar komunitas. Nilai $Q = 0$ menunjukkan bahwa
-pembagian komunitas yang dihasilkan tidak lebih baik dari partisi acak.
+pembagian komunitas yang dihasilkan tidak berbeda dari partisi acak.
+Dalam konteks penelitian ini, arah perubahan yang diharapkan justru
+\textbf{penurunan} $Q$ setelah KGC: nilai $Q$ yang makin rendah menandakan
+komunitas antar-disiplin yang semula terpisah menjadi makin terhubung,
+sejalan dengan tujuan mengintegrasikan materi lintas-mata-pelajaran.
 
 Modularity dihitung dengan membandingkan jumlah \textit{edge} yang
 benar-benar ada dalam komunitas dengan jumlah \textit{edge} yang secara
@@ -487,34 +505,6 @@ Penetapan partisi yang tetap ini penting karena nilai $Q$ pre-KGC dan
 post-KGC dihitung atas partisi yang persis sama, sehingga perubahan $Q$
 murni mencerminkan bertambahnya \textit{edge} lintas-mata-pelajaran akibat
 proses KGC, bukan artefak dari komunitas yang berbeda di tiap fase.
-
-\subsubsection{Graph Density}
-
-\textbf{Graph Density ($D$)} mengukur seberapa banyak koneksi yang
-terbentuk dalam sebuah graf dibandingkan dengan koneksi maksimum yang
-secara teoritis mungkin ada. Nilai $D$ berkisar antara 0 hingga 1; nilai
-mendekati 1 menandakan graf yang sangat padat (\textit{dense}), sementara
-nilai mendekati 0 menandakan graf yang jarang (\textit{sparse})
-\parencite[134]{newman_networks_2010}. Dalam
-konteks penelitian ini, \textit{density} digunakan untuk membandingkan tingkat
-keterkaitan antar-konsep sebelum dan sesudah penambahan relasi lintas
-buku (\textit{cross-book links}). Sejalan dengan AD antar-konsep yang
-menjadi metrik utama, \textit{density} dihitung pada \textbf{subgraf konsep},
-yakni hanya melibatkan \textit{node} \texttt{Concept} dan relasi langsung
-antar-konsep, agar mencerminkan kepadatan interkoneksi materi sains tanpa
-dipengaruhi oleh \textit{node} struktural (kelas, bab, subbab). Untuk graf berarah,
-formula yang digunakan adalah:
-
-\[
-  D = \frac{|E_C|}{|V_C|(|V_C|-1)}
-\]
-
-\noindent dengan $|E_C|$ adalah jumlah relasi langsung antar-\textit{node}
-\texttt{Concept}, dan $|V_C|$ adalah jumlah \textit{node} \texttt{Concept}. Penyebut
-$|V_C|(|V_C|-1)$ merepresentasikan jumlah maksimum \textit{edge} berarah
-yang mungkin ada antar-konsep, dari asumsi bahwa setiap pasangan \textit{node}
-$(i, j)$ dengan $i \neq j$ dapat memiliki tepat satu \textit{edge} berarah
-tanpa \textit{self-loop}.
 
 \subsection{Metrik Ekstraksi}
 \label{subsec:metrik-ekstraksi}
@@ -822,7 +812,7 @@ ditugaskan untuk menginferensi relasi interdisipliner yang bersifat
 implisit di antara konsep-konsep Fisika, Kimia, dan Biologi.
 
 % ============================================================
-\section{Penelitian Terkait}
+\section{Penelitian Terkait}\label{sec:penelitian-terkait}
 % ============================================================
 
 Bagian ini memetakan posisi penelitian ini di antara karya-karya
@@ -859,6 +849,24 @@ DCI/ICI, tetapi skalabilitasnya terbatas karena dilakukan secara manual.
 Penelitian ini mengisi kekosongan tersebut dengan menggabungkan otomatisasi
 berbasis LLM dan struktur graf relasional dalam satu \textit{pipeline} yang
 terintegrasi, khusus untuk konteks kurikulum Indonesia.
+
+Karya yang paling dekat dengan penelitian ini adalah
+\textcite{abu-rasheed_llm-assisted_2025}, yang menerapkan LLM-Assisted KGC untuk
+memodelkan kurikulum pendidikan tinggi. Pendekatan mereka memiliki banyak
+kesamaan dengan penelitian ini, yakni ekstraksi konsep dari materi ajar dibantu
+LLM dengan panduan ontologi, penautan topik antar-program studi melalui
+kemiripan \textit{embedding}, validasi oleh pakar (\textit{human-in-the-loop}),
+serta evaluasi gabungan berupa umpan balik pakar dan metrik kualitas graf.
+Kesamaan ini sekaligus menegaskan bahwa pendekatan yang ditempuh penelitian ini
+memang tergolong KGC, karena karya tersebut yang berciri serupa juga menyebut
+prosesnya sebagai \textit{Knowledge Graph Completion}. Perbedaan utamanya
+terletak pada konteks dan cakupan: \citeauthor{abu-rasheed_llm-assisted_2025}
+bekerja pada jenjang pendidikan tinggi berbahasa Inggris dengan sumber berupa
+materi kuliah (slide dan rekaman) serta menautkan modul antar-program studi,
+sedangkan penelitian ini berfokus pada jenjang SMA Kurikulum Merdeka berbahasa
+Indonesia dengan sumber berupa buku teks resmi serta menargetkan relasi lintas
+tiga disiplin IPA (Fisika, Kimia, Biologi) dalam satu kurikulum nasional yang
+sama.
 
 Secara keseluruhan, belum ditemukan penelitian terdahulu yang secara
 bersamaan: (a) menggunakan buku teks resmi kurikulum Indonesia sebagai
