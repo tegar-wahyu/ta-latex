@@ -227,11 +227,13 @@ pembatasan konsep pada materi pokok.
 
   \item \textbf{Vokabulari relasi.}
 
-  \textit{Prompt} membatasi ekstraksi relasi antar-konsep pada 15 tipe relasi
-  intra-buku sesuai \textit{controlled vocabulary} ontologi
-  (Subbab~\ref{subsec:skema-ontologi}); instruksi \textit{cross-chapter
-  reasoning} secara terpisah menghasilkan relasi pedagogis antar-bab
-  (\texttt{PRASYARAT} atau \texttt{MEMPERSIAPKAN}).
+  \textit{Prompt} diarahkan untuk menghasilkan relasi antar-konsep sesuai
+  vokabulari relasi dalam-buku pada ontologi, yaitu 15 tipe relasi yang
+  didefinisikan pada Tabel~\ref{tab:relasi-dalam-buku}. Instruksi
+  \textit{cross-chapter reasoning} secara terpisah menghasilkan relasi
+  pedagogis antar-bab (\texttt{PRASYARAT} atau \texttt{MEMPERSIAPKAN}).
+  Validasi pascaproses pada tahap ini memastikan tipe dan target relasi tidak
+  kosong.
 
   \item \textbf{Penguraian keluaran terstruktur.}
 
@@ -249,7 +251,11 @@ pembatasan konsep pada materi pokok.
 \section{Graph Construction (Eksekusi Neo4j Cypher)}\label{sec:graph-construction}
 % ============================================================
 
-Tahap ini membangun \textit{knowledge graph} ke Neo4j dengan strategi
+Pada alur utama penelitian, instansiasi graf ke Neo4j dilakukan setelah proses konsensus,
+yaitu dengan membaca berkas \texttt{\{mapel\}.consensus.json} yang telah memuat
+hasil validasi dan ajudikasi pakar. Ingest awal dari KG JSON hasil ekstraksi
+hanya bersifat opsional untuk inspeksi atau penayangan pada KG Review App.
+Ingest konsensus membangun \textit{knowledge graph} ke Neo4j dengan strategi
 dua-\textit{pass}, yaitu dua tahap yang dijalankan berurutan. Urutan ini
 dipilih agar graf yang terbentuk konsisten secara referensial dan idempoten. Maksud konsisten secara referensial,
 setiap relasi selalu menunjuk ke \textit{node} yang sudah ada, sehingga tidak
@@ -427,7 +433,7 @@ tugas KGC.
   \item \textbf{Relation classification via LLM.}
 
   Tiap pasangan yang lolos \textit{pruning} diklasifikasikan oleh LLM
-  (Gemini 2.5 Flash Lite) melalui \textit{prompt few-shot} yang memuat: (1)
+  (Gemini 2.5 Flash) melalui \textit{prompt few-shot} yang memuat: (1)
   deskripsi dan konteks kedua konsep (nama, deskripsi, mata pelajaran); (2)
   konteks graf berupa bab asal, hingga lima \textit{edge} keluar yang sudah ada,
   serta tetangga bersama (\textit{shared neighbors}); dan (3) definisi ketat tiap
@@ -537,8 +543,10 @@ berbasis \textit{Cypher} dan aplikasi web KG Review App untuk validasi pakar.
   ditelusuri (\textit{auditable}) dan direproduksi.
 
   Keluarannya ada dua. \emph{Pertama}, \textit{gold standard} per mata pelajaran
-  berupa daftar label final yang menjadi masukan perhitungan metrik
-  (Gwet's AC1 serta \textit{Fuzzy Precision}/\textit{Recall}/F1). \emph{Kedua},
+  berupa daftar label final. Berkas ini digunakan bersama penilaian awal dua pakar
+  dari KG Review App untuk menghitung \textit{Fuzzy Precision}/\textit{Recall}/F1,
+  sedangkan Gwet's AC1 dihitung langsung dari dua penilaian asli pakar
+  tersebut. \emph{Kedua},
   berkas KG konsensus, yakni ekspor graf dengan label konsensus dan metadata
   peninjauan yang ditanamkan pada tiap relasi. \textit{Notebook} 
   menulis KG konsensus ini kembali ke Neo4j dengan \textit{constraint} keunikan,

@@ -350,7 +350,7 @@ dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{
   ``\textit{node} buntu'' dalam graf. Nilai TRR meningkat dari
   69{,}69\% (pre-KGC) menjadi 74{,}86\% (post-KGC), mencerminkan bahwa KGC
   menambahkan \textit{edge} bertipe semantik spesifik sehingga proporsi relasi
-  bertype meningkat relatif terhadap total \textit{edge} dalam graf.
+  bertipe meningkat relatif terhadap total \textit{edge} dalam graf.
 \end{enumerate}
 
 % ────────────────────────────────────────────────────────────
@@ -654,6 +654,9 @@ tipe relasi (Gambar~\ref{fig:relasi-distribusi}) didominasi
 \texttt{BERKAITAN\_\allowbreak DENGAN} (21 \textit{edge}, 16{,}8\%),
 \texttt{APLIKASI\_\allowbreak DARI} (15 \textit{edge}, 12{,}0\%), dan
 \texttt{SAMA\_\allowbreak DENGAN} (1 \textit{edge}, 0{,}8\%).
+Pada bagian hasil, prefiks \texttt{LINTAS\_BUKU\_} dihilangkan dari nama tipe
+relasi untuk menjaga keterbacaan tabel dan gambar; label yang disimpan pada
+graf tetap menggunakan bentuk lengkap \texttt{LINTAS\_BUKU\_*} sesuai ontologi.
 Dominasi \texttt{PRASYARAT\_\allowbreak UNTUK} mengindikasikan bahwa jembatan lintas-disiplin
 pada kurikulum sains kelas XII lebih banyak bersifat prasyarat pengetahuan
 daripada aplikasi atau analogi. Dari 125 relasi, 8 \textit{edge} memiliki \textit{confidence}
@@ -760,7 +763,8 @@ Biologi sebagai sumber, padahal arah yang benar umumnya
 Kimia$\to$Biologi --- konsep kimia berperan sebagai prasyarat/fondasi
 yang \textit{diperdalam} atau \textit{dibutuhkan} oleh proses biologis.
 Tipe \texttt{MEMPERDALAM} paling rentan (ketepatan arah 60\%: 18 Benar, 12
-Terbalik), disusul \texttt{APLIKASI\_DARI} (73\%) dan PRASYARAT\_UNTUK (79\%),
+Terbalik), disusul \texttt{APLIKASI\_DARI} (73\%) dan
+\texttt{PRASYARAT\_UNTUK} (79\%),
 sementara tipe simetris \texttt{BERKAITAN\_DENGAN} dan \texttt{SAMA\_DENGAN} mencapai
 100\% karena arah tidak relevan secara semantik.
 

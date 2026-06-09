@@ -209,13 +209,16 @@ SET r.description = $description, r.relation_type = $relation_type,
     r.source = 'consensus', r.graph_role = 'structure';
 \end{lstlisting}
 
-\subsubsection{Pass~3 --- Relasi Lintas-Buku}
+\subsubsection{\textit{Writeback} Completion --- Relasi Lintas-Buku}
 
-Pass~3 menulis \textit{edge} lintas-buku berprefiks \texttt{LINTAS\_BUKU\_}
-dengan \texttt{graph\_role = 'semantic'}, sehingga dapat dibedakan dari relasi
-struktural maupun intra-buku saat analisis pre/post-KGC.
+Setelah tahap \textit{completion}, \textit{edge} lintas-buku berprefiks
+\texttt{LINTAS\_BUKU\_} ditulis kembali ke Neo4j dengan
+\texttt{graph\_role = 'semantic'}, sehingga dapat dibedakan dari relasi
+struktural maupun intra-buku saat analisis pre/post-KGC. Langkah ini bukan
+bagian dari konstruksi konsensus dua-\textit{pass}, melainkan \textit{writeback}
+hasil KGC.
 
-\begin{lstlisting}[style=cypherbox,caption={Penulisan edge lintas-buku (Pass~3).},label={lst:cypher-pass3}]
+\begin{lstlisting}[style=cypherbox,caption={Penulisan edge lintas-buku hasil completion.},label={lst:cypher-completion-writeback}]
 // Pastikan konsep target ada
 MERGE (tgt:Concept {name: $name, grade: $grade})
 SET tgt.source = coalesce(tgt.source, 'consensus'),
