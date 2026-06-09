@@ -264,27 +264,36 @@ Rincian bibliografis ketiga buku siswa beserta Buku Panduan Guru
 pasangannya (judul, penulis, dan ISBN) disajikan pada \ref{lamp:korpus}.
 
 Secara kuantitatif, korpus mencakup total 708 halaman yang terbagi atas 17 bab
-dan 77 subbab. Untuk diproses oleh \textit{pipeline}, teks dipecah menjadi 788
-\textit{chunk} dengan ukuran 800 token dan tumpang-tindih (\textit{overlap}) 200
-token antar-\textit{chunk}. Estimasi jumlah kata setelah dikurangi tumpang-tindih
-adalah sekitar 110 ribu kata. Rincian ukuran korpus per mata pelajaran disajikan
-pada Tabel~\ref{tab:ukuran-korpus}.
+dan 77 subbab. Untuk diproses oleh \textit{pipeline}, teks Buku Siswa dipecah
+menjadi 782 \textit{chunk} dengan ukuran 800 token dan tumpang-tindih
+(\textit{overlap}) 200 token antar-\textit{chunk}; estimasi jumlah kata setelah
+dikurangi tumpang-tindih adalah sekitar 110 ribu kata. Buku Panduan Guru
+pasangannya dipecah menjadi 747 \textit{chunk} yang dimanfaatkan sebagai sumber
+ekstraksi materi pokok (\textit{constraint} kurikulum), sehingga total korpus
+berjumlah 1.529 \textit{chunk}. Rincian ukuran korpus per mata pelajaran
+disajikan pada Tabel~\ref{tab:ukuran-korpus}; kolom Halaman, Bab, Subbab, dan
+Kata merujuk pada Buku Siswa, sedangkan kolom \textit{Chunk} menampilkan kedua
+buku.
 
 \begin{table}[htbp]
 \centering
 \caption{Ukuran Korpus Ekstraksi per Mata Pelajaran}
 \label{tab:ukuran-korpus}
-\begin{tabular}{@{}lrrrrr@{}}
+\begin{tabular}{@{}lrrrrrr@{}}
   \toprule
-  \textbf{Mata Pelajaran} & \textbf{Halaman} & \textbf{Bab} & \textbf{Subbab}
-    & \textbf{\textit{Chunk}} & \textbf{Kata ($\approx$)} \\
+  \multirow{2}{*}{\textbf{Mata Pelajaran}} & \multirow{2}{*}{\textbf{Halaman}}
+    & \multirow{2}{*}{\textbf{Bab}} & \multirow{2}{*}{\textbf{Subbab}}
+    & \multicolumn{2}{c}{\textbf{\textit{Chunk}}}
+    & \multirow{2}{*}{\textbf{Kata ($\approx$)}} \\
+  \cmidrule(lr){5-6}
+    & & & & \textbf{Siswa} & \textbf{Guru} & \\
   \midrule
-  Fisika  & 228 & 9 & 39 & 252 & 35.600 \\
-  Kimia   & 210 & 4 & 22 & 235 & 29.400 \\
-  Biologi & 270 & 4 & 16 & 301 & 45.600 \\
+  Fisika  & 228 & 9 & 39 & 249 & 264 & 35.600 \\
+  Kimia   & 210 & 4 & 22 & 234 & 219 & 29.400 \\
+  Biologi & 270 & 4 & 16 & 299 & 264 & 45.600 \\
   \midrule
-  \textbf{Total} & \textbf{708} & \textbf{17} & \textbf{77} & \textbf{788}
-    & \textbf{110.600} \\
+  \textbf{Total} & \textbf{708} & \textbf{17} & \textbf{77} & \textbf{782}
+    & \textbf{747} & \textbf{110.600} \\
   \bottomrule
 \end{tabular}
 \end{table}
