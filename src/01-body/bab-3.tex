@@ -263,6 +263,32 @@ benar-benar mencerminkan standar materi yang diajarkan secara nasional.
 Rincian bibliografis ketiga buku siswa beserta Buku Panduan Guru
 pasangannya (judul, penulis, dan ISBN) disajikan pada \ref{lamp:korpus}.
 
+Secara kuantitatif, korpus mencakup total 708 halaman yang terbagi atas 17 bab
+dan 77 subbab. Untuk diproses oleh \textit{pipeline}, teks dipecah menjadi 788
+\textit{chunk} dengan ukuran 800 token dan tumpang-tindih (\textit{overlap}) 200
+token antar-\textit{chunk}. Estimasi jumlah kata setelah dikurangi tumpang-tindih
+adalah sekitar 110 ribu kata. Rincian ukuran korpus per mata pelajaran disajikan
+pada Tabel~\ref{tab:ukuran-korpus}.
+
+\begin{table}[htbp]
+\centering
+\caption{Ukuran Korpus Ekstraksi per Mata Pelajaran}
+\label{tab:ukuran-korpus}
+\begin{tabular}{@{}lrrrrr@{}}
+  \toprule
+  \textbf{Mata Pelajaran} & \textbf{Halaman} & \textbf{Bab} & \textbf{Subbab}
+    & \textbf{\textit{Chunk}} & \textbf{Kata ($\approx$)} \\
+  \midrule
+  Fisika  & 228 & 9 & 39 & 252 & 35.600 \\
+  Kimia   & 210 & 4 & 22 & 235 & 29.400 \\
+  Biologi & 270 & 4 & 16 & 301 & 45.600 \\
+  \midrule
+  \textbf{Total} & \textbf{708} & \textbf{17} & \textbf{77} & \textbf{788}
+    & \textbf{110.600} \\
+  \bottomrule
+\end{tabular}
+\end{table}
+
 \subsection{Data Validasi Pakar}\label{subsec:data-validasi}
 
 Data validasi diperoleh melalui penilaian kualitatif oleh panel pakar
