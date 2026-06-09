@@ -166,7 +166,6 @@ terhubung oleh relasi lintas-buku.
 \textbf{Metrik Struktural} & \textbf{Pre-KGC} & \textbf{Post-KGC} \\
 \midrule
 AD                & 0{,}7384 & 1{,}4651 \\
-\textit{Graph Density} & 0{,}00108 & 0{,}00214 \\
 \textit{Modularity}               & 0{,}6659 & 0{,}1580 \\
 \bottomrule
 \end{tabular}
@@ -191,7 +190,6 @@ berlabel \texttt{wrong}.}
 \textbf{Pre-KGC} & \textbf{Post-KGC} \\
 \midrule
 AD & 0{,}7384 & 1{,}4651 & 0{,}7093 & 1{,}4360 \\
-\textit{Graph Density} & 0{,}00108 & 0{,}00214 & 0{,}00103 & 0{,}00209 \\
 \textit{Modularity} & 0{,}6659 & 0{,}1580 & 0{,}6654 & 0{,}1489 \\
 \textit{Concept}$\rightarrow$\textit{Concept} \textit{edge}
 & 127 & 252 & 122 & 247 \\
@@ -204,7 +202,7 @@ AD & 0{,}7384 & 1{,}4651 & 0{,}7093 & 1{,}4360 \\
 \begin{tikzpicture}
 \begin{groupplot}[
   group style={
-    group size=3 by 1,
+    group size=2 by 1,
     horizontal sep=1.35cm
   },
   width=0.32\linewidth,
@@ -232,31 +230,17 @@ AD & 0{,}7384 & 1{,}4651 & 0{,}7093 & 1{,}4360 \\
   title={AD},
   ylabel={Nilai},
   ymax=1.7,
-  nodes near coords={\pgfmathprintnumber[fixed,precision=2]{\pgfplotspointmeta}}
-]
-\addplot+[fill=blue!25, draw=blue] coordinates {(Pre-KGC,0.7384) (Post-KGC,1.4651)};
-\addplot+[fill=red!25, draw=red] coordinates {(Pre-KGC,0.7093) (Post-KGC,1.4360)};
-
-\nextgroupplot[
-  title={\textit{Graph Density}},
-  ymax=0.00245,
-  scaled y ticks=false,
-  y tick label style={
-    /pgf/number format/fixed,
-    /pgf/number format/precision=4,
-    font=\scriptsize
-  },
-  nodes near coords={\pgfmathprintnumber[sci,precision=2]{\pgfplotspointmeta}},
+  nodes near coords={\pgfmathprintnumber[fixed,precision=2]{\pgfplotspointmeta}},
   legend style={
     font=\scriptsize,
-    at={(0.5,-0.26)},
+    at={(1.15,-0.26)},
     anchor=north,
     legend columns=2,
     draw=none
   }
 ]
-\addplot+[fill=blue!25, draw=blue] coordinates {(Pre-KGC,0.00108) (Post-KGC,0.00214)};
-\addplot+[fill=red!25, draw=red] coordinates {(Pre-KGC,0.00103) (Post-KGC,0.00209)};
+\addplot+[fill=blue!25, draw=blue] coordinates {(Pre-KGC,0.7384) (Post-KGC,1.4651)};
+\addplot+[fill=red!25, draw=red] coordinates {(Pre-KGC,0.7093) (Post-KGC,1.4360)};
 \legend{\textit{Wrong} dipertahankan,\textit{Wrong} dikeluarkan}
 
 \nextgroupplot[
@@ -275,7 +259,7 @@ dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{
 \end{figure}
 
 \begin{enumerate}
-  \item \textbf{Evaluasi \textit{Average Degree} (AD) dan Kepadatan.}
+  \item \textbf{Evaluasi \textit{Average Degree} (AD).}
 
   Berdasarkan Tabel~\ref{tab:struktural}, AD antar-konsep hampir berlipat ganda
   dari 0{,}74 (pre-KGC) menjadi 1{,}47 (post-KGC), naik 98{,}4\%. Peningkatan
@@ -293,20 +277,11 @@ dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{
   \ref{lamp:cypher-metrik}, sedangkan daftar lengkap \textit{edge}
   lintas-buku yang dievaluasi pada Fase~2 beserta hasil validasinya diberikan
   pada \ref{lamp:lintas-buku}.
-  \textit{Graph Density} antar-konsep, yakni kepadatan relasi pada subgraf
-  \texttt{Concept} (lihat Subbab~\ref{subsec:metrik-topologi}), juga meningkat
-  secara proporsional dari 0{,}00108 menjadi 0{,}00214 (hampir dua kali lipat),
-  konsisten dengan penambahan \textit{edge} lintas-buku tersebut. Nilai densitas
-  yang masih sangat rendah pada kedua fase merupakan karakteristik umum
-  \textit{knowledge graph} berukuran sedang-besar, karena hanya sebagian kecil
-  dari seluruh kemungkinan pasangan konsep yang memiliki relasi bermakna
-  \parencite{hogan_knowledge_2022}.
   Untuk memastikan bahwa pola ini tidak bergantung pada relasi yang dinilai salah
   oleh pakar, Tabel~\ref{tab:struktural-robustness} menyajikan perhitungan ulang
   setelah seluruh \textit{edge} berlabel \texttt{wrong} dikeluarkan dari subgraf
   \texttt{Concept}$\rightarrow$\texttt{Concept}. Hasilnya tetap searah: AD
-  meningkat dari 0{,}7093 menjadi 1{,}4360, sedangkan densitas meningkat dari
-  0{,}00103 menjadi 0{,}00209. Visualisasi pada
+  meningkat dari 0{,}7093 menjadi 1{,}4360. Visualisasi pada
   Gambar~\ref{fig:robustness-wrong-comparison} memperlihatkan bahwa selisih
   antara kondisi \textit{wrong} dipertahankan dan dikeluarkan relatif kecil,
   sementara arah perubahan pre-KGC ke post-KGC tetap konsisten. Dengan demikian,

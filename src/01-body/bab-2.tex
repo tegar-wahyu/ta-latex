@@ -506,34 +506,6 @@ post-KGC dihitung atas partisi yang persis sama, sehingga perubahan $Q$
 murni mencerminkan bertambahnya \textit{edge} lintas-mata-pelajaran akibat
 proses KGC, bukan artefak dari komunitas yang berbeda di tiap fase.
 
-\subsubsection{Graph Density}
-
-\textbf{Graph Density ($D$)} mengukur seberapa banyak koneksi yang
-terbentuk dalam sebuah graf dibandingkan dengan koneksi maksimum yang
-secara teoritis mungkin ada. Nilai $D$ berkisar antara 0 hingga 1; nilai
-mendekati 1 menandakan graf yang sangat padat (\textit{dense}), sementara
-nilai mendekati 0 menandakan graf yang jarang (\textit{sparse})
-\parencite[134]{newman_networks_2010}. Dalam
-konteks penelitian ini, \textit{density} digunakan untuk membandingkan tingkat
-keterkaitan antar-konsep sebelum dan sesudah penambahan relasi lintas
-buku (\textit{cross-book links}). Sejalan dengan AD antar-konsep yang
-menjadi metrik utama, \textit{density} dihitung pada \textbf{subgraf konsep},
-yakni hanya melibatkan \textit{node} \texttt{Concept} dan relasi langsung
-antar-konsep, agar mencerminkan kepadatan interkoneksi materi sains tanpa
-dipengaruhi oleh \textit{node} struktural (kelas, bab, subbab). Untuk graf berarah,
-formula yang digunakan adalah:
-
-\[
-  D = \frac{|E_C|}{|V_C|(|V_C|-1)}
-\]
-
-\noindent dengan $|E_C|$ adalah jumlah relasi langsung antar-\textit{node}
-\texttt{Concept}, dan $|V_C|$ adalah jumlah \textit{node} \texttt{Concept}. Penyebut
-$|V_C|(|V_C|-1)$ merepresentasikan jumlah maksimum \textit{edge} berarah
-yang mungkin ada antar-konsep, dari asumsi bahwa setiap pasangan \textit{node}
-$(i, j)$ dengan $i \neq j$ dapat memiliki tepat satu \textit{edge} berarah
-tanpa \textit{self-loop}.
-
 \subsection{Metrik Ekstraksi}
 \label{subsec:metrik-ekstraksi}
 

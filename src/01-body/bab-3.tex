@@ -574,9 +574,6 @@ metrik validasi pakar pada Subbab~\ref{subsec:validasi-manusia}.
   \textit{Average Degree} (AD)
     & Tingkat keterhubungan rata-rata; dibandingkan pre- dan post-KGC
     & Rata-rata derajat ($\geq 0$) \\
-  \textit{Graph Density}
-    & Kepadatan relasi graf; dibandingkan pre- dan post-KGC
-    & Nilai 0--1 \\
   \textit{Modularity}
     & Keterpisahan komunitas antarmapel; dibandingkan pre- dan post-KGC
     & Nilai $-0{,}5$ hingga $1$ \\
@@ -790,7 +787,7 @@ diolah melalui tahapan berikut.
         \textit{inter-rater agreement}.
 
   \item \textbf{Kalkulasi Metrik Struktural:} Metrik topologi graf
-        (AD, \textit{Density}, \textit{Modularity}, TRR, DC) dihitung
+        (AD, \textit{Modularity}, TRR, DC) dihitung
         melalui kueri Cypher deterministik di Neo4j Aura pada kondisi
         pre-KGC dan post-KGC.
 \end{enumerate}
@@ -810,7 +807,7 @@ Analisis struktural menafsirkan perubahan karakteristik topologi
 kualitas interkoneksi antarkonsep. Berdasarkan metrik struktural yang
 dihitung pada tahap pengolahan data (Subbab~\ref{sec:pengolahan-data}),
 hasil perbandingan kondisi pre-KGC dan post-KGC disajikan dalam bentuk
-tabel berpasangan per mata pelajaran. Peningkatan AD dan \textit{Density}
+tabel berpasangan per mata pelajaran. Peningkatan AD
 setelah KGC diinterpretasikan sebagai indikator bahwa relasi implisit
 yang diprediksi LLM berhasil memperkaya kepadatan jaringan pengetahuan.
 Sebaliknya, penurunan \textit{Modularity} yang terlalu drastis dapat
@@ -836,7 +833,7 @@ karakteristik struktur pengetahuan antardisiplin sains dalam konteks
 Kurikulum Merdeka.
 
 Perbandingan dilakukan pada dua dimensi. Pertama, dimensi struktural
-membandingkan nilai metrik graf (AD, \textit{Density},
+membandingkan nilai metrik graf (AD,
 \textit{Modularity}, TRR) antarmata pelajaran pada kondisi post-KGC.
 Kedua, dimensi validasi membandingkan nilai Fuzzy Precision, Fuzzy Recall, dan F1
 antarmata pelajaran untuk mengidentifikasi disiplin mana yang paling
