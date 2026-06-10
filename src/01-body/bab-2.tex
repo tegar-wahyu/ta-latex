@@ -458,53 +458,18 @@ Dalam konteks penelitian ini, arah perubahan yang diharapkan justru
 komunitas antar-disiplin yang semula terpisah menjadi makin terhubung,
 sejalan dengan tujuan mengintegrasikan materi lintas-mata-pelajaran.
 
-Modularity dihitung dengan membandingkan jumlah \textit{edge} yang
-benar-benar ada dalam komunitas dengan jumlah \textit{edge} yang secara
-statistik diharapkan muncul apabila koneksi antar-\textit{node} disebar secara
-acak, dengan syarat distribusi \textit{degree} tiap \textit{node}
-dipertahankan. Untuk graf berarah (\textit{directed graph}), modularity
-didefinisikan sebagai \parencite{leicht_community_2008}:
-
-\[
-  Q = \frac{1}{m} \sum_{i} \sum_{j}
-      \left[ A_{ij} - \frac{k_i^{\text{out}} \, k_j^{\text{in}}}{m}
-      \right] \delta(c_i, c_j)
-\]
-
-\noindent dengan:
-
-\begin{itemize}
-  \item $A_{ij}$: matriks adjasensi; bernilai 1 jika terdapat
-        \textit{edge} dari \textit{node} $i$ ke \textit{node} $j$, dan 0 jika tidak ada.
-  \item $k_i^{\text{out}}$: \textit{out-degree} dari \textit{node} $i$.
-  \item $k_j^{\text{in}}$: \textit{in-degree} dari \textit{node} $j$.
-  \item $m$: total jumlah \textit{edge} berarah.
-  \item $\delta(c_i, c_j) = 1$ jika \textit{node} $i$ dan $j$ berada dalam
-        komunitas yang sama; 0 jika tidak.
-\end{itemize}
-
-Rumus di atas dapat diekspresikan dalam bentuk yang lebih ringkas dengan
-menjumlahkan langsung per komunitas:
-
-\[
-  Q = \sum_{c} \left[
-      \frac{e_{cc}}{m} - \frac{k_c^{\text{out}} \, k_c^{\text{in}}}{m^2}
-      \right]
-\]
-
-\noindent dengan $e_{cc}$ adalah jumlah \textit{edge} internal komunitas
-$c$, sedangkan $k_c^{\text{out}}$ dan $k_c^{\text{in}}$ adalah total
-\textit{out-degree} dan \textit{in-degree} seluruh \textit{node} dalam komunitas
-$c$. Kedua bentuk rumus menghasilkan nilai yang identik; perbedaannya
-hanya pada cara penjumlahan.
-
-Dalam penelitian ini, partisi komunitas $c$ ditetapkan secara tetap
-berdasarkan mata pelajaran (Fisika, Kimia, dan Biologi), bukan
-hasil deteksi komunitas otomatis (Contoh: algoritma \textit{Louvain}).
-Penetapan partisi yang tetap ini penting karena nilai $Q$ pre-KGC dan
-post-KGC dihitung atas partisi yang persis sama, sehingga perubahan $Q$
-murni mencerminkan bertambahnya \textit{edge} lintas-mata-pelajaran akibat
-proses KGC, bukan artefak dari komunitas yang berbeda di tiap fase.
+Modularity membandingkan jumlah \textit{edge} yang benar-benar ada dalam
+komunitas dengan jumlah \textit{edge} yang secara statistik diharapkan muncul
+apabila koneksi antar-\textit{node} disebar secara acak dengan distribusi
+\textit{degree} dipertahankan. Dalam penelitian ini, \textit{modularity}
+dihitung menggunakan algoritma deteksi komunitas \textit{Louvain}
+\parencite{blondel_fast_2008} yang tersedia pada pustaka \textit{Graph Data
+Science} (GDS) Neo4j. Algoritma ini mengidentifikasi komunitas secara otomatis
+dengan memaksimalkan $Q$, lalu melaporkan nilai $Q$ akhir beserta jumlah
+komunitas yang terbentuk. Nilai $Q$ dan jumlah komunitas pada graf pre-KGC dan
+post-KGC dibandingkan untuk menilai perubahan struktur komunitas akibat
+penambahan relasi lintas-buku; kueri GDS yang digunakan disajikan pada
+\ref{lamp:cypher}.
 
 \subsection{Metrik Ekstraksi}
 \label{subsec:metrik-ekstraksi}

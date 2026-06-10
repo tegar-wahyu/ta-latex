@@ -253,34 +253,24 @@ RETURN avg(degree) AS average_concept_degree
 
 \subsubsection{Modularity}
 
-Partisi komunitas ditetapkan tetap berdasarkan mata pelajaran (properti
-\texttt{grade} pada \texttt{:Concept}), bukan deteksi komunitas otomatis,
-sehingga perubahan $Q$ pre/post-KGC murni mencerminkan bertambahnya
-\textit{edge} lintas-mata-pelajaran. Kueri mengimplementasikan bentuk ringkas
-berarah $Q = \sum_{c}\left[\frac{e_{cc}}{m} - \frac{k_c^{\text{out}}k_c^{\text{in}}}{m^2}\right]$.
+Modularity dihitung menggunakan algoritma deteksi komunitas \textit{Louvain}
+pada pustaka \textit{Graph Data Science} (GDS) Neo4j, yang mengidentifikasi
+komunitas secara otomatis dan melaporkan nilai $Q$ beserta jumlah komunitas
+(\textit{community count}). Graf diproyeksikan ke memori mencakup seluruh
+\textit{node} dan relasi, lalu statistik Louvain dihitung untuk kondisi pre-KGC
+dan post-KGC.
 
-\begin{lstlisting}[style=cypherbox,caption={Modularity berarah dengan partisi tetap = mata pelajaran.},label={lst:cypher-modularity}]
-// 1. Total edge berarah antar-konsep (m)
-MATCH (:Concept)-[r]->(:Concept)
-WITH count(r) AS m
+\begin{lstlisting}[style=cypherbox,caption={Proyeksi graf dan perhitungan modularity via GDS Louvain.},label={lst:cypher-modularity}]
+// 1. Proyeksikan seluruh graf ke memori (semua node & relasi)
+CALL gds.graph.project(
+  'allGraph',   // nama graf in-memory
+  '*',          // seluruh label node
+  '*'           // seluruh tipe relasi
+);
 
-// 2. e_cc (edge internal komunitas) dan k_out per komunitas sumber
-MATCH (a:Concept)-[r]->(b:Concept)
-WITH m, a.grade AS comm,
-     count(r) AS k_out,
-     sum(CASE WHEN a.grade = b.grade THEN 1 ELSE 0 END) AS e_cc
-WITH m, collect({comm: comm, k_out: k_out, e_cc: e_cc}) AS out_stats
-
-// 3. k_in per komunitas target
-MATCH (a:Concept)-[r]->(b:Concept)
-WITH m, out_stats, b.grade AS comm, count(r) AS k_in
-WITH m, out_stats, collect({comm: comm, k_in: k_in}) AS in_stats
-
-// 4. Gabungkan per komunitas dan jumlahkan Q
-UNWIND out_stats AS os
-WITH m, os.e_cc AS e_cc, os.k_out AS k_out,
-     coalesce([x IN in_stats WHERE x.comm = os.comm | x.k_in][0], 0) AS k_in
-RETURN sum( (1.0 * e_cc / m) - (1.0 * k_out * k_in / (m * m)) ) AS modularity
+// 2. Hitung modularity dan jumlah komunitas (tanpa menulis ke graf)
+CALL gds.louvain.stats('allGraph')
+YIELD modularity, communityCount;
 \end{lstlisting}
 
 \subsubsection{Uji Ketahanan dengan Mengeluarkan Relasi \texttt{wrong}}
