@@ -121,18 +121,20 @@ menjawab keempat rumusan masalah penelitian adalah sebagai berikut.
         \textit{Pipeline} yang dikembangkan mampu memetakan interkoneksi semantik
         antar-materi sains secara eksplisit, sehingga menjawab masalah
         fragmentasi kurikulum. Sebelum KGC, ketiga mata pelajaran membentuk
-        komunitas yang nyaris terisolasi, ditandai nilai \textit{Modularity}
-        0{,}666 yang merefleksikan kondisi \textit{siloed learning}. Setelah
-        penambahan 125 relasi lintas-buku, \textit{Modularity} turun menjadi
-        0{,}158, sementara \textit{Average Degree} (AD) meningkat
+        komunitas yang relatif terpisah, ditandai nilai \textit{Modularity}
+        Louvain 0{,}8906 yang merefleksikan kondisi \textit{siloed learning}.
+        Setelah penambahan 125 relasi lintas-buku, \textit{Modularity} turun
+        menjadi 0{,}8209 dan jumlah komunitas terdeteksi berubah dari 19 menjadi
+        24; kenaikan jumlah komunitas ini dibaca sebagai pembagian Louvain yang
+        lebih rinci pada graf pasca-KGC, bukan sebagai peningkatan keterpisahan,
+        sementara \textit{Average Degree} (AD) meningkat
         98{,}4\% (dari 0{,}74 menjadi 1{,}47).
         Bukti topologis ini (Tabel~\ref{tab:struktural}) mengonfirmasi bahwa
         \textit{Knowledge Graph} (KG) yang dihasilkan berhasil meningkatkan
         keterhubungan konseptual antar-disiplin dalam representasi graf yang
         dibangun. Uji ketahanan dengan
         mengeluarkan \textit{edge} berlabel \texttt{wrong} menunjukkan pola yang
-        sama: AD tetap meningkat dari 0{,}7093 menjadi 1{,}4360, dan
-        \textit{Modularity} turun dari 0{,}6654 menjadi 0{,}1489.
+        sama pada AD, yaitu tetap meningkat dari 0{,}7093 menjadi 1{,}4360.
 
   \item \textbf{Pemanfaatan kemampuan semantik LLM untuk melengkapi relasi
         implisit.} Penelitian ini memanfaatkan kemampuan semantik LLM untuk
@@ -230,9 +232,8 @@ menafsirkan hasilnya.
         (Subbab~\ref{subsubsec:error-analysis}).
 
   \item \textbf{Batasan inferensi pedagogis.} Sistem hanya menginferensi relasi
-        \textit{single-hop} dan tidak menyusun jalur belajar multi-langkah, tidak
-        memodelkan tingkat kognitif (taksonomi Bloom) maupun keadaan pembelajar
-        (\textit{learner state}).
+        \textit{single-hop} dan tidak menyusun jalur belajar multi-langkah
+        lintas-disiplin maupun urutan pembelajaran yang terkomposisi.
 
   \item \textbf{Keterbatasan metrik dan independensi evaluasi.} Validitas relasi
         lintas-disiplin (Fase~2, 99{,}1\%) berasal dari \emph{satu} keputusan
@@ -306,8 +307,7 @@ penelitian dan pengembangan selanjutnya.
 
   \item \textbf{Inferensi multi-langkah.} Mengembangkan kemampuan penalaran
         \textit{multi-hop} untuk menyusun jalur belajar lintas-disiplin
-        terkomposisi, serta mengintegrasikan taksonomi Bloom dan pemodelan
-        \textit{learner state} untuk pengurutan konsep yang adaptif.
+        terkomposisi yang adaptif.
 
   \item \textbf{Evaluasi lintas-model.} Membandingkan beberapa keluarga LLM (mis.\
         GPT, Claude) pada tahap ekstraksi, \textit{completion}, dan

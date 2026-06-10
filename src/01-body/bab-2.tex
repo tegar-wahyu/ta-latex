@@ -448,12 +448,10 @@ sesudah KGC.
 \subsubsection{Modularity}
 
 \textbf{Modularity ($Q$)} mengukur seberapa kuat sebuah graf terbagi
-menjadi komunitas-komunitas yang terpisah. Nilai $Q$ berkisar antara
-$-0{,}5$ hingga $1$; nilai yang lebih tinggi menunjukkan pemisahan
-komunitas yang lebih tegas, ditandai dengan koneksi yang rapat di dalam
-komunitas dan jarang di luar komunitas. Nilai $Q = 0$ menunjukkan bahwa
-pembagian komunitas yang dihasilkan tidak berbeda dari partisi acak.
-Dalam konteks penelitian ini, arah perubahan yang diharapkan justru
+menjadi komunitas-komunitas yang terpisah. Nilai yang lebih tinggi
+menunjukkan pemisahan komunitas yang lebih tegas, ditandai dengan koneksi
+yang rapat di dalam komunitas dan lebih jarang di luar komunitas. Dalam
+konteks penelitian ini, arah perubahan yang diharapkan adalah
 \textbf{penurunan} $Q$ setelah KGC: nilai $Q$ yang makin rendah menandakan
 komunitas antar-disiplin yang semula terpisah menjadi makin terhubung,
 sejalan dengan tujuan mengintegrasikan materi lintas-mata-pelajaran.
@@ -463,7 +461,7 @@ benar-benar ada dalam komunitas dengan jumlah \textit{edge} yang secara
 statistik diharapkan muncul apabila koneksi antar-\textit{node} disebar secara
 acak, dengan syarat distribusi \textit{degree} tiap \textit{node}
 dipertahankan. Untuk graf berarah (\textit{directed graph}), modularity
-didefinisikan sebagai \parencite{leicht_community_2008}:
+didefinisikan oleh Leicht dan Newman \parencite{leicht_community_2008} sebagai:
 
 \[
   Q = \frac{1}{m} \sum_{i} \sum_{j}
@@ -483,28 +481,12 @@ didefinisikan sebagai \parencite{leicht_community_2008}:
         komunitas yang sama; 0 jika tidak.
 \end{itemize}
 
-Rumus di atas dapat diekspresikan dalam bentuk yang lebih ringkas dengan
-menjumlahkan langsung per komunitas:
-
-\[
-  Q = \sum_{c} \left[
-      \frac{e_{cc}}{m} - \frac{k_c^{\text{out}} \, k_c^{\text{in}}}{m^2}
-      \right]
-\]
-
-\noindent dengan $e_{cc}$ adalah jumlah \textit{edge} internal komunitas
-$c$, sedangkan $k_c^{\text{out}}$ dan $k_c^{\text{in}}$ adalah total
-\textit{out-degree} dan \textit{in-degree} seluruh \textit{node} dalam komunitas
-$c$. Kedua bentuk rumus menghasilkan nilai yang identik; perbedaannya
-hanya pada cara penjumlahan.
-
-Dalam penelitian ini, partisi komunitas $c$ ditetapkan secara tetap
-berdasarkan mata pelajaran (Fisika, Kimia, dan Biologi), bukan
-hasil deteksi komunitas otomatis (Contoh: algoritma \textit{Louvain}).
-Penetapan partisi yang tetap ini penting karena nilai $Q$ pre-KGC dan
-post-KGC dihitung atas partisi yang persis sama, sehingga perubahan $Q$
-murni mencerminkan bertambahnya \textit{edge} lintas-mata-pelajaran akibat
-proses KGC, bukan artefak dari komunitas yang berbeda di tiap fase.
+Dalam penelitian ini, partisi komunitas $c$ diperoleh melalui algoritma
+deteksi komunitas \textit{Louvain} pada Neo4j Graph Data Science Plugin. Dengan demikian, nilai
+$Q$ pre-KGC dan post-KGC mencerminkan struktur komunitas yang ditemukan
+algoritma pada masing-masing kondisi graf. Perbandingan kedua nilai tersebut
+digunakan untuk menilai apakah penambahan \textit{edge} lintas-mata-pelajaran
+melalui proses KGC mengubah keterpisahan komunitas dalam graf.
 
 \subsection{Metrik Ekstraksi}
 \label{subsec:metrik-ekstraksi}

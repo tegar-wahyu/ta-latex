@@ -140,7 +140,7 @@ formulasi metrik topologi yang telah dijelaskan pada Subbab~\ref{subsec:metrik-t
 Perbandingan topologi graf sebelum dan sesudah KGC ditunjukkan pada
 Gambar~\ref{fig:kg-topologi}: pada kondisi pra-KGC tampak tiga graf
 yang terpisah, mencerminkan ketiga komunitas mata pelajaran yang
-terisolasi, sedangkan pada kondisi pasca-KGC ketiga graf tersebut saling
+relatif terpisah, sedangkan pada kondisi pasca-KGC ketiga graf tersebut saling
 terhubung oleh relasi lintas-buku.
 
 \begin{figure}[htbp]
@@ -166,14 +166,15 @@ terhubung oleh relasi lintas-buku.
 \textbf{Metrik Struktural} & \textbf{Pre-KGC} & \textbf{Post-KGC} \\
 \midrule
 AD                & 0{,}7384 & 1{,}4651 \\
-\textit{Modularity}               & 0{,}6659 & 0{,}1580 \\
+\textit{Modularity} Louvain       & 0{,}8906 & 0{,}8209 \\
+Jumlah komunitas Louvain          & 19 & 24 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{table}[htbp]
 \centering
-\caption{Uji ketahanan metrik struktural dengan dan tanpa \textit{edge}
+\caption{Uji ketahanan AD dengan dan tanpa \textit{edge}
 berlabel \texttt{wrong}.}
 \label{tab:struktural-robustness}
 \begin{tabular}{@{}
@@ -190,7 +191,6 @@ berlabel \texttt{wrong}.}
 \textbf{Pre-KGC} & \textbf{Post-KGC} \\
 \midrule
 AD & 0{,}7384 & 1{,}4651 & 0{,}7093 & 1{,}4360 \\
-\textit{Modularity} & 0{,}6659 & 0{,}1580 & 0{,}6654 & 0{,}1489 \\
 \textit{Concept}$\rightarrow$\textit{Concept} \textit{edge}
 & 127 & 252 & 122 & 247 \\
 \bottomrule
@@ -202,10 +202,9 @@ AD & 0{,}7384 & 1{,}4651 & 0{,}7093 & 1{,}4360 \\
 \begin{tikzpicture}
 \begin{groupplot}[
   group style={
-    group size=2 by 1,
-    horizontal sep=1.35cm
+    group size=1 by 1
   },
-  width=0.32\linewidth,
+  width=0.55\linewidth,
   height=5.2cm,
   ybar,
   /pgf/bar width=8pt,
@@ -243,17 +242,9 @@ AD & 0{,}7384 & 1{,}4651 & 0{,}7093 & 1{,}4360 \\
 \addplot+[fill=red!25, draw=red] coordinates {(Pre-KGC,0.7093) (Post-KGC,1.4360)};
 \legend{\textit{Wrong} dipertahankan,\textit{Wrong} dikeluarkan}
 
-\nextgroupplot[
-  title={\textit{Modularity}},
-  ymax=0.76,
-  nodes near coords={\pgfmathprintnumber[fixed,precision=2]{\pgfplotspointmeta}}
-]
-\addplot+[fill=blue!25, draw=blue] coordinates {(Pre-KGC,0.6659) (Post-KGC,0.1580)};
-\addplot+[fill=red!25, draw=red] coordinates {(Pre-KGC,0.6654) (Post-KGC,0.1489)};
-
 \end{groupplot}
 \end{tikzpicture}
-\caption{Perbandingan metrik struktural ketika relasi berlabel \texttt{wrong}
+\caption{Perbandingan AD ketika relasi berlabel \texttt{wrong}
 dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{Concept}.}
 \label{fig:robustness-wrong-comparison}
 \end{figure}
@@ -291,28 +282,29 @@ dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{
 
   \item \textbf{Evaluasi \textit{Modularity}.}
 
-  \textit{Modularity} di sini dihitung atas partisi komunitas \textbf{tetap}
-  berdasarkan mata pelajaran (Fisika, Kimia, Biologi), sesuai dengan
-  formulasi pada Subbab~\ref{subsec:metrik-topologi}. Dengan demikian, perubahan
-  nilai $Q$ murni mencerminkan bertambahnya \textit{edge} lintas-mapel.
-  Analisis struktur komunitas menggunakan metrik \textit{Modularity} pada fase
-  pre-KGC mencatatkan nilai 0{,}666, yang mengindikasikan struktur komunitas yang
-  sangat kuat --- ketiga komunitas mapel (Fisika, Kimia, Biologi) hampir sepenuhnya
-  terisolasi satu sama lain, sejalan dengan kondisi \textit{siloed learning} yang
-  diidentifikasi sebagai masalah penelitian. Setelah KGC, nilai \textit{Modularity}
-  turun secara signifikan menjadi 0{,}158, menandakan bahwa relasi lintas-buku yang
-  ditambahkan berhasil menjembatani ketiga komunitas tersebut dan mengurangi
-  keterpisahan topologis antar-disiplin. Penurunan ini konsisten dengan tujuan
-  penelitian, tetapi perlu dimaknai secara hati-hati: karena tahap
-  \textit{completion} hanya menambahkan \textit{edge} lintas-mapel
-  (Subbab~\ref{sec:graph-completion}) dan $Q$ dihitung atas partisi mapel yang
-  \textbf{tetap}, penambahan \textit{edge} antar-komunitas mana pun --- valid
-  maupun tidak --- pasti menurunkan $Q$. Dengan demikian \textit{Modularity}
-  mengonfirmasi \emph{keterhubungan} lintas-disiplin yang dihasilkan KGC, tetapi
-  tidak dengan sendirinya membuktikan \emph{ketepatan} relasi; ketepatan
-  bersandar pada validasi pakar (Subbab~\ref{subsec:validasi-pakar}). Setelah \textit{edge} berlabel
-  \texttt{wrong} dikeluarkan, \textit{Modularity} tetap turun dari 0{,}6654
-  menjadi 0{,}1489, sehingga arah kesimpulan struktural tetap sama.
+  \textit{Modularity} di sini dihitung menggunakan algoritma \textit{Louvain}
+  pada Neo4j Graph Data Science atas keseluruhan graf, sesuai dengan kueri pada
+  \ref{lamp:cypher-metrik}. Karena komunitas dideteksi otomatis, nilai ini
+  menggambarkan struktur komunitas aktual yang ditemukan algoritma, bukan
+  pengelompokan manual berdasarkan mata pelajaran.
+  Analisis struktur komunitas pada fase pre-KGC mencatatkan nilai
+  \textit{Modularity} 0{,}8906 dengan 19 komunitas. Setelah KGC, nilai tersebut
+  turun menjadi 0{,}8209 dengan 24 komunitas. Penurunan $Q$ menunjukkan bahwa
+  relasi lintas-buku yang ditambahkan mulai mengurangi keterpisahan topologis
+  antar-disiplin, meskipun graf masih mempertahankan struktur komunitas yang
+  kuat. Kenaikan jumlah komunitas dari 19 menjadi 24 tidak berarti graf menjadi
+  lebih terfragmentasi secara pedagogis. Karena \textit{Louvain} mendeteksi
+  komunitas secara otomatis pada graf keseluruhan, jumlah komunitas dapat
+  meningkat ketika penambahan \textit{edge} lintas-buku mengubah keseimbangan
+  konektivitas lokal: beberapa kelompok besar yang sebelumnya terbaca sebagai
+  satu komunitas dapat terpecah menjadi subkomunitas yang lebih spesifik, sambil
+  tetap memiliki lebih banyak jembatan antarkelompok. Oleh sebab itu, arah utama
+  yang dibaca adalah penurunan $Q$, sedangkan kenaikan \textit{community count}
+  diperlakukan sebagai indikasi bahwa struktur komunitas pasca-KGC menjadi lebih
+  rinci, bukan sebagai bukti meningkatnya keterpisahan. Dengan demikian,
+  \textit{Modularity} mengonfirmasi perubahan keterhubungan lintas-disiplin yang
+  dihasilkan KGC, tetapi tidak dengan sendirinya membuktikan ketepatan relasi;
+  ketepatan bersandar pada validasi pakar (Subbab~\ref{subsec:validasi-pakar}).
 
   \item \textbf{Evaluasi Metrik Ekstraksi dan Hubungan.}
 
