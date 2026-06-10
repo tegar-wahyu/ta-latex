@@ -280,9 +280,9 @@ Indonesia berbasis buku teks resmi Kemendikbudristek. Mengikuti kerangka
 intra-buku menggunakan \textit{Large Language Model} (LLM) dengan
 \textit{prompt few-shot} terpandu skema OWL, menginstansiasinya ke
 basis data graf Neo4j, lalu memprediksi relasi implisit lintas-disiplin melalui
-pencarian kandidat \textit{Approximate Nearest Neighbor} (HNSW) atas
-\textit{embedding} deskripsi konsep yang dilanjutkan klasifikasi relasi oleh
-LLM. Kualitas graf dievaluasi secara \textit{hybrid} melalui metrik struktural
+pencarian kandidat \textit{Approximate Nearest Neighbor} (ANN) berbasis
+algoritma HNSW atas \textit{embedding} deskripsi konsep yang dilanjutkan
+klasifikasi relasi oleh LLM. Kualitas graf dievaluasi secara \textit{hybrid} melalui metrik struktural
 dan validasi enam pakar domain, dengan \textit{LLM-as-a-judge} sebagai penengah
 ketidaksepakatan. Penambahan 125 relasi lintas-buku menurunkan
 \textit{modularity} dari 0{,}666 menjadi 0{,}158 dan menaikkan
@@ -326,7 +326,7 @@ the official Kemendikbudristek textbooks. Following the Design Science
 Research framework, the system extracts intra-book entities and relations using
 a Large Language Model (LLM) with OWL schema-guided few-shot prompting,
 instantiates them into a Neo4j graph database, and then predicts implicit
-cross-disciplinary relations through Approximate Nearest Neighbor (HNSW)
+cross-disciplinary relations through HNSW-based Approximate Nearest Neighbor (ANN)
 candidate retrieval over concept description embeddings, followed by LLM
 relation classification. Graph quality is evaluated using a hybrid approach
 combining structural metrics and validation by six domain experts, with an
