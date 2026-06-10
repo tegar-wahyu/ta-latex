@@ -278,28 +278,27 @@ melengkapi graf pengetahuan sains lintas-disiplin Fase~F Kelas~XII berbahasa
 Indonesia berbasis buku teks resmi Kemendikbudristek. Mengikuti kerangka
 \textit{Design Science Research}, sistem mengekstraksi entitas dan relasi
 intra-buku menggunakan \textit{Large Language Model} (LLM) dengan
-\textit{prompt few-shot} terpandu skema ontologi OWL, menginstansiasinya ke
+\textit{prompt few-shot} terpandu skema OWL, menginstansiasinya ke
 basis data graf Neo4j, lalu memprediksi relasi implisit lintas-disiplin melalui
-pencarian kandidat \textit{Approximate Nearest Neighbor} (HNSW) atas
-\textit{embedding} deskripsi konsep yang dilanjutkan klasifikasi relasi oleh
-LLM. Kualitas graf dievaluasi secara \textit{hybrid} melalui metrik struktural
+pencarian kandidat \textit{Approximate Nearest Neighbor} (ANN) berbasis
+algoritma HNSW atas \textit{embedding} deskripsi konsep yang dilanjutkan
+klasifikasi relasi oleh LLM. Kualitas graf dievaluasi secara \textit{hybrid} melalui metrik struktural
 dan validasi enam pakar domain, dengan \textit{LLM-as-a-judge} sebagai penengah
 ketidaksepakatan. Penambahan 125 relasi lintas-buku menurunkan
-\textit{Modularity} dari 0{,}666 menjadi 0{,}158 dan menaikkan
-\textit{Average Degree} sebesar 98{,}4\%, menunjukkan ketiga
+\textit{modularity} dari 0{,}666 menjadi 0{,}158 dan menaikkan
+\textit{average degree} sebesar 98{,}4\%, menunjukkan ketiga
 komunitas mata pelajaran yang semula terisolasi berhasil dijembatani. Validasi
-pakar menunjukkan ekstraksi intra-mapel tergolong baik (F1-Score 92{,}4\%)
+pakar menunjukkan ekstraksi intra-mapel tergolong baik (\textit{F1-score} 92{,}4\%)
 dan relasi lintas-disiplin valid (99{,}1\%) serta tepat tipe (98{,}3\%),
 namun ketepatan arah relasi hanya 75{,}9\% akibat kesalahan sistematis pada
-pasangan Kimia--Biologi, dengan Kimia berperan sebagai poros yang menghubungkan
-kedua disiplin lain. Penelitian ini menunjukkan LLM-Assisted KGC layak untuk
+pasangan Kimia--Biologi. Penelitian ini menunjukkan LLM-Assisted KGC layak untuk
 pemetaan kurikulum sains lintas-disiplin dan menghasilkan purwarupa graf
 pengetahuan sains lintas-disiplin berbahasa Indonesia yang terbuka, dengan
 catatan perbaikan ketepatan arah relasi masih diperlukan.
 \vspace{0.6cm}
 
-\noindent\textbf{Kata kunci:} Knowledge Graph Completion, Large Language Models
-(LLM), LLM-as-a-judge, Kurikulum Merdeka, Pendidikan Sains Lintas-Disiplin,
+\noindent\textbf{Kata kunci:} \textit{Knowledge Graph Completion, Large Language Models
+(LLM), LLM-as-a-judge}, Kurikulum Merdeka, Pendidikan Sains Lintas-Disiplin,
 Pemetaan Kurikulum.
 
 % ===================== ABSTRACT (EN) =====================
@@ -319,27 +318,25 @@ Senior High School Merdeka Curriculum}
 
 \noindent The Merdeka Curriculum structure, which separates the senior high
 school natural sciences into Physics, Chemistry, and Biology, risks inducing
-\textit{siloed learning}, namely the loss of conceptual connections across
-subjects. This study develops an \textit{LLM-Assisted Knowledge Graph
-Completion} (KGC) \textit{pipeline} to construct and complete a cross-disciplinary
+siloed learning, namely the loss of conceptual connections across
+subjects. This study develops an LLM-Assisted Knowledge Graph
+Completion (KGC) pipeline to construct and complete a cross-disciplinary
 Indonesian-language science knowledge graph for Phase~F (Grade~XII), based on
-the official Kemendikbudristek textbooks. Following the \textit{Design Science
-Research} framework, the system extracts intra-book entities and relations using
-a \textit{Large Language Model} (LLM) with schema-constrained, ontology-guided
-\textit{few-shot} prompting, instantiates them into a Neo4j graph database, and
-then predicts implicit cross-disciplinary relations through
-\textit{Approximate Nearest Neighbor} (HNSW) candidate retrieval over concept
-description \textit{embeddings}, followed by LLM relation classification. Graph
-quality is evaluated using a hybrid approach combining structural metrics and
-validation by six domain experts, with an \textit{LLM-as-a-judge} mediating
-disagreements. Adding 125 cross-book relations lowered \textit{Modularity} from
-0.666 to 0.158 and raised \textit{Average Degree} by 98.4\%,
+the official Kemendikbudristek textbooks. Following the Design Science
+Research framework, the system extracts intra-book entities and relations using
+a Large Language Model (LLM) with OWL schema-guided few-shot prompting,
+instantiates them into a Neo4j graph database, and then predicts implicit
+cross-disciplinary relations through HNSW-based Approximate Nearest Neighbor (ANN)
+candidate retrieval over concept description embeddings, followed by LLM
+relation classification. Graph quality is evaluated using a hybrid approach
+combining structural metrics and validation by six domain experts, with an
+LLM-as-a-judge mediating disagreements. Adding 125 cross-book relations lowered
+modularity from 0.666 to 0.158 and raised average degree by 98.4\%,
 indicating that the three initially isolated subject communities were bridged.
-Expert validation showed good intra-subject extraction (F1-Score 92.4\%) and
+Expert validation showed good intra-subject extraction (F1-score 92.4\%) and
 valid cross-disciplinary relations (99.1\%) with accurate typing (98.3\%), but
 relation-direction accuracy reached only 75.9\%, owing to a systematic error on
-Chemistry--Biology pairs, with Chemistry acting as the hub connecting the other
-two disciplines. This study shows that LLM-Assisted KGC is viable for
+Chemistry--Biology pairs. This study shows that LLM-Assisted KGC is viable for
 cross-disciplinary science curriculum mapping and produces an open Indonesian
 cross-disciplinary science knowledge-graph prototype, with the caveat that
 relation-direction accuracy still requires improvement.
