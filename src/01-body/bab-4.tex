@@ -554,11 +554,11 @@ berbasis \textit{Cypher} dan aplikasi web KG Review App untuk validasi pakar.
   menulis KG konsensus ini kembali ke Neo4j dengan \textit{constraint} keunikan,
   membentuk \textit{node} \texttt{Grade}, \texttt{Chapter}, \texttt{Subtopic},
   \texttt{Concept}, dan \texttt{ConceptTarget} beserta relasi struktural dan relasi
-  semantik konsensus. Untuk analitik topologi, perhitungan
-  metrik (Subbab~\ref{subsec:struktural}) berpijak pada relasi semantik
-  antar-\texttt{Concept}, bukan relasi struktural hierarkis, agar nilai
-  \textit{modularity} dan komunitas tidak terdistorsi oleh struktur hierarki
-  bab. Volume dan hasil penengahan AI Judge atas data ini dilaporkan pada
+  semantik konsensus. Untuk analitik topologi, AD dihitung pada subgraf
+  antar-\texttt{Concept}, sedangkan \textit{modularity} dihitung melalui
+  \textit{Louvain} pada proyeksi GDS atas keseluruhan graf
+  (Subbab~\ref{subsec:struktural}). Volume dan hasil penengahan AI Judge atas
+  data ini dilaporkan pada
   Subbab~\ref{subsec:validasi-pakar} (Tabel~\ref{tab:llm-judge}).
 \end{enumerate}
 

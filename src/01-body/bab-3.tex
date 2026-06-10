@@ -787,9 +787,9 @@ diolah melalui tahapan berikut.
         \textit{inter-rater agreement}.
 
   \item \textbf{Kalkulasi Metrik Struktural:} Metrik topologi graf
-        (AD, \textit{Modularity}, TRR, DC) dihitung
-        melalui kueri Cypher deterministik di Neo4j Aura pada kondisi
-        pre-KGC dan post-KGC.
+        (AD, \textit{Modularity}, TRR, DC) dihitung melalui kueri Cypher dan
+        Neo4j Graph Data Science Plugin di Neo4j Aura pada kondisi pre-KGC dan
+        post-KGC.
 \end{enumerate}
 
 % ============================================================
@@ -807,13 +807,13 @@ Analisis struktural menafsirkan perubahan karakteristik topologi
 kualitas interkoneksi antarkonsep. Berdasarkan metrik struktural yang
 dihitung pada tahap pengolahan data (Subbab~\ref{sec:pengolahan-data}),
 hasil perbandingan kondisi pre-KGC dan post-KGC disajikan dalam bentuk
-tabel berpasangan per mata pelajaran. Peningkatan AD
+tabel berpasangan. Peningkatan AD
 setelah KGC diinterpretasikan sebagai indikator bahwa relasi implisit
 yang diprediksi LLM berhasil memperkaya kepadatan jaringan pengetahuan.
-Sebaliknya, penurunan \textit{Modularity} yang terlalu drastis dapat
-mengindikasikan bahwa batas komunitas antarbab menjadi kabur akibat
-relasi lintas-disiplin yang berlebihan, sehingga perlu dikaji lebih
-lanjut melalui validasi pakar.
+Penurunan \textit{Modularity} dibaca sebagai indikasi berkurangnya
+keterpisahan komunitas dalam graf setelah relasi lintas-disiplin
+ditambahkan. Karena metrik ini tidak menilai kebenaran relasi, hasilnya
+tetap perlu dibaca bersama validasi pakar.
 
 \subsection{Analisis Validasi Pakar}
 
@@ -833,8 +833,8 @@ karakteristik struktur pengetahuan antardisiplin sains dalam konteks
 Kurikulum Merdeka.
 
 Perbandingan dilakukan pada dua dimensi. Pertama, dimensi struktural
-membandingkan nilai metrik graf (AD,
-\textit{Modularity}, TRR) antarmata pelajaran pada kondisi post-KGC.
+membandingkan nilai metrik graf (AD, \textit{Modularity}, TRR) antara
+kondisi pre-KGC dan post-KGC.
 Kedua, dimensi validasi membandingkan nilai Fuzzy Precision, Fuzzy Recall, dan F1
 antarmata pelajaran untuk mengidentifikasi disiplin mana yang paling
 diuntungkan oleh pendekatan LLM-Assisted KGC.

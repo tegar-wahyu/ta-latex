@@ -448,28 +448,45 @@ sesudah KGC.
 \subsubsection{Modularity}
 
 \textbf{Modularity ($Q$)} mengukur seberapa kuat sebuah graf terbagi
-menjadi komunitas-komunitas yang terpisah. Nilai $Q$ berkisar antara
-$-0{,}5$ hingga $1$; nilai yang lebih tinggi menunjukkan pemisahan
-komunitas yang lebih tegas, ditandai dengan koneksi yang rapat di dalam
-komunitas dan jarang di luar komunitas. Nilai $Q = 0$ menunjukkan bahwa
-pembagian komunitas yang dihasilkan tidak berbeda dari partisi acak.
-Dalam konteks penelitian ini, arah perubahan yang diharapkan justru
+menjadi komunitas-komunitas yang terpisah. Nilai yang lebih tinggi
+menunjukkan pemisahan komunitas yang lebih tegas, ditandai dengan koneksi
+yang rapat di dalam komunitas dan lebih jarang di luar komunitas. Dalam
+konteks penelitian ini, arah perubahan yang diharapkan adalah
 \textbf{penurunan} $Q$ setelah KGC: nilai $Q$ yang makin rendah menandakan
 komunitas antar-disiplin yang semula terpisah menjadi makin terhubung,
 sejalan dengan tujuan mengintegrasikan materi lintas-mata-pelajaran.
 
-Modularity membandingkan jumlah \textit{edge} yang benar-benar ada dalam
-komunitas dengan jumlah \textit{edge} yang secara statistik diharapkan muncul
-apabila koneksi antar-\textit{node} disebar secara acak dengan distribusi
-\textit{degree} dipertahankan. Dalam penelitian ini, \textit{modularity}
-dihitung menggunakan algoritma deteksi komunitas \textit{Louvain}
-\parencite{blondel_fast_2008} yang tersedia pada pustaka \textit{Graph Data
-Science} (GDS) Neo4j. Algoritma ini mengidentifikasi komunitas secara otomatis
-dengan memaksimalkan $Q$, lalu melaporkan nilai $Q$ akhir beserta jumlah
-komunitas yang terbentuk. Nilai $Q$ dan jumlah komunitas pada graf pre-KGC dan
-post-KGC dibandingkan untuk menilai perubahan struktur komunitas akibat
-penambahan relasi lintas-buku; kueri GDS yang digunakan disajikan pada
-\ref{lamp:cypher}.
+Modularity dihitung dengan membandingkan jumlah \textit{edge} yang
+benar-benar ada dalam komunitas dengan jumlah \textit{edge} yang secara
+statistik diharapkan muncul apabila koneksi antar-\textit{node} disebar secara
+acak, dengan syarat distribusi \textit{degree} tiap \textit{node}
+dipertahankan. Untuk graf berarah (\textit{directed graph}), modularity
+didefinisikan sebagai \parencite{leicht_community_2008}:
+
+\[
+  Q = \frac{1}{m} \sum_{i} \sum_{j}
+      \left[ A_{ij} - \frac{k_i^{\text{out}} \, k_j^{\text{in}}}{m}
+      \right] \delta(c_i, c_j)
+\]
+
+\noindent dengan:
+
+\begin{itemize}
+  \item $A_{ij}$: matriks adjasensi; bernilai 1 jika terdapat
+        \textit{edge} dari \textit{node} $i$ ke \textit{node} $j$, dan 0 jika tidak ada.
+  \item $k_i^{\text{out}}$: \textit{out-degree} dari \textit{node} $i$.
+  \item $k_j^{\text{in}}$: \textit{in-degree} dari \textit{node} $j$.
+  \item $m$: total jumlah \textit{edge} berarah.
+  \item $\delta(c_i, c_j) = 1$ jika \textit{node} $i$ dan $j$ berada dalam
+        komunitas yang sama; 0 jika tidak.
+\end{itemize}
+
+Dalam penelitian ini, partisi komunitas $c$ diperoleh melalui algoritma
+deteksi komunitas \textit{Louvain} pada Neo4j Graph Data Science Plugin. Dengan demikian, nilai
+$Q$ pre-KGC dan post-KGC mencerminkan struktur komunitas yang ditemukan
+algoritma pada masing-masing kondisi graf. Perbandingan kedua nilai tersebut
+digunakan untuk menilai apakah penambahan \textit{edge} lintas-mata-pelajaran
+melalui proses KGC mengubah keterpisahan komunitas dalam graf.
 
 \subsection{Metrik Ekstraksi}
 \label{subsec:metrik-ekstraksi}

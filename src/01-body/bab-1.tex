@@ -333,9 +333,8 @@ Berikut adalah batasan-batasan yang ditetapkan untuk penelitian ini.
   \item \textbf{Infrastruktur Graf:} Graf diinstansiasi pada basis data Neo4j
         (Aura Free tier) menggunakan Cypher. Pencarian kemiripan semantik
         memanfaatkan ANN \textit{vector index} HNSW dengan model
-        \textit{embedding} \texttt{gemini-embedding-001}. Metrik topologi (AD,
-        \textit{Modularity}) dihitung melalui kueri
-        Cypher.
+        \textit{embedding} \texttt{gemini-embedding-001}. Metrik topologi
+        dihitung melalui kueri Cypher dan Neo4j Graph Data Science Plugin.
 
   \item \textbf{Cakupan Validasi:} Validasi pakar dilakukan oleh enam
         \textit{pakar} (dua per mata pelajaran) dengan latar belakang ilmu
