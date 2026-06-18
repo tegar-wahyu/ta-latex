@@ -437,6 +437,16 @@ tercampur.
         dihitung dengan membandingkan label awal pakar terhadap label final
         pada \textit{gold standard}/konsensus.
 
+        Secara metodologis, graf konsensus diperlakukan sebagai \textbf{graf
+        audit}: seluruh relasi hasil sistem tetap disimpan bersama metadata
+        validasi pakar, termasuk relasi dengan konsensus akhir \texttt{wrong}.
+        Relasi semacam ini tidak diperlakukan sebagai pengetahuan final, tetapi
+        dipertahankan untuk menjaga jejak keputusan pakar, memungkinkan
+        reproduksi metrik, analisis galat, dan uji ketahanan. Untuk pemanfaatan
+        sebagai artefak pengetahuan tervalidasi, relasi berlabel \texttt{wrong}
+        perlu dikeluarkan berdasarkan properti \texttt{consensus}/\texttt{status}
+        atau metadata validasi yang menyertainya.
+
   \item \textbf{KG Completion.} Masukan tahap ini adalah graf konsensus
         yang telah diingest ke Neo4j dari
         \texttt{\{mapel\}.consensus.json}. Graf tersebut telah memuat relasi
@@ -451,6 +461,13 @@ tercampur.
         sudah ada dalam graf dan bukan digali dari teks mentah, tahap ini
         merupakan \textit{relation prediction}, yaitu salah satu subtugas KGC
         (lihat Subbab~\ref{subsec:kgc}).
+        Pencarian kandidat ANN pada tahap ini bertumpu pada \textit{embedding}
+        deskripsi \textit{node}, sehingga relasi berlabel \texttt{wrong} tidak
+        memengaruhi kemiripan vektor secara langsung. Namun, karena classifier
+        juga menerima konteks graf berupa relasi bertipe yang sudah ada,
+        relasi \texttt{wrong} yang dipertahankan dalam graf audit tetap
+        berpotensi muncul sebagai konteks klasifikasi; dampaknya dievaluasi pada
+        Bab~5.
 
   \item \textbf{Evaluasi pasca-\textit{completion}.} \textit{Edge}
         lintas-buku hasil \textit{completion} terlebih dahulu dituliskan

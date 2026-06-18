@@ -220,6 +220,20 @@ menafsirkan hasilnya.
         normalisasi arah pasca-proses yang belum diimplementasikan pada
         penelitian ini.
 
+  \item \textbf{Pengaruh relasi audit berlabel \texttt{wrong}.} Tahap
+        \textit{completion} dijalankan di atas graf konsensus yang masih
+        mempertahankan relasi intra-mapel berlabel \texttt{wrong} sebagai
+        artefak audit. Relasi tersebut tidak memengaruhi pencarian kandidat ANN
+        secara langsung karena \textit{embedding} dibangun dari deskripsi
+        \textit{node}; namun relasi tersebut berpotensi muncul sebagai konteks
+        graf pada classifier LLM. Audit dampak pada Bab~5 menunjukkan bahwa 15
+        dari 125 \textit{edge} \textit{completion} melibatkan konsep sumber
+        relasi \texttt{wrong}; 13 di antaranya masuk validasi Fase~2 dan
+        seluruhnya dinilai valid serta tepat tipe, meskipun 5 memiliki arah
+        terbalik. Karena itu, dampaknya dibaca sebagai keterbatasan yang
+        terutama berkaitan dengan normalisasi arah, bukan sebagai pembatal
+        validitas relasi secara umum.
+
   \item \textbf{\textit{Under-extraction} relasi kuantitatif.} LLM cenderung kuat
         pada konsep deskriptif namun lemah pada relasi berbasis persamaan
         matematis; 67\% \textit{missing triples} yang diusulkan pakar Fisika
@@ -290,6 +304,15 @@ penelitian dan pengembangan selanjutnya.
         relasi, misalnya apakah konsep sumber benar-benar berperan sebagai
         prasyarat, aplikasi, atau pendalaman dari konsep tujuan, sehingga
         koreksi arah tidak hanya mengikuti pola dominan tertentu dalam data.
+
+  \item \textbf{Pemisahan graf audit dan graf tervalidasi.} Mengembangkan
+        \textit{validated graph view} sebelum tahap \textit{completion}, sehingga
+        relasi dengan \texttt{consensus}/\texttt{status} berlabel
+        \texttt{wrong} tetap tersedia untuk audit dan analisis galat, tetapi
+        dikeluarkan dari konteks classifier serta mekanisme
+        \textit{skip-existing-edge}. Perbandingan completion pada graf audit dan
+        graf tervalidasi dapat digunakan untuk mengukur dampak relasi salah
+        secara lebih langsung.
 
   \item \textbf{Penguatan ekstraksi relasi kuantitatif.} Menambahkan tahap
         ekstraksi khusus untuk rumus dan persamaan matematis, atau memanfaatkan

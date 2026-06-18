@@ -277,8 +277,11 @@ dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{
   antara kondisi \textit{wrong} dipertahankan dan dikeluarkan relatif kecil,
   sementara arah perubahan pre-KGC ke post-KGC tetap konsisten. Dengan demikian,
   kesimpulan bahwa KGC meningkatkan kepadatan hubungan antar-konsep tidak
-  bergantung pada keberadaan \textit{edge} salah; daftar relasi berlabel
-  \texttt{wrong} disajikan pada \ref{lamp:wrong-triples}.
+  bergantung pada keberadaan \textit{edge} salah. Relasi berlabel
+  \texttt{wrong} tidak dibuang dari graf audit agar keputusan validasi pakar
+  tetap dapat ditelusuri dan dianalisis, tetapi relasi tersebut tidak
+  diperlakukan sebagai bagian dari KG tervalidasi untuk pemanfaatan akhir;
+  daftar relasi berlabel \texttt{wrong} disajikan pada \ref{lamp:wrong-triples}.
 
   \item \textbf{Evaluasi \textit{Modularity}.}
 
@@ -803,6 +806,20 @@ Subbab~\ref{subsec:metrik-fase2}. Hasil per-aspek menunjukkan
 arah 75{,}9\%} (88/116; 28 \textit{edge} terbalik dan 1 \textit{edge} dinilai
 NA, yakni LB085 yang arahnya tidak dapat ditentukan panel karena keterbatasan
 konteks).
+
+Untuk memeriksa apakah relasi intra-mapel berlabel \texttt{wrong} pada graf
+konsensus berpotensi memengaruhi hasil \textit{completion}, dilakukan audit
+tambahan atas artefak keluaran. Dari 601 relasi intra-mapel Fase~1, terdapat 21
+relasi dengan konsensus akhir \texttt{wrong}. Relasi tersebut tidak memengaruhi
+pencarian kandidat berbasis \textit{embedding} secara langsung karena ANN
+menggunakan deskripsi \textit{node}, bukan \textit{edge}; namun relasi tersebut
+dapat muncul sebagai konteks graf pada tahap klasifikasi LLM. Pada konfigurasi
+final, 15 dari 125 \textit{edge} \textit{completion} melibatkan konsep yang
+menjadi sumber relasi \texttt{wrong}. Dari 15 \textit{edge} tersebut, 13 masuk
+ke validasi Fase~2 dan seluruhnya dinilai valid serta tepat tipe oleh panel,
+sementara 5 dari 13 memiliki arah terbalik. Dengan demikian, dampak potensial
+relasi \texttt{wrong} tampak terbatas dan terutama berkaitan dengan isu arah
+relasi, bukan dengan keberadaan atau tipe relasi secara umum.
 
 Temuan utama validasi ini adalah bahwa \textbf{arah relasi merupakan
 sumber kesalahan dominan}, bukan keberadaan atau tipe relasi. Sistem
