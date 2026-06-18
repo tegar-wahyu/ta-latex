@@ -797,8 +797,10 @@ diolah melalui tahapan berikut.
 % ============================================================
 
 Analisis data dilakukan melalui tiga pendekatan yang saling melengkapi,
-dirancang untuk menjawab rumusan masalah penelitian secara komprehensif
-dari sisi kuantitatif objektif maupun validitas pedagogis.
+dirancang untuk menjawab rumusan masalah penelitian secara komprehensif:
+representasi interkoneksi semantik dalam KG, karakteristik relasi implisit
+lintas-disiplin, perubahan kualitas struktural graf, serta validitas relasi dan
+keandalan evaluasinya.
 
 \subsection{Analisis Struktural}
 
@@ -807,13 +809,14 @@ Analisis struktural menafsirkan perubahan karakteristik topologi
 kualitas interkoneksi antarkonsep. Berdasarkan metrik struktural yang
 dihitung pada tahap pengolahan data (Subbab~\ref{sec:pengolahan-data}),
 hasil perbandingan kondisi pre-KGC dan post-KGC disajikan dalam bentuk
-tabel berpasangan. Peningkatan AD
-setelah KGC diinterpretasikan sebagai indikator bahwa relasi implisit
-yang diprediksi LLM berhasil memperkaya kepadatan jaringan pengetahuan.
-Penurunan \textit{Modularity} dibaca sebagai indikasi berkurangnya
-keterpisahan komunitas dalam graf setelah relasi lintas-disiplin
-ditambahkan. Karena metrik ini tidak menilai kebenaran relasi, hasilnya
-tetap perlu dibaca bersama validasi pakar.
+tabel berpasangan. Peningkatan AD setelah KGC diinterpretasikan sebagai
+indikator bahwa relasi implisit yang diprediksi LLM berhasil memperkaya
+kepadatan jaringan pengetahuan. Penurunan \textit{Modularity} dibaca sebagai
+indikasi berkurangnya keterpisahan komunitas dalam graf setelah relasi
+lintas-disiplin ditambahkan. TRR digunakan untuk melihat sejauh mana relasi
+dalam graf memiliki tipe hubungan yang eksplisit, sedangkan DC digunakan untuk
+menilai kelengkapan deskripsi \textit{node}. Karena metrik struktural tidak
+menilai kebenaran relasi, hasilnya tetap perlu dibaca bersama validasi pakar.
 
 \subsection{Analisis Validasi Pakar}
 
@@ -833,11 +836,14 @@ karakteristik struktur pengetahuan antardisiplin sains dalam konteks
 Kurikulum Merdeka.
 
 Perbandingan dilakukan pada dua dimensi. Pertama, dimensi struktural
-membandingkan nilai metrik graf (AD, \textit{Modularity}, TRR) antara
+membandingkan nilai metrik graf (AD, \textit{Modularity}, TRR, DC) antara
 kondisi pre-KGC dan post-KGC.
 Kedua, dimensi validasi membandingkan nilai Fuzzy Precision, Fuzzy Recall, dan F1
 antarmata pelajaran untuk mengidentifikasi disiplin mana yang paling
 diuntungkan oleh pendekatan LLM-Assisted KGC.
+Pada relasi lintas-disiplin, analisis juga memperhatikan distribusi tipe relasi
+dan pola keterhubungan antarmata pelajaran untuk menjawab karakteristik relasi
+implisit yang ditemukan.
 
 Triangulasi antara metrik struktural dan hasil validasi pakar dilakukan
 untuk menguji koherensi keduanya: apabila mata pelajaran dengan AD

@@ -209,24 +209,26 @@ Berdasarkan latar belakang di atas, penelitian ini merumuskan empat pertanyaan
 penelitian berikut.
 
 \begin{enumerate}
-  \item \textbf{Masalah Fragmentasi Kurikulum:} Bagaimana memetakan
-        interkoneksi semantik antar-materi sains (Fisika, Kimia, Biologi) pada
-        Fase~F Kelas~XII Kurikulum Merdeka secara eksplisit dan dapat
-        ditelusuri, sehingga keterkaitan lintas-disiplin yang tersembunyi
-        akibat struktur mata pelajaran yang terpisah menjadi terdokumentasi?
+  \item \textbf{Interkoneksi Kurikulum:} Sejauh mana interkoneksi semantik
+        antar-materi Fisika, Kimia, dan Biologi pada Fase~F Kelas~XII Kurikulum
+        Merdeka dapat direpresentasikan secara eksplisit dan dapat ditelusuri
+        dalam bentuk \textit{knowledge graph}?
 
-  \item \textbf{Pelengkapan Relasi Implisit:} Bagaimana memanfaatkan kemampuan
-        semantik LLM untuk melengkapi relasi yang belum teridentifikasi pada
-        \textit{knowledge graph} kurikulum sains?
+  \item \textbf{Relasi Implisit Lintas-Disiplin:} Relasi implisit lintas-disiplin
+        apa saja yang teridentifikasi setelah proses LLM-Assisted
+        \textit{Knowledge Graph Completion}, dan bagaimana karakteristik relasi
+        tersebut dalam menghubungkan konsep Fisika, Kimia, dan Biologi?
 
-  \item \textbf{Implementasi LLM-Assisted KGC:} Apakah LLM-Assisted KGC mampu
-        menghasilkan relasi lintas-disiplin yang valid menurut pakar dan
-        meningkatkan kualitas struktural \textit{knowledge graph}?
+  \item \textbf{Kualitas Struktural Knowledge Graph:} Bagaimana perubahan
+        kualitas struktural \textit{knowledge graph} sebelum dan sesudah proses
+        \textit{completion} berdasarkan metrik \textit{Average Degree},
+        \textit{Modularity}, \textit{Typed Relation Ratio}, dan
+        \textit{Description Completeness}?
 
-  \item \textbf{Validasi Hybrid dan Evaluasi Metrik:} Bagaimana mengevaluasi
-        keandalan dan kebenaran relasi sains yang dihasilkan LLM melalui
-        \textit{pipeline} evaluasi hybrid (\textit{LLM-as-a-judge}) dan mengukur
-        kualitas KG yang dihasilkan secara kuantitatif?
+  \item \textbf{Validitas Relasi dan Keandalan Evaluasi:} Bagaimana tingkat
+        validitas relasi yang dihasilkan serta keandalan evaluasinya berdasarkan
+        validasi pakar, metrik \textit{Fuzzy Precision}/\textit{Fuzzy Recall}/
+        F1-Score, Gwet's AC1, dan mekanisme \textit{LLM-as-a-judge}?
 \end{enumerate}
 
 % ============================================================
@@ -236,45 +238,37 @@ penelitian berikut.
 \subsection{Tujuan Umum}
 
 Penelitian ini bertujuan menghasilkan purwarupa \textit{Knowledge Graph}
-kurikulum sains Fase~F Kelas~XII yang memetakan interkoneksi lintas-disiplin
-antara Fisika, Kimia, dan Biologi secara eksplisit dan tervalidasi. Graf yang
-dihasilkan diharapkan menjadi fondasi data bagi pengembang kurikulum dan peneliti
-teknologi pendidikan dalam merancang representasi pengetahuan yang mengakomodasi
-keterkaitan antar-konsep lintas mata pelajaran.
+kurikulum sains Fase~F Kelas~XII yang merepresentasikan interkoneksi
+lintas-disiplin antara Fisika, Kimia, dan Biologi secara eksplisit, dapat
+ditelusuri, dan tervalidasi. Graf yang dihasilkan diharapkan menjadi fondasi
+data bagi pengembang kurikulum dan peneliti teknologi pendidikan dalam merancang
+representasi pengetahuan yang mengakomodasi keterkaitan antar-konsep lintas mata
+pelajaran.
 
 \subsection{Tujuan Khusus}
 
 Secara spesifik, penelitian ini bertujuan untuk:
 
 \begin{enumerate}
-  \item Membangun \textit{knowledge graph} awal dengan mengekstraksi entitas
-        materi dan relasi eksplisit dari buku teks siswa Fisika, Kimia, dan
-        Biologi Kelas~XII (e-book resmi Kemendikbudristek) menggunakan
-        \textit{pipeline} LLM berbasis skema ontologi OWL, sebagai fondasi
-        struktur pengetahuan kurikulum yang terstandarisasi.
+  \item Membangun representasi \textit{knowledge graph} kurikulum sains yang
+        eksplisit dan dapat ditelusuri berdasarkan entitas materi dan relasi dari
+        buku teks siswa Fisika, Kimia, dan Biologi Kelas~XII (e-book resmi
+        Kemendikbudristek).
 
-  \item Mengimplementasikan mekanisme LLM-Assisted \textit{Knowledge Graph
-        Completion} untuk memprediksi dan
-        melengkapi \textit{missing links} lintas-disiplin, yaitu relasi implisit
-        antar-entitas sains yang tidak tertangkap oleh ekstraksi berbasis aturan.
+  \item Mengidentifikasi relasi implisit lintas-disiplin yang terhubung melalui
+        LLM-Assisted \textit{Knowledge Graph Completion}, serta menganalisis
+        karakteristik relasi tersebut dalam menghubungkan konsep Fisika, Kimia,
+        dan Biologi.
 
-  \item Mengevaluasi kualitas \textit{knowledge graph} yang dihasilkan melalui
-        dua pendekatan yang saling melengkapi:
-        \begin{enumerate}
-          \item \textbf{Evaluasi Struktural:} mengukur perubahan topologi graf
-                sebelum dan sesudah proses KGC menggunakan metrik
-                \textit{Average Degree} (AD),
-                \textit{Modularity},
-                \textit{Typed Relation Ratio}, dan
-                \textit{Description Completeness}.
+  \item Mengukur perubahan kualitas struktural \textit{knowledge graph} sebelum
+        dan sesudah proses \textit{completion} menggunakan metrik
+        \textit{Average Degree} (AD), \textit{Modularity},
+        \textit{Typed Relation Ratio}, dan \textit{Description Completeness}.
 
-          \item \textbf{Validasi Pakar:} memverifikasi akurasi ontologis dan
-                relevansi pedagogis relasi yang diprediksi LLM melalui enam
-                \textit{pakar} domain (dua per mata pelajaran), dengan metrik
-                \textit{Fuzzy Precision and Recall},
-                pengujian kesepakatan Gwet's AC1, dan penengahan ketidaksepakatan
-                menggunakan \textit{pipeline LLM-as-a-judge}.
-        \end{enumerate}
+  \item Menilai validitas relasi yang dihasilkan dan keandalan evaluasinya
+        melalui validasi pakar, metrik \textit{Fuzzy Precision},
+        \textit{Fuzzy Recall}, F1-Score, Gwet's AC1, serta mekanisme
+        \textit{LLM-as-a-judge}.
 \end{enumerate}
 
 % ============================================================

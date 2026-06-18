@@ -117,79 +117,74 @@ evaluasi struktural dan validasi pakar yang dibahas pada Bab~5, kesimpulan yang
 menjawab keempat rumusan masalah penelitian adalah sebagai berikut.
 
 \begin{enumerate}
-  \item \textbf{Pemetaan interkoneksi untuk menjembatani fragmentasi penyajian kurikulum.}
-        \textit{Pipeline} yang dikembangkan mampu memetakan interkoneksi semantik
-        antar-materi sains secara eksplisit, sehingga menjawab masalah
-        fragmentasi kurikulum. Sebelum KGC, ketiga mata pelajaran membentuk
-        komunitas yang relatif terpisah, ditandai nilai \textit{Modularity}
-        Louvain 0{,}8906 yang merefleksikan kondisi \textit{siloed learning}.
-        Setelah penambahan 125 relasi lintas-buku, \textit{Modularity} turun
-        menjadi 0{,}8209 dan jumlah komunitas terdeteksi berubah dari 19 menjadi
-        24; kenaikan jumlah komunitas ini dibaca sebagai pembagian Louvain yang
-        lebih rinci pada graf pasca-KGC, bukan sebagai peningkatan keterpisahan,
-        sementara \textit{Average Degree} (AD) meningkat
-        98{,}4\% (dari 0{,}74 menjadi 1{,}47).
-        Bukti topologis ini (Tabel~\ref{tab:struktural}) mengonfirmasi bahwa
-        \textit{Knowledge Graph} (KG) yang dihasilkan berhasil meningkatkan
-        keterhubungan konseptual antar-disiplin dalam representasi graf yang
-        dibangun. Uji ketahanan dengan
-        mengeluarkan \textit{edge} berlabel \texttt{wrong} menunjukkan pola yang
-        sama pada AD, yaitu tetap meningkat dari 0{,}7093 menjadi 1{,}4360.
+  \item \textbf{Representasi eksplisit interkoneksi kurikulum.}
+        Interkoneksi semantik antar-materi Fisika, Kimia, dan Biologi pada
+        Fase~F Kelas~XII dapat direpresentasikan secara eksplisit dan dapat
+        ditelusuri dalam bentuk \textit{Knowledge Graph} (KG) berbasis buku teks.
+        Representasi tersebut membuat keterkaitan lintas-disiplin yang semula
+        tersebar dalam struktur mata pelajaran terpisah menjadi terdokumentasi
+        sebagai relasi antarkonsep. Dengan demikian, KG yang dihasilkan mampu
+        menampilkan hubungan konseptual lintas-disiplin pada korpus dan
+        konfigurasi penelitian ini, meskipun belum dimaksudkan sebagai peta
+        kurikulum yang lengkap untuk seluruh fase atau jenjang.
 
-  \item \textbf{Pemanfaatan kemampuan semantik LLM untuk melengkapi relasi
-        implisit.} Penelitian ini memanfaatkan kemampuan semantik LLM untuk
-        melengkapi relasi lintas-disiplin yang belum teridentifikasi pada graf
-        hasil ekstraksi, melalui pendekatan dua tahap
-        (Subbab~\ref{sec:graph-completion}): pencarian kandidat melalui ANN
-        \textit{vector index} (HNSW) atas \textit{embedding} deskripsi konsep
-        (\texttt{gemini-embedding-001}), dilanjutkan klasifikasi relasi oleh LLM
-        dengan strategi \textit{few-shot In-Context Learning}. Karena pembangkitan
-        kandidat bertumpu pada kemiripan makna deskripsi, bukan pada pola
-        konektivitas graf, pendekatan ini sesuai untuk menangani keterbatasan
-        metode struktural pada konsep dengan konektivitas rendah, meskipun
-        penelitian ini belum melakukan analisis kuantitatif khusus terhadap
-        distribusi \textit{long-tail}. Hasil yang terukur menunjukkan bahwa
-        pendekatan semantik tersebut berhasil menemukan relasi lintas-disiplin
-        implisit yang valid (validitas 99{,}1\%),
-        yaitu relasi yang tidak tersurat dalam teks satu buku dan tidak tertangkap
-        oleh ekstraksi berbasis aturan.
+  \item \textbf{Relasi implisit lintas-disiplin yang teridentifikasi.}
+        Setelah proses LLM-Assisted \textit{Knowledge Graph Completion},
+        teridentifikasi 125 relasi lintas-buku yang merepresentasikan hubungan
+        implisit antar-konsep sains yang tidak tersurat dalam satu buku. Relasi tersebut didominasi
+        oleh \texttt{PRASYARAT\_UNTUK} (45{,}6\%), menandakan bahwa jembatan
+        lintas-disiplin pada kurikulum kelas XII lebih banyak bersifat prasyarat
+        pengetahuan. Secara pola keterhubungan, Kimia berperan sebagai poros
+        (\textit{hub}) yang menghubungkan Biologi (78\% relasi) dan Fisika
+        (Gambar~\ref{fig:bridge-graph}). Karena tahap pencarian kandidat
+        bertumpu pada kemiripan makna deskripsi, bukan pada pola konektivitas
+        graf, relasi yang ditemukan terutama mencerminkan kedekatan semantik
+        antar-konsep lintas-buku.
 
-  \item \textbf{Validitas relasi lintas-disiplin menurut pakar dan peningkatan
-        kualitas struktural KG.} LLM-Assisted KGC mampu menghasilkan relasi
-        lintas-disiplin yang valid menurut pakar dan, sekaligus, meningkatkan
-        kualitas struktural graf sebagaimana ditunjukkan oleh perbaikan metrik
-        topologis pada poin~(1). Sistem menunjukkan kinerja tinggi dalam
-        \textit{menemukan} dan \textit{melabeli} relasi implisit, namun memiliki kelemahan sistematis
-        pada penentuan arah relasi. Pada validasi pakar Fase~2 atas relasi
-        lintas-buku, sistem mencapai validitas 99{,}1\% (116/117) dan ketepatan
-        tipe 98{,}3\% (115/117), tetapi ketepatan arah hanya 75{,}9\% (88/116).
-        Kesalahan arah bersifat sistematis: 26 dari 28 relasi terbalik berasal
-        dari pasangan Biologi\,$\leftrightarrow$\,Kimia, dengan LLM cenderung
-        keliru menempatkan konsep Biologi sebagai sumber. Secara semantik, jenis
-        relasi didominasi \texttt{PRASYARAT\_UNTUK} (45{,}6\%), menandakan bahwa
-        jembatan lintas-disiplin pada kurikulum kelas XII lebih banyak bersifat
-        prasyarat pengetahuan, dengan Kimia berperan sebagai poros (\textit{hub})
-        yang menghubungkan Biologi (78\% relasi) dan Fisika
-        (Gambar~\ref{fig:bridge-graph}).
+  \item \textbf{Perubahan kualitas struktural KG sebelum dan sesudah completion.}
+        Kualitas struktural KG meningkat setelah proses \textit{completion},
+        terutama pada kepadatan hubungan antarkonsep dan keterhubungan
+        lintas-disiplin. Sebelum KGC, ketiga mata pelajaran membentuk komunitas
+        yang relatif terpisah, ditandai nilai \textit{Modularity} 0{,}8906
+        berdasarkan partisi komunitas hasil algoritma Louvain, yang merefleksikan
+        kondisi \textit{siloed learning}. Setelah penambahan
+        relasi lintas-buku, \textit{Modularity} turun menjadi 0{,}8209 dan jumlah
+        komunitas terdeteksi berubah dari 19 menjadi 24; kenaikan jumlah
+        komunitas ini dibaca sebagai pembagian Louvain yang lebih rinci pada graf
+        pasca-KGC, bukan sebagai peningkatan keterpisahan, sementara
+        \textit{Average Degree} (AD) meningkat 98{,}4\% (dari 0{,}74 menjadi
+        1{,}47). Selain itu, \textit{Typed Relation Ratio} (TRR) meningkat dari
+        69{,}69\% menjadi 74{,}86\%, menunjukkan bahwa lebih banyak relasi dalam
+        graf memiliki tipe hubungan yang eksplisit, sedangkan
+        \textit{Description Completeness} (DC) tetap 93{,}07\% karena metrik ini
+        mengukur kelengkapan deskripsi \textit{node} yang tidak berubah akibat
+        penambahan \textit{edge} KGC. Bukti topologis ini
+        (Tabel~\ref{tab:struktural}) menunjukkan bahwa proses
+        \textit{completion} memperkuat keterhubungan konseptual antar-disiplin.
+        Namun, metrik graf tersebut digunakan sebagai indikator kuantitatif
+        perubahan struktur, bukan sebagai bukti kebenaran semantik setiap relasi.
+        Validitas relasi tetap bergantung pada hasil validasi pakar yang
+        dirangkum pada poin berikutnya.
 
-  \item \textbf{Keandalan evaluasi hybrid dan pengukuran kualitas kuantitatif.}
-        \textit{Pipeline} evaluasi hybrid berhasil mengukur kualitas KG secara
-        andal dan terukur. Pada validasi intra-mapel (Fase~1) oleh enam
-        pakar domain, sistem mencatatkan \textit{Fuzzy Precision} 93{,}1\%,
-        \textit{Fuzzy Recall} 91{,}8\%, dan F1-Score 92{,}4\%
-        (Tabel~\ref{tab:validasi-metrik}), dengan kesepakatan antarpakar Gwet's
-        AC1 yang bervariasi dari ``baik'' hingga ``sangat baik'' (0{,}607 pada
-        Kimia hingga 0{,}931 pada Biologi). Mekanisme \textit{LLM-as-a-judge}
-        (Gemini~3.1 Pro Preview) berfungsi sebagai penengah yang menyelesaikan
-        ketidaksepakatan intra-mapel berbasis konteks buku teks: mekanisme ini
-        menengahi 123 konflik rating, memilih salah satu label yang telah
-        diberikan pakar pada 95{,}1\% kasus alih-alih menilai ulang secara
-        independen, serta menyetujui 29 dari 44 usulan
-        \textit{missing triple} (Tabel~\ref{tab:llm-judge}). Sementara itu,
-        validasi panel pada relasi lintas-disiplin (Fase~2) menghasilkan
-        validitas 99{,}1\%. Dengan demikian, kombinasi metrik struktural dan
-        validasi pakar berbantuan LLM menyediakan dasar yang sistematis dan
-        terukur untuk mempertanggungjawabkan validitas keilmuan KG.
+  \item \textbf{Validitas relasi dan keandalan evaluasi.}
+        Relasi yang dihasilkan memiliki tingkat validitas tinggi berdasarkan
+        validasi pakar, sementara keandalan evaluasinya ditopang oleh kombinasi
+        metrik kuantitatif dan mekanisme \textit{LLM-as-a-judge}. Pada validasi
+        intra-mapel (Fase~1) oleh enam pakar domain, sistem mencatatkan
+        \textit{Fuzzy Precision} 93{,}1\%, \textit{Fuzzy Recall} 91{,}8\%, dan
+        F1-Score 92{,}4\% (Tabel~\ref{tab:validasi-metrik}), dengan kesepakatan
+        antarpakar Gwet's AC1 yang bervariasi dari ``baik'' hingga ``sangat
+        baik'' (0{,}607 pada Kimia hingga 0{,}931 pada Biologi). Pada validasi
+        pakar Fase~2 atas relasi lintas-buku, sistem mencapai validitas 99{,}1\%
+        (116/117) dan ketepatan tipe 98{,}3\% (115/117), tetapi ketepatan arah
+        hanya 75{,}9\% (88/116). Mekanisme \textit{LLM-as-a-judge}
+        (Gemini~3.1 Pro Preview) menengahi 123 konflik rating, memilih salah satu
+        label yang telah diberikan pakar pada 95{,}1\% kasus alih-alih menilai
+        ulang secara independen, serta menyetujui 29 dari 44 usulan
+        \textit{missing triple} (Tabel~\ref{tab:llm-judge}). Dengan demikian,
+        KG yang dihasilkan valid secara relasional pada konfigurasi yang diuji,
+        dengan catatan bahwa normalisasi arah relasi masih menjadi kelemahan
+        utama yang perlu diperbaiki.
 \end{enumerate}
 
 Secara keseluruhan, penelitian ini menunjukkan bahwa pendekatan LLM-Assisted KGC

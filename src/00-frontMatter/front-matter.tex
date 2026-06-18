@@ -284,11 +284,11 @@ pencarian kandidat \textit{Approximate Nearest Neighbor} (ANN) berbasis
 algoritma HNSW atas \textit{embedding} deskripsi konsep yang dilanjutkan
 klasifikasi relasi oleh LLM. Kualitas graf dievaluasi secara \textit{hybrid} melalui metrik struktural
 dan validasi enam pakar domain, dengan \textit{LLM-as-a-judge} sebagai penengah
-ketidaksepakatan. Penambahan 125 relasi lintas-buku menurunkan
-\textit{modularity} Louvain dari 0{,}8906 menjadi 0{,}8209, mengubah jumlah
-komunitas terdeteksi dari 19 menjadi 24, dan menaikkan \textit{average degree}
-sebesar 98{,}4\%, menunjukkan komunitas mata pelajaran yang semula relatif
-terpisah mulai dijembatani. Validasi
+ketidaksepakatan. Penambahan 125 relasi lintas-buku menurunkan nilai
+\textit{modularity} berdasarkan partisi komunitas hasil algoritma Louvain dari
+0{,}8906 menjadi 0{,}8209, mengubah jumlah komunitas terdeteksi dari 19 menjadi
+24, dan menaikkan \textit{average degree} sebesar 98{,}4\%, menunjukkan komunitas
+mata pelajaran yang semula relatif terpisah mulai dijembatani. Validasi
 pakar menunjukkan ekstraksi intra-mapel tergolong baik (\textit{F1-score} 92{,}4\%)
 dan relasi lintas-disiplin valid (99{,}1\%) serta tepat tipe (98{,}3\%),
 namun ketepatan arah relasi hanya 75{,}9\% akibat kesalahan sistematis pada
@@ -332,9 +332,10 @@ candidate retrieval over concept description embeddings, followed by LLM
 relation classification. Graph quality is evaluated using a hybrid approach
 combining structural metrics and validation by six domain experts, with an
 LLM-as-a-judge mediating disagreements. Adding 125 cross-book relations lowered
-Louvain modularity from 0.8906 to 0.8209, changed the detected community count
-from 19 to 24, and raised average degree by 98.4\%, indicating that the
-initially separated subject communities began to be bridged.
+the modularity score computed from the Louvain community partition from 0.8906
+to 0.8209, changed the detected community count from 19 to 24, and raised
+average degree by 98.4\%, indicating that the initially separated subject
+communities began to be bridged.
 Expert validation showed good intra-subject extraction (F1-score 92.4\%) and
 valid cross-disciplinary relations (99.1\%) with accurate typing (98.3\%), but
 relation-direction accuracy reached only 75.9\%, owing to a systematic error on
