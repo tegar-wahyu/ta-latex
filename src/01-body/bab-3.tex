@@ -337,6 +337,38 @@ Fuzzy Precision, Fuzzy Recall, dan F1-Score, sedangkan dua penilaian asli terseb
 digunakan untuk menguji tingkat kesepakatan antarpakar menggunakan
 Gwet's AC1.
 
+\paragraph{Cakupan validasi pakar.}
+Agar batas penilaian pakar tegas, cakupan validasi dirinci sebagai berikut.
+
+\begin{itemize}
+  \item \textbf{Objek yang divalidasi.} Pada Fase~1, objek penilaian adalah
+        \textit{triple} relasi \emph{dalam-buku} (intra-mapel) per mata
+        pelajaran, dengan lebih dari 100 \textit{triple} per mata pelajaran.
+        Pada Fase~2, objek penilaian adalah relasi \emph{lintas-buku}
+        (lintas-disiplin) hasil KGC, yakni 117 relasi kandidat yang lolos
+        penyaringan \textit{confidence} $\geq 0{,}5$ dari 125 \textit{edge}
+        keluaran \textit{pipeline} pada konfigurasi final---8 \textit{edge}
+        berkeyakinan rendah dikecualikan dari survei utama.
+  \item \textbf{Aspek yang dinilai.} Fase~1 menilai \emph{validitas} relasi
+        pada skala empat kategori (Subbab~\ref{subsec:validasi-manusia}).
+        Fase~2 menilai tiga aspek terpisah---validitas, ketepatan tipe, dan
+        ketepatan arah relasi---sebagaimana didefinisikan pada
+        Subbab~\ref{subsec:metrik-fase2}. Pada kedua fase, pakar juga dapat
+        mengusulkan \textit{missing triples} yang dianggap esensial.
+  \item \textbf{Yang tidak divalidasi.} Pakar tidak menilai relasi
+        struktural hierarkis (\texttt{HAS\_CHAPTER}, \texttt{HAS\_CONCEPT},
+        dan sejenisnya), kelengkapan deskripsi \textit{node}, maupun skor
+        \textit{confidence} LLM secara langsung. Validasi berfokus pada
+        \emph{relasi} antarkonsep, bukan pada ekstraksi \textit{node} secara
+        individual.
+\end{itemize}
+
+Adapun perlakuan terhadap \textit{triple} yang dinilai \emph{Salah} oleh
+pakar---apakah dibuang atau tetap digunakan pada tahap penggabungan
+(\textit{merge}) graf menuju Fase~2---berada di luar penetapan cakupan ini dan
+diuraikan pada penjelasan metode penggabungan \textit{triple}.
+% TODO(#77): tautkan \ref ke subbab metode penggabungan triple setelah isu #77 selesai.
+
 % ============================================================
 \section{Subjek Evaluasi dan Panel Pakar}\label{subsec:subjek-evaluasi}
 % ============================================================
@@ -348,7 +380,8 @@ relevansi pedagogis relasi lintas-disiplin yang dihasilkan sistem.
 
 Penelitian ini melibatkan enam pakar yang mewakili mata
 pelajaran Fisika, Kimia, dan Biologi (dua pakar per mata
-pelajaran); profil keilmuan masing-masing pakar disajikan pada
+pelajaran); profil keilmuan lengkap masing-masing pakar---latar belakang,
+institusi, dan tahun---disajikan secara anonim pada
 \ref{lamp:profil-pakar}. Jumlah dan kriteria pakar ditetapkan secara
 \textit{purposive sampling} berdasarkan tiga pertimbangan metodologis
 berikut.
