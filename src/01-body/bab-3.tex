@@ -437,6 +437,34 @@ tercampur.
         dihitung dengan membandingkan label awal pakar terhadap label final
         pada \textit{gold standard}/konsensus.
 
+        Meskipun model ekstraksi, \textit{completion}, dan
+        \textit{LLM-as-a-judge} berasal dari keluarga Gemini, kesamaan ini
+        tidak digunakan sebagai dasar klaim independensi evaluasi. Pilihan
+        tersebut hanya menyeragamkan integrasi teknis, sedangkan independensi
+        metodologis dijaga melalui pemisahan fungsi, data masukan, dan kondisi
+        aktivasi model: Gemini~2.5 Flash Lite digunakan untuk ekstraksi,
+        Gemini~2.5 Flash untuk klasifikasi relasi pada tahap
+        \textit{completion}, sedangkan Gemini~3.1 Pro Preview hanya digunakan
+        pada kasus ketidaksepakatan pakar yang membutuhkan penalaran lebih
+        hati-hati.
+
+        Untuk mengurangi risiko bias validasi diri, \textit{triple} hasil
+        ekstraksi relasi oleh LLM tidak langsung divalidasi oleh model yang
+        menghasilkannya. Validasi utama tetap berasal dari dua pakar domain
+        independen per mata pelajaran, sedangkan \textit{LLM-as-a-judge} hanya
+        diaktifkan pada subset kasus yang tidak mencapai kesepakatan atau pada
+        usulan \textit{missing triple} yang diajukan satu pakar. Pada setiap
+        proses ajudikasi, \textit{prompt} judge dibangun ulang dari data
+        validasi, bukan dari \textit{prompt} ekstraksi relasi: untuk perbedaan
+        validasi, masukan mencakup \textit{triple} yang diperselisihkan, dua
+        label pakar, dan cuplikan teks PDF buku yang dipilih berdasarkan bab,
+        mapel, relasi, target, dan deskripsi; untuk usulan \textit{missing
+        triple}, masukan mencakup usulan pakar tunggal dan cuplikan teks PDF
+        buku yang relevan. Dengan demikian, Gemini~3.1 Pro Preview tidak
+        menjadikan hasil ekstraksi relasi sebagai rujukan kebenaran, melainkan
+        menengahi ketidaksepakatan label terhadap bukti tekstual dari buku dan
+        penilaian pakar.
+
         Secara metodologis, graf konsensus diperlakukan sebagai \textbf{graf
         audit}: seluruh relasi hasil sistem tetap disimpan bersama metadata
         validasi pakar, termasuk relasi dengan konsensus akhir \texttt{wrong}.
