@@ -125,8 +125,10 @@ menjawab keempat rumusan masalah penelitian adalah sebagai berikut.
         tersebar dalam struktur mata pelajaran terpisah menjadi terdokumentasi
         sebagai relasi antarkonsep. Dengan demikian, KG yang dihasilkan mampu
         menampilkan hubungan konseptual lintas-disiplin pada korpus dan
-        konfigurasi penelitian ini, meskipun belum dimaksudkan sebagai peta
-        kurikulum yang lengkap untuk seluruh fase atau jenjang.
+        konfigurasi penelitian ini. Kriteria keberhasilan representasi juga
+        terpenuhi karena KG memuat relasi lintas-disiplin tervalidasi yang
+        menghubungkan ketiga mata pelajaran, meskipun belum dimaksudkan sebagai
+        peta kurikulum yang lengkap untuk seluruh fase atau jenjang.
 
   \item \textbf{Relasi implisit lintas-disiplin yang teridentifikasi.}
         Setelah proses LLM-Assisted \textit{Knowledge Graph Completion},
@@ -158,7 +160,9 @@ menjawab keempat rumusan masalah penelitian adalah sebagai berikut.
         graf memiliki tipe hubungan yang eksplisit, sedangkan
         \textit{Description Completeness} (DC) tetap 93{,}07\% karena metrik ini
         mengukur kelengkapan deskripsi \textit{node} yang tidak berubah akibat
-        penambahan \textit{edge} KGC. Bukti topologis ini
+        penambahan \textit{edge} KGC. Arah perubahan AD dan
+        \textit{Modularity} tersebut memenuhi kriteria keberhasilan yang
+        ditetapkan sebelum evaluasi struktural. Bukti topologis ini
         (Tabel~\ref{tab:struktural}) menunjukkan bahwa proses
         \textit{completion} memperkuat keterhubungan konseptual antar-disiplin.
         Namun, metrik graf tersebut digunakan sebagai indikator kuantitatif
@@ -182,9 +186,13 @@ menjawab keempat rumusan masalah penelitian adalah sebagai berikut.
         label yang telah diberikan pakar pada 95{,}1\% kasus alih-alih menilai
         ulang secara independen, serta menyetujui 29 dari 44 usulan
         \textit{missing triple} (Tabel~\ref{tab:llm-judge}). Dengan demikian,
-        KG yang dihasilkan valid secara relasional pada konfigurasi yang diuji,
-        dengan catatan bahwa normalisasi arah relasi masih menjadi kelemahan
-        utama yang perlu diperbaiki.
+        KG yang dihasilkan valid secara relasional pada konfigurasi yang diuji:
+        validitas Fase~2 melampaui ambang 90\% yang ditetapkan sebelum
+        evaluasi, sementara seluruh nilai AC1 Fase~1 memenuhi ambang minimal
+        0{,}6. Perlu dicatat bahwa AC1 tidak dihitung untuk Fase~2 karena fase
+        tersebut menggunakan diskusi panel, bukan dua penilaian independen per
+        relasi; normalisasi arah relasi masih menjadi kelemahan utama yang perlu
+        diperbaiki.
 \end{enumerate}
 
 Secara keseluruhan, penelitian ini menunjukkan bahwa pendekatan LLM-Assisted KGC

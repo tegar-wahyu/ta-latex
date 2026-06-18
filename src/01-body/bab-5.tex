@@ -257,7 +257,9 @@ dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{
   tajam ini mencerminkan bahwa \textit{pipeline} KGC berhasil menambahkan 125
   relasi lintas-buku baru yang secara langsung menghubungkan \textit{node}
   \texttt{Concept} antar-mapel, meningkatkan kepadatan interkoneksi semantik
-  yang sebelumnya tidak ada. Perlu dicatat bahwa seluruh metrik struktural pada
+  yang sebelumnya tidak ada. Kenaikan AD ini memenuhi arah keberhasilan
+  yang ditetapkan sebelum evaluasi pada Bab~3. Perlu dicatat bahwa seluruh metrik
+  struktural pada
   bagian ini dihitung atas \textbf{125 \textit{edge}} keluaran \textit{pipeline}
   pada konfigurasi final---termasuk 8 \textit{edge} berkeyakinan rendah
   (\textit{confidence} $< 0{,}5$) yang tidak diikutkan dalam survei pakar
@@ -306,8 +308,10 @@ dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{
   diperlakukan sebagai indikasi bahwa struktur komunitas pasca-KGC menjadi lebih
   rinci, bukan sebagai bukti meningkatnya keterpisahan. Dengan demikian,
   \textit{Modularity} mengonfirmasi perubahan keterhubungan lintas-disiplin yang
-  dihasilkan KGC, tetapi tidak dengan sendirinya membuktikan ketepatan relasi;
-  ketepatan bersandar pada validasi pakar (Subbab~\ref{subsec:validasi-pakar}).
+  dihasilkan KGC dan memenuhi arah keberhasilan berupa penurunan
+  \textit{Modularity} pasca-KGC, tetapi tidak dengan sendirinya membuktikan
+  ketepatan relasi; ketepatan bersandar pada validasi pakar
+  (Subbab~\ref{subsec:validasi-pakar}).
 
   \item \textbf{Evaluasi Metrik Ekstraksi dan Hubungan.}
 
@@ -492,7 +496,9 @@ relasi benar yang menyeluruh (lihat Subbab~\ref{subsec:metrik-fase2}).
   menghasilkan validitas relasi terprediksi 99{,}1\% (116/117 relasi
   dikonfirmasi valid; satu relasi ditolak). Nilai ini berbeda dari
   \textit{Fuzzy Precision} Fase~1 karena Fase~2 memakai keputusan panel tunggal
-  dan tidak menggunakan skala parsial. Metrik \textit{Fuzzy Recall} dan F1 tidak dapat dihitung
+  dan tidak menggunakan skala parsial. Validitas 99{,}1\% tersebut melampaui
+  ambang keberhasilan 90\% yang ditetapkan sebelum evaluasi pada Bab~3. Metrik
+  \textit{Fuzzy Recall} dan F1 tidak dapat dihitung
   karena tidak tersedia informasi jumlah total relasi lintas-buku yang benar
   (penyebut untuk menghitung cakupan relasi benar) dalam konfigurasi panel tunggal ini. Karena validasi
   dilakukan melalui diskusi panel (bukan dua pakar independen), uji Gwet's AC1
@@ -510,6 +516,8 @@ relasi benar yang menyeluruh (lihat Subbab~\ref{subsec:metrik-fase2}).
   sempurna antara kedua pakar. Hal ini konsisten dengan sifat konten Biologi
   yang lebih deskriptif dan definitif. Fisika (0{,}754) dan Kimia (0{,}607)
   sama-sama berada pada kategori baik, dengan Kimia sebagai yang terendah.
+  Dengan demikian, seluruh mata pelajaran memenuhi ambang keandalan
+  AC1~$\geq$~0{,}6.
   Nilai AC1 Kimia yang paling rendah selaras dengan pola kesalahan pada
   Subbab~\ref{subsubsec:error-analysis}: terminologi proses kimia (seperti elektrorefining vs.\
   electroplating) memiliki batas semantik yang lebih ambigu, sehingga kedua pakar
