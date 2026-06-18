@@ -345,10 +345,14 @@ Agar batas penilaian pakar tegas, cakupan validasi dirinci sebagai berikut.
         \textit{triple} relasi \emph{dalam-buku} (intra-mapel) per mata
         pelajaran, dengan lebih dari 100 \textit{triple} per mata pelajaran.
         Pada Fase~2, objek penilaian adalah relasi \emph{lintas-buku}
-        (lintas-disiplin) hasil KGC, yakni 117 relasi kandidat yang lolos
-        penyaringan \textit{confidence} $\geq 0{,}5$ dari 125 \textit{edge}
-        keluaran \textit{pipeline} pada konfigurasi final---8 \textit{edge}
-        berkeyakinan rendah dikecualikan dari survei utama.
+        (lintas-disiplin) hasil KGC. Dari 125 \textit{edge} keluaran
+        \textit{pipeline} pada konfigurasi final, 8 \textit{edge} berkeyakinan
+        rendah (\textit{confidence} $< 0{,}5$, seluruhnya
+        \texttt{BERKAITAN\_DENGAN}) dikecualikan dari survei utama karena berada
+        di bawah ambang keyakinan dan diperiksa terpisah sebagai dugaan
+        \textit{false positive} (Subbab~\ref{subsec:kualitatif}); objek yang
+        divalidasi pakar dengan demikian menyisakan 117 relasi
+        (\textit{confidence} $\geq 0{,}5$).
   \item \textbf{Aspek yang dinilai.} Fase~1 menilai \emph{validitas} relasi
         pada skala empat kategori (Subbab~\ref{subsec:validasi-manusia}).
         Fase~2 menilai tiga aspek terpisah---validitas, ketepatan tipe, dan
