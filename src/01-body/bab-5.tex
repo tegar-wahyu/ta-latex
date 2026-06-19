@@ -1057,7 +1057,7 @@ pada \textit{pipeline} ekstraksi LLM.
 \toprule
 \textbf{Kategori} & \textbf{Jumlah} & \textbf{Dasar penghitungan} \\
 \midrule
-\textit{Hallucination} faktual & 1 temuan & Komentar pakar pada \textit{triple} etanol yang salah menyebut bakteri, bukan ragi. \\
+\textit{Hallucination} faktual & 1 temuan & \textit{Triple} \texttt{Oksidasi}~$\rightarrow$~\texttt{Agen Pengoksidasi}: target bertentangan dengan teori redoks sekaligus deskripsi \textit{triple} itu sendiri; diputus \texttt{wrong} oleh \textit{LLM-as-a-judge} dan di-\textit{drop} dari graf. \\
 Pencampuran konsep teknis & 1 \textit{triple} & Kesalahan \textit{electroplating} vs.\ \textit{electrorefining}; muncul pada dua komentar pakar untuk \textit{triple} yang sama. \\
 Definisi terlalu luas, ambigu, atau usang & 6 temuan & Komentar eksplisit tentang definisi/target yang terlalu luas, ambigu, bias, atau usang. \\
 \textit{Under-extraction} & 29 \textit{missing triples} & Relasi esensial yang tidak diekstraksi sistem tetapi diterima dalam konsensus final; 10 di antaranya berupa rumus Fisika. \\
@@ -1075,9 +1075,17 @@ total kesalahan tunggal.
 \end{minipage}
 \end{table}
 
-\subsubsection{Kesalahan faktual agen biologis.} Pada Kimia, \textit{triple} mengenai produksi
-etanol menyatakan ``bakteri memfermentasi karbohidrat'' padahal seharusnya
-``ragi (\textit{Saccharomyces cerevisiae})''. Kesalahan ini termasuk dalam kategori
+\subsubsection{Kesalahan faktual pemetaan redoks.} Pada Kimia, \textit{triple}
+\texttt{Oksidasi}~$\rightarrow$~\texttt{MENGHASILKAN}~$\rightarrow$~\texttt{Agen Pengoksidasi}
+keliru secara faktual: spesi yang \emph{mengalami} oksidasi justru berperan sebagai
+agen pereduksi (reduktor), bukan agen pengoksidasi. Kekeliruan ini bahkan bertentangan
+dengan deskripsi \textit{triple} itu sendiri, yang sudah benar menyebut ``unsur yang
+mengalami oksidasi disebut sebagai agen pereduksi''. Dari dua pakar Kimia, satu pakar
+menandainya sebagai salah---``\textit{Pemetaan berlawanan dengan teori dan deskripsinya
+sendiri}''---sedangkan pakar lainnya menerimanya; \textit{LLM-as-a-judge} kemudian
+menyelesaikan ketidaksepakatan tersebut dengan memutus label \texttt{wrong}, sehingga
+relasi di-\textit{drop} (diberi properti \texttt{consensus}/\texttt{status}=\texttt{wrong}
+dan difilter keluar dari graf final). Kesalahan ini termasuk dalam kategori
 \textit{hallucination} faktual \parencite{ji_survey_2023, min_factscore_2023}, sebagaimana
 diidentifikasi pada Subbab~\ref{subsec:kg-ontologi}.
 
