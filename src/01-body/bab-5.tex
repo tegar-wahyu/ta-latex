@@ -1077,17 +1077,20 @@ total kesalahan tunggal.
 
 \subsubsection{Kesalahan faktual pemetaan redoks.} Pada Kimia, \textit{triple}
 \texttt{Oksidasi}~$\rightarrow$~\texttt{MENGHASILKAN}~$\rightarrow$~\texttt{Agen Pengoksidasi}
-keliru secara faktual: spesi yang \emph{mengalami} oksidasi justru berperan sebagai
-agen pereduksi (reduktor), bukan agen pengoksidasi. Kekeliruan ini bahkan bertentangan
-dengan deskripsi \textit{triple} itu sendiri, yang sudah benar menyebut ``unsur yang
+keliru secara faktual: target relasi bertentangan dengan teori redoks sekaligus dengan
+deskripsi \textit{triple} itu sendiri, yang justru sudah benar menyebut ``unsur yang
 mengalami oksidasi disebut sebagai agen pereduksi''. Dari dua pakar Kimia, satu pakar
 menandainya sebagai salah---``\textit{Pemetaan berlawanan dengan teori dan deskripsinya
-sendiri}''---sedangkan pakar lainnya menerimanya; \textit{LLM-as-a-judge} kemudian
-menyelesaikan ketidaksepakatan tersebut dengan memutus label \texttt{wrong}, sehingga
-relasi di-\textit{drop} (diberi properti \texttt{consensus}/\texttt{status}=\texttt{wrong}
-dan difilter keluar dari graf final). Kesalahan ini termasuk dalam kategori
-\textit{hallucination} faktual \parencite{ji_survey_2023, min_factscore_2023}, sebagaimana
-diidentifikasi pada Subbab~\ref{subsec:kg-ontologi}.
+sendiri}''---sedangkan pakar lainnya menerimanya. \textit{LLM-as-a-judge} kemudian
+menyelesaikan ketidaksepakatan ini dengan memutus label \texttt{wrong}, dengan alasan
+yang dikutip apa adanya: ``Berdasarkan teks, unsur yang mengalami oksidasi disebut
+sebagai agen pereduksi, bukan agen pengoksidasi. Agen pengoksidasi adalah unsur yang
+mengalami reduksi. Oleh karena itu, relasi yang menyatakan bahwa oksidasi menghasilkan
+agen pengoksidasi adalah salah.'' Akibatnya, relasi di-\textit{drop} (diberi properti
+\texttt{consensus}/\texttt{status}=\texttt{wrong} dan difilter keluar dari graf final).
+Kesalahan ini termasuk dalam kategori \textit{hallucination} faktual
+\parencite{ji_survey_2023, min_factscore_2023}, sebagaimana diidentifikasi pada
+Subbab~\ref{subsec:kg-ontologi}.
 
 \subsubsection{Pencampuran konsep teknis.} \textit{Triple} mengenai pemurnian tembaga menyatakan
 bahwa \textit{electroplating} digunakan untuk pemurnian tembaga, padahal proses yang
