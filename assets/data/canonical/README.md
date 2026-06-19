@@ -20,14 +20,14 @@ Alur utama penelitian mengikuti urutan berikut:
    - Input: graf awal yang ditampilkan pada KG Review App.
    - Proses: dua pakar per mata pelajaran menilai relasi dalam-buku dan
      mengusulkan missing triples.
-   - Output: `02_consensus/validations/expert-*.json`.
+   - Output: validasi pakar (salinan otoritatif: `../codes/final-consensus/validations/expert-*.json`).
 
 4. **Final consensus -> KG konsensus**
    - Input: KG awal, berkas validasi pakar, dan konteks buku teks.
    - Proses: ajudikasi disagreement dan missing triples menggunakan
      LLM-as-a-judge berbasis konteks sumber.
-   - Output: `02_consensus/*.consensus.repaired.json` dan
-     `02_consensus/*_gold_standard.json`.
+   - Output: gold standard di `../codes/final-consensus/*_gold_standard.json`;
+     KG konsensus *repaired* di repo `final-kg/final-consensus/dump/kg_repaired/`.
 
 5. **Ingest Neo4j konsensus dan metrik Fase 1**
    - Input: KG konsensus, gold standard, dan penilaian awal pakar dari KG
@@ -58,7 +58,7 @@ Alur utama penelitian mengikuti urutan berikut:
 | Tahap | Folder | Sumber | Model / Parameter | Jumlah |
 |---|---|---|---|---|
 | Step 1 — Ekstraksi | `01_extraction/` | final-kg/extracted | Gemini 2.5 Flash Lite; chunk 800/200 | konsep: Biologi 85, Fisika 134, Kimia 144 |
-| Konsensus | `02_consensus/` | final-kg/final-consensus/kg_repaired | multi-judge + repair (PR #1) | 3 mapel (repaired) + gold standards + 6 validasi pakar |
+| Konsensus | `../codes/final-consensus/` (gold + validasi); `final-kg` (repaired) | final-kg/final-consensus/kg_repaired | multi-judge + repair (PR #1) | 3 gold standards + 6 validasi pakar |
 | Step 2 — Completion | `03_completion/` | ann-classifier-v1-KG-TEGAR-FIXED | Gemini 2.5 Flash; embed gemini-embedding-001; threshold 0,70 / top_k 20 | 125 edge (PRASYARAT_UNTUK 57, MEMPERDALAM 31, BERKAITAN_DENGAN 21, APLIKASI_DARI 15, SAMA_DENGAN 1) |
 | Final | `04_final/` | Neo4j final (diunggah penulis) | konsensus + 125 LINTAS_BUKU | lihat 04_final/README.md |
 
@@ -67,3 +67,4 @@ Alur utama penelitian mengikuti urutan berikut:
 - Completion config final = **0,70 / k20** (125 edge); 8 edge confidence < 0,5 dikeluarkan dari survei (117 dinilai).
 - Validasi pakar lintas-buku (Fase 2): diskusi panel atas 117 relasi (validitas 99,1% [116/117] / tipe 98,3% [115/117] / arah 75,9% [88/116]). Sumber otoritatif = `../completion/completion-survey.json`. Berkas `03_completion/lintas_buku_survey_responses.csv` adalah pilot awal 1 penilai (100/117) dan **bukan acuan** untuk angka final.
 - Versi lain (extraction-v1..v4, consensus 2.5-pro/mock) bukan artefak acuan dan diarsipkan terpisah.
+- Folder `02_consensus/` dihapus dari bundel ini karena salinannya *stale* (label tidak konsisten dengan graf post-KGC dan memuat label `unknown`). Artefak konsensus otoritatif: gold standard + validasi pakar di `../codes/final-consensus/`, dan KG *repaired* di `final-kg/final-consensus/dump/kg_repaired/`.
