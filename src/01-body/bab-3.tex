@@ -537,17 +537,18 @@ kronologis bagi siswa.
 
 \subsubsection{Metodologi Pengembangan Ontologi}
 
-Ontologi dikembangkan secara iteratif dengan mengacu pada panduan praktis
-\textit{Ontology Development 101} \parencite{noy_ontology_2001}, yang
-diadaptasi ke dalam konteks konstruksi berbantuan-LLM. Strategi yang ditempuh
-bersifat \textit{middle-out}: kerangka kelas disusun secara \textit{top-down}
-dari struktur dokumen sumber, sedangkan vokabulari relasi semantik ditetapkan
-sebagai himpunan target dan disempurnakan secara iteratif. Sesuai posisinya
-sebagai ontologi ringan pada spektrum formalitas
+Ontologi pada penelitian ini tidak dirancang secara manual di muka, melainkan
+disusun secara \textbf{induktif} (\textit{bottom-up}) melalui ekstraksi
+berbantuan-LLM atas korpus: kelas, hierarki, dan vokabulari relasi diturunkan
+dari pemrosesan teks buku, kemudian dikurasi dan divalidasi pakar. Kerangka
+kelas hierarkis mengikuti struktur dokumen sumber (daftar isi), sedangkan tipe
+relasi muncul dari keluaran ekstraksi lalu dikurasi menjadi himpunan inti.
+Sesuai posisinya sebagai ontologi ringan pada spektrum formalitas
 (Gambar~\ref{fig:spektrum-ontologi}), ontologi ini cukup formal untuk
 menegakkan konsistensi tipe antartahap \textit{pipeline} tanpa memuat aksioma
-penalaran berat yang tidak diperlukan oleh tujuan penelitian. Tahapan
-pengembangan memetakan tujuh langkah \textcite{noy_ontology_2001} sebagai
+penalaran berat yang tidak diperlukan oleh tujuan penelitian. Untuk keperluan
+pemaparan, proses pengembangan ini \textbf{dapat dipetakan ke} tujuh tahapan
+panduan \textit{Ontology Development 101} \parencite{noy_ontology_2001} sebagai
 berikut.
 
 \begin{enumerate}
@@ -567,12 +568,12 @@ berikut.
         struktur daftar isi; kelas \texttt{ConceptTarget} ditambahkan sebagai
         keputusan rekayasa untuk menampung target relasi yang belum terekstrak
         sebagai \texttt{Concept} lengkap.
-  \item \textbf{Definisi properti:} lima belas tipe relasi dalam-buku
-        ditetapkan sebagai vokabulari tertutup yang merepresentasikan kategori
-        relasi ilmiah umum (kausal, komposisional, fungsional, definisional,
-        dan sebagainya), didampingi properti data seperti \texttt{description}
-        (sumber \textit{embedding}), \texttt{glossary\_validated}, dan
-        \texttt{materi\_pokok\_ref}.
+  \item \textbf{Definisi properti:} tipe relasi antarkonsep muncul dari hasil
+        ekstraksi lalu dikurasi menjadi himpunan inti lima belas tipe
+        dalam-buku yang merepresentasikan kategori relasi ilmiah umum (kausal,
+        komposisional, fungsional, definisional, dan sebagainya), didampingi
+        properti data seperti \texttt{description} (sumber \textit{embedding}),
+        \texttt{glossary\_validated}, dan \texttt{materi\_pokok\_ref}.
   \item \textbf{Penetapan batasan properti:} tiap relasi semantik diberi domain
         dan jangkauan \texttt{Concept} serta sifat simetri bila berlaku.
   \item \textbf{Pembuatan instans:} konsep dan relasi aktual diisi oleh
@@ -581,11 +582,10 @@ berikut.
         (v1--v4).
 \end{enumerate}
 
-Berbeda dari penerapan klasik \textcite{noy_ontology_2001} yang menyusun
-ontologi secara manual dan \textit{top-down}, langkah~3 dan~7 di sini bersifat
-\textit{bottom-up}: terminologi dan instans diturunkan dari teks oleh LLM,
-sehingga ontologi berperan sebagai spesifikasi target yang sekaligus memandu
-dan disempurnakan oleh hasil ekstraksi.
+Karena konseptualisasi bertumpu pada keluaran ekstraksi dan bukan pada
+perancangan manual, panduan \textcite{noy_ontology_2001} di sini berperan
+\textbf{deskriptif-analitis} --- sebagai kerangka untuk menstrukturkan
+pemaparan proses --- bukan prosedur yang diikuti langkah demi langkah.
 
 Skema \textit{knowledge graph} diformalkan sebagai ontologi OWL untuk
 memastikan konsistensi struktur dan vokabulari relasi antartahap
@@ -632,11 +632,9 @@ node, \texttt{owl:ObjectProperty} menjadi tipe relasi,
 dan \textit{constraint} Cypher, dan properti data menjadi properti pada node
 maupun \textit{edge}.
 
-Penegakan vokabulari relasi dilakukan pada tataran instruksi \textit{prompt}
-(Lampiran~\ref{lamp:prompt-ekstraksi}) dan tidak bersifat kaku pada level
-skema, sehingga sebagian kecil keluaran LLM dapat menyimpang dari himpunan tipe
-yang dideklarasikan; penyimpangan tersebut dikonsolidasikan pada tahap
-konsensus dan dicatat sebagai keterbatasan penelitian (Bab~6).
+Vokabulari relasi diarahkan melalui instruksi \textit{prompt}
+(Lampiran~\ref{lamp:prompt-ekstraksi}) dan dikonsolidasikan pada tahap
+konsensus; cakupan penegakannya dibahas pada keterbatasan penelitian (Bab~6).
 
 % ============================================================
 \section{Parameter Sistem dan Definisi Operasional}

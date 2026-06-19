@@ -253,8 +253,8 @@ Secara spesifik, penelitian ini bertujuan untuk:
 \begin{enumerate}
   \item Membangun representasi \textit{knowledge graph} kurikulum sains yang
         eksplisit dan dapat ditelusuri berdasarkan entitas materi dan relasi dari
-        buku teks siswa Fisika, Kimia, dan Biologi Kelas~XII (e-book resmi
-        Kemendikbudristek).
+        buku teks siswa beserta Buku Panduan Guru pasangannya untuk Fisika,
+        Kimia, dan Biologi Kelas~XII (e-book resmi Kemendikbudristek).
 
   \item Mengidentifikasi relasi implisit lintas-disiplin yang terhubung melalui
         LLM-Assisted \textit{Knowledge Graph Completion}, serta menganalisis
@@ -307,10 +307,12 @@ Berikut adalah batasan-batasan yang ditetapkan untuk penelitian ini.
 
 \begin{enumerate}
   \item \textbf{Objek Penelitian:} Korpus data terbatas pada buku teks siswa
-        (e-book PDF resmi Kemendikbudristek) mata pelajaran Fisika, Kimia, dan
-        Biologi Fase~F Kelas~XII, diperoleh dari repositori
-        \texttt{buku.kemdikbud.go.id}. Buku teks Kelas~XI dan dokumen
-        Capaian Pembelajaran (CP) tidak termasuk dalam korpus.
+        beserta Buku Panduan Guru pasangannya (e-book PDF resmi
+        Kemendikbudristek) mata pelajaran Fisika, Kimia, dan Biologi Fase~F
+        Kelas~XII, diperoleh dari repositori \texttt{buku.kemdikbud.go.id}. Buku
+        teks Kelas~XI tidak termasuk dalam korpus; dokumen Capaian Pembelajaran
+        (CP) terpisah tidak digunakan, sedangkan rujukan materi pokok diambil
+        dari Buku Panduan Guru.
 
   \item \textbf{Model dan Strategi LLM:} Model Gemini~2.5 Flash Lite
         (Google GenAI SDK) digunakan untuk ekstraksi entitas dan relasi
