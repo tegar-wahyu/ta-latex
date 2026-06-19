@@ -1,0 +1,166 @@
+% ============================================================
+%  LAMPIRAN 10 – PEMBAGIAN TUGAS DAN KONTRIBUSI ANGGOTA
+%  Compile standalone:  pdflatex lampiran-10.tex
+%  Compile as part of thesis: pdflatex main.tex
+% ============================================================
+\documentclass[../../thesis]{subfiles}
+\usepackage{hyphenat}
+\usepackage{iftex}
+
+% ── Encoding, Language & Fonts ───────────────────────────────
+\ifXeTeX
+    \usepackage{polyglossia}
+    \setmainlanguage{bahasai}
+    \usepackage{fontspec}
+    \setmainfont{TeX Gyre Termes}
+    \setsansfont{TeX Gyre Heros}
+    \setmonofont[Scale=0.88]{TeX Gyre Cursor}
+\else
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage[indonesian]{babel}
+    \usepackage{mathptmx}
+    \usepackage{helvet}
+    \usepackage{courier}
+\fi
+
+% ── Page geometry (A4, UI thesis margins) ────────────────────
+\usepackage[
+  a4paper,
+  top    = 2.54cm,
+  bottom = 2.54cm,
+  left   = 3.17cm,
+  right  = 2.54cm
+]{geometry}
+
+% ── Line spacing & paragraph ─────────────────────────────────
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
+
+% ── Microtype & justification ────────────────────────────────
+\usepackage{microtype}
+\sloppy
+
+% ── Headings ─────────────────────────────────────────────────
+\usepackage{titlesec}
+
+\titleformat{\chapter}[block]
+  {\centering\rmfamily\bfseries\large}{}
+  {0pt}{\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{0pt}{1.5em}
+
+\titleformat{\section}
+  {\rmfamily\bfseries\normalsize}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.6em}
+
+\titleformat{\subsection}
+  {\rmfamily\bfseries\normalsize}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{1em}{0.5em}
+
+% ── Tables ───────────────────────────────────────────────────
+\usepackage{longtable, booktabs, array, multirow}
+\usepackage{calc}
+\usepackage{tabularx}
+
+% ── Hyperlinks ───────────────────────────────────────────────
+\usepackage[hidelinks]{hyperref}
+
+% Bibliography setup is inherited from main.tex (biblatex + references.bib)
+% when this file is compiled standalone via the subfiles class.
+
+% ============================================================
+\begin{document}
+
+% When standalone: switch to appendix mode and set the counter so the
+% appendix heading renders correctly. When compiled inside main.tex,
+% main.tex issues \appendix and advances the counter before \subfile.
+\ifSubfilesClassLoaded{}{\appendix\setcounter{chapter}{1}}
+
+\lampiran{Pembagian Tugas dan Kontribusi Anggota}
+\label{lamp:pembagian-tugas}
+
+Penelitian ini dikerjakan secara berkelompok oleh tiga peneliti. Pada
+tahap awal, ketiga anggota terlebih dahulu melakukan eksplorasi
+menyeluruh secara mandiri terhadap keseluruhan alur \textit{pipeline},
+mulai dari proses \textit{ingestion} dan ekstraksi teks dari berkas PDF
+buku teks, eksperimen \textit{prompting} terhadap LLM, hingga konstruksi
+dan visualisasi \textit{knowledge graph} pada basis data Neo4j. Hasil
+eksplorasi masing-masing anggota kemudian didiskusikan bersama dosen
+pembimbing. Melalui proses bimbingan tersebut, hasil konstruksi
+\textit{knowledge graph} yang dikembangkan oleh Yhoga dipilih sebagai
+dasar \textit{pipeline} pada tahap selanjutnya karena dinilai paling baik.
+
+Setelah arah \textit{pipeline} ditetapkan, pengerjaan dibagi berdasarkan
+tahapan \textit{pipeline} KGC. Yhoga berfokus pada tahap ekstraksi dan
+konstruksi, meliputi eksperimen untuk menentukan proses ekstraksi teks
+PDF yang paling baik, perancangan \textit{prompt} LLM yang menghasilkan
+entitas dan relasi yang sesuai, hingga konstruksi dan visualisasi graf
+pada Neo4j. Tegar menangani tahap evaluasi dan analisis relasi hasil
+sistem. Untuk keperluan ini, ia mengembangkan aplikasi web KG Review App
+sebagai instrumen pengumpulan penilaian pakar dan melakukan perekrutan
+panel pakar penilai. Sesuai kualifikasi yang ditetapkan pada
+Subbab~\ref{subsec:subjek-evaluasi}, pakar yang dilibatkan merupakan
+mahasiswa aktif atau lulusan dengan latar belakang disiplin ilmu yang
+linier dengan mata pelajaran terkait. Pada tahap ini Tegar melaksanakan
+analisis validasi menggunakan metrik kesepakatan antarpenilai (Gwet's
+AC1) serta metrik kinerja relasi (Fuzzy Precision, Fuzzy Recall, dan
+F1-Score), menjalankan mekanisme \textit{LLM-as-a-judge} untuk
+mengajudikasi ketidaksepakatan penilaian antarpakar dan menetapkan
+\textit{gold standard} berdasarkan konteks buku sumber. Adapun Soros
+mengerjakan tahap penyempurnaan (\textit{completion}/KGC), yaitu prediksi
+relasi implisit lintas-buku antarkonsep menggunakan kemiripan
+\textit{embedding} dan klasifikasi LLM. Ringkasan pembagian tugas
+disajikan pada Tabel~\ref{tab:pembagian-tugas}.
+
+\begin{longtable}{@{}
+  >{\raggedright\arraybackslash}p{0.27\linewidth}
+  >{\raggedright\arraybackslash}p{0.49\linewidth}
+  >{\raggedright\arraybackslash}p{0.16\linewidth}@{}}
+\caption{Pembagian Tugas Anggota Penelitian}
+\label{tab:pembagian-tugas}\\
+\toprule
+\textbf{Tahap/Aktivitas} & \textbf{Deskripsi} & \textbf{Penanggung Jawab} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Tahap/Aktivitas} & \textbf{Deskripsi} & \textbf{Penanggung Jawab} \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+Eksplorasi awal \textit{pipeline}
+  & Eksperimen mandiri menyeluruh: \textit{ingestion} dan ekstraksi teks
+    PDF, \textit{prompting} LLM, konstruksi, serta visualisasi Neo4j;
+    hasil terbaik dipilih melalui bimbingan
+  & Yhoga, Tegar, Soros \\
+\addlinespace
+Ekstraksi teks \& \textit{knowledge extraction}
+  & Eksperimen ekstraksi teks PDF terbaik dan perancangan \textit{prompt}
+    LLM penghasil entitas serta relasi
+  & Yhoga \\
+\addlinespace
+Konstruksi \& visualisasi KG
+  & Pembentukan dan visualisasi \textit{knowledge graph} pada Neo4j
+  & Yhoga \\
+\addlinespace
+Validasi \& analisis relasi
+  & Pengembangan KG Review App sebagai instrumen penilaian panel pakar,
+    perekrutan pakar, dan analisis validasi (Gwet's AC1; Fuzzy
+    Precision, Fuzzy Recall, dan F1-Score)
+  & Tegar \\
+\addlinespace
+\textit{LLM-as-a-judge} \& konsensus
+  & Ajudikasi ketidaksepakatan penilaian antarpakar untuk menetapkan
+    label konsensus final (\textit{gold standard}) berdasarkan konteks
+    buku sumber
+  & Tegar \\
+\addlinespace
+Penyempurnaan KG (\textit{completion}/KGC)
+  & Prediksi relasi implisit lintas-buku menggunakan kemiripan
+    \textit{embedding} dan klasifikasi LLM
+  & Soros \\
+\end{longtable}
+
+\end{document}

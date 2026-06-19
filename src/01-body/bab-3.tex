@@ -201,85 +201,10 @@ Adopsi DSR dalam penelitian ini mengikuti kerangka kerja
         publikasi ilmiah.
 \end{enumerate}
 
-\subsection{Pembagian Tugas dan Kontribusi Anggota}
-\label{subsec:pembagian-tugas}
-
-Penelitian ini dikerjakan secara berkelompok oleh tiga peneliti. Pada
-tahap awal, ketiga anggota terlebih dahulu melakukan eksplorasi
-menyeluruh secara mandiri terhadap keseluruhan alur \textit{pipeline},
-mulai dari proses \textit{ingestion} dan ekstraksi teks dari berkas PDF
-buku teks, eksperimen \textit{prompting} terhadap LLM, hingga konstruksi
-dan visualisasi \textit{knowledge graph} pada basis data Neo4j. Hasil
-eksplorasi masing-masing anggota kemudian didiskusikan bersama dosen
-pembimbing. Melalui proses bimbingan tersebut, hasil konstruksi
-\textit{knowledge graph} yang dikembangkan oleh Yhoga dipilih sebagai
-dasar \textit{pipeline} pada tahap selanjutnya karena dinilai paling baik.
-
-Setelah arah \textit{pipeline} ditetapkan, pengerjaan dibagi berdasarkan
-tahapan \textit{pipeline} KGC. Yhoga berfokus pada tahap ekstraksi dan
-konstruksi, meliputi eksperimen untuk menentukan proses ekstraksi teks
-PDF yang paling baik, perancangan \textit{prompt} LLM yang menghasilkan
-entitas dan relasi yang sesuai, hingga konstruksi dan visualisasi graf
-pada Neo4j. Tegar menangani tahap evaluasi dan analisis relasi hasil
-sistem. Untuk keperluan ini, ia mengembangkan aplikasi web KG Review App
-sebagai instrumen pengumpulan penilaian pakar dan melakukan perekrutan
-panel pakar penilai. Sesuai kualifikasi yang ditetapkan pada
-Subbab~\ref{subsec:subjek-evaluasi}, pakar yang dilibatkan merupakan
-mahasiswa aktif atau lulusan dengan latar belakang disiplin ilmu yang
-linier dengan mata pelajaran terkait. Pada tahap ini Tegar melaksanakan
-analisis validasi menggunakan metrik kesepakatan antarpenilai (Gwet's
-AC1) serta metrik kinerja relasi (Fuzzy Precision, Fuzzy Recall, dan
-F1-Score), menjalankan mekanisme \textit{LLM-as-a-judge} untuk
-mengajudikasi ketidaksepakatan penilaian antarpakar dan menetapkan
-\textit{gold standard} berdasarkan konteks buku sumber. Adapun Soros mengerjakan tahap penyempurnaan
-(\textit{completion}/KGC), yaitu prediksi relasi implisit lintas-buku
-antarkonsep menggunakan kemiripan \textit{embedding} dan klasifikasi LLM. Ringkasan pembagian tugas disajikan pada
-Tabel~\ref{tab:pembagian-tugas}.
-
-\begin{table}[htbp]
-\centering
-\caption{Pembagian Tugas Anggota Penelitian}
-\label{tab:pembagian-tugas}
-\small
-\setlength{\tabcolsep}{5pt}
-\begin{tabular}{@{}p{0.27\textwidth}p{0.49\textwidth}p{0.16\textwidth}@{}}
-  \toprule
-  \textbf{Tahap/Aktivitas} & \textbf{Deskripsi} & \textbf{Penanggung Jawab} \\
-  \midrule
-  Eksplorasi awal \textit{pipeline}
-    & Eksperimen mandiri menyeluruh: \textit{ingestion} dan ekstraksi teks
-      PDF, \textit{prompting} LLM, konstruksi, serta visualisasi Neo4j;
-      hasil terbaik dipilih melalui bimbingan
-    & Yhoga, Tegar, Soros \\
-  \addlinespace
-  Ekstraksi teks \& \textit{knowledge extraction}
-    & Eksperimen ekstraksi teks PDF terbaik dan perancangan \textit{prompt}
-      LLM penghasil entitas serta relasi
-    & Yhoga \\
-  \addlinespace
-  Konstruksi \& visualisasi KG
-    & Pembentukan dan visualisasi \textit{knowledge graph} pada Neo4j
-    & Yhoga \\
-  \addlinespace
-  Validasi \& analisis relasi
-    & Pengembangan KG Review App sebagai instrumen penilaian panel pakar,
-      perekrutan pakar, dan analisis validasi (Gwet's AC1; Fuzzy
-      Precision, Fuzzy Recall, dan F1-Score)
-    & Tegar \\
-  \addlinespace
-  \textit{LLM-as-a-judge} \& konsensus
-    & Ajudikasi ketidaksepakatan penilaian antarpakar untuk menetapkan
-      label konsensus final (\textit{gold standard}) berdasarkan konteks
-      buku sumber
-    & Tegar \\
-  \addlinespace
-  Penyempurnaan KG (\textit{completion}/KGC)
-    & Prediksi relasi implisit lintas-buku menggunakan kemiripan
-      \textit{embedding} dan klasifikasi LLM
-    & Soros \\
-  \bottomrule
-\end{tabular}
-\end{table}
+Penelitian ini dikerjakan secara berkelompok oleh tiga peneliti (Yhoga,
+Tegar, dan Soros) dengan pembagian tugas mengikuti tahapan
+\textit{pipeline} KGC. Rincian pembagian tugas dan kontribusi
+masing-masing anggota disajikan pada \ref{lamp:pembagian-tugas}.
 
 % ============================================================
 \section{Lokasi dan Waktu Penelitian}
