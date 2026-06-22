@@ -137,6 +137,29 @@ dipenuhi oleh struktur dokumen kurikulum maupun buku teks konvensional yang umum
 tersusun secara linear dan terkotak menurut batas mata pelajaran, sehingga
 keterkaitan lintas-disiplin cenderung tersembunyi dan tidak terdokumentasi.
 
+Kebutuhan akan representasi seperti ini sebenarnya datang langsung dari Kurikulum
+Merdeka. Kurikulum Merdeka mendorong pembelajaran
+yang terpadu dan mengajak siswa menyelesaikan persoalan nyata yang tidak terbatas
+pada satu mata pelajaran, salah satunya lewat Projek Penguatan Profil Pelajar
+Pancasila \parencite{kemendikbudristek_kepmen262_2022}. Sayangnya, dorongan ini
+tidak dibarengi alat bantu yang memetakan keterkaitan antarmateri secara jelas.
+\textcite{dyachenko_integration_2024} menyebutkan bahwa keterkaitan antara
+Fisika, Kimia, dan Biologi di tingkat SMA sebenarnya penting secara pembelajaran,
+tetapi masih jarang benar-benar dipadukan di kelas. Hal serupa terlihat di
+Indonesia: penelitian tentang penerapan Kurikulum Merdeka menemukan guru
+kesulitan menghubungkan materi antarmata pelajaran karena rujukannya masih minim
+\parencite{fransiska_fintelsia_dua_wuli_problematika_2025}. Akibatnya, pekerjaan
+memetakan keterkaitan ini terpaksa dilakukan sendiri-sendiri secara manual: guru
+yang ingin menyusun pembelajaran terpadu harus mencari sendiri konsep prasyarat
+dari mata pelajaran lain, pengembang kurikulum tidak punya rujukan irisan
+antarmateri, dan siswa dibiarkan mencari hubungan antarkonsep tanpa panduan.
+Memetakannya secara manual, misalnya dengan membuat peta konsep lintas-disiplin
+\parencite{semilarski_expanding_2022}, memang membantu, tetapi butuh waktu dan
+ketelitian besar sehingga sulit dilakukan secara konsisten untuk cakupan
+kurikulum yang luas. Inilah yang mendorong dibuatnya sistem pada penelitian ini,
+yaitu menyediakan peta keterkaitan yang jelas, sudah tervalidasi, dan mudah
+ditelusuri, sehingga tidak perlu disusun ulang secara manual oleh tiap pengguna.
+
 \textit{Knowledge Graph} (KG) menawarkan paradigma representasi yang menjawab
 kebutuhan tersebut, yakni dengan memodelkan interkoneksi materi secara eksplisit. Dalam penelitian ini,
 interkoneksi materi didefinisikan sebagai hubungan konseptual yang menunjukkan
@@ -302,6 +325,55 @@ Fisika, atau peran pemahaman struktur kimia DNA di Kimia sebagai prasyarat
 pemahaman konsep Gen di Biologi. Representasi ini dapat digunakan sebagai referensi ketika
 merancang unit pembelajaran terpadu atau mengidentifikasi urutan konsep prasyarat
 lintas mata pelajaran, tanpa harus membangun pemetaan tersebut secara manual.
+
+\subsection{Skenario Pemanfaatan}
+
+Sebagai purwarupa sekaligus sumber data awal, hasil penelitian ini, yaitu graf
+pengetahuan beserta visualisasinya dan \textit{pipeline} pembangunnya, dirancang
+untuk dipakai pada beberapa skenario berikut.
+
+\begin{enumerate}
+  \item \textbf{Membantu guru menyusun pembelajaran terpadu.} Guru yang ingin
+        membuat unit pembelajaran atau projek lintas-disiplin bisa menelusuri
+        visualisasi KG untuk melihat konsep dari mata pelajaran lain yang
+        berhubungan dengan materinya, misalnya kaitan antara Potensial Elektrode
+        (Kimia) dan Potensial Listrik (Fisika). Pemetaan seperti ini mendukung
+        perancangan pembelajaran lintas-disiplin yang selama ini banyak disusun
+        secara manual \parencite{abdel-radi_interdisciplinary_2025}, sehingga
+        guru langsung mendapat titik penghubung yang konkret tanpa perlu membaca
+        ulang tiga buku teks satu per satu.
+
+  \item \textbf{Membantu pengembang kurikulum menata urutan materi.} Pengembang
+        kurikulum bisa memakai relasi prasyarat pada graf untuk mengecek apakah
+        urutan materi antarmata pelajaran sudah selaras, misalnya memastikan
+        struktur kimia DNA (Kimia) dibahas sebelum konsep Gen (Biologi).
+        Pemanfaatan KG untuk merancang jalur belajar seperti ini sudah
+        ditunjukkan pada platform pembelajaran daring
+        \parencite{zhang_learning_2023}, sehingga ketidaksesuaian urutan
+        antardisiplin bisa diketahui lebih awal.
+
+  \item \textbf{Menjadi basis pengetahuan untuk aplikasi AI pendidikan.} Graf
+        yang sudah tervalidasi bisa menjadi sumber pengetahuan bagi \textit{chatbot}
+        atau asisten tanya-jawab berbasis \textit{Retrieval-Augmented Generation}
+        (RAG), yaitu LLM yang menjawab dengan merujuk pada materi kurikulum
+        beserta keterkaitan lintas-disiplinnya. Pendekatan yang memadukan KG dan
+        LLM untuk sistem tanya-jawab pendidikan semacam ini sudah mulai
+        dikembangkan
+        \parencite{researcher_silcion_valley_chapter-oxford_alumni_enhancing_2025}.
+
+  \item \textbf{Menjadi sumber data untuk penelitian teknologi pendidikan.} Graf
+        juga bisa dipakai sebagai \textit{ground truth} atau bahan masukan bagi
+        sistem lanjutan seperti perekomendasi jalur belajar dan personalisasi
+        adaptif, seperti yang ditunjukkan pada pendidikan tinggi oleh
+        \textcite{abu-rasheed_llm-assisted_2025}. Selain itu, \textit{pipeline}
+        yang sudah didokumentasikan bisa dipakai lagi untuk memperluas graf ke
+        fase atau mata pelajaran lain.
+\end{enumerate}
+
+Pengembangan aplikasi AI maupun sistem lanjutan pada dua skenario terakhir berada
+di luar lingkup penelitian ini (lihat Subbab~\ref{sec:ruang-lingkup}); penelitian
+ini menyediakan graf dan \textit{pipeline}-nya sebagai fondasi data bagi
+pengembangan tersebut.
 
 % ============================================================
 \section{Ruang Lingkup Penelitian}
