@@ -32,8 +32,10 @@
 # ── compiled output ──────────────────────────────────────────
 thesis.pdf
 output.pdf
-# standalone subfile builds (e.g. pembentukan-ontologi.pdf)
+# standalone subfile build artifacts are not tracked...
 src/01-body/*.pdf
+# ...except the ontology-formation pilot, kept in-repo so reviewers see the rendered output
+!src/01-body/pembentukan-ontologi.pdf
 
 # ── local fallback copies (not part of the build) ────────────
 legacy (ignore)/
