@@ -32,6 +32,8 @@
 # ── compiled output ──────────────────────────────────────────
 thesis.pdf
 output.pdf
+# standalone subfile builds (e.g. pembentukan-ontologi.pdf)
+src/01-body/*.pdf
 
 # ── local fallback copies (not part of the build) ────────────
 legacy (ignore)/

@@ -167,7 +167,8 @@
 % edition, month names, ordinals).
 \DeclareLanguageMapping{indonesian}{english}
 \DeclareLanguageMapping{bahasai}{english}
-\addbibresource{config/references.bib}
+\addbibresource{\subfix{config/references.bib}}  % \subfix: path resolves for both the main build and standalone subfile compiles
+
 \renewcommand*{\finalnamedelim}{\addspace dan\addspace}  % two authors -> "dan"
 
 % ============================================================

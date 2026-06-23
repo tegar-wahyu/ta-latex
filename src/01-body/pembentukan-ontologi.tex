@@ -1,0 +1,145 @@
+% ============================================================
+%  Subfile: Pembentukan Ontologi (pilot — kandidat subbab tersendiri)
+%  Isi: metodologi pengembangan ontologi, skema (via \subfile{onthology}),
+%       dan justifikasi pemilihan OWL.
+%  Dipakai oleh bab-3.tex via \subfile{pembentukan-ontologi}, dan dapat
+%  dikompilasi mandiri menjadi pembentukan-ontologi.pdf
+%  (pdflatex -> biber -> pdflatex -> pdflatex, cwd = folder ini).
+% ============================================================
+\documentclass[../../thesis]{subfiles}
+\begin{document}
+
+% Standalone-pilot cosmetics only; skipped entirely when \subfile'd into thesis.
+% Without a chapter context, report-class would label the subsection "0.0.1";
+% drop section numbering for the standalone PDF so headings read cleanly.
+\ifSubfilesClassLoaded{\setcounter{secnumdepth}{0}}{}
+
+\subsection{Skema Ontologi Knowledge Graph}
+\label{subsec:skema-ontologi}
+
+Ontologi dalam penelitian ini diposisikan menggunakan dua tier
+representasi yang dibedakan secara metodologis. \textbf{Tier
+ekstraksi} menghasilkan model konseptual \textit{deskriptif} atas isi
+buku teks Kurikulum Merdeka (konsep, sub-bab, bab, beserta
+keterkaitan semantik antar-konsep dalam satu buku), sejalan dengan
+tradisi \textit{domain module} dalam konstruksi otomatis \textit{knowledge
+graph} dari buku teks elektronik. \textbf{Tier completion} menghasilkan kandidat
+keterkaitan lintas-buku (\texttt{LINTAS\_BUKU\_*}) sebagai inferensi
+pedagogis dangkal di atas Tier ekstraksi: sistem mengusulkan jembatan
+antar-disiplin yang dapat dipertimbangkan, tetapi tidak menetapkannya
+sebagai jalur belajar.
+
+Predikat ``dangkal'' bersifat operasional: sistem hanya menginferensi
+keterkaitan \textit{single-hop} antar dua konsep di buku berbeda dan
+tidak menyusun jalur belajar multi-langkah lintas-disiplin (batasan
+inferensi pedagogis dirinci pada Subbab~\ref{sec:ruang-lingkup}).
+Dengan demikian, relasi berarah pada Tier ekstraksi seperti
+\texttt{PRASYARAT} dan \texttt{MEMPERSIAPKAN} dimaknai sebagai
+ketergantungan konseptual yang terdokumentasikan dalam materi sumber
+(keputusan editorial penyusun buku), sedangkan relasi lintas-buku pada Tier
+completion seperti \texttt{LINTAS\_BUKU\_PRASYARAT\_UNTUK} dimaknai sebagai
+sugesti per-pasangan yang dapat dipertimbangkan secara lokal, bukan anjuran
+kronologis bagi siswa.
+
+\subsubsection{Metodologi Pengembangan Ontologi}
+
+Ontologi pada penelitian ini tidak dirancang secara manual di muka, melainkan
+disusun secara \textbf{induktif} (\textit{bottom-up}) melalui ekstraksi
+berbantuan-LLM atas korpus: kelas, hierarki, dan vokabulari relasi diturunkan
+dari pemrosesan teks buku, kemudian dikurasi dan divalidasi pakar. Kerangka
+kelas hierarkis mengikuti struktur dokumen sumber (daftar isi), sedangkan tipe
+relasi muncul dari keluaran ekstraksi lalu dikurasi menjadi himpunan inti.
+Sesuai posisinya sebagai ontologi ringan pada spektrum formalitas
+(Gambar~\ref{fig:spektrum-ontologi}), ontologi ini cukup formal untuk
+menegakkan konsistensi tipe antartahap \textit{pipeline} tanpa memuat aksioma
+penalaran berat yang tidak diperlukan oleh tujuan penelitian. Untuk keperluan
+pemaparan, proses pengembangan ini \textbf{dapat dipetakan ke} tujuh tahapan
+panduan \textit{Ontology Development 101} \parencite{noy_ontology_2001} sebagai
+berikut.
+
+\begin{enumerate}
+  \item \textbf{Penentuan domain dan lingkup:} konsep sains lintas-disiplin
+        (Fisika, Kimia, Biologi) Fase~F Kelas~XII Kurikulum Merdeka.
+  \item \textbf{Pertimbangan penggunaan-ulang:} tidak ditemukan ontologi
+        kurikulum sains berbahasa Indonesia yang dapat digunakan ulang secara
+        langsung, sehingga ontologi dirancang khusus dan sengaja dijaga ringan.
+  \item \textbf{Enumerasi istilah penting:} daftar isi Buku Siswa memasok
+        struktur bab dan subbab, sedangkan \textit{materi pokok} dari Buku
+        Panduan Guru beserta glosarium buku memasok terminologi konsep (rincian
+        blok masukan \textit{prompt} pada
+        Lampiran~\ref{lamp:prompt-ekstraksi}).
+  \item \textbf{Definisi kelas dan hierarki:} rantai
+        \texttt{Grade/Subject} $\rightarrow$ \texttt{Chapter} $\rightarrow$
+        \texttt{Subtopic} $\rightarrow$ \texttt{Concept} diturunkan dari
+        struktur daftar isi; kelas \texttt{ConceptTarget} ditambahkan sebagai
+        keputusan rekayasa untuk menampung target relasi yang belum terekstrak
+        sebagai \texttt{Concept} lengkap.
+  \item \textbf{Definisi properti:} tipe relasi antarkonsep muncul dari hasil
+        ekstraksi lalu dikurasi menjadi himpunan inti lima belas tipe
+        dalam-buku yang merepresentasikan kategori relasi ilmiah umum (kausal,
+        komposisional, fungsional, definisional, dan sebagainya), didampingi
+        properti data seperti \texttt{description} (sumber \textit{embedding}),
+        \texttt{glossary\_validated}, dan \texttt{materi\_pokok\_ref}.
+  \item \textbf{Penetapan batasan properti:} tiap relasi semantik diberi domain
+        dan jangkauan \texttt{Concept} serta sifat simetri bila berlaku.
+  \item \textbf{Pembuatan instans:} konsep dan relasi aktual diisi oleh
+        \textit{pipeline} ekstraksi berbantuan-LLM, kemudian divalidasi enam
+        pakar domain dan disempurnakan melalui empat iterasi keadaan KG
+        (v1--v4).
+\end{enumerate}
+
+Karena konseptualisasi bertumpu pada keluaran ekstraksi dan bukan pada
+perancangan manual, panduan \textcite{noy_ontology_2001} di sini berperan
+\textbf{deskriptif-analitis} --- sebagai kerangka untuk menstrukturkan
+pemaparan proses --- bukan prosedur yang diikuti langkah demi langkah.
+
+Skema \textit{knowledge graph} diformalkan sebagai ontologi OWL untuk
+memastikan konsistensi struktur dan vokabulari relasi antartahap
+\textit{pipeline} (ekstraksi, konstruksi, dan \textit{completion}).
+Topologi keseluruhan mencakup relasi struktural, relasi keterurutan
+penyajian materi dalam buku (\textit{NEXT\_CHAPTER}), dan relasi semantik
+pada Tier ekstraksi, serta inferensi lintas-buku pada Tier completion.
+Keseluruhan topologi ini diilustrasikan pada Gambar~\ref{fig:ontologi}.
+
+\subfile{onthology}
+
+\subsubsection{Justifikasi Pemilihan OWL}
+
+Skema diformalkan menggunakan \textit{Web Ontology Language} (OWL)
+\parencite{w3c_owl2_2012}. Pemilihan OWL didasarkan pada apa yang
+benar-benar dimanfaatkan darinya. \emph{Pertama}, tipisasi formal yang dapat
+diperiksa mesin: deklarasi kelas (\texttt{owl:Class}), properti objek
+(\texttt{owl:ObjectProperty}), dan properti data
+(\texttt{owl:DatatypeProperty}) beserta batasan
+\texttt{rdfs:domain}/\texttt{rdfs:range}, sehingga vokabulari struktur dan
+relasi menjadi spesifikasi eksplisit yang konsisten antartahap
+\textit{pipeline}. \emph{Kedua}, aksioma semantik ringan: sifat simetri relasi
+dinyatakan melalui \texttt{owl:SymmetricProperty} (mis.\
+\texttt{BERINTERAKSI\_DENGAN}, \texttt{BEREAKSI\_DENGAN}, dan
+\texttt{LINTAS\_BUKU\_SAMA\_DENGAN}). \emph{Ketiga}, sebagai standar terbuka
+W3C, OWL didukung perkakas baku seperti Prot\'eg\'e, bersifat portabel, dan
+dapat divalidasi serta digunakan ulang oleh peneliti lain.
+
+Alternatif lain dinilai kurang sesuai: RDFS murni tidak menyediakan aksioma
+properti seperti simetri; SHACL, JSON Schema, maupun Pydantic berorientasi pada
+validasi \textit{bentuk} (\textit{shape}) data, bukan ontologi formal yang
+menyatakan semantik kelas dan relasi secara deklaratif; sedangkan UML atau
+diagram informal tidak baku secara semantik. Sejalan dengan pembahasan spektrum
+formalitas pada Bab~2 (Gambar~\ref{fig:spektrum-ontologi}), menuliskan ontologi
+ringan ke dalam OWL adalah hal yang wajar karena OWL menyediakan profil dari
+yang ringan hingga berat \parencite{w3c_owl2_profiles_2012}.
+
+OWL berperan sebagai \textbf{spesifikasi waktu-desain}, sedangkan penyimpanan
+dan kueri \textit{runtime} memakai \textit{Labeled Property Graph} (LPG) pada
+Neo4j; tidak terdapat \textit{triplestore}, SPARQL, maupun \textit{reasoner}
+pada jalur produksi. Pemetaannya langsung: \texttt{owl:Class} menjadi label
+node, \texttt{owl:ObjectProperty} menjadi tipe relasi,
+\texttt{rdfs:domain}/\texttt{rdfs:range} ditegakkan melalui pola \texttt{MERGE}
+dan \textit{constraint} Cypher, dan properti data menjadi properti pada node
+maupun \textit{edge}.
+
+Vokabulari relasi diarahkan melalui instruksi \textit{prompt}
+(Lampiran~\ref{lamp:prompt-ekstraksi}) dan dikonsolidasikan pada tahap
+konsensus; cakupan penegakannya dibahas pada keterbatasan penelitian (Bab~6).
+
+\end{document}
