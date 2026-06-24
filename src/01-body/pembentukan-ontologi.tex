@@ -43,55 +43,75 @@ kronologis bagi siswa.
 
 \subsubsection{Metodologi Pengembangan Ontologi}
 
-Ontologi pada penelitian ini tidak dirancang secara manual di muka, melainkan
-disusun secara \textbf{induktif} (\textit{bottom-up}) melalui ekstraksi
-berbantuan-LLM atas korpus: kelas, hierarki, dan vokabulari relasi diturunkan
-dari pemrosesan teks buku, kemudian dikurasi dan divalidasi pakar. Kerangka
-kelas hierarkis mengikuti struktur dokumen sumber (daftar isi), sedangkan tipe
-relasi muncul dari keluaran ekstraksi lalu dikurasi menjadi himpunan inti.
-Sesuai posisinya sebagai ontologi ringan pada spektrum formalitas
-(Gambar~\ref{fig:spektrum-ontologi}), ontologi ini cukup formal untuk
-menegakkan konsistensi tipe antartahap \textit{pipeline} tanpa memuat aksioma
-penalaran berat yang tidak diperlukan oleh tujuan penelitian. Untuk keperluan
-pemaparan, proses pengembangan ini \textbf{dapat dipetakan ke} tujuh tahapan
-panduan \textit{Ontology Development 101} \parencite{noy_ontology_2001} sebagai
-berikut.
+Panduan \textit{Ontology Development 101} \parencite{noy_ontology_2001} dipakai
+sebagai \textbf{lensa deskriptif-analitis}: proses penyusunan ontologi pada
+penelitian ini --- bersifat \textbf{induktif} (\textit{bottom-up})
+berbantuan-LLM lalu dikurasi dan divalidasi pakar --- \textit{dapat dipetakan
+ke} tujuh tahap iteratif Noy \& McGuinness, bukan diikuti secara kaku langkah
+demi langkah. Strategi keseluruhan bersifat \textit{middle-out}: kerangka kelas
+diturunkan \textit{top-down} dari struktur dokumen, sementara vokabulari relasi
+dirancang dan diiterasi \textit{bottom-up}.
 
 \begin{enumerate}
-  \item \textbf{Penentuan domain dan lingkup:} konsep sains lintas-disiplin
-        (Fisika, Kimia, Biologi) Fase~F Kelas~XII Kurikulum Merdeka.
-  \item \textbf{Pertimbangan penggunaan-ulang:} tidak ditemukan ontologi
-        kurikulum sains berbahasa Indonesia yang dapat digunakan ulang secara
-        langsung, sehingga ontologi dirancang khusus dan sengaja dijaga ringan.
-  \item \textbf{Enumerasi istilah penting:} daftar isi Buku Siswa memasok
-        struktur bab dan subbab, sedangkan \textit{materi pokok} dari Buku
-        Panduan Guru beserta glosarium buku memasok terminologi konsep (rincian
-        blok masukan \textit{prompt} pada
+  \item \textbf{Menentukan domain dan ruang lingkup.} Ontologi dibatasi pada
+        pemetaan keterkaitan konsep sains lintas-disiplin Fase~F (Kelas~XII)
+        Kurikulum Merdeka. Tujuannya merepresentasikan konsep ilmiah beserta
+        keterkaitan struktural, pedagogis, dan lintas-buku, agar keterkaitan
+        yang hilang (\textit{missing links}) dapat ditemukan secara
+        komputasional.
+
+  \item \textbf{Mempertimbangkan penggunaan-ulang ontologi yang ada.} Belum ada
+        ontologi kurikulum Indonesia yang sesuai, sehingga ontologi dibangun
+        \textit{purpose-built} dan sengaja dijaga \textit{lightweight} --- rendah
+        pada spektrum formalitas (Gambar~\ref{fig:spektrum-ontologi}), cukup
+        formal sebagai spesifikasi tanpa beban aksioma berat yang tidak
+        dibutuhkan.
+
+  \item \textbf{Mengenumerasi istilah penting.} Istilah konsep tidak ditentukan
+        di awal, melainkan muncul secara induktif dari ekstraksi LLM atas
+        korpus: Daftar Isi (\textit{ToC}) Buku Siswa sebagai sumber struktur,
+        serta \textit{materi pokok} dan glosarium Buku Panduan Guru sebagai
+        sumber terminologi (rincian blok masukan \textit{prompt} pada
         Lampiran~\ref{lamp:prompt-ekstraksi}).
-  \item \textbf{Definisi kelas dan hierarki:} rantai
-        \texttt{Grade/Subject} $\rightarrow$ \texttt{Chapter} $\rightarrow$
-        \texttt{Subtopic} $\rightarrow$ \texttt{Concept} diturunkan dari
-        struktur daftar isi; kelas \texttt{ConceptTarget} ditambahkan sebagai
-        keputusan rekayasa untuk menampung target relasi yang belum terekstrak
-        sebagai \texttt{Concept} lengkap.
-  \item \textbf{Definisi properti:} tipe relasi antarkonsep muncul dari hasil
-        ekstraksi lalu dikurasi menjadi himpunan inti lima belas tipe
-        dalam-buku yang merepresentasikan kategori relasi ilmiah umum (kausal,
-        komposisional, fungsional, definisional, dan sebagainya), didampingi
-        properti data seperti \texttt{description} (sumber \textit{embedding}),
-        \texttt{glossary\_validated}, dan \texttt{materi\_pokok\_ref}.
-  \item \textbf{Penetapan batasan properti:} tiap relasi semantik diberi domain
-        dan jangkauan \texttt{Concept} serta sifat simetri bila berlaku.
-  \item \textbf{Pembuatan instans:} konsep dan relasi aktual diisi oleh
-        \textit{pipeline} ekstraksi berbantuan-LLM, kemudian divalidasi enam
-        pakar domain dan disempurnakan melalui empat iterasi keadaan KG
-        (v1--v4).
+
+  \item \textbf{Mendefinisikan kelas dan hierarki kelas.} Kerangka kelas
+        diturunkan \textit{top-down} menjadi lima kelas: \texttt{Grade/Subject}
+        (akar) $\rightarrow$ \texttt{Chapter} $\rightarrow$ \texttt{Subtopic}
+        $\rightarrow$ \texttt{Concept}, dengan \texttt{ConceptTarget} sebagai
+        kelas terpisah. \texttt{ConceptTarget} merupakan keputusan rekayasa
+        untuk menampung \textit{forward-reference} (konsep yang menjadi target
+        relasi tetapi belum terekstrak penuh) agar \textit{stub} tidak mencemari
+        kelas \texttt{Concept}.
+
+  \item \textbf{Mendefinisikan properti (\textit{slot}) kelas.} Properti dibagi
+        dua. \emph{Properti objek} untuk relasi: struktural
+        (\texttt{HAS\_CHAPTER}, \texttt{HAS\_SUBTOPIC}, \texttt{HAS\_CONCEPT}),
+        sekuensial/pedagogis (\texttt{NEXT\_CHAPTER}, \texttt{PRASYARAT},
+        \texttt{MEMPERSIAPKAN}), ilmiah antarkonsep (mis.\ \texttt{BAGIAN\_DARI},
+        \texttt{MENYEBABKAN}), dan lintas-buku. \emph{Properti data} untuk
+        atribut: mis.\ \texttt{description} (sumber \textit{embedding}),
+        \texttt{summary}, \texttt{glossary\_validated}, dan
+        \texttt{materi\_pokok\_ref}. Vokabulari relasi dirancang sebagai
+        himpunan inti tertutup (lima belas tipe dalam-buku) pada \textit{prompt}
+        ekstraksi dan diiterasi selama pengembangan.
+
+  \item \textbf{Mendefinisikan \textit{facet} slot.} Setiap properti objek
+        diberi domain dan jangkauan (mis.\ \texttt{HAS\_CHAPTER} berdomain
+        \texttt{Grade/Subject} dan berjangkauan \texttt{Chapter}), serta aksioma
+        \texttt{owl:SymmetricProperty} untuk relasi setara dua arah
+        (\texttt{BERINTERAKSI\_DENGAN}, \texttt{BEREAKSI\_DENGAN},
+        \texttt{LINTAS\_BUKU\_SAMA\_DENGAN}, dan
+        \texttt{LINTAS\_BUKU\_BERKAITAN\_DENGAN}).
+
+  \item \textbf{Membuat instans.} Ontologi dipopulasikan oleh konsep dan relasi
+        hasil ekstraksi, direalisasikan sebagai graf properti berlabel
+        (\textit{Labeled Property Graph}, LPG) pada Neo4j.
 \end{enumerate}
 
-Karena konseptualisasi bertumpu pada keluaran ekstraksi dan bukan pada
-perancangan manual, panduan \textcite{noy_ontology_2001} di sini berperan
-\textbf{deskriptif-analitis} --- sebagai kerangka untuk menstrukturkan
-pemaparan proses --- bukan prosedur yang diikuti langkah demi langkah.
+Sejalan dengan prinsip Noy \& McGuinness bahwa pengembangan ontologi pada
+dasarnya bersifat iteratif (\textit{necessarily iterative}), skema disempurnakan
+melalui \textit{refinement} bersama enam pakar domain (v1 sampai v4) ---
+menambah maupun menghapus tipe relasi hingga diperoleh vokabulari final.
 
 Skema \textit{knowledge graph} diformalkan sebagai ontologi OWL untuk
 memastikan konsistensi struktur dan vokabulari relasi antartahap
