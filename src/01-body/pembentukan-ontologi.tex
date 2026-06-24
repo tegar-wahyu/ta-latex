@@ -60,12 +60,30 @@ dirancang dan diiterasi \textit{bottom-up}.
         yang hilang (\textit{missing links}) dapat ditemukan secara
         komputasional.
 
-  \item \textbf{Mempertimbangkan penggunaan-ulang ontologi yang ada.} Belum ada
-        ontologi kurikulum Indonesia yang sesuai, sehingga ontologi dibangun
-        \textit{purpose-built} dan sengaja dijaga \textit{lightweight} --- rendah
-        pada spektrum formalitas (Gambar~\ref{fig:spektrum-ontologi}), cukup
-        formal sebagai spesifikasi tanpa beban aksioma berat yang tidak
-        dibutuhkan.
+  \item \textbf{Mempertimbangkan penggunaan-ulang ontologi yang ada.} Sesuai
+        anjuran Noy \& McGuinness untuk \textit{merefinisi dan memperluas} sumber
+        yang ada, kosakata baku yang relevan ditinjau melalui katalog
+        \textit{Linked Open Vocabularies}: SKOS, \textit{Curriculum Course
+        Syllabus Ontology} (CCSO), EduCOR, ConceptNet, serta
+        \textit{schema.org}/LRMI. Tidak ada yang dapat digunakan-ulang secara
+        langsung untuk tugas pelengkapan relasi sains lintas-disiplin jenjang
+        sekolah menengah: SKOS hanya menyediakan hierarki dan satu relasi
+        asosiatif tak-bertipe (\texttt{skos:related}); CCSO memodelkan
+        administrasi kurikulum pendidikan tinggi; EduCOR berorientasi pada
+        rekomendasi pembelajaran; \textit{schema.org}/LRMI berfokus pada metadata
+        sumber belajar. ConceptNet paling dekat secara vokabulari relasi --- enam
+        dari lima belas tipe inti dalam-buku bersepadan langsung dengannya (mis.\
+        \texttt{BAGIAN\_DARI} $\equiv$ \textit{PartOf}, \texttt{MENYEBABKAN}
+        $\equiv$ \textit{Causes}, \texttt{BERGANTUNG\_PADA} $\equiv$
+        \textit{HasPrerequisite}) --- tetapi relasi spesifik-disiplin seperti
+        \texttt{BEREAKSI\_DENGAN}, \texttt{DIKATALISIS\_OLEH}, dan
+        \texttt{MENGATUR} tidak tersedia pada kosakata umum mana pun (pemetaan
+        lengkap pada Tabel~\ref{tab:pemetaan-relasi}). Karena itu ontologi
+        dibangun \textit{purpose-built} dan sengaja dijaga \textit{lightweight}
+        --- menyelaraskan tipe relasi dengan kosakata mapan bila tersedia dan
+        menambah relasi spesifik-disiplin yang dibutuhkan --- tetap rendah pada
+        spektrum formalitas (Gambar~\ref{fig:spektrum-ontologi}), cukup formal
+        sebagai spesifikasi tanpa beban aksioma berat yang tidak dibutuhkan.
 
   \item \textbf{Mengenumerasi istilah penting.} Istilah konsep tidak ditentukan
         di awal, melainkan muncul secara induktif dari ekstraksi LLM atas
@@ -96,7 +114,7 @@ dirancang dan diiterasi \textit{bottom-up}.
         melalui \textit{prompt} ekstraksi dan diperhalus secara iteratif selama
         pengembangan.
 
-  \item \textbf{Mendefinisikan \textit{facet} slot.} Setiap properti objek
+  \item \textbf{Menetapkan batasan dan sifat properti (\textit{facet}).} Setiap properti objek
         diberi domain dan jangkauan (mis.\ \texttt{HAS\_CHAPTER} berdomain
         \texttt{Grade/Subject} dan berjangkauan \texttt{Chapter}), serta aksioma
         \texttt{owl:SymmetricProperty} untuk relasi setara dua arah
@@ -104,7 +122,7 @@ dirancang dan diiterasi \textit{bottom-up}.
         \texttt{LINTAS\_BUKU\_SAMA\_DENGAN}, dan
         \texttt{LINTAS\_BUKU\_BERKAITAN\_DENGAN}).
 
-  \item \textbf{Membuat instans.} Ontologi dipopulasikan oleh konsep dan relasi
+  \item \textbf{Membuat individu (\textit{instance}).} Ontologi dipopulasikan oleh konsep dan relasi
         hasil ekstraksi, direalisasikan sebagai graf properti berlabel
         (\textit{Labeled Property Graph}, LPG) pada Neo4j.
 \end{enumerate}
@@ -113,6 +131,37 @@ Sejalan dengan prinsip Noy \& McGuinness bahwa pengembangan ontologi pada
 dasarnya bersifat iteratif (\textit{necessarily iterative}), skema disempurnakan
 melalui \textit{refinement} bersama enam pakar domain (v1 sampai v4) ---
 menambah maupun menghapus tipe relasi hingga diperoleh vokabulari final.
+
+\begin{table}[htbp]
+\centering
+\caption{Pemetaan lima belas tipe relasi dalam-buku ke kosakata relasi mapan
+  (ConceptNet) sebagai bukti pertimbangan penggunaan-ulang (Tahap~2 di atas).
+  Tanda --- menandai relasi spesifik-disiplin tanpa padanan umum.}
+\label{tab:pemetaan-relasi}
+\begin{tabular}{@{}p{0.32\linewidth}p{0.34\linewidth}p{0.25\linewidth}@{}}
+  \toprule
+  \textbf{Tipe Relasi (dalam-buku)} & \textbf{Padanan ConceptNet} & \textbf{Status} \\
+  \midrule
+  \texttt{BAGIAN\_DARI}     & \textit{PartOf}          & Sepadan langsung \\
+  \texttt{TERDIRI\_DARI}    & \textit{HasA}            & Sepadan langsung \\
+  \texttt{MENYEBABKAN}      & \textit{Causes}          & Sepadan langsung \\
+  \texttt{BERGANTUNG\_PADA} & \textit{HasPrerequisite} & Sepadan langsung \\
+  \texttt{TERLETAK\_DI}     & \textit{AtLocation}      & Sepadan langsung \\
+  \texttt{MEMILIKI\_SIFAT}  & \textit{HasProperty}     & Sepadan langsung \\
+  \midrule
+  \texttt{MENDEFINISIKAN}          & \textit{DefinedAs}                 & Sepadan longgar \\
+  \texttt{MEMPENGARUHI}            & \textit{Causes}/\textit{RelatedTo} & Sepadan longgar \\
+  \texttt{MEMUNGKINKAN}            & \textit{HasPrerequisite} (invers)  & Sepadan longgar \\
+  \texttt{MENGHASILKAN}            & \textit{Causes}                    & Sepadan longgar \\
+  \texttt{BERINTERAKSI\_DENGAN}    & \textit{RelatedTo}                 & Sepadan longgar \\
+  \texttt{DIFORMULASIKAN\_SEBAGAI} & \textit{DefinedAs}                 & Sepadan longgar \\
+  \midrule
+  \texttt{MENGATUR}          & ---  & Spesifik-disiplin \\
+  \texttt{BEREAKSI\_DENGAN}  & ---  & Spesifik-disiplin \\
+  \texttt{DIKATALISIS\_OLEH} & ---  & Spesifik-disiplin \\
+  \bottomrule
+\end{tabular}
+\end{table}
 
 Skema \textit{knowledge graph} diformalkan sebagai ontologi OWL untuk
 memastikan konsistensi struktur dan vokabulari relasi antartahap
