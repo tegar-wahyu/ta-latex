@@ -17,15 +17,15 @@
 \subsection{Skema Ontologi Knowledge Graph}
 \label{subsec:skema-ontologi}
 
-Ontologi dalam penelitian ini diposisikan menggunakan dua tier
-representasi yang dibedakan secara metodologis. \textbf{Tier
+Ontologi dalam penelitian ini diposisikan menggunakan dua lapisan
+representasi yang dibedakan secara metodologis. \textbf{Lapisan
 ekstraksi} menghasilkan model konseptual \textit{deskriptif} atas isi
 buku teks Kurikulum Merdeka (konsep, sub-bab, bab, beserta
 keterkaitan semantik antar-konsep dalam satu buku), sejalan dengan
 tradisi \textit{domain module} dalam konstruksi otomatis \textit{knowledge
-graph} dari buku teks elektronik. \textbf{Tier completion} menghasilkan kandidat
+graph} dari buku teks elektronik. \textbf{Lapisan completion} menghasilkan kandidat
 keterkaitan lintas-buku (\texttt{LINTAS\_BUKU\_*}) sebagai inferensi
-pedagogis dangkal di atas Tier ekstraksi: sistem mengusulkan jembatan
+pedagogis dangkal di atas Lapisan ekstraksi: sistem mengusulkan jembatan
 antar-disiplin yang dapat dipertimbangkan, tetapi tidak menetapkannya
 sebagai jalur belajar.
 
@@ -33,10 +33,10 @@ Predikat ``dangkal'' bersifat operasional: sistem hanya menginferensi
 keterkaitan \textit{single-hop} antar dua konsep di buku berbeda dan
 tidak menyusun jalur belajar multi-langkah lintas-disiplin (batasan
 inferensi pedagogis dirinci pada Subbab~\ref{sec:ruang-lingkup}).
-Dengan demikian, relasi berarah pada Tier ekstraksi seperti
+Dengan demikian, relasi berarah pada Lapisan ekstraksi seperti
 \texttt{PRASYARAT} dan \texttt{MEMPERSIAPKAN} dimaknai sebagai
 ketergantungan konseptual yang terdokumentasikan dalam materi sumber
-(keputusan editorial penyusun buku), sedangkan relasi lintas-buku pada Tier
+(keputusan editorial penyusun buku), sedangkan relasi lintas-buku pada Lapisan
 completion seperti \texttt{LINTAS\_BUKU\_PRASYARAT\_UNTUK} dimaknai sebagai
 sugesti per-pasangan yang dapat dipertimbangkan secara lokal, bukan anjuran
 kronologis bagi siswa.
@@ -168,7 +168,7 @@ memastikan konsistensi struktur dan vokabulari relasi antartahap
 \textit{pipeline} (ekstraksi, konstruksi, dan \textit{completion}).
 Topologi keseluruhan mencakup relasi struktural, relasi keterurutan
 penyajian materi dalam buku (\textit{NEXT\_CHAPTER}), dan relasi semantik
-pada Tier ekstraksi, serta inferensi lintas-buku pada Tier completion.
+pada Lapisan ekstraksi, serta inferensi lintas-buku pada Lapisan completion.
 Keseluruhan topologi ini diilustrasikan pada Gambar~\ref{fig:ontologi}.
 
 \subfile{onthology}
