@@ -9,10 +9,12 @@
 \documentclass[../../thesis]{subfiles}
 \begin{document}
 
-% Standalone-pilot cosmetics only; skipped entirely when \subfile'd into thesis.
-% Without a chapter context, report-class would label the subsection "0.0.1";
-% drop section numbering for the standalone PDF so headings read cleanly.
-\ifSubfilesClassLoaded{\setcounter{secnumdepth}{0}}{}
+% Standalone-pilot only (subfiles skips this in the thesis build):
+% (1) drop the chapter-less "0.0.1" section numbering for a clean pilot heading;
+% (2) cross-chapter \ref targets live in other files, so the pilot prints
+%     descriptive text instead of "??".  \crossref{<thesis: real \ref>}{<pilot text>}.
+\newcommand{\crossref}[2]{#1}%
+\ifSubfilesClassLoaded{\setcounter{secnumdepth}{0}\long\gdef\crossref#1#2{#2}}{}%
 
 \subsection{Skema Ontologi Knowledge Graph}
 \label{subsec:skema-ontologi}
@@ -32,7 +34,7 @@ sebagai jalur belajar.
 Predikat ``dangkal'' bersifat operasional: sistem hanya menginferensi
 keterkaitan \textit{single-hop} antar dua konsep di buku berbeda dan
 tidak menyusun jalur belajar multi-langkah lintas-disiplin (batasan
-inferensi pedagogis dirinci pada Subbab~\ref{sec:ruang-lingkup}).
+inferensi pedagogis dirinci pada \crossref{Subbab~\ref{sec:ruang-lingkup}}{Subbab Ruang Lingkup}).
 Dengan demikian, relasi berarah pada Lapisan ekstraksi seperti
 \texttt{PRASYARAT} dan \texttt{MEMPERSIAPKAN} dimaknai sebagai
 ketergantungan konseptual yang terdokumentasikan dalam materi sumber
@@ -82,7 +84,7 @@ dirancang dan diiterasi \textit{bottom-up}.
         dibangun \textit{purpose-built} dan sengaja dijaga \textit{lightweight}
         --- menyelaraskan tipe relasi dengan kosakata mapan bila tersedia dan
         menambah relasi spesifik-disiplin yang dibutuhkan --- tetap rendah pada
-        spektrum formalitas (Gambar~\ref{fig:spektrum-ontologi}), cukup formal
+        spektrum formalitas \crossref{(Gambar~\ref{fig:spektrum-ontologi})}{(lihat Bab~2)}, cukup formal
         sebagai spesifikasi tanpa beban aksioma berat yang tidak dibutuhkan.
 
   \item \textbf{Mengenumerasi istilah penting.} Istilah konsep tidak ditentukan
@@ -90,7 +92,7 @@ dirancang dan diiterasi \textit{bottom-up}.
         korpus: Daftar Isi (\textit{ToC}) Buku Siswa sebagai sumber struktur,
         serta \textit{materi pokok} dan glosarium Buku Panduan Guru sebagai
         sumber terminologi (rincian blok masukan \textit{prompt} pada
-        Lampiran~\ref{lamp:prompt-ekstraksi}).
+        \crossref{Lampiran~\ref{lamp:prompt-ekstraksi}}{Lampiran Prompt Ekstraksi}).
 
   \item \textbf{Mendefinisikan kelas dan hierarki kelas.} Kerangka kelas
         diturunkan \textit{top-down} menjadi lima kelas: \texttt{Grade/Subject}
@@ -196,7 +198,7 @@ properti seperti simetri; SHACL, JSON Schema, maupun Pydantic berorientasi pada
 validasi \textit{bentuk} (\textit{shape}) data, bukan ontologi formal yang
 menyatakan semantik kelas dan relasi secara deklaratif; sedangkan UML atau
 diagram informal tidak baku secara semantik. Sejalan dengan pembahasan spektrum
-formalitas pada Bab~2 (Gambar~\ref{fig:spektrum-ontologi}), menuliskan ontologi
+formalitas pada Bab~2\crossref{ (Gambar~\ref{fig:spektrum-ontologi})}{}, menuliskan ontologi
 ringan ke dalam OWL adalah hal yang wajar karena OWL menyediakan profil dari
 yang ringan hingga berat \parencite{w3c_owl2_profiles_2012}.
 
@@ -210,7 +212,7 @@ dan \textit{constraint} Cypher, dan properti data menjadi properti pada node
 maupun \textit{edge}.
 
 Vokabulari relasi diarahkan melalui instruksi \textit{prompt}
-(Lampiran~\ref{lamp:prompt-ekstraksi}) dan dikonsolidasikan pada tahap
+(\crossref{Lampiran~\ref{lamp:prompt-ekstraksi}}{Lampiran Prompt Ekstraksi}) dan dikonsolidasikan pada tahap
 konsensus; cakupan penegakannya dibahas pada keterbatasan penelitian (Bab~6).
 
 \end{document}
