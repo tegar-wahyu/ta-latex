@@ -37,6 +37,7 @@
 
 % -- Tables ----------------------------------------------------
 \usepackage{longtable, array}
+\usepackage{enumitem}
 \usepackage{microtype}
 
 % -- Header/footer ---------------------------------------------
@@ -64,8 +65,12 @@ Judul Skripsi &
 LLM-Assisted Knowledge Graph Completion untuk Pemetaan Interkoneksi Materi
 Sains (Fisika, Kimia, Biologi) pada Kurikulum Merdeka SMA Kelas XII \\[6pt]
 Mahasiswa &
-Fadrian Yhoga Pratama (2206819395); Soros Febriano (2206083445);
-Tegar Wahyu Khisbulloh (2206082032) \\[6pt]
+\begin{itemize}[topsep=0pt, partopsep=0pt, parsep=0pt, itemsep=2pt,
+                leftmargin=1.4em]
+  \item Fadrian Yhoga Pratama (2206819395)
+  \item Soros Febriano (2206083445)
+  \item Tegar Wahyu Khisbulloh (2206082032)
+\end{itemize} \\[6pt]
 Program Studi & Sarjana Ilmu Komputer \\[6pt]
 Pembimbing & Dr.\ Siti Aminah, S.Kom., M.Kom. \\[6pt]
 Tanggal Sidang & \rule{5cm}{0.4pt} \\
@@ -152,16 +157,5 @@ yang dimanfaatkan dari OWL? & & \\
 catatan penguji pada SISIDANG (Revisi Berkas~\#1). Kolom ``Hasil/Jawaban
 Revisi'' dan ``Halaman Hasil Revisi'' diisi setelah perbaikan naskah skripsi
 selesai dilakukan.}
-
-% -- Tanda tangan penguji -------------------------------------
-\vspace{1.2cm}
-\normalsize
-\noindent\begin{tabular}{@{}p{0.5\linewidth}@{}p{0.5\linewidth}@{}}
-\centering Penguji 1, & \centering Penguji 2, \tabularnewline
-\\[2cm]
-\centering\rule{6cm}{0.4pt} & \centering\rule{6cm}{0.4pt} \tabularnewline
-\centering Evi Yulianti, M.Comp.Sc., M.Kom., Ph.D. &
-\centering Iis Afriyanti, S.Kom., M.Sc. \tabularnewline
-\end{tabular}
 
 \end{document}
