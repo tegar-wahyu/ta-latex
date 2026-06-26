@@ -1,0 +1,167 @@
+% ============================================================
+%  LEMBAR HASIL REVISI SIDANG SKRIPSI
+%  Dokumen mandiri (standalone) — bukan bagian dari thesis.tex.
+%  Compile:  pdflatex lembar-hasil-revisi-sidang.tex
+%
+%  Kolom "Catatan Revisi Penguji" diisi verbatim dari catatan penguji di
+%  SISIDANG (REVISI BERKAS, Revisi #1), didistilasi pada issue #76-#84
+%  berlabel `revisi-sidang`. Kolom "Hasil/Jawaban Revisi" dan "Halaman Hasil
+%  Revisi" sengaja dikosongkan untuk diisi tangan setelah revisi rampung.
+% ============================================================
+\documentclass[12pt, a4paper]{article}
+\usepackage{iftex}
+
+% -- Encoding, Language & Fonts --------------------------------
+\ifXeTeX
+    \usepackage{polyglossia}
+    \setmainlanguage{bahasai}
+    \usepackage{fontspec}
+    \setmainfont{TeX Gyre Termes}
+    \setsansfont{TeX Gyre Heros}
+\else
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage[indonesian]{babel}
+    \usepackage{mathptmx}
+    \usepackage{helvet}
+\fi
+
+% -- Page geometry ---------------------------------------------
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=3cm, right=2.5cm]{geometry}
+
+% -- Spacing & paragraph ---------------------------------------
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+% -- Tables ----------------------------------------------------
+\usepackage{longtable, array}
+\usepackage{microtype}
+
+% -- Header/footer ---------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage[hidelinks]{hyperref}
+
+% ============================================================
+\begin{document}
+
+\begin{center}
+  {\large\bfseries LEMBAR HASIL REVISI SIDANG SKRIPSI}\\[2pt]
+  {\normalsize Program Studi Sarjana Ilmu Komputer\\
+  Fakultas Ilmu Komputer, Universitas Indonesia}
+\end{center}
+\vspace{0.4cm}
+
+% -- Identitas ------------------------------------------------
+\noindent\begin{tabular}{@{}p{3.2cm}@{ : }p{\dimexpr\linewidth-3.8cm}@{}}
+Judul Skripsi &
+LLM-Assisted Knowledge Graph Completion untuk Pemetaan Interkoneksi Materi
+Sains (Fisika, Kimia, Biologi) pada Kurikulum Merdeka SMA Kelas XII \\[6pt]
+Mahasiswa &
+Fadrian Yhoga Pratama (2206819395); Soros Febriano (2206083445);
+Tegar Wahyu Khisbulloh (2206082032) \\[6pt]
+Program Studi & Sarjana Ilmu Komputer \\[6pt]
+Pembimbing & Dr.\ Siti Aminah, S.Kom., M.Kom. \\[6pt]
+Tanggal Sidang & \rule{5cm}{0.4pt} \\
+\end{tabular}
+
+\vspace{0.5cm}
+
+% -- Tabel revisi ---------------------------------------------
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{5pt}
+\small
+\begin{longtable}{|c|p{6.4cm}|p{4.6cm}|c|}
+\hline
+\textbf{No} &
+\multicolumn{1}{c|}{\textbf{Catatan Revisi Penguji}} &
+\multicolumn{1}{c|}{\textbf{Hasil/Jawaban Revisi}} &
+\multicolumn{1}{c|}{\parbox[c]{1.9cm}{\centering\textbf{Halaman Hasil Revisi}}} \\
+\hline
+\endfirsthead
+\hline
+\textbf{No} &
+\multicolumn{1}{c|}{\textbf{Catatan Revisi Penguji}} &
+\multicolumn{1}{c|}{\textbf{Hasil/Jawaban Revisi}} &
+\multicolumn{1}{c|}{\parbox[c]{1.9cm}{\centering\textbf{Halaman Hasil Revisi}}} \\
+\hline
+\endhead
+\hline
+\multicolumn{4}{|r|}{\small\textit{Bersambung ke halaman berikutnya}} \\
+\hline
+\endfoot
+\hline
+\endlastfoot
+
+% ===== Penguji 1 =====
+\multicolumn{4}{|l|}{\textbf{Penguji 1 — Evi Yulianti, M.Comp.Sc., M.Kom., Ph.D.}} \\
+\hline
+1 & Rumusan masalah (RQ) perlu diperbaiki; jangan menanyakan cara. Cara ada di
+Bab~3, sedangkan jawaban RQ ada di kesimpulan. & & \\
+\hline
+2 & Jelaskan \textit{task} apa yang dikerjakan; buat ilustrasi \textit{task}
+yang menggambarkan input--output. & & \\
+\hline
+3 & Kenapa sistem ini dibuat? Kebutuhannya dari mana? Motivasi pentingnya
+sistem perlu digali lagi. & & \\
+\hline
+4 & Pemanfaatan sistem ini untuk apa nanti? Bagaimana skenario
+penggunaannya? & & \\
+\hline
+5 & Kenapa mata pelajaran Fisika, Biologi, dan Kimia yang dipilih? & & \\
+\hline
+6 & Siapa pakarnya? Apa saja yang divalidasi oleh pakar? & & \\
+\hline
+7 & Metode untuk menggabungkan \textit{triple} (\textit{merge} KG) harus
+dijelaskan. & & \\
+\hline
+8 & Untuk \textit{triple} yang dinilai ``salah'' oleh pakar, apakah digunakan
+lagi pada tahap~2 (\textit{merge} KG)? & & \\
+\hline
+
+% ===== Penguji 2 =====
+\multicolumn{4}{|l|}{\textbf{Penguji 2 — Iis Afriyanti, S.Kom., M.Sc.}} \\
+\hline
+9 & Perbaiki rumusan masalah dan kaitkan dengan jawabannya di kesimpulan. & & \\
+\hline
+10 & Kenapa pengembangan ontologi tidak dijadikan sebagai pertanyaan
+penelitian? & & \\
+\hline
+11 & Relasi yang salah atau tidak valid kenapa dibuang atau diikutkan untuk
+tahap selanjutnya? Berikan argumentasinya. & & \\
+\hline
+12 & Perbaiki bagaimana cara mengembangkan ontologi. & & \\
+\hline
+13 & Tambahkan argumentasi kenapa memakai OWL? Kenapa bukan yang lain? Apa
+yang dimanfaatkan dari OWL? & & \\
+\hline
+14 & Tambahkan argumentasi kenapa memilih Gemini Pro sebagai
+\textit{LLM-as-a-judge}? & & \\
+\hline
+
+\end{longtable}
+
+\vspace{0.3cm}
+\noindent\small\textit{Catatan: kolom ``Catatan Revisi Penguji'' dikutip dari
+catatan penguji pada SISIDANG (Revisi Berkas~\#1). Kolom ``Hasil/Jawaban
+Revisi'' dan ``Halaman Hasil Revisi'' diisi setelah perbaikan naskah skripsi
+selesai dilakukan.}
+
+% -- Tanda tangan penguji -------------------------------------
+\vspace{1.2cm}
+\normalsize
+\noindent\begin{tabular}{@{}p{0.5\linewidth}@{}p{0.5\linewidth}@{}}
+\centering Penguji 1, & \centering Penguji 2, \tabularnewline
+\\[2cm]
+\centering\rule{6cm}{0.4pt} & \centering\rule{6cm}{0.4pt} \tabularnewline
+\centering Evi Yulianti, M.Comp.Sc., M.Kom., Ph.D. &
+\centering Iis Afriyanti, S.Kom., M.Sc. \tabularnewline
+\end{tabular}
+
+\end{document}
