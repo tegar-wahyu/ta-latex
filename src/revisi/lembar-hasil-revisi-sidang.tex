@@ -5,8 +5,8 @@
 %
 %  Kolom "Catatan Revisi Penguji" diisi verbatim dari catatan penguji di
 %  SISIDANG (REVISI BERKAS, Revisi #1), didistilasi pada issue #76-#84
-%  berlabel `revisi-sidang`. Kolom "Hasil/Jawaban Revisi" dan "Halaman Hasil
-%  Revisi" sengaja dikosongkan untuk diisi tangan setelah revisi rampung.
+%  berlabel `revisi-sidang`. Kolom "Halaman Hasil Revisi" masih memakai
+%  placeholder dan perlu diganti setelah paginasi PDF final stabil.
 % ============================================================
 \documentclass[12pt, a4paper]{article}
 \usepackage{iftex}
@@ -27,7 +27,14 @@
 \fi
 
 % -- Page geometry ---------------------------------------------
-\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=3cm, right=2.5cm]{geometry}
+\usepackage[
+  a4paper,
+  landscape,
+  top=2.5cm,
+  bottom=2.5cm,
+  left=2.5cm,
+  right=2.5cm
+]{geometry}
 
 % -- Spacing & paragraph ---------------------------------------
 \usepackage{setspace}
@@ -73,39 +80,57 @@ Mahasiswa &
 \end{itemize} \\[6pt]
 Program Studi & Sarjana Ilmu Komputer \\[6pt]
 Pembimbing & Dr.\ Siti Aminah, S.Kom., M.Kom. \\[6pt]
-Tanggal Sidang & \rule{5cm}{0.4pt} \\
+Tanggal Sidang & 15 Juni 2026 \\
 \end{tabular}
 
 \vspace{0.5cm}
 
 % -- Tabel revisi ---------------------------------------------
 \renewcommand{\arraystretch}{1.3}
-\setlength{\tabcolsep}{5pt}
+\setlength{\tabcolsep}{4pt}
+\setlength\LTleft{0pt}
+\setlength\LTright{0pt}
+\newlength{\revisionNoCol}
+\newlength{\revisionNoteCol}
+\newlength{\revisionResultCol}
+\newlength{\revisionPageCol}
+\newlength{\revisionFooterCol}
+\setlength{\revisionNoCol}{0.8cm}
+\setlength{\revisionNoteCol}{8.6cm}
+\setlength{\revisionResultCol}{12.1cm}
+\setlength{\revisionPageCol}{2.0cm}
+\setlength{\revisionFooterCol}{\dimexpr
+  \revisionNoCol+\revisionNoteCol+\revisionResultCol+\revisionPageCol+
+  6\tabcolsep+3\arrayrulewidth\relax}
 \small
-\begin{longtable}{|c|p{6.4cm}|p{4.6cm}|c|}
+\begin{longtable}{|
+  >{\centering\arraybackslash}p{\revisionNoCol}|
+  p{\revisionNoteCol}|
+  p{\revisionResultCol}|
+  >{\centering\arraybackslash}p{\revisionPageCol}|}
 \hline
-\textbf{No} &
-\multicolumn{1}{c|}{\textbf{Catatan Revisi Penguji}} &
-\multicolumn{1}{c|}{\textbf{Hasil/Jawaban Revisi}} &
-\multicolumn{1}{c|}{\parbox[c]{1.9cm}{\centering\textbf{Halaman Hasil Revisi}}} \\
+{\centering\arraybackslash\textbf{No}} &
+{\centering\arraybackslash\textbf{Catatan Revisi Penguji}} &
+{\centering\arraybackslash\textbf{Hasil/Jawaban Revisi}} &
+{\centering\arraybackslash\textbf{Halaman Hasil Revisi}} \\
 \hline
 \endfirsthead
 \hline
-\textbf{No} &
-\multicolumn{1}{c|}{\textbf{Catatan Revisi Penguji}} &
-\multicolumn{1}{c|}{\textbf{Hasil/Jawaban Revisi}} &
-\multicolumn{1}{c|}{\parbox[c]{1.9cm}{\centering\textbf{Halaman Hasil Revisi}}} \\
+{\centering\arraybackslash\textbf{No}} &
+{\centering\arraybackslash\textbf{Catatan Revisi Penguji}} &
+{\centering\arraybackslash\textbf{Hasil/Jawaban Revisi}} &
+{\centering\arraybackslash\textbf{Halaman Hasil Revisi}} \\
 \hline
 \endhead
 \hline
-\multicolumn{4}{|r|}{\small\textit{Bersambung ke halaman berikutnya}} \\
+\multicolumn{4}{|>{\raggedleft\arraybackslash}p{\revisionFooterCol}|}{\small\textit{Bersambung ke halaman berikutnya}} \\
 \hline
 \endfoot
 \hline
 \endlastfoot
 
 % ===== Penguji 1 =====
-\multicolumn{4}{|l|}{\textbf{Penguji 1 — Evi Yulianti, M.Comp.Sc., M.Kom., Ph.D.}} \\
+\multicolumn{4}{|p{\revisionFooterCol}|}{\textbf{Penguji 1 — Evi Yulianti, M.Comp.Sc., M.Kom., Ph.D.}} \\
 \hline
 1 & Bisa dijelaskan \textit{task} apa yang dikerjakan di sini? Dibuat ilustrasi
 \textit{task}-nya yang menggambarkan input--output. & & \\
@@ -120,19 +145,61 @@ apa? & & \\
 \hline
 5 & Siapa pakarnya? Apa saja yang divalidasi oleh pakar? Untuk \textit{triple}
 yang dinilai ``salah'' oleh pakar, apakah digunakan lagi pada tahap~2
-(\textit{merge} KG)? & & \\
+(\textit{merge} KG)? &
+\begin{enumerate}[leftmargin=1.1em, itemsep=1pt, parsep=0pt, topsep=0pt]
+  \item \textbf{Siapa pakarnya?} Penelitian melibatkan enam pakar domain, yaitu
+        dua pakar per mata pelajaran (Biologi, Fisika, Kimia). Profil
+        keilmuan pakar disajikan secara anonim pada lampiran.
+  \item \textbf{Apa yang divalidasi?} Pada Fase~1, pakar memvalidasi relasi
+        dalam-buku dengan rating Benar, Sebagian Benar, Kurang Konteks, dan
+        Salah, serta dapat mengusulkan \textit{missing triples}. Pada Fase~2,
+        tiga pakar lintas-disiplin menilai relasi hasil KGC dari aspek
+        validitas, ketepatan tipe, dan ketepatan arah.
+  \item \textbf{Apakah \textit{triple} salah digunakan lagi pada KGC?} Tidak
+        sebagai pengetahuan benar maupun contoh positif. KGC berangkat dari
+        graf konsensus dan deskripsi \textit{node} konsep untuk membentuk
+        \textit{embedding}, mencari kandidat lintas-mapel, lalu
+        mengklasifikasikan relasinya dengan LLM. Relasi berlabel
+        \texttt{wrong} tidak memengaruhi pencarian kandidat berbasis
+        \textit{embedding} secara langsung karena ANN memakai deskripsi
+        \textit{node}, bukan \textit{edge}. Namun, karena relasi dalam graf
+        dapat muncul sebagai konteks klasifikasi LLM, dampaknya tetap diaudit.
+        Relasi \texttt{wrong} dicantumkan pada Lampiran Daftar Relasi Berlabel
+        \texttt{wrong}; audit Bab~5 menunjukkan 15 dari 125 \textit{edge}
+        completion melibatkan konsep yang menjadi sumber relasi \texttt{wrong},
+        13 di antaranya masuk validasi Fase~2 dan semuanya valid serta tepat
+        tipe, walau 5 berarah terbalik. Jadi dampaknya terbatas dan lebih
+        terkait isu arah relasi, bukan keberadaan atau tipe relasi.
+\end{enumerate} &
+hlm. xx, xx, xx \\
 \hline
 6 & RQ perlu diperbaiki; jangan menanyakan cara. Cara ada di Bab~3, sedangkan
-jawaban RQ ada di kesimpulan. & & \\
+jawaban RQ ada di kesimpulan. &
+Rumusan masalah sudah diperbaiki agar tidak lagi menanyakan prosedur teknis.
+RQ kini berfokus pada hasil yang dapat dijawab di Bab~5 dan Bab~6: sejauh mana
+interkoneksi kurikulum dapat direpresentasikan sebagai KG, relasi implisit
+lintas-disiplin apa saja yang ditemukan setelah KGC, sejauh mana
+\textit{completion} mengubah kualitas struktural KG, serta seberapa valid relasi
+yang dihasilkan dan seberapa andal evaluasinya. Kesimpulan disusun ulang dengan
+empat butir yang mengikuti urutan RQ tersebut. &
+hlm. xx, xx \\
 \hline
 7 & Metode untuk menggabungkan \textit{triple} (\textit{merge} KG) harus
 dijelaskan. & & \\
 \hline
 
 % ===== Penguji 2 =====
-\multicolumn{4}{|l|}{\textbf{Penguji 2 — Iis Afriyanti, S.Kom., M.Sc.}} \\
+\multicolumn{4}{|p{\revisionFooterCol}|}{\textbf{Penguji 2 — Iis Afriyanti, S.Kom., M.Sc.}} \\
 \hline
-8 & Perbaiki rumusan masalah dan kaitkan dengan jawabannya di kesimpulan. & & \\
+8 & Perbaiki rumusan masalah dan kaitkan dengan jawabannya di kesimpulan. &
+Rumusan masalah pada Bab~1 sudah disusun ulang menjadi empat pertanyaan yang
+selaras dengan kontribusi dan hasil penelitian: representasi eksplisit
+interkoneksi kurikulum, relasi implisit lintas-disiplin yang teridentifikasi,
+perubahan kualitas struktural KG, serta validitas relasi dan keandalan evaluasi.
+Bab~6 kemudian membuka bagian kesimpulan dengan menyatakan bahwa temuan Bab~5
+digunakan untuk menjawab keempat rumusan masalah, lalu menyajikan empat butir
+kesimpulan dengan struktur yang mengikuti urutan RQ tersebut. &
+hlm. xx, xx \\
 \hline
 9 & Perbaiki bagaimana cara mengembangkan ontologi. & & \\
 \hline
@@ -140,21 +207,53 @@ dijelaskan. & & \\
 penelitian? & & \\
 \hline
 11 & Tambahkan argumentasi kenapa memilih Gemini Pro sebagai
-\textit{LLM-as-a-judge}? & & \\
+\textit{LLM-as-a-judge}? &
+Argumentasi pemilihan Gemini Pro sebagai \textit{LLM-as-a-judge} sudah
+ditambahkan pada metodologi. Gemini~3.1 Pro Preview dipilih bukan sebagai
+pengganti validasi pakar, melainkan sebagai penengah hanya ketika dua pakar
+tidak sepakat atau ketika \textit{missing triple} hanya diusulkan satu pakar.
+Kekhawatiran ``Gemini mengekstrak, Gemini memvalidasi'' ditangani dengan tiga
+pemisahan. Pertama, validasi utama tetap berasal dari pakar domain, bukan dari
+Gemini. Kedua, model yang dipakai berbeda per fungsi: Gemini~2.5 Flash Lite
+untuk ekstraksi, Gemini~2.5 Flash untuk \textit{completion}, dan Gemini~3.1 Pro
+Preview hanya untuk ajudikasi. Ketiga, \textit{judge} tidak menerima keluaran
+ekstraksi sebagai kebenaran, tetapi diberi label pakar dan cuplikan buku teks
+(\textit{textbook grounding}) untuk menengahi konflik. Cuplikan ini berasal dari
+hasil ekstraksi teks PDF buku resmi pada tahap ingestion (PDF diparsing dengan
+LlamaIndex/PyMuPDF menjadi teks per halaman beserta metadata halaman), sehingga
+bukti yang dipakai judge adalah konteks buku mentah yang relevan, bukan keluaran
+ekstraksi relasi sebagai kebenaran. Dengan demikian, Gemini Pro dipilih karena
+kebutuhan penalaran kontekstual pada kasus ketidaksepakatan, sementara risiko
+bias validasi diri dikurangi melalui peran pakar, pemisahan model, dan
+grounding pada sumber buku. &
+hlm. xx, xx \\
 \hline
 12 & Tambahkan argumentasi kenapa memakai OWL? Kenapa bukan yang lain? Apa
 yang dimanfaatkan dari OWL? & & \\
 \hline
 13 & Relasi yang salah atau tidak valid kenapa dibuang atau diikutkan untuk
-tahap selanjutnya? Berikan argumentasinya. & & \\
+tahap selanjutnya? Berikan argumentasinya. &
+Sudah ditambahkan argumentasi bahwa relasi salah tidak diperlakukan sebagai
+pengetahuan final, tetapi tetap disimpan sebagai artefak audit dengan metadata
+\texttt{consensus}/\texttt{status}. Daftar lengkapnya ditempatkan pada Lampiran
+Daftar Relasi Berlabel \texttt{wrong}. Terhadap KGC, pengaruhnya dijelaskan
+secara terbatas: relasi \texttt{wrong} tidak memengaruhi pencarian kandidat ANN
+secara langsung karena kandidat dibangkitkan dari \textit{embedding} deskripsi
+\textit{node}, tetapi relasi dalam graf masih berpotensi muncul sebagai konteks
+klasifikasi LLM. Karena itu Bab~5 menambahkan audit dampak \texttt{wrong
+triples}: dari 15 \textit{edge} completion yang melibatkan konsep sumber relasi
+\texttt{wrong}, 13 divalidasi Fase~2 dan semuanya valid serta tepat tipe, dengan
+5 kasus salah arah. Artinya, dampaknya terbatas dan terutama terkait normalisasi
+arah, bukan validitas atau tipe relasi. &
+hlm. xx, xx \\
 \hline
 
 \end{longtable}
 
 \vspace{0.3cm}
 \noindent\small\textit{Catatan: kolom ``Catatan Revisi Penguji'' dikutip dari
-catatan penguji pada SISIDANG (Revisi Berkas~\#1). Kolom ``Hasil/Jawaban
-Revisi'' dan ``Halaman Hasil Revisi'' diisi setelah perbaikan naskah skripsi
-selesai dilakukan.}
+catatan penguji pada SISIDANG (Revisi Berkas~\#1). Entri ``hlm. xx'' pada kolom
+``Halaman Hasil Revisi'' merupakan placeholder yang perlu diganti setelah
+paginasi naskah final stabil.}
 
 \end{document}
