@@ -166,8 +166,8 @@ terhubung oleh relasi lintas-buku.
 \textbf{Metrik Struktural} & \textbf{Pre-KGC} & \textbf{Post-KGC} \\
 \midrule
 AD                & 0{,}7384 & 1{,}4651 \\
-\textit{Modularity} Louvain       & 0{,}8906 & 0{,}8209 \\
-Jumlah komunitas Louvain          & 19 & 24 \\
+\textit{Modularity} berdasarkan partisi Louvain & 0{,}8906 & 0{,}8209 \\
+Jumlah komunitas hasil Louvain     & 19 & 24 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -257,7 +257,9 @@ dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{
   tajam ini mencerminkan bahwa \textit{pipeline} KGC berhasil menambahkan 125
   relasi lintas-buku baru yang secara langsung menghubungkan \textit{node}
   \texttt{Concept} antar-mapel, meningkatkan kepadatan interkoneksi semantik
-  yang sebelumnya tidak ada. Perlu dicatat bahwa seluruh metrik struktural pada
+  yang sebelumnya tidak ada. Kenaikan AD ini memenuhi arah keberhasilan
+  yang ditetapkan sebelum evaluasi pada Bab~3. Perlu dicatat bahwa seluruh metrik
+  struktural pada
   bagian ini dihitung atas \textbf{125 \textit{edge}} keluaran \textit{pipeline}
   pada konfigurasi final---termasuk 8 \textit{edge} berkeyakinan rendah
   (\textit{confidence} $< 0{,}5$) yang tidak diikutkan dalam survei pakar
@@ -277,8 +279,11 @@ dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{
   antara kondisi \textit{wrong} dipertahankan dan dikeluarkan relatif kecil,
   sementara arah perubahan pre-KGC ke post-KGC tetap konsisten. Dengan demikian,
   kesimpulan bahwa KGC meningkatkan kepadatan hubungan antar-konsep tidak
-  bergantung pada keberadaan \textit{edge} salah; daftar relasi berlabel
-  \texttt{wrong} disajikan pada \ref{lamp:wrong-triples}.
+  bergantung pada keberadaan \textit{edge} salah. Relasi berlabel
+  \texttt{wrong} tidak dibuang dari graf audit agar keputusan validasi pakar
+  tetap dapat ditelusuri dan dianalisis, tetapi relasi tersebut tidak
+  diperlakukan sebagai bagian dari KG tervalidasi untuk pemanfaatan akhir;
+  daftar relasi berlabel \texttt{wrong} disajikan pada \ref{lamp:wrong-triples}.
 
   \item \textbf{Evaluasi \textit{Modularity}.}
 
@@ -303,8 +308,10 @@ dipertahankan dan dikeluarkan dari subgraf \texttt{Concept}$\rightarrow$\texttt{
   diperlakukan sebagai indikasi bahwa struktur komunitas pasca-KGC menjadi lebih
   rinci, bukan sebagai bukti meningkatnya keterpisahan. Dengan demikian,
   \textit{Modularity} mengonfirmasi perubahan keterhubungan lintas-disiplin yang
-  dihasilkan KGC, tetapi tidak dengan sendirinya membuktikan ketepatan relasi;
-  ketepatan bersandar pada validasi pakar (Subbab~\ref{subsec:validasi-pakar}).
+  dihasilkan KGC dan memenuhi arah keberhasilan berupa penurunan
+  \textit{Modularity} pasca-KGC, tetapi tidak dengan sendirinya membuktikan
+  ketepatan relasi; ketepatan bersandar pada validasi pakar
+  (Subbab~\ref{subsec:validasi-pakar}).
 
   \item \textbf{Evaluasi Metrik Ekstraksi dan Hubungan.}
 
@@ -489,7 +496,9 @@ relasi benar yang menyeluruh (lihat Subbab~\ref{subsec:metrik-fase2}).
   menghasilkan validitas relasi terprediksi 99{,}1\% (116/117 relasi
   dikonfirmasi valid; satu relasi ditolak). Nilai ini berbeda dari
   \textit{Fuzzy Precision} Fase~1 karena Fase~2 memakai keputusan panel tunggal
-  dan tidak menggunakan skala parsial. Metrik \textit{Fuzzy Recall} dan F1 tidak dapat dihitung
+  dan tidak menggunakan skala parsial. Validitas 99{,}1\% tersebut melampaui
+  ambang keberhasilan 90\% yang ditetapkan sebelum evaluasi pada Bab~3. Metrik
+  \textit{Fuzzy Recall} dan F1 tidak dapat dihitung
   karena tidak tersedia informasi jumlah total relasi lintas-buku yang benar
   (penyebut untuk menghitung cakupan relasi benar) dalam konfigurasi panel tunggal ini. Karena validasi
   dilakukan melalui diskusi panel (bukan dua pakar independen), uji Gwet's AC1
@@ -507,6 +516,8 @@ relasi benar yang menyeluruh (lihat Subbab~\ref{subsec:metrik-fase2}).
   sempurna antara kedua pakar. Hal ini konsisten dengan sifat konten Biologi
   yang lebih deskriptif dan definitif. Fisika (0{,}754) dan Kimia (0{,}607)
   sama-sama berada pada kategori baik, dengan Kimia sebagai yang terendah.
+  Dengan demikian, seluruh mata pelajaran memenuhi ambang keandalan
+  AC1~$\geq$~0{,}6.
   Nilai AC1 Kimia yang paling rendah selaras dengan pola kesalahan pada
   Subbab~\ref{subsubsec:error-analysis}: terminologi proses kimia (seperti elektrorefining vs.\
   electroplating) memiliki batas semantik yang lebih ambigu, sehingga kedua pakar
@@ -804,6 +815,20 @@ arah 75{,}9\%} (88/116; 28 \textit{edge} terbalik dan 1 \textit{edge} dinilai
 NA, yakni LB085 yang arahnya tidak dapat ditentukan panel karena keterbatasan
 konteks).
 
+Untuk memeriksa apakah relasi intra-mapel berlabel \texttt{wrong} pada graf
+konsensus berpotensi memengaruhi hasil \textit{completion}, dilakukan audit
+tambahan atas artefak keluaran. Dari 601 relasi intra-mapel Fase~1, terdapat 21
+relasi dengan konsensus akhir \texttt{wrong}. Relasi tersebut tidak memengaruhi
+pencarian kandidat berbasis \textit{embedding} secara langsung karena ANN
+menggunakan deskripsi \textit{node}, bukan \textit{edge}; namun relasi tersebut
+dapat muncul sebagai konteks graf pada tahap klasifikasi LLM. Pada konfigurasi
+final, 15 dari 125 \textit{edge} \textit{completion} melibatkan konsep yang
+menjadi sumber relasi \texttt{wrong}. Dari 15 \textit{edge} tersebut, 13 masuk
+ke validasi Fase~2 dan seluruhnya dinilai valid serta tepat tipe oleh panel,
+sementara 5 dari 13 memiliki arah terbalik. Dengan demikian, dampak potensial
+relasi \texttt{wrong} tampak terbatas dan terutama berkaitan dengan isu arah
+relasi, bukan dengan keberadaan atau tipe relasi secara umum.
+
 Temuan utama validasi ini adalah bahwa \textbf{arah relasi merupakan
 sumber kesalahan dominan}, bukan keberadaan atau tipe relasi. Sistem
 sangat andal dalam \textit{menemukan} keterkaitan lintas-buku yang nyata
@@ -1057,7 +1082,7 @@ pada \textit{pipeline} ekstraksi LLM.
 \toprule
 \textbf{Kategori} & \textbf{Jumlah} & \textbf{Dasar penghitungan} \\
 \midrule
-\textit{Hallucination} faktual & 1 temuan & Komentar pakar pada \textit{triple} etanol yang salah menyebut bakteri, bukan ragi. \\
+\textit{Hallucination} faktual & 1 temuan & \textit{Triple} \texttt{Oksidasi}~$\rightarrow$~\texttt{Agen Pengoksidasi}: target bertentangan dengan teori redoks sekaligus deskripsi \textit{triple} itu sendiri; diputus \texttt{wrong} oleh \textit{LLM-as-a-judge} dan di-\textit{drop} dari graf. \\
 Pencampuran konsep teknis & 1 \textit{triple} & Kesalahan \textit{electroplating} vs.\ \textit{electrorefining}; muncul pada dua komentar pakar untuk \textit{triple} yang sama. \\
 Definisi terlalu luas, ambigu, atau usang & 6 temuan & Komentar eksplisit tentang definisi/target yang terlalu luas, ambigu, bias, atau usang. \\
 \textit{Under-extraction} & 29 \textit{missing triples} & Relasi esensial yang tidak diekstraksi sistem tetapi diterima dalam konsensus final; 10 di antaranya berupa rumus Fisika. \\
@@ -1075,11 +1100,21 @@ total kesalahan tunggal.
 \end{minipage}
 \end{table}
 
-\subsubsection{Kesalahan faktual agen biologis.} Pada Kimia, \textit{triple} mengenai produksi
-etanol menyatakan ``bakteri memfermentasi karbohidrat'' padahal seharusnya
-``ragi (\textit{Saccharomyces cerevisiae})''. Kesalahan ini termasuk dalam kategori
-\textit{hallucination} faktual \parencite{ji_survey_2023, min_factscore_2023}, sebagaimana
-diidentifikasi pada Subbab~\ref{subsec:kg-ontologi}.
+\subsubsection{Kesalahan faktual pemetaan redoks.} Pada Kimia, \textit{triple}
+\texttt{Oksidasi}~$\rightarrow$~\texttt{MENGHASILKAN}~$\rightarrow$~\texttt{Agen Pengoksidasi}
+keliru secara faktual: target relasi bertentangan dengan teori redoks sekaligus dengan
+deskripsi \textit{triple} itu sendiri, yang justru sudah benar menyebut ``unsur yang
+mengalami oksidasi disebut sebagai agen pereduksi''. Dari dua pakar Kimia, satu pakar
+menandainya sebagai salah---``\textit{Pemetaan berlawanan dengan teori dan deskripsinya
+sendiri}''---sedangkan pakar lainnya menerimanya. \textit{LLM-as-a-judge} kemudian
+menyelesaikan ketidaksepakatan ini dengan memutus label \texttt{wrong}, dengan alasan
+yang dikutip apa adanya: ``Berdasarkan teks, unsur yang mengalami oksidasi disebut
+sebagai agen pereduksi, bukan agen pengoksidasi. Agen pengoksidasi adalah unsur yang
+mengalami reduksi. Oleh karena itu, relasi yang menyatakan bahwa oksidasi menghasilkan
+agen pengoksidasi adalah salah.'' Akibatnya, relasi di-\textit{drop} (diberi properti
+\texttt{consensus}/\texttt{status}=\texttt{wrong} dan difilter keluar dari graf final).
+Kesalahan ini termasuk dalam kategori \textit{hallucination} faktual
+\parencite{ji_survey_2023, min_factscore_2023}.
 
 \subsubsection{Pencampuran konsep teknis.} \textit{Triple} mengenai pemurnian tembaga menyatakan
 bahwa \textit{electroplating} digunakan untuk pemurnian tembaga, padahal proses yang

@@ -461,6 +461,45 @@ tercampur.
         dihitung dengan membandingkan label awal pakar terhadap label final
         pada \textit{gold standard}/konsensus.
 
+        Meskipun model ekstraksi, \textit{completion}, dan
+        \textit{LLM-as-a-judge} berasal dari keluarga Gemini, kesamaan ini
+        tidak digunakan sebagai dasar klaim independensi evaluasi. Pilihan
+        tersebut hanya menyeragamkan integrasi teknis, sedangkan independensi
+        metodologis dijaga melalui pemisahan fungsi, data masukan, dan kondisi
+        aktivasi model: Gemini~2.5 Flash Lite digunakan untuk ekstraksi,
+        Gemini~2.5 Flash untuk klasifikasi relasi pada tahap
+        \textit{completion}, sedangkan Gemini~3.1 Pro Preview dipilih sebagai
+        \textit{judge} karena tahap ajudikasi membutuhkan kemampuan penalaran
+        kontekstual yang lebih kuat atas masukan yang lebih banyak dan panjang.
+
+        Untuk mengurangi risiko bias validasi diri sekaligus kerentanan bias
+        penilaian LLM \parencite{gu_survey_2024}, \textit{triple} hasil
+        ekstraksi relasi oleh LLM tidak langsung divalidasi oleh model yang
+        menghasilkannya. Validasi utama tetap berasal dari dua pakar domain
+        independen per mata pelajaran, sedangkan \textit{LLM-as-a-judge} hanya
+        diaktifkan pada subset kasus yang tidak mencapai kesepakatan atau pada
+        usulan \textit{missing triple} yang diajukan satu pakar. Pada setiap
+        proses ajudikasi, \textit{prompt} judge dibangun ulang dari data
+        validasi, bukan dari \textit{prompt} ekstraksi relasi: untuk perbedaan
+        penilaian, masukan mencakup \textit{triple} yang diperselisihkan, dua
+        label pakar, dan cuplikan teks PDF buku yang dipilih berdasarkan bab,
+        mapel, relasi, target, dan deskripsi; untuk usulan \textit{missing
+        triple}, masukan mencakup usulan pakar tunggal dan cuplikan teks PDF
+        buku yang relevan. Dengan demikian, Gemini~3.1 Pro Preview tidak
+        menjadikan hasil ekstraksi relasi sebagai rujukan kebenaran, melainkan
+        menengahi ketidaksepakatan label terhadap bukti tekstual dari buku dan
+        penilaian pakar.
+
+        Secara metodologis, graf konsensus diperlakukan sebagai \textbf{graf
+        audit}: seluruh relasi hasil sistem tetap disimpan bersama metadata
+        validasi pakar, termasuk relasi dengan konsensus akhir \texttt{wrong}.
+        Relasi semacam ini tidak diperlakukan sebagai pengetahuan final, tetapi
+        dipertahankan untuk menjaga jejak keputusan pakar, memungkinkan
+        reproduksi metrik atas graf konsensus tersimpan, analisis galat, dan uji ketahanan. Untuk pemanfaatan
+        sebagai artefak pengetahuan tervalidasi, relasi berlabel \texttt{wrong}
+        perlu dikeluarkan berdasarkan properti \texttt{consensus}/\texttt{status}
+        atau metadata validasi yang menyertainya.
+
   \item \textbf{KG Completion.} Masukan tahap ini adalah graf konsensus
         yang telah diingest ke Neo4j dari
         \texttt{\{mapel\}.consensus.json}. Graf tersebut telah memuat relasi
@@ -475,6 +514,13 @@ tercampur.
         sudah ada dalam graf dan bukan digali dari teks mentah, tahap ini
         merupakan \textit{relation prediction}, yaitu salah satu subtugas KGC
         (lihat Subbab~\ref{subsec:kgc}).
+        Pencarian kandidat ANN pada tahap ini bertumpu pada \textit{embedding}
+        deskripsi \textit{node}, sehingga relasi berlabel \texttt{wrong} tidak
+        memengaruhi kemiripan vektor secara langsung. Namun, karena classifier
+        juga menerima konteks graf berupa relasi bertipe yang sudah ada,
+        relasi \texttt{wrong} yang dipertahankan dalam graf audit tetap
+        berpotensi muncul sebagai konteks klasifikasi; dampaknya dievaluasi pada
+        Bab~5.
 
   \item \textbf{Evaluasi pasca-\textit{completion}.} \textit{Edge}
         lintas-buku hasil \textit{completion} terlebih dahulu dituliskan
@@ -624,6 +670,24 @@ metrik validasi pakar pada Subbab~\ref{subsec:validasi-manusia}.
     & Nilai $-1$ hingga $1$ \\
 \end{tabular}
 \end{table}
+
+Kriteria keberhasilan yang ditetapkan sebelum evaluasi digunakan sebagai acuan
+untuk menafsirkan hasil penelitian. Representasi interkoneksi kurikulum dianggap
+tercapai apabila KG memuat setidaknya satu relasi lintas-disiplin tervalidasi
+yang menghubungkan ketiga mata pelajaran. Untuk RQ2, penelitian bersifat
+deskriptif-eksploratif sehingga tidak menetapkan ambang kuantitatif. Proses
+\textit{completion} dianggap berhasil memperbaiki kualitas struktural KG apabila
+AD meningkat dan \textit{Modularity} menurun pada kondisi post-KGC dibandingkan
+pre-KGC. TRR diharapkan tidak menurun karena relasi baru seharusnya memperkaya
+proporsi relasi bertipe eksplisit dalam graf, sedangkan DC diposisikan sebagai
+kontrol kualitas deskripsi \textit{node}; metrik ini tidak harus meningkat
+karena tahap \textit{completion} menambahkan \textit{edge}, bukan memperbarui
+deskripsi \textit{node}. Dari sisi validitas, relasi lintas-buku dianggap
+memenuhi kriteria apabila validitas pakar Fase~2 mencapai minimal 90\%.
+Keandalan evaluasi intra-mapel dianggap memadai apabila Gwet's AC1 minimal
+0{,}6, yaitu masuk kategori ``baik''. Kriteria AC1 ini hanya berlaku untuk
+Fase~1 karena Fase~2 menggunakan keputusan konsensus panel, bukan dua penilaian
+independen per relasi.
 
 \subsection{Instrumen dan Metrik Evaluasi Fase 2}\label{subsec:metrik-fase2}
 
@@ -821,8 +885,10 @@ diolah melalui tahapan berikut.
 % ============================================================
 
 Analisis data dilakukan melalui tiga pendekatan yang saling melengkapi,
-dirancang untuk menjawab rumusan masalah penelitian secara komprehensif
-dari sisi kuantitatif objektif maupun validitas pedagogis.
+dirancang untuk menjawab rumusan masalah penelitian secara komprehensif:
+representasi interkoneksi semantik dalam KG, karakteristik relasi implisit
+lintas-disiplin, perubahan kualitas struktural graf, serta validitas relasi dan
+keandalan evaluasinya.
 
 \subsection{Analisis Struktural}
 
@@ -831,13 +897,14 @@ Analisis struktural menafsirkan perubahan karakteristik topologi
 kualitas interkoneksi antarkonsep. Berdasarkan metrik struktural yang
 dihitung pada tahap pengolahan data (Subbab~\ref{sec:pengolahan-data}),
 hasil perbandingan kondisi pre-KGC dan post-KGC disajikan dalam bentuk
-tabel berpasangan. Peningkatan AD
-setelah KGC diinterpretasikan sebagai indikator bahwa relasi implisit
-yang diprediksi LLM berhasil memperkaya kepadatan jaringan pengetahuan.
-Penurunan \textit{Modularity} dibaca sebagai indikasi berkurangnya
-keterpisahan komunitas dalam graf setelah relasi lintas-disiplin
-ditambahkan. Karena metrik ini tidak menilai kebenaran relasi, hasilnya
-tetap perlu dibaca bersama validasi pakar.
+tabel berpasangan. Peningkatan AD setelah KGC diinterpretasikan sebagai
+indikator bahwa relasi implisit yang diprediksi LLM berhasil memperkaya
+kepadatan jaringan pengetahuan. Penurunan \textit{Modularity} dibaca sebagai
+indikasi berkurangnya keterpisahan komunitas dalam graf setelah relasi
+lintas-disiplin ditambahkan. TRR digunakan untuk melihat sejauh mana relasi
+dalam graf memiliki tipe hubungan yang eksplisit, sedangkan DC digunakan untuk
+menilai kelengkapan deskripsi \textit{node}. Karena metrik struktural tidak
+menilai kebenaran relasi, hasilnya tetap perlu dibaca bersama validasi pakar.
 
 \subsection{Analisis Validasi Pakar}
 
@@ -857,11 +924,14 @@ karakteristik struktur pengetahuan antardisiplin sains dalam konteks
 Kurikulum Merdeka.
 
 Perbandingan dilakukan pada dua dimensi. Pertama, dimensi struktural
-membandingkan nilai metrik graf (AD, \textit{Modularity}, TRR) antara
+membandingkan nilai metrik graf (AD, \textit{Modularity}, TRR, DC) antara
 kondisi pre-KGC dan post-KGC.
 Kedua, dimensi validasi membandingkan nilai Fuzzy Precision, Fuzzy Recall, dan F1
 antarmata pelajaran untuk mengidentifikasi disiplin mana yang paling
 diuntungkan oleh pendekatan LLM-Assisted KGC.
+Pada relasi lintas-disiplin, analisis juga memperhatikan distribusi tipe relasi
+dan pola keterhubungan antarmata pelajaran untuk menjawab karakteristik relasi
+implisit yang ditemukan.
 
 Triangulasi antara metrik struktural dan hasil validasi pakar dilakukan
 untuk menguji koherensi keduanya: apabila mata pelajaran dengan AD

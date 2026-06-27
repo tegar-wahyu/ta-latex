@@ -26,8 +26,9 @@ relasi oleh LLM. Kualitas graf dievaluasi secara *hybrid*: metrik struktural dan
 validasi enam pakar domain, dengan *LLM-as-a-judge* sebagai penengah
 ketidaksepakatan.
 
-Temuan utama: penambahan 125 relasi lintas-buku menurunkan *Modularity* dari
-0,666 menjadi 0,158 dan menaikkan *Average Degree Centrality* sebesar 98,4%;
+Temuan utama: penambahan 125 relasi lintas-buku menurunkan *Modularity* Louvain
+dari 0,8906 menjadi 0,8209, mengubah jumlah komunitas dari 19 menjadi 24, dan
+menaikkan *Average Degree Centrality* sebesar 98,4%;
 ekstraksi intra-mapel mencapai F1-Score 92,4%; relasi lintas-disiplin tervalidasi
 valid (99,1%) dan tepat tipe (98,3%), namun ketepatan arah relasi hanya 75,9%.
 
