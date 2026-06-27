@@ -444,11 +444,12 @@ tercampur.
         metodologis dijaga melalui pemisahan fungsi, data masukan, dan kondisi
         aktivasi model: Gemini~2.5 Flash Lite digunakan untuk ekstraksi,
         Gemini~2.5 Flash untuk klasifikasi relasi pada tahap
-        \textit{completion}, sedangkan Gemini~3.1 Pro Preview hanya digunakan
-        pada kasus ketidaksepakatan pakar yang membutuhkan penalaran lebih
-        hati-hati.
+        \textit{completion}, sedangkan Gemini~3.1 Pro Preview dipilih sebagai
+        \textit{judge} karena tahap ajudikasi membutuhkan kemampuan penalaran
+        kontekstual yang lebih kuat atas masukan yang lebih banyak dan panjang.
 
-        Untuk mengurangi risiko bias validasi diri, \textit{triple} hasil
+        Untuk mengurangi risiko bias validasi diri sekaligus kerentanan bias
+        penilaian LLM \parencite{gu_survey_2024}, \textit{triple} hasil
         ekstraksi relasi oleh LLM tidak langsung divalidasi oleh model yang
         menghasilkannya. Validasi utama tetap berasal dari dua pakar domain
         independen per mata pelajaran, sedangkan \textit{LLM-as-a-judge} hanya
@@ -456,7 +457,7 @@ tercampur.
         usulan \textit{missing triple} yang diajukan satu pakar. Pada setiap
         proses ajudikasi, \textit{prompt} judge dibangun ulang dari data
         validasi, bukan dari \textit{prompt} ekstraksi relasi: untuk perbedaan
-        validasi, masukan mencakup \textit{triple} yang diperselisihkan, dua
+        penilaian, masukan mencakup \textit{triple} yang diperselisihkan, dua
         label pakar, dan cuplikan teks PDF buku yang dipilih berdasarkan bab,
         mapel, relasi, target, dan deskripsi; untuk usulan \textit{missing
         triple}, masukan mencakup usulan pakar tunggal dan cuplikan teks PDF
