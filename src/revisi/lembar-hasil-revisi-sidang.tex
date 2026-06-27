@@ -267,7 +267,27 @@ digunakan untuk menjawab keempat rumusan masalah, lalu menyajikan empat butir
 kesimpulan dengan struktur yang mengikuti urutan RQ tersebut. &
 hlm. xx, xx \\
 \hline
-9 & Perbaiki bagaimana cara mengembangkan ontologi. & & \\
+9 & Perbaiki bagaimana cara mengembangkan ontologi. &
+Subbab ``Metodologi Pengembangan Ontologi'' ditambahkan pada Bab~3.
+Pengembangan ontologi dijelaskan sebagai proses \textbf{induktif}
+(\textit{bottom-up}) berbantuan-LLM yang kemudian dikurasi dan divalidasi
+pakar, bukan dirancang sepenuhnya di awal. Panduan \textit{Ontology
+Development 101} (Noy \& McGuinness, 2001) dipakai sebagai lensa
+deskriptif-analitis: proses penyusunan \textit{dapat dipetakan ke} tujuh
+tahapnya --- (1)~menentukan domain dan ruang lingkup; (2)~mempertimbangkan
+penggunaan-ulang kosakata mapan (SKOS, CCSO, EduCOR, ConceptNet,
+\textit{schema.org}/LRMI) yang ditinjau lewat \textit{Linked Open
+Vocabularies} dan dirangkum pada tabel pemetaan relasi; (3)~mengenumerasi
+istilah dari Daftar Isi Buku Siswa serta materi pokok dan glosarium Buku
+Panduan Guru; (4)~mendefinisikan lima kelas beserta hierarkinya;
+(5)~mendefinisikan properti objek dan properti data; (6)~menetapkan
+domain/jangkauan serta sifat properti (mis.\ \texttt{owl:SymmetricProperty});
+dan (7)~mempopulasikan individu sebagai \textit{Labeled Property Graph} di
+Neo4j. Strateginya \textit{middle-out}: kerangka kelas diturunkan
+\textit{top-down} dari struktur dokumen, sedangkan vokabulari relasi dirancang
+\textit{bottom-up}. Sesuai sifat ontologi yang iteratif, skema disempurnakan
+dari versi v1 hingga v4 bersama enam pakar domain. &
+hlm. xx, xx \\
 \hline
 10 & Kenapa pengembangan ontologi tidak dijadikan sebagai pertanyaan
 penelitian? & & \\
@@ -295,7 +315,29 @@ grounding pada sumber buku. &
 hlm. xx, xx \\
 \hline
 12 & Tambahkan argumentasi kenapa memakai OWL? Kenapa bukan yang lain? Apa
-yang dimanfaatkan dari OWL? & & \\
+yang dimanfaatkan dari OWL? &
+Subbab ``Justifikasi Pemilihan OWL'' ditambahkan pada Bab~3, disusun atas
+dasar apa yang benar-benar dimanfaatkan dari OWL. \textbf{Yang dimanfaatkan:}
+(1)~tipifikasi formal yang dapat diperiksa mesin --- deklarasi
+\texttt{owl:Class}, \texttt{owl:ObjectProperty}, dan
+\texttt{owl:DatatypeProperty} beserta batasan
+\texttt{rdfs:domain}/\texttt{rdfs:range} --- sehingga vokabulari struktur dan
+relasi menjadi spesifikasi eksplisit yang konsisten antartahap
+\textit{pipeline}; (2)~aksioma semantik ringan, yaitu empat relasi setara dua
+arah dinyatakan sebagai \texttt{owl:SymmetricProperty}; dan (3)~status standar
+terbuka W3C yang didukung perkakas baku (Prot\'eg\'e), portabel, serta dapat
+divalidasi dan digunakan ulang. \textbf{Mengapa bukan alternatif:} RDFS murni
+tidak menyediakan aksioma properti seperti simetri; SHACL, JSON Schema, dan
+Pydantic berorientasi pada validasi \textit{bentuk} (\textit{shape}) data,
+bukan ontologi formal; UML atau diagram informal tidak baku secara semantik.
+OWL berperan sebagai \textbf{spesifikasi waktu-desain}, sedangkan penyimpanan
+dan kueri \textit{runtime} memakai \textit{Labeled Property Graph} di Neo4j
+(tanpa \textit{triplestore}, SPARQL, maupun \textit{reasoner}); pemetaannya
+langsung: \texttt{owl:Class} menjadi label \textit{node},
+\texttt{owl:ObjectProperty} menjadi tipe relasi, dan
+\texttt{rdfs:domain}/\texttt{rdfs:range} ditegakkan lewat pola \texttt{MERGE}
+serta \textit{constraint} Cypher. &
+hlm. xx, xx \\
 \hline
 13 & Relasi yang salah atau tidak valid kenapa dibuang atau diikutkan untuk
 tahap selanjutnya? Berikan argumentasinya. &
