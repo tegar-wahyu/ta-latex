@@ -474,11 +474,14 @@ tercampur.
         sebagai artefak pengetahuan tervalidasi, relasi berlabel \texttt{wrong}
         perlu dikeluarkan berdasarkan properti \texttt{consensus}/\texttt{status}
         atau metadata validasi yang menyertainya.
+\end{enumerate}
 
-        % Gambar 3.2 (figure[p]) dideklarasikan dekat rujukannya (alur ajudikasi)
-        % agar mengambang di dalam pembahasan pipeline, bukan menyela Skema Ontologi.
-        \subfile{llm-judge}
+% Gambar 3.2 ditampilkan persis setelah tahap "Final consensus" (tempat ia
+% dirujuk) dan sebelum "KG Completion": enumerate dipecah, gambar [H] tampil
+% penuh-lebar di antara kedua item, lalu enumerate dilanjutkan (penomoran lanjut).
+\subfile{llm-judge}
 
+\begin{enumerate}[resume]
   \item \textbf{KG Completion.} Masukan tahap ini adalah graf konsensus
         yang telah diingest ke Neo4j dari
         \texttt{\{mapel\}.consensus.json}. Graf tersebut telah memuat relasi
