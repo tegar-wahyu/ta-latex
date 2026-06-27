@@ -133,15 +133,81 @@ Tanggal Sidang & 15 Juni 2026 \\
 \multicolumn{4}{|p{\revisionFooterCol}|}{\textbf{Penguji 1 — Evi Yulianti, M.Comp.Sc., M.Kom., Ph.D.}} \\
 \hline
 1 & Bisa dijelaskan \textit{task} apa yang dikerjakan di sini? Dibuat ilustrasi
-\textit{task}-nya yang menggambarkan input--output. & & \\
+\textit{task}-nya yang menggambarkan input--output. &
+\textit{Task} penelitian kini dijelaskan dalam kerangka input--proses--keluaran.
+\textbf{Input} berupa tiga Buku Siswa Kurikulum Merdeka Fase~F (Fisika, Kimia,
+Biologi) dalam format PDF beserta Buku Panduan Guru pasangannya.
+\textbf{Proses} dilakukan melalui \textit{pipeline} \textit{Knowledge Graph
+Construction/Completion} (KGC): \textit{ingestion} dan ekstraksi teks PDF,
+ekstraksi entitas dan relasi dengan LLM, konstruksi serta visualisasi graf pada
+Neo4j, validasi pakar, dan penyempurnaan relasi implisit lintas-buku.
+\textbf{Keluaran} berupa \textit{knowledge graph} tervalidasi yang memetakan
+interkoneksi materi sains lintas-disiplin beserta visualisasinya. Ilustrasi alur
+input--proses--keluaran ini disajikan pada Bab~3, sedangkan pembagian peran tiap
+anggota terhadap tahapan \textit{pipeline} dirinci pada Lampiran Pembagian Tugas
+dan Kontribusi Anggota. &
+hlm. xx, xx \\
 \hline
 2 & Kenapa dibuat sistem ini? Ada kebutuhan dari mana? Perlu digali lagi
-motivasi pentingnya sistem ini. & & \\
+motivasi pentingnya sistem ini. &
+Motivasi sistem sudah digali lebih dalam pada Latar Belakang Bab~1. Kebutuhan
+berasal langsung dari Kurikulum Merdeka yang mendorong pembelajaran terpadu dan
+penyelesaian persoalan nyata lintas mata pelajaran (antara lain melalui Projek
+Penguatan Profil Pelajar Pancasila), tetapi tidak dibarengi alat bantu yang
+memetakan keterkaitan antarmateri secara eksplisit. Akibatnya pemetaan dilakukan
+manual dan sendiri-sendiri: guru harus mencari sendiri konsep prasyarat dari
+mata pelajaran lain, pengembang kurikulum tidak punya rujukan irisan antarmateri,
+dan siswa mencari hubungan antarkonsep tanpa panduan. Pemetaan manual semacam
+peta konsep lintas-disiplin memang membantu, tetapi menuntut waktu dan ketelitian
+besar sehingga sulit konsisten untuk cakupan kurikulum yang luas. Hal ini
+diperkuat literatur yang menyatakan keterkaitan Fisika--Kimia--Biologi penting
+secara pembelajaran namun jarang dipadukan, serta temuan guru di Indonesia yang
+kesulitan menghubungkan materi antarmata pelajaran karena minim rujukan. Dari
+sinilah sistem ini dibuat: menyediakan peta keterkaitan yang jelas, tervalidasi,
+dan mudah ditelusuri agar tidak perlu disusun ulang secara manual oleh tiap
+pengguna. &
+hlm. xx, xx \\
 \hline
 3 & Pemanfaatan sistem ini untuk apa nanti? Skenario penggunaannya seperti
-apa? & & \\
+apa? &
+Subbab ``Skenario Pemanfaatan'' ditambahkan pada Bab~1, memuat empat skenario
+penggunaan graf, visualisasinya, dan \textit{pipeline} pembangunnya:
+\begin{enumerate}[leftmargin=1.1em, itemsep=1pt, parsep=0pt, topsep=0pt]
+  \item \textbf{Membantu guru menyusun pembelajaran terpadu}, dengan menelusuri
+        visualisasi KG untuk menemukan konsep lintas mata pelajaran yang
+        berkaitan, misalnya Potensial Elektrode (Kimia) dengan Potensial Listrik
+        (Fisika).
+  \item \textbf{Membantu pengembang kurikulum menata urutan materi}, dengan
+        memakai relasi prasyarat untuk mengecek keselarasan urutan antarmapel,
+        misalnya memastikan struktur kimia DNA (Kimia) dibahas sebelum konsep
+        Gen (Biologi).
+  \item \textbf{Menjadi basis pengetahuan aplikasi AI pendidikan}, yaitu sumber
+        pengetahuan bagi \textit{chatbot} atau asisten tanya-jawab berbasis
+        \textit{Retrieval-Augmented Generation} (RAG).
+  \item \textbf{Menjadi sumber data penelitian teknologi pendidikan}, seperti
+        \textit{ground truth} bagi perekomendasi jalur belajar dan personalisasi
+        adaptif, serta \textit{pipeline} yang dapat dipakai ulang untuk
+        memperluas graf ke fase atau mata pelajaran lain.
+\end{enumerate}
+Dua skenario terakhir berada di luar lingkup penelitian; penelitian ini
+menyediakan graf dan \textit{pipeline}-nya sebagai fondasi data bagi
+pengembangan lanjutan tersebut. &
+hlm. xx, xx \\
 \hline
-4 & Kenapa mata pelajaran Fisika, Biologi, dan Kimia yang dipilih? & & \\
+4 & Kenapa mata pelajaran Fisika, Biologi, dan Kimia yang dipilih? &
+Justifikasi pemilihan ditambahkan pada subbab Data Primer Bab~3. Ketiga mata
+pelajaran dipilih bukan secara acak, melainkan mengikuti struktur Kurikulum
+Merdeka. Pada Fase~E (Kelas~X), Fisika, Kimia, dan Biologi masih dapat diajarkan
+secara terpadu dalam satu mata pelajaran Ilmu Pengetahuan Alam (IPA), dan baru
+dipisah menjadi tiga mata pelajaran yang berdiri sendiri pada Fase~F (Kelas~XI
+dan XII), sesuai Kepmendikbudristek Nomor 262/M/2022. Hal ini menunjukkan
+ketiganya berasal dari satu rumpun keilmuan yang sama dan memiliki keterhubungan
+konseptual, tetapi keterhubungan itu menjadi tidak lagi tampak secara eksplisit
+ketika materi terpecah pada Fase~F. Kondisi inilah yang menjadikan Fase~F objek
+yang tepat untuk memetakan kembali interkoneksi antarmateri, misalnya kaitan
+Potensial Listrik (Fisika) dengan Potensial Elektrode (Kimia) atau struktur
+kimia DNA (Kimia) dengan konsep Gen (Biologi). &
+hlm. xx \\
 \hline
 5 & Siapa pakarnya? Apa saja yang divalidasi oleh pakar? Untuk \textit{triple}
 yang dinilai ``salah'' oleh pakar, apakah digunakan lagi pada tahap~2
