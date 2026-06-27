@@ -475,6 +475,10 @@ tercampur.
         perlu dikeluarkan berdasarkan properti \texttt{consensus}/\texttt{status}
         atau metadata validasi yang menyertainya.
 
+        % Gambar 3.2 (figure[p]) dideklarasikan dekat rujukannya (alur ajudikasi)
+        % agar mengambang di dalam pembahasan pipeline, bukan menyela Skema Ontologi.
+        \subfile{llm-judge}
+
   \item \textbf{KG Completion.} Masukan tahap ini adalah graf konsensus
         yang telah diingest ke Neo4j dari
         \texttt{\{mapel\}.consensus.json}. Graf tersebut telah memuat relasi
@@ -505,8 +509,6 @@ tercampur.
         pakar lintas-disiplin untuk menilai validitas, ketepatan tipe,
         dan ketepatan arah relasi.
 \end{enumerate}
-
-\subfile{llm-judge}
 
 \subsection{Skema Ontologi Knowledge Graph}
 \label{subsec:skema-ontologi}
