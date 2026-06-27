@@ -293,7 +293,7 @@
 
 :materi_pokok_ref a owl:DatatypeProperty ;
     rdfs:label "materi_pokok_ref" ;
-    rdfs:comment "Referensi ke entri Materi Pokok pada dokumen Capaian Pembelajaran (CP) Kurikulum Merdeka, sebagai jangkar penyelarasan kurikulum." ;
+    rdfs:comment "Referensi ke entri Materi Pokok pada Buku Panduan Guru Kurikulum Merdeka, sebagai jangkar penyelarasan kurikulum." ;
     rdfs:domain :Concept ;
     rdfs:range xsd:string .
 
