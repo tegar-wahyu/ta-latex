@@ -514,18 +514,18 @@ tercampur.
 Ontologi dalam penelitian ini diposisikan menggunakan dua lapisan
 representasi yang dibedakan secara metodologis. \textbf{Lapisan
 ekstraksi} menghasilkan model konseptual \textit{deskriptif} atas isi
-buku teks Kurikulum Merdeka (konsep, sub-bab, bab, beserta
-keterkaitan semantik antar-konsep dalam satu buku), sejalan dengan
+buku teks Kurikulum Merdeka (konsep, subbab, bab, beserta
+keterkaitan semantik antarkonsep dalam satu buku), sejalan dengan
 tradisi \textit{domain module} dalam konstruksi otomatis \textit{knowledge
 graph} dari buku teks elektronik. \textbf{Lapisan completion} menghasilkan kandidat
 keterkaitan lintas-buku (\texttt{LINTAS\_BUKU\_*}) sebagai inferensi
 pedagogis dangkal di atas Lapisan ekstraksi: sistem mengusulkan jembatan
-antar-disiplin yang dapat dipertimbangkan, tetapi tidak menetapkannya
+antardisiplin yang dapat dipertimbangkan, tetapi tidak menetapkannya
 sebagai jalur belajar.
 
 Predikat ``dangkal'' bersifat operasional: sistem hanya menginferensi
 keterkaitan \textit{single-hop} antar dua konsep di buku berbeda dan
-tidak menyusun jalur belajar multi-langkah lintas-disiplin (batasan
+tidak menyusun jalur belajar multilangkah lintas-disiplin (batasan
 inferensi pedagogis dirinci pada Subbab~\ref{sec:ruang-lingkup}).
 Dengan demikian, relasi berarah pada Lapisan ekstraksi seperti
 \texttt{PRASYARAT} dan \texttt{MEMPERSIAPKAN} dimaknai sebagai
@@ -595,7 +595,7 @@ dirancang dan diiterasi \textit{bottom-up}.
         relasi tetapi belum terekstrak penuh) agar \textit{stub} tidak mencemari
         kelas \texttt{Concept}.
 
-  \item \textbf{Mendefinisikan properti (\textit{slot}) kelas.} Properti dibagi
+  \item \textbf{Mendefinisikan properti (\textit{slot}) kelas.} Properti dibagi menjadi
         dua. \emph{Properti objek} untuk relasi: struktural
         (\texttt{HAS\_CHAPTER}, \texttt{HAS\_SUBTOPIC}, \texttt{HAS\_CONCEPT}),
         sekuensial/pedagogis (\texttt{NEXT\_CHAPTER}, \texttt{PRASYARAT},
@@ -671,7 +671,7 @@ Keseluruhan topologi ini diilustrasikan pada Gambar~\ref{fig:ontologi}.
 
 Skema diformalkan menggunakan \textit{Web Ontology Language} (OWL)
 \parencite{w3c_owl2_2012}. Pemilihan OWL didasarkan pada apa yang
-benar-benar dimanfaatkan darinya. \emph{Pertama}, tipisasi formal yang dapat
+benar-benar dimanfaatkan darinya. \emph{Pertama}, tipifikasi formal yang dapat
 diperiksa mesin: deklarasi kelas (\texttt{owl:Class}), properti objek
 (\texttt{owl:ObjectProperty}), dan properti data
 (\texttt{owl:DatatypeProperty}) beserta batasan
