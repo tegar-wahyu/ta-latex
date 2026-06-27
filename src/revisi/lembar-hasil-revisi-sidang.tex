@@ -251,7 +251,11 @@ empat butir yang mengikuti urutan RQ tersebut. &
 hlm. xx, xx \\
 \hline
 7 & Metode untuk menggabungkan \textit{triple} (\textit{merge} KG) harus
-dijelaskan. & & \\
+dijelaskan. & Penjelasan telah ditambahkan pada Bab~4: triple hasil ekstraksi
+dari JSON dipetakan menjadi \textit{node} dan \textit{edge} Neo4j, dengan
+\texttt{relation\_key} dipakai pada \texttt{MERGE} agar relasi tidak dobel,
+sedangkan metadata relasi ditanam melalui \texttt{SET r += \$props}. &
+hlm. xx \\
 \hline
 
 % ===== Penguji 2 =====
