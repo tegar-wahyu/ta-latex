@@ -166,7 +166,7 @@ kesulitan menghubungkan materi antarmata pelajaran karena minim rujukan. Dari
 sinilah sistem ini dibuat: menyediakan peta keterkaitan yang jelas, tervalidasi,
 dan mudah ditelusuri agar tidak perlu disusun ulang secara manual oleh tiap
 pengguna. &
-hlm. 1, 3 \\
+hlm. 1--2 \\
 \hline
 3 & Pemanfaatan sistem ini untuk apa nanti? Skenario penggunaannya seperti
 apa? &
@@ -192,7 +192,7 @@ penggunaan graf, visualisasinya, dan \textit{pipeline} pembangunnya:
 Dua skenario terakhir berada di luar lingkup penelitian; penelitian ini
 menyediakan graf dan \textit{pipeline}-nya sebagai fondasi data bagi
 pengembangan lanjutan tersebut. &
-hlm. 6, 7 \\
+hlm. 6--7 \\
 \hline
 4 & Kenapa mata pelajaran Fisika, Biologi, dan Kimia yang dipilih? &
 Justifikasi pemilihan ditambahkan pada subbab Data Primer Bab~3. Ketiga mata
@@ -207,7 +207,7 @@ ketika materi terpecah pada Fase~F. Kondisi inilah yang menjadikan Fase~F objek
 yang tepat untuk memetakan kembali interkoneksi antarmateri, misalnya kaitan
 Potensial Listrik (Fisika) dengan Potensial Elektrode (Kimia) atau struktur
 kimia DNA (Kimia) dengan konsep Gen (Biologi). &
-hlm. 30 \\
+hlm. 31 \\
 \hline
 5 & Siapa pakarnya? Apa saja yang divalidasi oleh pakar? Untuk \textit{triple}
 yang dinilai ``salah'' oleh pakar, apakah digunakan lagi pada tahap~2
@@ -237,7 +237,7 @@ yang dinilai ``salah'' oleh pakar, apakah digunakan lagi pada tahap~2
         tipe, walau 5 berarah terbalik. Jadi dampaknya terbatas dan lebih
         terkait isu arah relasi, bukan keberadaan atau tipe relasi.
 \end{enumerate} &
-hlm. 32, 49, 79 \\
+hlm. 32, 49, 79, 133, 135 \\
 \hline
 6 & RQ perlu diperbaiki; jangan menanyakan cara. Cara ada di Bab~3, sedangkan
 jawaban RQ ada di kesimpulan. &
@@ -291,7 +291,7 @@ Neo4j. Strateginya \textit{middle-out}: kerangka kelas diturunkan
 \textit{top-down} dari struktur dokumen, sedangkan vokabulari relasi dirancang
 \textit{bottom-up}. Sesuai sifat ontologi yang iteratif, skema disempurnakan
 dari versi v1 hingga v4 bersama enam pakar domain. &
-hlm. 39, 41 \\
+hlm. 39--41 \\
 \hline
 10 & Kenapa pengembangan ontologi tidak dijadikan sebagai pertanyaan
 penelitian? &
@@ -313,7 +313,7 @@ tidak langsung melalui validasi pakar atas relasi KG yang distrukturkannya.
 Dengan demikian, pengembangan ontologi tetap didokumentasikan dan diakui
 sebagai kontribusi artefak (skema OWL), tetapi tidak dijadikan RQ karena bukan
 pertanyaan terukur yang dapat dijawab di kesimpulan. &
-- \\
+hlm. 4, 39 \\
 \hline
 11 & Tambahkan argumentasi kenapa memilih Gemini Pro sebagai
 \textit{LLM-as-a-judge}? &
@@ -335,7 +335,7 @@ ekstraksi relasi sebagai kebenaran. Dengan demikian, Gemini Pro dipilih karena
 kebutuhan penalaran kontekstual pada kasus ketidaksepakatan, sementara risiko
 bias validasi diri dikurangi melalui peran pakar, pemisahan model, dan
 grounding pada sumber buku. &
-hlm. 36, 37 \\
+hlm. 35--37 \\
 \hline
 12 & Tambahkan argumentasi kenapa memakai OWL? Kenapa bukan yang lain? Apa
 yang dimanfaatkan dari OWL? &
@@ -360,7 +360,7 @@ langsung: \texttt{owl:Class} menjadi label \textit{node},
 \texttt{owl:ObjectProperty} menjadi tipe relasi, dan
 \texttt{rdfs:domain}/\texttt{rdfs:range} ditegakkan lewat pola \texttt{MERGE}
 serta \textit{constraint} Cypher. &
-hlm. 45, 46 \\
+hlm. 45 \\
 \hline
 13 & Relasi yang salah atau tidak valid kenapa dibuang atau diikutkan untuk
 tahap selanjutnya? Berikan argumentasinya. &
@@ -384,7 +384,7 @@ hlm. 79, 135 \\
 \vspace{0.3cm}
 \noindent\small\textit{Catatan: kolom ``Catatan Revisi Penguji'' dikutip dari
 catatan penguji pada SISIDANG (Revisi Berkas~\#1). Nomor halaman pada kolom
-``Halaman Hasil Revisi'' bersifat sementara (mengikuti draf naskah per
-28 Juni 2026) dan dapat bergeser setelah paginasi naskah final stabil.}
+``Halaman Hasil Revisi'' diverifikasi terhadap naskah PDF hasil kompilasi per
+28 Juni 2026 (156 halaman) dan dapat bergeser bila naskah direvisi lebih lanjut.}
 
 \end{document}
