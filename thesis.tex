@@ -3,7 +3,8 @@
 %  Compile this file to produce the full thesis.
 %  Each bab-N.tex can also be compiled individually.
 % ============================================================
-\documentclass[12pt, a4paper]{report}
+\documentclass[12pt, a4paper, onecolumn, twoside, final]{report}
+\raggedbottom
 
 \usepackage{subfiles}   % ← enables per-chapter standalone compilation
 \usepackage{hyphenat}
@@ -28,11 +29,66 @@
 % ── Page geometry (A4, UI 2017 standard: 3 cm all sides) ─────
 \usepackage[
   a4paper,
+  headheight = 14.5pt,
   top    = 3cm,
   bottom = 3cm,
   left   = 3cm,
   right  = 3cm
 ]{geometry}
+
+% -- Header & footer (mirrors latex-ta-ui/uithesis.sty) --------
+\usepackage{fancyhdr}
+\newcommand{\uifootermark}{%
+  \footnotesize\sffamily\bfseries Universitas Indonesia%
+}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhf{}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+\fancypagestyle{onlypage}{%
+  \fancyhf{}%
+  \fancyhead[LE,RO]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+\fancypagestyle{first-pages}{%
+  \fancyhf{}%
+  \fancyhead[LE,RO]{\thepage}%
+  \fancyfoot[LE,RO]{\uifootermark}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+\fancypagestyle{standard}{%
+  \fancyhf{}%
+  \fancyhead[LE,RO]{\thepage}%
+  \fancyfoot[LE,RO]{\uifootermark}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+
+% -- Appendix helpers ------------------------------------------
+\newcounter{lampno}
+\newcommand{\setlampirannumbering}{%
+  \renewcommand{\thelampno}{Lampiran~\arabic{lampno}}%
+  \renewcommand{\thesubsection}{L\arabic{lampno}.\arabic{subsection}}%
+  \renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}%
+  \renewcommand{\thefigure}{L\arabic{lampno}.\arabic{figure}}%
+  \renewcommand{\thetable}{L\arabic{lampno}.\arabic{table}}%
+}
+\newcommand{\lampiran}[1]{%
+  \clearpage
+  \setlampirannumbering
+  \refstepcounter{lampno}%
+  \setcounter{subsection}{0}\setcounter{figure}{0}\setcounter{table}{0}%
+  \section*{Lampiran~\arabic{lampno}\quad #1}%
+  \thispagestyle{plain}%
+  \addcontentsline{toc}{section}{Lampiran~\arabic{lampno}\texorpdfstring{\quad}{ }#1}%
+}
 
 % ── Line spacing & paragraph ─────────────────────────────────
 \usepackage{setspace}
@@ -183,8 +239,10 @@
 % ── HALAMAN DEPAN (front matter, angka Romawi) ───────────────
 \iffalse\chapter{Halaman Depan}\fi
 \pagenumbering{roman}
+\pagestyle{onlypage}
 \subfile{src/00-frontMatter/front-matter}
 
+\pagestyle{first-pages}
 \tableofcontents
 \listoffigures
 \listoftables
@@ -192,6 +250,7 @@
 
 % ── ISI (angka Arab) ─────────────────────────────────────────
 \pagenumbering{arabic}
+\pagestyle{standard}
 
 % ── BAB 1 ────────────────────────────────────────────────────
 \iffalse\chapter{BAB 1: Pendahuluan}\fi
@@ -237,19 +296,6 @@
 \chapter*{LAMPIRAN}
 \addcontentsline{toc}{chapter}{LAMPIRAN}
 
-\newcounter{lampno}
-\renewcommand{\thelampno}{Lampiran~\arabic{lampno}}      % dipakai oleh \ref → "Lampiran 5"
-\renewcommand{\thesubsection}{L\arabic{lampno}.\arabic{subsection}}
-\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
-\renewcommand{\thefigure}{L\arabic{lampno}.\arabic{figure}}
-\renewcommand{\thetable}{L\arabic{lampno}.\arabic{table}}
-\newcommand{\lampiran}[1]{%
-  \clearpage
-  \refstepcounter{lampno}%
-  \setcounter{subsection}{0}\setcounter{figure}{0}\setcounter{table}{0}%
-  \section*{Lampiran~\arabic{lampno}\quad #1}%
-  \addcontentsline{toc}{section}{Lampiran~\arabic{lampno}\quad #1}%
-}
 \iffalse\section{Lampiran 1: Arsitektur KG Review App}\fi
 \subfile{src/99-backMatter/lampiran-1}
 \iffalse\section{Lampiran 2: Visualisasi Knowledge Graph per Mata Pelajaran}\fi
