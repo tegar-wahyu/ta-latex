@@ -266,6 +266,18 @@ Adapun idempoten, proses ini bisa dijalankan ulang berkali-kali tanpa membuat
 relasi memakai \texttt{MERGE} yang hanya membuat data bila belum ada, bukan
 \texttt{CREATE} yang selalu menambah data baru.
 
+Secara struktur, berkas JSON memuat satu \textit{grade}, daftar
+\textit{chapter}, daftar \textit{subtopic}, daftar \textit{concept}, dan daftar
+relasi di dalam setiap konsep. Setiap bab memiliki ringkasan bab, penanda bab
+sebelumnya dan sesudahnya, serta daftar subbab; setiap konsep memiliki nama,
+deskripsi, validasi glosarium, rujukan materi pokok, dan daftar relasi; sedangkan
+setiap relasi menyimpan tipe relasi, target, deskripsi relasi, dan metadata
+ekstraksi. Karena skema ini sudah terstruktur, notebook tidak perlu melakukan
+penafsiran ulang terhadap teks mentah, melainkan cukup memetakan setiap entri
+JSON ke kelas graf yang sesuai. Dengan kata lain, proses pembentukan triple di
+tahap ini berarti mengubah triple hasil ekstraksi menjadi \textit{node} dan
+\textit{edge} Neo4j, lalu menyatukan seluruh entri itu ke dalam graf final.
+
 \begin{enumerate}
   \item \textbf{Pass 1 --- Instansiasi \textit{node} dan kerangka hierarki.}
   \begin{itemize}
@@ -296,6 +308,14 @@ relasi memakai \texttt{MERGE} yang hanya membuat data bila belum ada, bukan
       belum ada, sistem tidak memaksakan pembuatan \texttt{Concept} baru,
       melainkan merepresentasikannya sebagai \textit{node} \texttt{ConceptTarget}
       yang berperan sebagai penampung sementara (\textit{placeholder}).
+    \item Pemisahan ini menjaga graf tetap akurat terhadap sumber data. Relasi
+      yang benar-benar menghubungkan dua konsep terekstrak dicatat sebagai
+      relasi antar-\texttt{Concept}, sedangkan relasi yang menuju istilah yang
+      belum pernah muncul sebagai konsep resmi tetap dipertahankan agar jejak
+      pengetahuan tidak hilang. Setelah itu, relasi tersebut tetap diberi
+      penanda unik melalui \texttt{relation\_key} yang dipakai langsung pada
+      \texttt{MERGE} agar satu triple tidak dimasukkan dua kali ketika
+      \textit{notebook} dijalankan ulang.
     \item Pembedaan label \texttt{Concept} dan \texttt{ConceptTarget}
       (Subbab~\ref{subsec:skema-ontologi}) berguna untuk audit. Label
       \texttt{Concept} menandai konsep yang benar-benar diekstrak dari teks buku
@@ -306,6 +326,11 @@ relasi memakai \texttt{MERGE} yang hanya membuat data bila belum ada, bukan
       dasar tekstual dapat ditelusuri dengan mudah untuk diperiksa lebih lanjut.
     \item Tipe relasi dinormalisasi (karakter non-alfanumerik diganti garis
       bawah) agar sesuai dengan sintaksis \textit{relationship type} Cypher.
+    \item Metadata relasi dari JSON, termasuk deskripsi relasi dan label hasil
+      ekstraksi, ikut ditanam pada properti \textit{edge} melalui
+      \texttt{SET r += \$props}. Dengan demikian, setiap triple membawa
+      informasi semantik dan penanda penelusuran yang diperlukan saat graf
+      disimpan ke Neo4j.
   \end{itemize}
 
   \item \textbf{Sifat idempoten.} Kedua \textit{pass} menggunakan

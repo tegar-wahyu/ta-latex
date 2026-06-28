@@ -1,0 +1,390 @@
+% ============================================================
+%  LEMBAR HASIL REVISI SIDANG SKRIPSI
+%  Dokumen mandiri (standalone) — bukan bagian dari thesis.tex.
+%  Compile:  pdflatex lembar-hasil-revisi-sidang.tex
+%
+%  Kolom "Catatan Revisi Penguji" diisi verbatim dari catatan penguji di
+%  SISIDANG (REVISI BERKAS, Revisi #1), didistilasi pada issue #76-#84
+%  berlabel `revisi-sidang`. Kolom "Halaman Hasil Revisi" masih memakai
+%  placeholder dan perlu diganti setelah paginasi PDF final stabil.
+% ============================================================
+\documentclass[12pt, a4paper]{article}
+\usepackage{iftex}
+
+% -- Encoding, Language & Fonts --------------------------------
+\ifXeTeX
+    \usepackage{polyglossia}
+    \setmainlanguage{bahasai}
+    \usepackage{fontspec}
+    \setmainfont{TeX Gyre Termes}
+    \setsansfont{TeX Gyre Heros}
+\else
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage[indonesian]{babel}
+    \usepackage{mathptmx}
+    \usepackage{helvet}
+\fi
+
+% -- Page geometry ---------------------------------------------
+\usepackage[
+  a4paper,
+  landscape,
+  top=2.5cm,
+  bottom=2.5cm,
+  left=2.5cm,
+  right=2.5cm
+]{geometry}
+
+% -- Spacing & paragraph ---------------------------------------
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+
+% -- Tables ----------------------------------------------------
+\usepackage{longtable, array}
+\usepackage{enumitem}
+\usepackage{microtype}
+
+% -- Header/footer ---------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage[hidelinks]{hyperref}
+
+% ============================================================
+\begin{document}
+
+\begin{center}
+  {\large\bfseries LEMBAR HASIL REVISI SIDANG SKRIPSI}\\[2pt]
+  {\normalsize Program Studi Sarjana Ilmu Komputer\\
+  Fakultas Ilmu Komputer, Universitas Indonesia}
+\end{center}
+\vspace{0.4cm}
+
+% -- Identitas ------------------------------------------------
+\noindent\begin{tabular}{@{}p{3.2cm}@{ : }p{\dimexpr\linewidth-3.8cm}@{}}
+Judul Skripsi &
+LLM-Assisted Knowledge Graph Completion untuk Pemetaan Interkoneksi Materi
+Sains (Fisika, Kimia, Biologi) pada Kurikulum Merdeka SMA Kelas XII \\[6pt]
+Mahasiswa &
+\begin{itemize}[topsep=0pt, partopsep=0pt, parsep=0pt, itemsep=2pt,
+                leftmargin=1.4em]
+  \item Fadrian Yhoga Pratama (2206819395)
+  \item Soros Febriano (2206083445)
+  \item Tegar Wahyu Khisbulloh (2206082032)
+\end{itemize} \\[6pt]
+Program Studi & Sarjana Ilmu Komputer \\[6pt]
+Pembimbing & Dr.\ Siti Aminah, S.Kom., M.Kom. \\[6pt]
+Tanggal Sidang & 15 Juni 2026 \\
+\end{tabular}
+
+\vspace{0.5cm}
+
+% -- Tabel revisi ---------------------------------------------
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{4pt}
+\setlength\LTleft{0pt}
+\setlength\LTright{0pt}
+\newlength{\revisionNoCol}
+\newlength{\revisionNoteCol}
+\newlength{\revisionResultCol}
+\newlength{\revisionPageCol}
+\newlength{\revisionFooterCol}
+\setlength{\revisionNoCol}{0.8cm}
+\setlength{\revisionNoteCol}{8.6cm}
+\setlength{\revisionResultCol}{12.1cm}
+\setlength{\revisionPageCol}{2.0cm}
+\setlength{\revisionFooterCol}{\dimexpr
+  \revisionNoCol+\revisionNoteCol+\revisionResultCol+\revisionPageCol+
+  6\tabcolsep+3\arrayrulewidth\relax}
+\small
+\begin{longtable}{|
+  >{\centering\arraybackslash}p{\revisionNoCol}|
+  p{\revisionNoteCol}|
+  p{\revisionResultCol}|
+  >{\centering\arraybackslash}p{\revisionPageCol}|}
+\hline
+{\centering\arraybackslash\textbf{No}} &
+{\centering\arraybackslash\textbf{Catatan Revisi Penguji}} &
+{\centering\arraybackslash\textbf{Hasil/Jawaban Revisi}} &
+{\centering\arraybackslash\textbf{Halaman Hasil Revisi}} \\
+\hline
+\endfirsthead
+\hline
+{\centering\arraybackslash\textbf{No}} &
+{\centering\arraybackslash\textbf{Catatan Revisi Penguji}} &
+{\centering\arraybackslash\textbf{Hasil/Jawaban Revisi}} &
+{\centering\arraybackslash\textbf{Halaman Hasil Revisi}} \\
+\hline
+\endhead
+\hline
+\multicolumn{4}{|>{\raggedleft\arraybackslash}p{\revisionFooterCol}|}{\small\textit{Bersambung ke halaman berikutnya}} \\
+\hline
+\endfoot
+\hline
+\endlastfoot
+
+% ===== Penguji 1 =====
+\multicolumn{4}{|p{\revisionFooterCol}|}{\textbf{Penguji 1 — Evi Yulianti, M.Comp.Sc., M.Kom., Ph.D.}} \\
+\hline
+1 & Bisa dijelaskan \textit{task} apa yang dikerjakan di sini? Dibuat ilustrasi
+\textit{task}-nya yang menggambarkan input--output. &
+\textit{Task} penelitian kini dijelaskan dalam kerangka input--proses--keluaran.
+\textbf{Input} berupa tiga Buku Siswa Kurikulum Merdeka Fase~F (Fisika, Kimia,
+Biologi) dalam format PDF beserta Buku Panduan Guru pasangannya.
+\textbf{Proses} dilakukan melalui \textit{pipeline} \textit{Knowledge Graph
+Construction/Completion} (KGC): \textit{ingestion} dan ekstraksi teks PDF,
+ekstraksi entitas dan relasi dengan LLM, konstruksi serta visualisasi graf pada
+Neo4j, validasi pakar, dan penyempurnaan relasi implisit lintas-buku.
+\textbf{Keluaran} berupa \textit{knowledge graph} tervalidasi yang memetakan
+interkoneksi materi sains lintas-disiplin beserta visualisasinya. Ilustrasi alur
+input--proses--keluaran ini disajikan pada Bab~3, sedangkan pembagian peran tiap
+anggota terhadap tahapan \textit{pipeline} dirinci pada Lampiran Pembagian Tugas
+dan Kontribusi Anggota. &
+hlm. 33, 136 \\
+\hline
+2 & Kenapa dibuat sistem ini? Ada kebutuhan dari mana? Perlu digali lagi
+motivasi pentingnya sistem ini. &
+Motivasi sistem sudah digali lebih dalam pada Latar Belakang Bab~1. Kebutuhan
+berasal langsung dari Kurikulum Merdeka yang mendorong pembelajaran terpadu dan
+penyelesaian persoalan nyata lintas mata pelajaran (antara lain melalui Projek
+Penguatan Profil Pelajar Pancasila), tetapi tidak dibarengi alat bantu yang
+memetakan keterkaitan antarmateri secara eksplisit. Akibatnya pemetaan dilakukan
+manual dan sendiri-sendiri: guru harus mencari sendiri konsep prasyarat dari
+mata pelajaran lain, pengembang kurikulum tidak punya rujukan irisan antarmateri,
+dan siswa mencari hubungan antarkonsep tanpa panduan. Pemetaan manual semacam
+peta konsep lintas-disiplin memang membantu, tetapi menuntut waktu dan ketelitian
+besar sehingga sulit konsisten untuk cakupan kurikulum yang luas. Hal ini
+diperkuat literatur yang menyatakan keterkaitan Fisika--Kimia--Biologi penting
+secara pembelajaran namun jarang dipadukan, serta temuan guru di Indonesia yang
+kesulitan menghubungkan materi antarmata pelajaran karena minim rujukan. Dari
+sinilah sistem ini dibuat: menyediakan peta keterkaitan yang jelas, tervalidasi,
+dan mudah ditelusuri agar tidak perlu disusun ulang secara manual oleh tiap
+pengguna. &
+hlm. 1, 3 \\
+\hline
+3 & Pemanfaatan sistem ini untuk apa nanti? Skenario penggunaannya seperti
+apa? &
+Subbab ``Skenario Pemanfaatan'' ditambahkan pada Bab~1, memuat empat skenario
+penggunaan graf, visualisasinya, dan \textit{pipeline} pembangunnya:
+\begin{enumerate}[leftmargin=1.1em, itemsep=1pt, parsep=0pt, topsep=0pt]
+  \item \textbf{Membantu guru menyusun pembelajaran terpadu}, dengan menelusuri
+        visualisasi KG untuk menemukan konsep lintas mata pelajaran yang
+        berkaitan, misalnya Potensial Elektrode (Kimia) dengan Potensial Listrik
+        (Fisika).
+  \item \textbf{Membantu pengembang kurikulum menata urutan materi}, dengan
+        memakai relasi prasyarat untuk mengecek keselarasan urutan antarmapel,
+        misalnya memastikan struktur kimia DNA (Kimia) dibahas sebelum konsep
+        Gen (Biologi).
+  \item \textbf{Menjadi basis pengetahuan aplikasi AI pendidikan}, yaitu sumber
+        pengetahuan bagi \textit{chatbot} atau asisten tanya-jawab berbasis
+        \textit{Retrieval-Augmented Generation} (RAG).
+  \item \textbf{Menjadi sumber data penelitian teknologi pendidikan}, seperti
+        \textit{ground truth} bagi perekomendasi jalur belajar dan personalisasi
+        adaptif, serta \textit{pipeline} yang dapat dipakai ulang untuk
+        memperluas graf ke fase atau mata pelajaran lain.
+\end{enumerate}
+Dua skenario terakhir berada di luar lingkup penelitian; penelitian ini
+menyediakan graf dan \textit{pipeline}-nya sebagai fondasi data bagi
+pengembangan lanjutan tersebut. &
+hlm. 6, 7 \\
+\hline
+4 & Kenapa mata pelajaran Fisika, Biologi, dan Kimia yang dipilih? &
+Justifikasi pemilihan ditambahkan pada subbab Data Primer Bab~3. Ketiga mata
+pelajaran dipilih bukan secara acak, melainkan mengikuti struktur Kurikulum
+Merdeka. Pada Fase~E (Kelas~X), Fisika, Kimia, dan Biologi masih dapat diajarkan
+secara terpadu dalam satu mata pelajaran Ilmu Pengetahuan Alam (IPA), dan baru
+dipisah menjadi tiga mata pelajaran yang berdiri sendiri pada Fase~F (Kelas~XI
+dan XII), sesuai Kepmendikbudristek Nomor 262/M/2022. Hal ini menunjukkan
+ketiganya berasal dari satu rumpun keilmuan yang sama dan memiliki keterhubungan
+konseptual, tetapi keterhubungan itu menjadi tidak lagi tampak secara eksplisit
+ketika materi terpecah pada Fase~F. Kondisi inilah yang menjadikan Fase~F objek
+yang tepat untuk memetakan kembali interkoneksi antarmateri, misalnya kaitan
+Potensial Listrik (Fisika) dengan Potensial Elektrode (Kimia) atau struktur
+kimia DNA (Kimia) dengan konsep Gen (Biologi). &
+hlm. 30 \\
+\hline
+5 & Siapa pakarnya? Apa saja yang divalidasi oleh pakar? Untuk \textit{triple}
+yang dinilai ``salah'' oleh pakar, apakah digunakan lagi pada tahap~2
+(\textit{merge} KG)? &
+\begin{enumerate}[leftmargin=1.1em, itemsep=1pt, parsep=0pt, topsep=0pt]
+  \item \textbf{Siapa pakarnya?} Penelitian melibatkan enam pakar domain, yaitu
+        dua pakar per mata pelajaran (Biologi, Fisika, Kimia). Profil
+        keilmuan pakar disajikan secara anonim pada lampiran.
+  \item \textbf{Apa yang divalidasi?} Pada Fase~1, pakar memvalidasi relasi
+        dalam-buku dengan rating Benar, Sebagian Benar, Kurang Konteks, dan
+        Salah, serta dapat mengusulkan \textit{missing triples}. Pada Fase~2,
+        tiga pakar lintas-disiplin menilai relasi hasil KGC dari aspek
+        validitas, ketepatan tipe, dan ketepatan arah.
+  \item \textbf{Apakah \textit{triple} salah digunakan lagi pada KGC?} Tidak
+        sebagai pengetahuan benar maupun contoh positif. KGC berangkat dari
+        graf konsensus dan deskripsi \textit{node} konsep untuk membentuk
+        \textit{embedding}, mencari kandidat lintas-mapel, lalu
+        mengklasifikasikan relasinya dengan LLM. Relasi berlabel
+        \texttt{wrong} tidak memengaruhi pencarian kandidat berbasis
+        \textit{embedding} secara langsung karena ANN memakai deskripsi
+        \textit{node}, bukan \textit{edge}. Namun, karena relasi dalam graf
+        dapat muncul sebagai konteks klasifikasi LLM, dampaknya tetap diaudit.
+        Relasi \texttt{wrong} dicantumkan pada Lampiran Daftar Relasi Berlabel
+        \texttt{wrong}; audit Bab~5 menunjukkan 15 dari 125 \textit{edge}
+        completion melibatkan konsep yang menjadi sumber relasi \texttt{wrong},
+        13 di antaranya masuk validasi Fase~2 dan semuanya valid serta tepat
+        tipe, walau 5 berarah terbalik. Jadi dampaknya terbatas dan lebih
+        terkait isu arah relasi, bukan keberadaan atau tipe relasi.
+\end{enumerate} &
+hlm. 32, 49, 79 \\
+\hline
+6 & RQ perlu diperbaiki; jangan menanyakan cara. Cara ada di Bab~3, sedangkan
+jawaban RQ ada di kesimpulan. &
+Rumusan masalah sudah diperbaiki agar tidak lagi menanyakan prosedur teknis.
+RQ kini berfokus pada hasil yang dapat dijawab di Bab~5 dan Bab~6: sejauh mana
+interkoneksi kurikulum dapat direpresentasikan sebagai KG, relasi implisit
+lintas-disiplin apa saja yang ditemukan setelah KGC, sejauh mana
+\textit{completion} mengubah kualitas struktural KG, serta seberapa valid relasi
+yang dihasilkan dan seberapa andal evaluasinya. Kesimpulan disusun ulang dengan
+empat butir yang mengikuti urutan RQ tersebut. &
+hlm. 4, 88 \\
+\hline
+7 & Metode untuk menggabungkan \textit{triple} (\textit{merge} KG) harus
+dijelaskan. & Penjelasan telah ditambahkan pada Bab~4: triple hasil ekstraksi
+dari JSON dipetakan menjadi \textit{node} dan \textit{edge} Neo4j, dengan
+\texttt{relation\_key} dipakai pada \texttt{MERGE} agar relasi tidak dobel,
+sedangkan metadata relasi ditanam melalui \texttt{SET r += \$props}. &
+hlm. 58--59 \\
+\hline
+
+% ===== Penguji 2 =====
+\multicolumn{4}{|p{\revisionFooterCol}|}{\textbf{Penguji 2 — Iis Afriyanti, S.Kom., M.Sc.}} \\
+\hline
+8 & Perbaiki rumusan masalah dan kaitkan dengan jawabannya di kesimpulan. &
+Rumusan masalah pada Bab~1 sudah disusun ulang menjadi empat pertanyaan yang
+selaras dengan kontribusi dan hasil penelitian: representasi eksplisit
+interkoneksi kurikulum, relasi implisit lintas-disiplin yang teridentifikasi,
+perubahan kualitas struktural KG, serta validitas relasi dan keandalan evaluasi.
+Bab~6 kemudian membuka bagian kesimpulan dengan menyatakan bahwa temuan Bab~5
+digunakan untuk menjawab keempat rumusan masalah, lalu menyajikan empat butir
+kesimpulan dengan struktur yang mengikuti urutan RQ tersebut. &
+hlm. 4, 88 \\
+\hline
+9 & Perbaiki bagaimana cara mengembangkan ontologi. &
+Subbab ``Metodologi Pengembangan Ontologi'' ditambahkan pada Bab~3.
+Pengembangan ontologi dijelaskan sebagai proses \textbf{induktif}
+(\textit{bottom-up}) berbantuan-LLM yang kemudian dikurasi dan divalidasi
+pakar, bukan dirancang sepenuhnya di awal. Panduan \textit{Ontology
+Development 101} (Noy \& McGuinness, 2001) dipakai sebagai lensa
+deskriptif-analitis: proses penyusunan \textit{dapat dipetakan ke} tujuh
+tahapnya --- (1)~menentukan domain dan ruang lingkup; (2)~mempertimbangkan
+penggunaan-ulang kosakata mapan (SKOS, CCSO, EduCOR, ConceptNet,
+\textit{schema.org}/LRMI) yang ditinjau lewat \textit{Linked Open
+Vocabularies} dan dirangkum pada tabel pemetaan relasi; (3)~mengenumerasi
+istilah dari Daftar Isi Buku Siswa serta materi pokok dan glosarium Buku
+Panduan Guru; (4)~mendefinisikan lima kelas beserta hierarkinya;
+(5)~mendefinisikan properti objek dan properti data; (6)~menetapkan
+domain/jangkauan serta sifat properti (mis.\ \texttt{owl:SymmetricProperty});
+dan (7)~mempopulasikan individu sebagai \textit{Labeled Property Graph} di
+Neo4j. Strateginya \textit{middle-out}: kerangka kelas diturunkan
+\textit{top-down} dari struktur dokumen, sedangkan vokabulari relasi dirancang
+\textit{bottom-up}. Sesuai sifat ontologi yang iteratif, skema disempurnakan
+dari versi v1 hingga v4 bersama enam pakar domain. &
+hlm. 39, 41 \\
+\hline
+10 & Kenapa pengembangan ontologi tidak dijadikan sebagai pertanyaan
+penelitian? &
+Pengembangan ontologi sengaja diposisikan sebagai bagian metodologi dan
+artefak penelitian, bukan pertanyaan penelitian tersendiri, atas tiga alasan.
+\textbf{Pertama}, ontologi berperan sebagai \textit{instrumen}: skema ringan
+(\textit{lightweight} --- lima kelas dan lima belas tipe relasi inti) yang
+menstrukturkan KG serta memungkinkan ekstraksi dan \textit{completion}. Ia
+adalah sarana, bukan objek yang diteliti; objek penelitian adalah keterhubungan
+materi sains lintas-disiplin dan kualitas relasi hasil KGC, sebagaimana
+tercermin pada keempat RQ. \textbf{Kedua}, \textit{cara} mengembangkan ontologi
+bersifat prosedural; sejalan dengan prinsip perumusan RQ pada revisi ini (RQ
+tidak menanyakan ``cara''), pertanyaan prosedural dijawab pada metodologi
+(Bab~3, subbab Metodologi Pengembangan Ontologi), bukan diangkat menjadi RQ
+yang jawabannya ada di kesimpulan. \textbf{Ketiga}, penelitian tidak menetapkan
+evaluasi kualitas ontologi sebagai tujuan tersendiri (mis.\ \textit{competency
+questions} atau \textit{reasoning benchmark}); kelayakan ontologi dinilai secara
+tidak langsung melalui validasi pakar atas relasi KG yang distrukturkannya.
+Dengan demikian, pengembangan ontologi tetap didokumentasikan dan diakui
+sebagai kontribusi artefak (skema OWL), tetapi tidak dijadikan RQ karena bukan
+pertanyaan terukur yang dapat dijawab di kesimpulan. &
+- \\
+\hline
+11 & Tambahkan argumentasi kenapa memilih Gemini Pro sebagai
+\textit{LLM-as-a-judge}? &
+Argumentasi pemilihan Gemini Pro sebagai \textit{LLM-as-a-judge} sudah
+ditambahkan pada metodologi. Gemini~3.1 Pro Preview dipilih bukan sebagai
+pengganti validasi pakar, melainkan sebagai penengah hanya ketika dua pakar
+tidak sepakat atau ketika \textit{missing triple} hanya diusulkan satu pakar.
+Kekhawatiran ``Gemini mengekstrak, Gemini memvalidasi'' ditangani dengan tiga
+pemisahan. Pertama, validasi utama tetap berasal dari pakar domain, bukan dari
+Gemini. Kedua, model yang dipakai berbeda per fungsi: Gemini~2.5 Flash Lite
+untuk ekstraksi, Gemini~2.5 Flash untuk \textit{completion}, dan Gemini~3.1 Pro
+Preview hanya untuk ajudikasi. Ketiga, \textit{judge} tidak menerima keluaran
+ekstraksi sebagai kebenaran, tetapi diberi label pakar dan cuplikan buku teks
+(\textit{textbook grounding}) untuk menengahi konflik. Cuplikan ini berasal dari
+hasil ekstraksi teks PDF buku resmi pada tahap ingestion (PDF diparsing dengan
+LlamaIndex/PyMuPDF menjadi teks per halaman beserta metadata halaman), sehingga
+bukti yang dipakai judge adalah konteks buku mentah yang relevan, bukan keluaran
+ekstraksi relasi sebagai kebenaran. Dengan demikian, Gemini Pro dipilih karena
+kebutuhan penalaran kontekstual pada kasus ketidaksepakatan, sementara risiko
+bias validasi diri dikurangi melalui peran pakar, pemisahan model, dan
+grounding pada sumber buku. &
+hlm. 36, 37 \\
+\hline
+12 & Tambahkan argumentasi kenapa memakai OWL? Kenapa bukan yang lain? Apa
+yang dimanfaatkan dari OWL? &
+Subbab ``Justifikasi Pemilihan OWL'' ditambahkan pada Bab~3, disusun atas
+dasar apa yang benar-benar dimanfaatkan dari OWL. \textbf{Yang dimanfaatkan:}
+(1)~tipifikasi formal yang dapat diperiksa mesin --- deklarasi
+\texttt{owl:Class}, \texttt{owl:ObjectProperty}, dan
+\texttt{owl:DatatypeProperty} beserta batasan
+\texttt{rdfs:domain}/\texttt{rdfs:range} --- sehingga vokabulari struktur dan
+relasi menjadi spesifikasi eksplisit yang konsisten antartahap
+\textit{pipeline}; (2)~aksioma semantik ringan, yaitu empat relasi setara dua
+arah dinyatakan sebagai \texttt{owl:SymmetricProperty}; dan (3)~status standar
+terbuka W3C yang didukung perkakas baku (Prot\'eg\'e), portabel, serta dapat
+divalidasi dan digunakan ulang. \textbf{Mengapa bukan alternatif:} RDFS murni
+tidak menyediakan aksioma properti seperti simetri; SHACL, JSON Schema, dan
+Pydantic berorientasi pada validasi \textit{bentuk} (\textit{shape}) data,
+bukan ontologi formal; UML atau diagram informal tidak baku secara semantik.
+OWL berperan sebagai \textbf{spesifikasi waktu-desain}, sedangkan penyimpanan
+dan kueri \textit{runtime} memakai \textit{Labeled Property Graph} di Neo4j
+(tanpa \textit{triplestore}, SPARQL, maupun \textit{reasoner}); pemetaannya
+langsung: \texttt{owl:Class} menjadi label \textit{node},
+\texttt{owl:ObjectProperty} menjadi tipe relasi, dan
+\texttt{rdfs:domain}/\texttt{rdfs:range} ditegakkan lewat pola \texttt{MERGE}
+serta \textit{constraint} Cypher. &
+hlm. 45, 46 \\
+\hline
+13 & Relasi yang salah atau tidak valid kenapa dibuang atau diikutkan untuk
+tahap selanjutnya? Berikan argumentasinya. &
+Sudah ditambahkan argumentasi bahwa relasi salah tidak diperlakukan sebagai
+pengetahuan final, tetapi tetap disimpan sebagai artefak audit dengan metadata
+\texttt{consensus}/\texttt{status}. Daftar lengkapnya ditempatkan pada Lampiran
+Daftar Relasi Berlabel \texttt{wrong}. Terhadap KGC, pengaruhnya dijelaskan
+secara terbatas: relasi \texttt{wrong} tidak memengaruhi pencarian kandidat ANN
+secara langsung karena kandidat dibangkitkan dari \textit{embedding} deskripsi
+\textit{node}, tetapi relasi dalam graf masih berpotensi muncul sebagai konteks
+klasifikasi LLM. Karena itu Bab~5 menambahkan audit dampak \texttt{wrong
+triples}: dari 15 \textit{edge} completion yang melibatkan konsep sumber relasi
+\texttt{wrong}, 13 divalidasi Fase~2 dan semuanya valid serta tepat tipe, dengan
+5 kasus salah arah. Artinya, dampaknya terbatas dan terutama terkait normalisasi
+arah, bukan validitas atau tipe relasi. &
+hlm. 79, 135 \\
+\hline
+
+\end{longtable}
+
+\vspace{0.3cm}
+\noindent\small\textit{Catatan: kolom ``Catatan Revisi Penguji'' dikutip dari
+catatan penguji pada SISIDANG (Revisi Berkas~\#1). Nomor halaman pada kolom
+``Halaman Hasil Revisi'' bersifat sementara (mengikuti draf naskah per
+28 Juni 2026) dan dapat bergeser setelah paginasi naskah final stabil.}
+
+\end{document}
