@@ -135,6 +135,7 @@
 % ── Graphics ─────────────────────────────────────────────────
 \usepackage{graphicx}
 \usepackage{adjustbox}   % scale oversized diagrams to fit width AND page height
+\usepackage{float}       % [H] placement: show a figure exactly where it is declared
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \makeatother
@@ -223,7 +224,8 @@
 % edition, month names, ordinals).
 \DeclareLanguageMapping{indonesian}{english}
 \DeclareLanguageMapping{bahasai}{english}
-\addbibresource{config/references.bib}
+\addbibresource{\subfix{config/references.bib}}  % \subfix: path resolves for both the main build and standalone subfile compiles
+
 \renewcommand*{\finalnamedelim}{\addspace dan\addspace}  % two authors -> "dan"
 
 % ============================================================
