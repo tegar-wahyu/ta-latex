@@ -170,36 +170,14 @@ NPM. 2206819395 & NPM. 2206083445 & NPM. 2206082032 \\
 \end{center}
 
 % ===================== HALAMAN PENGESAHAN =====================
+% CATATAN: Halaman ini TIDAK dibangun dari LaTeX. Lembar pengesahan resmi
+% berasal dari sistem sidang fakultas (SISIDANG) dan disisipkan APA ADANYA
+% (verbatim) sebagai PDF -> assets/pdf/halaman-pengesahan.pdf.
+% JANGAN diedit / dibangun ulang di sini. Ukuran kertas sumber: US Letter.
 \clearpage
-\addcontentsline{toc}{chapter}{HALAMAN PENGESAHAN}
-\begin{center}\bfseries HALAMAN PENGESAHAN\end{center}
-\thispagestyle{plain}
-\vspace{0.8cm}
-\setstretch{1.4}
-\noindent Tugas Akhir ini diajukan oleh:
-\vspace{0.5cm}
-
-\frow{Nama/NPM Mahasiswa 1}{Fadrian Yhoga Pratama / 2206819395}
-\frow{Nama/NPM Mahasiswa 2}{Soros Febriano / 2206083445}
-\frow{Nama/NPM Mahasiswa 3}{Tegar Wahyu Khisbulloh / 2206082032}
-\frow{Program Studi}{Sarjana Ilmu Komputer}
-\frow{Judul}{\juduluppercase}
-\vspace{0.5cm}
-
-\noindent Telah berhasil dipertahankan di hadapan Dewan Penguji dan diterima
-sebagai bagian persyaratan yang diperlukan untuk memperoleh gelar Sarjana Ilmu
-Komputer pada Program Studi Sarjana Ilmu Komputer, Fakultas Ilmu Komputer,
-Universitas Indonesia.
-\vspace{1cm}
-
-\begin{center}\bfseries DEWAN PENGUJI\end{center}
-\frowp{Pembimbing}{Dr.\ Siti Aminah, S.Kom., M.Kom.}
-\frowp{Penguji}{Evi Yulianti, M.Comp.Sc., M.Kom., Ph.D.}
-\frowp{Penguji}{Iis Afriyanti, S.Kom., M.Sc.}
-\vspace{0.8cm}
-
-\frowp{Ditetapkan di}{Depok, Jawa Barat}
-\frowp{Tanggal}{15 Juni 2026}
+\includepdf[pages=1, fitpaper=true,
+  addtotoc={1, chapter, 0, HALAMAN PENGESAHAN, sec:pengesahan}
+]{assets/pdf/halaman-pengesahan.pdf}
 
 % ===================== SURAT PERNYATAAN (BEBAS PLAGIAT) =====================
 \clearpage
@@ -257,8 +235,11 @@ NPM. 2206819395 & NPM. 2206083445 & NPM. 2206082032 \\
 \begin{center}\bfseries
 HALAMAN PERNYATAAN PERSETUJUAN PUBLIKASI\\
 TUGAS AKHIR UNTUK KEPENTINGAN AKADEMIS\end{center}
+% Garis pembatas tebal di bawah judul (sesuai format guide UI).
+\vspace{-0.15cm}
+\noindent\rule{\linewidth}{1pt}\par
 \thispagestyle{plain}
-\vspace{0.5cm}
+\vspace{0.4cm}
 % Spasi sedikit lebih rapat (1,15) agar seluruh isi + blok tanda tangan muat
 % dalam satu halaman (konsisten dengan pendekatan halaman Abstrak).
 \setstretch{1.15}
