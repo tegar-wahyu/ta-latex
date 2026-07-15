@@ -23,6 +23,7 @@
     \usepackage[T1]{fontenc}
     \usepackage[indonesian]{babel}
     \usepackage{mathptmx}           % Times New Roman equivalent
+    \usepackage{helvet}             % Arial equivalent (dipakai \uifootermark)
     \usepackage{courier}            % monospace (texttt, listings)
 \fi
 
@@ -38,35 +39,43 @@
 
 % -- Header & footer (mirrors latex-ta-ui/uithesis.sty) --------
 \usepackage{fancyhdr}
+% Saklar: teks "Universitas Indonesia" baru menyala di bagian isi (angka Arab).
+% Front matter juga punya halaman pembuka setingkat bab (Orisinalitas,
+% Pengesahan, Kata Pengantar, Daftar Gambar, dst.) yang otomatis memakai gaya
+% plain; tanpa saklar ini halaman-halaman tersebut ikut memuat teks itu.
+\newif\ifuifooter
+\uifooterfalse
 \newcommand{\uifootermark}{%
-  \footnotesize\sffamily\bfseries Universitas Indonesia%
+  \ifuifooter\footnotesize\sffamily\bfseries Universitas Indonesia\fi
 }
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 \fancyhf{}
+% "Universitas Indonesia" hanya muncul di halaman awal bab (gaya plain, yang
+% dipasang otomatis oleh LaTeX lewat \thispagestyle pada tiap \chapter). Di
+% halaman lanjutan nomor halaman pindah ke kiri atas dan footer dikosongkan.
 \fancypagestyle{plain}{%
   \fancyhf{}%
   \fancyfoot[C]{\thepage}%
+  \fancyfoot[R]{\uifootermark}%
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
 \fancypagestyle{onlypage}{%
   \fancyhf{}%
-  \fancyhead[LE,RO]{\thepage}%
+  \fancyhead[L]{\thepage}%
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
 \fancypagestyle{first-pages}{%
   \fancyhf{}%
-  \fancyhead[LE,RO]{\thepage}%
-  \fancyfoot[LE,RO]{\uifootermark}%
+  \fancyhead[L]{\thepage}%
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
 \fancypagestyle{standard}{%
   \fancyhf{}%
-  \fancyhead[LE,RO]{\thepage}%
-  \fancyfoot[LE,RO]{\uifootermark}%
+  \fancyhead[L]{\thepage}%
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
@@ -252,6 +261,7 @@
 % ── ISI (angka Arab) ─────────────────────────────────────────
 \pagenumbering{arabic}
 \pagestyle{standard}
+\uifootertrue   % mulai sini "Universitas Indonesia" tampil di halaman awal bab
 
 % ── BAB 1 ────────────────────────────────────────────────────
 \iffalse\chapter{BAB 1: Pendahuluan}\fi
