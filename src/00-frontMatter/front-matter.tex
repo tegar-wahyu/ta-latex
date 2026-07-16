@@ -72,7 +72,7 @@ Merdeka SMA Kelas XII}
 
   {\large\bfseries UNIVERSITAS INDONESIA}\\[2cm]
 
-  {\bfseries\large \juduluppercase}\\[3cm]
+  {\bfseries\large \MakeUppercase{\juduluppercase}}\\[3cm]
 
   {\large\bfseries SKRIPSI}\\[4cm]
 
@@ -103,11 +103,11 @@ Merdeka SMA Kelas XII}
 
   {\large\bfseries UNIVERSITAS INDONESIA}\\[2cm]
 
-  {\bfseries\large \juduluppercase}\\[2.5cm]
+  {\bfseries\large \MakeUppercase{\juduluppercase}}\\[2.5cm]
 
   {\large\bfseries SKRIPSI}\\[0.6cm]
   Diajukan sebagai salah satu syarat memperoleh gelar\\
-  Sarjana Ilmu Komputer\\[3cm]
+  Sarjana\\[3cm]
 
   \begin{tabular}{@{}l l@{}}
     FADRIAN YHOGA PRATAMA   & 2206819395 \\
@@ -127,27 +127,31 @@ Merdeka SMA Kelas XII}
 \addcontentsline{toc}{chapter}{HALAMAN PERNYATAAN ORISINALITAS}
 \begin{center}\bfseries HALAMAN PERNYATAAN ORISINALITAS\end{center}
 \thispagestyle{plain}
-\vspace{1cm}
-% Pedoman UI: "spasi di halaman orisinalitas = Double" -> spasi ganda.
-\doublespacing
-\noindent Tugas Akhir ini adalah hasil karya kami sendiri, dan semua sumber
-baik yang dikutip maupun dirujuk telah kami nyatakan dengan benar.
-\vspace{1.2cm}
+\vspace{1.5cm}
+% Pernyataan orisinalitas: 3 baris, dicetak tebal & rata tengah, spasi ganda
+% (mengikuti contoh HALAMAN PERNYATAAN ORISINALITAS dari pustakawan).
+{\centering\bfseries\doublespacing
+Skripsi ini adalah hasil karya kami sendiri,\\
+dan semua sumber baik yang dikutip maupun dirujuk\\
+telah kami nyatakan dengan benar.\par}
+\vspace{1.6cm}
 
-\noindent Depok, Juni 2026
-\vspace{0.4cm}
-
-\begin{center}
-\begin{minipage}{\linewidth}
-\centering
-Yang menyatakan,\\[2.5cm]
-\begin{tabular}{ccc}
-\signyhoga & \signsoros & \signtegar \\
-Fadrian Yhoga Pratama & Soros Febriano & Tegar Wahyu Khisbulloh \\
-NPM. 2206819395 & NPM. 2206083445 & NPM. 2206082032 \\
-\end{tabular}
-\end{minipage}
-\end{center}
+% Blok penulis: Nama / NPM / Tanda Tangan tiap penulis, lalu Tanggal — rata
+% kiri, dicetak tebal, sesuai format contoh (Image #14).
+\singlespacing
+\noindent{\bfseries%
+\begin{tabular}{@{}p{5.4cm}@{}c@{\hspace{0.7em}}l@{}}
+Nama Penulis 1          & : & Fadrian Yhoga Pratama \\[0.28cm]
+NPM Penulis 1           & : & 2206819395 \\[0.28cm]
+Tanda Tangan Penulis 1  & : & \raisebox{-0.45cm}{\includegraphics[height=1.5cm]{assets/signs/sign-yhoga.png}} \\[0.8cm]
+Nama Penulis 2          & : & Soros Febriano \\[0.28cm]
+NPM Penulis 2           & : & 2206083445 \\[0.28cm]
+Tanda Tangan Penulis 2  & : & \raisebox{-0.45cm}{\includegraphics[height=1.5cm]{assets/signs/sign-soros.png}} \\[0.8cm]
+Nama Penulis 3          & : & Tegar Wahyu Khisbulloh \\[0.28cm]
+NPM Penulis 3           & : & 2206082032 \\[0.28cm]
+Tanda Tangan Penulis 3  & : & \raisebox{-0.45cm}{\includegraphics[height=1.5cm]{assets/signs/sign-tegar.png}} \\[0.8cm]
+Tanggal                 & : & Juni 2026 \\
+\end{tabular}\par}
 
 % ===================== PERNYATAAN PENGGUNAAN KECERDASAN ARTIFISIAL =====================
 \clearpage
@@ -307,6 +311,7 @@ NPM. 2206819395 & NPM. 2206083445 & NPM. 2206082032 \\
 
 % ===================== ABSTRAK (ID) =====================
 \clearpage
+\uifootertrue   % Abstrak & Abstract: tampilkan "Universitas Indonesia" (rata kanan bawah)
 \ifSubfilesClassLoaded{}{\pagestyle{first-pages}}
 \phantomsection
 \addcontentsline{toc}{chapter}{ABSTRAK}
@@ -402,6 +407,7 @@ relation-direction accuracy still requires improvement.
 \noindent\textbf{Keywords:} Knowledge Graph Completion, Large Language Models
 (LLM), LLM-as-a-judge, Merdeka Curriculum, Cross-Disciplinary Science Education,
 Curriculum Mapping.
+\uifooterfalse   % matikan lagi setelah Abstract; TOC dst. tanpa tulisan UI
 \setstretch{1.5}   % restore default spacing (1,5 spasi) for subsequent front matter (TOC dll.)
 
 \end{document}

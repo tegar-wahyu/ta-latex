@@ -66,13 +66,13 @@
 }
 \fancypagestyle{onlypage}{%
   \fancyhf{}%
-  \fancyhead[L]{\thepage}%
+  \fancyfoot[C]{\thepage}%   % front matter (Romawi): nomor halaman di TENGAH bawah
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
 \fancypagestyle{first-pages}{%
   \fancyhf{}%
-  \fancyhead[L]{\thepage}%
+  \fancyfoot[C]{\thepage}%   % Daftar Isi/Gambar/Tabel: nomor Romawi di TENGAH bawah
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
@@ -297,6 +297,10 @@
 \pagenumbering{arabic}
 \pagestyle{standard}
 \uifootertrue   % mulai sini "Universitas Indonesia" tampil di halaman awal bab
+% Pustakawan: paragraf isi TIDAK menjorok (tanpa indentasi awal baris);
+% antarparagraf dipisahkan jarak vertikal agar tetap terbaca.
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
 
 % ── BAB 1 ────────────────────────────────────────────────────
 \iffalse\chapter{BAB 1: Pendahuluan}\fi
