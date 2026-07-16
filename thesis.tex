@@ -51,13 +51,14 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 \fancyhf{}
-% "Universitas Indonesia" hanya muncul di halaman awal bab (gaya plain, yang
-% dipasang otomatis oleh LaTeX lewat \thispagestyle pada tiap \chapter). Di
-% halaman lanjutan nomor halaman pindah ke kiri atas dan footer dikosongkan.
+% Bagian isi: "Universitas Indonesia" tampil rata KANAN di kaki setiap halaman.
+%  - Awal bab (gaya plain): nomor di tengah + tulisan UI di kanan (sejajar).
+%  - Halaman lanjutan (gaya standard): nomor di kiri atas + tulisan UI kanan bawah.
+% Saklar \ifuifooter menjaga teks ini tidak muncul di front matter.
 \fancypagestyle{plain}{%
   \fancyhf{}%
   \fancyfoot[C]{\thepage}%
-  \fancyfoot[L]{\uifootermark}%
+  \fancyfoot[R]{\uifootermark}%
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
@@ -76,7 +77,7 @@
 \fancypagestyle{standard}{%
   \fancyhf{}%
   \fancyhead[L]{\thepage}%
-  \fancyfoot[L]{\uifootermark}% "Universitas Indonesia" rata kiri, mengikuti nomor halaman (sesuai format guide)
+  \fancyfoot[R]{\uifootermark}% "Universitas Indonesia" rata kanan (format guide: tulisan UI di sebelah kanan)
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
