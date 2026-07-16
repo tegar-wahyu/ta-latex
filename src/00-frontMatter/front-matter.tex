@@ -114,6 +114,7 @@ Merdeka SMA Kelas XII}
 \clearpage
 
 % ===================== PERNYATAAN ORISINALITAS =====================
+\phantomsection
 \addcontentsline{toc}{chapter}{HALAMAN PERNYATAAN ORISINALITAS}
 \begin{center}\bfseries HALAMAN PERNYATAAN ORISINALITAS\end{center}
 \thispagestyle{plain}
@@ -141,6 +142,7 @@ NPM. 2206819395 & NPM. 2206083445 & NPM. 2206082032 \\
 
 % ===================== PERNYATAAN PENGGUNAAN KECERDASAN ARTIFISIAL =====================
 \clearpage
+\phantomsection
 \addcontentsline{toc}{chapter}{HALAMAN PERNYATAAN PENGGUNAAN KECERDASAN ARTIFISIAL}
 \begin{center}\bfseries HALAMAN PERNYATAAN PENGGUNAAN KECERDASAN ARTIFISIAL\end{center}
 \thispagestyle{plain}
@@ -175,12 +177,15 @@ NPM. 2206819395 & NPM. 2206083445 & NPM. 2206082032 \\
 % (verbatim) sebagai PDF -> assets/pdf/halaman-pengesahan.pdf.
 % JANGAN diedit / dibangun ulang di sini. Ukuran kertas sumber: US Letter.
 \clearpage
+% pagecommand (bukan addtotoc) supaya entri TOC TIDAK bernomor (\chapter) dan
+% tidak menabrak anchor chapter.1 milik BAB 1. \phantomsection -> tautan benar.
 \includepdf[pages=1, fitpaper=true,
-  addtotoc={1, chapter, 0, HALAMAN PENGESAHAN, sec:pengesahan}
+  pagecommand={\thispagestyle{empty}\phantomsection\addcontentsline{toc}{chapter}{HALAMAN PENGESAHAN}}%
 ]{assets/pdf/halaman-pengesahan.pdf}
 
 % ===================== SURAT PERNYATAAN (BEBAS PLAGIAT) =====================
 \clearpage
+\phantomsection
 \addcontentsline{toc}{chapter}{SURAT PERNYATAAN}
 \begin{center}\bfseries SURAT PERNYATAAN\end{center}
 \thispagestyle{plain}
@@ -231,6 +236,7 @@ NPM. 2206819395 & NPM. 2206083445 & NPM. 2206082032 \\
 
 % ===================== PERNYATAAN PERSETUJUAN PUBLIKASI =====================
 \clearpage
+\phantomsection
 \addcontentsline{toc}{chapter}{HALAMAN PERNYATAAN PERSETUJUAN PUBLIKASI}
 \begin{center}\bfseries
 HALAMAN PERNYATAAN PERSETUJUAN PUBLIKASI\\
@@ -293,6 +299,7 @@ NPM. 2206819395 & NPM. 2206083445 & NPM. 2206082032 \\
 % ===================== ABSTRAK (ID) =====================
 \clearpage
 \ifSubfilesClassLoaded{}{\pagestyle{first-pages}}
+\phantomsection
 \addcontentsline{toc}{chapter}{ABSTRAK}
 \begin{center}\bfseries ABSTRAK\end{center}
 \thispagestyle{plain}
@@ -340,6 +347,7 @@ Pemetaan Kurikulum.
 
 % ===================== ABSTRACT (EN) =====================
 \clearpage
+\phantomsection
 \addcontentsline{toc}{chapter}{ABSTRACT}
 \begin{center}\bfseries ABSTRACT\end{center}
 \thispagestyle{plain}
