@@ -23,6 +23,7 @@
     \usepackage[T1]{fontenc}
     \usepackage[indonesian]{babel}
     \usepackage{mathptmx}           % Times New Roman equivalent
+    \usepackage{helvet}             % Arial equivalent (dipakai \uifootermark)
     \usepackage{courier}            % monospace (texttt, listings)
 \fi
 
@@ -38,35 +39,47 @@
 
 % -- Header & footer (mirrors latex-ta-ui/uithesis.sty) --------
 \usepackage{fancyhdr}
+% Saklar: teks "Universitas Indonesia" baru menyala di bagian isi (angka Arab).
+% Front matter juga punya halaman pembuka setingkat bab (Orisinalitas,
+% Pengesahan, Kata Pengantar, Daftar Gambar, dst.) yang otomatis memakai gaya
+% plain; tanpa saklar ini halaman-halaman tersebut ikut memuat teks itu.
+\newif\ifuifooter
+\uifooterfalse
 \newcommand{\uifootermark}{%
-  \footnotesize\sffamily\bfseries Universitas Indonesia%
+  \ifuifooter\footnotesize\sffamily\bfseries Universitas Indonesia\fi
 }
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 \fancyhf{}
+% Bagian isi — tata letak DUA SISI (mirror), sesuai pedoman 2025
+% (evenAndOddHeaders aktif; nomor & tulisan UI mengikuti tepi LUAR):
+%  - Awal bab (gaya plain): nomor di TENGAH bawah + tulisan UI di KANAN (sejajar).
+%  - Halaman lanjutan (gaya standard): nomor & tulisan UI berselang-seling —
+%    halaman genap di KIRI, halaman ganjil di KANAN (KIRI, KANAN, KIRI, ...).
+% Saklar \ifuifooter menjaga teks ini tidak muncul di front matter.
 \fancypagestyle{plain}{%
   \fancyhf{}%
   \fancyfoot[C]{\thepage}%
+  \fancyfoot[R]{\uifootermark}%
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
 \fancypagestyle{onlypage}{%
   \fancyhf{}%
-  \fancyhead[LE,RO]{\thepage}%
+  \fancyhead[L]{\thepage}%
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
 \fancypagestyle{first-pages}{%
   \fancyhf{}%
-  \fancyhead[LE,RO]{\thepage}%
-  \fancyfoot[LE,RO]{\uifootermark}%
+  \fancyhead[L]{\thepage}%
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
 \fancypagestyle{standard}{%
   \fancyhf{}%
-  \fancyhead[LE,RO]{\thepage}%
-  \fancyfoot[LE,RO]{\uifootermark}%
+  \fancyhead[LE,RO]{\thepage}%     % nomor di tepi LUAR: genap kiri, ganjil kanan
+  \fancyfoot[LE,RO]{\uifootermark}% "Universitas Indonesia" mengikuti sisi yang sama
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
@@ -92,7 +105,7 @@
 
 % ── Line spacing & paragraph ─────────────────────────────────
 \usepackage{setspace}
-\setstretch{1.4}   % UI 2017 standard line spacing
+\setstretch{1.5}   % 1,5 spasi (sesuai pedoman UI / format guide)
 \setlength{\parindent}{1.27cm}
 \setlength{\parskip}{0pt}
 
@@ -110,7 +123,7 @@
   {\centering\rmfamily\bfseries\large}
   {BAB~\thechapter}
   {0.6em}{\MakeUppercase}
-\titlespacing*{\chapter}{0pt}{0pt}{1.5em}
+\titlespacing*{\chapter}{0pt}{-25pt}{1.5em}  % judul bab mulai ~3 cm (di batas margin atas), sesuai pedoman
 
 \titleformat{\section}
   {\rmfamily\bfseries\normalsize}{\thesection}{1em}{}
@@ -136,6 +149,7 @@
 \usepackage{graphicx}
 \usepackage{adjustbox}   % scale oversized diagrams to fit width AND page height
 \usepackage{float}       % [H] placement: show a figure exactly where it is declared
+\usepackage{pdfpages}    % sisipkan Halaman Pengesahan resmi (PDF sistem fakultas) verbatim
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \makeatother
@@ -196,6 +210,30 @@
 % ── Hyperlinks ───────────────────────────────────────────────
 \usepackage[hidelinks]{hyperref}
 
+% ── DAFTAR ISI: gaya entri level-bab ─────────────────────────
+% Pedoman: entri diberi titik-titik (dot leaders), judul KAPITAL, dan bab
+% diawali label "BAB <n>". Entri front matter (HALAMAN JUDUL, ABSTRAK, dst.)
+% tidak memakai \numberline sehingga otomatis tanpa label "BAB".
+\makeatletter
+\renewcommand*{\l@chapter}[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \addvspace{0.6em \@plus\p@}%
+    \setlength\@tempdima{3.4em}%           % lebar kotak label "BAB 9"
+    \begingroup
+      \parindent\z@ \rightskip\@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode\bfseries
+      \advance\leftskip\@tempdima \hskip -\leftskip
+      \renewcommand\numberline[1]{\hb@xt@\@tempdima{BAB~##1\hfil}}%
+      \MakeUppercase{#1}\nobreak
+      \leaders\hbox{$\m@th\mkern\@dotsep mu\hbox{.}\mkern\@dotsep mu$}\hfill
+      \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
+\makeatother
+
 % ── Bibliography (biblatex, author-year) ─────────────────────
 %  Two-author connector rendered as "dan"; 3+ authors as "et al."
 % csquotes has no quote style for Indonesian/bahasai; loaded bare it emits a
@@ -243,14 +281,22 @@
 \subfile{src/00-frontMatter/front-matter}
 
 \pagestyle{first-pages}
+% Daftar Isi/Gambar/Tabel dicantumkan sendiri sebagai entri (dengan titik-titik),
+% sesuai contoh pedoman. \clearpage lebih dulu agar nomor halaman yang tercatat
+% adalah halaman tempat judul daftar itu benar-benar tampil (bukan halaman
+% sebelumnya), sebab \tableofcontents dsb. memulai halaman baru sendiri.
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{\contentsname}
 \tableofcontents
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{\listfigurename}
 \listoffigures
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{\listtablename}
 \listoftables
 \clearpage
 
 % ── ISI (angka Arab) ─────────────────────────────────────────
 \pagenumbering{arabic}
 \pagestyle{standard}
+\uifootertrue   % mulai sini "Universitas Indonesia" tampil di halaman awal bab
 
 % ── BAB 1 ────────────────────────────────────────────────────
 \iffalse\chapter{BAB 1: Pendahuluan}\fi
