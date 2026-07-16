@@ -311,7 +311,14 @@ NPM. 2206819395 & NPM. 2206083445 & NPM. 2206082032 \\
 
 % ===================== ABSTRAK (ID) =====================
 \clearpage
-\uifootertrue   % Abstrak & Abstract: tampilkan "Universitas Indonesia" (rata kanan bawah)
+% Mulai HALAMAN ABSTRAK, "Universitas Indonesia" (rata kanan bawah) tampil dan
+% BERLANJUT ke Abstract, Daftar Isi, Daftar Gambar, dan Daftar Tabel. Tanda ini
+% dibaca oleh gaya plain & first-pages lewat \ifuifooter; flag dinyalakan di sini
+% dan sengaja TIDAK dimatikan lagi (mengalir sampai bagian isi).
+% CATATAN: \subfile membungkus front matter dalam satu grup, sedangkan \newif
+% bersifat LOKAL — maka set flag secara GLOBAL agar tetap menyala setelah
+% halaman Abstrak di-ship keluar batas subfile (Abstract, Daftar Isi, dst.).
+\ifSubfilesClassLoaded{}{\global\let\ifuifooter\iftrue}
 \ifSubfilesClassLoaded{}{\pagestyle{first-pages}}
 \phantomsection
 \addcontentsline{toc}{chapter}{ABSTRAK}
@@ -407,7 +414,6 @@ relation-direction accuracy still requires improvement.
 \noindent\textbf{Keywords:} Knowledge Graph Completion, Large Language Models
 (LLM), LLM-as-a-judge, Merdeka Curriculum, Cross-Disciplinary Science Education,
 Curriculum Mapping.
-\uifooterfalse   % matikan lagi setelah Abstract; TOC dst. tanpa tulisan UI
 \setstretch{1.5}   % restore default spacing (1,5 spasi) for subsequent front matter (TOC dll.)
 
 \end{document}

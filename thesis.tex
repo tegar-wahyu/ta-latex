@@ -73,6 +73,7 @@
 \fancypagestyle{first-pages}{%
   \fancyhf{}%
   \fancyfoot[C]{\thepage}%   % Daftar Isi/Gambar/Tabel: nomor Romawi di TENGAH bawah
+  \fancyfoot[LE,RO]{\uifootermark}% "Universitas Indonesia" di tepi LUAR: genap kiri, ganjil kanan
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
@@ -280,6 +281,17 @@
 \pagestyle{onlypage}
 \subfile{src/00-frontMatter/front-matter}
 
+% Mulai Abstract & daftar-daftar (Daftar Isi/Gambar/Tabel): gaya plain (halaman
+% pembuka tiap daftar) ikut BERCERMIN — "Universitas Indonesia" mengikuti tepi
+% LUAR (genap kiri, ganjil kanan), selaras dengan halaman lanjutan. Nomor tetap
+% di tengah. Dipulihkan ke gaya awal-bab (rata kanan tetap) sebelum bagian isi.
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\thepage}%
+  \fancyfoot[LE,RO]{\uifootermark}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
 \pagestyle{first-pages}
 % Daftar Isi/Gambar/Tabel dicantumkan sendiri sebagai entri (dengan titik-titik),
 % sesuai contoh pedoman. \clearpage lebih dulu agar nomor halaman yang tercatat
@@ -294,6 +306,15 @@
 \clearpage
 
 % ── ISI (angka Arab) ─────────────────────────────────────────
+% Kembalikan plain ke gaya halaman AWAL BAB isi: nomor di tengah + "Universitas
+% Indonesia" rata KANAN tetap (halaman awal bab TIDAK bercermin, sesuai pedoman).
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\thepage}%
+  \fancyfoot[R]{\uifootermark}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
 \pagenumbering{arabic}
 \pagestyle{standard}
 \uifootertrue   % mulai sini "Universitas Indonesia" tampil di halaman awal bab
