@@ -51,9 +51,11 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 \fancyhf{}
-% Bagian isi — posisi "Universitas Indonesia" BERBEDA per jenis halaman:
+% Bagian isi — tata letak DUA SISI (mirror), sesuai pedoman 2025
+% (evenAndOddHeaders aktif; nomor & tulisan UI mengikuti tepi LUAR):
 %  - Awal bab (gaya plain): nomor di TENGAH bawah + tulisan UI di KANAN (sejajar).
-%  - Halaman lanjutan (gaya standard): nomor di KIRI atas + tulisan UI di KIRI bawah.
+%  - Halaman lanjutan (gaya standard): nomor & tulisan UI berselang-seling —
+%    halaman genap di KIRI, halaman ganjil di KANAN (KIRI, KANAN, KIRI, ...).
 % Saklar \ifuifooter menjaga teks ini tidak muncul di front matter.
 \fancypagestyle{plain}{%
   \fancyhf{}%
@@ -76,8 +78,8 @@
 }
 \fancypagestyle{standard}{%
   \fancyhf{}%
-  \fancyhead[L]{\thepage}%
-  \fancyfoot[L]{\uifootermark}% halaman lanjutan: nomor di kiri atas, "Universitas Indonesia" rata KIRI mengikutinya
+  \fancyhead[LE,RO]{\thepage}%     % nomor di tepi LUAR: genap kiri, ganjil kanan
+  \fancyfoot[LE,RO]{\uifootermark}% "Universitas Indonesia" mengikuti sisi yang sama
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
