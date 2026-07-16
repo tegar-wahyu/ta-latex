@@ -58,8 +58,11 @@ Merdeka SMA Kelas XII}
 \ifSubfilesClassLoaded{\pagenumbering{roman}}{}
 
 % ===================== SAMPUL =====================
-% Halaman manual (bukan env titlepage) agar tidak me-reset counter halaman ke 1
-% --- mencegah warning hyperref "destination name{page.i} duplicate".
+% Halaman Sampul TIDAK dihitung dalam penomoran (sesuai pedoman: Halaman Judul
+% = i). Anchor halaman dimatikan di sini supaya reset ke "i" pada Halaman Judul
+% tidak menimbulkan warning hyperref "destination name{page.i} duplicate".
+\hypersetup{pageanchor=false}
+\pagenumbering{gobble}%  Sampul tanpa label halaman (Romawi mulai di Halaman Judul)
 \thispagestyle{empty}
 \begin{center}
   \setstretch{1.4}
@@ -87,7 +90,13 @@ Merdeka SMA Kelas XII}
 \clearpage
 
 % ===================== HALAMAN JUDUL =====================
+% Halaman Judul = i. Aktifkan lagi anchor & mulai penomoran Romawi dari i
+% (Sampul di atas tidak ikut terhitung).
+\hypersetup{pageanchor=true}
+\pagenumbering{roman}
 \thispagestyle{empty}
+\phantomsection
+\addcontentsline{toc}{chapter}{HALAMAN JUDUL}
 \begin{center}
   \setstretch{1.4}
   \includegraphics[width=2.5cm]{assets/pics/logo-ui.png}\\[0.3cm]

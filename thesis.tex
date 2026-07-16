@@ -210,6 +210,30 @@
 % ── Hyperlinks ───────────────────────────────────────────────
 \usepackage[hidelinks]{hyperref}
 
+% ── DAFTAR ISI: gaya entri level-bab ─────────────────────────
+% Pedoman: entri diberi titik-titik (dot leaders), judul KAPITAL, dan bab
+% diawali label "BAB <n>". Entri front matter (HALAMAN JUDUL, ABSTRAK, dst.)
+% tidak memakai \numberline sehingga otomatis tanpa label "BAB".
+\makeatletter
+\renewcommand*{\l@chapter}[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \addvspace{0.6em \@plus\p@}%
+    \setlength\@tempdima{3.4em}%           % lebar kotak label "BAB 9"
+    \begingroup
+      \parindent\z@ \rightskip\@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode\bfseries
+      \advance\leftskip\@tempdima \hskip -\leftskip
+      \renewcommand\numberline[1]{\hb@xt@\@tempdima{BAB~##1\hfil}}%
+      \MakeUppercase{#1}\nobreak
+      \leaders\hbox{$\m@th\mkern\@dotsep mu\hbox{.}\mkern\@dotsep mu$}\hfill
+      \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
+\makeatother
+
 % ── Bibliography (biblatex, author-year) ─────────────────────
 %  Two-author connector rendered as "dan"; 3+ authors as "et al."
 % csquotes has no quote style for Indonesian/bahasai; loaded bare it emits a
@@ -257,8 +281,15 @@
 \subfile{src/00-frontMatter/front-matter}
 
 \pagestyle{first-pages}
+% Daftar Isi/Gambar/Tabel dicantumkan sendiri sebagai entri (dengan titik-titik),
+% sesuai contoh pedoman. \clearpage lebih dulu agar nomor halaman yang tercatat
+% adalah halaman tempat judul daftar itu benar-benar tampil (bukan halaman
+% sebelumnya), sebab \tableofcontents dsb. memulai halaman baru sendiri.
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{\contentsname}
 \tableofcontents
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{\listfigurename}
 \listoffigures
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{\listtablename}
 \listoftables
 \clearpage
 
