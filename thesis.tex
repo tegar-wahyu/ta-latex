@@ -120,8 +120,11 @@
 % Chapter heading: "BAB <n>" pada baris pertama, judul (UPPERCASE) di baris
 % kedua. (Lampiran memakai \chapter*{LAMPIRAN} sebagai pembatas, lalu tiap
 % lampiran jadi subbab — lihat blok LAMPIRAN di bawah.)
+% Judul level-bab (BAB, DAFTAR ISI/GAMBAR/TABEL, LAMPIRAN) dipaksa 12pt
+% (\normalsize) sesuai pedoman pustakawan — seluruh judul heading = 12pt,
+% dibedakan hanya oleh tebal + KAPITAL, bukan ukuran.
 \titleformat{\chapter}[display]
-  {\centering\rmfamily\bfseries\large}
+  {\centering\rmfamily\bfseries\normalsize}
   {BAB~\thechapter}
   {0.6em}{\MakeUppercase}
 \titlespacing*{\chapter}{0pt}{-25pt}{1.5em}  % judul bab mulai ~3 cm (di batas margin atas), sesuai pedoman
