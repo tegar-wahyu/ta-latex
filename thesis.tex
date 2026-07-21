@@ -66,13 +66,14 @@
 }
 \fancypagestyle{onlypage}{%
   \fancyhf{}%
-  \fancyhead[L]{\thepage}%
+  \fancyfoot[C]{\thepage}%   % front matter (Romawi): nomor halaman di TENGAH bawah
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
 \fancypagestyle{first-pages}{%
   \fancyhf{}%
-  \fancyhead[L]{\thepage}%
+  \fancyfoot[C]{\thepage}%   % Daftar Isi/Gambar/Tabel: nomor Romawi di TENGAH bawah
+  \fancyfoot[LE,RO]{\uifootermark}% "Universitas Indonesia" di tepi LUAR: genap kiri, ganjil kanan
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
@@ -119,8 +120,11 @@
 % Chapter heading: "BAB <n>" pada baris pertama, judul (UPPERCASE) di baris
 % kedua. (Lampiran memakai \chapter*{LAMPIRAN} sebagai pembatas, lalu tiap
 % lampiran jadi subbab — lihat blok LAMPIRAN di bawah.)
+% Judul level-bab (BAB, DAFTAR ISI/GAMBAR/TABEL, LAMPIRAN) dipaksa 12pt
+% (\normalsize) sesuai pedoman pustakawan — seluruh judul heading = 12pt,
+% dibedakan hanya oleh tebal + KAPITAL, bukan ukuran.
 \titleformat{\chapter}[display]
-  {\centering\rmfamily\bfseries\large}
+  {\centering\rmfamily\bfseries\normalsize}
   {BAB~\thechapter}
   {0.6em}{\MakeUppercase}
 \titlespacing*{\chapter}{0pt}{-25pt}{1.5em}  % judul bab mulai ~3 cm (di batas margin atas), sesuai pedoman
@@ -280,6 +284,17 @@
 \pagestyle{onlypage}
 \subfile{src/00-frontMatter/front-matter}
 
+% Mulai Abstract & daftar-daftar (Daftar Isi/Gambar/Tabel): gaya plain (halaman
+% pembuka tiap daftar) ikut BERCERMIN — "Universitas Indonesia" mengikuti tepi
+% LUAR (genap kiri, ganjil kanan), selaras dengan halaman lanjutan. Nomor tetap
+% di tengah. Dipulihkan ke gaya awal-bab (rata kanan tetap) sebelum bagian isi.
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\thepage}%
+  \fancyfoot[LE,RO]{\uifootermark}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
 \pagestyle{first-pages}
 % Daftar Isi/Gambar/Tabel dicantumkan sendiri sebagai entri (dengan titik-titik),
 % sesuai contoh pedoman. \clearpage lebih dulu agar nomor halaman yang tercatat
@@ -294,9 +309,22 @@
 \clearpage
 
 % ── ISI (angka Arab) ─────────────────────────────────────────
+% Kembalikan plain ke gaya halaman AWAL BAB isi: nomor di tengah + "Universitas
+% Indonesia" rata KANAN tetap (halaman awal bab TIDAK bercermin, sesuai pedoman).
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\thepage}%
+  \fancyfoot[R]{\uifootermark}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
 \pagenumbering{arabic}
 \pagestyle{standard}
 \uifootertrue   % mulai sini "Universitas Indonesia" tampil di halaman awal bab
+% Pustakawan: paragraf isi TIDAK menjorok (tanpa indentasi awal baris);
+% antarparagraf dipisahkan jarak vertikal agar tetap terbaca.
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
 
 % ── BAB 1 ────────────────────────────────────────────────────
 \iffalse\chapter{BAB 1: Pendahuluan}\fi
